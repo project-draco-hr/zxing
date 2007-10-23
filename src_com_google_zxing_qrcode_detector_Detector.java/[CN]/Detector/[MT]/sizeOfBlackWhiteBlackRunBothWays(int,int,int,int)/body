@@ -1,5 +1,0 @@
-{
-  float result=sizeOfBlackWhiteBlackRun(fromX,fromY,toX,toY);
-  result+=sizeOfBlackWhiteBlackRun(fromX,fromY,fromX - (toX - fromX),fromY - (toY - fromY));
-  return result - 1.0f;
-}

@@ -1,3 +1,0 @@
-{
-  return bitMatrix.get(i,j) ? (versionBits << 1) | 0x1 : versionBits << 1;
-}

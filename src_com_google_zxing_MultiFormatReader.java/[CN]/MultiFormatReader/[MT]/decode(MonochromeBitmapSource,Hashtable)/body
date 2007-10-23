@@ -1,9 +1,0 @@
-{
-  Hashtable possibleFormats=hints == null ? null : (Hashtable)hints.get(DecodeHintType.POSSIBLE_FORMATS);
-  if (possibleFormats == null || possibleFormats.contains(BarcodeFormat.QR_CODE)) {
-    return new QRCodeReader().decode(image,hints);
-  }
- else {
-    throw new ReaderException();
-  }
-}

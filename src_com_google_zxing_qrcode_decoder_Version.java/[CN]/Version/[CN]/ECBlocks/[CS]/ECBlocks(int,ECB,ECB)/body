@@ -1,4 +1,0 @@
-{
-  this.ecCodewords=ecCodewords;
-  this.ecBlocks=new ECB[]{ecBlocks1,ecBlocks2};
-}

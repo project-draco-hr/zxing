@@ -1,3 +1,0 @@
-{
-  return (errorCorrectionLevel.ordinal() << 3) | (int)dataMask;
-}

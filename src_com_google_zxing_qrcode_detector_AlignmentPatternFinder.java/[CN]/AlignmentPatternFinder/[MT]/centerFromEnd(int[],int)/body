@@ -1,3 +1,0 @@
-{
-  return (float)(end - stateCount[2]) - stateCount[1] / 2.0f;
-}

@@ -1,3 +1,0 @@
-{
-  return (calculateModuleSizeOneWay(topLeft,topRight) + calculateModuleSizeOneWay(topLeft,bottomLeft)) / 2.0f;
-}

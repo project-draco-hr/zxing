@@ -1,6 +1,0 @@
-{
-  if (dimension % 4 != 1) {
-    throw new ReaderException("Dimension must be 1 mod 4");
-  }
-  return getVersionForNumber((dimension - 17) >> 2);
-}

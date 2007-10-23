@@ -1,3 +1,0 @@
-{
-  return FOR_BITS[bits];
-}

@@ -1,7 +1,0 @@
-{
-  if (!(o instanceof FormatInformation)) {
-    return false;
-  }
-  FormatInformation other=(FormatInformation)o;
-  return this.errorCorrectionLevel == other.errorCorrectionLevel && this.dataMask == other.dataMask;
-}
