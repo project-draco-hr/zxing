@@ -1,0 +1,3 @@
+DataMask mask
+int dimension
+MaskCondition condition

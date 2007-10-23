@@ -1,0 +1,50 @@
+{
+  MonochromeBitmapSource image=this.image;
+  int maxJ=image.getWidth();
+  int[] stateCount=new int[5];
+  int j=startJ;
+  while (j >= 0 && image.isBlack(j,centerI)) {
+    stateCount[2]++;
+    j--;
+  }
+  if (j < 0) {
+    return Float.NaN;
+  }
+  while (j >= 0 && !image.isBlack(j,centerI) && stateCount[1] <= maxCount) {
+    stateCount[1]++;
+    j--;
+  }
+  if (j < 0 || stateCount[1] > maxCount) {
+    return Float.NaN;
+  }
+  while (j >= 0 && image.isBlack(j,centerI) && stateCount[0] <= maxCount) {
+    stateCount[0]++;
+    j--;
+  }
+  if (j < 0 || stateCount[0] > maxCount) {
+    return Float.NaN;
+  }
+  j=startJ + 1;
+  while (j < maxJ && image.isBlack(j,centerI)) {
+    stateCount[2]++;
+    j++;
+  }
+  if (j == maxJ) {
+    return Float.NaN;
+  }
+  while (j < maxJ && !image.isBlack(j,centerI) && stateCount[3] < maxCount) {
+    stateCount[3]++;
+    j++;
+  }
+  if (j == maxJ || stateCount[3] >= maxCount) {
+    return Float.NaN;
+  }
+  while (j < maxJ && image.isBlack(j,centerI) && stateCount[4] < maxCount) {
+    stateCount[4]++;
+    j++;
+  }
+  if (stateCount[4] >= maxCount) {
+    return Float.NaN;
+  }
+  return foundPatternCross(stateCount) ? centerFromEnd(stateCount,j) : Float.NaN;
+}

@@ -1,0 +1,15 @@
+{
+  String text;
+  ResultPoint[] points;
+  if (hints != null && hints.containsKey(DecodeHintType.PURE_BARCODE)) {
+    BitMatrix bits=extractPureBits(image);
+    text=Decoder.decode(bits);
+    points=new ResultPoint[0];
+  }
+ else {
+    DetectorResult result=new Detector(image).detect();
+    text=Decoder.decode(result.getBits());
+    points=result.getPoints();
+  }
+  return new Result(text,points);
+}

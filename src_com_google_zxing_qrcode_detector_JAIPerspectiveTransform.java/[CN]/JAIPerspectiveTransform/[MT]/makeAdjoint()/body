@@ -1,0 +1,20 @@
+{
+  float m00p=m11 * m22 - m12 * m21;
+  float m01p=m12 * m20 - m10 * m22;
+  float m02p=m10 * m21 - m11 * m20;
+  float m10p=m02 * m21 - m01 * m22;
+  float m11p=m00 * m22 - m02 * m20;
+  float m12p=m01 * m20 - m00 * m21;
+  float m20p=m01 * m12 - m02 * m11;
+  float m21p=m02 * m10 - m00 * m12;
+  float m22p=m00 * m11 - m01 * m10;
+  m00=m00p;
+  m01=m10p;
+  m02=m20p;
+  m10=m01p;
+  m11=m11p;
+  m12=m21p;
+  m20=m02p;
+  m21=m12p;
+  m22=m22p;
+}

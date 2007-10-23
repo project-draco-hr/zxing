@@ -1,0 +1,17 @@
+{
+  int max=points.length;
+  for (int offset=0; offset < max; offset+=2) {
+    float x=points[offset];
+    float y=points[offset + 1];
+    float w=m20 * x + m21 * y + m22;
+    if (w == 0.0f) {
+      points[offset]=x;
+      points[offset + 1]=y;
+    }
+ else {
+      float oneOverW=1.0f / w;
+      points[offset]=(m00 * x + m01 * y + m02) * oneOverW;
+      points[offset + 1]=(m10 * x + m11 * y + m12) * oneOverW;
+    }
+  }
+}

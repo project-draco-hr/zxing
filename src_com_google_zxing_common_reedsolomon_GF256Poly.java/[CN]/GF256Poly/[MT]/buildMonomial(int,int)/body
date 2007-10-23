@@ -1,0 +1,11 @@
+{
+  if (degree < 0) {
+    throw new IllegalArgumentException();
+  }
+  if (coefficient == 0) {
+    return ZERO;
+  }
+  int[] coefficients=new int[degree + 1];
+  coefficients[0]=coefficient;
+  return new GF256Poly(coefficients);
+}

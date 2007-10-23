@@ -1,0 +1,16 @@
+{
+  Vector errorLocations=new Vector(3);
+  for (int i=1; i < 256; i++) {
+    if (errorLocator.evaluateAt(i) == 0) {
+      errorLocations.addElement(new Integer(GF256.inverse(i)));
+    }
+  }
+  if (errorLocations.size() != errorLocator.getDegree()) {
+    throw new ReedSolomonException("Error locator degree does not match number of roots");
+  }
+  int[] result=new int[errorLocations.size()];
+  for (int i=0; i < result.length; i++) {
+    result[i]=((Integer)errorLocations.elementAt(i)).intValue();
+  }
+  return result;
+}

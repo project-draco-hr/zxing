@@ -1,0 +1,5 @@
+{
+  this.posX=posX;
+  this.posY=posY;
+  this.estimatedModuleSize=estimatedModuleSize;
+}

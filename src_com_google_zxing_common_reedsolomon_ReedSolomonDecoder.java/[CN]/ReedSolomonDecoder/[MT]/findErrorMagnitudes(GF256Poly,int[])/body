@@ -1,0 +1,15 @@
+{
+  int s=errorLocations.length;
+  int[] result=new int[s];
+  for (int i=0; i < errorLocations.length; i++) {
+    int xiInverse=GF256.inverse(errorLocations[i]);
+    int denominator=1;
+    for (int j=0; j < s; j++) {
+      if (i != j) {
+        denominator=GF256.multiply(denominator,GF256.addOrSubtract(1,GF256.multiply(errorLocations[j],xiInverse)));
+      }
+    }
+    result[i]=GF256.multiply(errorEvaluator.evaluateAt(xiInverse),GF256.inverse(denominator));
+  }
+  return result;
+}

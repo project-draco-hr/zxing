@@ -1,0 +1,6 @@
+{
+  if (className == null) {
+    throw new IllegalArgumentException();
+  }
+  gridSamplerClassName=className;
+}

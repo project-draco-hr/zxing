@@ -1,0 +1,27 @@
+{
+  while (count >= 3) {
+    int threeDigitsBits=bits.readBits(10);
+    if (threeDigitsBits >= 1000) {
+      throw new ReaderException("Illegal value for 3-digit unit: " + threeDigitsBits);
+    }
+    result.append(ALPHANUMERIC_CHARS[threeDigitsBits / 100]);
+    result.append(ALPHANUMERIC_CHARS[(threeDigitsBits / 10) % 10]);
+    result.append(ALPHANUMERIC_CHARS[threeDigitsBits % 10]);
+    count-=3;
+  }
+  if (count == 2) {
+    int twoDigitsBits=bits.readBits(7);
+    if (twoDigitsBits >= 100) {
+      throw new ReaderException("Illegal value for 2-digit unit: " + twoDigitsBits);
+    }
+    result.append(ALPHANUMERIC_CHARS[twoDigitsBits / 10]);
+    result.append(ALPHANUMERIC_CHARS[twoDigitsBits % 10]);
+  }
+ else   if (count == 1) {
+    int digitBits=bits.readBits(4);
+    if (digitBits >= 10) {
+      throw new ReaderException("Illegal value for digit unit: " + digitBits);
+    }
+    result.append(ALPHANUMERIC_CHARS[digitBits]);
+  }
+}

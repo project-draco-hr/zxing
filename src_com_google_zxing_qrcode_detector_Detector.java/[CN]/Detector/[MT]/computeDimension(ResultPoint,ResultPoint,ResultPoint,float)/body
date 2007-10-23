@@ -1,0 +1,16 @@
+{
+  int tltrCentersDimension=round(FinderPatternFinder.distance(topLeft,topRight) / moduleSize);
+  int tlblCentersDimension=round(FinderPatternFinder.distance(topLeft,bottomLeft) / moduleSize);
+  int dimension=((tltrCentersDimension + tlblCentersDimension) >> 1) + 7;
+switch (dimension & 0x03) {
+case 0:
+    dimension++;
+  break;
+case 2:
+dimension--;
+break;
+case 3:
+throw new ReaderException("Bad dimension: " + dimension);
+}
+return dimension;
+}

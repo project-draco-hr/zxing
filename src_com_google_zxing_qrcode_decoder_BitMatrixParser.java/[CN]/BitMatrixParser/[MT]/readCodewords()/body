@@ -1,0 +1,40 @@
+{
+  FormatInformation formatInfo=readFormatInformation();
+  Version version=readVersion();
+  DataMask dataMask=DataMask.forReference((int)formatInfo.getDataMask());
+  int dimension=bitMatrix.getDimension();
+  dataMask.unmaskBitMatrix(bitMatrix.getBits(),dimension);
+  BitMatrix functionPattern=version.buildFunctionPattern();
+  boolean readingUp=true;
+  byte[] result=new byte[version.getTotalCodewords()];
+  int resultOffset=0;
+  int currentByte=0;
+  int bitsRead=0;
+  for (int j=dimension - 1; j > 0; j-=2) {
+    if (j == 6) {
+      j--;
+    }
+    for (int count=0; count < dimension; count++) {
+      int i=readingUp ? dimension - 1 - count : count;
+      for (int col=0; col < 2; col++) {
+        if (!functionPattern.get(i,j - col)) {
+          bitsRead++;
+          currentByte<<=1;
+          if (bitMatrix.get(i,j - col)) {
+            currentByte|=1;
+          }
+          if (bitsRead == 8) {
+            result[resultOffset++]=(byte)currentByte;
+            bitsRead=0;
+            currentByte=0;
+          }
+        }
+      }
+    }
+    readingUp=!readingUp;
+  }
+  if (resultOffset != version.getTotalCodewords()) {
+    throw new ReaderException("Did not read all codewords");
+  }
+  return result;
+}

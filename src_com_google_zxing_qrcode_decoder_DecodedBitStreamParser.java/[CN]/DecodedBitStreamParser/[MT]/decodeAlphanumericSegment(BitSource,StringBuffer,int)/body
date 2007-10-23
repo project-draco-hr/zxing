@@ -1,0 +1,11 @@
+{
+  while (count > 1) {
+    int nextTwoCharsBits=bits.readBits(11);
+    result.append(ALPHANUMERIC_CHARS[nextTwoCharsBits / 45]);
+    result.append(ALPHANUMERIC_CHARS[nextTwoCharsBits % 45]);
+    count-=2;
+  }
+  if (count == 1) {
+    result.append(ALPHANUMERIC_CHARS[bits.readBits(6)]);
+  }
+}

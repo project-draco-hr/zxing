@@ -1,0 +1,6 @@
+{
+  if (a == 0) {
+    throw new ArithmeticException();
+  }
+  return exp[255 - log[a]];
+}

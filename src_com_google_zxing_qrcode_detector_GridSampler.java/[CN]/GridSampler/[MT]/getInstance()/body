@@ -1,0 +1,18 @@
+{
+  if (gridSampler == null) {
+    try {
+      Class gridSamplerClass=Class.forName(gridSamplerClassName);
+      gridSampler=(GridSampler)gridSamplerClass.newInstance();
+    }
+ catch (    ClassNotFoundException cnfe) {
+      throw new RuntimeException(cnfe.toString());
+    }
+catch (    IllegalAccessException iae) {
+      throw new RuntimeException(iae.toString());
+    }
+catch (    InstantiationException ie) {
+      throw new RuntimeException(ie.toString());
+    }
+  }
+  return gridSampler;
+}

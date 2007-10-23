@@ -1,0 +1,15 @@
+{
+  if (scalar == 0) {
+    return ZERO;
+  }
+  if (scalar == 1) {
+    return this;
+  }
+  int size=coefficients.length;
+  int[] product=new int[size];
+  System.arraycopy(coefficients,0,product,0,size);
+  for (int i=0; i < size; i++) {
+    product[i]=GF256.multiply(product[i],scalar);
+  }
+  return new GF256Poly(product);
+}

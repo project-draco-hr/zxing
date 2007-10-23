@@ -1,0 +1,4 @@
+{
+  a^=b;
+  return BITS_SET_IN_HALF_BYTE[a & 0x0F] + BITS_SET_IN_HALF_BYTE[(a >>> 4 & 0x0F)] + BITS_SET_IN_HALF_BYTE[(a >>> 8 & 0x0F)]+ BITS_SET_IN_HALF_BYTE[(a >>> 12 & 0x0F)]+ BITS_SET_IN_HALF_BYTE[(a >>> 16 & 0x0F)]+ BITS_SET_IN_HALF_BYTE[(a >>> 20 & 0x0F)]+ BITS_SET_IN_HALF_BYTE[(a >>> 24 & 0x0F)]+ BITS_SET_IN_HALF_BYTE[(a >>> 28 & 0x0F)];
+}

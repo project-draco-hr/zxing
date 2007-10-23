@@ -1,0 +1,3 @@
+{
+  return Math.abs(((FinderPattern)center1).getEstimatedModuleSize() - averageModuleSize) < Math.abs(((FinderPattern)center2).getEstimatedModuleSize() - averageModuleSize) ? -1 : 1;
+}

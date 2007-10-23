@@ -1,0 +1,4 @@
+{
+  errorCorrectionLevel=ErrorCorrectionLevel.forBits((formatInfo >> 3) & 0x03);
+  dataMask=(byte)(formatInfo & 0x07);
+}

@@ -1,0 +1,6 @@
+{
+  this.rawEstimatedModuleSize=rawEstimatedModuleSize;
+  this.bottomLeft=patternCenters[0];
+  this.topLeft=patternCenters[1];
+  this.topRight=patternCenters[2];
+}
