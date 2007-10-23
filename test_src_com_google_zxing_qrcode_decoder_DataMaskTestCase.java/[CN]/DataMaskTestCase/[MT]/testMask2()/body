@@ -1,8 +1,0 @@
-{
-  testMaskAcrossDimensions(2,new MaskCondition(){
-    public boolean isMasked(    int i,    int j){
-      return j % 3 == 0;
-    }
-  }
-);
-}
