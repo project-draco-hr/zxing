@@ -1,0 +1,7 @@
+{
+  int dimension=bitMatrix.getDimension();
+  if (dimension < 21 || (dimension & 0x03) != 1) {
+    throw new ReaderException("Dimension must be 1 mod 4 and >= 21");
+  }
+  this.bitMatrix=bitMatrix;
+}

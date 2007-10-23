@@ -1,0 +1,4 @@
+{
+  this.bits=bits;
+  this.points=points;
+}

@@ -1,0 +1,6 @@
+MonochromeBitmapSource image
+FinderPattern topLeft
+FinderPattern topRight
+FinderPattern bottomLeft
+AlignmentPattern alignmentPattern
+int dimension

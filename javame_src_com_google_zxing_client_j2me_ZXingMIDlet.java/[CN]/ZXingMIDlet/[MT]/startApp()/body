@@ -1,0 +1,23 @@
+{
+  try {
+    player=Manager.createPlayer("capture://video");
+    player.realize();
+    videoControl=(VideoControl)player.getControl("VideoControl");
+    Displayable canvas=new VideoCanvas();
+    videoControl.initDisplayMode(VideoControl.USE_DIRECT_VIDEO,canvas);
+    videoControl.setDisplayLocation(0,0);
+    videoControl.setDisplaySize(canvas.getWidth(),canvas.getHeight());
+    videoControl.setVisible(true);
+    canvas.addCommand(DECODE);
+    canvas.addCommand(EXIT);
+    canvas.setCommandListener(this);
+    Display.getDisplay(this).setCurrent(canvas);
+    player.start();
+  }
+ catch (  IOException ioe) {
+    throw new MIDletStateChangeException(ioe.toString());
+  }
+catch (  MediaException me) {
+    throw new MIDletStateChangeException(me.toString());
+  }
+}

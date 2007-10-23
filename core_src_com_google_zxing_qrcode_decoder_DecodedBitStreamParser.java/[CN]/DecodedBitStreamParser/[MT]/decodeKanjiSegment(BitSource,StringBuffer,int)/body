@@ -1,0 +1,24 @@
+{
+  byte[] buffer=new byte[2 * count];
+  int offset=0;
+  while (count > 0) {
+    int twoBytes=bits.readBits(13);
+    int assembledTwoBytes=((twoBytes / 0x0C0) << 8) | (twoBytes % 0x0C0);
+    if (assembledTwoBytes < 0x01F00) {
+      assembledTwoBytes+=0x08140;
+    }
+ else {
+      assembledTwoBytes+=0x0C140;
+    }
+    buffer[offset]=(byte)(assembledTwoBytes >> 8);
+    buffer[offset + 1]=(byte)assembledTwoBytes;
+    offset+=2;
+    count--;
+  }
+  try {
+    result.append(new String(buffer,"Shift_JIS"));
+  }
+ catch (  UnsupportedEncodingException uee) {
+    throw new ReaderException("Can't decode SHIFT_JIS string: " + uee);
+  }
+}

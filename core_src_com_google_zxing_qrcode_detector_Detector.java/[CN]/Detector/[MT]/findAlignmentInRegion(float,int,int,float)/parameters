@@ -1,0 +1,4 @@
+float overallEstModuleSize
+int estAlignmentX
+int estAlignmentY
+float allowanceFactor

@@ -1,0 +1,6 @@
+int versionNumber
+int[] alignmentPatternCenters
+ECBlocks ecBlocks1
+ECBlocks ecBlocks2
+ECBlocks ecBlocks3
+ECBlocks ecBlocks4

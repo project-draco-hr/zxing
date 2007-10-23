@@ -1,0 +1,3 @@
+{
+  return ((FinderPattern)center2).getCount() - ((FinderPattern)center1).getCount();
+}

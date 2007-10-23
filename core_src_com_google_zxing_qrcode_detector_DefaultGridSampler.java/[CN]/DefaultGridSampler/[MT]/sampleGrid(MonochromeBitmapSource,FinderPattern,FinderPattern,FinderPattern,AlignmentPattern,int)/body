@@ -1,0 +1,33 @@
+{
+  float bottomRightX;
+  float bottomRightY;
+  if (alignmentPattern != null) {
+    bottomRightX=alignmentPattern.getX();
+    bottomRightY=alignmentPattern.getY();
+  }
+ else {
+    bottomRightX=(topRight.getX() - topLeft.getX()) + bottomLeft.getX();
+    bottomRightY=(topRight.getY() - topLeft.getY()) + bottomLeft.getY();
+  }
+  float dimMinusThree=(float)dimension - 3.5f;
+  JAIPerspectiveTransform transform=JAIPerspectiveTransform.getQuadToQuad(3.5f,3.5f,dimMinusThree,3.5f,3.5f,dimMinusThree,dimMinusThree - 3.0f,dimMinusThree - 3.0f,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomLeft.getX(),bottomLeft.getY(),bottomRightX,bottomRightY);
+  BitMatrix bits=new BitMatrix(dimension);
+  float[] points=new float[dimension << 1];
+  for (int i=0; i < dimension; i++) {
+    int max=points.length;
+    float iValue=(float)i + 0.5f;
+    for (int j=0; j < max; j+=2) {
+      points[j]=(float)j + 0.5f;
+      points[j + 1]=iValue;
+    }
+    transform.transform(points);
+    checkEndpoint(image,points);
+    for (int j=0; j < dimension; j++) {
+      int offset=j << 1;
+      if (image.isBlack((int)points[offset],(int)points[offset + 1])) {
+        bits.set(i,j);
+      }
+    }
+  }
+  return bits;
+}

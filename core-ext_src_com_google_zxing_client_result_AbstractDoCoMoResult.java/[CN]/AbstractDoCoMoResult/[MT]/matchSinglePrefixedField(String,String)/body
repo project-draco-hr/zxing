@@ -1,0 +1,4 @@
+{
+  String[] matches=matchPrefixedField(prefix,rawText);
+  return matches == null ? null : matches[0];
+}

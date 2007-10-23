@@ -1,0 +1,5 @@
+{
+  BufferedImage image=ImageIO.read(uri.toURL());
+  String result=new MultiFormatReader().decode(new BufferedImageMonochromeBitmapSource(image)).getText();
+  System.out.println(result);
+}

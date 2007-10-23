@@ -1,0 +1,4 @@
+{
+  this.numDataCodewords=numDataCodewords;
+  this.codewords=codewords;
+}

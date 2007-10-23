@@ -1,0 +1,16 @@
+{
+  File inputFile=new File(args[0]);
+  if (inputFile.exists()) {
+    if (inputFile.isDirectory()) {
+      for (      File input : inputFile.listFiles()) {
+        decode(input.toURI());
+      }
+    }
+ else {
+      decode(inputFile.toURI());
+    }
+  }
+ else {
+    decode(new URI(args[0]));
+  }
+}

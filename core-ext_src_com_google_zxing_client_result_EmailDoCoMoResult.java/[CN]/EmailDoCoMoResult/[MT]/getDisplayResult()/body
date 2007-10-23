@@ -1,0 +1,6 @@
+{
+  StringBuilder result=new StringBuilder(to);
+  maybeAppend(subject,result);
+  maybeAppend(body,result);
+  return result.toString();
+}

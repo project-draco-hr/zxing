@@ -1,0 +1,10 @@
+{
+  FormatInformation expected=FormatInformation.decodeFormatInformation(0x2BED ^ 0x5412);
+  assertEquals((byte)0x07,expected.getDataMask());
+  assertEquals(ErrorCorrectionLevel.Q,expected.getErrorCorrectionLevel());
+  assertEquals(expected,FormatInformation.decodeFormatInformation(0x2BED));
+  assertEquals(expected,FormatInformation.decodeFormatInformation(0x2BEF ^ 0x5412));
+  assertEquals(expected,FormatInformation.decodeFormatInformation(0x2BEE ^ 0x5412));
+  assertEquals(expected,FormatInformation.decodeFormatInformation(0x2BEA ^ 0x5412));
+  assertNull(FormatInformation.decodeFormatInformation(0x2BE2 ^ 0x5412));
+}

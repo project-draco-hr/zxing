@@ -1,0 +1,14 @@
+{
+  if (row == null) {
+    row=new BitArray(getWidth);
+  }
+ else {
+    row.clear();
+  }
+  for (int i=0, offset=y * width + startX; i < getWidth; i++, offset++) {
+    if (computeRGBLuminance(rgbPixels[offset]) < blackPoint) {
+      row.set(i);
+    }
+  }
+  return row;
+}

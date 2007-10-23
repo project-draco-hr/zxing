@@ -1,0 +1,17 @@
+{
+  GF256Poly poly=new GF256Poly(received);
+  int[] syndromeCoefficients=new int[twoS];
+  for (int i=0; i < twoS; i++) {
+    syndromeCoefficients[syndromeCoefficients.length - 1 - i]=poly.evaluateAt(GF256.exp(i));
+  }
+  GF256Poly syndrome=new GF256Poly(syndromeCoefficients);
+  if (!syndrome.isZero()) {
+    GF256Poly[] sigmaOmega=runEuclideanAlgorithm(GF256Poly.buildMonomial(twoS,1),syndrome,twoS);
+    int[] errorLocations=findErrorLocations(sigmaOmega[0]);
+    int[] errorMagnitudes=findErrorMagnitudes(sigmaOmega[1],errorLocations);
+    for (int i=0; i < errorLocations.length; i++) {
+      int position=received.length - 1 - GF256.log(errorLocations[i]);
+      received[position]=GF256.addOrSubtract(received[position],errorMagnitudes[i]);
+    }
+  }
+}

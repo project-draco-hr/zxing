@@ -1,0 +1,9 @@
+{
+  this.image=image;
+  this.possibleCenters=new Vector(5);
+  this.startX=startX;
+  this.startY=startY;
+  this.width=width;
+  this.height=height;
+  this.moduleSize=moduleSize;
+}

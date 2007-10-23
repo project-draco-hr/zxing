@@ -1,0 +1,7 @@
+{
+  String[] result=matchPrefixedField(prefix,rawText);
+  if (result == null) {
+    throw new IllegalArgumentException("Did not match prefix " + prefix);
+  }
+  return result;
+}

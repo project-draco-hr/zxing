@@ -1,0 +1,28 @@
+{
+  try {
+    player.stop();
+    byte[] snapshot=videoControl.getSnapshot(null);
+    Image capturedImage=Image.createImage(snapshot,0,snapshot.length);
+    MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);
+    Reader reader=new MultiFormatReader();
+    Result result=reader.decode(source);
+    showAlert("Barcode detected",result.getText());
+  }
+ catch (  ReaderException re) {
+    showError(re);
+  }
+catch (  MediaException me) {
+    showError(me);
+  }
+catch (  Throwable t) {
+    showError(t);
+  }
+ finally {
+    try {
+      player.start();
+    }
+ catch (    MediaException me) {
+      showError(me);
+    }
+  }
+}

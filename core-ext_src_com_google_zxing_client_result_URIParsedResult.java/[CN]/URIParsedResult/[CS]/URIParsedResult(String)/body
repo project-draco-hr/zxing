@@ -1,0 +1,9 @@
+{
+  super(ParsedReaderResultType.URI);
+  try {
+    uri=new URI(rawText);
+  }
+ catch (  URISyntaxException urise) {
+    throw new IllegalArgumentException(urise.toString());
+  }
+}

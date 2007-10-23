@@ -1,0 +1,7 @@
+{
+  if (player != null) {
+    player.close();
+    player=null;
+    videoControl=null;
+  }
+}

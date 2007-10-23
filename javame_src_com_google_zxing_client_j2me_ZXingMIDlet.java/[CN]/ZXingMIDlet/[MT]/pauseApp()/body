@@ -1,0 +1,10 @@
+{
+  if (player != null) {
+    try {
+      player.stop();
+    }
+ catch (    MediaException me) {
+      showError(me);
+    }
+  }
+}

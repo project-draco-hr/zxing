@@ -1,0 +1,4 @@
+{
+  super(ParsedReaderResultType.TEXT);
+  text=rawText;
+}

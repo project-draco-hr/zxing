@@ -1,0 +1,15 @@
+{
+  int width=image.getWidth();
+  int height=image.getHeight();
+  this.width=width;
+  this.height=height;
+  int[] rgbPixels=new int[width * height];
+  this.rgbPixels=rgbPixels;
+  image.getRGB(rgbPixels,0,width,0,0,width,height);
+  int[] luminanceBuckets=new int[32];
+  int minDimension=width < height ? width : height;
+  for (int n=0, offset=0; n < minDimension; n++, offset+=width + 1) {
+    luminanceBuckets[computeRGBLuminance(rgbPixels[offset]) >> 3]++;
+  }
+  blackPoint=BlackPointEstimator.estimate(luminanceBuckets) << 3;
+}

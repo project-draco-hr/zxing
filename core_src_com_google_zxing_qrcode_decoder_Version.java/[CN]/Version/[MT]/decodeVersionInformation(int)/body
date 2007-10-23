@@ -1,0 +1,18 @@
+{
+  int bestDifference=Integer.MAX_VALUE;
+  int bestVersion=0;
+  for (int i=0; i < VERSION_DECODE_INFO.length; i++) {
+    int targetVersion=VERSION_DECODE_INFO[i];
+    if (targetVersion == versionBits) {
+      return getVersionForNumber(i + 7);
+    }
+    int bitsDifference=FormatInformation.numBitsDiffering(versionBits,targetVersion);
+    if (bitsDifference < bestDifference) {
+      bestVersion=i + 7;
+    }
+  }
+  if (bestDifference <= 3) {
+    return getVersionForNumber(bestVersion);
+  }
+  return null;
+}

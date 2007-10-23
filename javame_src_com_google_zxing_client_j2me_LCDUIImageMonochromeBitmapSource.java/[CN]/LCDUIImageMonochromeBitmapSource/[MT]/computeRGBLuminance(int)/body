@@ -1,0 +1,3 @@
+{
+  return (306 * ((pixel >> 16) & 0xFF) + 601 * ((pixel >> 8) & 0xFF) + 117 * (pixel & 0xFF)) >> 10;
+}

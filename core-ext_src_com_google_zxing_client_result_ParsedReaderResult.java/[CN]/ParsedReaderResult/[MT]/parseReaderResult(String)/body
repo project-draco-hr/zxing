@@ -1,0 +1,26 @@
+{
+  for (  ParsedReaderResultType type : ParsedReaderResultType.values()) {
+    Class<? extends ParsedReaderResult> resultClass=type.getResultClass();
+    try {
+      Constructor<? extends ParsedReaderResult> constructor=resultClass.getConstructor(String.class);
+      return constructor.newInstance(rawText);
+    }
+ catch (    InvocationTargetException ite) {
+      Throwable cause=ite.getCause();
+      if (cause instanceof IllegalArgumentException) {
+        continue;
+      }
+      throw new RuntimeException(cause);
+    }
+catch (    NoSuchMethodException nsme) {
+      throw new RuntimeException(nsme);
+    }
+catch (    IllegalAccessException iae) {
+      throw new RuntimeException(iae);
+    }
+catch (    InstantiationException ie) {
+      throw new RuntimeException(ie);
+    }
+  }
+  throw new IllegalStateException("TextResult should always work");
+}

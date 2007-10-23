@@ -1,0 +1,6 @@
+{
+  JAIPerspectiveTransform tx1=getQuadToSquare(x0,y0,x1,y1,x2,y2,x3,y3);
+  JAIPerspectiveTransform tx2=getSquareToQuad(x0p,y0p,x1p,y1p,x2p,y2p,x3p,y3p);
+  tx1.concatenate(tx2);
+  return tx1;
+}

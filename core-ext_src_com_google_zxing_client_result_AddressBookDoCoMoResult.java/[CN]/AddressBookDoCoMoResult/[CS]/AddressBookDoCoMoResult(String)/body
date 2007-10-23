@@ -1,0 +1,11 @@
+{
+  super(ParsedReaderResultType.ADDRESSBOOK);
+  if (!rawText.startsWith("MECARD:")) {
+    throw new IllegalArgumentException("Does not begin with MECARD");
+  }
+  name=parseName(matchRequiredPrefixedField("N:",rawText)[0]);
+  phoneNumbers=matchPrefixedField("TEL:",rawText);
+  email=matchSinglePrefixedField("EMAIL:",rawText);
+  note=matchSinglePrefixedField("NOTE:",rawText);
+  address=matchSinglePrefixedField("ADR:",rawText);
+}

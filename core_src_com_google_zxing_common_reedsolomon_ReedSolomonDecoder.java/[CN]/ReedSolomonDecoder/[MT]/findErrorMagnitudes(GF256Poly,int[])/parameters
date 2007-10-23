@@ -1,0 +1,2 @@
+GF256Poly errorEvaluator
+int[] errorLocations
