@@ -1,0 +1,17 @@
+{
+  BufferedImage image=ImageIO.read(uri.toURL());
+  BufferedImageMonochromeBitmapSource src=new BufferedImageMonochromeBitmapSource(image);
+  int width=src.getWidth();
+  int height=src.getHeight();
+  BufferedImage result=new BufferedImage(width,height,BufferedImage.TYPE_BYTE_BINARY);
+  int white=0xFFFFFFFF;
+  int black=0x000000FF;
+  for (int i=0; i < width; i++) {
+    for (int j=0; j < height; j++) {
+      result.setRGB(i,j,src.isBlack(i,j) ? black : white);
+    }
+  }
+  File output=getOutput(uri,count);
+  System.out.printf("Writing output to %s\n",output);
+  ImageIO.write(result,FORMAT,output);
+}

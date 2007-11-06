@@ -1,0 +1,19 @@
+{
+  for (int i=0; i < args.length; i++) {
+    File inputFile=new File(args[i]);
+    if (inputFile.exists()) {
+      if (inputFile.isDirectory()) {
+        int count=0;
+        for (        File input : inputFile.listFiles()) {
+          convertImage(input.toURI(),count++);
+        }
+      }
+ else {
+        convertImage(inputFile.toURI(),0);
+      }
+    }
+ else {
+      convertImage(new URI(args[i]),0);
+    }
+  }
+}

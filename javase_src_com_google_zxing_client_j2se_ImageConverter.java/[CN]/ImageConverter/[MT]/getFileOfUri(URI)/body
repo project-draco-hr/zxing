@@ -1,0 +1,18 @@
+{
+  String name=uri.getPath();
+  int slashPos=name.lastIndexOf('/');
+  String parent, basename;
+  if (slashPos != -1 && slashPos != name.length() - 1) {
+    parent=name.substring(0,slashPos);
+    basename=name.substring(slashPos + 1);
+  }
+ else {
+    parent=".";
+    basename=name;
+  }
+  File parentFile=new File(parent);
+  if (!parentFile.exists())   return null;
+  File baseFile=new File(parent,basename);
+  if (!baseFile.exists())   return null;
+  return baseFile;
+}
