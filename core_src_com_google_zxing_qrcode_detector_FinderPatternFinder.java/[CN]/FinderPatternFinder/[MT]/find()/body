@@ -5,7 +5,7 @@
   boolean done=false;
   int iSkip=BIG_SKIP;
   for (int i=iSkip - 1; i < maxI && !done; i+=iSkip) {
-    BitArray luminanceRow=image.getBlackRow(i,null,0,maxJ);
+    BitArray blackRow=image.getBlackRow(i,null,0,maxJ);
     stateCount[0]=0;
     stateCount[1]=0;
     stateCount[2]=0;
@@ -13,7 +13,7 @@
     stateCount[4]=0;
     int currentState=0;
     for (int j=0; j < maxJ; j++) {
-      if (luminanceRow.get(j)) {
+      if (blackRow.get(j)) {
         if ((currentState & 1) == 1) {
           currentState++;
         }
@@ -41,7 +41,7 @@
                 do {
                   j++;
                 }
- while (j < maxJ && !luminanceRow.get(j));
+ while (j < maxJ && !blackRow.get(j));
                 j--;
               }
               currentState=0;

@@ -21,7 +21,7 @@
         alignmentPattern=findAlignmentInRegion(moduleSize,estAlignmentX,estAlignmentY,(float)i);
         break;
       }
- catch (      ReaderException de) {
+ catch (      ReaderException re) {
       }
     }
     if (alignmentPattern == null) {
