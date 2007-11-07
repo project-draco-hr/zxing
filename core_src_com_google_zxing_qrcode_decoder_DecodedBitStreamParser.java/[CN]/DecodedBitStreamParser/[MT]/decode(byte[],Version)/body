@@ -19,7 +19,7 @@
         decodeKanjiSegment(bits,result,count);
       }
  else {
-        throw new ReaderException("Unsupported mode indicator: " + mode);
+        throw new ReaderException("Unsupported mode indicator");
       }
     }
   }
