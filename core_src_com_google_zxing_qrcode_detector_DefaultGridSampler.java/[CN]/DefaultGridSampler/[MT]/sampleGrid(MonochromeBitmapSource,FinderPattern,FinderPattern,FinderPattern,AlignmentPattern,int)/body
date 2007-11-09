@@ -10,7 +10,7 @@
     bottomRightY=(topRight.getY() - topLeft.getY()) + bottomLeft.getY();
   }
   float dimMinusThree=(float)dimension - 3.5f;
-  PerspectiveTransform transform=PerspectiveTransform.quadrilateralToQuadrilateral(3.5f,3.5f,dimMinusThree,3.5f,3.5f,dimMinusThree,dimMinusThree - 3.0f,dimMinusThree - 3.0f,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomLeft.getX(),bottomLeft.getY(),bottomRightX,bottomRightY);
+  PerspectiveTransform transform=PerspectiveTransform.quadrilateralToQuadrilateral(3.5f,3.5f,dimMinusThree,3.5f,dimMinusThree - 3.0f,dimMinusThree - 3.0f,3.5f,dimMinusThree,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomRightX,bottomRightY,bottomLeft.getX(),bottomLeft.getY());
   BitMatrix bits=new BitMatrix(dimension);
   float[] points=new float[dimension << 1];
   for (int i=0; i < dimension; i++) {
