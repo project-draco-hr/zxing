@@ -1,0 +1,8 @@
+{
+  int arraySize=size >> 5;
+  if ((size & 0x1F) != 0) {
+    arraySize++;
+  }
+  int[] result=new int[arraySize];
+  return result;
+}

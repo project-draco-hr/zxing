@@ -1,0 +1,19 @@
+{
+  int total=counters[0] + counters[1] + counters[2]+ counters[3];
+  int average=total * 10 / 7;
+  for (int x=0; x < 4; x++) {
+    counters[x]=counters[x] * 100 / average;
+  }
+  for (int x=0; x < 10; x++) {
+    boolean match=true;
+    for (int y=0; y < 4; y++) {
+      int diff=counters[y] - kDigitPatterns[x][y];
+      if (diff > kTolerance || diff < -kTolerance) {
+        match=false;
+        break;
+      }
+    }
+    if (match)     return kDigits[x];
+  }
+  return '-';
+}

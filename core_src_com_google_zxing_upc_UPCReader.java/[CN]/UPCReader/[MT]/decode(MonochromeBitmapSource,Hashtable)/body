@@ -1,0 +1,8 @@
+{
+  UPCDecoder decoder=new UPCDecoder(image);
+  String result=decoder.decode();
+  if (result == null || result.length() == 0) {
+    throw new ReaderException("No UPC barcode found");
+  }
+  return new Result(result,NO_POINTS);
+}

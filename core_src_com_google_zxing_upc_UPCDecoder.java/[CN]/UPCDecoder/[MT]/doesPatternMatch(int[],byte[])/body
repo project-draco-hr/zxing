@@ -1,0 +1,15 @@
+{
+  int total=0;
+  for (int x=0; x < counters.length; x++) {
+    total+=counters[x];
+  }
+  int average=total * 10 / counters.length;
+  for (int x=0; x < counters.length; x++) {
+    int scaledCounter=counters[x] * 100 / average;
+    int scaledPattern=pattern[x] * 10;
+    if (scaledCounter < scaledPattern - kTolerance || scaledCounter > scaledPattern + kTolerance) {
+      return false;
+    }
+  }
+  return true;
+}

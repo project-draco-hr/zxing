@@ -1,9 +1,33 @@
 {
   Hashtable possibleFormats=hints == null ? null : (Hashtable)hints.get(DecodeHintType.POSSIBLE_FORMATS);
-  if (possibleFormats == null || possibleFormats.contains(BarcodeFormat.QR_CODE)) {
-    return new QRCodeReader().decode(image,hints);
+  boolean tryUPC=false;
+  boolean tryQR=false;
+  if (possibleFormats == null) {
+    tryUPC=true;
+    tryQR=true;
+  }
+ else   if (possibleFormats.contains(BarcodeFormat.UPC)) {
+    tryUPC=true;
+  }
+ else   if (possibleFormats.contains(BarcodeFormat.QR_CODE)) {
+    tryQR=true;
   }
  else {
     throw new ReaderException();
   }
+  if (tryUPC) {
+    try {
+      return new UPCReader().decode(image,hints);
+    }
+ catch (    ReaderException e) {
+    }
+  }
+  if (tryQR) {
+    try {
+      return new QRCodeReader().decode(image,hints);
+    }
+ catch (    ReaderException e) {
+    }
+  }
+  throw new ReaderException();
 }

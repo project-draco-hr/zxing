@@ -1,0 +1,17 @@
+{
+  int[] counters=new int[4];
+  for (int x=0; x < 6 && rowOffset < mWidth; x++) {
+    recordPattern(rowData,rowOffset,counters,4);
+    for (int y=0; y < 4; y++) {
+      rowOffset+=counters[y];
+    }
+    char c=findDigit(counters);
+    if (c == '-') {
+      return -1;
+    }
+ else {
+      mResult+=c;
+    }
+  }
+  return rowOffset;
+}

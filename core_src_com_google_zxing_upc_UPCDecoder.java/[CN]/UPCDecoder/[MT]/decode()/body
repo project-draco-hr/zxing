@@ -1,0 +1,27 @@
+{
+  if (mBitmap == null)   return "";
+  BitArray rowData=new BitArray(mWidth);
+  String longestResult="";
+  int found=-1;
+  for (int x=0; x < kBitmapSearchPattern.length; x++) {
+    int row=mHeight * kBitmapSearchPattern[x] / 100;
+    mBitmap.getBlackRow(row,rowData,0,mWidth);
+    if (decodeRow(rowData)) {
+      found=x;
+      break;
+    }
+    if (mResult.length() > longestResult.length()) {
+      longestResult=mResult;
+    }
+    rowData.reverse();
+    if (decodeRow(rowData)) {
+      found=x;
+      break;
+    }
+    if (mResult.length() > longestResult.length()) {
+      longestResult=mResult;
+    }
+  }
+  if (found >= 0)   return mResult;
+ else   return "";
+}

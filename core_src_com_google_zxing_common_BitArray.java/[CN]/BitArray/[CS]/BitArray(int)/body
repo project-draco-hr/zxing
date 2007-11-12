@@ -1,7 +1,4 @@
 {
-  int arraySize=size >> 5;
-  if ((size & 0x1F) != 0) {
-    arraySize++;
-  }
-  bits=new int[arraySize];
+  this.size=size;
+  this.bits=makeArray(size);
 }

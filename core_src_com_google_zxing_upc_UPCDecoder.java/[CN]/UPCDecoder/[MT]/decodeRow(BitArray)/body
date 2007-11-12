@@ -1,0 +1,12 @@
+{
+  mResult="";
+  int rowOffset=findPattern(rowData,0,kStartEndPattern,false);
+  if (rowOffset < 0)   return false;
+  rowOffset=decodeOneSide(rowData,rowOffset);
+  if (rowOffset < 0)   return false;
+  rowOffset=findPattern(rowData,rowOffset,kMiddlePattern,true);
+  if (rowOffset < 0)   return false;
+  rowOffset=decodeOneSide(rowData,rowOffset);
+  if (rowOffset < 0)   return false;
+  return (mResult.length() == 12);
+}

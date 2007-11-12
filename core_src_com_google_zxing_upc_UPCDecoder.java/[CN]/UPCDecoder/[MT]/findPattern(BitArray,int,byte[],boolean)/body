@@ -1,0 +1,35 @@
+{
+  int[] counters=new int[pattern.length];
+  int width=mWidth;
+  boolean isWhite=false;
+  for (; rowOffset < width; rowOffset++) {
+    isWhite=!rowData.get(rowOffset);
+    if (whiteFirst == isWhite) {
+      break;
+    }
+  }
+  int counterPosition=0;
+  for (int x=rowOffset; x < width; x++) {
+    boolean pixel=rowData.get(x);
+    if ((!pixel && isWhite) || (pixel && !isWhite)) {
+      counters[counterPosition]++;
+    }
+ else {
+      if (counterPosition == pattern.length - 1) {
+        if (doesPatternMatch(counters,pattern)) {
+          return x;
+        }
+        for (int y=2; y < pattern.length; y++) {
+          counters[y - 2]=counters[y];
+        }
+        counterPosition--;
+      }
+ else {
+        counterPosition++;
+      }
+      counters[counterPosition]=1;
+      isWhite=!isWhite;
+    }
+  }
+  return -1;
+}
