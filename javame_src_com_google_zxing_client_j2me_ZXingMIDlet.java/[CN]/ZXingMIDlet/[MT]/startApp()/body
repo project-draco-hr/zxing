@@ -8,9 +8,6 @@
     videoControl.setDisplayLocation(0,0);
     videoControl.setDisplaySize(canvas.getWidth(),canvas.getHeight());
     videoControl.setVisible(true);
-    canvas.addCommand(DECODE);
-    canvas.addCommand(EXIT);
-    canvas.setCommandListener(this);
     Display.getDisplay(this).setCurrent(canvas);
     player.start();
   }

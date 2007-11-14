@@ -1,8 +1,8 @@
 {
-  if (command.equals(DECODE)) {
+  if (command.equals(decode)) {
     new SnapshotThread().start();
   }
- else   if (command.equals(EXIT)) {
+ else   if (command.equals(exit)) {
     destroyApp(false);
     notifyDestroyed();
   }

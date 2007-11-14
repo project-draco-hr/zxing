@@ -1,0 +1,5 @@
+{
+  addCommand(decode);
+  addCommand(exit);
+  setCommandListener(this);
+}
