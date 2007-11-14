@@ -1,12 +1,20 @@
 {
-  mResult="";
-  int rowOffset=findPattern(rowData,0,kStartEndPattern,false);
-  if (rowOffset < 0)   return false;
+  result=new StringBuffer();
+  int rowOffset=findPattern(rowData,0,START_END_PATTERN,false);
+  if (rowOffset < 0) {
+    return false;
+  }
   rowOffset=decodeOneSide(rowData,rowOffset);
-  if (rowOffset < 0)   return false;
-  rowOffset=findPattern(rowData,rowOffset,kMiddlePattern,true);
-  if (rowOffset < 0)   return false;
+  if (rowOffset < 0) {
+    return false;
+  }
+  rowOffset=findPattern(rowData,rowOffset,MIDDLE_PATTERN,true);
+  if (rowOffset < 0) {
+    return false;
+  }
   rowOffset=decodeOneSide(rowData,rowOffset);
-  if (rowOffset < 0)   return false;
-  return (mResult.length() == 12);
+  if (rowOffset < 0) {
+    return false;
+  }
+  return result.length() == 12;
 }

@@ -1,12 +1,13 @@
 {
   int[] counters=new int[pattern.length];
-  int width=mWidth;
+  int width=this.width;
   boolean isWhite=false;
-  for (; rowOffset < width; rowOffset++) {
+  while (rowOffset < width) {
     isWhite=!rowData.get(rowOffset);
     if (whiteFirst == isWhite) {
       break;
     }
+    rowOffset++;
   }
   int counterPosition=0;
   for (int x=rowOffset; x < width; x++) {

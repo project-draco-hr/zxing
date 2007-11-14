@@ -1,6 +1,6 @@
 {
   int[] counters=new int[4];
-  for (int x=0; x < 6 && rowOffset < mWidth; x++) {
+  for (int x=0; x < 6 && rowOffset < width; x++) {
     recordPattern(rowData,rowOffset,counters,4);
     for (int y=0; y < 4; y++) {
       rowOffset+=counters[y];
@@ -10,7 +10,7 @@
       return -1;
     }
  else {
-      mResult+=c;
+      result.append(c);
     }
   }
   return rowOffset;

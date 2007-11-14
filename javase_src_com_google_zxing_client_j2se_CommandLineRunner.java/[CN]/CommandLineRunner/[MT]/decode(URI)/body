@@ -1,7 +1,7 @@
 {
   BufferedImage image=ImageIO.read(uri.toURL());
   if (image == null) {
-    System.out.println(uri.toString() + ": Could not load image");
+    System.err.println(uri.toString() + ": Could not load image");
     return;
   }
   try {

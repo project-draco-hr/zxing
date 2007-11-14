@@ -13,7 +13,7 @@
     tryQR=true;
   }
  else {
-    throw new ReaderException();
+    throw new ReaderException("POSSIBLE_FORMATS specifies no supported types");
   }
   if (tryUPC) {
     try {
@@ -29,5 +29,5 @@
  catch (    ReaderException e) {
     }
   }
-  throw new ReaderException();
+  throw new ReaderException("Could not locate and decode a barcode in the image");
 }

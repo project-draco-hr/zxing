@@ -3,6 +3,5 @@
   if ((size & 0x1F) != 0) {
     arraySize++;
   }
-  int[] result=new int[arraySize];
-  return result;
+  return new int[arraySize];
 }

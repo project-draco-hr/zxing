@@ -1,7 +1,5 @@
 {
-  mBitmap=bitmap;
-  if (bitmap != null) {
-    mWidth=bitmap.getWidth();
-    mHeight=bitmap.getHeight();
-  }
+  this.bitmap=bitmap;
+  width=bitmap.getWidth();
+  height=bitmap.getHeight();
 }

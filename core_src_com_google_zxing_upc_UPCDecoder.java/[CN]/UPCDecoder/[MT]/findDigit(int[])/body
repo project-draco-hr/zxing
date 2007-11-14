@@ -7,13 +7,15 @@
   for (int x=0; x < 10; x++) {
     boolean match=true;
     for (int y=0; y < 4; y++) {
-      int diff=counters[y] - kDigitPatterns[x][y];
-      if (diff > kTolerance || diff < -kTolerance) {
+      int diff=counters[y] - DIGIT_PATTERNS[x][y];
+      if (diff > TOLERANCE || diff < -TOLERANCE) {
         match=false;
         break;
       }
     }
-    if (match)     return kDigits[x];
+    if (match) {
+      return (char)((int)'0' + x);
+    }
   }
   return '-';
 }
