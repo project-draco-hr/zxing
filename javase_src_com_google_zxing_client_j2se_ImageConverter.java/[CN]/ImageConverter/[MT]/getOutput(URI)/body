@@ -5,8 +5,10 @@
   }
  else {
     String name=result.getPath();
-    int dotpos=name.lastIndexOf('.');
-    if (dotpos != -1)     name=name.substring(0,dotpos);
+    int dotpos=name.lastIndexOf((int)'.');
+    if (dotpos != -1) {
+      name=name.substring(0,dotpos);
+    }
     result=new File(name + "_converted." + FORMAT);
   }
   return result;
