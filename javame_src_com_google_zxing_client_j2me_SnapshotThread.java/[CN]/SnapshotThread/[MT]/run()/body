@@ -1,28 +1,29 @@
 {
   try {
-    player.stop();
-    byte[] snapshot=videoControl.getSnapshot(null);
+    zXingMIDlet.getPlayer().stop();
+    byte[] snapshot=zXingMIDlet.getVideoControl().getSnapshot(null);
     Image capturedImage=Image.createImage(snapshot,0,snapshot.length);
     MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);
     Reader reader=new MultiFormatReader();
     Result result=reader.decode(source);
-    showAlert("Barcode detected",result.getText());
+    zXingMIDlet.handleDecodedText(result.getText());
   }
  catch (  ReaderException re) {
-    showError(re);
+    zXingMIDlet.showError(re);
   }
 catch (  MediaException me) {
-    showError(me);
+    zXingMIDlet.showError(me);
   }
 catch (  Throwable t) {
-    showError(t);
+    zXingMIDlet.showError(t);
   }
  finally {
     try {
-      player.start();
+      zXingMIDlet.getPlayer().start();
     }
  catch (    MediaException me) {
-      showError(me);
+      zXingMIDlet.showError(me);
     }
+    currentThread=null;
   }
 }

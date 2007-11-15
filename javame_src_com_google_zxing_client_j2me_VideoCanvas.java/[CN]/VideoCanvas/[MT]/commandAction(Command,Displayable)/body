@@ -1,9 +1,8 @@
 {
   if (command.equals(decode)) {
-    new SnapshotThread().start();
+    SnapshotThread.startThread(zXingMIDlet);
   }
  else   if (command.equals(exit)) {
-    destroyApp(false);
-    notifyDestroyed();
+    zXingMIDlet.stop();
   }
 }

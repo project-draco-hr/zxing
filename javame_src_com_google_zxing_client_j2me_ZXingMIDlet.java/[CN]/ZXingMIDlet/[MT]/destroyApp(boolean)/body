@@ -1,7 +1,13 @@
 {
   if (player != null) {
+    videoControl=null;
+    try {
+      player.stop();
+    }
+ catch (    MediaException me) {
+    }
+    player.deallocate();
     player.close();
     player=null;
-    videoControl=null;
   }
 }

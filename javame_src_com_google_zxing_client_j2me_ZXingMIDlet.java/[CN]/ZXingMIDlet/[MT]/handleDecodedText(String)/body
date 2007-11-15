@@ -1,0 +1,8 @@
+{
+  if (text.startsWith("http://") || text.startsWith("https://") || maybeURLWithoutScheme(text)) {
+    showYesNo("Open URL?",text);
+  }
+ else {
+    showAlert("Barcode detected",text);
+  }
+}

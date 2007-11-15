@@ -1,4 +1,5 @@
 {
+  this.zXingMIDlet=zXingMIDlet;
   addCommand(decode);
   addCommand(exit);
   setCommandListener(this);

@@ -3,7 +3,8 @@
     player=Manager.createPlayer("capture://video");
     player.realize();
     videoControl=(VideoControl)player.getControl("VideoControl");
-    Displayable canvas=new VideoCanvas();
+    Canvas canvas=new VideoCanvas(this);
+    canvas.setFullScreenMode(true);
     videoControl.initDisplayMode(VideoControl.USE_DIRECT_VIDEO,canvas);
     videoControl.setDisplayLocation(0,0);
     videoControl.setDisplaySize(canvas.getWidth(),canvas.getHeight());

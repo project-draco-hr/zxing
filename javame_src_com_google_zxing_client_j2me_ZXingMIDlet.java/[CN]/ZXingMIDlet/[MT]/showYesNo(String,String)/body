@@ -1,0 +1,25 @@
+{
+  Alert alert=new Alert(title,text,null,AlertType.INFO);
+  alert.setTimeout(Alert.FOREVER);
+  final Command yes=new Command("Yes",Command.OK,0);
+  final Command no=new Command("No",Command.CANCEL,0);
+  alert.addCommand(yes);
+  alert.addCommand(no);
+  CommandListener listener=new CommandListener(){
+    public void commandAction(    Command command,    Displayable displayable){
+      if (command.equals(yes)) {
+        try {
+          if (platformRequest(text)) {
+            stop();
+          }
+        }
+ catch (        ConnectionNotFoundException cnfe) {
+          showError(cnfe);
+        }
+      }
+    }
+  }
+;
+  alert.setCommandListener(listener);
+  showAlert(alert);
+}
