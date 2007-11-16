@@ -1,0 +1,13 @@
+{
+  FocusControl focusControl=(FocusControl)player.getControl("javax.microedition.amms.control.camera.FocusControl");
+  if (focusControl != null) {
+    if (focusControl.isMacroSupported() && !focusControl.getMacro()) {
+      focusControl.setMacro(true);
+    }
+    if (focusControl.isAutoFocusSupported()) {
+      focusControl.setFocus(FocusControl.AUTO);
+      Thread.sleep(1500L);
+      focusControl.setFocus(FocusControl.AUTO_LOCK);
+    }
+  }
+}

@@ -1,6 +1,8 @@
 {
+  Player player=zXingMIDlet.getPlayer();
   try {
-    zXingMIDlet.getPlayer().stop();
+    setFocus(player);
+    player.stop();
     byte[] snapshot=zXingMIDlet.getVideoControl().getSnapshot(null);
     Image capturedImage=Image.createImage(snapshot,0,snapshot.length);
     MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);
@@ -8,18 +10,12 @@
     Result result=reader.decode(source);
     zXingMIDlet.handleDecodedText(result.getText());
   }
- catch (  ReaderException re) {
-    zXingMIDlet.showError(re);
-  }
-catch (  MediaException me) {
-    zXingMIDlet.showError(me);
-  }
-catch (  Throwable t) {
+ catch (  Throwable t) {
     zXingMIDlet.showError(t);
   }
  finally {
     try {
-      zXingMIDlet.getPlayer().start();
+      player.start();
     }
  catch (    MediaException me) {
       zXingMIDlet.showError(me);

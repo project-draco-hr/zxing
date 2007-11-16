@@ -2,15 +2,16 @@
   try {
     player=Manager.createPlayer("capture://video");
     player.realize();
+    setZoom(player);
     videoControl=(VideoControl)player.getControl("VideoControl");
-    Canvas canvas=new VideoCanvas(this);
+    canvas=new VideoCanvas(this);
     canvas.setFullScreenMode(true);
     videoControl.initDisplayMode(VideoControl.USE_DIRECT_VIDEO,canvas);
     videoControl.setDisplayLocation(0,0);
     videoControl.setDisplaySize(canvas.getWidth(),canvas.getHeight());
     videoControl.setVisible(true);
-    Display.getDisplay(this).setCurrent(canvas);
     player.start();
+    Display.getDisplay(this).setCurrent(canvas);
   }
  catch (  IOException ioe) {
     throw new MIDletStateChangeException(ioe.toString());

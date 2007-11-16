@@ -1,21 +1,23 @@
 {
-  Alert alert=new Alert(title,text,null,AlertType.INFO);
+  Alert alert=new Alert(title,text,null,AlertType.CONFIRMATION);
   alert.setTimeout(Alert.FOREVER);
-  final Command yes=new Command("Yes",Command.OK,0);
-  final Command no=new Command("No",Command.CANCEL,0);
-  alert.addCommand(yes);
-  alert.addCommand(no);
+  final Command cancel=new Command("Cancel",Command.CANCEL,1);
+  alert.addCommand(cancel);
   CommandListener listener=new CommandListener(){
     public void commandAction(    Command command,    Displayable displayable){
-      if (command.equals(yes)) {
+      if (command.getCommandType() == Command.OK) {
         try {
-          if (platformRequest(text)) {
-            stop();
-          }
+          platformRequest(text);
         }
  catch (        ConnectionNotFoundException cnfe) {
           showError(cnfe);
         }
+ finally {
+          stop();
+        }
+      }
+ else {
+        Display.getDisplay(ZXingMIDlet.this).setCurrent(canvas);
       }
     }
   }
