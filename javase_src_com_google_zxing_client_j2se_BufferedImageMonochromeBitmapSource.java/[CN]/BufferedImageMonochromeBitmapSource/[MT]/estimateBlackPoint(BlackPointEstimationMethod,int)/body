@@ -1,0 +1,23 @@
+{
+  if (method.equals(BlackPointEstimationMethod.TWO_D_SAMPLING)) {
+    if (!BlackPointEstimationMethod.TWO_D_SAMPLING.equals(lastMethod)) {
+      int width=image.getWidth();
+      int height=image.getHeight();
+      int[] luminanceBuckets=new int[32];
+      int minDimension=width < height ? width : height;
+      int startI=height == minDimension ? 0 : (height - width) >> 1;
+      int startJ=width == minDimension ? 0 : (width - height) >> 1;
+      for (int n=0; n < minDimension; n++) {
+        int pixel=image.getRGB(startJ + n,startI + n);
+        luminanceBuckets[computeRGBLuminance(pixel) >> 3]++;
+      }
+      blackPoint=BlackPointEstimator.estimate(luminanceBuckets) << 3;
+    }
+  }
+ else   if (method.equals(BlackPointEstimationMethod.ROW_SAMPLING)) {
+  }
+ else {
+    throw new IllegalArgumentException("Unknown method: " + method);
+  }
+  lastMethod=method;
+}
