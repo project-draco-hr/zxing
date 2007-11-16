@@ -1,4 +1,4 @@
 {
   this.image=image;
-  this.possibleCenters=new Vector(5);
+  this.possibleCenters=new Vector();
 }

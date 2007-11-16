@@ -12,11 +12,7 @@
     throw new ReaderException("Could not find three finder patterns");
   }
   if (size == 3) {
-    FinderPattern[] result=new FinderPattern[possibleCenters.size()];
-    for (int i=0; i < possibleCenters.size(); i++) {
-      result[i]=(FinderPattern)possibleCenters.elementAt(i);
-    }
-    return result;
+    return new FinderPattern[]{(FinderPattern)possibleCenters.elementAt(0),(FinderPattern)possibleCenters.elementAt(1),(FinderPattern)possibleCenters.elementAt(2)};
   }
   possibleCenters.setSize(size);
   float averageModuleSize=0.0f;
@@ -25,9 +21,5 @@
   }
   averageModuleSize/=(float)size;
   Collections.insertionSort(possibleCenters,new ClosestToAverageComparator(averageModuleSize));
-  FinderPattern[] result=new FinderPattern[3];
-  for (int i=0; i < 3; i++) {
-    result[i]=(FinderPattern)possibleCenters.elementAt(i);
-  }
-  return result;
+  return new FinderPattern[]{(FinderPattern)possibleCenters.elementAt(0),(FinderPattern)possibleCenters.elementAt(1),(FinderPattern)possibleCenters.elementAt(2)};
 }
