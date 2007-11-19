@@ -2,9 +2,11 @@
   File inputFile=new File(args[0]);
   if (inputFile.exists()) {
     if (inputFile.isDirectory()) {
+      int successful=0;
       for (      File input : inputFile.listFiles()) {
-        decode(input.toURI());
+        if (decode(input.toURI()))         successful++;
       }
+      System.out.println("Decoded " + successful + " files successfully");
     }
  else {
       decode(inputFile.toURI());
