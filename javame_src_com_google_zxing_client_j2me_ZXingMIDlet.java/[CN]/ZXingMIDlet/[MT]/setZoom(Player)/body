@@ -2,12 +2,12 @@
   ZoomControl zoomControl=(ZoomControl)player.getControl("javax.microedition.amms.control.camera.ZoomControl");
   if (zoomControl != null) {
     int maxZoom=zoomControl.getMaxOpticalZoom();
-    if (maxZoom > 100) {
+    if (maxZoom > NO_ZOOM) {
       zoomControl.setOpticalZoom(maxZoom > MAX_ZOOM ? MAX_ZOOM : maxZoom);
     }
  else {
       int maxDigitalZoom=zoomControl.getMaxDigitalZoom();
-      if (maxDigitalZoom > 100) {
+      if (maxDigitalZoom > NO_ZOOM) {
         zoomControl.setDigitalZoom(maxDigitalZoom > MAX_ZOOM ? MAX_ZOOM : maxDigitalZoom);
       }
     }
