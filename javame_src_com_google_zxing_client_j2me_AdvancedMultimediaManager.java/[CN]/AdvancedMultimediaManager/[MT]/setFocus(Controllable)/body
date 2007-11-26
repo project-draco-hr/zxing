@@ -6,7 +6,7 @@
     }
     if (focusControl.isAutoFocusSupported()) {
       focusControl.setFocus(FocusControl.AUTO);
-      Thread.sleep(1500L);
+      Thread.sleep(1000L);
       focusControl.setFocus(FocusControl.AUTO_LOCK);
     }
   }

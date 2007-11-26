@@ -2,7 +2,7 @@
   try {
     player=Manager.createPlayer("capture://video");
     player.realize();
-    setZoom(player);
+    AdvancedMultimediaManager.setZoom(player);
     videoControl=(VideoControl)player.getControl("VideoControl");
     canvas=new VideoCanvas(this);
     canvas.setFullScreenMode(true);
