@@ -1,0 +1,3 @@
+int[] counters
+CharResult result
+boolean checkBothParities

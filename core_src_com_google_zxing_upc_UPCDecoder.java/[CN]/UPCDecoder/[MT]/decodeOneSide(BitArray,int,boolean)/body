@@ -1,0 +1,25 @@
+{
+  int[] counters=new int[4];
+  byte firstDigitPattern=0;
+  char firstDigit='-';
+  for (int x=0; x < 6 && rowOffset < width; x++) {
+    recordPattern(rowData,rowOffset,counters,4);
+    for (int y=0; y < 4; y++) {
+      rowOffset+=counters[y];
+    }
+    CharResult foundChar=new CharResult();
+    findDigit(counters,foundChar,checkBothParities);
+    if (foundChar.parity == UNKNOWN_PARITY)     return -1;
+    if (foundChar.parity == EVEN_PARITY)     firstDigitPattern|=1 << (5 - x);
+    result.append(foundChar.character);
+  }
+  for (int i=0; i < FIRST_DIGIT_ENCODINGS.length; i++) {
+    if (firstDigitPattern == FIRST_DIGIT_ENCODINGS[i]) {
+      firstDigit=(char)((int)'0' + i);
+      break;
+    }
+  }
+  if (firstDigit == '-')   return -1;
+  if (firstDigit != '0')   result.insert(0,firstDigit);
+  return rowOffset;
+}
