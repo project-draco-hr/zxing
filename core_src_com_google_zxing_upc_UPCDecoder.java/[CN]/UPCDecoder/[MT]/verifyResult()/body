@@ -1,5 +1,7 @@
 {
-  if (result.length() != 12 && result.length() != 13)   return false;
+  if (result.length() != 12 && result.length() != 13) {
+    return false;
+  }
   int checksum=0;
   int end=result.length() - 2;
   int factor=3;
