@@ -1,12 +1,12 @@
 {
   int[] counters=new int[4];
   byte firstDigitPattern=0;
+  CharResult foundChar=new CharResult();
   for (int x=0; x < 6 && rowOffset < width; x++) {
     recordPattern(rowData,rowOffset,counters,4);
     for (int y=0; y < 4; y++) {
       rowOffset+=counters[y];
     }
-    CharResult foundChar=new CharResult();
     findDigit(counters,foundChar,checkBothParities);
     if (foundChar.parity == UNKNOWN_PARITY) {
       return -1;
