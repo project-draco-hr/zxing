@@ -1,5 +1,8 @@
 {
   super(ParsedReaderResultType.URI);
+  if (rawText.startsWith("URL:")) {
+    rawText=rawText.substring(4);
+  }
   try {
     uri=new URI(rawText);
   }

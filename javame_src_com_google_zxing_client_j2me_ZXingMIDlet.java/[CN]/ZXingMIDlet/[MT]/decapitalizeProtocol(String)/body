@@ -1,0 +1,9 @@
+{
+  int protocolEnd=url.indexOf("://");
+  if (protocolEnd >= 0) {
+    return url.substring(0,protocolEnd).toLowerCase() + url.substring(protocolEnd);
+  }
+ else {
+    return url;
+  }
+}

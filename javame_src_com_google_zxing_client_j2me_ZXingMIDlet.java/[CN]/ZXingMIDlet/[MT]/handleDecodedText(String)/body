@@ -1,6 +1,29 @@
 {
-  if (text.startsWith("http://") || text.startsWith("https://") || maybeURLWithoutScheme(text)) {
-    showYesNo("Open web page?",text);
+  if (text.startsWith("http://") || text.startsWith("https://")) {
+    showOpenURL(text);
+  }
+ else   if (text.startsWith("HTTP://") || text.startsWith("HTTPS://")) {
+    showOpenURL(decapitalizeProtocol(text));
+  }
+ else   if (text.startsWith("URL:")) {
+    showOpenURL(decapitalizeProtocol(text.substring(4)));
+  }
+ else   if (text.startsWith("MEBKM:")) {
+    int urlIndex=text.indexOf("URL:",6);
+    if (urlIndex >= 6) {
+      String url=text.substring(urlIndex + 4);
+      int semicolon=url.indexOf((int)';');
+      if (semicolon >= 0) {
+        url=url.substring(0,semicolon);
+      }
+      showOpenURL(decapitalizeProtocol(url));
+    }
+ else {
+      showAlert("Barcode detected",text);
+    }
+  }
+ else   if (maybeURLWithoutScheme(text)) {
+    showOpenURL("http://" + text);
   }
  else {
     showAlert("Barcode detected",text);

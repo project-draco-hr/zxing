@@ -1,5 +1,5 @@
 {
-  Alert alert=new Alert(title,text,null,AlertType.CONFIRMATION);
+  Alert alert=new Alert("Open web page?",text,null,AlertType.CONFIRMATION);
   alert.setTimeout(Alert.FOREVER);
   final Command cancel=new Command("Cancel",Command.CANCEL,1);
   alert.addCommand(cancel);
