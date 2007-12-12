@@ -1,0 +1,12 @@
+{
+  super(ParsedReaderResultType.BOOKMARK);
+  if (!rawText.startsWith("MEBKM:")) {
+    throw new IllegalArgumentException("Does not begin with MEBKM");
+  }
+  title=matchSinglePrefixedField("TITLE:",rawText);
+  String uriString=matchRequiredPrefixedField("URL:",rawText)[0];
+  if (!URIParsedResult.isBasicallyValidURI(uriString)) {
+    throw new IllegalArgumentException("Invalid URI: " + uriString);
+  }
+  uri=uriString;
+}

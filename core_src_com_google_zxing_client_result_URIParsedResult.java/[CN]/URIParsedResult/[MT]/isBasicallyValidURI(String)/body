@@ -1,0 +1,3 @@
+{
+  return uri.indexOf(' ') < 0 && (uri.indexOf(':') >= 0 || uri.indexOf('.') >= 0);
+}

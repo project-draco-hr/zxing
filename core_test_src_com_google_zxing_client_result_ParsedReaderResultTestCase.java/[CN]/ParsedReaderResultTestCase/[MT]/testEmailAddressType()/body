@@ -1,0 +1,7 @@
+{
+  doTestResult("srowen@example.org",ParsedReaderResultType.EMAIL_ADDRESS);
+  doTestResult("mailto:srowen@example.org",ParsedReaderResultType.EMAIL_ADDRESS);
+  doTestResult("srowen@example",ParsedReaderResultType.TEXT);
+  doTestResult("srowen",ParsedReaderResultType.TEXT);
+  doTestResult("Let's meet @ 2",ParsedReaderResultType.TEXT);
+}

@@ -1,0 +1,13 @@
+{
+  if (uri.startsWith("URL:")) {
+    uri=uri.substring(4);
+  }
+  int protocolEnd=uri.indexOf(':');
+  if (protocolEnd < 0) {
+    uri="http://" + uri;
+  }
+ else {
+    uri=uri.substring(0,protocolEnd).toLowerCase() + uri.substring(protocolEnd);
+  }
+  return uri;
+}

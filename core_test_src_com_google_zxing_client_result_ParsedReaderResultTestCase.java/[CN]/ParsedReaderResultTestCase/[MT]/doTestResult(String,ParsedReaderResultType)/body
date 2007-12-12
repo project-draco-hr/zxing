@@ -1,0 +1,5 @@
+{
+  ParsedReaderResult result=ParsedReaderResult.parseReaderResult(text);
+  assertNotNull(result);
+  assertEquals(type,result.getType());
+}

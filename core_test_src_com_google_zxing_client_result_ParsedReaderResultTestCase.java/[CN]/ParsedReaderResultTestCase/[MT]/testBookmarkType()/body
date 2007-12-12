@@ -1,0 +1,7 @@
+{
+  doTestResult("MEBKM:URL:google.com;;",ParsedReaderResultType.BOOKMARK);
+  doTestResult("MEBKM:URL:google.com;TITLE:Google;;",ParsedReaderResultType.BOOKMARK);
+  doTestResult("MEBKM:TITLE:Google;URL:google.com;;",ParsedReaderResultType.BOOKMARK);
+  doTestResult("MEBKM:URL:http://google.com;;",ParsedReaderResultType.BOOKMARK);
+  doTestResult("MEBKM:URL:HTTPS://google.com;;",ParsedReaderResultType.BOOKMARK);
+}

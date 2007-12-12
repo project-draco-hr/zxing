@@ -1,0 +1,6 @@
+{
+  doTestResult("MECARD:N:Sean Owen;;",ParsedReaderResultType.ADDRESSBOOK);
+  doTestResult("MECARD:TEL:+12125551212;N:Sean Owen;;",ParsedReaderResultType.ADDRESSBOOK);
+  doTestResult("MECARD:TEL:+12125551212;N:Sean Owen;URL:google.com;;",ParsedReaderResultType.ADDRESSBOOK);
+  doTestResult("TEL:+12125551212;N:Sean Owen;;",ParsedReaderResultType.TEXT);
+}

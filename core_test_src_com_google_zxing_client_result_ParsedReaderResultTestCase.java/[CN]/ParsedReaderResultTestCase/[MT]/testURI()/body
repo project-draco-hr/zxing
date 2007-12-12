@@ -1,0 +1,9 @@
+{
+  doTestResult("http://google.com",ParsedReaderResultType.URI);
+  doTestResult("google.com",ParsedReaderResultType.URI);
+  doTestResult("https://google.com",ParsedReaderResultType.URI);
+  doTestResult("HTTP://google.com",ParsedReaderResultType.URI);
+  doTestResult("http://google.com/foobar",ParsedReaderResultType.URI);
+  doTestResult("https://google.com:443/foobar",ParsedReaderResultType.URI);
+  doTestResult("google.com:443/foobar",ParsedReaderResultType.URI);
+}

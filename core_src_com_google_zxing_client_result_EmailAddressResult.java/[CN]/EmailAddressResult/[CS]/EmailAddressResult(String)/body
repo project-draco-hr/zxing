@@ -1,0 +1,12 @@
+{
+  super(ParsedReaderResultType.EMAIL_ADDRESS);
+  if (rawText.startsWith("mailto:")) {
+    emailAddress=rawText.substring(7);
+  }
+ else {
+    if (!EmailDoCoMoResult.isBasicallyValidEmailAddress(rawText)) {
+      throw new IllegalArgumentException("Invalid email address: " + rawText);
+    }
+    emailAddress=rawText;
+  }
+}

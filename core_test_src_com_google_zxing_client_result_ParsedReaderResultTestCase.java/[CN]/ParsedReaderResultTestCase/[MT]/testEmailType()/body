@@ -1,0 +1,7 @@
+{
+  doTestResult("MATMSG:TO:srowen@example.org;;",ParsedReaderResultType.EMAIL);
+  doTestResult("MATMSG:TO:srowen@example.org;SUB:Stuff;;",ParsedReaderResultType.EMAIL);
+  doTestResult("MATMSG:TO:srowen@example.org;SUB:Stuff;BODY:This is some text;;",ParsedReaderResultType.EMAIL);
+  doTestResult("MATMSG:SUB:Stuff;BODY:This is some text;TO:srowen@example.org;;",ParsedReaderResultType.EMAIL);
+  doTestResult("TO:srowen@example.org;SUB:Stuff;BODY:This is some text;;",ParsedReaderResultType.TEXT);
+}

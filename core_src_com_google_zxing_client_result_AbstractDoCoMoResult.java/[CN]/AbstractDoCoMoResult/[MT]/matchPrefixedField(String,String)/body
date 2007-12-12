@@ -1,0 +1,41 @@
+{
+  Vector matches=null;
+  int i=0;
+  int max=rawText.length();
+  while (i < max) {
+    i=rawText.indexOf(prefix,i);
+    if (i < 0) {
+      break;
+    }
+    i+=prefix.length();
+    int start=i;
+    boolean done=false;
+    while (!done) {
+      i=rawText.indexOf((int)';',i);
+      if (i < 0) {
+        i=rawText.length();
+        done=true;
+      }
+ else       if (rawText.charAt(i - 1) == '\\') {
+        i++;
+      }
+ else {
+        if (matches == null) {
+          matches=new Vector(3);
+        }
+        matches.addElement(unescape(rawText.substring(start,i)));
+        i++;
+        done=true;
+      }
+    }
+  }
+  if (matches == null) {
+    return null;
+  }
+  int size=matches.size();
+  String[] result=new String[size];
+  for (int j=0; j < size; j++) {
+    result[j]=(String)matches.elementAt(j);
+  }
+  return result;
+}

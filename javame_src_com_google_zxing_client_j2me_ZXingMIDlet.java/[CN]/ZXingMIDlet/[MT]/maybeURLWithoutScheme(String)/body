@@ -1,3 +1,0 @@
-{
-  return text.indexOf((int)'.') >= 0 && text.indexOf((int)' ') < 0;
-}
