@@ -2,13 +2,20 @@
   ParsedReaderResult result=ParsedReaderResult.parseReaderResult(text);
   ParsedReaderResultType type=result.getType();
   if (type.equals(ParsedReaderResultType.URI)) {
-    showOpenURL(((URIParsedResult)result).getURI());
+    String uri=((URIParsedResult)result).getURI();
+    showOpenURL("Open web page?",uri,uri);
   }
  else   if (type.equals(ParsedReaderResultType.BOOKMARK)) {
-    showOpenURL(((BookmarkDoCoMoResult)result).getURI());
+    String uri=((BookmarkDoCoMoResult)result).getURI();
+    showOpenURL("Open web page?",uri,uri);
   }
  else   if (type.equals(ParsedReaderResultType.EMAIL)) {
-    showOpenURL(((EmailDoCoMoResult)result).getMailtoURI());
+    String email=((EmailDoCoMoResult)result).getTo();
+    showOpenURL("Compose e-mail?",email,"mailto:" + email);
+  }
+ else   if (type.equals(ParsedReaderResultType.EMAIL_ADDRESS)) {
+    String email=((EmailAddressResult)result).getEmailAddress();
+    showOpenURL("Compose e-mail?",email,"mailto:" + email);
   }
  else {
     showAlert("Barcode detected",result.getDisplayResult());

@@ -1,5 +1,5 @@
 {
-  Alert alert=new Alert("Open web page?",text,null,AlertType.CONFIRMATION);
+  Alert alert=new Alert(title,display,null,AlertType.CONFIRMATION);
   alert.setTimeout(Alert.FOREVER);
   final Command cancel=new Command("Cancel",Command.CANCEL,1);
   alert.addCommand(cancel);
@@ -7,7 +7,7 @@
     public void commandAction(    Command command,    Displayable displayable){
       if (command.getCommandType() == Command.OK) {
         try {
-          platformRequest(text);
+          platformRequest(uri);
         }
  catch (        ConnectionNotFoundException cnfe) {
           showError(cnfe);
