@@ -38,5 +38,7 @@
       error-=dx;
     }
   }
-  return Float.NaN;
+  int diffX=toX - fromX;
+  int diffY=toY - fromY;
+  return (float)Math.sqrt((double)(diffX * diffX + diffY * diffY));
 }
