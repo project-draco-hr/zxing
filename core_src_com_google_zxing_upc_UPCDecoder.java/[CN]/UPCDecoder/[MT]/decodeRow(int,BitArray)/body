@@ -4,6 +4,7 @@
   if (rowOffset < 0) {
     return false;
   }
+  int startOffset=rowOffset;
   rowOffset=decodeOneSide(rowData,rowOffset,true);
   if (rowOffset < 0) {
     return false;
@@ -16,5 +17,11 @@
   if (rowOffset < 0) {
     return false;
   }
-  return verifyResult();
+  boolean result=verifyResult();
+  if (result) {
+    points=new UPCPoint[2];
+    points[0]=new UPCPoint(startOffset,row);
+    points[1]=new UPCPoint(rowOffset,row);
+  }
+  return result;
 }

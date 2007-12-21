@@ -6,7 +6,7 @@
     int row=height * BITMAP_SEARCH_PATTERN[x] / 100;
     bitmap.estimateBlackPoint(BlackPointEstimationMethod.ROW_SAMPLING,row);
     bitmap.getBlackRow(row,rowData,0,width);
-    if (decodeRow(rowData)) {
+    if (decodeRow(row,rowData)) {
       found=x;
       break;
     }
@@ -14,7 +14,7 @@
       longestResult=result.toString();
     }
     rowData.reverse();
-    if (decodeRow(rowData)) {
+    if (decodeRow(row,rowData)) {
       found=x;
       break;
     }
