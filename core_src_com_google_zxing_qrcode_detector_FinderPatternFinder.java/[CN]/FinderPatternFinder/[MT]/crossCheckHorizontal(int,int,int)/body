@@ -21,7 +21,7 @@
     stateCount[0]++;
     j--;
   }
-  if (j < 0 || stateCount[0] > maxCount) {
+  if (stateCount[0] > maxCount) {
     return Float.NaN;
   }
   j=startJ + 1;
