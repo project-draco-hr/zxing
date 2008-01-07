@@ -24,11 +24,11 @@
     secondPeak=temp;
   }
   int bestValley=secondPeak - 1;
-  int bestValleyScore=Integer.MAX_VALUE;
+  int bestValleyScore=-1;
   for (int i=secondPeak - 1; i > firstPeak; i--) {
-    int distance=secondPeak - i + 3;
-    int score=distance * histogram[i];
-    if (score < bestValleyScore) {
+    int fromFirst=i - firstPeak;
+    int score=fromFirst * fromFirst * (secondPeak - i)* (256 - histogram[i]);
+    if (score > bestValleyScore) {
       bestValley=i;
       bestValleyScore=score;
     }

@@ -8,4 +8,5 @@
   doTestURI("http://www.mobileviews.com/blog/wp-content/uploads/2006/11/livebarcode.gif","BIZCARD:N:Todd;X:Ogasawara;T:Tech Geek;C:MobileViews.com;A:MobileTown USA;E:editor@mobileviews.com;;");
   doTestURI("http://staticrooster.com/tshirts/qr_sm.gif","http://staticrooster.com");
   doTestURI("http://www.ihaveanidea.org/blogs/uploads/i/interactive/270.png","Morden");
+  doTestURI("http://www.google.co.jp/mobile/images/qrcode_mobile.gif","Google \u30e2\u30d0\u30a4\u30eb\r\nhttp://google.jp");
 }
