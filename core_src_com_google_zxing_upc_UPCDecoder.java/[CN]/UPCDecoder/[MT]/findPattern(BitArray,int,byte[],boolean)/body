@@ -1,5 +1,6 @@
 {
-  int[] counters=new int[pattern.length];
+  int patternLength=pattern.length;
+  int[] counters=new int[patternLength];
   int width=this.width;
   boolean isWhite=false;
   while (rowOffset < width) {
@@ -16,11 +17,11 @@
       counters[counterPosition]++;
     }
  else {
-      if (counterPosition == pattern.length - 1) {
+      if (counterPosition == patternLength - 1) {
         if (doesPatternMatch(counters,pattern)) {
           return x;
         }
-        for (int y=2; y < pattern.length; y++) {
+        for (int y=2; y < patternLength; y++) {
           counters[y - 2]=counters[y];
         }
         counterPosition--;

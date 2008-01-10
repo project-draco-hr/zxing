@@ -7,8 +7,9 @@
   }
   for (int x=0; x < 10; x++) {
     boolean match=true;
+    byte[] pattern=DIGIT_PATTERNS[x];
     for (int y=0; y < 4; y++) {
-      int diff=counters[y] - DIGIT_PATTERNS[x][y];
+      int diff=counters[y] - pattern[y];
       if (diff > TOLERANCE || diff < -TOLERANCE) {
         match=false;
         break;
@@ -23,8 +24,9 @@
   if (checkBothParities) {
     for (int x=0; x < 10; x++) {
       boolean match=true;
+      byte[] pattern=EVEN_PARITY_PATTERNS[x];
       for (int y=0; y < 4; y++) {
-        int diff=counters[y] - EVEN_PARITY_PATTERNS[x][y];
+        int diff=counters[y] - pattern[y];
         if (diff > TOLERANCE || diff < -TOLERANCE) {
           match=false;
           break;

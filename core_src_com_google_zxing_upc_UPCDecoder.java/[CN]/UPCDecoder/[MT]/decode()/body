@@ -1,28 +1,25 @@
 {
   BitArray rowData=new BitArray(width);
-  String longestResult="";
-  int found=-1;
-  for (int x=0; x < BITMAP_SEARCH_PATTERN.length; x++) {
-    int row=height * BITMAP_SEARCH_PATTERN[x] / 100;
+  boolean found=false;
+  int middle=height >> 1;
+  int rowStep=Math.max(1,height >> 5);
+  for (int x=0; x < 11; x++) {
+    int rowStepsAboveOrBelow=(x + 1) >> 1;
+    boolean isAbove=(x & 0x01) == 0;
+    int row=middle + rowStep * (isAbove ? rowStepsAboveOrBelow : -rowStepsAboveOrBelow);
     bitmap.estimateBlackPoint(BlackPointEstimationMethod.ROW_SAMPLING,row);
     bitmap.getBlackRow(row,rowData,0,width);
     if (decodeRow(row,rowData)) {
-      found=x;
+      found=true;
       break;
-    }
-    if (result.length() > longestResult.length()) {
-      longestResult=result.toString();
     }
     rowData.reverse();
     if (decodeRow(row,rowData)) {
-      found=x;
+      found=true;
       break;
     }
-    if (result.length() > longestResult.length()) {
-      longestResult=result.toString();
-    }
   }
-  if (found >= 0) {
+  if (found) {
     return result.toString();
   }
  else {

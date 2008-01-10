@@ -17,11 +17,9 @@
   if (rowOffset < 0) {
     return false;
   }
-  boolean result=verifyResult();
-  if (result) {
-    points=new UPCPoint[2];
-    points[0]=new UPCPoint(startOffset,row);
-    points[1]=new UPCPoint(rowOffset,row);
+  boolean verified=verifyResult();
+  if (verified) {
+    points=new UPCPoint[]{new UPCPoint(startOffset,row),new UPCPoint(rowOffset,row)};
   }
-  return result;
+  return verified;
 }
