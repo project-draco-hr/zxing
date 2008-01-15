@@ -1,0 +1,3 @@
+{
+  super(new File("test/data/blackbox/qrcode2"),new QRCodeReader(),1.0);
+}

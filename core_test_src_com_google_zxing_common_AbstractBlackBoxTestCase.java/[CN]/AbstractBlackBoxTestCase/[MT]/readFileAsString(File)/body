@@ -1,0 +1,15 @@
+{
+  StringBuilder result=new StringBuilder();
+  InputStreamReader reader=new InputStreamReader(new FileInputStream(file),"UTF-8");
+  char[] buffer=new char[512];
+  try {
+    int charsRead;
+    while ((charsRead=reader.read(buffer)) > 0) {
+      result.append(buffer,0,charsRead);
+    }
+  }
+  finally {
+    reader.close();
+  }
+  return result.toString();
+}

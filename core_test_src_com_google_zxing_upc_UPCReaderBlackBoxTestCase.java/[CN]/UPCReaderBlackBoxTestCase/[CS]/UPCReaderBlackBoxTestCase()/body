@@ -1,0 +1,3 @@
+{
+  super(new File("test/data/blackbox/upc1"),new UPCReader(),0.5);
+}

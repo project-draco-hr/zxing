@@ -1,0 +1,37 @@
+{
+  assertTrue("Please run from the 'core' directory",testBase.exists());
+  File[] imageFiles=testBase.listFiles(IMAGE_NAME_FILTER);
+  int passedCount=0;
+  for (  File testImage : imageFiles) {
+    System.out.println("Starting " + testImage.getAbsolutePath());
+    BufferedImage image;
+    if (testImage.getName().endsWith(".url")) {
+      String urlString=readFileAsString(testImage);
+      image=ImageIO.read(new URL(urlString));
+    }
+ else {
+      image=ImageIO.read(testImage);
+    }
+    MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
+    Result result;
+    try {
+      result=barcodeReader.decode(source);
+    }
+ catch (    ReaderException re) {
+      System.out.println(re);
+      continue;
+    }
+    String testImageFileName=testImage.getName();
+    File expectedTextFile=new File(testBase,testImageFileName.substring(0,testImageFileName.indexOf('.')) + ".txt");
+    String expectedText=readFileAsString(expectedTextFile);
+    String resultText=result.getText();
+    if (expectedText.equals(resultText)) {
+      passedCount++;
+    }
+ else {
+      System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\'');
+    }
+  }
+  System.out.println(passedCount + " of " + imageFiles.length+ " images passed");
+  assertTrue("Too many images failed",passedCount >= (int)(imageFiles.length * passPercent));
+}
