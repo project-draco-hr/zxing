@@ -10,7 +10,10 @@
     Result result=reader.decode(source);
     zXingMIDlet.handleDecodedText(result.getText());
   }
- catch (  Throwable t) {
+ catch (  ReaderException re) {
+    zXingMIDlet.showError("No barcode was detected in this image. Try again.");
+  }
+catch (  Throwable t) {
     zXingMIDlet.showError(t);
   }
  finally {
