@@ -1,6 +1,6 @@
 {
   try {
-    player=Manager.createPlayer("capture://video");
+    player=createPlayer();
     player.realize();
     AdvancedMultimediaManager.setZoom(player);
     videoControl=(VideoControl)player.getControl("VideoControl");

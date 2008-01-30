@@ -1,0 +1,16 @@
+{
+  VideoControl videoControl=zXingMIDlet.getVideoControl();
+  byte[] snapshot=null;
+  try {
+    snapshot=videoControl.getSnapshot(null);
+  }
+ catch (  MediaException me) {
+  }
+  if (snapshot == null) {
+    snapshot=videoControl.getSnapshot("encoding=jpeg");
+    if (snapshot == null) {
+      throw new MediaException("Can't obtain a snapshot");
+    }
+  }
+  return snapshot;
+}

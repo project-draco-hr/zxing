@@ -2,8 +2,12 @@
   Player player=zXingMIDlet.getPlayer();
   try {
     AdvancedMultimediaManager.setFocus(player);
-    player.stop();
-    byte[] snapshot=zXingMIDlet.getVideoControl().getSnapshot(null);
+    try {
+      player.stop();
+    }
+ catch (    MediaException me) {
+    }
+    byte[] snapshot=takeSnapshot();
     Image capturedImage=Image.createImage(snapshot,0,snapshot.length);
     MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);
     Reader reader=new MultiFormatReader();
@@ -21,7 +25,6 @@ catch (  Throwable t) {
       player.start();
     }
  catch (    MediaException me) {
-      zXingMIDlet.showError(me);
     }
     currentThread=null;
   }
