@@ -1,5 +1,5 @@
 {
-  if (FIRE == getGameAction(keyCode)) {
+  if (getGameAction(keyCode) != 0) {
     SnapshotThread.startThread(zXingMIDlet);
   }
 }
