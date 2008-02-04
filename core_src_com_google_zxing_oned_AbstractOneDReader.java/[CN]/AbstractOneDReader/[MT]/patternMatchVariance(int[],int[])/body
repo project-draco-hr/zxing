@@ -1,0 +1,18 @@
+{
+  int total=0;
+  int numCounters=counters.length;
+  int patternLength=0;
+  for (int i=0; i < numCounters; i++) {
+    total+=counters[i];
+    patternLength+=pattern[i];
+  }
+  float unitBarWidth=(float)total / (float)patternLength;
+  float totalVariance=0.0f;
+  for (int x=0; x < numCounters; x++) {
+    float scaledCounter=(float)counters[x] / unitBarWidth;
+    float width=pattern[x];
+    float abs=scaledCounter > width ? scaledCounter - width : width - scaledCounter;
+    totalVariance+=abs / width;
+  }
+  return totalVariance / (float)numCounters;
+}

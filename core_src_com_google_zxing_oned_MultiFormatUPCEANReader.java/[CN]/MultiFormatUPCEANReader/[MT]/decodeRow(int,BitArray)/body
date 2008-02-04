@@ -1,0 +1,4 @@
+{
+  int[] startGuardPattern=AbstractUPCEANReader.findStartGuardPattern(row);
+  return decodeRow(rowNumber,row,startGuardPattern);
+}

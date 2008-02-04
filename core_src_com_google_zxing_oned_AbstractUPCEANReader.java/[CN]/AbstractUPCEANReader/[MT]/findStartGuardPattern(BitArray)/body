@@ -1,0 +1,12 @@
+{
+  boolean foundStart=false;
+  int[] startRange=null;
+  int nextStart=0;
+  while (!foundStart) {
+    startRange=findGuardPattern(row,nextStart,false,START_END_PATTERN);
+    int start=startRange[0];
+    nextStart=startRange[1];
+    foundStart=isWhiteRange(row,Math.max(0,start - 2 * (startRange[1] - start)),start);
+  }
+  return startRange;
+}

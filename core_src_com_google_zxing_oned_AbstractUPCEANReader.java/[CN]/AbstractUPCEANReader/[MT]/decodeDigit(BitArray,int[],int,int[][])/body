@@ -1,0 +1,19 @@
+{
+  recordPattern(row,rowOffset,counters);
+  float bestVariance=MAX_VARIANCE;
+  int bestMatch=-1;
+  for (int d=0; d < patterns.length; d++) {
+    int[] pattern=patterns[d];
+    float variance=patternMatchVariance(counters,pattern);
+    if (variance < bestVariance) {
+      bestVariance=variance;
+      bestMatch=d;
+    }
+  }
+  if (bestMatch >= 0) {
+    return bestMatch;
+  }
+ else {
+    throw new ReaderException("Could not match any digit in pattern");
+  }
+}

@@ -1,0 +1,4 @@
+BitArray row
+int[] counters
+int rowOffset
+int[][] patterns

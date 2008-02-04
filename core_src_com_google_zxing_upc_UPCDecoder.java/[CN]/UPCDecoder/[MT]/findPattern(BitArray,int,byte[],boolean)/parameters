@@ -1,4 +1,0 @@
-BitArray rowData
-int rowOffset
-byte[] pattern
-boolean whiteFirst

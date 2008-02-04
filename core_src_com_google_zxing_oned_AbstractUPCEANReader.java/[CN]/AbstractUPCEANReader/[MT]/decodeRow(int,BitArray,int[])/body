@@ -1,0 +1,14 @@
+{
+  StringBuffer result=new StringBuffer();
+  int endStart=decodeMiddle(row,startGuardRange,result);
+  int[] endRange=decodeEnd(row,endStart);
+  int end=endRange[1];
+  if (!isWhiteRange(row,end,Math.min(row.getSize(),end + 2 * (end - endRange[0])))) {
+    throw new ReaderException("Pattern not followed by whitespace");
+  }
+  String resultString=result.toString();
+  if (!checkChecksum(resultString)) {
+    throw new ReaderException("Checksum failed");
+  }
+  return new Result(resultString,new ResultPoint[]{new GenericResultPoint((float)(startGuardRange[1] - startGuardRange[0]) / 2.0f,(float)rowNumber),new GenericResultPoint((float)(endRange[1] - endRange[0]) / 2.0f,(float)rowNumber)});
+}

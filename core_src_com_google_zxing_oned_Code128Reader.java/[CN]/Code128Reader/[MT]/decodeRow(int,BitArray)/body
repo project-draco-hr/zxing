@@ -1,0 +1,158 @@
+{
+  int[] startPatternInfo=findStartPattern(row);
+  int startCode=startPatternInfo[2];
+  int codeSet;
+switch (startCode) {
+case CODE_START_A:
+    codeSet=CODE_CODE_A;
+  break;
+case CODE_START_B:
+codeSet=CODE_CODE_B;
+break;
+case CODE_START_C:
+codeSet=CODE_CODE_C;
+break;
+default :
+throw new ReaderException("Illegal start code");
+}
+boolean done=false;
+boolean isNextShifted=false;
+StringBuffer result=new StringBuffer();
+int lastStart=startPatternInfo[0];
+int nextStart=startPatternInfo[1];
+int[] counters=new int[6];
+int lastCode=0;
+int code=0;
+int checksumTotal=startCode;
+int multiplier=0;
+while (!done) {
+boolean unshift=isNextShifted;
+isNextShifted=false;
+lastCode=code;
+code=decodeCode(row,counters,nextStart);
+if (code != CODE_STOP) {
+multiplier++;
+checksumTotal+=multiplier * code;
+}
+lastStart=nextStart;
+for (int i=0; i < counters.length; i++) {
+nextStart+=counters[i];
+}
+switch (code) {
+case CODE_START_A:
+case CODE_START_B:
+case CODE_START_C:
+throw new ReaderException("Unexpected start code");
+}
+switch (codeSet) {
+case CODE_CODE_A:
+if (code < 64) {
+result.append((char)(' ' + code));
+}
+ else if (code < 96) {
+result.append((char)(code - 64));
+}
+ else {
+switch (code) {
+case CODE_FNC_1:
+case CODE_FNC_2:
+case CODE_FNC_3:
+case CODE_FNC_4_A:
+break;
+case CODE_SHIFT:
+isNextShifted=true;
+codeSet=CODE_CODE_B;
+break;
+case CODE_CODE_B:
+codeSet=CODE_CODE_B;
+break;
+case CODE_CODE_C:
+codeSet=CODE_CODE_C;
+break;
+case CODE_STOP:
+done=true;
+break;
+}
+}
+break;
+case CODE_CODE_B:
+if (code < 96) {
+result.append((char)(' ' + code));
+}
+ else {
+switch (code) {
+case CODE_FNC_1:
+case CODE_FNC_2:
+case CODE_FNC_3:
+case CODE_FNC_4_B:
+break;
+case CODE_SHIFT:
+isNextShifted=true;
+codeSet=CODE_CODE_C;
+break;
+case CODE_CODE_A:
+codeSet=CODE_CODE_A;
+break;
+case CODE_CODE_C:
+codeSet=CODE_CODE_C;
+break;
+case CODE_STOP:
+done=true;
+break;
+}
+}
+break;
+case CODE_CODE_C:
+if (code < 100) {
+if (code < 10) {
+result.append('0');
+}
+result.append(code);
+}
+ else {
+switch (code) {
+case CODE_FNC_1:
+break;
+case CODE_CODE_A:
+codeSet=CODE_CODE_A;
+break;
+case CODE_CODE_B:
+codeSet=CODE_CODE_B;
+break;
+case CODE_STOP:
+done=true;
+break;
+}
+}
+break;
+}
+if (unshift) {
+switch (codeSet) {
+case CODE_CODE_A:
+codeSet=CODE_CODE_C;
+break;
+case CODE_CODE_B:
+codeSet=CODE_CODE_A;
+break;
+case CODE_CODE_C:
+codeSet=CODE_CODE_B;
+break;
+}
+}
+}
+checksumTotal-=multiplier * lastCode;
+if (checksumTotal % 103 != lastCode) {
+throw new ReaderException("Checksum failed");
+}
+int resultLength=result.length();
+if (resultLength > 0) {
+if (codeSet == CODE_CODE_C) {
+result.delete(resultLength - 2,resultLength);
+}
+ else {
+result.delete(resultLength - 1,resultLength);
+}
+}
+String resultString=result.toString();
+return new Result(resultString,new ResultPoint[]{new GenericResultPoint((float)(startPatternInfo[1] - startPatternInfo[0]) / 2.0f,(float)rowNumber),new GenericResultPoint((float)(nextStart - lastStart) / 2.0f,(float)rowNumber)});
+}

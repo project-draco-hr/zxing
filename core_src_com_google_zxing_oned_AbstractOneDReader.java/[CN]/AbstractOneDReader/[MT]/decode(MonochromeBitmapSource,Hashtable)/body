@@ -1,0 +1,20 @@
+{
+  int width=image.getWidth();
+  int height=image.getHeight();
+  BitArray row=new BitArray(width);
+  int middle=height >> 1;
+  int rowStep=Math.max(1,height >> 5);
+  for (int x=0; x < 11; x++) {
+    int rowStepsAboveOrBelow=(x + 1) >> 1;
+    boolean isAbove=(x & 0x01) == 0;
+    int rowNumber=middle + rowStep * (isAbove ? rowStepsAboveOrBelow : -rowStepsAboveOrBelow);
+    image.estimateBlackPoint(BlackPointEstimationMethod.ROW_SAMPLING,rowNumber);
+    image.getBlackRow(rowNumber,row,0,width);
+    try {
+      return decodeRow(rowNumber,row);
+    }
+ catch (    ReaderException re) {
+    }
+  }
+  throw new ReaderException("No barcode found");
+}

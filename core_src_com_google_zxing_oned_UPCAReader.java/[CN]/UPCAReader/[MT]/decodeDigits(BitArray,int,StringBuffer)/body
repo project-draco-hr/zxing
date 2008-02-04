@@ -1,0 +1,13 @@
+{
+  int[] counters=new int[4];
+  int end=row.getSize();
+  int rowOffset=start;
+  for (int x=0; x < 6 && rowOffset < end; x++) {
+    int bestMatch=decodeDigit(row,counters,rowOffset,L_PATTERNS);
+    result.append((char)('0' + bestMatch));
+    for (int i=0; i < counters.length; i++) {
+      rowOffset+=counters[i];
+    }
+  }
+  return rowOffset;
+}

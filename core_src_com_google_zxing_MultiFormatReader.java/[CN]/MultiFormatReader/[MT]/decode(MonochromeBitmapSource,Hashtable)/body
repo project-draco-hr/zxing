@@ -1,25 +1,23 @@
 {
   Hashtable possibleFormats=hints == null ? null : (Hashtable)hints.get(DecodeHintType.POSSIBLE_FORMATS);
-  boolean tryUPC;
+  boolean tryOneD;
   boolean tryQR;
   if (possibleFormats == null) {
-    tryUPC=true;
+    tryOneD=true;
     tryQR=true;
   }
  else {
-    tryUPC=possibleFormats.contains(BarcodeFormat.UPC);
+    tryOneD=possibleFormats.contains(BarcodeFormat.ONED);
     tryQR=possibleFormats.contains(BarcodeFormat.QR_CODE);
   }
-  if (!(tryUPC || tryQR)) {
+  if (!(tryOneD || tryQR)) {
     throw new ReaderException("POSSIBLE_FORMATS specifies no supported types");
   }
-  ReaderException savedRE=null;
-  if (tryUPC) {
+  if (tryOneD) {
     try {
-      return new UPCReader().decode(image,hints);
+      return new MultiFormatOneDReader().decode(image,hints);
     }
  catch (    ReaderException re) {
-      savedRE=re;
     }
   }
   if (tryQR) {
@@ -27,8 +25,7 @@
       return new QRCodeReader().decode(image,hints);
     }
  catch (    ReaderException re) {
-      savedRE=re;
     }
   }
-  throw savedRE;
+  throw new ReaderException("No barcode was detected in this image.");
 }

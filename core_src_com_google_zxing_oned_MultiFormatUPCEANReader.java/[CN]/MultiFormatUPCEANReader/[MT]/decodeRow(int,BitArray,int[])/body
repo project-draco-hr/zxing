@@ -1,0 +1,12 @@
+{
+  ReaderException saved=null;
+  for (int i=0; i < readers.length; i++) {
+    try {
+      return readers[i].decodeRow(rowNumber,row,startGuardRange);
+    }
+ catch (    ReaderException re) {
+      saved=re;
+    }
+  }
+  throw saved;
+}

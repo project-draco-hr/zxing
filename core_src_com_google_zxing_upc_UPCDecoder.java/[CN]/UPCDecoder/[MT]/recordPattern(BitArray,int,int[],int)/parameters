@@ -1,4 +1,0 @@
-BitArray rowData
-int rowOffset
-int[] counters
-int patternSize

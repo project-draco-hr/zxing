@@ -1,0 +1,3 @@
+BitArray row
+int[] counters
+int rowOffset

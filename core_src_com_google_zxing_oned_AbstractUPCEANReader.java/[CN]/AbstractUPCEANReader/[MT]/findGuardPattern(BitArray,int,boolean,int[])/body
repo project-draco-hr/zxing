@@ -1,0 +1,39 @@
+{
+  int patternLength=pattern.length;
+  int[] counters=new int[patternLength];
+  int width=row.getSize();
+  boolean isWhite=false;
+  while (rowOffset < width) {
+    isWhite=!row.get(rowOffset);
+    if (whiteFirst == isWhite) {
+      break;
+    }
+    rowOffset++;
+  }
+  int counterPosition=0;
+  int patternStart=rowOffset;
+  for (int x=rowOffset; x < width; x++) {
+    boolean pixel=row.get(x);
+    if ((!pixel && isWhite) || (pixel && !isWhite)) {
+      counters[counterPosition]++;
+    }
+ else {
+      if (counterPosition == patternLength - 1) {
+        if (patternMatchVariance(counters,pattern) < MAX_VARIANCE) {
+          return new int[]{patternStart,x};
+        }
+        patternStart+=counters[0] + counters[1];
+        for (int y=2; y < patternLength; y++) {
+          counters[y - 2]=counters[y];
+        }
+        counterPosition--;
+      }
+ else {
+        counterPosition++;
+      }
+      counters[counterPosition]=1;
+      isWhite=!isWhite;
+    }
+  }
+  throw new ReaderException("Can't find pattern");
+}

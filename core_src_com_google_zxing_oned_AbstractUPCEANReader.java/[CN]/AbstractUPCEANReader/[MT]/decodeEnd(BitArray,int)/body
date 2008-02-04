@@ -1,0 +1,3 @@
+{
+  return findGuardPattern(row,endStart,false,START_END_PATTERN);
+}

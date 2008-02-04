@@ -1,0 +1,2 @@
+int[] histogram
+float biasTowardsWhite

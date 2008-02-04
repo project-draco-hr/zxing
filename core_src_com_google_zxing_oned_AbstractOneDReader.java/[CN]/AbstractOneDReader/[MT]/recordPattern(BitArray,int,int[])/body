@@ -1,0 +1,32 @@
+{
+  for (int i=0; i < counters.length; i++) {
+    counters[i]=0;
+  }
+  int end=row.getSize();
+  if (start >= end) {
+    throw new ReaderException("Couldn't fully read a pattern");
+  }
+  boolean isWhite=!row.get(start);
+  int counterPosition=0;
+  int i=start;
+  while (i < end) {
+    boolean pixel=row.get(i);
+    if ((!pixel && isWhite) || (pixel && !isWhite)) {
+      counters[counterPosition]++;
+    }
+ else {
+      counterPosition++;
+      if (counterPosition == counters.length) {
+        break;
+      }
+ else {
+        counters[counterPosition]=1;
+        isWhite=!isWhite;
+      }
+    }
+    i++;
+  }
+  if (!(counterPosition == counters.length || (counterPosition == counters.length - 1 && i == end))) {
+    throw new ReaderException("Couldn't fully read a pattern");
+  }
+}

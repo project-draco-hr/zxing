@@ -1,0 +1,21 @@
+{
+  int minCounter=Integer.MAX_VALUE;
+  for (int i=0; i < counters.length; i++) {
+    if (counters[i] < minCounter) {
+      minCounter=counters[i];
+    }
+  }
+  int maxNarrowCounter=(int)(minCounter * 1.5f);
+  int wideCounters=0;
+  int pattern=0;
+  for (int i=0; i < counters.length; i++) {
+    if (counters[i] > maxNarrowCounter) {
+      pattern|=1 << (counters.length - 1 - i);
+      wideCounters++;
+    }
+  }
+  if (wideCounters != 3) {
+    throw new ReaderException("Can't find 3 wide bars/spaces out of 9");
+  }
+  return pattern;
+}

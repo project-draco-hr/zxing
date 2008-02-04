@@ -1,6 +1,0 @@
-{
-  this.bitmap=bitmap;
-  width=bitmap.getWidth();
-  height=bitmap.getHeight();
-  points=NO_POINTS;
-}
