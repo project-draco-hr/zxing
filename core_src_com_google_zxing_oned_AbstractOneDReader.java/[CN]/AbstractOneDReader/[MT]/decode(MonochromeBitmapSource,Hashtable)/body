@@ -3,11 +3,14 @@
   int height=image.getHeight();
   BitArray row=new BitArray(width);
   int middle=height >> 1;
-  int rowStep=Math.max(1,height >> 5);
-  for (int x=0; x < 11; x++) {
+  int rowStep=Math.max(1,height >> 4);
+  for (int x=0; x < 7; x++) {
     int rowStepsAboveOrBelow=(x + 1) >> 1;
     boolean isAbove=(x & 0x01) == 0;
     int rowNumber=middle + rowStep * (isAbove ? rowStepsAboveOrBelow : -rowStepsAboveOrBelow);
+    if (rowNumber < 0 || rowNumber >= height) {
+      break;
+    }
     image.estimateBlackPoint(BlackPointEstimationMethod.ROW_SAMPLING,rowNumber);
     image.getBlackRow(rowNumber,row,0,width);
     try {
