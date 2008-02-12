@@ -6,7 +6,7 @@
     startRange=findGuardPattern(row,nextStart,false,START_END_PATTERN);
     int start=startRange[0];
     nextStart=startRange[1];
-    foundStart=isWhiteRange(row,Math.max(0,start - 2 * (startRange[1] - start)),start);
+    foundStart=row.isRange(Math.max(0,start - 2 * (startRange[1] - start)),start,false);
   }
   return startRange;
 }

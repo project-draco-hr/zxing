@@ -1,8 +1,0 @@
-{
-  for (int i=start; i < end; i++) {
-    if (row.get(i)) {
-      return false;
-    }
-  }
-  return true;
-}
