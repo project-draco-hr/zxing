@@ -1,3 +1,0 @@
-{
-  super(new File("test/data/blackbox/qrcode1"),new MultiFormatReader(),0.5);
-}

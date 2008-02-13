@@ -1,3 +1,0 @@
-{
-  super(new File("test/data/blackbox/upc2"),new MultiFormatReader(),0.66);
-}
