@@ -15,7 +15,7 @@
     zXingMIDlet.handleDecodedText(result.getText());
   }
  catch (  ReaderException re) {
-    zXingMIDlet.showError("No barcode was detected in this image. Try again.");
+    zXingMIDlet.showError("Sorry, no barcode was found.");
   }
 catch (  Throwable t) {
     zXingMIDlet.showError(t);
