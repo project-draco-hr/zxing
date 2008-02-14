@@ -16,9 +16,9 @@
     count--;
   }
   try {
-    result.append(new String(buffer,"Shift_JIS"));
+    result.append(new String(buffer,SHIFT_JIS));
   }
  catch (  UnsupportedEncodingException uee) {
-    throw new ReaderException("SHIFT_JIS encoding is not supported on this device");
+    throw new ReaderException(SHIFT_JIS + " encoding is not supported on this device");
   }
 }
