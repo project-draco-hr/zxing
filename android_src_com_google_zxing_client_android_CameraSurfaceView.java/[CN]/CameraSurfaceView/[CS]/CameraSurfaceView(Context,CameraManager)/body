@@ -1,0 +1,9 @@
+{
+  super(context);
+  this.cameraManager=cameraManager;
+  surfaceHolder=getHolder();
+  surfaceHolder.setCallback(this);
+  hasSurface=false;
+  scannerAlpha=0;
+  surfaceHolder.setFixedSize(320,240);
+}

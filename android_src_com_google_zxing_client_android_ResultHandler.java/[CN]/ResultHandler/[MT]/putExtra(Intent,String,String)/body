@@ -1,0 +1,5 @@
+{
+  if (key != null && key.length() > 0) {
+    intent.putExtra(key,value);
+  }
+}

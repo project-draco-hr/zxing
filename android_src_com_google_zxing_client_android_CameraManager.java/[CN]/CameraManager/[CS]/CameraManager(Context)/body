@@ -1,0 +1,10 @@
+{
+  this.context=context;
+  calculateStillResolution();
+  getScreenResolution();
+  bitmap=Bitmap.createBitmap(stillResolution.x,stillResolution.y,false);
+  camera=CameraDevice.open();
+  params=new CameraDevice.CaptureParams();
+  previewMode=false;
+  setPreviewMode(true);
+}

@@ -1,0 +1,35 @@
+{
+  while (true) {
+switch (state) {
+case IDLE:
+      try {
+        sleep(50);
+      }
+ catch (      InterruptedException e) {
+      }
+    break;
+case PREVIEW_LOOP:
+  surfaceView.capturePreviewAndDraw();
+break;
+case STILL_AND_DECODE:
+Bitmap bitmap=cameraManager.captureStill();
+Result rawResult;
+try {
+MonochromeBitmapSource source=new YUVMonochromeBitmapSource(bitmap);
+rawResult=new MultiFormatReader().decode(source);
+}
+ catch (ReaderException e) {
+Message message=Message.obtain(handler,R.id.decoding_failed_message);
+message.sendToTarget();
+state=State.PREVIEW_LOOP;
+break;
+}
+Message message=Message.obtain(handler,R.id.decoding_succeeded_message,rawResult);
+message.sendToTarget();
+state=State.IDLE;
+break;
+case DONE:
+return;
+}
+}
+}

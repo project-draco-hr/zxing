@@ -1,0 +1,6 @@
+{
+  setPreviewMode(false);
+  Canvas canvas=new Canvas(bitmap);
+  camera.capture(canvas);
+  return bitmap;
+}

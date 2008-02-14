@@ -1,0 +1,36 @@
+{
+  if (on != previewMode) {
+    if (on) {
+      params.type=1;
+      if (cameraResolution.x / (float)cameraResolution.y < screenResolution.x / (float)screenResolution.y) {
+        params.srcWidth=cameraResolution.x;
+        params.srcHeight=cameraResolution.x * screenResolution.y / screenResolution.x;
+        params.leftPixel=0;
+        params.topPixel=(cameraResolution.y - params.srcHeight) / 2;
+      }
+ else {
+        params.srcWidth=cameraResolution.y * screenResolution.x / screenResolution.y;
+        params.srcHeight=cameraResolution.y;
+        params.leftPixel=(cameraResolution.x - params.srcWidth) / 2;
+        params.topPixel=0;
+      }
+      params.outputWidth=screenResolution.x;
+      params.outputHeight=screenResolution.y;
+      params.dataFormat=2;
+    }
+ else {
+      params.type=0;
+      params.srcWidth=stillResolution.x * stillMultiplier;
+      params.srcHeight=stillResolution.y * stillMultiplier;
+      params.leftPixel=(cameraResolution.x - params.srcWidth) / 2;
+      params.topPixel=(cameraResolution.y - params.srcHeight) / 2;
+      params.outputWidth=stillResolution.x;
+      params.outputHeight=stillResolution.y;
+      params.dataFormat=0;
+    }
+    String captureType=on ? "preview" : "still";
+    Log.v(TAG,"Setting params for " + captureType + ": srcWidth "+ params.srcWidth+ " srcHeight "+ params.srcHeight+ " leftPixel "+ params.leftPixel+ " topPixel "+ params.topPixel+ " outputWidth "+ params.outputWidth+ " outputHeight "+ params.outputHeight);
+    camera.setCaptureParams(params);
+    previewMode=on;
+  }
+}

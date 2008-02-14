@@ -1,0 +1,9 @@
+{
+  width=image.width();
+  height=image.height();
+  this.image=image;
+  blackWhitePixels=new BitArray[height];
+  blackPoint=0x7F;
+  lastMethod=null;
+  lastArgument=0;
+}

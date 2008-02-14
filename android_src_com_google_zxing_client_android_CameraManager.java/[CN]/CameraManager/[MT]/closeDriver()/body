@@ -1,0 +1,6 @@
+{
+  if (camera != null) {
+    camera.close();
+    camera=null;
+  }
+}

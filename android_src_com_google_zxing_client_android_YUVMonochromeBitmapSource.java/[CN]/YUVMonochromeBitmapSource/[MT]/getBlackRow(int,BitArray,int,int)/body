@@ -1,0 +1,21 @@
+{
+  BitArray blackWhite=blackWhitePixels[y];
+  if (blackWhite == null) {
+    blackWhite=parseBlackWhite(y);
+  }
+  if (row == null) {
+    if (startX == 0 && getWidth == width) {
+      return blackWhite;
+    }
+    row=new BitArray(getWidth);
+  }
+ else {
+    row.clear();
+  }
+  for (int i=0; i < getWidth; i++) {
+    if (blackWhite.get(startX + i)) {
+      row.set(i);
+    }
+  }
+  return row;
+}

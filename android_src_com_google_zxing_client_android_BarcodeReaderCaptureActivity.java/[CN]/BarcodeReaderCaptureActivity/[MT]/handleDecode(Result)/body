@@ -1,0 +1,18 @@
+{
+  ResultPoint[] points=rawResult.getResultPoints();
+  if (points != null && points.length > 0) {
+    surfaceView.drawResultPoints(points);
+  }
+  Context context=getApplication();
+  ParsedReaderResult readerResult=ParsedReaderResult.parseReaderResult(rawResult.getText());
+  Handler handler=new ResultHandler(this,readerResult);
+  if (canBeHandled(readerResult.getType())) {
+    Message yesMessage=handler.obtainMessage(R.string.button_yes);
+    Message noMessage=handler.obtainMessage(R.string.button_no);
+    showAlert(context.getString(getDialogTitleID(readerResult.getType())),readerResult.getDisplayResult(),context.getString(R.string.button_yes),yesMessage,context.getString(R.string.button_no),noMessage,true,noMessage);
+  }
+ else {
+    Message okMessage=handler.obtainMessage(R.string.button_ok);
+    showAlert(context.getString(R.string.title_barcode_detected),readerResult.getDisplayResult(),context.getString(R.string.button_ok),okMessage,null,null,true,okMessage);
+  }
+}

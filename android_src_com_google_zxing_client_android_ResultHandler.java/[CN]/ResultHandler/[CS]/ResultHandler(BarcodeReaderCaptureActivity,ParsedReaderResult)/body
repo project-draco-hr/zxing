@@ -1,0 +1,4 @@
+{
+  this.captureActivity=captureActivity;
+  this.result=result;
+}

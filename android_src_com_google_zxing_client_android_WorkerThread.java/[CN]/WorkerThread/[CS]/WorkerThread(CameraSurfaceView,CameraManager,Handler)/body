@@ -1,0 +1,6 @@
+{
+  this.surfaceView=surfaceView;
+  this.cameraManager=cameraManager;
+  this.handler=handler;
+  state=State.IDLE;
+}

@@ -1,0 +1,7 @@
+{
+  BitArray blackWhite=blackWhitePixels[y];
+  if (blackWhite == null) {
+    blackWhite=parseBlackWhite(y);
+  }
+  return blackWhite.get(x);
+}

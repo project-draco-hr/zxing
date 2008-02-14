@@ -1,0 +1,4 @@
+{
+  setPreviewMode(true);
+  camera.capture(canvas);
+}

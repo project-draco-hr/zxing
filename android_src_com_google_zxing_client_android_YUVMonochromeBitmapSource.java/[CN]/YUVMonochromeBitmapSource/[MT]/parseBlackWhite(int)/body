@@ -1,0 +1,25 @@
+{
+  int width=this.width;
+  int[] pixelRow=new int[width];
+  image.getPixels(pixelRow,0,width,0,y,width,1);
+  BitArray luminanceRow=new BitArray(width);
+  int blackPoint=this.blackPoint;
+  int bits=0;
+  int bitCount=0;
+  for (int j=0; j < width; j++) {
+    bits>>>=1;
+    if (((pixelRow[j] >> 16) & 0xFF) <= blackPoint) {
+      bits|=0x80000000;
+    }
+    if (++bitCount == 32) {
+      luminanceRow.setBulk(j,bits);
+      bits=0;
+      bitCount=0;
+    }
+  }
+  if (bitCount > 0) {
+    luminanceRow.setBulk(width,bits >>> (32 - bitCount));
+  }
+  blackWhitePixels[y]=luminanceRow;
+  return luminanceRow;
+}
