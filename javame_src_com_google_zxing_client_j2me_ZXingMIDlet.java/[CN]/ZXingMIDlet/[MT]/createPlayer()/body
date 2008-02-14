@@ -7,6 +7,8 @@
     }
  catch (    MediaException me) {
     }
+catch (    Error e) {
+    }
   }
   if (player == null) {
     player=Manager.createPlayer("capture://video");
