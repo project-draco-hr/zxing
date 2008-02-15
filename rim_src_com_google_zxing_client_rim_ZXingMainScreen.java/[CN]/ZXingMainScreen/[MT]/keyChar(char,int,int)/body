@@ -1,0 +1,9 @@
+{
+  if (c == Characters.ENTER) {
+    Invoke.invokeApplication(Invoke.APP_TYPE_CAMERA,new CameraArguments());
+    return true;
+  }
+ else {
+    return super.keyChar(c,status,time);
+  }
+}

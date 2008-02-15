@@ -1,0 +1,5 @@
+{
+synchronized (app.getAppEventLock()) {
+    Dialog.alert(msg);
+  }
+}

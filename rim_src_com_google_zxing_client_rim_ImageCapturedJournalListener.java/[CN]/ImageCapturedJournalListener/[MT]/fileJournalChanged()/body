@@ -1,0 +1,13 @@
+{
+  long nextUSN=FileSystemJournal.getNextUSN();
+  for (long lookUSN=nextUSN - 1; lookUSN >= lastUSN; --lookUSN) {
+    FileSystemJournalEntry entry=FileSystemJournal.getEntry(lookUSN);
+    if (entry == null) {
+      break;
+    }
+    if (entry.getEvent() == FileSystemJournalEntry.FILE_ADDED) {
+      screen.handleFile(entry.getPath());
+    }
+  }
+  lastUSN=nextUSN;
+}

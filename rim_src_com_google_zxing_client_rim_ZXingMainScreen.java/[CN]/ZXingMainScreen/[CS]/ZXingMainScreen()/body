@@ -1,0 +1,7 @@
+{
+  setTitle("Barcode Reader");
+  add(new LabelField("ZXing"));
+  app=(ZXingUIApp)UiApplication.getUiApplication();
+  captureListener=new ImageCapturedJournalListener(this);
+  app.addFileSystemJournalListener(captureListener);
+}
