@@ -1,3 +1,4 @@
 {
   state=State.PREVIEW_LOOP;
+  wakeFromIdle();
 }

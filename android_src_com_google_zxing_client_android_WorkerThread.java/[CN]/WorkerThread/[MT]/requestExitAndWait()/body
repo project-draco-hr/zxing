@@ -1,5 +1,6 @@
 {
   state=State.DONE;
+  wakeFromIdle();
   try {
     join();
   }

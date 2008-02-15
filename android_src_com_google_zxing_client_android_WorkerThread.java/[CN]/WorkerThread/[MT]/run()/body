@@ -2,11 +2,7 @@
   while (true) {
 switch (state) {
 case IDLE:
-      try {
-        sleep(50);
-      }
- catch (      InterruptedException e) {
-      }
+      idle();
     break;
 case PREVIEW_LOOP:
   surfaceView.capturePreviewAndDraw();
