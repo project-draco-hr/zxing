@@ -1,7 +1,3 @@
 {
-  BitArray blackWhite=blackWhitePixels[y];
-  if (blackWhite == null) {
-    blackWhite=parseBlackWhite(y);
-  }
-  return blackWhite.get(x);
+  return ((image.getPixel(x,y) >> 16) & 0xFF) < blackPoint;
 }
