@@ -6,10 +6,10 @@
   }
   GF256Poly rLast=a;
   GF256Poly r=b;
-  GF256Poly sLast=GF256Poly.ONE;
-  GF256Poly s=GF256Poly.ZERO;
-  GF256Poly tLast=GF256Poly.ZERO;
-  GF256Poly t=GF256Poly.ONE;
+  GF256Poly sLast=field.getOne();
+  GF256Poly s=field.getZero();
+  GF256Poly tLast=field.getZero();
+  GF256Poly t=field.getOne();
   while (r.getDegree() >= R / 2) {
     GF256Poly rLastLast=rLast;
     GF256Poly sLastLast=sLast;
@@ -21,13 +21,13 @@
       throw new ReedSolomonException("r_{i-1} was zero");
     }
     r=rLastLast;
-    GF256Poly q=GF256Poly.ZERO;
+    GF256Poly q=field.getZero();
     int denominatorLeadingTerm=rLast.getCoefficient(rLast.getDegree());
-    int dltInverse=GF256.inverse(denominatorLeadingTerm);
+    int dltInverse=field.inverse(denominatorLeadingTerm);
     while (r.getDegree() >= rLast.getDegree() && !r.isZero()) {
       int degreeDiff=r.getDegree() - rLast.getDegree();
-      int scale=GF256.multiply(r.getCoefficient(r.getDegree()),dltInverse);
-      q=q.addOrSubtract(GF256Poly.buildMonomial(degreeDiff,scale));
+      int scale=field.multiply(r.getCoefficient(r.getDegree()),dltInverse);
+      q=q.addOrSubtract(field.buildMonomial(degreeDiff,scale));
       r=r.addOrSubtract(rLast.multiplyByMonomial(degreeDiff,scale));
     }
     s=q.multiply(sLast).addOrSubtract(sLastLast);
@@ -37,7 +37,7 @@
   if (sigmaTildeAtZero == 0) {
     throw new ReedSolomonException("sigmaTilde(0) was zero");
   }
-  int inverse=GF256.inverse(sigmaTildeAtZero);
+  int inverse=field.inverse(sigmaTildeAtZero);
   GF256Poly sigma=t.multiply(inverse);
   GF256Poly omega=r.multiply(inverse);
   return new GF256Poly[]{sigma,omega};

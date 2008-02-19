@@ -2,7 +2,7 @@
   Vector errorLocations=new Vector(3);
   for (int i=1; i < 256; i++) {
     if (errorLocator.evaluateAt(i) == 0) {
-      errorLocations.addElement(new Integer(GF256.inverse(i)));
+      errorLocations.addElement(new Integer(field.inverse(i)));
     }
   }
   if (errorLocations.size() != errorLocator.getDegree()) {

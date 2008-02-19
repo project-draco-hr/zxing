@@ -2,13 +2,14 @@
   if (coefficients == null || coefficients.length == 0) {
     throw new IllegalArgumentException();
   }
+  this.field=field;
   if (coefficients.length > 1 && coefficients[0] == 0) {
     int firstNonZero=1;
     while (firstNonZero < coefficients.length && coefficients[firstNonZero] == 0) {
       firstNonZero++;
     }
     if (firstNonZero == coefficients.length) {
-      this.coefficients=ZERO.coefficients;
+      this.coefficients=field.getZero().coefficients;
     }
  else {
       this.coefficients=new int[coefficients.length - firstNonZero];

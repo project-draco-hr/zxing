@@ -3,9 +3,9 @@
     throw new IllegalArgumentException();
   }
   if (coefficient == 0) {
-    return ZERO;
+    return zero;
   }
   int[] coefficients=new int[degree + 1];
   coefficients[0]=coefficient;
-  return new GF256Poly(coefficients);
+  return new GF256Poly(this,coefficients);
 }

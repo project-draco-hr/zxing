@@ -5,10 +5,10 @@
   }
   int aToTheI=1;
   int sum=getCoefficient(1);
-  int aSquared=GF256.multiply(a,a);
+  int aSquared=field.multiply(a,a);
   for (int i=2; i < degree; i+=2) {
-    aToTheI=GF256.multiply(aSquared,aToTheI);
-    sum=GF256.addOrSubtract(sum,GF256.multiply(aToTheI,getCoefficient(i + 1)));
+    aToTheI=field.multiply(aSquared,aToTheI);
+    sum=field.addOrSubtract(sum,field.multiply(aToTheI,getCoefficient(i + 1)));
   }
   return sum;
 }

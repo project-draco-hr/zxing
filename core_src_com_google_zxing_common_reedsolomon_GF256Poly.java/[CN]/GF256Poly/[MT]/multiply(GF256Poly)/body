@@ -1,6 +1,9 @@
 {
+  if (!field.equals(other.field)) {
+    throw new IllegalArgumentException("GF256Polys do not have same GF256 field");
+  }
   if (isZero() || other.isZero()) {
-    return ZERO;
+    return field.getZero();
   }
   int[] aCoefficients=this.coefficients;
   int aLength=aCoefficients.length;
@@ -10,8 +13,8 @@
   for (int i=0; i < aLength; i++) {
     int aCoeff=aCoefficients[i];
     for (int j=0; j < bLength; j++) {
-      product[i + j]=GF256.addOrSubtract(product[i + j],GF256.multiply(aCoeff,bCoefficients[j]));
+      product[i + j]=field.addOrSubtract(product[i + j],field.multiply(aCoeff,bCoefficients[j]));
     }
   }
-  return new GF256Poly(product);
+  return new GF256Poly(field,product);
 }
