@@ -2,14 +2,14 @@
   float result=sizeOfBlackWhiteBlackRun(fromX,fromY,toX,toY);
   int otherToX=fromX - (toX - fromX);
   if (otherToX < 0) {
-    otherToX=0;
+    otherToX=-1;
   }
  else   if (otherToX >= image.getWidth()) {
     otherToX=image.getWidth();
   }
   int otherToY=fromY - (toY - fromY);
   if (otherToY < 0) {
-    otherToY=0;
+    otherToY=-1;
   }
  else   if (otherToY >= image.getHeight()) {
     otherToY=image.getHeight();
