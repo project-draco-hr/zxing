@@ -12,7 +12,7 @@
     float scaledCounter=(float)counters[x] / unitBarWidth;
     float width=pattern[x];
     float abs=scaledCounter > width ? scaledCounter - width : width - scaledCounter;
-    totalVariance+=abs / width;
+    totalVariance+=abs;
   }
-  return totalVariance / (float)numCounters;
+  return totalVariance / (float)patternLength;
 }

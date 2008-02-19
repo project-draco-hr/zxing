@@ -19,10 +19,17 @@
     }
  else {
       if (counterPosition == patternLength - 1) {
+        float bestVariance=MAX_VARIANCE;
+        int bestMatch=-1;
         for (int startCode=CODE_START_A; startCode <= CODE_START_C; startCode++) {
-          if (patternMatchVariance(counters,CODE_PATTERNS[startCode]) < MAX_VARIANCE) {
-            return new int[]{patternStart,i,startCode};
+          float variance=patternMatchVariance(counters,CODE_PATTERNS[startCode]);
+          if (variance < bestVariance) {
+            bestVariance=variance;
+            bestMatch=startCode;
           }
+        }
+        if (bestMatch >= 0) {
+          return new int[]{patternStart,i,bestMatch};
         }
         patternStart+=counters[0] + counters[1];
         for (int y=2; y < patternLength; y++) {

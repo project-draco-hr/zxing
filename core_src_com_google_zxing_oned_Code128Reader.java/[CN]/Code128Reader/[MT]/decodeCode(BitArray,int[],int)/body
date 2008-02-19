@@ -1,6 +1,6 @@
 {
   recordPattern(row,rowOffset,counters);
-  float bestVariance=0.4f;
+  float bestVariance=MAX_VARIANCE;
   int bestMatch=-1;
   for (int d=0; d < CODE_PATTERNS.length; d++) {
     int[] pattern=CODE_PATTERNS[d];
