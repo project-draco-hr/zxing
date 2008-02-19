@@ -36,5 +36,8 @@
     result.deleteCharAt(max);
   }
   String resultString=result.toString();
+  if (extendedMode) {
+    resultString=decodeExtended(resultString);
+  }
   return new Result(resultString,new ResultPoint[]{new GenericResultPoint((float)(start[1] - start[0]) / 2.0f,(float)rowNumber),new GenericResultPoint((float)(nextStart - lastStart) / 2.0f,(float)rowNumber)});
 }

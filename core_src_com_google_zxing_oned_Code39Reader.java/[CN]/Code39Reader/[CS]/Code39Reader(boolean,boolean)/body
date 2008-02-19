@@ -1,4 +1,4 @@
 {
   this.usingCheckDigit=usingCheckDigit;
-  this.extendedMode=false;
+  this.extendedMode=extendedMode;
 }
