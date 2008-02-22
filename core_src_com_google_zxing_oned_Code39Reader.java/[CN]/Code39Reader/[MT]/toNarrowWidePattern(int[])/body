@@ -1,21 +1,28 @@
 {
-  int minCounter=Integer.MAX_VALUE;
-  for (int i=0; i < counters.length; i++) {
-    if (counters[i] < minCounter) {
-      minCounter=counters[i];
+  int numCounters=counters.length;
+  int maxNarrowCounter=0;
+  int wideCounters;
+  do {
+    int minCounter=Integer.MAX_VALUE;
+    for (int i=0; i < numCounters; i++) {
+      int counter=counters[i];
+      if (counter < minCounter && counter > maxNarrowCounter) {
+        minCounter=counter;
+      }
+    }
+    maxNarrowCounter=minCounter;
+    wideCounters=0;
+    int pattern=0;
+    for (int i=0; i < numCounters; i++) {
+      if (counters[i] > maxNarrowCounter) {
+        pattern|=1 << (numCounters - 1 - i);
+        wideCounters++;
+      }
+    }
+    if (wideCounters == 3) {
+      return pattern;
     }
   }
-  int maxNarrowCounter=(int)(minCounter * 1.5f);
-  int wideCounters=0;
-  int pattern=0;
-  for (int i=0; i < counters.length; i++) {
-    if (counters[i] > maxNarrowCounter) {
-      pattern|=1 << (counters.length - 1 - i);
-      wideCounters++;
-    }
-  }
-  if (wideCounters != 3) {
-    throw new ReaderException("Can't find 3 wide bars/spaces out of 9");
-  }
-  return pattern;
+ while (wideCounters > 3);
+  throw new ReaderException("Can't find 3 wide bars/spaces out of 9");
 }
