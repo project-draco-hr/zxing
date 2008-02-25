@@ -11,5 +11,5 @@
     text=decoder.decode(result.getBits());
     points=result.getPoints();
   }
-  return new Result(text,points);
+  return new Result(text,points,BarcodeFormat.QR_CODE);
 }

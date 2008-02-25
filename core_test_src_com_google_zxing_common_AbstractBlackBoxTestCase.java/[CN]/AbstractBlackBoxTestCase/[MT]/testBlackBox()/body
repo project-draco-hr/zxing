@@ -21,6 +21,7 @@
       System.out.println(re);
       continue;
     }
+    assertEquals(expectedFormat,result.getBarcodeFormat());
     String testImageFileName=testImage.getName();
     File expectedTextFile=new File(testBase,testImageFileName.substring(0,testImageFileName.indexOf('.')) + ".txt");
     String expectedText=readFileAsString(expectedTextFile);

@@ -1,28 +1,22 @@
 {
   Hashtable possibleFormats=hints == null ? null : (Hashtable)hints.get(DecodeHintType.POSSIBLE_FORMATS);
-  boolean tryOneD;
-  boolean tryQR;
-  if (possibleFormats == null) {
-    tryOneD=true;
-    tryQR=true;
-  }
- else {
-    tryOneD=possibleFormats.contains(BarcodeFormat.ONED);
-    tryQR=possibleFormats.contains(BarcodeFormat.QR_CODE);
-  }
-  if (!(tryOneD || tryQR)) {
-    throw new ReaderException("POSSIBLE_FORMATS specifies no supported types");
-  }
-  if (tryOneD) {
-    try {
-      return new MultiFormatOneDReader().decode(image,hints);
+  Vector readers=new Vector();
+  if (possibleFormats != null) {
+    if (possibleFormats.contains(BarcodeFormat.UPC_A) || possibleFormats.contains(BarcodeFormat.UPC_E) || possibleFormats.contains(BarcodeFormat.EAN_13)|| possibleFormats.contains(BarcodeFormat.EAN_8)|| possibleFormats.contains(BarcodeFormat.CODE_39)|| possibleFormats.contains(BarcodeFormat.CODE_128)) {
+      readers.addElement(new MultiFormatOneDReader());
     }
- catch (    ReaderException re) {
+    if (possibleFormats.contains(BarcodeFormat.QR_CODE)) {
+      readers.addElement(new QRCodeReader());
     }
   }
-  if (tryQR) {
+  if (readers.isEmpty()) {
+    readers.addElement(new MultiFormatOneDReader());
+    readers.addElement(new QRCodeReader());
+  }
+  for (int i=0; i < readers.size(); i++) {
+    Reader reader=(Reader)readers.elementAt(i);
     try {
-      return new QRCodeReader().decode(image,hints);
+      return reader.decode(image,hints);
     }
  catch (    ReaderException re) {
     }

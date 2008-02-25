@@ -1,9 +1,7 @@
 {
   for (int d=0; d < 10; d++) {
     if (lgPatternFound == FIRST_DIGIT_ENCODINGS[d]) {
-      if (d != 0) {
-        resultString.insert(0,(char)('0' + d));
-      }
+      resultString.insert(0,(char)('0' + d));
       return;
     }
   }

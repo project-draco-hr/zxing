@@ -14,9 +14,17 @@
     image.estimateBlackPoint(BlackPointEstimationMethod.ROW_SAMPLING,rowNumber);
     image.getBlackRow(rowNumber,row,0,width);
     try {
-      return decodeRow(rowNumber,row);
+      return decodeRow(rowNumber,row,hints);
     }
  catch (    ReaderException re) {
+      if (hints != null && hints.contains(DecodeHintType.TRY_HARDER)) {
+        row.reverse();
+        try {
+          return decodeRow(rowNumber,row,hints);
+        }
+ catch (        ReaderException re2) {
+        }
+      }
     }
   }
   throw new ReaderException("No barcode found");

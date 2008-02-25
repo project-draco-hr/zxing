@@ -1,0 +1,40 @@
+{
+  Hashtable possibleFormats=hints == null ? null : (Hashtable)hints.get(DecodeHintType.POSSIBLE_FORMATS);
+  Vector readers=new Vector();
+  if (possibleFormats != null) {
+    if (possibleFormats.contains(BarcodeFormat.EAN_13)) {
+      readers.addElement(new EAN13Reader());
+    }
+    if (possibleFormats.contains(BarcodeFormat.UPC_A)) {
+      readers.addElement(new UPCAReader());
+    }
+    if (possibleFormats.contains(BarcodeFormat.EAN_8)) {
+      readers.addElement(new EAN8Reader());
+    }
+    if (possibleFormats.contains(BarcodeFormat.UPC_E)) {
+      readers.addElement(new UPCEReader());
+    }
+  }
+  if (readers.isEmpty()) {
+    readers.addElement(new EAN13Reader());
+    readers.addElement(new UPCAReader());
+    readers.addElement(new EAN8Reader());
+    readers.addElement(new UPCEReader());
+  }
+  int[] startGuardPattern=AbstractUPCEANReader.findStartGuardPattern(row);
+  for (int i=0; i < readers.size(); i++) {
+    UPCEANReader reader=(UPCEANReader)readers.elementAt(i);
+    Result result;
+    try {
+      result=reader.decodeRow(rowNumber,row,startGuardPattern);
+    }
+ catch (    ReaderException re) {
+      continue;
+    }
+    if (result.getBarcodeFormat().equals(BarcodeFormat.EAN_13) && result.getText().charAt(0) == '0') {
+      return new Result(result.getText().substring(1),result.getResultPoints(),BarcodeFormat.UPC_A);
+    }
+    return result;
+  }
+  throw new ReaderException("No barcode was detected in this image.");
+}

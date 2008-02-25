@@ -1,0 +1,4 @@
+File testBase
+Reader barcodeReader
+double passPercent
+BarcodeFormat expectedFormat
