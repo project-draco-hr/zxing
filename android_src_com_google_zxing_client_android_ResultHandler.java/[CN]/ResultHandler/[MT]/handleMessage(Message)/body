@@ -19,6 +19,14 @@
         return;
       }
     }
+ else     if (type == ParsedReaderResultType.URLTO) {
+      try {
+        intent=new Intent(Intent.VIEW_ACTION,new ContentURI(((URLTOResult)result).getURI()));
+      }
+ catch (      URISyntaxException e) {
+        return;
+      }
+    }
  else     if (type == ParsedReaderResultType.EMAIL) {
       EmailDoCoMoResult emailResult=(EmailDoCoMoResult)result;
       try {

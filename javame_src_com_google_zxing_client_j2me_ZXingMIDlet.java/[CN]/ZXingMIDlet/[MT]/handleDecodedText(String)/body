@@ -9,6 +9,10 @@
     String uri=((BookmarkDoCoMoResult)result).getURI();
     showOpenURL("Open Web Page?",uri,uri);
   }
+ else   if (type.equals(ParsedReaderResultType.URLTO)) {
+    String uri=((URLTOResult)result).getURI();
+    showOpenURL("Open Web Page?",uri,uri);
+  }
  else   if (type.equals(ParsedReaderResultType.EMAIL)) {
     String email=((EmailDoCoMoResult)result).getTo();
     showOpenURL("Compose E-mail?",email,"mailto:" + email);

@@ -1,0 +1,5 @@
+{
+  doTestResult("URLTO:foo:bar.com",ParsedReaderResultType.URLTO);
+  doTestResult("URLTO::bar.com",ParsedReaderResultType.URLTO);
+  doTestResult("URLTO::http://bar.com",ParsedReaderResultType.URLTO);
+}

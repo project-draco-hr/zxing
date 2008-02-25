@@ -20,6 +20,11 @@
  catch (  IllegalArgumentException iae) {
   }
   try {
+    return new URLTOResult(rawText);
+  }
+ catch (  IllegalArgumentException iae) {
+  }
+  try {
     return new URIParsedResult(rawText);
   }
  catch (  IllegalArgumentException iae) {
