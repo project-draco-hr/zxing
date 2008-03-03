@@ -1,0 +1,3 @@
+{
+  return image.getType() != BufferedImage.TYPE_CUSTOM;
+}
