@@ -26,12 +26,24 @@
     File expectedTextFile=new File(testBase,testImageFileName.substring(0,testImageFileName.indexOf('.')) + ".txt");
     String expectedText=readFileAsString(expectedTextFile);
     String resultText=result.getText();
-    if (expectedText.equals(resultText)) {
+    boolean passed=expectedText.equals(resultText);
+    if (passed) {
       passedCount++;
     }
  else {
       System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\'');
     }
+    try {
+      result=barcodeReader.decode(source,TRY_HARDER_HINT);
+    }
+ catch (    ReaderException re) {
+      if (passed) {
+        fail("Normal mode succeed but \"try harder\" failed");
+      }
+      continue;
+    }
+    assertEquals("Normal mode succeed but \"try harder\" failed",expectedFormat,result.getBarcodeFormat());
+    assertEquals("Normal mode succeed but \"try harder\" failed",expectedText,result.getText());
   }
   System.out.println(passedCount + " of " + imageFiles.length+ " images passed");
   assertTrue("Too many images failed",passedCount >= (int)(imageFiles.length * passPercent));
