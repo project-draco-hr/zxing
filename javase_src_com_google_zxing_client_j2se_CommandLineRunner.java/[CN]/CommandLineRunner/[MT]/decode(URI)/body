@@ -5,8 +5,10 @@
     return false;
   }
   try {
+    Hashtable hints=new Hashtable();
+    hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
     BufferedImageMonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
-    String result=new MultiFormatReader().decode(source).getText();
+    String result=new MultiFormatReader().decode(source,hints).getText();
     System.out.println(uri.toString() + ": " + result);
     return true;
   }

@@ -1,5 +1,5 @@
 {
-  Hashtable possibleFormats=hints == null ? null : (Hashtable)hints.get(DecodeHintType.POSSIBLE_FORMATS);
+  Vector possibleFormats=hints == null ? null : (Vector)hints.get(DecodeHintType.POSSIBLE_FORMATS);
   Vector readers=new Vector();
   if (possibleFormats != null) {
     if (possibleFormats.contains(BarcodeFormat.UPC_A) || possibleFormats.contains(BarcodeFormat.UPC_E) || possibleFormats.contains(BarcodeFormat.EAN_13)|| possibleFormats.contains(BarcodeFormat.EAN_8)|| possibleFormats.contains(BarcodeFormat.CODE_39)|| possibleFormats.contains(BarcodeFormat.CODE_128)) {

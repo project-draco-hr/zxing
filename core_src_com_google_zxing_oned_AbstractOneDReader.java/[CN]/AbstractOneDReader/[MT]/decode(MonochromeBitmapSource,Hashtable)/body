@@ -1,33 +1,15 @@
 {
-  boolean tryHarder=hints != null && hints.contains(DecodeHintType.TRY_HARDER);
-  int width=image.getWidth();
-  int height=image.getHeight();
-  BitArray row=new BitArray(width);
-  int middle=height >> 1;
-  int rowStep=Math.max(1,height >> 4);
-  int maxLines=tryHarder ? 15 : 7;
-  for (int x=0; x < maxLines; x++) {
-    int rowStepsAboveOrBelow=(x + 1) >> 1;
-    boolean isAbove=(x & 0x01) == 0;
-    int rowNumber=middle + rowStep * (isAbove ? rowStepsAboveOrBelow : -rowStepsAboveOrBelow);
-    if (rowNumber < 0 || rowNumber >= height) {
-      break;
+  boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
+  try {
+    return doDecode(image,hints,tryHarder);
+  }
+ catch (  ReaderException re) {
+    if (tryHarder && image.isRotatedSupported()) {
+      MonochromeBitmapSource rotatedImage=image.rotateCounterClockwise();
+      return doDecode(rotatedImage,hints,tryHarder);
     }
-    image.estimateBlackPoint(BlackPointEstimationMethod.ROW_SAMPLING,rowNumber);
-    image.getBlackRow(rowNumber,row,0,width);
-    try {
-      return decodeRow(rowNumber,row,hints);
-    }
- catch (    ReaderException re) {
-      if (tryHarder) {
-        row.reverse();
-        try {
-          return decodeRow(rowNumber,row,hints);
-        }
- catch (        ReaderException re2) {
-        }
-      }
+ else {
+      throw re;
     }
   }
-  throw new ReaderException("No barcode found");
 }
