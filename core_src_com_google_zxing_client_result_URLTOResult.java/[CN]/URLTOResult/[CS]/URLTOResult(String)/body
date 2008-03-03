@@ -1,9 +1,0 @@
-{
-  super(ParsedReaderResultType.URLTO);
-  if (!rawText.startsWith("URLTO:")) {
-    throw new IllegalArgumentException("Does not begin with URLTO");
-  }
-  int titleEnd=rawText.indexOf(':',6);
-  title=rawText.substring(6,titleEnd);
-  uri=rawText.substring(titleEnd + 1);
-}

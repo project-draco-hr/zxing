@@ -29,7 +29,7 @@
       }
     }
   }
-  if (matches == null) {
+  if (matches == null || matches.isEmpty()) {
     return null;
   }
   int size=matches.size();

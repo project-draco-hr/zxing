@@ -1,4 +1,4 @@
 {
   super(ParsedReaderResultType.TEXT);
-  text=rawText;
+  this.text=text;
 }

@@ -1,38 +1,25 @@
 {
-  try {
-    return new BookmarkDoCoMoResult(rawText);
+  ParsedReaderResult result;
+  if ((result=BookmarkDoCoMoResult.parse(rawText)) != null) {
+    return result;
   }
- catch (  IllegalArgumentException iae) {
+ else   if ((result=AddressBookDoCoMoResult.parse(rawText)) != null) {
+    return result;
   }
-  try {
-    return new AddressBookDoCoMoResult(rawText);
+ else   if ((result=EmailDoCoMoResult.parse(rawText)) != null) {
+    return result;
   }
- catch (  IllegalArgumentException iae) {
+ else   if ((result=EmailAddressResult.parse(rawText)) != null) {
+    return result;
   }
-  try {
-    return new EmailDoCoMoResult(rawText);
+ else   if ((result=URLTOResult.parse(rawText)) != null) {
+    return result;
   }
- catch (  IllegalArgumentException iae) {
+ else   if ((result=URIParsedResult.parse(rawText)) != null) {
+    return result;
   }
-  try {
-    return new EmailAddressResult(rawText);
+ else   if ((result=UPCParsedResult.parse(rawText)) != null) {
+    return result;
   }
- catch (  IllegalArgumentException iae) {
-  }
-  try {
-    return new URLTOResult(rawText);
-  }
- catch (  IllegalArgumentException iae) {
-  }
-  try {
-    return new URIParsedResult(rawText);
-  }
- catch (  IllegalArgumentException iae) {
-  }
-  try {
-    return new UPCParsedResult(rawText);
-  }
- catch (  IllegalArgumentException iae) {
-  }
-  return new TextParsedResult(rawText);
+  return TextParsedResult.parse(rawText);
 }

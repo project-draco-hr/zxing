@@ -1,14 +1,4 @@
 {
   super(ParsedReaderResultType.UPC);
-  int length=rawText.length();
-  if (length != 12 && length != 13) {
-    throw new IllegalArgumentException("Wrong number of digits for UPC");
-  }
-  for (int x=0; x < length; x++) {
-    char c=rawText.charAt(x);
-    if (c < '0' || c > '9') {
-      throw new IllegalArgumentException("Invalid character found in UPC");
-    }
-  }
-  upc=rawText;
+  this.upc=upc;
 }

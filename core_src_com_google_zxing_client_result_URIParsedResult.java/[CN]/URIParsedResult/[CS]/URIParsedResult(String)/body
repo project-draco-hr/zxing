@@ -1,7 +1,4 @@
 {
   super(ParsedReaderResultType.URI);
-  if (!isBasicallyValidURI(rawText)) {
-    throw new IllegalArgumentException("Invalid URI: " + rawText);
-  }
-  uri=massagePossibleURI(rawText);
+  this.uri=uri;
 }

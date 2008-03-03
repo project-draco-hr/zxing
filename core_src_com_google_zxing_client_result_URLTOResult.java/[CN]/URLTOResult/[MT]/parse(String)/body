@@ -1,0 +1,12 @@
+{
+  if (!rawText.startsWith("URLTO:")) {
+    return null;
+  }
+  int titleEnd=rawText.indexOf(':',6);
+  if (titleEnd < 0) {
+    return null;
+  }
+  String title=rawText.substring(6,titleEnd);
+  String uri=rawText.substring(titleEnd + 1);
+  return new URLTOResult(title,uri);
+}
