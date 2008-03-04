@@ -1,3 +1,4 @@
 int startJ
 int centerI
 int maxCount
+int originalStateCountTotal

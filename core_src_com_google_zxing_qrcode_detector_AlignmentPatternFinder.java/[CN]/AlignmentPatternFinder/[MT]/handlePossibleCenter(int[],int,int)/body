@@ -1,6 +1,7 @@
 {
+  int stateCountTotal=stateCount[0] + stateCount[1] + stateCount[2];
   float centerJ=centerFromEnd(stateCount,j);
-  float centerI=crossCheckVertical(i,(int)centerJ,2 * stateCount[1]);
+  float centerI=crossCheckVertical(i,(int)centerJ,2 * stateCount[1],stateCountTotal);
   if (!Float.isNaN(centerI)) {
     float estimatedModuleSize=(float)(stateCount[0] + stateCount[1] + stateCount[2]) / 3.0f;
     int max=possibleCenters.size();

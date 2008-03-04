@@ -32,5 +32,9 @@
   if (stateCount[2] > maxCount) {
     return Float.NaN;
   }
+  int stateCountTotal=stateCount[0] + stateCount[1] + stateCount[2];
+  if (5 * Math.abs(stateCountTotal - originalStateCountTotal) >= originalStateCountTotal) {
+    return Float.NaN;
+  }
   return foundPatternCross(stateCount) ? centerFromEnd(stateCount,i) : Float.NaN;
 }

@@ -10,6 +10,6 @@
     return false;
   }
   float moduleSize=(float)totalModuleSize / 7.0f;
-  float maxVariance=moduleSize / 2.5f;
+  float maxVariance=moduleSize / 2.0f;
   return Math.abs(moduleSize - stateCount[0]) < maxVariance && Math.abs(moduleSize - stateCount[1]) < maxVariance && Math.abs(3.0f * moduleSize - stateCount[2]) < 3.0f * maxVariance && Math.abs(moduleSize - stateCount[3]) < maxVariance && Math.abs(moduleSize - stateCount[4]) < maxVariance;
 }

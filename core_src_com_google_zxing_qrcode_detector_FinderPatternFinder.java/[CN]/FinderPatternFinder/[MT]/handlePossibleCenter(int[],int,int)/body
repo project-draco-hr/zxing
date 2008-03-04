@@ -1,10 +1,11 @@
 {
+  int stateCountTotal=stateCount[0] + stateCount[1] + stateCount[2]+ stateCount[3]+ stateCount[4];
   float centerJ=centerFromEnd(stateCount,j);
-  float centerI=crossCheckVertical(i,(int)centerJ,stateCount[2]);
+  float centerI=crossCheckVertical(i,(int)centerJ,stateCount[2],stateCountTotal);
   if (!Float.isNaN(centerI)) {
-    centerJ=crossCheckHorizontal((int)centerJ,(int)centerI,stateCount[2]);
+    centerJ=crossCheckHorizontal((int)centerJ,(int)centerI,stateCount[2],stateCountTotal);
     if (!Float.isNaN(centerJ)) {
-      float estimatedModuleSize=(float)(stateCount[0] + stateCount[1] + stateCount[2]+ stateCount[3]+ stateCount[4]) / 7.0f;
+      float estimatedModuleSize=(float)stateCountTotal / 7.0f;
       boolean found=false;
       int max=possibleCenters.size();
       for (int index=0; index < max; index++) {

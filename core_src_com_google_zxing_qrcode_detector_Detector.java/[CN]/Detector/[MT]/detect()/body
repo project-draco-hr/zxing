@@ -12,10 +12,10 @@
   int dimension=computeDimension(topLeft,topRight,bottomLeft,moduleSize);
   Version provisionalVersion=Version.getProvisionalVersionForDimension(dimension);
   int modulesBetweenFPCenters=provisionalVersion.getDimensionForVersion() - 7;
-  float bottomRightX=topRight.getX() - topLeft.getX() + bottomLeft.getX();
-  float bottomRightY=topRight.getY() - topLeft.getY() + bottomLeft.getY();
   AlignmentPattern alignmentPattern=null;
   if (provisionalVersion.getAlignmentPatternCenters().length > 0) {
+    float bottomRightX=topRight.getX() - topLeft.getX() + bottomLeft.getX();
+    float bottomRightY=topRight.getY() - topLeft.getY() + bottomLeft.getY();
     float correctionToTopLeft=1.0f - 3.0f / (float)modulesBetweenFPCenters;
     int estAlignmentX=(int)(topLeft.getX() + correctionToTopLeft * (bottomRightX - topLeft.getX()));
     int estAlignmentY=(int)(topLeft.getY() + correctionToTopLeft * (bottomRightY - topLeft.getY()));
