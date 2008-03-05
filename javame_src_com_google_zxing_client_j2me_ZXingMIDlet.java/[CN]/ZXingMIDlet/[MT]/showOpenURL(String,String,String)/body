@@ -19,7 +19,7 @@
         }
       }
  else {
-        Display.getDisplay(ZXingMIDlet.this).setCurrent(canvas);
+        Display.getDisplay(ZXingMIDlet.this).setCurrent(getCanvas());
       }
     }
   }

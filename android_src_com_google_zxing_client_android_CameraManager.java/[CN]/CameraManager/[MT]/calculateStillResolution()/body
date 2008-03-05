@@ -7,7 +7,7 @@
   double objectSize=Math.tan(Math.toRadians(fov / 2.0)) * getMinimumFocusDistance() * 2;
   double crop=3.0 / objectSize;
   int nativeResolution=(int)(minDimension * crop);
-  nativeResolution=(nativeResolution + 7) / 8 * 8;
+  nativeResolution=((nativeResolution + 7) >> 3) << 3;
   if (nativeResolution > minDimension) {
     nativeResolution=minDimension;
   }

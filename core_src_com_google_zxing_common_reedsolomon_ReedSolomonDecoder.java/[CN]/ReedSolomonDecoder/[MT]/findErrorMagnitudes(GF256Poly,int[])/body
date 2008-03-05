@@ -6,7 +6,7 @@
     int denominator=1;
     for (int j=0; j < s; j++) {
       if (i != j) {
-        denominator=field.multiply(denominator,field.addOrSubtract(1,field.multiply(errorLocations[j],xiInverse)));
+        denominator=field.multiply(denominator,GF256.addOrSubtract(1,field.multiply(errorLocations[j],xiInverse)));
       }
     }
     result[i]=field.multiply(errorEvaluator.evaluateAt(xiInverse),field.inverse(denominator));

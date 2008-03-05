@@ -19,7 +19,7 @@
   int lengthDiff=largerCoefficients.length - smallerCoefficients.length;
   System.arraycopy(largerCoefficients,0,sumDiff,0,lengthDiff);
   for (int i=lengthDiff; i < largerCoefficients.length; i++) {
-    sumDiff[i]=field.addOrSubtract(smallerCoefficients[i - lengthDiff],largerCoefficients[i]);
+    sumDiff[i]=GF256.addOrSubtract(smallerCoefficients[i - lengthDiff],largerCoefficients[i]);
   }
   return new GF256Poly(field,sumDiff);
 }

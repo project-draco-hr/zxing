@@ -6,7 +6,11 @@
     }
     if (focusControl.isAutoFocusSupported()) {
       focusControl.setFocus(FocusControl.AUTO);
-      Thread.sleep(FOCUS_TIME_MS);
+      try {
+        Thread.sleep(FOCUS_TIME_MS);
+      }
+ catch (      InterruptedException ie) {
+      }
       try {
         focusControl.setFocus(FocusControl.AUTO_LOCK);
       }

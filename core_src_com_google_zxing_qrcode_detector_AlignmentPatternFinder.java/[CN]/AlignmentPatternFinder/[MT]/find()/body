@@ -11,11 +11,11 @@
     stateCount[0]=0;
     stateCount[1]=0;
     stateCount[2]=0;
-    int currentState=0;
     int j=startX;
     while (j < maxJ && !luminanceRow.get(j - startX)) {
       j++;
     }
+    int currentState=0;
     while (j < maxJ) {
       if (luminanceRow.get(j - startX)) {
         if (currentState == 1) {

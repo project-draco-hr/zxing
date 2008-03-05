@@ -5,9 +5,9 @@
     return false;
   }
   try {
-    Hashtable hints=new Hashtable();
+    Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
     hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
-    BufferedImageMonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
+    MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
     String result=new MultiFormatReader().decode(source,hints).getText();
     System.out.println(uri.toString() + ": " + result);
     return true;

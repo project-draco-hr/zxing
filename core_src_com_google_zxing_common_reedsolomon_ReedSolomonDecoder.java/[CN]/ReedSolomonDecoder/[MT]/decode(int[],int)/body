@@ -11,7 +11,7 @@
     int[] errorMagnitudes=findErrorMagnitudes(sigmaOmega[1],errorLocations);
     for (int i=0; i < errorLocations.length; i++) {
       int position=received.length - 1 - field.log(errorLocations[i]);
-      received[position]=field.addOrSubtract(received[position],errorMagnitudes[i]);
+      received[position]=GF256.addOrSubtract(received[position],errorMagnitudes[i]);
     }
   }
 }

@@ -17,8 +17,11 @@
  catch (  ReaderException re) {
     zXingMIDlet.showError("Sorry, no barcode was found.");
   }
-catch (  Throwable t) {
-    zXingMIDlet.showError(t);
+catch (  MediaException me) {
+    zXingMIDlet.showError(me);
+  }
+catch (  RuntimeException re) {
+    zXingMIDlet.showError(re);
   }
  finally {
     try {
