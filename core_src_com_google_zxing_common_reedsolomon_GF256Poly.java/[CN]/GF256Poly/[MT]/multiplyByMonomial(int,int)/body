@@ -7,9 +7,8 @@
   }
   int size=coefficients.length;
   int[] product=new int[size + degree];
-  System.arraycopy(coefficients,0,product,0,size);
   for (int i=0; i < size; i++) {
-    product[i]=field.multiply(product[i],coefficient);
+    product[i]=field.multiply(coefficients[i],coefficient);
   }
   return new GF256Poly(field,product);
 }
