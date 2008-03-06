@@ -1,5 +1,7 @@
 {
   if (path.endsWith(".jpg") && path.indexOf("IMG") >= 0) {
+    EventInjector.invokeEvent(new EventInjector.KeyEvent(EventInjector.KeyEvent.KEY_DOWN,Characters.ESCAPE,0,1));
+    EventInjector.invokeEvent(new EventInjector.KeyEvent(EventInjector.KeyEvent.KEY_UP,Characters.ESCAPE,0,1));
     app.requestForeground();
     try {
       FileConnection file=null;
