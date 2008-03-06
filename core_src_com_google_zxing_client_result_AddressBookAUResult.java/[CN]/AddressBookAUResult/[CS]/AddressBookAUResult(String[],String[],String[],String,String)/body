@@ -1,0 +1,8 @@
+{
+  super(ParsedReaderResultType.ADDRESSBOOK_AU);
+  this.names=names;
+  this.phoneNumbers=phoneNumbers;
+  this.emails=emails;
+  this.note=note;
+  this.address=address;
+}

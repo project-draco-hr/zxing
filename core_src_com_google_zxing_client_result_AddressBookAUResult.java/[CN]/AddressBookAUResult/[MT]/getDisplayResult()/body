@@ -1,0 +1,9 @@
+{
+  StringBuffer result=new StringBuffer();
+  AbstractDoCoMoResult.maybeAppend(names,result);
+  AbstractDoCoMoResult.maybeAppend(emails,result);
+  AbstractDoCoMoResult.maybeAppend(address,result);
+  AbstractDoCoMoResult.maybeAppend(phoneNumbers,result);
+  AbstractDoCoMoResult.maybeAppend(note,result);
+  return result.toString();
+}
