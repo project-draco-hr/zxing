@@ -1,0 +1,6 @@
+{
+  this.image=image;
+  blackPoint=0x7F;
+  lastMethod=null;
+  lastArgument=0;
+}

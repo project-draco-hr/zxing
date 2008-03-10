@@ -11,7 +11,7 @@ case STILL_AND_DECODE:
 Bitmap bitmap=cameraManager.captureStill();
 Result rawResult;
 try {
-MonochromeBitmapSource source=new YUVMonochromeBitmapSource(bitmap);
+MonochromeBitmapSource source=new RGBMonochromeBitmapSource(bitmap);
 rawResult=new MultiFormatReader().decode(source);
 }
  catch (ReaderException e) {

@@ -1,0 +1,4 @@
+int y
+BitArray row
+int startX
+int getWidth
