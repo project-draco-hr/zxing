@@ -1,4 +1,7 @@
 {
+  if (!isRotateSupported()) {
+    throw new IllegalStateException("Rotate not supported");
+  }
   AffineTransform transform=new AffineTransform(0.0,-1.0,1.0,0.0,0.0,image.getHeight());
   BufferedImageOp op=new AffineTransformOp(transform,AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
   BufferedImage rotatedImage=new BufferedImage(image.getHeight(),image.getWidth(),image.getType());

@@ -1,7 +1,4 @@
 {
-  if (image.getType() == BufferedImage.TYPE_CUSTOM) {
-    throw new IllegalArgumentException("Can't handle BufferedImage of type TYPE_CUSTOM");
-  }
   this.image=image;
   blackPoint=0x7F;
   lastMethod=null;
