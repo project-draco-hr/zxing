@@ -1,0 +1,12 @@
+{
+  assertEquals(ErrorCorrectionLevel.M,ErrorCorrectionLevel.forBits(0));
+  assertEquals(ErrorCorrectionLevel.L,ErrorCorrectionLevel.forBits(1));
+  assertEquals(ErrorCorrectionLevel.H,ErrorCorrectionLevel.forBits(2));
+  assertEquals(ErrorCorrectionLevel.Q,ErrorCorrectionLevel.forBits(3));
+  try {
+    ErrorCorrectionLevel.forBits(4);
+    fail("Should have thrown an exception");
+  }
+ catch (  ReaderException re) {
+  }
+}

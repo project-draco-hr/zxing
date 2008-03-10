@@ -1,0 +1,8 @@
+{
+  assertEquals(7,Version.decodeVersionInformation(0x07C94).getVersionNumber());
+  assertEquals(12,Version.decodeVersionInformation(0x0C762).getVersionNumber());
+  assertEquals(17,Version.decodeVersionInformation(0x1145D).getVersionNumber());
+  assertEquals(22,Version.decodeVersionInformation(0x168C9).getVersionNumber());
+  assertEquals(27,Version.decodeVersionInformation(0x1B08E).getVersionNumber());
+  assertEquals(32,Version.decodeVersionInformation(0x209D5).getVersionNumber());
+}

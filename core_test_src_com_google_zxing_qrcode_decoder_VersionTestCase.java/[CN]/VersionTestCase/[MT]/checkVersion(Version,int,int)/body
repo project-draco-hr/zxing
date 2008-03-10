@@ -1,0 +1,14 @@
+{
+  assertNotNull(version);
+  assertEquals(number,version.getVersionNumber());
+  assertNotNull(version.getAlignmentPatternCenters());
+  if (number > 1) {
+    assertTrue(version.getAlignmentPatternCenters().length > 0);
+  }
+  assertEquals(dimension,version.getDimensionForVersion());
+  assertNotNull(version.getECBlocksForLevel(ErrorCorrectionLevel.H));
+  assertNotNull(version.getECBlocksForLevel(ErrorCorrectionLevel.L));
+  assertNotNull(version.getECBlocksForLevel(ErrorCorrectionLevel.M));
+  assertNotNull(version.getECBlocksForLevel(ErrorCorrectionLevel.Q));
+  assertNotNull(version.buildFunctionPattern());
+}
