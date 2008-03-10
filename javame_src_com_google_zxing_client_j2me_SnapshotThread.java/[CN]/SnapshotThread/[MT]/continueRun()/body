@@ -1,0 +1,5 @@
+{
+synchronized (waitLock) {
+    waitLock.notifyAll();
+  }
+}

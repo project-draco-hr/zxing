@@ -1,6 +1,0 @@
-{
-  if (currentThread == null) {
-    currentThread=new SnapshotThread(zXingMIDlet);
-    currentThread.start();
-  }
-}

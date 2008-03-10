@@ -1,34 +1,25 @@
 {
   Player player=zXingMIDlet.getPlayer();
-  try {
-    AdvancedMultimediaManager.setFocus(player);
+  do {
+    waitForSignal();
     try {
-      player.stop();
+      AdvancedMultimediaManager.setFocus(player);
+      byte[] snapshot=takeSnapshot();
+      Image capturedImage=Image.createImage(snapshot,0,snapshot.length);
+      MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);
+      Reader reader=new MultiFormatReader();
+      Result result=reader.decode(source);
+      zXingMIDlet.handleDecodedText(result.getText());
     }
- catch (    MediaException me) {
+ catch (    ReaderException re) {
+      zXingMIDlet.showError("Sorry, no barcode was found.");
     }
-    byte[] snapshot=takeSnapshot();
-    Image capturedImage=Image.createImage(snapshot,0,snapshot.length);
-    MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);
-    Reader reader=new MultiFormatReader();
-    Result result=reader.decode(source);
-    zXingMIDlet.handleDecodedText(result.getText());
-  }
- catch (  ReaderException re) {
-    zXingMIDlet.showError("Sorry, no barcode was found.");
-  }
-catch (  MediaException me) {
-    zXingMIDlet.showError(me);
-  }
-catch (  RuntimeException re) {
-    zXingMIDlet.showError(re);
-  }
- finally {
-    try {
-      player.start();
+catch (    MediaException me) {
+      zXingMIDlet.showError(me);
     }
- catch (    MediaException me) {
+catch (    RuntimeException re) {
+      zXingMIDlet.showError(re);
     }
-    currentThread=null;
   }
+ while (!done);
 }

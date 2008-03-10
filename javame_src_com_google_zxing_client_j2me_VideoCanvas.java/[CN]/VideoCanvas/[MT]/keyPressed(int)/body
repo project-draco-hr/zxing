@@ -1,5 +1,8 @@
 {
   if (getGameAction(keyCode) != 0) {
-    SnapshotThread.startThread(zXingMIDlet);
+    snapshotThread.continueRun();
+  }
+ else {
+    super.keyPressed(keyCode);
   }
 }

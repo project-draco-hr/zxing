@@ -1,5 +1,7 @@
 {
-  if (command.getCommandType() == Command.EXIT || command.getCommandType() == Command.STOP) {
+  int type=command.getCommandType();
+  if (type == Command.EXIT || type == Command.STOP || type == Command.BACK || type == Command.CANCEL) {
+    snapshotThread.stop();
     zXingMIDlet.stop();
   }
 }

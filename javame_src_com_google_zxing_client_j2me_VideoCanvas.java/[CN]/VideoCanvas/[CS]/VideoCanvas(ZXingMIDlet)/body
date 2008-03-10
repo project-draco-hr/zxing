@@ -2,4 +2,6 @@
   this.zXingMIDlet=zXingMIDlet;
   addCommand(exit);
   setCommandListener(this);
+  snapshotThread=new SnapshotThread(zXingMIDlet);
+  snapshotThread.start();
 }
