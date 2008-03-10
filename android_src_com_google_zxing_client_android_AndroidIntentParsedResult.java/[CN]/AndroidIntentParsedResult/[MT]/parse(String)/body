@@ -5,4 +5,7 @@
  catch (  URISyntaxException urise) {
     return null;
   }
+catch (  IllegalArgumentException iae) {
+    return null;
+  }
 }

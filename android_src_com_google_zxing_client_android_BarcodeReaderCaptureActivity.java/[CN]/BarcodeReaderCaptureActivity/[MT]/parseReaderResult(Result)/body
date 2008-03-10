@@ -2,9 +2,12 @@
   String rawText=rawResult.getText();
   ParsedReaderResult readerResult=ParsedReaderResult.parseReaderResult(rawText);
   if (readerResult.getType().equals(ParsedReaderResultType.TEXT)) {
-    ParsedReaderResult androidResult=AndroidIntentParsedResult.parse(rawText);
+    AndroidIntentParsedResult androidResult=AndroidIntentParsedResult.parse(rawText);
     if (androidResult != null) {
-      readerResult=androidResult;
+      Intent intent=androidResult.getIntent();
+      if (!Intent.VIEW_ACTION.equals(intent.getAction())) {
+        readerResult=androidResult;
+      }
     }
   }
   return readerResult;
