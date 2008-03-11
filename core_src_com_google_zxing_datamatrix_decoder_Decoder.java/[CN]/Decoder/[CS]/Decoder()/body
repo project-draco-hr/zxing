@@ -1,0 +1,3 @@
+{
+  rsDecoder=new ReedSolomonDecoder(GF256.DATA_MATRIX_FIELD);
+}

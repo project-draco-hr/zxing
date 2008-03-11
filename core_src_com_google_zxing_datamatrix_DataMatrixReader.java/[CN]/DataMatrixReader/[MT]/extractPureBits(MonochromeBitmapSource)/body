@@ -1,0 +1,31 @@
+{
+  int borderWidth=0;
+  while (!image.isBlack(borderWidth,borderWidth)) {
+    borderWidth++;
+  }
+  int moduleEnd=borderWidth + 1;
+  while (image.isBlack(moduleEnd,borderWidth)) {
+    moduleEnd++;
+  }
+  int moduleSize=moduleEnd - borderWidth;
+  int columnEndOfSymbol=image.getHeight() - 1;
+  while (!image.isBlack(borderWidth,columnEndOfSymbol)) {
+    columnEndOfSymbol--;
+  }
+  columnEndOfSymbol++;
+  if ((columnEndOfSymbol - borderWidth) % moduleSize != 0) {
+    throw new ReaderException("Bad module size / width: " + moduleSize + " / "+ (columnEndOfSymbol - borderWidth));
+  }
+  int dimension=(columnEndOfSymbol - borderWidth) / moduleSize;
+  borderWidth+=moduleSize >> 1;
+  BitMatrix bits=new BitMatrix(dimension);
+  for (int i=0; i < dimension; i++) {
+    int iOffset=borderWidth + i * moduleSize;
+    for (int j=0; j < dimension; j++) {
+      if (image.isBlack(borderWidth + j * moduleSize,iOffset)) {
+        bits.set(i,j);
+      }
+    }
+  }
+  return bits;
+}

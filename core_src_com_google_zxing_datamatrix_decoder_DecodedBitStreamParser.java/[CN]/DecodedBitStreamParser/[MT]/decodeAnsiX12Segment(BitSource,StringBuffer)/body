@@ -1,0 +1,44 @@
+{
+  char firstByte;
+  do {
+    if (bits.available() == 8) {
+      return ASCII_ENCODE;
+    }
+    firstByte=(char)bits.readBits(8);
+    if (firstByte == 254) {
+      return ASCII_ENCODE;
+    }
+    int fullBitValue=firstByte * 256 + bits.readBits(8) - 1;
+    char[] CValues=new char[3];
+    CValues[0]=(char)(fullBitValue / 1600);
+    fullBitValue-=CValues[0] * 1600;
+    CValues[1]=(char)(fullBitValue / 40);
+    fullBitValue-=CValues[1] * 40;
+    CValues[2]=(char)(fullBitValue);
+    for (int i=0; i < 3; i++) {
+      if (CValues[i] == 0) {
+        result.append("<CR>");
+      }
+ else       if (CValues[i] == 1) {
+        result.append('*');
+      }
+ else       if (CValues[i] == 2) {
+        result.append('>');
+      }
+ else       if (CValues[i] == 3) {
+        result.append(' ');
+      }
+ else       if (CValues[i] < 14) {
+        result.append((char)(CValues[i] + 44));
+      }
+ else       if (CValues[i] < 40) {
+        result.append((char)(CValues[i] + 51));
+      }
+ else {
+        throw new ReaderException(Integer.toString(CValues[i]) + " is not valid in the ANSI X12 set");
+      }
+    }
+  }
+ while (bits.available() > 0);
+  return ASCII_ENCODE;
+}

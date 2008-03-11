@@ -1,0 +1,6 @@
+int versionNumber
+int symbolSizeRows
+int symbolSizeColumns
+int dataRegionSizeRows
+int dataRegionSizeColumns
+ECBlocks ecBlocks

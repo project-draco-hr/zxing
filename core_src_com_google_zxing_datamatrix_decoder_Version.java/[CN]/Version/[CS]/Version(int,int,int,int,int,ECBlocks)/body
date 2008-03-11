@@ -1,0 +1,16 @@
+{
+  this.versionNumber=versionNumber;
+  this.symbolSizeRows=symbolSizeRows;
+  this.symbolSizeColumns=symbolSizeColumns;
+  this.dataRegionSizeRows=dataRegionSizeRows;
+  this.dataRegionSizeColumns=dataRegionSizeColumns;
+  this.ecBlocks=ecBlocks;
+  int total=0;
+  int ecCodewords=ecBlocks.ecCodewords;
+  ECB[] ecbArray=ecBlocks.ecBlocks;
+  for (int i=0; i < ecbArray.length; i++) {
+    ECB ecBlock=ecbArray[i];
+    total+=ecBlock.count * (ecBlock.dataCodewords + ecCodewords);
+  }
+  this.totalCodewords=total;
+}

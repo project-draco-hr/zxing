@@ -1,0 +1,3 @@
+{
+  super(new File("test/data/blackbox/datamatrix-1"),new DataMatrixReader(),1.0,BarcodeFormat.DATAMATRIX);
+}

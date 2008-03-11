@@ -1,0 +1,8 @@
+{
+  if (version != null) {
+    return version;
+  }
+  int numRows=bitMatrix.getDimension();
+  int numColumns=numRows;
+  return Version.getVersionForDimensions(numRows,numColumns);
+}

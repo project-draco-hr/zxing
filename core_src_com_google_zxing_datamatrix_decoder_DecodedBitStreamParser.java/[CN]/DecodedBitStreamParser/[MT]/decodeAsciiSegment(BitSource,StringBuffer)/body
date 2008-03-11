@@ -1,0 +1,67 @@
+{
+  char oneByte;
+  boolean upperShift=false;
+  int bytesProcessed=0;
+  do {
+    oneByte=(char)bits.readBits(8);
+    if (oneByte == 0) {
+      throw new ReaderException("0 is an invalid ASCII codeword");
+    }
+ else     if (oneByte <= 128) {
+      oneByte=upperShift ? (char)(oneByte + 128) : oneByte;
+      upperShift=false;
+      result.append((char)(oneByte - 1));
+      return ASCII_ENCODE;
+    }
+ else     if (oneByte == 129) {
+      return PAD_ENCODE;
+    }
+ else     if (oneByte <= 229) {
+      if (oneByte - 130 < 10) {
+        result.append('0');
+      }
+      result.append(Integer.toString(oneByte - 130));
+    }
+ else     if (oneByte == 230) {
+      return C40_ENCODE;
+    }
+ else     if (oneByte == 231) {
+      return BASE256_ENCODE;
+    }
+ else     if (oneByte == 232) {
+      throw new ReaderException("Currently not supporting FNC1");
+    }
+ else     if (oneByte == 233) {
+      throw new ReaderException("Currently not supporting Structured Append");
+    }
+ else     if (oneByte == 234) {
+      throw new ReaderException("Currently not supporting Reader Programming");
+    }
+ else     if (oneByte == 235) {
+      upperShift=true;
+    }
+ else     if (oneByte == 236) {
+      throw new ReaderException("Currently not supporting 05 Macro");
+    }
+ else     if (oneByte == 237) {
+      throw new ReaderException("Currently not supporting 06 Macro");
+    }
+ else     if (oneByte == 238) {
+      return ANSIX12_ENCODE;
+    }
+ else     if (oneByte == 239) {
+      return TEXT_ENCODE;
+    }
+ else     if (oneByte == 240) {
+      return EDIFACT_ENCODE;
+    }
+ else     if (oneByte == 241) {
+      throw new ReaderException("Currently not supporting ECI Character");
+    }
+ else     if (oneByte >= 242) {
+      throw new ReaderException(Integer.toString(oneByte) + " should not be used in ASCII encodation");
+    }
+  }
+ while (bits.available() > 0);
+  return ASCII_ENCODE;
+}

@@ -8,10 +8,14 @@
     if (possibleFormats.contains(BarcodeFormat.QR_CODE)) {
       readers.addElement(new QRCodeReader());
     }
+    if (possibleFormats.contains(BarcodeFormat.DATAMATRIX)) {
+      readers.addElement(new DataMatrixReader());
+    }
   }
   if (readers.isEmpty()) {
     readers.addElement(new MultiFormatOneDReader());
     readers.addElement(new QRCodeReader());
+    readers.addElement(new DataMatrixReader());
   }
   for (int i=0; i < readers.size(); i++) {
     Reader reader=(Reader)readers.elementAt(i);

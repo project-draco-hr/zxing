@@ -1,0 +1,18 @@
+{
+  char d1=(char)bits.readBits(8);
+  int count=0;
+  if (d1 == 0) {
+    count=bits.available() / 8;
+  }
+ else   if (d1 < 250) {
+    count=d1;
+  }
+ else {
+    count=250 * (d1 - 249) + bits.readBits(8);
+  }
+  char[] readBytes=new char[count];
+  for (int i=0; i < count; i++) {
+    result.append((char)unrandomize255State((char)bits.readBits(8),count));
+  }
+  return ASCII_ENCODE;
+}

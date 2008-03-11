@@ -1,0 +1,23 @@
+{
+  boolean unlatch=false;
+  do {
+    if (bits.available() <= 16) {
+      return ASCII_ENCODE;
+    }
+    char edifactValue;
+    for (int i=0; i < 4; i++) {
+      edifactValue=(char)bits.readBits(6);
+      if (edifactValue == 0x2B67) {
+        unlatch=true;
+      }
+      if (!unlatch) {
+        if ((edifactValue & 32) == 0) {
+          edifactValue|=64;
+        }
+        result.append((char)edifactValue);
+      }
+    }
+  }
+ while (!unlatch && bits.available() > 0);
+  return ASCII_ENCODE;
+}

@@ -1,0 +1,35 @@
+{
+  int currentByte=0;
+  if (readModule(row - 2,column - 2,numRows,numColumns)) {
+    currentByte|=1;
+  }
+  currentByte<<=1;
+  if (readModule(row - 2,column - 1,numRows,numColumns)) {
+    currentByte|=1;
+  }
+  currentByte<<=1;
+  if (readModule(row - 1,column - 2,numRows,numColumns)) {
+    currentByte|=1;
+  }
+  currentByte<<=1;
+  if (readModule(row - 1,column - 1,numRows,numColumns)) {
+    currentByte|=1;
+  }
+  currentByte<<=1;
+  if (readModule(row - 1,column,numRows,numColumns)) {
+    currentByte|=1;
+  }
+  currentByte<<=1;
+  if (readModule(row,column - 2,numRows,numColumns)) {
+    currentByte|=1;
+  }
+  currentByte<<=1;
+  if (readModule(row,column - 1,numRows,numColumns)) {
+    currentByte|=1;
+  }
+  currentByte<<=1;
+  if (readModule(row,column,numRows,numColumns)) {
+    currentByte|=1;
+  }
+  return currentByte;
+}

@@ -1,0 +1,67 @@
+{
+  byte[] result=new byte[version.getTotalCodewords()];
+  int resultOffset=0;
+  int currentByte=0;
+  int bitsRead=0;
+  int row=4;
+  int column=0;
+  int numRows=mappingBitMatrix.getDimension();
+  int numColumns=numRows;
+  boolean corner1Read=false;
+  boolean corner2Read=false;
+  boolean corner3Read=false;
+  boolean corner4Read=false;
+  do {
+    if ((row == numRows) && (column == 0) && !corner1Read) {
+      result[resultOffset++]=(byte)readCorner1(numRows,numColumns);
+      row-=2;
+      column+=2;
+      corner1Read=true;
+    }
+ else     if ((row == numRows - 2) && (column == 0) && ((numColumns & 0x03) != 0)&& !corner2Read) {
+      result[resultOffset++]=(byte)readCorner2(numRows,numColumns);
+      row-=2;
+      column+=2;
+      corner2Read=true;
+    }
+ else     if ((row == numRows + 4) && (column == 2) && ((numColumns & 0x07) == 0)&& !corner3Read) {
+      result[resultOffset++]=(byte)readCorner3(numRows,numColumns);
+      row-=2;
+      column+=2;
+      corner3Read=true;
+    }
+ else     if ((row == numRows - 2) && (column == 0) && ((numColumns & 0x07) == 4)&& !corner4Read) {
+      result[resultOffset++]=(byte)readCorner4(numRows,numColumns);
+      row-=2;
+      column+=2;
+      corner4Read=true;
+    }
+ else {
+      do {
+        if ((row < numRows) && (column >= 0) && !readMappingMatrix.get(row,column)) {
+          result[resultOffset++]=(byte)readUtah(row,column,numRows,numColumns);
+        }
+        row-=2;
+        column+=2;
+      }
+ while ((row >= 0) && (column < numColumns));
+      row+=1;
+      column+=3;
+      do {
+        if ((row >= 0) && (column < numColumns) && !readMappingMatrix.get(row,column)) {
+          result[resultOffset++]=(byte)readUtah(row,column,numRows,numColumns);
+        }
+        row+=2;
+        column-=2;
+      }
+ while ((row < numRows) && (column >= 0));
+      row+=3;
+      column+=1;
+    }
+  }
+ while ((row < numRows) || (column < numColumns));
+  if (resultOffset != version.getTotalCodewords()) {
+    throw new ReaderException("Did not read all codewords");
+  }
+  return result;
+}
