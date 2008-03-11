@@ -1,0 +1,3 @@
+{
+  super(new File("test/data/blackbox/ean8-1"),new MultiFormatReader(),0.66,BarcodeFormat.EAN_8);
+}
