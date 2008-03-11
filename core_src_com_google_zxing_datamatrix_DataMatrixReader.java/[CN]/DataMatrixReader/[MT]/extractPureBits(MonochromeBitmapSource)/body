@@ -1,16 +1,28 @@
 {
+  int height=image.getHeight();
+  int width=image.getWidth();
+  int minDimension=Math.min(height,width);
   int borderWidth=0;
-  while (!image.isBlack(borderWidth,borderWidth)) {
+  while (borderWidth < minDimension && !image.isBlack(borderWidth,borderWidth)) {
     borderWidth++;
   }
+  if (borderWidth == minDimension) {
+    throw new ReaderException("No black pixels found along diagonal");
+  }
   int moduleEnd=borderWidth + 1;
-  while (image.isBlack(moduleEnd,borderWidth)) {
+  while (moduleEnd < width && image.isBlack(moduleEnd,borderWidth)) {
     moduleEnd++;
+  }
+  if (moduleEnd == width) {
+    throw new ReaderException("No end to black pixels found along row");
   }
   int moduleSize=moduleEnd - borderWidth;
   int columnEndOfSymbol=image.getHeight() - 1;
-  while (!image.isBlack(borderWidth,columnEndOfSymbol)) {
+  while (columnEndOfSymbol >= 0 && !image.isBlack(borderWidth,columnEndOfSymbol)) {
     columnEndOfSymbol--;
+  }
+  if (columnEndOfSymbol < 0) {
+    throw new ReaderException("Can't find end of bottommost black module");
   }
   columnEndOfSymbol++;
   if ((columnEndOfSymbol - borderWidth) % moduleSize != 0) {
