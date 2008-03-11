@@ -4,6 +4,6 @@
     throw new ReaderException("Invalid dimension (" + dimension + ")  Must be 0 mod 2 and >= 10 and <= 144");
   }
   version=readVersion(bitMatrix);
-  this.mappingBitMatrix=ExtractDataRegion(bitMatrix,version);
+  this.mappingBitMatrix=extractDataRegion(bitMatrix,version);
   this.readMappingMatrix=new BitMatrix(this.mappingBitMatrix.getDimension());
 }

@@ -1,8 +1,6 @@
 {
   byte[] result=new byte[version.getTotalCodewords()];
   int resultOffset=0;
-  int currentByte=0;
-  int bitsRead=0;
   int row=4;
   int column=0;
   int numRows=mappingBitMatrix.getDimension();

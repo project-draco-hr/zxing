@@ -4,9 +4,8 @@
     if (bits.available() <= 16) {
       return ASCII_ENCODE;
     }
-    char edifactValue;
     for (int i=0; i < 4; i++) {
-      edifactValue=(char)bits.readBits(6);
+      char edifactValue=(char)bits.readBits(6);
       if (edifactValue == 0x2B67) {
         unlatch=true;
       }

@@ -1,10 +1,8 @@
 {
-  char oneByte;
   boolean upperShift=false;
-  int bytesProcessed=0;
   do {
-    oneByte=(char)bits.readBits(8);
-    if (oneByte == 0) {
+    char oneByte=(char)bits.readBits(8);
+    if (oneByte == '\0') {
       throw new ReaderException("0 is an invalid ASCII codeword");
     }
  else     if (oneByte <= 128) {

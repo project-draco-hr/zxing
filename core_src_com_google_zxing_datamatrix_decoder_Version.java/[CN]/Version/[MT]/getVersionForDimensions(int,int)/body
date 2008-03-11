@@ -5,10 +5,8 @@
   int numVersions=VERSIONS.length;
   for (int i=0; i < numVersions; ++i) {
     Version version=VERSIONS[i];
-    if (version.symbolSizeRows == numRows) {
-      if (version.symbolSizeColumns == numColumns) {
-        return version;
-      }
+    if (version.symbolSizeRows == numRows && version.symbolSizeColumns == numColumns) {
+      return version;
     }
   }
   throw new ReaderException("Dimensions do not correspond to a valid Data Matrix Version.");
