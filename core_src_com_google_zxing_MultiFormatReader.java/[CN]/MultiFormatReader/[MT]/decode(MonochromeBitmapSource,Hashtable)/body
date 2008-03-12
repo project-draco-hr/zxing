@@ -15,7 +15,6 @@
   if (readers.isEmpty()) {
     readers.addElement(new MultiFormatOneDReader());
     readers.addElement(new QRCodeReader());
-    readers.addElement(new DataMatrixReader());
   }
   for (int i=0; i < readers.size(); i++) {
     Reader reader=(Reader)readers.elementAt(i);
