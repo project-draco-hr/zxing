@@ -1,0 +1,7 @@
+{
+  if (rawBytes == null && text == null) {
+    throw new IllegalArgumentException();
+  }
+  this.rawBytes=rawBytes;
+  this.text=text;
+}

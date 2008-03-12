@@ -19,5 +19,6 @@
       resultBytes[resultOffset++]=codewordBytes[i];
     }
   }
-  return DecodedBitStreamParser.decode(resultBytes,version);
+  String text=DecodedBitStreamParser.decode(resultBytes,version);
+  return new DecoderResult(resultBytes,text);
 }

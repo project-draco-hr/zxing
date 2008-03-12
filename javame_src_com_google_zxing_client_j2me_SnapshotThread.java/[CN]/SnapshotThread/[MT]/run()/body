@@ -9,7 +9,7 @@
       MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);
       Reader reader=new MultiFormatReader();
       Result result=reader.decode(source);
-      zXingMIDlet.handleDecodedText(result.getText());
+      zXingMIDlet.handleDecodedText(result);
     }
  catch (    ReaderException re) {
       zXingMIDlet.showError("Sorry, no barcode was found.");

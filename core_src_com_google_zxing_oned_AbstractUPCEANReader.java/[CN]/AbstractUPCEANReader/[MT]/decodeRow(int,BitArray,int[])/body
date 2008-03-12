@@ -10,5 +10,5 @@
   if (!checkChecksum(resultString)) {
     throw new ReaderException("Checksum failed");
   }
-  return new Result(resultString,new ResultPoint[]{new GenericResultPoint((float)(startGuardRange[1] - startGuardRange[0]) / 2.0f,(float)rowNumber),new GenericResultPoint((float)(endRange[1] - endRange[0]) / 2.0f,(float)rowNumber)},getBarcodeFormat());
+  return new Result(resultString,null,new ResultPoint[]{new GenericResultPoint((float)(startGuardRange[1] - startGuardRange[0]) / 2.0f,(float)rowNumber),new GenericResultPoint((float)(endRange[1] - endRange[0]) / 2.0f,(float)rowNumber)},getBarcodeFormat());
 }

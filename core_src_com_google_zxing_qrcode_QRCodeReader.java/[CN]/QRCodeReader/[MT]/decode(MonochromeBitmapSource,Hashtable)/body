@@ -1,15 +1,15 @@
 {
-  String text;
+  DecoderResult decoderResult;
   ResultPoint[] points;
   if (hints != null && hints.containsKey(DecodeHintType.PURE_BARCODE)) {
     BitMatrix bits=extractPureBits(image);
-    text=decoder.decode(bits);
+    decoderResult=decoder.decode(bits);
     points=NO_POINTS;
   }
  else {
     DetectorResult result=new Detector(image).detect();
-    text=decoder.decode(result.getBits());
+    decoderResult=decoder.decode(result.getBits());
     points=result.getPoints();
   }
-  return new Result(text,points,BarcodeFormat.QR_CODE);
+  return new Result(decoderResult.getText(),decoderResult.getRawBytes(),points,BarcodeFormat.QR_CODE);
 }

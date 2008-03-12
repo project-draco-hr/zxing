@@ -1,8 +1,8 @@
 {
-  String text;
+  DecoderResult decoderResult;
   ResultPoint[] points;
   BitMatrix bits=extractPureBits(image);
-  text=decoder.decode(bits);
+  decoderResult=decoder.decode(bits);
   points=NO_POINTS;
-  return new Result(text,points,BarcodeFormat.DATAMATRIX);
+  return new Result(decoderResult.getText(),decoderResult.getRawBytes(),points,BarcodeFormat.DATAMATRIX);
 }

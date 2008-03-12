@@ -1,4 +1,5 @@
 {
+  String rawText=theResult.getText();
   ParsedReaderResult result;
   if ((result=BookmarkDoCoMoResult.parse(rawText)) != null) {
     return result;

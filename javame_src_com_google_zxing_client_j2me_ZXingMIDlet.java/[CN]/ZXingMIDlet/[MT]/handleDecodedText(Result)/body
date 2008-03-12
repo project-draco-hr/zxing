@@ -1,5 +1,5 @@
 {
-  ParsedReaderResult result=ParsedReaderResult.parseReaderResult(text);
+  ParsedReaderResult result=ParsedReaderResult.parseReaderResult(theResult);
   ParsedReaderResultType type=result.getType();
   if (type.equals(ParsedReaderResultType.URI)) {
     String uri=((URIParsedResult)result).getURI();

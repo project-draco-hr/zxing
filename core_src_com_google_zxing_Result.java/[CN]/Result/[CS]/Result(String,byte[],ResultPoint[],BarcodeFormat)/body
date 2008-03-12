@@ -1,5 +1,6 @@
 {
   this.text=text;
+  this.rawBytes=rawBytes;
   this.resultPoints=resultPoints;
   this.format=format;
 }
