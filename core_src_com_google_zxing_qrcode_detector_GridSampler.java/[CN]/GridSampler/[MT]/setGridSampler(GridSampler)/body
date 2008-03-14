@@ -1,6 +1,0 @@
-{
-  if (newGridSampler == null) {
-    throw new IllegalArgumentException();
-  }
-  gridSampler=newGridSampler;
-}

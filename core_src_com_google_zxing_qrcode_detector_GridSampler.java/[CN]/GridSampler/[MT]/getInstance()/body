@@ -1,6 +1,0 @@
-{
-  if (gridSampler == null) {
-    gridSampler=new DefaultGridSampler();
-  }
-  return gridSampler;
-}
