@@ -1,4 +1,5 @@
 {
+  String rawText=result.getText();
   String emailAddress;
   if (rawText.startsWith("mailto:")) {
     emailAddress=rawText.substring(7);

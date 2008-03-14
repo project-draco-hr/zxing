@@ -1,4 +1,5 @@
 {
+  String rawText=result.getText();
   if (rawText.indexOf("MEMORY") < 0 || rawText.indexOf("\r\n") < 0) {
     return null;
   }

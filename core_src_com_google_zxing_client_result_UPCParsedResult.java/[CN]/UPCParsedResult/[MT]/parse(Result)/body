@@ -1,4 +1,5 @@
 {
+  String rawText=result.getText();
   int length=rawText.length();
   if (length != 12 && length != 13) {
     return null;

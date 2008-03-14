@@ -1,4 +1,5 @@
 {
+  String rawText=result.getText();
   if (!rawText.startsWith("MECARD:")) {
     return null;
   }
