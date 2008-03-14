@@ -31,8 +31,7 @@
       throw new ReaderException("Could not find alignment pattern");
     }
   }
-  GridSampler sampler=GridSampler.getInstance();
-  BitMatrix bits=sampler.sampleGrid(image,topLeft,topRight,bottomLeft,alignmentPattern,dimension);
+  BitMatrix bits=sampleGrid(image,topLeft,topRight,bottomLeft,alignmentPattern,dimension);
   ResultPoint[] points;
   if (alignmentPattern == null) {
     points=new ResultPoint[]{bottomLeft,topLeft,topRight};

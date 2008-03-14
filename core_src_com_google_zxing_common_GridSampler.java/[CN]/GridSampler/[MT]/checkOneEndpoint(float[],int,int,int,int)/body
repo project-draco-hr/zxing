@@ -1,0 +1,17 @@
+{
+  if (x < -1 || x > width || y < -1 || y > height) {
+    throw new ReaderException("Transformed point out of bounds at " + x + ','+ y);
+  }
+  if (x == -1) {
+    points[0]=0.0f;
+  }
+  if (y == -1) {
+    points[1]=0.0f;
+  }
+  if (x == width) {
+    points[0]=width - 1;
+  }
+  if (y == height) {
+    points[1]=height - 1;
+  }
+}

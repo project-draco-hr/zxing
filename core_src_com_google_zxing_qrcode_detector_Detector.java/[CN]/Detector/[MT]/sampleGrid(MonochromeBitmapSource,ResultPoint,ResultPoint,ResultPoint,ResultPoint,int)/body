@@ -1,0 +1,19 @@
+{
+  float dimMinusThree=(float)dimension - 3.5f;
+  float bottomRightX;
+  float bottomRightY;
+  float sourceBottomRightX;
+  float sourceBottomRightY;
+  if (alignmentPattern != null) {
+    bottomRightX=alignmentPattern.getX();
+    bottomRightY=alignmentPattern.getY();
+    sourceBottomRightX=sourceBottomRightY=dimMinusThree - 3.0f;
+  }
+ else {
+    bottomRightX=(topRight.getX() - topLeft.getX()) + bottomLeft.getX();
+    bottomRightY=(topRight.getY() - topLeft.getY()) + bottomLeft.getY();
+    sourceBottomRightX=sourceBottomRightY=dimMinusThree;
+  }
+  GridSampler sampler=GridSampler.getInstance();
+  return sampler.sampleGrid(image,dimension,3.5f,3.5f,dimMinusThree,3.5f,sourceBottomRightX,sourceBottomRightY,3.5f,dimMinusThree,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomRightX,bottomRightY,bottomLeft.getX(),bottomLeft.getY());
+}
