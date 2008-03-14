@@ -3,4 +3,5 @@
   this.rawBytes=rawBytes;
   this.resultPoints=resultPoints;
   this.format=format;
+  this.resultMetadata=null;
 }

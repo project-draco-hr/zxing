@@ -6,7 +6,14 @@
  catch (  ReaderException re) {
     if (tryHarder && image.isRotateSupported()) {
       MonochromeBitmapSource rotatedImage=image.rotateCounterClockwise();
-      return doDecode(rotatedImage,hints,tryHarder);
+      Result result=doDecode(rotatedImage,hints,tryHarder);
+      Hashtable metadata=result.getResultMetadata();
+      int orientation=270;
+      if (metadata != null && metadata.containsKey(ResultMetadataType.ORIENTATION)) {
+        orientation=(orientation + ((Integer)metadata.get(ResultMetadataType.ORIENTATION)).intValue()) % 360;
+      }
+      result.putMetadata(ResultMetadataType.ORIENTATION,new Integer(orientation));
+      return result;
     }
  else {
       throw re;

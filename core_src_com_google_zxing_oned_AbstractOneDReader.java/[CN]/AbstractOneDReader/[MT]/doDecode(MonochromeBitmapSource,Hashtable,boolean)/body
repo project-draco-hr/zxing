@@ -45,6 +45,7 @@
             barcodesToSkip--;
           }
  else {
+            result.putMetadata(ResultMetadataType.ORIENTATION,new Integer(180));
             return result;
           }
         }

@@ -1,0 +1,6 @@
+{
+  if (resultMetadata == null) {
+    resultMetadata=new Hashtable(3);
+  }
+  resultMetadata.put(type,value);
+}
