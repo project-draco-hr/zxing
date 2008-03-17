@@ -26,5 +26,5 @@
     longitude=Float.parseFloat(rawText.substring(latitudeEnd + 1,longitudeEnd));
     altitude=Float.parseFloat(rawText.substring(longitudeEnd + 1));
   }
-  return new GeoParsedResult(latitude,longitude,altitude);
+  return new GeoParsedResult(rawText,latitude,longitude,altitude);
 }

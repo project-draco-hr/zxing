@@ -21,10 +21,6 @@
     String email=((EmailAddressResult)result).getEmailAddress();
     showOpenURL("Compose E-mail?",email,"mailto:" + email);
   }
- else   if (type.equals(ParsedReaderResultType.GEO)) {
-    GeoParsedResult geoResult=(GeoParsedResult)result;
-    showOpenURL("Open In Google Maps?",geoResult.getDisplayResult(),geoResult.getGoogleMapsURI());
-  }
  else   if (type.equals(ParsedReaderResultType.UPC)) {
     String upc=((UPCParsedResult)result).getUPC();
     String uri="http://www.upcdatabase.com/item.asp?upc=" + upc;

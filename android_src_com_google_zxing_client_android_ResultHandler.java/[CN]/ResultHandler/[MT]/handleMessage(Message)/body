@@ -56,15 +56,6 @@
         return;
       }
     }
- else     if (type.equals(ParsedReaderResultType.GEO)) {
-      GeoParsedResult geoResult=(GeoParsedResult)result;
-      try {
-        intent=new Intent(Intent.SENDTO_ACTION,new ContentURI(geoResult.getGoogleMapsURI()));
-      }
- catch (      URISyntaxException e) {
-        return;
-      }
-    }
  else     if (type.equals(ParsedReaderResultType.UPC)) {
       UPCParsedResult upcResult=(UPCParsedResult)result;
       try {
