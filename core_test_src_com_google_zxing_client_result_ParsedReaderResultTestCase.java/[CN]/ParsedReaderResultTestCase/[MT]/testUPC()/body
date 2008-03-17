@@ -1,5 +1,5 @@
 {
-  doTestResult("123456789012",ParsedReaderResultType.UPC);
-  doTestResult("1234567890123",ParsedReaderResultType.UPC);
+  doTestResult("123456789012",ParsedReaderResultType.UPC,BarcodeFormat.UPC_A);
+  doTestResult("1234567890123",ParsedReaderResultType.UPC,BarcodeFormat.UPC_A);
   doTestResult("12345678901",ParsedReaderResultType.TEXT);
 }

@@ -26,6 +26,10 @@
     String uri="http://www.upcdatabase.com/item.asp?upc=" + upc;
     showOpenURL("Look Up Barcode Online?",upc,uri);
   }
+ else   if (type.equals(ParsedReaderResultType.TEL)) {
+    String number=((TelParsedResult)result).getNumber();
+    showOpenURL("Dial Number?",number,"tel:" + number);
+  }
  else {
     showAlert("Barcode Detected",result.getDisplayResult());
   }
