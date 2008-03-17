@@ -1,0 +1,5 @@
+{
+  super(ParsedReaderResultType.NDEF_TEXT);
+  this.language=language;
+  this.text=text;
+}

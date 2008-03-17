@@ -1,0 +1,18 @@
+{
+  byte[] bytes=result.getRawBytes();
+  if (!isMaybeNDEF(bytes)) {
+    return null;
+  }
+  int payloadLength=bytes[2] & 0xFF;
+  if (bytes[3] != URI_WELL_KNOWN_TYPE) {
+    return null;
+  }
+  int identifierCode=bytes[4] & 0xFF;
+  String prefix=null;
+  if (identifierCode < URI_PREFIXES.length) {
+    prefix=URI_PREFIXES[identifierCode];
+  }
+  String restOfURI=bytesToString(bytes,5,payloadLength - 1,"UTF-8");
+  String fullURI=prefix == null ? restOfURI : prefix + restOfURI;
+  return new NDEFURIParsedResult(fullURI);
+}
