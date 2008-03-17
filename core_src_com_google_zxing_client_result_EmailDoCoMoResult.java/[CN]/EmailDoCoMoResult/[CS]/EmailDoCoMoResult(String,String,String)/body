@@ -1,6 +1,0 @@
-{
-  super(ParsedReaderResultType.EMAIL);
-  this.to=to;
-  this.subject=subject;
-  this.body=body;
-}

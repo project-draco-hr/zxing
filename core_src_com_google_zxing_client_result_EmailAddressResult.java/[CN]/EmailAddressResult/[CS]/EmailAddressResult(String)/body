@@ -1,4 +1,0 @@
-{
-  super(ParsedReaderResultType.EMAIL_ADDRESS);
-  this.emailAddress=emailAddress;
-}

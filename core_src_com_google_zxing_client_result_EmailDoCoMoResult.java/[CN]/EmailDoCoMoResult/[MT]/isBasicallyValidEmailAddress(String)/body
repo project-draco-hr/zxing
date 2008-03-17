@@ -1,4 +1,0 @@
-{
-  int atIndex=email.indexOf('@');
-  return atIndex >= 0 && email.indexOf('.') > atIndex && email.indexOf(' ') < 0;
-}

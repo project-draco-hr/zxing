@@ -1,7 +1,0 @@
-{
-  int comma=name.indexOf((int)',');
-  if (comma >= 0) {
-    return name.substring(comma + 1) + ' ' + name.substring(0,comma);
-  }
-  return name;
-}
