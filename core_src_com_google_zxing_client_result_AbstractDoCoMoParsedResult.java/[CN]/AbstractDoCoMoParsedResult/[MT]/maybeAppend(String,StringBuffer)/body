@@ -1,0 +1,6 @@
+{
+  if (value != null) {
+    result.append('\n');
+    result.append(value);
+  }
+}

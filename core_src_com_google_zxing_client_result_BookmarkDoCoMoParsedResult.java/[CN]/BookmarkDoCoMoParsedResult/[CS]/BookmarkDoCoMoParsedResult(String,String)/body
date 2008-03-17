@@ -1,0 +1,5 @@
+{
+  super(ParsedReaderResultType.BOOKMARK);
+  this.title=title;
+  this.uri=uri;
+}

@@ -1,0 +1,16 @@
+{
+  String rawText=result.getText();
+  if (!rawText.startsWith("MECARD:")) {
+    return null;
+  }
+  String[] rawName=matchPrefixedField("N:",rawText);
+  if (rawName == null) {
+    return null;
+  }
+  String name=parseName(rawName[0]);
+  String[] phoneNumbers=matchPrefixedField("TEL:",rawText);
+  String email=matchSinglePrefixedField("EMAIL:",rawText);
+  String note=matchSinglePrefixedField("NOTE:",rawText);
+  String address=matchSinglePrefixedField("ADR:",rawText);
+  return new AddressBookDoCoMoParsedResult(name,phoneNumbers,email,note,address);
+}

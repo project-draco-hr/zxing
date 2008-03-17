@@ -1,0 +1,8 @@
+{
+  StringBuffer result=new StringBuffer(name);
+  maybeAppend(email,result);
+  maybeAppend(address,result);
+  maybeAppend(phoneNumbers,result);
+  maybeAppend(note,result);
+  return result.toString();
+}

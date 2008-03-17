@@ -1,0 +1,16 @@
+{
+  String rawText=result.getText();
+  if (!rawText.startsWith("MEBKM:")) {
+    return null;
+  }
+  String title=matchSinglePrefixedField("TITLE:",rawText);
+  String[] rawUri=matchPrefixedField("URL:",rawText);
+  if (rawUri == null) {
+    return null;
+  }
+  String uri=rawUri[0];
+  if (!URIParsedResult.isBasicallyValidURI(uri)) {
+    return null;
+  }
+  return new BookmarkDoCoMoParsedResult(title,uri);
+}

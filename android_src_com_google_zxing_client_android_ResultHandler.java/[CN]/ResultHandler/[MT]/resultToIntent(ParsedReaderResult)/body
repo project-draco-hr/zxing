@@ -2,7 +2,7 @@
   Intent intent=null;
   ParsedReaderResultType type=result.getType();
   if (type.equals(ParsedReaderResultType.ADDRESSBOOK)) {
-    AddressBookDoCoMoResult addressResult=(AddressBookDoCoMoResult)result;
+    AddressBookDoCoMoParsedResult addressResult=(AddressBookDoCoMoParsedResult)result;
     intent=new Intent(Contacts.Intents.Insert.ACTION,Contacts.People.CONTENT_URI);
     putExtra(intent,Contacts.Intents.Insert.NAME,addressResult.getName());
     putExtra(intent,Contacts.Intents.Insert.PHONE,addressResult.getPhoneNumbers());
@@ -11,7 +11,7 @@
     putExtra(intent,Contacts.Intents.Insert.POSTAL,addressResult.getAddress());
   }
  else   if (type.equals(ParsedReaderResultType.ADDRESSBOOK_AU)) {
-    AddressBookAUResult addressResult=(AddressBookAUResult)result;
+    AddressBookAUParsedResult addressResult=(AddressBookAUParsedResult)result;
     intent=new Intent(Contacts.Intents.Insert.ACTION,Contacts.People.CONTENT_URI);
     putExtra(intent,Contacts.Intents.Insert.NAME,addressResult.getNames());
     putExtra(intent,Contacts.Intents.Insert.PHONE,addressResult.getPhoneNumbers());
@@ -21,20 +21,20 @@
   }
  else   if (type.equals(ParsedReaderResultType.BOOKMARK)) {
     try {
-      intent=new Intent(Intent.VIEW_ACTION,new ContentURI(((BookmarkDoCoMoResult)result).getURI()));
+      intent=new Intent(Intent.VIEW_ACTION,new ContentURI(((BookmarkDoCoMoParsedResult)result).getURI()));
     }
  catch (    URISyntaxException e) {
     }
   }
  else   if (type.equals(ParsedReaderResultType.URLTO)) {
     try {
-      intent=new Intent(Intent.VIEW_ACTION,new ContentURI(((URLTOResult)result).getURI()));
+      intent=new Intent(Intent.VIEW_ACTION,new ContentURI(((URLTOParsedResult)result).getURI()));
     }
  catch (    URISyntaxException e) {
     }
   }
  else   if (type.equals(ParsedReaderResultType.EMAIL)) {
-    EmailDoCoMoResult emailResult=(EmailDoCoMoResult)result;
+    EmailDoCoMoParsedResult emailResult=(EmailDoCoMoParsedResult)result;
     try {
       intent=new Intent(Intent.SENDTO_ACTION,new ContentURI(emailResult.getTo()));
     }
@@ -44,7 +44,7 @@
     putExtra(intent,"body",emailResult.getBody());
   }
  else   if (type.equals(ParsedReaderResultType.EMAIL_ADDRESS)) {
-    EmailAddressResult emailResult=(EmailAddressResult)result;
+    EmailAddressParsedResult emailResult=(EmailAddressParsedResult)result;
     try {
       intent=new Intent(Intent.SENDTO_ACTION,new ContentURI(emailResult.getEmailAddress()));
     }
