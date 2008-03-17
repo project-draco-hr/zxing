@@ -1,4 +1,4 @@
 {
   this.captureActivity=captureActivity;
-  this.result=result;
+  this.intent=resultToIntent(result);
 }

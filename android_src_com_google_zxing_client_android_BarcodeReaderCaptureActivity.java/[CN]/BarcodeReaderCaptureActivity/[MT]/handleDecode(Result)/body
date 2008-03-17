@@ -5,8 +5,8 @@
   }
   Context context=getApplication();
   ParsedReaderResult readerResult=parseReaderResult(rawResult);
-  Handler handler=new ResultHandler(this,readerResult);
-  if (canBeHandled(readerResult.getType())) {
+  ResultHandler handler=new ResultHandler(this,readerResult);
+  if (handler.getIntent() != null) {
     Message yesMessage=handler.obtainMessage(R.string.button_yes);
     Message noMessage=handler.obtainMessage(R.string.button_no);
     showAlert(context.getString(getDialogTitleID(readerResult.getType())),readerResult.getDisplayResult(),context.getString(R.string.button_yes),yesMessage,context.getString(R.string.button_no),noMessage,true,noMessage);
