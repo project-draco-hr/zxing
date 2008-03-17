@@ -1,0 +1,5 @@
+{
+  doTestResult("geo:1,2",ParsedReaderResultType.GEO);
+  doTestResult("geo:1,2,3",ParsedReaderResultType.GEO);
+  doTestResult("geo:100.33,-32.3344,3.35",ParsedReaderResultType.GEO);
+}

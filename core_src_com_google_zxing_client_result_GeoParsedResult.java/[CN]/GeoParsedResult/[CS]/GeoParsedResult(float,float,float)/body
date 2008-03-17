@@ -1,0 +1,6 @@
+{
+  super(ParsedReaderResultType.GEO);
+  this.latitude=latitude;
+  this.longitude=longitude;
+  this.altitude=altitude;
+}

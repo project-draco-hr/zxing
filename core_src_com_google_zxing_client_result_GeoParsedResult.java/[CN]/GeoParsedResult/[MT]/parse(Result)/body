@@ -1,0 +1,30 @@
+{
+  String rawText=result.getText();
+  if (!rawText.startsWith("geo:")) {
+    return null;
+  }
+  int queryStart=rawText.indexOf('?',4);
+  if (queryStart < 0) {
+    rawText=rawText.substring(4);
+  }
+ else {
+    rawText=rawText.substring(4,queryStart);
+  }
+  int latitudeEnd=rawText.indexOf(',');
+  if (latitudeEnd < 0) {
+    return null;
+  }
+  float latitude=Float.parseFloat(rawText.substring(0,latitudeEnd));
+  int longitudeEnd=rawText.indexOf(',',latitudeEnd + 1);
+  float longitude;
+  float altitude;
+  if (longitudeEnd < 0) {
+    longitude=Float.parseFloat(rawText.substring(latitudeEnd + 1));
+    altitude=0.0f;
+  }
+ else {
+    longitude=Float.parseFloat(rawText.substring(latitudeEnd + 1,longitudeEnd));
+    altitude=Float.parseFloat(rawText.substring(longitudeEnd + 1));
+  }
+  return new GeoParsedResult(latitude,longitude,altitude);
+}

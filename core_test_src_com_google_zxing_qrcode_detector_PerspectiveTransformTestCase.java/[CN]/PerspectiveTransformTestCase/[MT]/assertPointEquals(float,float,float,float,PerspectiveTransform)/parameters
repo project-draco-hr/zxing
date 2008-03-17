@@ -1,5 +1,0 @@
-float expectedX
-float expectedY
-float sourceX
-float sourceY
-PerspectiveTransform pt
