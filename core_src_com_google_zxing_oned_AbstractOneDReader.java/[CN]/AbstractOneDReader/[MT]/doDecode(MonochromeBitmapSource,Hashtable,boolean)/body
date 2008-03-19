@@ -10,13 +10,7 @@
     }
   }
   int middle=height >> 1;
-  int rowStep;
-  if (tryHarder) {
-    rowStep=2;
-  }
- else {
-    rowStep=Math.max(1,height >> 4);
-  }
+  int rowStep=Math.max(1,height >> (tryHarder ? 7 : 4));
   int maxLines;
   if (tryHarder || barcodesToSkip > 0) {
     maxLines=height;
@@ -24,6 +18,7 @@
  else {
     maxLines=7;
   }
+  Result lastResult=null;
   for (int x=0; x < maxLines; x++) {
     int rowStepsAboveOrBelow=(x + 1) >> 1;
     boolean isAbove=(x & 0x01) == 0;
@@ -31,32 +26,38 @@
     if (rowNumber < 0 || rowNumber >= height) {
       break;
     }
-    image.estimateBlackPoint(BlackPointEstimationMethod.ROW_SAMPLING,rowNumber);
-    image.getBlackRow(rowNumber,row,0,width);
     try {
-      Result result=decodeRow(rowNumber,row,hints);
-      if (barcodesToSkip > 0) {
-        barcodesToSkip--;
-      }
- else {
-        return result;
-      }
+      image.estimateBlackPoint(BlackPointEstimationMethod.ROW_SAMPLING,rowNumber);
     }
  catch (    ReaderException re) {
-      if (tryHarder) {
-        row.reverse();
-        try {
-          Result result=decodeRow(rowNumber,row,hints);
+      continue;
+    }
+    image.getBlackRow(rowNumber,row,0,width);
+    for (int attempt=0; attempt < 2; attempt++) {
+      if (attempt == 1) {
+        if (tryHarder) {
+          row.reverse();
+        }
+ else {
+          break;
+        }
+      }
+      try {
+        Result result=decodeRow(rowNumber,row,hints);
+        if (lastResult == null || !lastResult.getText().equals(result.getText())) {
           if (barcodesToSkip > 0) {
             barcodesToSkip--;
+            lastResult=result;
           }
  else {
-            result.putMetadata(ResultMetadataType.ORIENTATION,new Integer(180));
+            if (attempt == 1) {
+              result.putMetadata(ResultMetadataType.ORIENTATION,new Integer(180));
+            }
             return result;
           }
         }
- catch (        ReaderException re2) {
-        }
+      }
+ catch (      ReaderException re) {
       }
     }
   }
