@@ -26,7 +26,7 @@
     firstPeak=secondPeak;
     secondPeak=temp;
   }
-  if (secondPeak - firstPeak < histogram.length >> 3) {
+  if (secondPeak - firstPeak <= histogram.length >> 4) {
     throw new ReaderException("Too little dynamic range in luminance");
   }
   int bestValley=secondPeak - 1;
