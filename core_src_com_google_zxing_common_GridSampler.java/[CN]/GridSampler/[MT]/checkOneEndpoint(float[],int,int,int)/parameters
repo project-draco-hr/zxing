@@ -1,5 +1,4 @@
 float[] points
-int x
-int y
+int offset
 int width
 int height

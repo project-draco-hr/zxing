@@ -1,6 +1,6 @@
 {
   int width=image.getWidth();
   int height=image.getHeight();
-  checkOneEndpoint(points,(int)points[0],(int)points[1],width,height);
-  checkOneEndpoint(points,(int)points[points.length - 2],(int)points[points.length - 1],width,height);
+  checkOneEndpoint(points,0,width,height);
+  checkOneEndpoint(points,points.length - 2,width,height);
 }
