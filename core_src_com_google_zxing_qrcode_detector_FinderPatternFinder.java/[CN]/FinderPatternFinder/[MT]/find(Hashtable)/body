@@ -1,9 +1,10 @@
 {
+  boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
   int maxI=image.getHeight();
   int maxJ=image.getWidth();
   int[] stateCount=new int[5];
   boolean done=false;
-  int iSkip=BIG_SKIP;
+  int iSkip=tryHarder ? 1 : BIG_SKIP;
   for (int i=iSkip - 1; i < maxI && !done; i+=iSkip) {
     BitArray blackRow=image.getBlackRow(i,null,0,maxJ);
     stateCount[0]=0;
