@@ -2,6 +2,13 @@
   int width=image.getWidth();
   int height=image.getHeight();
   BitArray row=new BitArray(width);
+  int barcodesToSkip=0;
+  if (hints != null) {
+    Integer number=(Integer)hints.get(DecodeHintType.SKIP_N_BARCODES);
+    if (number != null) {
+      barcodesToSkip=number.intValue();
+    }
+  }
   int middle=height >> 1;
   int rowStep=Math.max(1,height >> (tryHarder ? 7 : 4));
   int maxLines;
@@ -11,6 +18,7 @@
  else {
     maxLines=7;
   }
+  Hashtable lastResults=null;
   for (int x=0; x < maxLines; x++) {
     int rowStepsAboveOrBelow=(x + 1) >> 1;
     boolean isAbove=(x & 0x01) == 0;
@@ -36,10 +44,22 @@
       }
       try {
         Result result=decodeRow(rowNumber,row,hints);
-        if (attempt == 1) {
-          result.putMetadata(ResultMetadataType.ORIENTATION,new Integer(180));
+        if (lastResults != null && lastResults.containsKey(result.getText())) {
+          continue;
         }
-        return result;
+        if (barcodesToSkip > 0) {
+          barcodesToSkip--;
+          if (lastResults == null) {
+            lastResults=new Hashtable(3);
+          }
+          lastResults.put(result.getText(),Boolean.TRUE);
+        }
+ else {
+          if (attempt == 1) {
+            result.putMetadata(ResultMetadataType.ORIENTATION,new Integer(180));
+          }
+          return result;
+        }
       }
  catch (      ReaderException re) {
       }
