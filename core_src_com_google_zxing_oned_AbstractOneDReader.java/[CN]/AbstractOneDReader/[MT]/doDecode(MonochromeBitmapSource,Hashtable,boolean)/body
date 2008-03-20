@@ -2,13 +2,6 @@
   int width=image.getWidth();
   int height=image.getHeight();
   BitArray row=new BitArray(width);
-  int barcodesToSkip=0;
-  if (hints != null) {
-    Integer number=(Integer)hints.get(DecodeHintType.SKIP_N_BARCODES);
-    if (number != null) {
-      barcodesToSkip=number.intValue();
-    }
-  }
   int middle=height >> 1;
   int rowStep=Math.max(1,height >> (tryHarder ? 7 : 4));
   int maxLines;
@@ -19,6 +12,7 @@
     maxLines=7;
   }
   Hashtable lastResults=null;
+  boolean skippingSomeBarcodes=hints != null && hints.containsKey(DecodeHintType.SKIP_N_BARCODES);
   for (int x=0; x < maxLines; x++) {
     int rowStepsAboveOrBelow=(x + 1) >> 1;
     boolean isAbove=(x & 0x01) == 0;
@@ -47,8 +41,15 @@
         if (lastResults != null && lastResults.containsKey(result.getText())) {
           continue;
         }
-        if (barcodesToSkip > 0) {
-          barcodesToSkip--;
+        if (skippingSomeBarcodes) {
+          int oldValue=((Integer)hints.get(DecodeHintType.SKIP_N_BARCODES)).intValue();
+          if (oldValue > 1) {
+            hints.put(DecodeHintType.SKIP_N_BARCODES,new Integer(oldValue - 1));
+          }
+ else {
+            hints.remove(DecodeHintType.SKIP_N_BARCODES);
+            skippingSomeBarcodes=false;
+          }
           if (lastResults == null) {
             lastResults=new Hashtable(3);
           }
