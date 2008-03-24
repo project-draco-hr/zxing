@@ -1,17 +1,23 @@
 {
   GF256Poly poly=new GF256Poly(field,received);
   int[] syndromeCoefficients=new int[twoS];
+  boolean noError=true;
   for (int i=0; i < twoS; i++) {
-    syndromeCoefficients[syndromeCoefficients.length - 1 - i]=poly.evaluateAt(field.exp(i));
+    int eval=poly.evaluateAt(field.exp(i));
+    syndromeCoefficients[syndromeCoefficients.length - 1 - i]=eval;
+    if (eval != 0) {
+      noError=false;
+    }
+  }
+  if (noError) {
+    return;
   }
   GF256Poly syndrome=new GF256Poly(field,syndromeCoefficients);
-  if (!syndrome.isZero()) {
-    GF256Poly[] sigmaOmega=runEuclideanAlgorithm(field.buildMonomial(twoS,1),syndrome,twoS);
-    int[] errorLocations=findErrorLocations(sigmaOmega[0]);
-    int[] errorMagnitudes=findErrorMagnitudes(sigmaOmega[1],errorLocations);
-    for (int i=0; i < errorLocations.length; i++) {
-      int position=received.length - 1 - field.log(errorLocations[i]);
-      received[position]=GF256.addOrSubtract(received[position],errorMagnitudes[i]);
-    }
+  GF256Poly[] sigmaOmega=runEuclideanAlgorithm(field.buildMonomial(twoS,1),syndrome,twoS);
+  int[] errorLocations=findErrorLocations(sigmaOmega[0]);
+  int[] errorMagnitudes=findErrorMagnitudes(sigmaOmega[1],errorLocations);
+  for (int i=0; i < errorLocations.length; i++) {
+    int position=received.length - 1 - field.log(errorLocations[i]);
+    received[position]=GF256.addOrSubtract(received[position],errorMagnitudes[i]);
   }
 }
