@@ -1,21 +1,21 @@
 {
   FocusControl focusControl=(FocusControl)player.getControl("javax.microedition.amms.control.camera.FocusControl");
   if (focusControl != null) {
-    if (focusControl.isMacroSupported() && !focusControl.getMacro()) {
-      focusControl.setMacro(true);
-    }
-    if (focusControl.isAutoFocusSupported()) {
-      focusControl.setFocus(FocusControl.AUTO);
-      try {
-        Thread.sleep(FOCUS_TIME_MS);
+    try {
+      if (focusControl.isMacroSupported() && !focusControl.getMacro()) {
+        focusControl.setMacro(true);
       }
- catch (      InterruptedException ie) {
-      }
-      try {
+      if (focusControl.isAutoFocusSupported()) {
+        focusControl.setFocus(FocusControl.AUTO);
+        try {
+          Thread.sleep(FOCUS_TIME_MS);
+        }
+ catch (        InterruptedException ie) {
+        }
         focusControl.setFocus(FocusControl.AUTO_LOCK);
       }
- catch (      MediaException me) {
-      }
+    }
+ catch (    MediaException me) {
     }
   }
 }
