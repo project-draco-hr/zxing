@@ -1,8 +1,5 @@
 {
   int s=errorLocations.length;
-  if (s == 1) {
-    return new int[]{errorEvaluator.getCoefficient(0)};
-  }
   int[] result=new int[s];
   for (int i=0; i < s; i++) {
     int xiInverse=field.inverse(errorLocations[i]);
