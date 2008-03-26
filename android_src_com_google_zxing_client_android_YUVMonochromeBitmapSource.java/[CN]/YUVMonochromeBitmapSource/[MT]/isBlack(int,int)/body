@@ -1,3 +1,0 @@
-{
-  return ((image.getPixel(x,y) >> 16) & 0xFF) < blackPoint;
-}
