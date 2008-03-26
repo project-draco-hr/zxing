@@ -31,7 +31,7 @@
       passedCount++;
     }
  else {
-      System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\'');
+      fail("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\'');
     }
     try {
       result=barcodeReader.decode(source,TRY_HARDER_HINT);
