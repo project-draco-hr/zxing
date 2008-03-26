@@ -1,7 +1,4 @@
 {
-  if (Float.isNaN(biasTowardsWhite) || biasTowardsWhite <= 0.0f) {
-    throw new IllegalArgumentException("Illegal biasTowardsWhite: " + biasTowardsWhite);
-  }
   int numBuckets=histogram.length;
   int firstPeak=0;
   int firstPeakSize=0;
@@ -32,7 +29,7 @@
   int bestValley=secondPeak - 1;
   int bestValleyScore=-1;
   for (int i=secondPeak - 1; i > firstPeak; i--) {
-    int fromFirst=(int)(biasTowardsWhite * (i - firstPeak));
+    int fromFirst=i - firstPeak;
     int score=fromFirst * fromFirst * (secondPeak - i)* (256 - histogram[i]);
     if (score > bestValleyScore) {
       bestValley=i;
