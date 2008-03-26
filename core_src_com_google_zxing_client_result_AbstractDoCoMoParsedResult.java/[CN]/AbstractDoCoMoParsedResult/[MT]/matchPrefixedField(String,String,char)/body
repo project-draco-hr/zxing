@@ -23,7 +23,7 @@
         if (matches == null) {
           matches=new Vector(3);
         }
-        matches.addElement(unescape(rawText.substring(start,i)));
+        matches.addElement(unescapeBackslash(rawText.substring(start,i)));
         i++;
         done=true;
       }
