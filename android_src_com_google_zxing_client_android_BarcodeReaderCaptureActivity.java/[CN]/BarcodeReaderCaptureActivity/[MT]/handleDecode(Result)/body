@@ -7,12 +7,9 @@
   ParsedReaderResult readerResult=parseReaderResult(rawResult);
   ResultHandler handler=new ResultHandler(this,readerResult);
   if (handler.getIntent() != null) {
-    Message yesMessage=handler.obtainMessage(R.string.button_yes);
-    Message noMessage=handler.obtainMessage(R.string.button_no);
-    showAlert(context.getString(getDialogTitleID(readerResult.getType())),readerResult.getDisplayResult(),context.getString(R.string.button_yes),yesMessage,context.getString(R.string.button_no),noMessage,true,noMessage);
+    showAlert(context.getString(getDialogTitleID(readerResult.getType())),0,readerResult.getDisplayResult(),context.getString(R.string.button_yes),handler,context.getString(R.string.button_no),null,true,null);
   }
  else {
-    Message okMessage=handler.obtainMessage(R.string.button_ok);
-    showAlert(context.getString(R.string.title_barcode_detected),readerResult.getDisplayResult(),context.getString(R.string.button_ok),okMessage,null,null,true,okMessage);
+    showAlert(context.getString(R.string.title_barcode_detected),0,readerResult.getDisplayResult(),context.getString(R.string.button_ok),true);
   }
 }

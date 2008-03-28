@@ -1,5 +1,2 @@
 {
-  if (camera == null) {
-    camera=CameraDevice.open();
-  }
 }

@@ -3,7 +3,11 @@
   calculateStillResolution();
   getScreenResolution();
   bitmap=Bitmap.createBitmap(stillResolution.x,stillResolution.y,false);
-  camera=CameraDevice.open();
+  Bitmap fakeBitmap=BitmapFactory.decodeFile("/tmp/barcode.jpg");
+  if (fakeBitmap == null) {
+    throw new RuntimeException("/tmp/barcode.jpg was not found");
+  }
+  cameraSource=new BitmapCamera(fakeBitmap,stillResolution.x,stillResolution.y);
   params=new CameraDevice.CaptureParams();
   previewMode=false;
   setPreviewMode(true);

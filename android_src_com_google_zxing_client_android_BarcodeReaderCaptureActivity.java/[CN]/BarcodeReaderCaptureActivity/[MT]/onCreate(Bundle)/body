@@ -1,8 +1,6 @@
 {
   super.onCreate(icicle);
   requestWindowFeature(Window.FEATURE_NO_TITLE);
-  getWindow().setAttributes(new LayoutParams(LayoutParams.APPLICATION_TYPE,LayoutParams.NO_STATUS_BAR_FLAG));
-  getWindow().setFormat(PixelFormat.TRANSLUCENT);
   cameraManager=new CameraManager(getApplication());
   surfaceView=new CameraSurfaceView(getApplication(),cameraManager);
   setContentView(surfaceView);

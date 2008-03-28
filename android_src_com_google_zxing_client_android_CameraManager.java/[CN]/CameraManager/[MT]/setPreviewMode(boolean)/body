@@ -30,7 +30,6 @@
     }
     String captureType=on ? "preview" : "still";
     Log.v(TAG,"Setting params for " + captureType + ": srcWidth "+ params.srcWidth+ " srcHeight "+ params.srcHeight+ " leftPixel "+ params.leftPixel+ " topPixel "+ params.topPixel+ " outputWidth "+ params.outputWidth+ " outputHeight "+ params.outputHeight);
-    camera.setCaptureParams(params);
     previewMode=on;
   }
 }

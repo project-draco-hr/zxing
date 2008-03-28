@@ -2,7 +2,7 @@
   super(context);
   this.cameraManager=cameraManager;
   surfaceHolder=getHolder();
-  surfaceHolder.setCallback(this);
+  surfaceHolder.addCallback(this);
   hasSurface=false;
   scannerAlpha=0;
   surfaceHolder.setSizeFromLayout();
