@@ -1,0 +1,8 @@
+{
+  if (screenResolution == null) {
+    WindowManager manager=(WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+    Display display=manager.getDefaultDisplay();
+    screenResolution=new Point(display.getWidth(),display.getHeight());
+  }
+  return screenResolution;
+}

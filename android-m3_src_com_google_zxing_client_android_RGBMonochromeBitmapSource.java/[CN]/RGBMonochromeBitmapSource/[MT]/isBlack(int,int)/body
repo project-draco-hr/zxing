@@ -1,0 +1,3 @@
+{
+  return computeRGBLuminance(image.getPixel(x,y)) < blackPoint;
+}

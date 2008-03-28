@@ -1,0 +1,7 @@
+{
+  this.surfaceView=surfaceView;
+  this.cameraManager=cameraManager;
+  this.handler=handler;
+  this.idleLock=new Object();
+  state=State.IDLE;
+}

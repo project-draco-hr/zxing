@@ -1,0 +1,23 @@
+{
+  if (type.equals(ParsedReaderResultType.ADDRESSBOOK)) {
+    return R.string.title_add_contact;
+  }
+ else   if (type.equals(ParsedReaderResultType.URI) || type.equals(ParsedReaderResultType.BOOKMARK) || type.equals(ParsedReaderResultType.URLTO)) {
+    return R.string.title_open_url;
+  }
+ else   if (type.equals(ParsedReaderResultType.EMAIL) || type.equals(ParsedReaderResultType.EMAIL_ADDRESS)) {
+    return R.string.title_compose_email;
+  }
+ else   if (type.equals(ParsedReaderResultType.UPC)) {
+    return R.string.title_lookup_barcode;
+  }
+ else   if (type.equals(ParsedReaderResultType.TEL)) {
+    return R.string.title_dial;
+  }
+ else   if (type.equals(ParsedReaderResultType.GEO)) {
+    return R.string.title_view_maps;
+  }
+ else {
+    return R.string.title_barcode_detected;
+  }
+}

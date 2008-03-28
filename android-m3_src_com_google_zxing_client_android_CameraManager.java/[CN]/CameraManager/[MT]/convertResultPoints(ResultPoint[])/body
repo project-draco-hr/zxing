@@ -1,0 +1,12 @@
+{
+  Rect frame=getFramingRect();
+  int frameSize=frame.width();
+  int count=points.length;
+  Point[] output=new Point[count];
+  for (int x=0; x < count; x++) {
+    output[x]=new Point();
+    output[x].x=frame.left + (int)(points[x].getX() * frameSize / stillResolution.x + 0.5f);
+    output[x].y=frame.top + (int)(points[x].getY() * frameSize / stillResolution.y + 0.5f);
+  }
+  return output;
+}

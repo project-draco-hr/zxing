@@ -1,0 +1,5 @@
+{
+  super.onCreateOptionsMenu(menu);
+  menu.add(0,ABOUT_ID,R.string.menu_about);
+  return true;
+}

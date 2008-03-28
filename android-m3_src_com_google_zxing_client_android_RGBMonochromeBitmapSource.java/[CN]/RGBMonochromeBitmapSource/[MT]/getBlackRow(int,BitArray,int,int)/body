@@ -1,0 +1,16 @@
+{
+  if (row == null) {
+    row=new BitArray(getWidth);
+  }
+ else {
+    row.clear();
+  }
+  int[] pixelRow=new int[getWidth];
+  image.getPixels(pixelRow,0,getWidth,startX,y,getWidth,1);
+  for (int i=0; i < getWidth; i++) {
+    if (computeRGBLuminance(pixelRow[i]) < blackPoint) {
+      row.set(i);
+    }
+  }
+  return row;
+}

@@ -1,0 +1,4 @@
+{
+  super(ParsedReaderResultType.ANDROID_INTENT);
+  this.intent=intent;
+}
