@@ -1,0 +1,4 @@
+int header
+String type
+byte[] payload
+int totalRecordLength

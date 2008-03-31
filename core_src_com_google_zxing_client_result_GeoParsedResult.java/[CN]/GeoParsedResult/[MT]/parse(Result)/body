@@ -1,6 +1,6 @@
 {
   String rawText=result.getText();
-  if (!rawText.startsWith("geo:")) {
+  if (rawText == null || !rawText.startsWith("geo:")) {
     return null;
   }
   int queryStart=rawText.indexOf('?',4);

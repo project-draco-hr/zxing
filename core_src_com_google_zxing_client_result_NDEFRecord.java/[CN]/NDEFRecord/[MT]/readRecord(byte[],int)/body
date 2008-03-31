@@ -1,0 +1,12 @@
+{
+  int header=bytes[offset] & 0xFF;
+  if (((header ^ SUPPORTED_HEADER) & SUPPORTED_HEADER_MASK) != 0) {
+    return null;
+  }
+  int typeLength=bytes[offset + 1] & 0xFF;
+  int payloadLength=bytes[offset + 2] & 0xFF;
+  String type=AbstractNDEFParsedResult.bytesToString(bytes,offset + 3,typeLength,"US-ASCII");
+  byte[] payload=new byte[payloadLength];
+  System.arraycopy(bytes,offset + 3 + typeLength,payload,0,payloadLength);
+  return new NDEFRecord(header,type,payload,3 + typeLength + payloadLength);
+}

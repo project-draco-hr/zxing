@@ -1,18 +1,15 @@
 {
   byte[] bytes=result.getRawBytes();
-  if (!isMaybeNDEF(bytes)) {
+  if (bytes == null) {
     return null;
   }
-  int payloadLength=bytes[2] & 0xFF;
-  if (bytes[3] != URI_WELL_KNOWN_TYPE) {
+  NDEFRecord ndefRecord=NDEFRecord.readRecord(bytes,0);
+  if (ndefRecord == null || !ndefRecord.isMessageBegin() || !ndefRecord.isMessageEnd()) {
     return null;
   }
-  int identifierCode=bytes[4] & 0xFF;
-  String prefix=null;
-  if (identifierCode < URI_PREFIXES.length) {
-    prefix=URI_PREFIXES[identifierCode];
+  if (!ndefRecord.getType().equals(NDEFRecord.URI_WELL_KNOWN_TYPE)) {
+    return null;
   }
-  String restOfURI=bytesToString(bytes,5,payloadLength - 1,"UTF-8");
-  String fullURI=prefix == null ? restOfURI : prefix + restOfURI;
+  String fullURI=decodeURIPayload(ndefRecord.getPayload());
   return new NDEFURIParsedResult(fullURI);
 }

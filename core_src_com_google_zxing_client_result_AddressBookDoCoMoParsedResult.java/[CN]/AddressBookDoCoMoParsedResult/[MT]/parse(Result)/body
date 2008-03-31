@@ -1,6 +1,6 @@
 {
   String rawText=result.getText();
-  if (!rawText.startsWith("MECARD:")) {
+  if (rawText == null || !rawText.startsWith("MECARD:")) {
     return null;
   }
   String[] rawName=matchPrefixedField("N:",rawText);

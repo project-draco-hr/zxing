@@ -1,6 +1,6 @@
 {
   String rawText=result.getText();
-  if (!rawText.startsWith("MATMSG:")) {
+  if (rawText == null || !rawText.startsWith("MATMSG:")) {
     return null;
   }
   String[] rawTo=matchPrefixedField("TO:",rawText);

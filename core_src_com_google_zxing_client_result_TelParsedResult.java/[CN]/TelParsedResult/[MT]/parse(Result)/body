@@ -1,6 +1,6 @@
 {
   String rawText=result.getText();
-  if (!rawText.startsWith("tel:")) {
+  if (rawText == null || !rawText.startsWith("tel:")) {
     return null;
   }
   int queryStart=rawText.indexOf('?',4);

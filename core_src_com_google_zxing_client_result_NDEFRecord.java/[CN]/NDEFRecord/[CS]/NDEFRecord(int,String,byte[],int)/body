@@ -1,0 +1,6 @@
+{
+  this.header=header;
+  this.type=type;
+  this.payload=payload;
+  this.totalRecordLength=totalRecordLength;
+}
