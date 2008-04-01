@@ -3,12 +3,14 @@
   if (inputFile.exists()) {
     if (inputFile.isDirectory()) {
       int successful=0;
+      int total=0;
       for (      File input : inputFile.listFiles()) {
         if (decode(input.toURI())) {
           successful++;
         }
+        total++;
       }
-      System.out.println("Decoded " + successful + " files successfully");
+      System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)");
     }
  else {
       decode(inputFile.toURI());
