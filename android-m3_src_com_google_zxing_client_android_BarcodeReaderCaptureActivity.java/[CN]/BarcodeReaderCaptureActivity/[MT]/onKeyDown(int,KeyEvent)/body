@@ -1,11 +1,14 @@
 {
   if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
+    decodeStart=new Date();
     workerThread.requestStillAndDecode();
   }
  else   if (keyCode == KeyEvent.KEYCODE_Q) {
+    decodeStart=new Date();
     workerThread.requestStillAndDecodeQR();
   }
  else   if (keyCode == KeyEvent.KEYCODE_U) {
+    decodeStart=new Date();
     workerThread.requestStillAndDecode1D();
   }
  else   if (keyCode == KeyEvent.KEYCODE_C) {

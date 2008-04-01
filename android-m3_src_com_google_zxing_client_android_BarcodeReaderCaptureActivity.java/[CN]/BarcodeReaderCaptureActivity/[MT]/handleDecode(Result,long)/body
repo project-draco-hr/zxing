@@ -9,10 +9,12 @@
   if (handler.getIntent() != null) {
     Message yesMessage=handler.obtainMessage(R.string.button_yes);
     Message noMessage=handler.obtainMessage(R.string.button_no);
-    showAlert(context.getString(getDialogTitleID(readerResult.getType())),readerResult.getDisplayResult(),context.getString(R.string.button_yes),yesMessage,context.getString(R.string.button_no),noMessage,true,noMessage);
+    String title=context.getString(getDialogTitleID(readerResult.getType())) + " (" + duration+ " ms)";
+    showAlert(title,readerResult.getDisplayResult(),context.getString(R.string.button_yes),yesMessage,context.getString(R.string.button_no),noMessage,true,noMessage);
   }
  else {
     Message okMessage=handler.obtainMessage(R.string.button_ok);
-    showAlert(context.getString(R.string.title_barcode_detected),readerResult.getDisplayResult(),context.getString(R.string.button_ok),okMessage,null,null,true,okMessage);
+    String title=context.getString(R.string.title_barcode_detected) + " (" + duration+ " ms)";
+    showAlert(title,readerResult.getDisplayResult(),context.getString(R.string.button_ok),okMessage,null,null,true,okMessage);
   }
 }
