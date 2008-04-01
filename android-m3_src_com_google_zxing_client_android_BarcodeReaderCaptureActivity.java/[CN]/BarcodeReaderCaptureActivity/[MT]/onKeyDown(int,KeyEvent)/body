@@ -1,9 +1,18 @@
 {
   if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
     workerThread.requestStillAndDecode();
-    return true;
+  }
+ else   if (keyCode == KeyEvent.KEYCODE_Q) {
+    workerThread.requestStillAndDecodeQR();
+  }
+ else   if (keyCode == KeyEvent.KEYCODE_U) {
+    workerThread.requestStillAndDecode1D();
+  }
+ else   if (keyCode == KeyEvent.KEYCODE_C) {
+    workerThread.requestStillAndSave();
   }
  else {
     return super.onKeyDown(keyCode,event);
   }
+  return true;
 }

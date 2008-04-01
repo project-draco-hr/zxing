@@ -2,7 +2,7 @@
   super.onResume();
   cameraManager.openDriver();
   if (workerThread == null) {
-    workerThread=new WorkerThread(surfaceView,cameraManager,messageHandler);
+    workerThread=new WorkerThread(this,surfaceView,cameraManager,messageHandler);
     workerThread.requestPreviewLoop();
     workerThread.start();
   }

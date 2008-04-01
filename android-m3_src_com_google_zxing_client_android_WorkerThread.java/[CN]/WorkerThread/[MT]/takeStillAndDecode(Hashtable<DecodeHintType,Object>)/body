@@ -1,0 +1,17 @@
+{
+  Bitmap bitmap=cameraManager.captureStill();
+  Result rawResult;
+  try {
+    MonochromeBitmapSource source=new RGBMonochromeBitmapSource(bitmap);
+    rawResult=new MultiFormatReader().decode(source,hints);
+  }
+ catch (  ReaderException e) {
+    Message message=Message.obtain(handler,R.id.decoding_failed_message);
+    message.sendToTarget();
+    state=State.PREVIEW_LOOP;
+    return;
+  }
+  Message message=Message.obtain(handler,R.id.decoding_succeeded_message,rawResult);
+  message.sendToTarget();
+  state=State.IDLE;
+}

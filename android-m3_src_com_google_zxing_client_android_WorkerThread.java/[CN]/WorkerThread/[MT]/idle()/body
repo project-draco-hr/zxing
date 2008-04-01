@@ -4,6 +4,6 @@ synchronized (idleLock) {
       idleLock.wait();
     }
   }
- catch (  InterruptedException ie) {
+ catch (  InterruptedException e) {
   }
 }

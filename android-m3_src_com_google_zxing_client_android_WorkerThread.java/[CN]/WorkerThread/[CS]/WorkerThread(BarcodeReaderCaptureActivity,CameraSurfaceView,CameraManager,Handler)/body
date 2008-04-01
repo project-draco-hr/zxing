@@ -1,4 +1,5 @@
 {
+  this.activity=activity;
   this.surfaceView=surfaceView;
   this.cameraManager=cameraManager;
   this.handler=handler;

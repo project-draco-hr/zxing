@@ -1,3 +1,4 @@
+BarcodeReaderCaptureActivity activity
 CameraSurfaceView surfaceView
 CameraManager cameraManager
 Handler handler

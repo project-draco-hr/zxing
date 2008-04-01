@@ -8,21 +8,33 @@ case PREVIEW_LOOP:
   surfaceView.capturePreviewAndDraw();
 break;
 case STILL_AND_DECODE:
-Bitmap bitmap=cameraManager.captureStill();
-Result rawResult;
-try {
-MonochromeBitmapSource source=new RGBMonochromeBitmapSource(bitmap);
-rawResult=new MultiFormatReader().decode(source);
-}
- catch (ReaderException e) {
-Message message=Message.obtain(handler,R.id.decoding_failed_message);
-message.sendToTarget();
-state=State.PREVIEW_LOOP;
+takeStillAndDecode(null);
+break;
+case STILL_AND_DECODE_1D:
+{
+Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
+Vector vector=new Vector();
+vector.addElement(BarcodeFormat.UPC_A);
+vector.addElement(BarcodeFormat.UPC_E);
+vector.addElement(BarcodeFormat.EAN_13);
+vector.addElement(BarcodeFormat.EAN_8);
+vector.addElement(BarcodeFormat.CODE_39);
+vector.addElement(BarcodeFormat.CODE_128);
+hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
+takeStillAndDecode(hints);
 break;
 }
-Message message=Message.obtain(handler,R.id.decoding_succeeded_message,rawResult);
-message.sendToTarget();
-state=State.IDLE;
+case STILL_AND_DECODE_QR:
+{
+Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
+Vector vector=new Vector();
+vector.addElement(BarcodeFormat.QR_CODE);
+hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
+takeStillAndDecode(hints);
+break;
+}
+case STILL_AND_SAVE:
+takeStillAndSave();
 break;
 case DONE:
 return;
