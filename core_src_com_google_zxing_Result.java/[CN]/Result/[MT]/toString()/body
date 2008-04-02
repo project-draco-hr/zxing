@@ -1,0 +1,8 @@
+{
+  if (text == null) {
+    return "[" + rawBytes.length + " bytes]";
+  }
+ else {
+    return text;
+  }
+}
