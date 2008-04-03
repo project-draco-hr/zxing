@@ -11,7 +11,8 @@
  else {
     maxLines=7;
   }
-  Hashtable lastResults=null;
+  String lastResultAboveText=null;
+  String lastResultBelowText=null;
   boolean skippingSomeBarcodes=hints != null && hints.containsKey(DecodeHintType.SKIP_N_BARCODES) && ((Integer)hints.get(DecodeHintType.SKIP_N_BARCODES)).intValue() > 0;
   for (int x=0; x < maxLines; x++) {
     int rowStepsAboveOrBelow=(x + 1) >> 1;
@@ -38,7 +39,9 @@
       }
       try {
         Result result=decodeRow(rowNumber,row,hints);
-        if (lastResults != null && lastResults.containsKey(result.getText())) {
+        String resultText=result.getText();
+        attempt=1;
+        if ((isAbove && resultText.equals(lastResultAboveText)) || (!isAbove && resultText.equals(lastResultBelowText))) {
           continue;
         }
         if (skippingSomeBarcodes) {
@@ -50,10 +53,12 @@
             hints.remove(DecodeHintType.SKIP_N_BARCODES);
             skippingSomeBarcodes=false;
           }
-          if (lastResults == null) {
-            lastResults=new Hashtable(3);
+          if (isAbove) {
+            lastResultAboveText=resultText;
           }
-          lastResults.put(result.getText(),Boolean.TRUE);
+ else {
+            lastResultBelowText=resultText;
+          }
         }
  else {
           if (attempt == 1) {
@@ -63,6 +68,14 @@
         }
       }
  catch (      ReaderException re) {
+        if (skippingSomeBarcodes) {
+          if (isAbove) {
+            lastResultAboveText=null;
+          }
+ else {
+            lastResultBelowText=null;
+          }
+        }
       }
     }
   }
