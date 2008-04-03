@@ -46,7 +46,7 @@
  else   if (type.equals(ParsedReaderResultType.EMAIL_ADDRESS)) {
     EmailAddressParsedResult emailResult=(EmailAddressParsedResult)result;
     try {
-      intent=new Intent(Intent.SENDTO_ACTION,new ContentURI(emailResult.getEmailAddress()));
+      intent=new Intent(Intent.SENDTO_ACTION,new ContentURI("mailto:" + emailResult.getEmailAddress()));
     }
  catch (    URISyntaxException e) {
     }
@@ -62,7 +62,9 @@
  else   if (type.equals(ParsedReaderResultType.GEO)) {
     GeoParsedResult geoResult=(GeoParsedResult)result;
     try {
-      intent=new Intent(Intent.VIEW_ACTION,new ContentURI(geoResult.getGeoURI()));
+      ContentURI geoURI=new ContentURI("geo:" + geoResult.getGeoURI());
+      Log.v(TAG,"Created geo URI: " + geoURI.toString());
+      intent=new Intent(Intent.VIEW_ACTION,geoURI);
     }
  catch (    URISyntaxException e) {
     }

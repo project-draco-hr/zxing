@@ -1,6 +1,6 @@
 {
   if (framingRect == null) {
-    int size=stillResolution.x * screenResolution.x / cameraResolution.x;
+    int size=stillResolution.x * screenResolution.x / previewResolution.x;
     int leftOffset=(screenResolution.x - size) / 2;
     int topOffset=(screenResolution.y - size) / 2;
     framingRect=new Rect(leftOffset,topOffset,leftOffset + size,topOffset + size);

@@ -2,18 +2,10 @@
   if (on != previewMode) {
     if (on) {
       params.type=1;
-      if (cameraResolution.x / (float)cameraResolution.y < screenResolution.x / (float)screenResolution.y) {
-        params.srcWidth=cameraResolution.x;
-        params.srcHeight=cameraResolution.x * screenResolution.y / screenResolution.x;
-        params.leftPixel=0;
-        params.topPixel=(cameraResolution.y - params.srcHeight) / 2;
-      }
- else {
-        params.srcWidth=cameraResolution.y * screenResolution.x / screenResolution.y;
-        params.srcHeight=cameraResolution.y;
-        params.leftPixel=(cameraResolution.x - params.srcWidth) / 2;
-        params.topPixel=0;
-      }
+      params.srcWidth=previewResolution.x;
+      params.srcHeight=previewResolution.y;
+      params.leftPixel=(cameraResolution.x - params.srcWidth) / 2;
+      params.topPixel=(cameraResolution.y - params.srcHeight) / 2;
       params.outputWidth=screenResolution.x;
       params.outputHeight=screenResolution.y;
       params.dataFormat=2;

@@ -1,7 +1,8 @@
 {
   this.context=context;
-  calculateStillResolution();
   getScreenResolution();
+  calculateStillResolution();
+  calculatePreviewResolution();
   bitmap=Bitmap.createBitmap(stillResolution.x,stillResolution.y,false);
   camera=CameraDevice.open();
   params=new CameraDevice.CaptureParams();
