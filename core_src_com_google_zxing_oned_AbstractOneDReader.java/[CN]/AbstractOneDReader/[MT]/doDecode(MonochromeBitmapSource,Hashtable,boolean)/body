@@ -11,9 +11,6 @@
  else {
     maxLines=7;
   }
-  String lastResultAboveText=null;
-  String lastResultBelowText=null;
-  boolean skippingSomeBarcodes=hints != null && hints.containsKey(DecodeHintType.SKIP_N_BARCODES) && ((Integer)hints.get(DecodeHintType.SKIP_N_BARCODES)).intValue() > 0;
   for (int x=0; x < maxLines; x++) {
     int rowStepsAboveOrBelow=(x + 1) >> 1;
     boolean isAbove=(x & 0x01) == 0;
@@ -39,43 +36,12 @@
       }
       try {
         Result result=decodeRow(rowNumber,row,hints);
-        String resultText=result.getText();
-        attempt=1;
-        if ((isAbove && resultText.equals(lastResultAboveText)) || (!isAbove && resultText.equals(lastResultBelowText))) {
-          continue;
+        if (attempt == 1) {
+          result.putMetadata(ResultMetadataType.ORIENTATION,new Integer(180));
         }
-        if (skippingSomeBarcodes) {
-          int oldValue=((Integer)hints.get(DecodeHintType.SKIP_N_BARCODES)).intValue();
-          if (oldValue > 1) {
-            hints.put(DecodeHintType.SKIP_N_BARCODES,new Integer(oldValue - 1));
-          }
- else {
-            hints.remove(DecodeHintType.SKIP_N_BARCODES);
-            skippingSomeBarcodes=false;
-          }
-          if (isAbove) {
-            lastResultAboveText=resultText;
-          }
- else {
-            lastResultBelowText=resultText;
-          }
-        }
- else {
-          if (attempt == 1) {
-            result.putMetadata(ResultMetadataType.ORIENTATION,new Integer(180));
-          }
-          return result;
-        }
+        return result;
       }
  catch (      ReaderException re) {
-        if (skippingSomeBarcodes) {
-          if (isAbove) {
-            lastResultAboveText=null;
-          }
- else {
-            lastResultBelowText=null;
-          }
-        }
       }
     }
   }
