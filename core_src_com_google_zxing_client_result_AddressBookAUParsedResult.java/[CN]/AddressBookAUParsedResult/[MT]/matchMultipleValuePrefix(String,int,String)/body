@@ -1,7 +1,7 @@
 {
   Vector values=null;
   for (int i=1; i <= max; i++) {
-    String value=AbstractDoCoMoParsedResult.matchSinglePrefixedField(prefix + i,rawText,'\r');
+    String value=AbstractDoCoMoParsedResult.matchSinglePrefixedField(prefix + i + ':',rawText,'\r');
     if (value == null) {
       break;
     }
