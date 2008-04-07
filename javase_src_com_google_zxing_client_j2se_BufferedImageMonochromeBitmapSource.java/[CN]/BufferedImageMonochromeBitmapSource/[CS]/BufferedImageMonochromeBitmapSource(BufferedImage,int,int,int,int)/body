@@ -5,7 +5,7 @@
   lastArgument=0;
   int sourceHeight=image.getHeight();
   int sourceWidth=image.getWidth();
-  if (left < 0 || top < 0 || right >= sourceWidth || bottom >= sourceHeight || right <= left || bottom <= top) {
+  if (left < 0 || top < 0 || right > sourceWidth || bottom > sourceHeight || right <= left || bottom <= top) {
     throw new IllegalArgumentException("Invalid bounds: (" + top + ','+ left+ ") ("+ right+ ','+ bottom+ ')');
   }
   this.left=left;
