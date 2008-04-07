@@ -3,7 +3,12 @@
   StringBuffer result=new StringBuffer();
   Mode mode;
   do {
-    mode=Mode.forBits(bits.readBits(4));
+    if (bits.available() == 0) {
+      mode=Mode.TERMINATOR;
+    }
+ else {
+      mode=Mode.forBits(bits.readBits(4));
+    }
     if (!mode.equals(Mode.TERMINATOR)) {
       int count=bits.readBits(mode.getCharacterCountBits(version));
       if (mode.equals(Mode.NUMERIC)) {
