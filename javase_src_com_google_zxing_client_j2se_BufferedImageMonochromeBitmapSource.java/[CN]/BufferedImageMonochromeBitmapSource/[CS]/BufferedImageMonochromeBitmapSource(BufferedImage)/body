@@ -1,6 +1,3 @@
 {
-  this.image=image;
-  blackPoint=0x7F;
-  lastMethod=null;
-  lastArgument=0;
+  this(image,0,0,image.getWidth(),image.getHeight());
 }

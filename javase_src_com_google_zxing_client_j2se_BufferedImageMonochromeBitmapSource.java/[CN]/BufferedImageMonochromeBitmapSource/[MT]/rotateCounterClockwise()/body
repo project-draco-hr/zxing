@@ -2,9 +2,11 @@
   if (!isRotateSupported()) {
     throw new IllegalStateException("Rotate not supported");
   }
-  AffineTransform transform=new AffineTransform(0.0,-1.0,1.0,0.0,0.0,image.getWidth());
+  int sourceWidth=image.getWidth();
+  int sourceHeight=image.getHeight();
+  AffineTransform transform=new AffineTransform(0.0,-1.0,1.0,0.0,0.0,sourceWidth);
   BufferedImageOp op=new AffineTransformOp(transform,AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-  BufferedImage rotatedImage=new BufferedImage(image.getHeight(),image.getWidth(),image.getType());
+  BufferedImage rotatedImage=new BufferedImage(sourceHeight,sourceWidth,image.getType());
   op.filter(image,rotatedImage);
-  return new BufferedImageMonochromeBitmapSource(rotatedImage);
+  return new BufferedImageMonochromeBitmapSource(rotatedImage,top,sourceWidth - (left + width),top + height,sourceWidth - left);
 }

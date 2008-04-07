@@ -5,7 +5,8 @@
  else {
     row.clear();
   }
-  int[] pixelRow=image.getRGB(startX,y,getWidth,1,null,0,getWidth);
+  int[] pixelRow=new int[getWidth];
+  getRGBRow(startX,y,pixelRow);
   for (int i=0; i < getWidth; i++) {
     if (computeRGBLuminance(pixelRow[i]) < blackPoint) {
       row.set(i);

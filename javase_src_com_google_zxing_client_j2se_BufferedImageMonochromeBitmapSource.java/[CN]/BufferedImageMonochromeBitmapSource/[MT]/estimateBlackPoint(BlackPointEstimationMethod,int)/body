@@ -1,14 +1,12 @@
 {
   if (!method.equals(lastMethod) || argument != lastArgument) {
-    int width=image.getWidth();
-    int height=image.getHeight();
     int[] histogram=new int[LUMINANCE_BUCKETS];
     if (method.equals(BlackPointEstimationMethod.TWO_D_SAMPLING)) {
       int minDimension=width < height ? width : height;
       int startI=height == minDimension ? 0 : (height - width) >> 1;
       int startJ=width == minDimension ? 0 : (width - height) >> 1;
       for (int n=0; n < minDimension; n++) {
-        int pixel=image.getRGB(startJ + n,startI + n);
+        int pixel=getRGB(startJ + n,startI + n);
         histogram[computeRGBLuminance(pixel) >> LUMINANCE_SHIFT]++;
       }
     }
@@ -17,7 +15,7 @@
         throw new IllegalArgumentException("Row is not within the image: " + argument);
       }
       int[] rgbArray=new int[width];
-      image.getRGB(0,argument,width,1,rgbArray,0,width);
+      getRGBRow(0,argument,rgbArray);
       for (int x=0; x < width; x++) {
         histogram[computeRGBLuminance(rgbArray[x]) >> LUMINANCE_SHIFT]++;
       }

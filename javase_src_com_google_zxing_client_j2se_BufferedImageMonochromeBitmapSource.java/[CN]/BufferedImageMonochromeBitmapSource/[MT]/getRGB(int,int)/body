@@ -1,0 +1,3 @@
+{
+  return image.getRGB(left + x,top + y);
+}

@@ -1,0 +1,3 @@
+int startX
+int startY
+int[] result
