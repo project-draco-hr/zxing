@@ -1,5 +1,5 @@
 {
-  float[] points=new float[]{sourceX,sourceY};
+  float[] points={sourceX,sourceY};
   pt.transformPoints(points);
   assertEquals(expectedX,points[0],EPSILON);
   assertEquals(expectedY,points[1],EPSILON);
