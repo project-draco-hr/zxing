@@ -1,0 +1,20 @@
+{
+  Date startDate=new Date();
+  Bitmap bitmap=cameraManager.captureStill();
+  Message restart=Message.obtain(cameraThreadHandler,R.id.decode_started);
+  restart.sendToTarget();
+  Result rawResult;
+  try {
+    MonochromeBitmapSource source=new RGBMonochromeBitmapSource(bitmap);
+    rawResult=new MultiFormatReader().decode(source,hints);
+  }
+ catch (  ReaderException e) {
+    Message failure=Message.obtain(cameraThreadHandler,R.id.decode_failed);
+    failure.sendToTarget();
+    return;
+  }
+  Date endDate=new Date();
+  Message success=Message.obtain(cameraThreadHandler,R.id.decode_succeeded,rawResult);
+  success.arg1=(int)(endDate.getTime() - startDate.getTime());
+  success.sendToTarget();
+}

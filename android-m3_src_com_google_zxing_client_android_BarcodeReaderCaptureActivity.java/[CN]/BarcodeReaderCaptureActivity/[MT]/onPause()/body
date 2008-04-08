@@ -1,8 +1,9 @@
 {
   super.onPause();
-  if (workerThread != null) {
-    workerThread.requestExitAndWait();
-    workerThread=null;
+  if (cameraThread != null) {
+    Message quit=Message.obtain(cameraThread.handler,R.id.quit);
+    quit.sendToTarget();
+    cameraThread=null;
   }
   cameraManager.closeDriver();
 }

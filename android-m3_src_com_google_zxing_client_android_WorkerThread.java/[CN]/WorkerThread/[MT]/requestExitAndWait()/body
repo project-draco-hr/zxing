@@ -1,9 +1,0 @@
-{
-  state=State.DONE;
-  wakeFromIdle();
-  try {
-    join();
-  }
- catch (  InterruptedException e) {
-  }
-}

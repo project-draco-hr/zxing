@@ -4,6 +4,7 @@
     int leftOffset=(screenResolution.x - size) / 2;
     int topOffset=(screenResolution.y - size) / 2;
     framingRect=new Rect(leftOffset,topOffset,leftOffset + size,topOffset + size);
+    Log.v(TAG,"Calculated framing rect: " + framingRect);
   }
   return framingRect;
 }

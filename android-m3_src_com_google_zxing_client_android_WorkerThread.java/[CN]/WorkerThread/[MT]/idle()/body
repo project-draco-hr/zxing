@@ -1,9 +1,0 @@
-{
-  try {
-synchronized (idleLock) {
-      idleLock.wait();
-    }
-  }
- catch (  InterruptedException e) {
-  }
-}

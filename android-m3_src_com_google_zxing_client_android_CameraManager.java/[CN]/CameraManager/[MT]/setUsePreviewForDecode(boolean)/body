@@ -1,0 +1,13 @@
+{
+  if (usePreviewForDecode != usePreview) {
+    usePreviewForDecode=usePreview;
+    if (usePreview) {
+      Log.v(TAG,"Creating bitmap at screen resolution: " + screenResolution.x + ","+ screenResolution.y);
+      bitmap=Bitmap.createBitmap(screenResolution.x,screenResolution.y,false);
+    }
+ else {
+      Log.v(TAG,"Creating bitmap at still resolution: " + screenResolution.x + ","+ screenResolution.y);
+      bitmap=Bitmap.createBitmap(stillResolution.x,stillResolution.y,false);
+    }
+  }
+}

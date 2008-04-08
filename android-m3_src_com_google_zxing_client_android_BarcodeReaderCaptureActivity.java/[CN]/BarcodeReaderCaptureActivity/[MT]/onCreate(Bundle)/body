@@ -6,7 +6,6 @@
   cameraManager=new CameraManager(getApplication());
   surfaceView=new CameraSurfaceView(getApplication(),cameraManager);
   setContentView(surfaceView);
-  workerThread=new WorkerThread(this,surfaceView,cameraManager,messageHandler);
-  workerThread.requestPreviewLoop();
-  workerThread.start();
+  cameraThread=new CameraThread(this,surfaceView,cameraManager,messageHandler);
+  cameraThread.start();
 }

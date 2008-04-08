@@ -3,7 +3,8 @@
   getScreenResolution();
   calculateStillResolution();
   calculatePreviewResolution();
-  bitmap=Bitmap.createBitmap(stillResolution.x,stillResolution.y,false);
+  usePreviewForDecode=true;
+  setUsePreviewForDecode(false);
   camera=CameraDevice.open();
   params=new CameraDevice.CaptureParams();
   previewMode=false;

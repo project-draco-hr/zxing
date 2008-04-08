@@ -1,0 +1,4 @@
+{
+  Message message=Message.obtain(decodeThread.handler,R.id.set_decode_1D_mode);
+  message.sendToTarget();
+}

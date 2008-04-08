@@ -1,4 +1,0 @@
-{
-  int existingFileCount=(listOfFiles != null) ? listOfFiles.length : 0;
-  return "capture" + existingFileCount + ".jpg";
-}
