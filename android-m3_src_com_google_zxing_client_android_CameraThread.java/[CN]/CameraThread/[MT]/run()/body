@@ -4,49 +4,44 @@
     public void handleMessage(    Message message){
 switch (message.what) {
 case R.id.preview:
-        if (!suspendPreview) {
+        if (state == State.PREVIEW) {
           surfaceView.capturePreviewAndDraw();
         }
       break;
 case R.id.save:
-    suspendPreview=true;
+    state=State.SAVE;
   Message save=Message.obtain(decodeThread.handler,R.id.save);
 save.sendToTarget();
 break;
 case R.id.restart_preview:
 restartPreviewAndDecode();
-return;
+break;
 case R.id.quit:
+state=State.DONE;
 Message quit=Message.obtain(decodeThread.handler,R.id.quit);
 quit.sendToTarget();
 Looper.myLooper().quit();
 break;
 case R.id.decode_started:
-suspendPreview=false;
+state=State.PREVIEW;
 break;
 case R.id.decode_succeeded:
+state=State.DONE;
 Message success=Message.obtain(activityHandler,R.id.decode_succeeded,message.obj);
 success.arg1=message.arg1;
 success.sendToTarget();
-suspendPreview=true;
 break;
 case R.id.decode_failed:
-requestDecode=true;
+startDecode();
 break;
 case R.id.save_succeeded:
 restartPreviewAndDecode();
 break;
 case R.id.save_failed:
 restartPreviewAndDecode();
-return;
+break;
 }
-if (requestDecode) {
-requestDecode=false;
-suspendPreview=true;
-Message decode=Message.obtain(decodeThread.handler,R.id.decode);
-decode.sendToTarget();
-}
- else if (!suspendPreview) {
+if (state == State.PREVIEW) {
 Message preview=Message.obtain(handler,R.id.preview);
 preview.sendToTarget();
 }
@@ -54,7 +49,6 @@ preview.sendToTarget();
 }
 ;
 decodeThread.setCameraThreadHandler(handler);
-Message preview=Message.obtain(handler,R.id.preview);
-preview.sendToTarget();
+restartPreviewAndDecode();
 Looper.loop();
 }

@@ -1,0 +1,7 @@
+{
+  if (state != State.SAVE) {
+    state=State.DECODE;
+    Message decode=Message.obtain(decodeThread.handler,R.id.decode);
+    decode.sendToTarget();
+  }
+}

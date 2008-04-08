@@ -1,6 +1,5 @@
 {
-  requestDecode=true;
-  suspendPreview=false;
-  Message preview=Message.obtain(handler,R.id.preview);
-  preview.sendToTarget();
+  state=State.PREVIEW;
+  surfaceView.capturePreviewAndDraw();
+  startDecode();
 }

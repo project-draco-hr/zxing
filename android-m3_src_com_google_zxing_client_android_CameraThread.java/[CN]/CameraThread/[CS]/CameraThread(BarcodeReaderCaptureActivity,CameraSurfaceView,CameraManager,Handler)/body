@@ -3,6 +3,5 @@
   this.activityHandler=activityHandler;
   decodeThread=new DecodeThread(activity,cameraManager);
   decodeThread.start();
-  requestDecode=true;
-  suspendPreview=false;
+  state=State.DONE;
 }
