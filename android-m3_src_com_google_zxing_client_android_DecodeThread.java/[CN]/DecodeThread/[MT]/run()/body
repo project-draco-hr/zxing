@@ -21,6 +21,9 @@ break;
 case R.id.set_decode_QR_mode:
 setDecodeQRMode();
 break;
+case R.id.toggle_tracing:
+tracing=!tracing;
+break;
 }
 }
 }

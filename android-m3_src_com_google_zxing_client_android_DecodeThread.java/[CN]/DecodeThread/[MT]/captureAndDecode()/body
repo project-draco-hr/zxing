@@ -3,18 +3,31 @@
   Bitmap bitmap=cameraManager.captureStill();
   Message restart=Message.obtain(cameraThreadHandler,R.id.decode_started);
   restart.sendToTarget();
-  Result rawResult;
+  if (tracing) {
+    Debug.startMethodTracing("/sdcard/ZXingDecodeThread" + methodTraceCount);
+    methodTraceCount++;
+  }
+  boolean success;
+  Result rawResult=null;
   try {
     MonochromeBitmapSource source=new RGBMonochromeBitmapSource(bitmap);
     rawResult=new MultiFormatReader().decode(source,hints);
+    success=true;
   }
  catch (  ReaderException e) {
-    Message failure=Message.obtain(cameraThreadHandler,R.id.decode_failed);
-    failure.sendToTarget();
-    return;
+    success=false;
+  }
+  if (tracing) {
+    Debug.stopMethodTracing();
   }
   Date endDate=new Date();
-  Message success=Message.obtain(cameraThreadHandler,R.id.decode_succeeded,rawResult);
-  success.arg1=(int)(endDate.getTime() - startDate.getTime());
-  success.sendToTarget();
+  if (success) {
+    Message message=Message.obtain(cameraThreadHandler,R.id.decode_succeeded,rawResult);
+    message.arg1=(int)(endDate.getTime() - startDate.getTime());
+    message.sendToTarget();
+  }
+ else {
+    Message message=Message.obtain(cameraThreadHandler,R.id.decode_failed);
+    message.sendToTarget();
+  }
 }

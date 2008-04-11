@@ -1,4 +1,6 @@
 {
   this.activity=activity;
   this.cameraManager=cameraManager;
+  methodTraceCount=0;
+  tracing=false;
 }
