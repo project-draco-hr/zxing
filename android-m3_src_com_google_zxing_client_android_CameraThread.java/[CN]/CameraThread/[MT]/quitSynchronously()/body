@@ -1,0 +1,9 @@
+{
+  Message quit=Message.obtain(handler,R.id.quit);
+  quit.sendToTarget();
+  try {
+    join();
+  }
+ catch (  InterruptedException e) {
+  }
+}

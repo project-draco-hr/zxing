@@ -20,6 +20,11 @@ case R.id.quit:
 state=State.DONE;
 Message quit=Message.obtain(decodeThread.handler,R.id.quit);
 quit.sendToTarget();
+try {
+decodeThread.join();
+}
+ catch (InterruptedException e) {
+}
 Looper.myLooper().quit();
 break;
 case R.id.decode_started:
