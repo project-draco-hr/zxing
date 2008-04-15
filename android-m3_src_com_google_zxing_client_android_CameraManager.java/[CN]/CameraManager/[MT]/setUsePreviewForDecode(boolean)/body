@@ -6,7 +6,7 @@
       bitmap=Bitmap.createBitmap(screenResolution.x,screenResolution.y,false);
     }
  else {
-      Log.v(TAG,"Creating bitmap at still resolution: " + screenResolution.x + ","+ screenResolution.y);
+      Log.v(TAG,"Creating bitmap at still resolution: " + stillResolution.x + ","+ stillResolution.y);
       bitmap=Bitmap.createBitmap(stillResolution.x,stillResolution.y,false);
     }
   }

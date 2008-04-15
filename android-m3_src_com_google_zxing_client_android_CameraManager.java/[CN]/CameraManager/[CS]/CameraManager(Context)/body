@@ -5,8 +5,6 @@
   calculatePreviewResolution();
   usePreviewForDecode=true;
   setUsePreviewForDecode(false);
-  camera=CameraDevice.open();
+  camera=null;
   params=new CameraDevice.CaptureParams();
-  previewMode=false;
-  setPreviewMode(true);
 }
