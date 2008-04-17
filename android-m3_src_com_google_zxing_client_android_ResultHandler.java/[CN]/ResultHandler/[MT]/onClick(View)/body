@@ -1,0 +1,5 @@
+{
+  if (intent != null) {
+    captureActivity.startActivity(intent);
+  }
+}

@@ -1,23 +1,25 @@
 {
+  int buttonText;
   if (type.equals(ParsedReaderResultType.ADDRESSBOOK)) {
-    return R.string.title_add_contact;
+    buttonText=R.string.button_add_contact;
   }
  else   if (type.equals(ParsedReaderResultType.URI) || type.equals(ParsedReaderResultType.BOOKMARK) || type.equals(ParsedReaderResultType.URLTO)) {
-    return R.string.title_open_url;
+    buttonText=R.string.button_open_browser;
   }
  else   if (type.equals(ParsedReaderResultType.EMAIL) || type.equals(ParsedReaderResultType.EMAIL_ADDRESS)) {
-    return R.string.title_compose_email;
+    buttonText=R.string.button_email;
   }
  else   if (type.equals(ParsedReaderResultType.UPC)) {
-    return R.string.title_lookup_barcode;
+    buttonText=R.string.button_lookup_product;
   }
  else   if (type.equals(ParsedReaderResultType.TEL)) {
-    return R.string.title_dial;
+    buttonText=R.string.button_dial;
   }
  else   if (type.equals(ParsedReaderResultType.GEO)) {
-    return R.string.title_view_maps;
+    buttonText=R.string.button_show_map;
   }
  else {
-    return R.string.title_barcode_detected;
+    buttonText=0;
   }
+  return buttonText;
 }

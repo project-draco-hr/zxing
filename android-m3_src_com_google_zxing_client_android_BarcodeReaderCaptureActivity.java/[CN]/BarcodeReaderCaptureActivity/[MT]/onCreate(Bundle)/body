@@ -3,9 +3,11 @@
   requestWindowFeature(Window.FEATURE_NO_TITLE);
   getWindow().setAttributes(new LayoutParams(LayoutParams.APPLICATION_TYPE,LayoutParams.NO_STATUS_BAR_FLAG));
   getWindow().setFormat(PixelFormat.TRANSLUCENT);
+  setContentView(R.layout.main);
   cameraManager=new CameraManager(getApplication());
   surfaceView=new CameraSurfaceView(getApplication(),cameraManager);
-  setContentView(surfaceView);
-  cameraThread=new CameraThread(this,surfaceView,cameraManager,messageHandler);
-  cameraThread.start();
+  surfaceView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT));
+  ViewGroup previewView=(ViewGroup)findViewById(R.id.preview_view);
+  previewView.addView(surfaceView);
+  cameraThread=null;
 }
