@@ -1,4 +1,4 @@
 File testBase
 Reader barcodeReader
-double passPercent
+int mustPassCount
 BarcodeFormat expectedFormat

@@ -1,6 +1,6 @@
 {
   this.testBase=testBase;
   this.barcodeReader=barcodeReader;
-  this.passPercent=passPercent;
+  this.mustPassCount=mustPassCount;
   this.expectedFormat=expectedFormat;
 }

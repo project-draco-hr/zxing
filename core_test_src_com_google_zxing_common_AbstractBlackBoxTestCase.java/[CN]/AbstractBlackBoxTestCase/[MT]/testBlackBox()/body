@@ -38,13 +38,13 @@
     }
  catch (    ReaderException re) {
       if (passed) {
-        fail("Normal mode succeed but \"try harder\" failed");
+        fail("Normal mode succeeded but \"try harder\" failed");
       }
       continue;
     }
-    assertEquals("Normal mode succeed but \"try harder\" failed",expectedFormat,result.getBarcodeFormat());
-    assertEquals("Normal mode succeed but \"try harder\" failed",expectedText,result.getText());
+    assertEquals("Normal mode succeeded but \"try harder\" failed",expectedFormat,result.getBarcodeFormat());
+    assertEquals("Normal mode succeeded but \"try harder\" failed",expectedText,result.getText());
   }
-  System.out.println(passedCount + " of " + imageFiles.length+ " images passed");
-  assertTrue("Too many images failed",passedCount >= (int)(imageFiles.length * passPercent));
+  System.out.println(passedCount + " of " + imageFiles.length+ " images passed ("+ mustPassCount+ " required)");
+  assertTrue("Too many images failed",passedCount >= mustPassCount);
 }
