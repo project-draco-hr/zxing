@@ -5,8 +5,6 @@
     return false;
   }
   try {
-    Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
-    hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
     MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
     String result=new MultiFormatReader().decode(source,hints).getText();
     System.out.println(uri.toString() + ": " + result);

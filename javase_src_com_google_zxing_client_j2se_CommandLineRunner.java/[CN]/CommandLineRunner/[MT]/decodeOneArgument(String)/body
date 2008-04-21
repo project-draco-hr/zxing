@@ -1,0 +1,26 @@
+{
+  File inputFile=new File(argument);
+  if (inputFile.exists()) {
+    if (inputFile.isDirectory()) {
+      int successful=0;
+      int total=0;
+      for (      File input : inputFile.listFiles()) {
+        String filename=input.getName().toLowerCase();
+        if (filename.startsWith(".") || filename.endsWith(".txt")) {
+          continue;
+        }
+        if (decode(input.toURI())) {
+          successful++;
+        }
+        total++;
+      }
+      System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)\n");
+    }
+ else {
+      decode(inputFile.toURI());
+    }
+  }
+ else {
+    decode(new URI(argument));
+  }
+}

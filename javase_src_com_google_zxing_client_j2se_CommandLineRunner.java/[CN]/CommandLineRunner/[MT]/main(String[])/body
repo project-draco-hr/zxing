@@ -1,22 +1,17 @@
 {
-  File inputFile=new File(args[0]);
-  if (inputFile.exists()) {
-    if (inputFile.isDirectory()) {
-      int successful=0;
-      int total=0;
-      for (      File input : inputFile.listFiles()) {
-        if (decode(input.toURI())) {
-          successful++;
-        }
-        total++;
-      }
-      System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)");
+  for (int x=0; x < args.length; x++) {
+    if (args[x].equals("--try_harder")) {
+      hints=new Hashtable<DecodeHintType,Object>(3);
+      hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
     }
- else {
-      decode(inputFile.toURI());
+ else     if (args[x].startsWith("--")) {
+      System.out.println("Unknown command line option " + args[x]);
+      return;
     }
   }
- else {
-    decode(new URI(args[0]));
+  for (int x=0; x < args.length; x++) {
+    if (!args[x].startsWith("--")) {
+      decodeOneArgument(args[x]);
+    }
   }
 }
