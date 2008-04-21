@@ -7,9 +7,24 @@
   }
   int[] pixelRow=new int[getWidth];
   getRGBRow(startX,y,pixelRow);
-  for (int i=0; i < getWidth; i++) {
-    if (computeRGBLuminance(pixelRow[i]) < blackPoint) {
-      row.set(i);
+  if (lastMethod == BlackPointEstimationMethod.ROW_SAMPLING) {
+    int left=computeRGBLuminance(pixelRow[0]);
+    int center=computeRGBLuminance(pixelRow[1]);
+    for (int i=1; i < getWidth - 1; i++) {
+      int right=computeRGBLuminance(pixelRow[i + 1]);
+      int luminance=((center << 2) - left - right) >> 1;
+      if (luminance < blackPoint) {
+        row.set(i);
+      }
+      left=center;
+      center=right;
+    }
+  }
+ else {
+    for (int i=0; i < getWidth; i++) {
+      if (computeRGBLuminance(pixelRow[i]) < blackPoint) {
+        row.set(i);
+      }
     }
   }
   return row;

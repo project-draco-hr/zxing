@@ -21,7 +21,10 @@
       System.out.println(re);
       continue;
     }
-    assertEquals(expectedFormat,result.getBarcodeFormat());
+    if (expectedFormat != result.getBarcodeFormat()) {
+      System.out.println("Format mismatch: expected '" + expectedFormat + "' but got '"+ result.getBarcodeFormat()+ '\'');
+      continue;
+    }
     String testImageFileName=testImage.getName();
     File expectedTextFile=new File(testBase,testImageFileName.substring(0,testImageFileName.indexOf('.')) + ".txt");
     String expectedText=readFileAsString(expectedTextFile);
@@ -31,7 +34,8 @@
       passedCount++;
     }
  else {
-      fail("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\'');
+      System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\'');
+      continue;
     }
     try {
       result=barcodeReader.decode(source,TRY_HARDER_HINT);
@@ -42,8 +46,12 @@
       }
       continue;
     }
-    assertEquals("Normal mode succeeded but \"try harder\" failed",expectedFormat,result.getBarcodeFormat());
-    assertEquals("Normal mode succeeded but \"try harder\" failed",expectedText,result.getText());
+    if (expectedFormat != result.getBarcodeFormat()) {
+      System.out.println("Try Harder Format mismatch: expected '" + expectedFormat + "' but got '"+ result.getBarcodeFormat()+ '\'');
+    }
+ else     if (!expectedText.equals(resultText)) {
+      System.out.println("Try Harder Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\'');
+    }
   }
   System.out.println(passedCount + " of " + imageFiles.length+ " images passed ("+ mustPassCount+ " required)");
   assertTrue("Too many images failed",passedCount >= mustPassCount);

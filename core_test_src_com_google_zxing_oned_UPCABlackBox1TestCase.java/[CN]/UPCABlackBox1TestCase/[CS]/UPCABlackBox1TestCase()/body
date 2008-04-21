@@ -1,3 +1,3 @@
 {
-  super(new File("test/data/blackbox/upca-1"),new MultiFormatReader(),14,BarcodeFormat.UPC_A);
+  super(new File("test/data/blackbox/upca-1"),new MultiFormatReader(),15,BarcodeFormat.UPC_A);
 }
