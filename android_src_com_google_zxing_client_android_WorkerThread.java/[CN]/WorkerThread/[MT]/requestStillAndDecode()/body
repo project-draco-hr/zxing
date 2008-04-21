@@ -1,4 +1,0 @@
-{
-  state=State.STILL_AND_DECODE;
-  wakeFromIdle();
-}

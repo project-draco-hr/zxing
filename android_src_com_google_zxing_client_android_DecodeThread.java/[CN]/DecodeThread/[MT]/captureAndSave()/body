@@ -1,0 +1,18 @@
+{
+  Bitmap bitmap=cameraManager.captureStill();
+  OutputStream outStream=getNewPhotoOutputStream();
+  if (outStream != null) {
+    bitmap.compress(Bitmap.CompressFormat.JPEG,80,outStream);
+    try {
+      outStream.close();
+    }
+ catch (    IOException e) {
+    }
+    Message success=Message.obtain(cameraThreadHandler,R.id.save_succeeded);
+    success.sendToTarget();
+  }
+ else {
+    Message failure=Message.obtain(cameraThreadHandler,R.id.save_failed);
+    failure.sendToTarget();
+  }
+}

@@ -1,0 +1,27 @@
+{
+  File sdcard=new File("/sdcard");
+  if (sdcard.exists()) {
+    File barcodes=new File(sdcard,"barcodes");
+    if (!barcodes.exists()) {
+      if (!barcodes.mkdir()) {
+        return null;
+      }
+    }
+    String fileName=getNewPhotoName();
+    try {
+      return new FileOutputStream(new File(barcodes,fileName));
+    }
+ catch (    FileNotFoundException e) {
+    }
+  }
+ else {
+    Application application=activity.getApplication();
+    String fileName=getNewPhotoName();
+    try {
+      return application.openFileOutput(fileName,0);
+    }
+ catch (    FileNotFoundException e) {
+    }
+  }
+  return null;
+}

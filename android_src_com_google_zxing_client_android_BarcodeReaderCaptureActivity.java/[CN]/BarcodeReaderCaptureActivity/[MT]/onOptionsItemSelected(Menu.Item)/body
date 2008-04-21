@@ -1,8 +1,11 @@
 {
+  Context context=getApplication();
 switch (item.getId()) {
 case ABOUT_ID:
-    Context context=getApplication();
-  showAlert(context.getString(R.string.title_about),0,context.getString(R.string.msg_about),context.getString(R.string.button_ok),true);
+    showAlert(context.getString(R.string.title_about),0,context.getString(R.string.msg_about),context.getString(R.string.button_ok),true);
+  break;
+case HELP_ID:
+showAlert(context.getString(R.string.title_help),0,context.getString(R.string.msg_help),context.getString(R.string.button_ok),true);
 break;
 }
 return super.onOptionsItemSelected(item);

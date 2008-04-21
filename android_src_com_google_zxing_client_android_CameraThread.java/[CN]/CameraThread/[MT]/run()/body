@@ -1,0 +1,59 @@
+{
+  Looper.prepare();
+  handler=new Handler(){
+    public void handleMessage(    Message message){
+switch (message.what) {
+case R.id.preview:
+        if (state == State.PREVIEW) {
+          surfaceView.capturePreviewAndDraw();
+        }
+      break;
+case R.id.save:
+    state=State.SAVE;
+  Message save=Message.obtain(decodeThread.handler,R.id.save);
+save.sendToTarget();
+break;
+case R.id.restart_preview:
+restartPreviewAndDecode();
+break;
+case R.id.quit:
+state=State.DONE;
+Message quit=Message.obtain(decodeThread.handler,R.id.quit);
+quit.sendToTarget();
+try {
+decodeThread.join();
+}
+ catch (InterruptedException e) {
+}
+Looper.myLooper().quit();
+break;
+case R.id.decode_started:
+state=State.PREVIEW;
+break;
+case R.id.decode_succeeded:
+state=State.DONE;
+Message success=Message.obtain(activityHandler,R.id.decode_succeeded,message.obj);
+success.arg1=message.arg1;
+success.sendToTarget();
+break;
+case R.id.decode_failed:
+startDecode();
+break;
+case R.id.save_succeeded:
+restartPreviewAndDecode();
+break;
+case R.id.save_failed:
+restartPreviewAndDecode();
+break;
+}
+if (state == State.PREVIEW) {
+Message preview=Message.obtain(handler,R.id.preview);
+preview.sendToTarget();
+}
+}
+}
+;
+decodeThread.setCameraThreadHandler(handler);
+restartPreviewAndDecode();
+Looper.loop();
+}

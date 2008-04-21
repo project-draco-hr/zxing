@@ -1,0 +1,25 @@
+{
+  int buttonText;
+  if (type.equals(ParsedReaderResultType.ADDRESSBOOK)) {
+    buttonText=R.string.button_add_contact;
+  }
+ else   if (type.equals(ParsedReaderResultType.URI) || type.equals(ParsedReaderResultType.BOOKMARK) || type.equals(ParsedReaderResultType.URLTO)) {
+    buttonText=R.string.button_open_browser;
+  }
+ else   if (type.equals(ParsedReaderResultType.EMAIL) || type.equals(ParsedReaderResultType.EMAIL_ADDRESS)) {
+    buttonText=R.string.button_email;
+  }
+ else   if (type.equals(ParsedReaderResultType.UPC)) {
+    buttonText=R.string.button_lookup_product;
+  }
+ else   if (type.equals(ParsedReaderResultType.TEL)) {
+    buttonText=R.string.button_dial;
+  }
+ else   if (type.equals(ParsedReaderResultType.GEO)) {
+    buttonText=R.string.button_show_map;
+  }
+ else {
+    buttonText=0;
+  }
+  return buttonText;
+}

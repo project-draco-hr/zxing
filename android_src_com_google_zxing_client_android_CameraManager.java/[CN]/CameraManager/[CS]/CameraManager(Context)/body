@@ -1,14 +1,14 @@
 {
   this.context=context;
-  calculateStillResolution();
   getScreenResolution();
-  bitmap=Bitmap.createBitmap(stillResolution.x,stillResolution.y,false);
+  calculateStillResolution();
+  calculatePreviewResolution();
+  usePreviewForDecode=true;
+  setUsePreviewForDecode(false);
   Bitmap fakeBitmap=BitmapFactory.decodeFile("/tmp/barcode.jpg");
   if (fakeBitmap == null) {
     throw new RuntimeException("/tmp/barcode.jpg was not found");
   }
   cameraSource=new BitmapCamera(fakeBitmap,stillResolution.x,stillResolution.y);
   params=new CameraDevice.CaptureParams();
-  previewMode=false;
-  setPreviewMode(true);
 }

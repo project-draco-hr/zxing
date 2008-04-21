@@ -1,9 +1,28 @@
 {
-  if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
-    workerThread.requestStillAndDecode();
-    return true;
+  if (keyCode == KeyEvent.KEYCODE_A) {
+    cameraThread.setDecodeAllMode();
+  }
+ else   if (keyCode == KeyEvent.KEYCODE_C) {
+    Message save=Message.obtain(cameraThread.handler,R.id.save);
+    save.sendToTarget();
+  }
+ else   if (keyCode == KeyEvent.KEYCODE_P) {
+    cameraManager.setUsePreviewForDecode(true);
+  }
+ else   if (keyCode == KeyEvent.KEYCODE_Q) {
+    cameraThread.setDecodeQRMode();
+  }
+ else   if (keyCode == KeyEvent.KEYCODE_S) {
+    cameraManager.setUsePreviewForDecode(false);
+  }
+ else   if (keyCode == KeyEvent.KEYCODE_T) {
+    cameraThread.toggleTracing();
+  }
+ else   if (keyCode == KeyEvent.KEYCODE_U) {
+    cameraThread.setDecode1DMode();
   }
  else {
     return super.onKeyDown(keyCode,event);
   }
+  return true;
 }

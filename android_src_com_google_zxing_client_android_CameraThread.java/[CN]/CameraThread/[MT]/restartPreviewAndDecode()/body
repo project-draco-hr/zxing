@@ -1,0 +1,5 @@
+{
+  state=State.PREVIEW;
+  surfaceView.capturePreviewAndDraw();
+  startDecode();
+}

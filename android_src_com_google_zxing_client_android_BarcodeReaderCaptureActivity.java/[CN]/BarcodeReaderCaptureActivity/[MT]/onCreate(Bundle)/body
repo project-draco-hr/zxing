@@ -1,10 +1,11 @@
 {
   super.onCreate(icicle);
   requestWindowFeature(Window.FEATURE_NO_TITLE);
+  setContentView(R.layout.main);
   cameraManager=new CameraManager(getApplication());
   surfaceView=new CameraSurfaceView(getApplication(),cameraManager);
-  setContentView(surfaceView);
-  workerThread=new WorkerThread(surfaceView,cameraManager,messageHandler);
-  workerThread.requestPreviewLoop();
-  workerThread.start();
+  surfaceView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.FILL_PARENT));
+  ViewGroup previewView=(ViewGroup)findViewById(R.id.preview_view);
+  previewView.addView(surfaceView);
+  cameraThread=null;
 }

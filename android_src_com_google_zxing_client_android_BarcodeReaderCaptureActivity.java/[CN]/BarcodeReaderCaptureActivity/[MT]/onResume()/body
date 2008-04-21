@@ -1,9 +1,9 @@
 {
   super.onResume();
+  resetStatusView();
   cameraManager.openDriver();
-  if (workerThread == null) {
-    workerThread=new WorkerThread(surfaceView,cameraManager,messageHandler);
-    workerThread.requestPreviewLoop();
-    workerThread.start();
+  if (cameraThread == null) {
+    cameraThread=new CameraThread(this,surfaceView,cameraManager,messageHandler);
+    cameraThread.start();
   }
 }

@@ -5,8 +5,14 @@
   Point[] output=new Point[count];
   for (int x=0; x < count; x++) {
     output[x]=new Point();
-    output[x].x=frame.left + (int)(points[x].getX() * frameSize / stillResolution.x + 0.5f);
-    output[x].y=frame.top + (int)(points[x].getY() * frameSize / stillResolution.y + 0.5f);
+    if (usePreviewForDecode) {
+      output[x].x=(int)(points[x].getX() + 0.5f);
+      output[x].y=(int)(points[x].getY() + 0.5f);
+    }
+ else {
+      output[x].x=frame.left + (int)(points[x].getX() * frameSize / stillResolution.x + 0.5f);
+      output[x].y=frame.top + (int)(points[x].getY() * frameSize / stillResolution.y + 0.5f);
+    }
   }
   return output;
 }
