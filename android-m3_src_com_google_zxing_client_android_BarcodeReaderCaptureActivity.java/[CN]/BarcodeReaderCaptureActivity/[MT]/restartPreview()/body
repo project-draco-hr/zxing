@@ -1,4 +1,5 @@
 {
+  resetStatusViewColor();
   Message restart=Message.obtain(cameraThread.handler,R.id.restart_preview);
   restart.sendToTarget();
 }

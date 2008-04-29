@@ -1,6 +1,7 @@
 {
   if (!rawResult.toString().equals(lastResult)) {
     lastResult=rawResult.toString();
+    playBeepSound();
     ResultPoint[] points=rawResult.getResultPoints();
     if (points != null && points.length > 0) {
       surfaceView.drawResultPoints(points);
@@ -20,6 +21,8 @@
  else {
       actionButton.setVisibility(View.GONE);
     }
+    View statusView=findViewById(R.id.status_view);
+    statusView.setBackgroundColor(0xc000ff00);
     Message message=Message.obtain(messageHandler,R.id.restart_preview);
     messageHandler.sendMessageDelayed(message,1000);
   }
