@@ -1,0 +1,9 @@
+{
+  StringBuffer result=new StringBuffer(summary);
+  maybeAppend(start,result);
+  maybeAppend(end,result);
+  maybeAppend(location,result);
+  maybeAppend(attendee,result);
+  maybeAppend(title,result);
+  return result.toString();
+}

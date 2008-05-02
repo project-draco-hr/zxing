@@ -1,0 +1,30 @@
+{
+  if (TAGSERVER_URI_PREFIX == null) {
+    return null;
+  }
+  if (!result.getBarcodeFormat().equals(BarcodeFormat.DATAMATRIX)) {
+    return null;
+  }
+  String rawText=result.getText();
+  if (!rawText.startsWith(SERVICE_TYPE)) {
+    return null;
+  }
+  int length=rawText.length();
+  if (!isDigits(rawText,length)) {
+    return null;
+  }
+  int action;
+  String id;
+  if (length == 15) {
+    action=DEFAULT_ACTION;
+    id=rawText.substring(0,2) + action + rawText.substring(2);
+  }
+ else   if (length == 16) {
+    action=rawText.charAt(2) - '0';
+    id=rawText;
+  }
+ else {
+    return null;
+  }
+  return new MobileTagRichWebParsedResult(id,action);
+}

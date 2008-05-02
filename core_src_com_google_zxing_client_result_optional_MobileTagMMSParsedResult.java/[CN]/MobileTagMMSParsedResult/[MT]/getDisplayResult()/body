@@ -1,0 +1,7 @@
+{
+  StringBuffer result=new StringBuffer(to);
+  maybeAppend(subject,result);
+  maybeAppend(title,result);
+  maybeAppend(body,result);
+  return result.toString();
+}

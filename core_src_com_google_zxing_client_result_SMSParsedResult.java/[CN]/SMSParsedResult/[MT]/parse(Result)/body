@@ -1,0 +1,32 @@
+{
+  String rawText=result.getText();
+  if (rawText == null || !rawText.startsWith("sms:")) {
+    return null;
+  }
+  int queryStart=rawText.indexOf('?',4);
+  String smsURIWithoutQuery;
+  if (queryStart < 0) {
+    smsURIWithoutQuery=rawText.substring(4);
+  }
+ else {
+    smsURIWithoutQuery=rawText.substring(4,queryStart);
+  }
+  int numberEnd=smsURIWithoutQuery.indexOf(';');
+  String number;
+  String via;
+  if (numberEnd < 0) {
+    number=smsURIWithoutQuery;
+    via=null;
+  }
+ else {
+    number=smsURIWithoutQuery.substring(0,numberEnd);
+    String maybeVia=smsURIWithoutQuery.substring(numberEnd + 1);
+    if (maybeVia.startsWith("via=")) {
+      via=maybeVia.substring(4);
+    }
+ else {
+      via=null;
+    }
+  }
+  return new SMSParsedResult(rawText,number,via);
+}

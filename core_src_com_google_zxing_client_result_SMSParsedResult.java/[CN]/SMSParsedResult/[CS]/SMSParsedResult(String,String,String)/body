@@ -1,0 +1,6 @@
+{
+  super(ParsedReaderResultType.SMS);
+  this.smsURI=smsURI;
+  this.number=number;
+  this.via=via;
+}

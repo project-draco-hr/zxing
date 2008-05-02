@@ -1,0 +1,20 @@
+{
+  if (!result.getBarcodeFormat().equals(BarcodeFormat.DATAMATRIX)) {
+    return null;
+  }
+  String rawText=result.getText();
+  if (!rawText.startsWith(SERVICE_TYPE)) {
+    return null;
+  }
+  String[] matches=matchDelimitedFields(rawText.substring(2),6);
+  if (matches == null || !isDigits(matches[1],10) || !isDigits(matches[2],10)) {
+    return null;
+  }
+  String summary=matches[0];
+  String start=expandDateString(matches[1]);
+  String end=expandDateString(matches[2]);
+  String location=matches[3];
+  String attendee=matches[4];
+  String title=matches[5];
+  return new MobileTagSimpleCalendarParsedResult(summary,start,end,location,attendee,title);
+}

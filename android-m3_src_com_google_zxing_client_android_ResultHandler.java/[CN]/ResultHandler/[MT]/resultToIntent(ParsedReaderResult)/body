@@ -51,6 +51,14 @@
  catch (    URISyntaxException e) {
     }
   }
+ else   if (type.equals(ParsedReaderResultType.SMS)) {
+    SMSParsedResult smsResult=(SMSParsedResult)result;
+    try {
+      intent=new Intent(Intent.SENDTO_ACTION,new ContentURI(smsResult.getSMSURI()));
+    }
+ catch (    URISyntaxException e) {
+    }
+  }
  else   if (type.equals(ParsedReaderResultType.TEL)) {
     TelParsedResult telResult=(TelParsedResult)result;
     try {

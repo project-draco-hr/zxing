@@ -1,0 +1,7 @@
+{
+  super(ParsedReaderResultType.MOBILETAG_MMS);
+  this.to=to;
+  this.subject=subject;
+  this.body=body;
+  this.title=title;
+}

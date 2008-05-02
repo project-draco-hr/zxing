@@ -1,0 +1,4 @@
+{
+  super(ParsedReaderResultType.NDEF_URI);
+  this.uri=uri;
+}

@@ -1,0 +1,12 @@
+{
+  super(ParsedReaderResultType.MOBILETAG_SIMPLE_CONTACT);
+  this.fullName=fullName;
+  this.telephoneCell=telephoneCell;
+  this.telephone=telephone;
+  this.email1=email1;
+  this.email2=email2;
+  this.address=address;
+  this.org=org;
+  this.birthday=birthday;
+  this.title=title;
+}

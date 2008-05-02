@@ -1,0 +1,5 @@
+{
+  super(ParsedReaderResultType.MOBILETAG_TEL);
+  this.number=number;
+  this.title=title;
+}

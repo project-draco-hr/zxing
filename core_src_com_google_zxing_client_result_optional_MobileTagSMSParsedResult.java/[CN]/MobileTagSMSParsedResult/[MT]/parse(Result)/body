@@ -1,0 +1,17 @@
+{
+  if (!result.getBarcodeFormat().equals(BarcodeFormat.DATAMATRIX)) {
+    return null;
+  }
+  String rawText=result.getText();
+  if (!rawText.startsWith(SERVICE_TYPE)) {
+    return null;
+  }
+  String[] matches=matchDelimitedFields(rawText.substring(2),3);
+  if (matches == null) {
+    return null;
+  }
+  String to=matches[0];
+  String body=matches[1];
+  String title=matches[2];
+  return new MobileTagSMSParsedResult(to,body,title);
+}
