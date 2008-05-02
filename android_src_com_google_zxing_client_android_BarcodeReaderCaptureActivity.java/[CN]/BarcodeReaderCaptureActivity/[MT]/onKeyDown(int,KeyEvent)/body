@@ -1,28 +1,29 @@
 {
-  if (keyCode == KeyEvent.KEYCODE_A) {
+switch (keyCode) {
+case KeyEvent.KEYCODE_A:
     cameraThread.setDecodeAllMode();
-  }
- else   if (keyCode == KeyEvent.KEYCODE_C) {
-    Message save=Message.obtain(cameraThread.handler,R.id.save);
-    save.sendToTarget();
-  }
- else   if (keyCode == KeyEvent.KEYCODE_P) {
-    cameraManager.setUsePreviewForDecode(true);
-  }
- else   if (keyCode == KeyEvent.KEYCODE_Q) {
-    cameraThread.setDecodeQRMode();
-  }
- else   if (keyCode == KeyEvent.KEYCODE_S) {
-    cameraManager.setUsePreviewForDecode(false);
-  }
- else   if (keyCode == KeyEvent.KEYCODE_T) {
-    cameraThread.toggleTracing();
-  }
- else   if (keyCode == KeyEvent.KEYCODE_U) {
-    cameraThread.setDecode1DMode();
-  }
- else {
-    return super.onKeyDown(keyCode,event);
-  }
-  return true;
+  break;
+case KeyEvent.KEYCODE_C:
+Message save=Message.obtain(cameraThread.handler,R.id.save);
+save.sendToTarget();
+break;
+case KeyEvent.KEYCODE_P:
+cameraManager.setUsePreviewForDecode(true);
+break;
+case KeyEvent.KEYCODE_Q:
+cameraThread.setDecodeQRMode();
+break;
+case KeyEvent.KEYCODE_S:
+cameraManager.setUsePreviewForDecode(false);
+break;
+case KeyEvent.KEYCODE_T:
+cameraThread.toggleTracing();
+break;
+case KeyEvent.KEYCODE_U:
+cameraThread.setDecode1DMode();
+break;
+default :
+return super.onKeyDown(keyCode,event);
+}
+return true;
 }

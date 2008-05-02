@@ -1,17 +1,18 @@
 {
-  for (int x=0; x < args.length; x++) {
-    if (args[x].equals("--try_harder")) {
+  Hashtable<DecodeHintType,Object> hints=null;
+  for (  String arg : args) {
+    if ("--try_harder".equals(arg)) {
       hints=new Hashtable<DecodeHintType,Object>(3);
       hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
     }
- else     if (args[x].startsWith("--")) {
-      System.out.println("Unknown command line option " + args[x]);
+ else     if (arg.startsWith("--")) {
+      System.out.println("Unknown command line option " + arg);
       return;
     }
   }
-  for (int x=0; x < args.length; x++) {
-    if (!args[x].startsWith("--")) {
-      decodeOneArgument(args[x]);
+  for (  String arg : args) {
+    if (!arg.startsWith("--")) {
+      decodeOneArgument(arg,hints);
     }
   }
 }

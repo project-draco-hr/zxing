@@ -1,9 +1,0 @@
-{
-  int identifierCode=payload[0] & 0xFF;
-  String prefix=null;
-  if (identifierCode < URI_PREFIXES.length) {
-    prefix=URI_PREFIXES[identifierCode];
-  }
-  String restOfURI=bytesToString(payload,1,payload.length - 1,"UTF-8");
-  return prefix == null ? restOfURI : prefix + restOfURI;
-}

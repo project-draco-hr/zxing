@@ -9,7 +9,7 @@
         if (filename.startsWith(".") || filename.endsWith(".txt")) {
           continue;
         }
-        if (decode(input.toURI())) {
+        if (decode(input.toURI(),hints)) {
           successful++;
         }
         total++;
@@ -17,10 +17,10 @@
       System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)\n");
     }
  else {
-      decode(inputFile.toURI());
+      decode(inputFile.toURI(),hints);
     }
   }
  else {
-    decode(new URI(argument));
+    decode(new URI(argument),hints);
   }
 }
