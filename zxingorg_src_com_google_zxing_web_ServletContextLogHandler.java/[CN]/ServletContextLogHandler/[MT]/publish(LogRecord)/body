@@ -1,0 +1,17 @@
+{
+  Formatter formatter=getFormatter();
+  String message;
+  if (formatter == null) {
+    message=record.getMessage();
+  }
+ else {
+    message=formatter.format(record);
+  }
+  Throwable throwable=record.getThrown();
+  if (throwable == null) {
+    context.log(message);
+  }
+ else {
+    context.log(message,throwable);
+  }
+}

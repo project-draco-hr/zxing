@@ -1,0 +1,10 @@
+{
+  if (terminal) {
+    children=null;
+    values=new int[256];
+  }
+ else {
+    children=new IPTrieNode[256];
+    values=null;
+  }
+}

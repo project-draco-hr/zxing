@@ -1,0 +1,4 @@
+{
+  log.config("DecodeServlet shutting down...");
+  emailTimer.cancel();
+}

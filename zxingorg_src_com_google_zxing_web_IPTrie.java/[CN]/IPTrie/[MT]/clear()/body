@@ -1,0 +1,5 @@
+{
+synchronized (root) {
+    Arrays.fill(root.children,null);
+  }
+}

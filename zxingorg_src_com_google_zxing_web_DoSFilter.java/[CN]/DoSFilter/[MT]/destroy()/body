@@ -1,0 +1,5 @@
+{
+  timer.cancel();
+  numRecentAccesses.clear();
+  bannedIPAddresses.clear();
+}

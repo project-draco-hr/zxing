@@ -1,0 +1,4 @@
+{
+  Authenticator emailAuthenticator=new EmailAuthenticator(args[0],args[1]);
+  new DecodeEmailTask(emailAuthenticator).run();
+}

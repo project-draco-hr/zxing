@@ -1,0 +1,19 @@
+{
+  byte[] octets=ipAddress.getAddress();
+synchronized (root) {
+    IPTrieNode current=root;
+    int max=octets.length - 1;
+    for (int offset=0; offset < max; offset++) {
+      int index=0xFF & octets[offset];
+      IPTrieNode child=current.children[index];
+      if (child == null) {
+        child=new IPTrieNode(offset == max - 1);
+        current.children[index]=child;
+      }
+      current=child;
+    }
+    int index=0xFF & octets[max];
+    current.values[index]++;
+    return current.values[index];
+  }
+}

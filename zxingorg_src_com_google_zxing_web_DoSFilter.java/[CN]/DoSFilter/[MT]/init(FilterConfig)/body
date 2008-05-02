@@ -1,0 +1,11 @@
+{
+  context=filterConfig.getServletContext();
+  String bannedIPs=filterConfig.getInitParameter("bannedIPs");
+  if (bannedIPs != null) {
+    for (    String ip : bannedIPs.split(",")) {
+      manuallyBannedIPAddresses.add(ip.trim());
+    }
+  }
+  timer.scheduleAtFixedRate(new ResetTask(),0L,MAX_ACCESS_INTERVAL_MSEC);
+  timer.scheduleAtFixedRate(new UnbanTask(),0L,UNBAN_INTERVAL_MSEC);
+}
