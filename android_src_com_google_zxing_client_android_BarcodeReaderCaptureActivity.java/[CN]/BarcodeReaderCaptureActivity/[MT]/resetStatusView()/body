@@ -1,4 +1,5 @@
 {
+  resetStatusViewColor();
   TextView textView=(TextView)findViewById(R.id.status_text_view);
   textView.setText(R.string.msg_default_status);
   View actionButton=findViewById(R.id.status_action_button);
