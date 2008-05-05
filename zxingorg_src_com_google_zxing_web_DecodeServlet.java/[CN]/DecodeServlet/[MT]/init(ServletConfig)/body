@@ -15,6 +15,6 @@
   diskFileItemFactory=new DiskFileItemFactory();
   Authenticator emailAuthenticator=new EmailAuthenticator(emailAddress,emailPassword);
   emailTimer=new Timer("Email decoder timer",true);
-  emailTimer.schedule(new DecodeEmailTask(emailAuthenticator),0L,EMAIL_CHECK_INTERVAL);
+  emailTimer.schedule(new DecodeEmailTask(emailAddress,emailAuthenticator),0L,EMAIL_CHECK_INTERVAL);
   log.info("DecodeServlet configured");
 }

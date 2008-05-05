@@ -1,0 +1,9 @@
+{
+  this.emailAuthenticator=emailAuthenticator;
+  try {
+    fromAddress=new InternetAddress(emailAddress,"ZXing By Email");
+  }
+ catch (  UnsupportedEncodingException uee) {
+    throw new RuntimeException(uee);
+  }
+}
