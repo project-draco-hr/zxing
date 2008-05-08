@@ -1,12 +1,22 @@
 {
-  int count=0;
+  int confirmedCount=0;
+  float totalModuleSize=0.0f;
   int max=possibleCenters.size();
   for (int i=0; i < max; i++) {
-    if (((FinderPattern)possibleCenters.elementAt(i)).getCount() >= CENTER_QUORUM) {
-      if (++count == 3) {
-        return true;
-      }
+    FinderPattern pattern=(FinderPattern)possibleCenters.elementAt(i);
+    if (pattern.getCount() >= CENTER_QUORUM) {
+      confirmedCount++;
+      totalModuleSize+=pattern.getEstimatedModuleSize();
     }
   }
-  return false;
+  if (confirmedCount < 3) {
+    return false;
+  }
+  float average=totalModuleSize / max;
+  float totalDeviation=0.0f;
+  for (int i=0; i < max; i++) {
+    FinderPattern pattern=(FinderPattern)possibleCenters.elementAt(i);
+    totalDeviation+=Math.abs(pattern.getEstimatedModuleSize() - average);
+  }
+  return totalDeviation <= 0.15f * totalModuleSize;
 }
