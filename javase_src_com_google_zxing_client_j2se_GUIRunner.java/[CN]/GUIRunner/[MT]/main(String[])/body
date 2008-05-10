@@ -1,0 +1,5 @@
+{
+  GUIRunner runner=new GUIRunner();
+  runner.setVisible(true);
+  runner.chooseImage();
+}

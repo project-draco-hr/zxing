@@ -1,0 +1,16 @@
+{
+  JFileChooser fileChooser=new JFileChooser();
+  fileChooser.showOpenDialog(GUIRunner.this);
+  File file=fileChooser.getSelectedFile();
+  ImageIcon imageIcon;
+  try {
+    imageIcon=new ImageIcon(file.toURL());
+  }
+ catch (  MalformedURLException mue) {
+    throw new RuntimeException(mue);
+  }
+  setSize(imageIcon.getIconWidth(),imageIcon.getIconHeight() + 100);
+  imageLabel.setIcon(imageIcon);
+  String decodeText=getDecodeText(file);
+  textArea.setText(decodeText);
+}

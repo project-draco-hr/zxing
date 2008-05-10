@@ -1,0 +1,15 @@
+{
+  imageLabel=new JLabel();
+  textArea=new JTextArea();
+  textArea.setEditable(false);
+  textArea.setMaximumSize(new Dimension(400,200));
+  Container panel=new JPanel();
+  panel.setLayout(new FlowLayout());
+  panel.add(imageLabel);
+  panel.add(textArea);
+  setTitle("ZXing");
+  setSize(400,400);
+  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  setContentPane(panel);
+  setLocationRelativeTo(null);
+}
