@@ -29,7 +29,7 @@
     log.info("Decoding " + imageURI);
     InputStream is=getResponse.getEntity().getContent();
     try {
-      processStream(is,response);
+      processStream(is,request,response);
     }
   finally {
       is.close();

@@ -1,0 +1,12 @@
+{
+  Object content=message.getContent();
+  if (content instanceof MimeMultipart) {
+    MimeMultipart mimeContent=(MimeMultipart)content;
+    int numParts=mimeContent.getCount();
+    for (int j=0; j < numParts; j++) {
+      MimeBodyPart part=(MimeBodyPart)mimeContent.getBodyPart(j);
+      processMessagePart(session,message,part);
+    }
+  }
+  message.setFlag(Flags.Flag.DELETED,true);
+}

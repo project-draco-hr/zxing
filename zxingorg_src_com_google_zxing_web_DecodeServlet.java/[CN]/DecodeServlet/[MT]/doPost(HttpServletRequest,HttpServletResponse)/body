@@ -12,14 +12,14 @@
           log.info("Decoding uploaded file");
           InputStream is=item.getInputStream();
           try {
-            processStream(is,response);
+            processStream(is,request,response);
           }
   finally {
             is.close();
           }
         }
  else {
-          throw new ServletException("File is too large: " + item.getSize());
+          response.sendRedirect("badimage.jspx");
         }
         break;
       }

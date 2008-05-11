@@ -1,0 +1,34 @@
+{
+  BufferedImage image=ImageIO.read(is);
+  if (image == null) {
+    response.sendRedirect("badimage.jspx");
+    return;
+  }
+  Reader reader=new MultiFormatReader();
+  Result result;
+  try {
+    result=reader.decode(new BufferedImageMonochromeBitmapSource(image),HINTS);
+  }
+ catch (  ReaderException re) {
+    log.info("DECODE FAILED: " + re.toString());
+    response.sendRedirect("notfound.jspx");
+    return;
+  }
+  if (request.getParameter("full") == null) {
+    response.setContentType("text/plain");
+    response.setCharacterEncoding("UTF-8");
+    Writer out=new OutputStreamWriter(response.getOutputStream(),"UTF-8");
+    try {
+      out.write(result.getText());
+    }
+  finally {
+      out.close();
+    }
+  }
+ else {
+    request.setAttribute("result",result);
+    ParsedReaderResult parsedReaderResult=ParsedReaderResult.parseReaderResult(result);
+    request.setAttribute("parsedReaderResult",parsedReaderResult);
+    request.getRequestDispatcher("decoderesult.jspx").forward(request,response);
+  }
+}

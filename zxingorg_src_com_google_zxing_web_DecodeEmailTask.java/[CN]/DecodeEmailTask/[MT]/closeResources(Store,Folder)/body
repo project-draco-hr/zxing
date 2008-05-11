@@ -1,0 +1,12 @@
+{
+  try {
+    if (inbox != null) {
+      inbox.close(true);
+    }
+    if (store != null) {
+      store.close();
+    }
+  }
+ catch (  MessagingException me) {
+  }
+}
