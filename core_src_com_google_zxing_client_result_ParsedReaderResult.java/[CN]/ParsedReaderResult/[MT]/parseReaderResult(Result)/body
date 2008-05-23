@@ -21,6 +21,9 @@
  else   if ((result=SMSParsedResult.parse(theResult)) != null) {
     return result;
   }
+ else   if ((result=SMSTOParsedResult.parse(theResult)) != null) {
+    return result;
+  }
  else   if ((result=GeoParsedResult.parse(theResult)) != null) {
     return result;
   }

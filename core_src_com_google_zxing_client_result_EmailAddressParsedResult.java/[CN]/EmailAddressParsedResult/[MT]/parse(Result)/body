@@ -1,14 +1,28 @@
 {
   String rawText=result.getText();
+  if (rawText == null) {
+    return null;
+  }
   String emailAddress;
-  if (rawText != null && rawText.startsWith("mailto:")) {
+  if (rawText.startsWith("mailto:")) {
     emailAddress=rawText.substring(7);
+    int queryStart=emailAddress.indexOf('?');
+    if (queryStart >= 0) {
+      emailAddress=emailAddress.substring(0,queryStart);
+    }
+    Hashtable nameValues=parseNameValuePairs(rawText);
+    if (emailAddress.length() == 0) {
+      emailAddress=(String)nameValues.get("to");
+    }
+    String subject=(String)nameValues.get("subject");
+    String body=(String)nameValues.get("body");
+    return new EmailAddressParsedResult(emailAddress,subject,body,rawText);
   }
  else {
     if (!EmailDoCoMoParsedResult.isBasicallyValidEmailAddress(rawText)) {
       return null;
     }
     emailAddress=rawText;
+    return new EmailAddressParsedResult(emailAddress,null,null,"mailto:" + emailAddress);
   }
-  return new EmailAddressParsedResult(emailAddress);
 }

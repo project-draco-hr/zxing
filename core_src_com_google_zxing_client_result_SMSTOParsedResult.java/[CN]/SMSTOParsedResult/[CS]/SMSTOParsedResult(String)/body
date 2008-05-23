@@ -1,0 +1,4 @@
+{
+  super(ParsedReaderResultType.SMSTO);
+  this.number=number;
+}

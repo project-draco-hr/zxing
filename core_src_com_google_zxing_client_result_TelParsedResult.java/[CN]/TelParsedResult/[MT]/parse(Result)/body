@@ -3,6 +3,7 @@
   if (rawText == null || !rawText.startsWith("tel:")) {
     return null;
   }
+  String telURI=rawText;
   int queryStart=rawText.indexOf('?',4);
   if (queryStart < 0) {
     rawText=rawText.substring(4);
@@ -10,5 +11,5 @@
  else {
     rawText=rawText.substring(4,queryStart);
   }
-  return new TelParsedResult(rawText);
+  return new TelParsedResult(rawText,telURI);
 }

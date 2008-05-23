@@ -36,7 +36,7 @@
  else   if (type.equals(ParsedReaderResultType.EMAIL)) {
     EmailDoCoMoParsedResult emailResult=(EmailDoCoMoParsedResult)result;
     try {
-      intent=new Intent(Intent.SENDTO_ACTION,new ContentURI(emailResult.getTo()));
+      intent=new Intent(Intent.SENDTO_ACTION,new ContentURI(emailResult.getMailtoURI()));
     }
  catch (    URISyntaxException e) {
     }
@@ -46,10 +46,12 @@
  else   if (type.equals(ParsedReaderResultType.EMAIL_ADDRESS)) {
     EmailAddressParsedResult emailResult=(EmailAddressParsedResult)result;
     try {
-      intent=new Intent(Intent.SENDTO_ACTION,new ContentURI("mailto:" + emailResult.getEmailAddress()));
+      intent=new Intent(Intent.SENDTO_ACTION,new ContentURI(emailResult.getMailtoURI()));
     }
  catch (    URISyntaxException e) {
     }
+    putExtra(intent,"subject",emailResult.getSubject());
+    putExtra(intent,"body",emailResult.getBody());
   }
  else   if (type.equals(ParsedReaderResultType.SMS)) {
     SMSParsedResult smsResult=(SMSParsedResult)result;
@@ -59,10 +61,18 @@
  catch (    URISyntaxException e) {
     }
   }
+ else   if (type.equals(ParsedReaderResultType.SMSTO)) {
+    SMSTOParsedResult smsToResult=(SMSTOParsedResult)result;
+    try {
+      intent=new Intent(Intent.SENDTO_ACTION,new ContentURI(smsToResult.getSMSURI()));
+    }
+ catch (    URISyntaxException e) {
+    }
+  }
  else   if (type.equals(ParsedReaderResultType.TEL)) {
     TelParsedResult telResult=(TelParsedResult)result;
     try {
-      intent=new Intent(Intent.DIAL_ACTION,new ContentURI("tel:" + telResult.getNumber()));
+      intent=new Intent(Intent.DIAL_ACTION,new ContentURI(telResult.getTelURI()));
     }
  catch (    URISyntaxException e) {
     }
@@ -71,7 +81,6 @@
     GeoParsedResult geoResult=(GeoParsedResult)result;
     try {
       ContentURI geoURI=new ContentURI(geoResult.getGeoURI());
-      Log.v(TAG,"Created geo URI: " + geoURI.toString());
       intent=new Intent(Intent.VIEW_ACTION,geoURI);
     }
  catch (    URISyntaxException e) {

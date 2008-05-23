@@ -1,0 +1,15 @@
+{
+  int paramStart=uri.indexOf('?');
+  if (paramStart < 0) {
+    return null;
+  }
+  Hashtable result=new Hashtable(3);
+  paramStart++;
+  int paramEnd;
+  while ((paramEnd=uri.indexOf('&',paramStart)) >= 0) {
+    appendKeyValue(uri,paramStart,paramEnd,result);
+    paramStart=paramEnd + 1;
+  }
+  appendKeyValue(uri,paramStart,uri.length(),result);
+  return result;
+}

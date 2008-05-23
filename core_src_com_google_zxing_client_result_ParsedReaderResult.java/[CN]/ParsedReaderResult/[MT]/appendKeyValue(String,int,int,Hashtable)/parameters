@@ -1,0 +1,4 @@
+String uri
+int paramStart
+int paramEnd
+Hashtable result
