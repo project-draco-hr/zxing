@@ -3,5 +3,5 @@
   addCommand(exit);
   setCommandListener(this);
   snapshotThread=new SnapshotThread(zXingMIDlet);
-  snapshotThread.start();
+  new Thread(snapshotThread).start();
 }
