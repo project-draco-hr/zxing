@@ -1,4 +1,0 @@
-{
-  Message message=Message.obtain(decodeThread.handler,R.id.toggle_tracing);
-  message.sendToTarget();
-}

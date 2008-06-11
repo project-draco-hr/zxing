@@ -1,6 +1,0 @@
-{
-  super.onCreateOptionsMenu(menu);
-  menu.add(0,ABOUT_ID,R.string.menu_about);
-  menu.add(0,HELP_ID,R.string.menu_help);
-  return true;
-}

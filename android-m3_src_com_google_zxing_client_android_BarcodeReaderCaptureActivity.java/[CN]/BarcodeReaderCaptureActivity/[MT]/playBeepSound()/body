@@ -1,5 +1,0 @@
-{
-  MediaPlayer mediaPlayer=MediaPlayer.create(this,R.raw.beep);
-  mediaPlayer.prepare();
-  mediaPlayer.start();
-}

@@ -1,7 +1,0 @@
-{
-  this.surfaceView=surfaceView;
-  this.activityHandler=activityHandler;
-  decodeThread=new DecodeThread(activity,cameraManager);
-  decodeThread.start();
-  state=State.DONE;
-}

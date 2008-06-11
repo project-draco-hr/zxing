@@ -1,7 +1,0 @@
-{
-  if (camera == null) {
-    camera=CameraDevice.open();
-    previewMode=false;
-    setPreviewMode(true);
-  }
-}

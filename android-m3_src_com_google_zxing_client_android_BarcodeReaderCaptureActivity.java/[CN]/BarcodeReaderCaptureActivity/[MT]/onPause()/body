@@ -1,8 +1,0 @@
-{
-  super.onPause();
-  if (cameraThread != null) {
-    cameraThread.quitSynchronously();
-    cameraThread=null;
-  }
-  cameraManager.closeDriver();
-}

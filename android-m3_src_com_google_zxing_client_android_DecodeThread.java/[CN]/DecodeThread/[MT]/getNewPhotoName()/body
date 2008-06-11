@@ -1,4 +1,0 @@
-{
-  Date now=new Date();
-  return "capture" + now.getTime() + ".jpg";
-}
