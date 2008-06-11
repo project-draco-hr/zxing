@@ -3,7 +3,4 @@
   height=image.getHeight();
   rgbPixels=new int[width * height];
   image.getRGB(rgbPixels,0,width,0,0,width,height);
-  blackPoint=0x7F;
-  lastMethod=null;
-  lastArgument=0;
 }

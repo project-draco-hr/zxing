@@ -1,3 +1,0 @@
-{
-  image.getRGB(left + startX,top + startY,result.length,1,result,0,result.length);
-}

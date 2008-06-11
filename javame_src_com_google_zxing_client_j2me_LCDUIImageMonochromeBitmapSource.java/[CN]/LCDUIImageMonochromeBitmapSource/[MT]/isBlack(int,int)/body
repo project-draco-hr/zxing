@@ -1,3 +1,0 @@
-{
-  return computeRGBLuminance(rgbPixels[x + y * width]) < blackPoint;
-}

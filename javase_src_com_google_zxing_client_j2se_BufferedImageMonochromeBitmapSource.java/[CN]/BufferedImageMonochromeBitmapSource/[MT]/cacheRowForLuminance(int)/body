@@ -1,0 +1,6 @@
+{
+  if (y != cachedRow) {
+    image.getRGB(left,top + y,width,1,rgbRow,0,width);
+    cachedRow=y;
+  }
+}

@@ -1,6 +1,5 @@
 {
   this.image=image;
-  blackPoint=0x7F;
-  lastMethod=null;
-  lastArgument=0;
+  rgbRow=new int[image.getWidth()];
+  cachedRow=-1;
 }

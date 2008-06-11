@@ -1,8 +1,5 @@
 {
   this.image=image;
-  blackPoint=0x7F;
-  lastMethod=null;
-  lastArgument=0;
   int sourceHeight=image.getHeight();
   int sourceWidth=image.getWidth();
   if (left < 0 || top < 0 || right > sourceWidth || bottom > sourceHeight || right <= left || bottom <= top) {
@@ -12,4 +9,6 @@
   this.top=top;
   this.width=right - left;
   this.height=bottom - top;
+  rgbRow=new int[width];
+  cachedRow=-1;
 }

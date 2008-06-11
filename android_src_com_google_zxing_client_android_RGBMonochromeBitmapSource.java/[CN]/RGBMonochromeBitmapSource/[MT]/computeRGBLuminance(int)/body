@@ -1,3 +1,0 @@
-{
-  return (((pixel & 0x00FF0000) >> 16) + ((pixel & 0x0000FF00) >> 7) + (pixel & 0x000000FF)) >> 2;
-}

@@ -1,0 +1,30 @@
+{
+  if (row == null || row.getSize() < getWidth) {
+    row=new BitArray(getWidth);
+  }
+ else {
+    row.clear();
+  }
+  cacheRowForLuminance(y);
+  if (lastMethod == BlackPointEstimationMethod.ROW_SAMPLING) {
+    int left=getLuminance(startX,y);
+    int center=getLuminance(startX + 1,y);
+    for (int x=1; x < getWidth - 1; x++) {
+      int right=getLuminance(startX + x + 1,y);
+      int luminance=((center << 2) - left - right) >> 1;
+      if (luminance < blackPoint) {
+        row.set(x);
+      }
+      left=center;
+      center=right;
+    }
+  }
+ else {
+    for (int x=0; x < getWidth; x++) {
+      if (getLuminance(startX + x,y) < blackPoint) {
+        row.set(x);
+      }
+    }
+  }
+  return row;
+}
