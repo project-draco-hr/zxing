@@ -1,11 +1,15 @@
 {
   int numBuckets=histogram.length;
+  int maxBucketCount=0;
   int firstPeak=0;
   int firstPeakSize=0;
   for (int i=0; i < numBuckets; i++) {
     if (histogram[i] > firstPeakSize) {
       firstPeak=i;
       firstPeakSize=histogram[i];
+    }
+    if (histogram[i] > maxBucketCount) {
+      maxBucketCount=histogram[i];
     }
   }
   int secondPeak=0;
@@ -23,14 +27,14 @@
     firstPeak=secondPeak;
     secondPeak=temp;
   }
-  if (secondPeak - firstPeak <= histogram.length >> 4) {
+  if (secondPeak - firstPeak <= numBuckets >> 4) {
     throw new ReaderException("Too little dynamic range in luminance");
   }
   int bestValley=secondPeak - 1;
   int bestValleyScore=-1;
   for (int i=secondPeak - 1; i > firstPeak; i--) {
     int fromFirst=i - firstPeak;
-    int score=fromFirst * fromFirst * (secondPeak - i)* (256 - histogram[i]);
+    int score=fromFirst * fromFirst * (secondPeak - i)* (maxBucketCount - histogram[i]);
     if (score > bestValleyScore) {
       bestValley=i;
       bestValleyScore=score;
