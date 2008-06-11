@@ -1,6 +1,6 @@
 {
   this.testBase=testBase;
   this.barcodeReader=barcodeReader;
-  this.mustPassCount=mustPassCount;
   this.expectedFormat=expectedFormat;
+  testResults=new Vector<TestResult>();
 }

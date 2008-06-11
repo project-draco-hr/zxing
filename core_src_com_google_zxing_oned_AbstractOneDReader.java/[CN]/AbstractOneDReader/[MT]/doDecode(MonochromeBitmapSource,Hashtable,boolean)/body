@@ -27,12 +27,7 @@
     image.getBlackRow(rowNumber,row,0,width);
     for (int attempt=0; attempt < 2; attempt++) {
       if (attempt == 1) {
-        if (tryHarder) {
-          row.reverse();
-        }
- else {
-          break;
-        }
+        row.reverse();
       }
       try {
         Result result=decodeRow(rowNumber,row,hints);

@@ -1,0 +1,3 @@
+{
+  testResults.add(new TestResult(mustPassCount,rotation));
+}

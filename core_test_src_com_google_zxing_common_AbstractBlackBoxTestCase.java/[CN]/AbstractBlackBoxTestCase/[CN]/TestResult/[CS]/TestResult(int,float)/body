@@ -1,0 +1,4 @@
+{
+  this.mustPassCount=mustPassCount;
+  this.rotation=rotation;
+}

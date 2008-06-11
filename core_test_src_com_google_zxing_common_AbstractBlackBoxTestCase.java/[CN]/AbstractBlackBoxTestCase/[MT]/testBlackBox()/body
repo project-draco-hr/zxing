@@ -1,7 +1,8 @@
 {
+  assertTrue(testResults.size() > 0);
   assertTrue("Please run from the 'core' directory",testBase.exists());
   File[] imageFiles=testBase.listFiles(IMAGE_NAME_FILTER);
-  int passedCount=0;
+  int[] passedCounts=new int[testResults.size()];
   for (  File testImage : imageFiles) {
     System.out.println("Starting " + testImage.getAbsolutePath());
     BufferedImage image;
@@ -12,47 +13,17 @@
  else {
       image=ImageIO.read(testImage);
     }
-    MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
-    Result result;
-    try {
-      result=barcodeReader.decode(source);
-    }
- catch (    ReaderException re) {
-      System.out.println(re);
-      continue;
-    }
-    if (expectedFormat != result.getBarcodeFormat()) {
-      System.out.println("Format mismatch: expected '" + expectedFormat + "' but got '"+ result.getBarcodeFormat()+ '\'');
-      continue;
-    }
     String testImageFileName=testImage.getName();
     File expectedTextFile=new File(testBase,testImageFileName.substring(0,testImageFileName.indexOf('.')) + ".txt");
     String expectedText=readFileAsString(expectedTextFile);
-    String resultText=result.getText();
-    boolean passed=expectedText.equals(resultText);
-    if (passed) {
-      passedCount++;
-    }
- else {
-      System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\'');
-      continue;
-    }
-    try {
-      result=barcodeReader.decode(source,TRY_HARDER_HINT);
-    }
- catch (    ReaderException re) {
-      if (passed) {
-        fail("Normal mode succeeded but \"try harder\" failed");
+    for (int x=0; x < testResults.size(); x++) {
+      if (testOneImage(image,testResults.get(x).rotation,expectedText)) {
+        passedCounts[x]++;
       }
-      continue;
-    }
-    if (expectedFormat != result.getBarcodeFormat()) {
-      System.out.println("Try Harder Format mismatch: expected '" + expectedFormat + "' but got '"+ result.getBarcodeFormat()+ '\'');
-    }
- else     if (!expectedText.equals(resultText)) {
-      System.out.println("Try Harder Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\'');
     }
   }
-  System.out.println(passedCount + " of " + imageFiles.length+ " images passed ("+ mustPassCount+ " required)");
-  assertTrue("Too many images failed",passedCount >= mustPassCount);
+  for (int x=0; x < testResults.size(); x++) {
+    System.out.println("Rotation " + testResults.get(x).rotation + " degrees: "+ passedCounts[x]+ " of "+ imageFiles.length+ " images passed ("+ testResults.get(x).mustPassCount+ " required)");
+    assertTrue("Rotation " + testResults.get(x).rotation + " degrees: Too many images failed",passedCounts[x] >= testResults.get(x).mustPassCount);
+  }
 }
