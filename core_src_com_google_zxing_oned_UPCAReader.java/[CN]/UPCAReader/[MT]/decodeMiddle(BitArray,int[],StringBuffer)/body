@@ -1,5 +1,0 @@
-{
-  int middleStart=decodeDigits(row,startRange[1],resultString);
-  int[] middleRange=findGuardPattern(row,middleStart,true,MIDDLE_PATTERN);
-  return decodeDigits(row,middleRange[1],resultString);
-}

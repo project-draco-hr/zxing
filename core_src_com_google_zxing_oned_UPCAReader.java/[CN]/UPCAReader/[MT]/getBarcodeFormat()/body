@@ -1,3 +1,0 @@
-{
-  return BarcodeFormat.UPC_A;
-}

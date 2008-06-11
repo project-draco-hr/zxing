@@ -5,7 +5,7 @@
     if (possibleFormats.contains(BarcodeFormat.EAN_13)) {
       readers.addElement(new EAN13Reader());
     }
-    if (possibleFormats.contains(BarcodeFormat.UPC_A)) {
+ else     if (possibleFormats.contains(BarcodeFormat.UPC_A)) {
       readers.addElement(new UPCAReader());
     }
     if (possibleFormats.contains(BarcodeFormat.EAN_8)) {
@@ -17,7 +17,6 @@
   }
   if (readers.isEmpty()) {
     readers.addElement(new EAN13Reader());
-    readers.addElement(new UPCAReader());
     readers.addElement(new EAN8Reader());
     readers.addElement(new UPCEReader());
   }

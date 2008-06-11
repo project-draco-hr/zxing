@@ -1,0 +1,3 @@
+{
+  return maybeReturnResult(ean13Reader.decode(image,hints));
+}
