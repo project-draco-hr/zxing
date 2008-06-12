@@ -1,5 +1,5 @@
 {
-  StringBuffer result=new StringBuffer();
+  StringBuffer result=new StringBuffer(20);
   int endStart=decodeMiddle(row,startGuardRange,result);
   int[] endRange=decodeEnd(row,endStart);
   int end=endRange[1];
