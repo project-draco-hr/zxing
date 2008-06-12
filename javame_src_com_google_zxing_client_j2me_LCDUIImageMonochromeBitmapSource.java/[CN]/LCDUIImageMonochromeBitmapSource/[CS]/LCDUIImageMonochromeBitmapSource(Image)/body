@@ -1,6 +1,8 @@
 {
-  width=image.getWidth();
+  this.image=image;
   height=image.getHeight();
-  rgbPixels=new int[width * height];
-  image.getRGB(rgbPixels,0,width,0,0,width,height);
+  width=image.getWidth();
+  rgbRow=new int[width];
+  pixelHolder=new int[1];
+  cachedRow=-1;
 }

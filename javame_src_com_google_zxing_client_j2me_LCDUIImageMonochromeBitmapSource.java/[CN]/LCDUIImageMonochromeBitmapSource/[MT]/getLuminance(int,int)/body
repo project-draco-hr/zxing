@@ -1,4 +1,11 @@
 {
-  int pixel=rgbPixels[y * width + x];
+  int pixel;
+  if (cachedRow == y) {
+    pixel=rgbRow[x];
+  }
+ else {
+    image.getRGB(pixelHolder,0,width,x,y,1,1);
+    pixel=pixelHolder[0];
+  }
   return (((pixel & 0x00FF0000) >> 16) + ((pixel & 0x0000FF00) >> 7) + (pixel & 0x000000FF)) >> 2;
 }
