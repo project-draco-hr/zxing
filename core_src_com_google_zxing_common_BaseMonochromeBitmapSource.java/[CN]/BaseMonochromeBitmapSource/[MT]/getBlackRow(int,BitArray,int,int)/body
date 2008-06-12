@@ -6,7 +6,7 @@
     row.clear();
   }
   cacheRowForLuminance(y);
-  if (lastMethod == BlackPointEstimationMethod.ROW_SAMPLING) {
+  if (lastMethod.equals(BlackPointEstimationMethod.ROW_SAMPLING)) {
     int left=getLuminance(startX,y);
     int center=getLuminance(startX + 1,y);
     for (int x=1; x < getWidth - 1; x++) {
