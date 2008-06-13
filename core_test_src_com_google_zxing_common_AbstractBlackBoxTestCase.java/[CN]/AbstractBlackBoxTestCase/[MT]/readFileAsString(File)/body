@@ -1,5 +1,5 @@
 {
-  StringBuilder result=new StringBuilder();
+  StringBuilder result=new StringBuilder((int)file.length());
   InputStreamReader reader=new InputStreamReader(new FileInputStream(file),"UTF-8");
   try {
     char[] buffer=new char[256];

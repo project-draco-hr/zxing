@@ -1,11 +1,11 @@
 {
-  if (degrees != 0.0f) {
-    AffineTransform at=new AffineTransform();
-    at.rotate(Math.toRadians(degrees),original.getWidth() / 2,original.getHeight() / 2);
-    AffineTransformOp op=new AffineTransformOp(at,AffineTransformOp.TYPE_BICUBIC);
-    return op.filter(original,null);
+  if (degrees == 0.0f) {
+    return original;
   }
  else {
-    return original;
+    AffineTransform at=new AffineTransform();
+    at.rotate(Math.toRadians(degrees),original.getWidth() / 2.0f,original.getHeight() / 2.0f);
+    BufferedImageOp op=new AffineTransformOp(at,AffineTransformOp.TYPE_BICUBIC);
+    return op.filter(original,null);
   }
 }
