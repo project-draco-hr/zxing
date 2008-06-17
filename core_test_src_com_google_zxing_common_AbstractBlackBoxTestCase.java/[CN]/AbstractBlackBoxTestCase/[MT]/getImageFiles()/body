@@ -1,0 +1,4 @@
+{
+  assertTrue("Please run from the 'core' directory",testBase.exists());
+  return testBase.listFiles(IMAGE_NAME_FILTER);
+}

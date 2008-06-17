@@ -1,0 +1,3 @@
+{
+  super(new File("test/data/blackbox/falsepositives"),new MultiFormatReader(),null);
+}

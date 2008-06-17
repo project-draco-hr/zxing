@@ -1,0 +1,20 @@
+{
+  BufferedImage rotatedImage=rotateImage(image,rotationInDegrees);
+  MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(rotatedImage);
+  Result result;
+  try {
+    result=getReader().decode(source);
+    System.out.println("Found false positive: '" + result.getText() + "' with format '"+ result.getBarcodeFormat()+ "' (rotation: "+ rotationInDegrees+ ')');
+    return false;
+  }
+ catch (  ReaderException re) {
+  }
+  try {
+    result=getReader().decode(source,TRY_HARDER_HINT);
+    System.out.println("Try harder found false positive: '" + result.getText() + "' with format '"+ result.getBarcodeFormat()+ "' (rotation: "+ rotationInDegrees+ ')');
+    return false;
+  }
+ catch (  ReaderException re) {
+  }
+  return true;
+}

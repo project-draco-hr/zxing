@@ -1,7 +1,6 @@
 {
   assertFalse(testResults.isEmpty());
-  assertTrue("Please run from the 'core' directory",testBase.exists());
-  File[] imageFiles=testBase.listFiles(IMAGE_NAME_FILTER);
+  File[] imageFiles=getImageFiles();
   int[] passedCounts=new int[testResults.size()];
   for (  File testImage : imageFiles) {
     System.out.println("Starting " + testImage.getAbsolutePath());
