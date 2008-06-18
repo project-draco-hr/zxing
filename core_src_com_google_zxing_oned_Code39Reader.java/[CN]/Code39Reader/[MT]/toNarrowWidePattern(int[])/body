@@ -12,14 +12,26 @@
     }
     maxNarrowCounter=minCounter;
     wideCounters=0;
+    int totalWideCountersWidth=0;
     int pattern=0;
     for (int i=0; i < numCounters; i++) {
+      int counter=counters[i];
       if (counters[i] > maxNarrowCounter) {
         pattern|=1 << (numCounters - 1 - i);
         wideCounters++;
+        totalWideCountersWidth+=counter;
       }
     }
     if (wideCounters == 3) {
+      for (int i=0; i < numCounters && wideCounters > 0; i++) {
+        int counter=counters[i];
+        if (counters[i] > maxNarrowCounter) {
+          wideCounters--;
+          if ((counter << 1) >= totalWideCountersWidth) {
+            throw new ReaderException("Wide bars vary too much in width, rejecting");
+          }
+        }
+      }
       return pattern;
     }
   }
