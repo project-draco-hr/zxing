@@ -27,6 +27,13 @@
   }
  else {
     request.setAttribute("result",result);
+    byte[] rawBytes=result.getRawBytes();
+    if (rawBytes != null) {
+      request.setAttribute("rawBytesString",Arrays.toString(rawBytes));
+    }
+ else {
+      request.setAttribute("rawBytesString","(Not applicable)");
+    }
     ParsedReaderResult parsedReaderResult=ParsedReaderResult.parseReaderResult(result);
     request.setAttribute("parsedReaderResult",parsedReaderResult);
     request.getRequestDispatcher("decoderesult.jspx").forward(request,response);
