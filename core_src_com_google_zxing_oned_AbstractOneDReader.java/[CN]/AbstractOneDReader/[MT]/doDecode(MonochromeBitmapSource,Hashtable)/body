@@ -3,13 +3,14 @@
   int height=image.getHeight();
   BitArray row=new BitArray(width);
   int middle=height >> 1;
+  boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
   int rowStep=Math.max(1,height >> (tryHarder ? 7 : 4));
   int maxLines;
   if (tryHarder) {
     maxLines=height;
   }
  else {
-    maxLines=7;
+    maxLines=9;
   }
   for (int x=0; x < maxLines; x++) {
     int rowStepsAboveOrBelow=(x + 1) >> 1;

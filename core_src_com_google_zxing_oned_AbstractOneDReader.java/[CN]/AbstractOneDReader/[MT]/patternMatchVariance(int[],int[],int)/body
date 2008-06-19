@@ -10,7 +10,7 @@
     return Integer.MAX_VALUE;
   }
   int unitBarWidth=(total << INTEGER_MATH_SHIFT) / patternLength;
-  maxIndividualVariance*=unitBarWidth;
+  maxIndividualVariance=(maxIndividualVariance * unitBarWidth) >> INTEGER_MATH_SHIFT;
   int totalVariance=0;
   for (int x=0; x < numCounters; x++) {
     int counter=counters[x] << INTEGER_MATH_SHIFT;

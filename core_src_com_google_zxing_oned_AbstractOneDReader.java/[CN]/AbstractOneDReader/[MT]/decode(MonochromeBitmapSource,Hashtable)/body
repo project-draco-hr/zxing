@@ -1,12 +1,12 @@
 {
-  boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
   try {
-    return doDecode(image,hints,tryHarder);
+    return doDecode(image,hints);
   }
  catch (  ReaderException re) {
+    boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
     if (tryHarder && image.isRotateSupported()) {
       MonochromeBitmapSource rotatedImage=image.rotateCounterClockwise();
-      Result result=doDecode(rotatedImage,hints,tryHarder);
+      Result result=doDecode(rotatedImage,hints);
       Hashtable metadata=result.getResultMetadata();
       int orientation=270;
       if (metadata != null && metadata.containsKey(ResultMetadataType.ORIENTATION)) {

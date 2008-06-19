@@ -1,6 +1,7 @@
 {
-  int sum=0;
   int length=s.length();
+  if (length == 0)   return false;
+  int sum=0;
   for (int i=length - 2; i >= 0; i-=2) {
     int digit=(int)s.charAt(i) - (int)'0';
     if (digit < 0 || digit > 9) {
