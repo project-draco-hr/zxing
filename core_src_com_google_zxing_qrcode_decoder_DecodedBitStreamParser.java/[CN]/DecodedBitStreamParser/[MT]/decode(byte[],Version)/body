@@ -10,21 +10,26 @@
       mode=Mode.forBits(bits.readBits(4));
     }
     if (!mode.equals(Mode.TERMINATOR)) {
-      int count=bits.readBits(mode.getCharacterCountBits(version));
-      if (mode.equals(Mode.NUMERIC)) {
-        decodeNumericSegment(bits,result,count);
-      }
- else       if (mode.equals(Mode.ALPHANUMERIC)) {
-        decodeAlphanumericSegment(bits,result,count);
-      }
- else       if (mode.equals(Mode.BYTE)) {
-        decodeByteSegment(bits,result,count);
-      }
- else       if (mode.equals(Mode.KANJI)) {
-        decodeKanjiSegment(bits,result,count);
+      if (mode.equals(Mode.ECI)) {
+        parseECI(bits);
       }
  else {
-        throw new ReaderException("Unsupported mode indicator");
+        int count=bits.readBits(mode.getCharacterCountBits(version));
+        if (mode.equals(Mode.NUMERIC)) {
+          decodeNumericSegment(bits,result,count);
+        }
+ else         if (mode.equals(Mode.ALPHANUMERIC)) {
+          decodeAlphanumericSegment(bits,result,count);
+        }
+ else         if (mode.equals(Mode.BYTE)) {
+          decodeByteSegment(bits,result,count);
+        }
+ else         if (mode.equals(Mode.KANJI)) {
+          decodeKanjiSegment(bits,result,count);
+        }
+ else {
+          throw new ReaderException("Unsupported mode indicator");
+        }
       }
     }
   }

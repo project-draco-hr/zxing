@@ -1,4 +1,7 @@
 {
+  if (this == ECI) {
+    throw new UnsupportedOperationException("Character count doesn't apply to ECI mode");
+  }
   int number=version.getVersionNumber();
   int offset;
   if (number <= 9) {
