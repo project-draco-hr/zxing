@@ -1,0 +1,9 @@
+{
+  if (value < 0 || value > 999999) {
+    throw new IllegalArgumentException("Bad ECI value: " + value);
+  }
+  if (value < 900) {
+    return CharacterSetECI.getCharacterSetECIByValue(value);
+  }
+  throw new IllegalArgumentException("Unsupported ECI value: " + value);
+}

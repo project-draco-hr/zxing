@@ -1,6 +1,7 @@
 {
   BitSource bits=new BitSource(bytes);
   StringBuffer result=new StringBuffer();
+  CharacterSetECI currentCharacterSetECI=null;
   Mode mode;
   do {
     if (bits.available() == 0) {
@@ -11,7 +12,12 @@
     }
     if (!mode.equals(Mode.TERMINATOR)) {
       if (mode.equals(Mode.ECI)) {
-        parseECI(bits);
+        int value=ECI.parseECI(bits);
+        try {
+          currentCharacterSetECI=CharacterSetECI.getCharacterSetECIByValue(value);
+        }
+ catch (        IllegalArgumentException iae) {
+        }
       }
  else {
         int count=bits.readBits(mode.getCharacterCountBits(version));
@@ -22,7 +28,7 @@
           decodeAlphanumericSegment(bits,result,count);
         }
  else         if (mode.equals(Mode.BYTE)) {
-          decodeByteSegment(bits,result,count);
+          decodeByteSegment(bits,result,count,currentCharacterSetECI);
         }
  else         if (mode.equals(Mode.KANJI)) {
           decodeKanjiSegment(bits,result,count);

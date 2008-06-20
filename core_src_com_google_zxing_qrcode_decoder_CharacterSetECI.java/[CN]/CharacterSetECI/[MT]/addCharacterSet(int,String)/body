@@ -1,0 +1,3 @@
+{
+  VALUE_TO_ECI.put(new Integer(value),new CharacterSetECI(value,encodingName));
+}

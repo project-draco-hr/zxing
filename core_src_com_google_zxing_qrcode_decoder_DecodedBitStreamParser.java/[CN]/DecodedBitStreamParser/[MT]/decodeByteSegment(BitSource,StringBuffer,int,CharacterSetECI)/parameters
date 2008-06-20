@@ -1,3 +1,4 @@
 BitSource bits
 StringBuffer result
 int count
+CharacterSetECI currentCharacterSetECI

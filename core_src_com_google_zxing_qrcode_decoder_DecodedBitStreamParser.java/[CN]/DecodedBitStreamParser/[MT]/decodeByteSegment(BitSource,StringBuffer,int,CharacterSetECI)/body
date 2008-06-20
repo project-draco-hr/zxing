@@ -6,7 +6,13 @@
   for (int i=0; i < count; i++) {
     readBytes[i]=(byte)bits.readBits(8);
   }
-  String encoding=guessEncoding(readBytes);
+  String encoding;
+  if (currentCharacterSetECI == null) {
+    encoding=guessEncoding(readBytes);
+  }
+ else {
+    encoding=currentCharacterSetECI.getEncodingName();
+  }
   try {
     result.append(new String(readBytes,encoding));
   }
