@@ -1,0 +1,7 @@
+{
+  if ((infoflags & ALLBITS) != 0) {
+    drawAndScan();
+    return false;
+  }
+  return true;
+}

@@ -1,0 +1,8 @@
+{
+  IModuleDisplay display=(IModuleDisplay)getService(IModuleDisplay.class);
+  ICameraDevice camera=(ICameraDevice)getService(ICameraDevice.class);
+  ICameraModuleControl cameraControl=(ICameraModuleControl)getService(ICameraModuleControl.class);
+  buttonEventProvider=(IButtonEventProvider)getService(IButtonEventProvider.class);
+  frame=display.getFrame();
+  app=new BugBarcodeApp(frame,camera,cameraControl,buttonEventProvider);
+}

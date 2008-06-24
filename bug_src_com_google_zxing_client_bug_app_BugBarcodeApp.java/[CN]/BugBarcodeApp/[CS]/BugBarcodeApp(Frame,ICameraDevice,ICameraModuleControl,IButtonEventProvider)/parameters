@@ -1,0 +1,4 @@
+Frame frame
+ICameraDevice camera
+ICameraModuleControl cameraControl
+IButtonEventProvider buttonProvider

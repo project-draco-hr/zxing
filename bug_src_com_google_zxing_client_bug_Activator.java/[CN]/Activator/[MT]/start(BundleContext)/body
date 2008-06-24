@@ -1,0 +1,6 @@
+{
+  barcodeServiceTracker=new BugBarcodeServiceTracker(context);
+  Filter filter=context.createFilter(ServiceFilterGenerator.generateServiceFilter(barcodeServiceTracker.getServices()));
+  serviceTracker=new ServiceTracker(context,filter,barcodeServiceTracker);
+  serviceTracker.open();
+}

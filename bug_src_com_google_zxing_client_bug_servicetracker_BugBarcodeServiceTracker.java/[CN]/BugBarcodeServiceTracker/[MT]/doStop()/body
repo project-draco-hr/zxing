@@ -1,0 +1,4 @@
+{
+  buttonEventProvider.removeListener(app);
+  frame.dispose();
+}
