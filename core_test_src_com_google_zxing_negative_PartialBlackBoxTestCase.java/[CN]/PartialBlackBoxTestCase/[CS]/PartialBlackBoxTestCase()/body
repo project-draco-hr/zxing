@@ -1,0 +1,7 @@
+{
+  super(new File("test/data/blackbox/partial"));
+  addTest(0,0.0f);
+  addTest(1,90.0f);
+  addTest(1,180.0f);
+  addTest(0,270.0f);
+}
