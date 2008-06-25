@@ -1,0 +1,4 @@
+{
+  this.falsePositivesAllowed=falsePositivesAllowed;
+  this.rotation=rotation;
+}

@@ -1,0 +1,21 @@
+{
+  assertFalse(testResults.isEmpty());
+  File[] imageFiles=getImageFiles();
+  int[] falsePositives=new int[testResults.size()];
+  for (  File testImage : imageFiles) {
+    System.out.println("Starting " + testImage.getAbsolutePath());
+    BufferedImage image=ImageIO.read(testImage);
+    if (image == null) {
+      throw new IOException("Could not read image: " + testImage);
+    }
+    for (int x=0; x < testResults.size(); x++) {
+      if (!checkForFalsePositives(image,testResults.get(x).getRotation())) {
+        falsePositives[x]++;
+      }
+    }
+  }
+  for (int x=0; x < testResults.size(); x++) {
+    System.out.println("Rotation " + testResults.get(x).getRotation() + " degrees: "+ falsePositives[x]+ " of "+ imageFiles.length+ " images were false positives ("+ testResults.get(x).getFalsePositivesAllowed()+ " allowed)");
+    assertTrue("Rotation " + testResults.get(x).getRotation() + " degrees: "+ "Too many false positives found",falsePositives[x] <= testResults.get(x).getFalsePositivesAllowed());
+  }
+}
