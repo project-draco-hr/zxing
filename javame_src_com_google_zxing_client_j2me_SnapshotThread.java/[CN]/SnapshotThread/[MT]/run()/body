@@ -3,7 +3,7 @@
   do {
     waitForSignal();
     try {
-      AdvancedMultimediaManager.setFocus(player);
+      multimediaManager.setFocus(player);
       byte[] snapshot=takeSnapshot();
       Image capturedImage=Image.createImage(snapshot,0,snapshot.length);
       MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);

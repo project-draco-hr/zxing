@@ -1,0 +1,5 @@
+{
+  if (advancedMultimediaManager != null) {
+    advancedMultimediaManager.setExposure(player);
+  }
+}
