@@ -1,9 +1,0 @@
-{
-  super(ParsedReaderResultType.MOBILETAG_SIMPLE_CALENDAR);
-  this.summary=summary;
-  this.start=start;
-  this.end=end;
-  this.location=location;
-  this.attendee=attendee;
-  this.title=title;
-}

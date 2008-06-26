@@ -1,6 +1,0 @@
-{
-  StringBuffer result=new StringBuffer(to);
-  maybeAppend(title,result);
-  maybeAppend(body,result);
-  return result.toString();
-}

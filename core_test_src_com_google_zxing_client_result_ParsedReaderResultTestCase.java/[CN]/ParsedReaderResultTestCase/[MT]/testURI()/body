@@ -1,9 +1,9 @@
 {
-  doTestResult("http://google.com",ParsedReaderResultType.URI);
-  doTestResult("google.com",ParsedReaderResultType.URI);
-  doTestResult("https://google.com",ParsedReaderResultType.URI);
-  doTestResult("HTTP://google.com",ParsedReaderResultType.URI);
-  doTestResult("http://google.com/foobar",ParsedReaderResultType.URI);
-  doTestResult("https://google.com:443/foobar",ParsedReaderResultType.URI);
-  doTestResult("google.com:443/foobar",ParsedReaderResultType.URI);
+  doTestResult("http://google.com",ParsedResultType.URI);
+  doTestResult("google.com",ParsedResultType.URI);
+  doTestResult("https://google.com",ParsedResultType.URI);
+  doTestResult("HTTP://google.com",ParsedResultType.URI);
+  doTestResult("http://google.com/foobar",ParsedResultType.URI);
+  doTestResult("https://google.com:443/foobar",ParsedResultType.URI);
+  doTestResult("google.com:443/foobar",ParsedResultType.URI);
 }

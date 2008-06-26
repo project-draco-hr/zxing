@@ -1,0 +1,8 @@
+{
+  String rawText=result.getText();
+  if (rawText == null || !rawText.startsWith("SMSTO:")) {
+    return null;
+  }
+  String number=rawText.substring(6);
+  return new SMSParsedResult("sms:" + number,number,null,null,null,null);
+}

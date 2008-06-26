@@ -1,0 +1,8 @@
+String[] names
+String[] phoneNumbers
+String[] emails
+String note
+String address
+String org
+String birthday
+String title

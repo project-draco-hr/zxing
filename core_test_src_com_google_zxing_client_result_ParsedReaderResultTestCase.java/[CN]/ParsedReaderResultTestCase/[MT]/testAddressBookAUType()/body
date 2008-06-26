@@ -1,5 +1,5 @@
 {
-  doTestResult("MEMORY:\r\n",ParsedReaderResultType.ADDRESSBOOK_AU);
-  doTestResult("MEMORY:foo\r\nNAME1:Sean\r\n",ParsedReaderResultType.ADDRESSBOOK_AU);
-  doTestResult("TEL1:+12125551212\r\nMEMORY:\r\n",ParsedReaderResultType.ADDRESSBOOK_AU);
+  doTestResult("MEMORY:\r\n",ParsedResultType.ADDRESSBOOK);
+  doTestResult("MEMORY:foo\r\nNAME1:Sean\r\n",ParsedResultType.ADDRESSBOOK);
+  doTestResult("TEL1:+12125551212\r\nMEMORY:\r\n",ParsedResultType.ADDRESSBOOK);
 }

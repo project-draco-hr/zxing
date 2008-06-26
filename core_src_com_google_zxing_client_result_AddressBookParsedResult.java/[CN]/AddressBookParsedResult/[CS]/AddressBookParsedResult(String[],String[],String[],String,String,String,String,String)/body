@@ -1,0 +1,11 @@
+{
+  super(ParsedResultType.ADDRESSBOOK);
+  this.names=names;
+  this.phoneNumbers=phoneNumbers;
+  this.emails=emails;
+  this.note=note;
+  this.address=address;
+  this.org=org;
+  this.birthday=birthday;
+  this.title=title;
+}

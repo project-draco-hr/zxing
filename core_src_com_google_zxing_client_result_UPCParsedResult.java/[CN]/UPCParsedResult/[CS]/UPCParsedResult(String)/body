@@ -1,4 +1,4 @@
 {
-  super(ParsedReaderResultType.UPC);
+  super(ParsedResultType.UPC);
   this.upc=upc;
 }

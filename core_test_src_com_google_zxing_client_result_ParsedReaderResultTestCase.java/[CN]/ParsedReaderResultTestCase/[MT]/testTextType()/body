@@ -1,5 +1,5 @@
 {
-  doTestResult("foo",ParsedReaderResultType.TEXT);
-  doTestResult("",ParsedReaderResultType.TEXT);
-  doTestResult("This is a test",ParsedReaderResultType.TEXT);
+  doTestResult("foo",ParsedResultType.TEXT);
+  doTestResult("",ParsedResultType.TEXT);
+  doTestResult("This is a test",ParsedResultType.TEXT);
 }

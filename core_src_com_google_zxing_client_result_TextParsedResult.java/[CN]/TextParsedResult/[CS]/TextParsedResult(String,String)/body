@@ -1,0 +1,5 @@
+{
+  super(ParsedResultType.TEXT);
+  this.text=text;
+  this.language=language;
+}

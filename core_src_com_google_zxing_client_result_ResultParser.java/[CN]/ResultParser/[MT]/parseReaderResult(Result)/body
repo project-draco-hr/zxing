@@ -1,0 +1,40 @@
+{
+  ParsedResult result;
+  if ((result=BookmarkDoCoMoResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=AddressBookDoCoMoResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=EmailDoCoMoResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=EmailAddressResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=AddressBookAUResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=TelResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=SMSResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=SMSTOResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=GeoResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=URLTOResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=URIResultParser.parse(theResult)) != null) {
+    return result;
+  }
+ else   if ((result=UPCResultParser.parse(theResult)) != null) {
+    return result;
+  }
+  return new TextParsedResult(theResult.getText(),null);
+}

@@ -1,4 +1,0 @@
-{
-  super(ParsedReaderResultType.URI);
-  this.uri=uri;
-}

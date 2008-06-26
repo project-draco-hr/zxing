@@ -1,6 +1,6 @@
 {
-  doTestResult("tel:+15551212",ParsedReaderResultType.TEL);
-  doTestResult("tel:212 555 1212",ParsedReaderResultType.TEL);
-  doTestResult("tel:2125551212",ParsedReaderResultType.TEL);
-  doTestResult("telephone",ParsedReaderResultType.TEXT);
+  doTestResult("tel:+15551212",ParsedResultType.TEL);
+  doTestResult("tel:212 555 1212",ParsedResultType.TEL);
+  doTestResult("tel:2125551212",ParsedResultType.TEL);
+  doTestResult("telephone",ParsedResultType.TEXT);
 }

@@ -7,14 +7,14 @@
       surfaceView.drawResultPoints(points);
     }
     TextView textView=(TextView)findViewById(R.id.status_text_view);
-    ParsedReaderResult readerResult=parseReaderResult(rawResult);
-    textView.setText(readerResult.getDisplayResult() + " (" + duration+ " ms)");
+    ParsedResult result=parseReaderResult(rawResult);
+    textView.setText(result.getDisplayResult() + " (" + duration+ " ms)");
     TextView actionButton=(TextView)findViewById(R.id.status_action_button);
-    int buttonText=getActionButtonText(readerResult.getType());
+    int buttonText=getActionButtonText(result.getType());
     if (buttonText != 0) {
       actionButton.setVisibility(View.VISIBLE);
       actionButton.setText(buttonText);
-      View.OnClickListener handler=new ResultHandler(this,readerResult);
+      View.OnClickListener handler=new ResultHandler(this,result);
       actionButton.setOnClickListener(handler);
       actionButton.requestFocus();
     }

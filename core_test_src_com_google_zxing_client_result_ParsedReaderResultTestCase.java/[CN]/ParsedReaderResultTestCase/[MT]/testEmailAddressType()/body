@@ -1,7 +1,7 @@
 {
-  doTestResult("srowen@example.org",ParsedReaderResultType.EMAIL_ADDRESS);
-  doTestResult("mailto:srowen@example.org",ParsedReaderResultType.EMAIL_ADDRESS);
-  doTestResult("srowen@example",ParsedReaderResultType.TEXT);
-  doTestResult("srowen",ParsedReaderResultType.TEXT);
-  doTestResult("Let's meet @ 2",ParsedReaderResultType.TEXT);
+  doTestResult("srowen@example.org",ParsedResultType.EMAIL_ADDRESS);
+  doTestResult("mailto:srowen@example.org",ParsedResultType.EMAIL_ADDRESS);
+  doTestResult("srowen@example",ParsedResultType.TEXT);
+  doTestResult("srowen",ParsedResultType.TEXT);
+  doTestResult("Let's meet @ 2",ParsedResultType.TEXT);
 }

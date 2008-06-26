@@ -1,6 +1,0 @@
-{
-  super(ParsedReaderResultType.MOBILETAG_SMS);
-  this.to=to;
-  this.body=body;
-  this.title=title;
-}

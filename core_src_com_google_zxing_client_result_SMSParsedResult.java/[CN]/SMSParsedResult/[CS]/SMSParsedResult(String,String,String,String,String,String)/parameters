@@ -1,0 +1,6 @@
+String smsURI
+String number
+String via
+String subject
+String body
+String title

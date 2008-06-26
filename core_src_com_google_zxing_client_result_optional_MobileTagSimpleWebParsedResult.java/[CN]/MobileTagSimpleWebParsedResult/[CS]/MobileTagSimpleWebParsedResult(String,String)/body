@@ -1,5 +1,0 @@
-{
-  super(ParsedReaderResultType.MOBILETAG_SIMPLE_WEB);
-  this.title=title;
-  this.uri=uri;
-}

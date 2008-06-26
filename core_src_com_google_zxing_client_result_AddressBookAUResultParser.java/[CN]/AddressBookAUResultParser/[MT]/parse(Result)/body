@@ -1,0 +1,12 @@
+{
+  String rawText=result.getText();
+  if (rawText == null || rawText.indexOf("MEMORY") < 0 || rawText.indexOf("\r\n") < 0) {
+    return null;
+  }
+  String[] names=matchMultipleValuePrefix("NAME",2,rawText);
+  String[] phoneNumbers=matchMultipleValuePrefix("TEL",3,rawText);
+  String[] emails=matchMultipleValuePrefix("MAIL",3,rawText);
+  String note=AbstractDoCoMoResultParser.matchSinglePrefixedField("MEMORY:",rawText,'\r');
+  String address=AbstractDoCoMoResultParser.matchSinglePrefixedField("ADD:",rawText,'\r');
+  return new AddressBookParsedResult(names,phoneNumbers,emails,note,address,null,null,null);
+}

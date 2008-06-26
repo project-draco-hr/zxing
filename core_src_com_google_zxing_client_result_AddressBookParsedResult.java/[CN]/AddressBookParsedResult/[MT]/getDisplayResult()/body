@@ -1,0 +1,12 @@
+{
+  StringBuffer result=new StringBuffer();
+  maybeAppend(names,result);
+  maybeAppend(emails,result);
+  maybeAppend(address,result);
+  maybeAppend(phoneNumbers,result);
+  maybeAppend(note,result);
+  maybeAppend(org,result);
+  maybeAppend(birthday,result);
+  maybeAppend(title,result);
+  return result.toString();
+}

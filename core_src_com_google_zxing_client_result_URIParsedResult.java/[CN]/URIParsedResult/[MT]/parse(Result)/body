@@ -1,8 +1,0 @@
-{
-  String rawText=result.getText();
-  if (!isBasicallyValidURI(rawText)) {
-    return null;
-  }
-  String uri=massagePossibleURI(rawText);
-  return new URIParsedResult(uri);
-}

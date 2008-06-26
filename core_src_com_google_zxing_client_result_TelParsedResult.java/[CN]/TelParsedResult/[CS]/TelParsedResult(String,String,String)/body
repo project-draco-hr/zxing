@@ -1,0 +1,6 @@
+{
+  super(ParsedResultType.TEL);
+  this.number=number;
+  this.telURI=telURI;
+  this.title=title;
+}

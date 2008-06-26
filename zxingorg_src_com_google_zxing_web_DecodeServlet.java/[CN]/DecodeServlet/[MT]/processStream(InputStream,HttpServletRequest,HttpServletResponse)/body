@@ -34,8 +34,8 @@
  else {
       request.setAttribute("rawBytesString","(Not applicable)");
     }
-    ParsedReaderResult parsedReaderResult=ParsedReaderResult.parseReaderResult(result);
-    request.setAttribute("parsedReaderResult",parsedReaderResult);
+    ParsedResult parsedResult=ResultParser.parseReaderResult(result);
+    request.setAttribute("parsedResult",parsedResult);
     request.getRequestDispatcher("decoderesult.jspx").forward(request,response);
   }
 }

@@ -1,5 +1,5 @@
 {
-  super(ParsedReaderResultType.MOBILETAG_RICH_WEB);
+  super(ParsedResultType.MOBILETAG_RICH_WEB);
   this.id=id;
   this.action=action;
 }
