@@ -29,7 +29,7 @@
     request.setAttribute("result",result);
     byte[] rawBytes=result.getRawBytes();
     if (rawBytes != null) {
-      request.setAttribute("rawBytesString",Arrays.toString(rawBytes));
+      request.setAttribute("rawBytesString",arrayToString(rawBytes));
     }
  else {
       request.setAttribute("rawBytesString","(Not applicable)");
