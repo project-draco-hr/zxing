@@ -1,6 +1,6 @@
 {
-  if (this.equals(ECI)) {
-    throw new IllegalArgumentException("Character count doesn't apply to ECI mode");
+  if (characterCountBitsForVersions == null) {
+    throw new IllegalArgumentException("Character count doesn't apply to this mode");
   }
   int number=version.getVersionNumber();
   int offset;

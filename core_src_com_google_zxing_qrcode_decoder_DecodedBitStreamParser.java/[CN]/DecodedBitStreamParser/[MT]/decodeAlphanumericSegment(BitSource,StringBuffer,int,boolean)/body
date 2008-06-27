@@ -1,0 +1,24 @@
+{
+  int start=result.length();
+  while (count > 1) {
+    int nextTwoCharsBits=bits.readBits(11);
+    result.append(ALPHANUMERIC_CHARS[nextTwoCharsBits / 45]);
+    result.append(ALPHANUMERIC_CHARS[nextTwoCharsBits % 45]);
+    count-=2;
+  }
+  if (count == 1) {
+    result.append(ALPHANUMERIC_CHARS[bits.readBits(6)]);
+  }
+  if (fc1InEffect) {
+    for (int i=start; i < result.length(); i++) {
+      if (result.charAt(i) == '%') {
+        if (i < result.length() - 1 && result.charAt(i + 1) == '%') {
+          result.deleteCharAt(i + 1);
+        }
+ else {
+          result.setCharAt(i,(char)0x1D);
+        }
+      }
+    }
+  }
+}

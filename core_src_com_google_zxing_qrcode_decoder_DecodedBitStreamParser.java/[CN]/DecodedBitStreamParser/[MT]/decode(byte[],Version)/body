@@ -2,6 +2,7 @@
   BitSource bits=new BitSource(bytes);
   StringBuffer result=new StringBuffer();
   CharacterSetECI currentCharacterSetECI=null;
+  boolean fc1InEffect=false;
   Mode mode;
   do {
     if (bits.available() == 0) {
@@ -11,7 +12,10 @@
       mode=Mode.forBits(bits.readBits(4));
     }
     if (!mode.equals(Mode.TERMINATOR)) {
-      if (mode.equals(Mode.ECI)) {
+      if (mode.equals(Mode.FNC1_FIRST_POSITION) || mode.equals(Mode.FNC1_SECOND_POSITION)) {
+        fc1InEffect=true;
+      }
+ else       if (mode.equals(Mode.ECI)) {
         int value=ECI.parseECI(bits);
         try {
           currentCharacterSetECI=CharacterSetECI.getCharacterSetECIByValue(value);
@@ -25,7 +29,7 @@
           decodeNumericSegment(bits,result,count);
         }
  else         if (mode.equals(Mode.ALPHANUMERIC)) {
-          decodeAlphanumericSegment(bits,result,count);
+          decodeAlphanumericSegment(bits,result,count,fc1InEffect);
         }
  else         if (mode.equals(Mode.BYTE)) {
           decodeByteSegment(bits,result,count,currentCharacterSetECI);
