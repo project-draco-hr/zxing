@@ -1,0 +1,7 @@
+{
+  doTestResult("mms:+15551212",ParsedResultType.SMS);
+  doTestResult("MMSTO:+15551212",ParsedResultType.SMS);
+  doTestResult("mmsto:+15551212",ParsedResultType.SMS);
+  doTestResult("mms:+15551212;via=999333",ParsedResultType.SMS);
+  doTestResult("mms:+15551212?subject=foo&body=bar",ParsedResultType.SMS);
+}

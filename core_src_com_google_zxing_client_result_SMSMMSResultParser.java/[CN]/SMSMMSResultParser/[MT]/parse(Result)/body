@@ -1,0 +1,49 @@
+{
+  String rawText=result.getText();
+  if (rawText == null) {
+    return null;
+  }
+  int prefixLength;
+  if (rawText.startsWith("sms:") || rawText.startsWith("mms:")) {
+    prefixLength=4;
+  }
+ else   if (rawText.startsWith("smsto:") || rawText.startsWith("SMSTO:") || rawText.startsWith("mmsto:")|| rawText.startsWith("MMSTO:")) {
+    prefixLength=6;
+  }
+ else {
+    return null;
+  }
+  int queryStart=rawText.indexOf('?',prefixLength);
+  String smsURIWithoutQuery;
+  if (queryStart < 0) {
+    smsURIWithoutQuery=rawText.substring(prefixLength);
+  }
+ else {
+    smsURIWithoutQuery=rawText.substring(prefixLength,queryStart);
+  }
+  int numberEnd=smsURIWithoutQuery.indexOf(';');
+  String number;
+  String via;
+  if (numberEnd < 0) {
+    number=smsURIWithoutQuery;
+    via=null;
+  }
+ else {
+    number=smsURIWithoutQuery.substring(0,numberEnd);
+    String maybeVia=smsURIWithoutQuery.substring(numberEnd + 1);
+    if (maybeVia.startsWith("via=")) {
+      via=maybeVia.substring(4);
+    }
+ else {
+      via=null;
+    }
+  }
+  Hashtable nameValuePairs=parseNameValuePairs(rawText);
+  String subject=null;
+  String body=null;
+  if (nameValuePairs != null) {
+    subject=(String)nameValuePairs.get("subject");
+    body=(String)nameValuePairs.get("body");
+  }
+  return new SMSParsedResult("sms:" + number,number,via,subject,body,null);
+}

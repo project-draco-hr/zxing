@@ -1,4 +1,7 @@
 {
+  if (address == null) {
+    return null;
+  }
   int length=address.length();
   StringBuffer newAddress=new StringBuffer(length);
   for (int j=0; j < length; j++) {

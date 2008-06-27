@@ -1,4 +1,7 @@
 {
+  if (value == null) {
+    return false;
+  }
   int stringLength=value.length();
   if (length != stringLength) {
     return false;

@@ -21,10 +21,7 @@
  else   if ((result=TelResultParser.parse(theResult)) != null) {
     return result;
   }
- else   if ((result=SMSResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=SMSTOResultParser.parse(theResult)) != null) {
+ else   if ((result=SMSMMSResultParser.parse(theResult)) != null) {
     return result;
   }
  else   if ((result=GeoResultParser.parse(theResult)) != null) {

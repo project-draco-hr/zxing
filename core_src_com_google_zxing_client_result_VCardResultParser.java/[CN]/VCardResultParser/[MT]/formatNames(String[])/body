@@ -1,22 +1,24 @@
 {
-  for (int i=0; i < names.length; i++) {
-    String name=names[i];
-    String[] components=new String[5];
-    int start=0;
-    int end;
-    int componentIndex=0;
-    while ((end=name.indexOf(';',start)) > 0) {
-      components[componentIndex]=name.substring(start,end);
-      componentIndex++;
-      start=end + 1;
+  if (names != null) {
+    for (int i=0; i < names.length; i++) {
+      String name=names[i];
+      String[] components=new String[5];
+      int start=0;
+      int end;
+      int componentIndex=0;
+      while ((end=name.indexOf(';',start)) > 0) {
+        components[componentIndex]=name.substring(start,end);
+        componentIndex++;
+        start=end + 1;
+      }
+      components[componentIndex]=name.substring(start);
+      StringBuffer newName=new StringBuffer();
+      maybeAppendComponent(components,3,newName);
+      maybeAppendComponent(components,1,newName);
+      maybeAppendComponent(components,2,newName);
+      maybeAppendComponent(components,0,newName);
+      maybeAppendComponent(components,4,newName);
+      names[i]=newName.toString().trim();
     }
-    components[componentIndex]=name.substring(start);
-    StringBuffer newName=new StringBuffer();
-    maybeAppendComponent(components,3,newName);
-    maybeAppendComponent(components,1,newName);
-    maybeAppendComponent(components,2,newName);
-    maybeAppendComponent(components,0,newName);
-    maybeAppendComponent(components,4,newName);
-    names[i]=newName.toString().trim();
   }
 }
