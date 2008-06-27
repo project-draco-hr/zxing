@@ -1,0 +1,8 @@
+{
+  int size=strings.size();
+  String[] result=new String[size];
+  for (int j=0; j < size; j++) {
+    result[j]=(String)strings.elementAt(j);
+  }
+  return result;
+}

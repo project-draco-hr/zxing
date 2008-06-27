@@ -15,6 +15,9 @@
  else   if ((result=AddressBookAUResultParser.parse(theResult)) != null) {
     return result;
   }
+ else   if ((result=VCardResultParser.parse(theResult)) != null) {
+    return result;
+  }
  else   if ((result=TelResultParser.parse(theResult)) != null) {
     return result;
   }

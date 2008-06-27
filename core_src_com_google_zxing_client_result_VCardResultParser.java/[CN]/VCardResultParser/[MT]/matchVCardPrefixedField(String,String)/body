@@ -7,23 +7,31 @@
     if (i < 0) {
       break;
     }
+    if (rawText.charAt(i - 1) != '\n') {
+      i++;
+      continue;
+    }
     i+=prefix.length();
+    if (rawText.charAt(i) != ':' && rawText.charAt(i) != ';') {
+      continue;
+    }
+    while (rawText.charAt(i) != ':') {
+      i++;
+    }
+    i++;
     int start=i;
     boolean done=false;
     while (!done) {
-      i=rawText.indexOf((int)endChar,i);
+      i=rawText.indexOf((int)'\n',i);
       if (i < 0) {
         i=rawText.length();
         done=true;
-      }
- else       if (rawText.charAt(i - 1) == '\\') {
-        i++;
       }
  else {
         if (matches == null) {
           matches=new Vector(3);
         }
-        matches.addElement(unescapeBackslash(rawText.substring(start,i)));
+        matches.addElement(rawText.substring(start,i - 1));
         i++;
         done=true;
       }
@@ -32,10 +40,5 @@
   if (matches == null || matches.isEmpty()) {
     return null;
   }
-  int size=matches.size();
-  String[] result=new String[size];
-  for (int j=0; j < size; j++) {
-    result[j]=(String)matches.elementAt(j);
-  }
-  return result;
+  return toStringArray(matches);
 }

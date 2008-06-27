@@ -6,7 +6,7 @@
   String[] names=matchMultipleValuePrefix("NAME",2,rawText);
   String[] phoneNumbers=matchMultipleValuePrefix("TEL",3,rawText);
   String[] emails=matchMultipleValuePrefix("MAIL",3,rawText);
-  String note=AbstractDoCoMoResultParser.matchSinglePrefixedField("MEMORY:",rawText,'\r');
-  String address=AbstractDoCoMoResultParser.matchSinglePrefixedField("ADD:",rawText,'\r');
+  String note=matchSinglePrefixedField("MEMORY:",rawText,'\r');
+  String address=matchSinglePrefixedField("ADD:",rawText,'\r');
   return new AddressBookParsedResult(names,phoneNumbers,emails,note,address,null,null,null);
 }

@@ -1,0 +1,13 @@
+{
+  int stringLength=value.length();
+  if (length != stringLength) {
+    return false;
+  }
+  for (int i=0; i < length; i++) {
+    char c=value.charAt(i);
+    if (c < '0' || c > '9') {
+      return false;
+    }
+  }
+  return true;
+}

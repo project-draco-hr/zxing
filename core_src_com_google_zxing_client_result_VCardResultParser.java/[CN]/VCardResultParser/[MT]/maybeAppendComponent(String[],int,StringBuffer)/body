@@ -1,0 +1,6 @@
+{
+  if (components[i] != null) {
+    newName.append(' ');
+    newName.append(components[i]);
+  }
+}

@@ -1,6 +1,6 @@
 {
   Result fakeResult=new Result(text,null,null,format);
-  ParsedResult result=ResultParser.parseReaderResult(fakeResult);
+  ParsedResult result=ResultParser.parseResult(fakeResult);
   assertNotNull(result);
   assertEquals(type,result.getType());
 }
