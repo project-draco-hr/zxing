@@ -1,0 +1,8 @@
+{
+  if (number1 == null) {
+    return maybeWrap(number2);
+  }
+ else {
+    return number2 == null ? new String[]{number1} : new String[]{number1,number2};
+  }
+}
