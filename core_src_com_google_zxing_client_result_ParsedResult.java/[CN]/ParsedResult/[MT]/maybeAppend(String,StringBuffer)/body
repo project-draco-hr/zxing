@@ -1,6 +1,8 @@
 {
   if (value != null) {
-    result.append('\n');
+    if (result.length() > 0) {
+      result.append('\n');
+    }
     result.append(value);
   }
 }
