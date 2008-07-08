@@ -73,7 +73,7 @@
           upperShift=false;
         }
  else {
-          result.append((char)cValues[i] + 96);
+          result.append((char)(cValues[i] + 96));
         }
       }
  else {

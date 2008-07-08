@@ -13,7 +13,7 @@
         if ((edifactValue & 32) == 0) {
           edifactValue|=64;
         }
-        result.append((char)edifactValue);
+        result.append(edifactValue);
       }
     }
   }

@@ -16,7 +16,6 @@
     }
   }
   int longerBlocksTotalCodewords=result[0].codewords.length;
-  int shorterBlocksTotalCodewords=longerBlocksTotalCodewords - 1;
   int longerBlocksNumDataCodewords=longerBlocksTotalCodewords - ecBlocks.getECCodewords();
   int shorterBlocksNumDataCodewords=longerBlocksNumDataCodewords - 1;
   int rawCodewordsOffset=0;

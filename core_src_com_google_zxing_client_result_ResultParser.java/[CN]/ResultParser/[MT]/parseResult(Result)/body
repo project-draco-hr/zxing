@@ -21,6 +21,9 @@
  else   if ((result=BizcardResultParser.parse(theResult)) != null) {
     return result;
   }
+ else   if ((result=VEventResultParser.parse(theResult)) != null) {
+    return result;
+  }
  else   if ((result=TelResultParser.parse(theResult)) != null) {
     return result;
   }

@@ -1,5 +1,7 @@
 {
   super(ParsedResultType.CALENDAR);
+  validateDate(start);
+  validateDate(end);
   this.summary=summary;
   this.start=start;
   this.end=end;

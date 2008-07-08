@@ -1,3 +1,3 @@
 {
-  return uri != null && uri.indexOf(' ') < 0 && (uri.indexOf(':') >= 0 || uri.indexOf('.') >= 0);
+  return uri != null && uri.indexOf(' ') < 0 && uri.indexOf('\n') < 0 && (uri.indexOf(':') >= 0 || uri.indexOf('.') >= 0);
 }

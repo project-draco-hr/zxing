@@ -16,5 +16,10 @@
   String location=matches[3];
   String attendee=matches[4];
   String title=matches[5];
-  return new CalendarParsedResult(summary,start,end,location,attendee,title);
+  try {
+    return new CalendarParsedResult(summary,start,end,location,attendee,title);
+  }
+ catch (  IllegalArgumentException iae) {
+    return null;
+  }
 }
