@@ -1,2 +1,3 @@
 int mustPassCount
+int tryHarderCount
 float rotation

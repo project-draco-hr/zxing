@@ -1,4 +1,5 @@
 {
   this.mustPassCount=mustPassCount;
+  this.tryHarderCount=tryHarderCount;
   this.rotation=rotation;
 }

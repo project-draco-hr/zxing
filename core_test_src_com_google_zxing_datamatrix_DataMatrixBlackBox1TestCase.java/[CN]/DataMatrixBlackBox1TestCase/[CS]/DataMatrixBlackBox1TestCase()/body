@@ -1,4 +1,4 @@
 {
   super(new File("test/data/blackbox/datamatrix-1"),new DataMatrixReader(),BarcodeFormat.DATAMATRIX);
-  addTest(7,0.0f);
+  addTest(7,7,0.0f);
 }
