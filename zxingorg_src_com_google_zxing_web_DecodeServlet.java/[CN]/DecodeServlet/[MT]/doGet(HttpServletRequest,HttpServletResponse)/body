@@ -35,11 +35,7 @@
       is.close();
     }
   }
- catch (  InterruptedException ie) {
-    getRequest.abort();
-    response.sendRedirect("badurl.jspx");
-  }
-catch (  HttpException he) {
+ catch (  HttpException he) {
     getRequest.abort();
     response.sendRedirect("badurl.jspx");
   }
