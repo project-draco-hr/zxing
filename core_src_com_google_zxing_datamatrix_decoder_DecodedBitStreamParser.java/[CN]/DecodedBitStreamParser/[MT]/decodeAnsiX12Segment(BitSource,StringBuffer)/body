@@ -3,38 +3,39 @@
     if (bits.available() == 8) {
       return ASCII_ENCODE;
     }
-    char firstByte=(char)bits.readBits(8);
+    int firstByte=bits.readBits(8);
     if (firstByte == 254) {
       return ASCII_ENCODE;
     }
     int fullBitValue=(firstByte << 8) + bits.readBits(8) - 1;
-    char[] cValues=new char[3];
-    cValues[0]=(char)(fullBitValue / 1600);
+    int[] cValues=new int[3];
+    cValues[0]=fullBitValue / 1600;
     fullBitValue-=cValues[0] * 1600;
-    cValues[1]=(char)(fullBitValue / 40);
+    cValues[1]=fullBitValue / 40;
     fullBitValue-=cValues[1] * 40;
-    cValues[2]=(char)fullBitValue;
+    cValues[2]=fullBitValue;
     for (int i=0; i < 3; i++) {
-      if (cValues[i] == 0) {
+      int cValue=cValues[i];
+      if (cValue == 0) {
         result.append("<CR>");
       }
- else       if (cValues[i] == 1) {
+ else       if (cValue == 1) {
         result.append('*');
       }
- else       if (cValues[i] == 2) {
+ else       if (cValue == 2) {
         result.append('>');
       }
- else       if (cValues[i] == 3) {
+ else       if (cValue == 3) {
         result.append(' ');
       }
- else       if (cValues[i] < 14) {
-        result.append((char)(cValues[i] + 44));
+ else       if (cValue < 14) {
+        result.append((char)(cValue + 44));
       }
- else       if (cValues[i] < 40) {
-        result.append((char)(cValues[i] + 51));
+ else       if (cValue < 40) {
+        result.append((char)(cValue + 51));
       }
  else {
-        throw new ReaderException(Integer.toString(cValues[i]) + " is not valid in the ANSI X12 set");
+        throw new ReaderException(Integer.toString(cValue) + " is not valid in the ANSI X12 set");
       }
     }
   }

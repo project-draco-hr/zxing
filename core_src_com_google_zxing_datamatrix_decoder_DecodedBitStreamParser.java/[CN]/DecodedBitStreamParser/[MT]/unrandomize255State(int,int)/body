@@ -1,5 +1,5 @@
 {
-  char pseudoRandomNumber=(char)(((149 * base256CodewordPosition) % 255) + 1);
+  int pseudoRandomNumber=((149 * base256CodewordPosition) % 255) + 1;
   int tempVariable=randomizedBase256Codeword - pseudoRandomNumber;
   if (tempVariable >= 0) {
     return (char)tempVariable;
