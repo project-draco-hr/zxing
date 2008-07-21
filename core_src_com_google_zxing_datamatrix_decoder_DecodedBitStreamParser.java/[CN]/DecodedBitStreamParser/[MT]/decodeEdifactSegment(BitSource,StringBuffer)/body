@@ -2,7 +2,7 @@
   boolean unlatch=false;
   do {
     if (bits.available() <= 16) {
-      return ASCII_ENCODE;
+      return;
     }
     for (int i=0; i < 4; i++) {
       int edifactValue=bits.readBits(6);
@@ -18,5 +18,4 @@
     }
   }
  while (!unlatch && bits.available() > 0);
-  return ASCII_ENCODE;
 }

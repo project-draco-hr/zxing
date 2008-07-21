@@ -1,23 +1,18 @@
 {
+  int[] cValues=new int[3];
   do {
     if (bits.available() == 8) {
-      return ASCII_ENCODE;
+      return;
     }
     int firstByte=bits.readBits(8);
     if (firstByte == 254) {
-      return ASCII_ENCODE;
+      return;
     }
-    int fullBitValue=(firstByte << 8) + bits.readBits(8) - 1;
-    int[] cValues=new int[3];
-    cValues[0]=fullBitValue / 1600;
-    fullBitValue-=cValues[0] * 1600;
-    cValues[1]=fullBitValue / 40;
-    fullBitValue-=cValues[1] * 40;
-    cValues[2]=fullBitValue;
+    parseTwoBytes(firstByte,bits.readBits(8),cValues);
     for (int i=0; i < 3; i++) {
       int cValue=cValues[i];
       if (cValue == 0) {
-        result.append("<CR>");
+        result.append('\r');
       }
  else       if (cValue == 1) {
         result.append('*');
@@ -35,10 +30,9 @@
         result.append((char)(cValue + 51));
       }
  else {
-        throw new ReaderException(Integer.toString(cValue) + " is not valid in the ANSI X12 set");
+        throw new ReaderException(cValue + " is not valid in the ANSI X12 set");
       }
     }
   }
  while (bits.available() > 0);
-  return ASCII_ENCODE;
 }

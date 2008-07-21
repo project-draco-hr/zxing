@@ -1,0 +1,3 @@
+int firstByte
+int secondByte
+int[] result

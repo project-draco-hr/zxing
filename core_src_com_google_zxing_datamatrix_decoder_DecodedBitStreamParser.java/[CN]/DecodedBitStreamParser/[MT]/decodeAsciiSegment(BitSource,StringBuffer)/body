@@ -15,10 +15,11 @@
       return PAD_ENCODE;
     }
  else     if (oneByte <= 229) {
-      if (oneByte - 130 < 10) {
+      int value=oneByte - 130;
+      if (value < 10) {
         result.append('0');
       }
-      result.append(Integer.toString(oneByte - 130));
+      result.append(value);
     }
  else     if (oneByte == 230) {
       return C40_ENCODE;
@@ -57,7 +58,7 @@
       throw new ReaderException("Currently not supporting ECI Character");
     }
  else     if (oneByte >= 242) {
-      throw new ReaderException(Integer.toString(oneByte) + " should not be used in ASCII encodation");
+      throw new ReaderException(oneByte + " should not be used in ASCII encodation");
     }
   }
  while (bits.available() > 0);

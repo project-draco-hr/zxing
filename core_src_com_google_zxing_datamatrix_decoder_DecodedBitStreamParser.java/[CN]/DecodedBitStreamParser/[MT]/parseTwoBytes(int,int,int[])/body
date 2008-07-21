@@ -1,0 +1,9 @@
+{
+  int fullBitValue=(firstByte << 8) + secondByte - 1;
+  int temp=fullBitValue / 1600;
+  result[0]=temp;
+  fullBitValue-=temp * 1600;
+  temp=fullBitValue / 40;
+  result[1]=temp;
+  result[2]=fullBitValue - temp * 40;
+}
