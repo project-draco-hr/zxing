@@ -1,6 +1,6 @@
 {
-  int tltrCentersDimension=round(FinderPatternFinder.distance(topLeft,topRight) / moduleSize);
-  int tlblCentersDimension=round(FinderPatternFinder.distance(topLeft,bottomLeft) / moduleSize);
+  int tltrCentersDimension=round(GenericResultPoint.distance(topLeft,topRight) / moduleSize);
+  int tlblCentersDimension=round(GenericResultPoint.distance(topLeft,bottomLeft) / moduleSize);
   int dimension=((tltrCentersDimension + tlblCentersDimension) >> 1) + 7;
 switch (dimension & 0x03) {
 case 0:

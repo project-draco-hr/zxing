@@ -1,0 +1,29 @@
+{
+  float zeroOneDistance=distance(patterns[0],patterns[1]);
+  float oneTwoDistance=distance(patterns[1],patterns[2]);
+  float zeroTwoDistance=distance(patterns[0],patterns[2]);
+  ResultPoint pointA, pointB, pointC;
+  if (oneTwoDistance >= zeroOneDistance && oneTwoDistance >= zeroTwoDistance) {
+    pointB=patterns[0];
+    pointA=patterns[1];
+    pointC=patterns[2];
+  }
+ else   if (zeroTwoDistance >= oneTwoDistance && zeroTwoDistance >= zeroOneDistance) {
+    pointB=patterns[1];
+    pointA=patterns[0];
+    pointC=patterns[2];
+  }
+ else {
+    pointB=patterns[2];
+    pointA=patterns[0];
+    pointC=patterns[1];
+  }
+  if ((pointC.getY() - pointB.getY()) * (pointA.getX() - pointB.getX()) > (pointC.getX() - pointB.getX()) * (pointA.getY() - pointB.getY())) {
+    ResultPoint temp=pointA;
+    pointA=pointC;
+    pointC=temp;
+  }
+  patterns[0]=pointA;
+  patterns[1]=pointB;
+  patterns[2]=pointC;
+}

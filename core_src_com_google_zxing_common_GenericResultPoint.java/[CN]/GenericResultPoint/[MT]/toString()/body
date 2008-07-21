@@ -1,5 +1,5 @@
 {
-  StringBuffer result=new StringBuffer();
+  StringBuffer result=new StringBuffer(25);
   result.append('(');
   result.append(posX);
   result.append(',');

@@ -1,0 +1,7 @@
+{
+  if (other instanceof GenericResultPoint) {
+    GenericResultPoint otherPoint=(GenericResultPoint)other;
+    return posX == otherPoint.posX && posY == otherPoint.posY;
+  }
+  return false;
+}
