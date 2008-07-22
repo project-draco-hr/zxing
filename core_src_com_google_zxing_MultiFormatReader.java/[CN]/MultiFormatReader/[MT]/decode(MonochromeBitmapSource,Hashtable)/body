@@ -1,35 +1,4 @@
 {
-  boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
-  Vector possibleFormats=hints == null ? null : (Vector)hints.get(DecodeHintType.POSSIBLE_FORMATS);
-  Vector readers=new Vector();
-  if (possibleFormats != null) {
-    boolean addOneDReader=possibleFormats.contains(BarcodeFormat.UPC_A) || possibleFormats.contains(BarcodeFormat.UPC_E) || possibleFormats.contains(BarcodeFormat.EAN_13)|| possibleFormats.contains(BarcodeFormat.EAN_8)|| possibleFormats.contains(BarcodeFormat.CODE_39)|| possibleFormats.contains(BarcodeFormat.CODE_128);
-    if (addOneDReader && !tryHarder) {
-      readers.addElement(new MultiFormatOneDReader());
-    }
-    if (possibleFormats.contains(BarcodeFormat.QR_CODE)) {
-      readers.addElement(new QRCodeReader());
-    }
-    if (addOneDReader && tryHarder) {
-      readers.addElement(new MultiFormatOneDReader());
-    }
-  }
-  if (readers.isEmpty()) {
-    if (!tryHarder) {
-      readers.addElement(new MultiFormatOneDReader());
-    }
-    readers.addElement(new QRCodeReader());
-    if (tryHarder) {
-      readers.addElement(new MultiFormatOneDReader());
-    }
-  }
-  for (int i=0; i < readers.size(); i++) {
-    Reader reader=(Reader)readers.elementAt(i);
-    try {
-      return reader.decode(image,hints);
-    }
- catch (    ReaderException re) {
-    }
-  }
-  throw new ReaderException("No barcode was detected in this image.");
+  setHints(hints);
+  return decodeInternal(image);
 }

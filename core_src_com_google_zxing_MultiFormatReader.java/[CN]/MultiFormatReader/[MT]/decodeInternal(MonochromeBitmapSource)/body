@@ -1,0 +1,11 @@
+{
+  for (int i=0; i < readers.size(); i++) {
+    Reader reader=(Reader)readers.elementAt(i);
+    try {
+      return reader.decode(image,hints);
+    }
+ catch (    ReaderException re) {
+    }
+  }
+  throw new ReaderException("No barcode was detected in this image.");
+}

@@ -1,3 +1,4 @@
 {
-  return decode(image,null);
+  setHints(null);
+  return decodeInternal(image);
 }

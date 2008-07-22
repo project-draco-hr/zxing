@@ -1,0 +1,6 @@
+{
+  if (readers == null) {
+    setHints(null);
+  }
+  return decodeInternal(image);
+}
