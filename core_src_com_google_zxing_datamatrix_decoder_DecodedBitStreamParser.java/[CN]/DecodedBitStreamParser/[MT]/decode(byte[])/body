@@ -1,10 +1,11 @@
 {
   BitSource bits=new BitSource(bytes);
   StringBuffer result=new StringBuffer();
+  StringBuffer resultTrailer=new StringBuffer(0);
   int mode=ASCII_ENCODE;
   do {
     if (mode == ASCII_ENCODE) {
-      mode=decodeAsciiSegment(bits,result);
+      mode=decodeAsciiSegment(bits,result,resultTrailer);
     }
  else {
 switch (mode) {
@@ -30,5 +31,8 @@ mode=ASCII_ENCODE;
 }
 }
  while (mode != PAD_ENCODE && bits.available() > 0);
+if (resultTrailer.length() > 0) {
+result.append(resultTrailer);
+}
 return result.toString();
 }

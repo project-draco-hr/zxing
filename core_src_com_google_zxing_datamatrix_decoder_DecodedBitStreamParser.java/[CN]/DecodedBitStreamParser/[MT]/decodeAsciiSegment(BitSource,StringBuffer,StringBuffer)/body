@@ -40,10 +40,12 @@
       upperShift=true;
     }
  else     if (oneByte == 236) {
-      throw new ReaderException("Currently not supporting 05 Macro");
+      result.append("[)>\u001E05\u001D");
+      resultTrailer.insert(0,"\u001E\u0004");
     }
  else     if (oneByte == 237) {
-      throw new ReaderException("Currently not supporting 06 Macro");
+      result.append("[)>\u001E06\u001D");
+      resultTrailer.insert(0,"\u001E\u0004");
     }
  else     if (oneByte == 238) {
       return ANSIX12_ENCODE;
