@@ -18,7 +18,7 @@
     pointA=patterns[0];
     pointC=patterns[1];
   }
-  if ((pointC.getY() - pointB.getY()) * (pointA.getX() - pointB.getX()) > (pointC.getX() - pointB.getX()) * (pointA.getY() - pointB.getY())) {
+  if (crossProductZ(pointA,pointB,pointC) < 0.0f) {
     ResultPoint temp=pointA;
     pointA=pointC;
     pointC=temp;
