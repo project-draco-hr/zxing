@@ -1,8 +1,0 @@
-{
-  doTestParseECI(0,new byte[]{(byte)0x00});
-  doTestParseECI(127,new byte[]{(byte)0x7F});
-  doTestParseECI(128,new byte[]{(byte)0x80,(byte)0x80});
-  doTestParseECI(16383,new byte[]{(byte)0xBF,(byte)0xFF});
-  doTestParseECI(16384,new byte[]{(byte)0xC0,(byte)0x40,(byte)0x00});
-  doTestParseECI(2097151,new byte[]{(byte)0xDF,(byte)0xFF,(byte)0xFF});
-}

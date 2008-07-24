@@ -1,5 +1,0 @@
-{
-  BitSource bitSource=new BitSource(bytes);
-  int actual=ECI.parseECI(bitSource);
-  assertEquals(expectedValue,actual);
-}
