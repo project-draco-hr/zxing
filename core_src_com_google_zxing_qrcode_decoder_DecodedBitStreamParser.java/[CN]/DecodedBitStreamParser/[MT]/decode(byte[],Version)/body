@@ -16,7 +16,7 @@
         fc1InEffect=true;
       }
  else       if (mode.equals(Mode.ECI)) {
-        int value=ECI.parseECI(bits);
+        int value=parseECIValue(bits);
         try {
           currentCharacterSetECI=CharacterSetECI.getCharacterSetECIByValue(value);
         }
