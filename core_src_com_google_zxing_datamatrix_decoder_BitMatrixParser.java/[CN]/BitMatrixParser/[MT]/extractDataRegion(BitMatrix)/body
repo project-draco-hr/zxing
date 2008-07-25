@@ -11,14 +11,16 @@
   int sizeDataRegionRow=numDataRegionsRow * dataRegionSizeRows;
   BitMatrix bitMatrixWithoutAlignment=new BitMatrix(sizeDataRegionRow);
   for (int dataRegionRow=0; dataRegionRow < numDataRegionsRow; ++dataRegionRow) {
+    int dataRegionRowOffset=dataRegionRow * dataRegionSizeRows;
     for (int dataRegionColumn=0; dataRegionColumn < numDataRegionsColumn; ++dataRegionColumn) {
+      int dataRegionColumnOffset=dataRegionColumn * dataRegionSizeColumns;
       for (int i=0; i < dataRegionSizeRows; ++i) {
+        int readRowOffset=dataRegionRow * (dataRegionSizeRows + 2) + 1 + i;
+        int writeRowOffset=dataRegionRowOffset + i;
         for (int j=0; j < dataRegionSizeColumns; ++j) {
-          int readRowOffset=dataRegionRow * (dataRegionSizeRows + 2) + 1 + i;
           int readColumnOffset=dataRegionColumn * (dataRegionSizeColumns + 2) + 1 + j;
-          int writeRowOffset=dataRegionRow * dataRegionSizeRows + i;
-          int writeColumnOffset=dataRegionColumn * dataRegionSizeColumns + j;
           if (bitMatrix.get(readRowOffset,readColumnOffset)) {
+            int writeColumnOffset=dataRegionColumnOffset + j;
             bitMatrixWithoutAlignment.set(writeRowOffset,writeColumnOffset);
           }
         }
