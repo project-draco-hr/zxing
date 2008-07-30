@@ -35,7 +35,15 @@
       is.close();
     }
   }
- catch (  HttpException he) {
+ catch (  IllegalArgumentException iae) {
+    getRequest.abort();
+    response.sendRedirect("badurl.jspx");
+  }
+catch (  SocketException se) {
+    getRequest.abort();
+    response.sendRedirect("badurl.jspx");
+  }
+catch (  HttpException he) {
     getRequest.abort();
     response.sendRedirect("badurl.jspx");
   }
