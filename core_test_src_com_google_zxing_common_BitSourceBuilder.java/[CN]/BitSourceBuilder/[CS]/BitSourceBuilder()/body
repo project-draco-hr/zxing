@@ -1,0 +1,5 @@
+{
+  output=new ByteArrayOutputStream();
+  nextByte=0;
+  bitsLeftInNextByte=8;
+}

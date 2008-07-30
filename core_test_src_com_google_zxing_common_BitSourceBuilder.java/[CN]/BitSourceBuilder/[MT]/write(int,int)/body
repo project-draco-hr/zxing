@@ -1,0 +1,20 @@
+{
+  if (numBits <= bitsLeftInNextByte) {
+    nextByte<<=numBits;
+    nextByte|=value;
+    bitsLeftInNextByte-=numBits;
+    if (bitsLeftInNextByte == 0) {
+      output.write(nextByte);
+      nextByte=0;
+      bitsLeftInNextByte=8;
+    }
+  }
+ else {
+    int bitsToWriteNow=bitsLeftInNextByte;
+    int numRestOfBits=numBits - bitsToWriteNow;
+    int mask=0xFF >> (8 - bitsToWriteNow);
+    int valueToWriteNow=(value >>> numRestOfBits) & mask;
+    write(valueToWriteNow,bitsToWriteNow);
+    write(value,numRestOfBits);
+  }
+}
