@@ -8,4 +8,6 @@ catch (  IllegalAccessException iae) {
   }
 catch (  InstantiationException ie) {
   }
+catch (  NoClassDefFoundError ncdfe) {
+  }
 }
