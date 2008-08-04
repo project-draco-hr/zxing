@@ -1,0 +1,7 @@
+{
+synchronized (app.getAppEventLock()) {
+    if (popup != null) {
+      app.popScreen(popup);
+    }
+  }
+}

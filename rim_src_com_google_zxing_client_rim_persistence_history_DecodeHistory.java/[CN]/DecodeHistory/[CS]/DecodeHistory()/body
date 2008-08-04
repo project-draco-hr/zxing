@@ -1,0 +1,5 @@
+{
+  store=PersistentStore.getPersistentObject(ID_LONG);
+  Vector temp=(Vector)store.getContents();
+  historyItems=temp == null ? new Vector() : temp;
+}

@@ -1,0 +1,5 @@
+{
+  store=PersistentStore.getPersistentObject(ID_LONG);
+  Hashtable temp=(Hashtable)store.getContents();
+  settingsItems=temp == null ? new Hashtable() : temp;
+}

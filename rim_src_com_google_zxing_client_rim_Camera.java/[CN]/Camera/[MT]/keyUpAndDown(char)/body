@@ -1,0 +1,4 @@
+{
+  EventInjector.invokeEvent(new EventInjector.KeyEvent(EventInjector.KeyEvent.KEY_DOWN,character,0,1));
+  EventInjector.invokeEvent(new EventInjector.KeyEvent(EventInjector.KeyEvent.KEY_UP,character,0,1));
+}

@@ -1,0 +1,4 @@
+{
+  BrowserSession browserSession=Browser.getDefaultSession();
+  browserSession.displayPage(uri);
+}

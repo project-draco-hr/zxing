@@ -1,0 +1,80 @@
+{
+  FileConnection file=null;
+  InputStream is=null;
+  Image capturedImage=null;
+  try {
+    file=(FileConnection)Connector.open("file://" + imagePath,Connector.READ_WRITE);
+    is=file.openInputStream();
+    capturedImage=Image.createImage(is);
+  }
+ catch (  IOException e) {
+    Log.error("Problem creating image: " + e);
+    removeProgressBar();
+    invalidate();
+    showMessage("An error occured processing the image.");
+    return;
+  }
+ finally {
+    if (is != null) {
+      try {
+        is.close();
+      }
+ catch (      IOException ioe) {
+      }
+    }
+    if (file != null && file.exists()) {
+      if (file.isOpen()) {
+      }
+      Log.info("Deleted image file.");
+    }
+  }
+  if (capturedImage != null) {
+    Log.info("Got image...");
+    MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);
+    Result result;
+    ReasonableTimer decodingTimer=null;
+    try {
+      decodingTimer=new ReasonableTimer();
+      Log.info("Attempting to decode image...");
+      result=reader.decode(source,readerHints);
+      decodingTimer.finished();
+    }
+ catch (    ReaderException e) {
+      Log.error("Could not decode image: " + e);
+      decodingTimer.finished();
+      removeProgressBar();
+      invalidate();
+      boolean showResolutionMsg=!AppSettings.getInstance().getBooleanItem(AppSettings.SETTING_CAM_RES_MSG).booleanValue();
+      if (showResolutionMsg) {
+        showMessage("A QR Code was not found in the image. " + "We detected that the decoding process took quite a while. " + "It will be much faster if you decrease your camera's resolution (640x480).");
+      }
+ else {
+        showMessage("A QR Code was not found in the image.");
+      }
+      return;
+    }
+    if (result != null) {
+      String resultText=result.getText();
+      Log.info("result: " + resultText);
+      if (isURI(resultText)) {
+        resultText=URLDecoder.decode(resultText);
+        removeProgressBar();
+        invalidate();
+        if (!decodingTimer.wasResonableTime() && !AppSettings.getInstance().getBooleanItem(AppSettings.SETTING_CAM_RES_MSG).booleanValue()) {
+          showMessage("We detected that the decoding process took quite a while. " + "It will be much faster if you decrease your camera's resolution (640x480).");
+        }
+        DecodeHistory.getInstance().addHistoryItem(new DecodeHistoryItem(resultText));
+        invokeBrowser(resultText);
+        return;
+      }
+    }
+ else {
+      removeProgressBar();
+      invalidate();
+      showMessage("A QR Code was not found in the image.");
+      return;
+    }
+  }
+  removeProgressBar();
+  invalidate();
+}

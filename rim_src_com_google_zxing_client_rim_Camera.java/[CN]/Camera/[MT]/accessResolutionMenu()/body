@@ -1,0 +1,13 @@
+{
+  keyUpAndDown(Characters.CONTROL_MENU);
+  sleep(KEY_PAUSE_TIME_MS);
+  keyUpAndDown(Characters.CONTROL_DOWN);
+  sleep(KEY_PAUSE_TIME_MS);
+  trackBallClick();
+  sleep(KEY_PAUSE_TIME_MS);
+  keyUpAndDown(Characters.CONTROL_DOWN);
+  sleep(KEY_PAUSE_TIME_MS);
+  keyUpAndDown(Characters.CONTROL_DOWN);
+  sleep(KEY_PAUSE_TIME_MS);
+  trackBallClick();
+}

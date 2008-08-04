@@ -1,0 +1,4 @@
+{
+  UiEngine ui=Ui.getUiEngine();
+  ui.popScreen(screen);
+}

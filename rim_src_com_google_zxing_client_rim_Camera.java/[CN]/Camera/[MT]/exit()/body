@@ -1,0 +1,22 @@
+{
+  if (setResolution) {
+    setMaxResolution();
+    sleep(KEY_PAUSE_TIME_MS);
+  }
+  sleep(3000);
+  UiApplication app=UiApplication.getUiApplication();
+  if (app != null) {
+    Log.info("active app: " + app.getClass().getName());
+    if (app.isForeground()) {
+      Log.info("Lifemarks is the foreground app.");
+    }
+ else {
+      Log.info("Lifemarks is not the foreground app. Attempt to close camera.");
+      keyUpAndDown(Characters.ESCAPE);
+      keyUpAndDown(Characters.ESCAPE);
+    }
+  }
+ else {
+    Log.error("??? app is null ???");
+  }
+}

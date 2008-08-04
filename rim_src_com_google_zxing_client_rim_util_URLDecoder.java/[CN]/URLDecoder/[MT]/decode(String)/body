@@ -1,0 +1,16 @@
+{
+  Log.info("Original uri: " + uri);
+  if (uri.indexOf('%') >= 0) {
+    Enumeration keys=decodingMap.keys();
+    while (keys.hasMoreElements()) {
+      String encodedChar=(String)keys.nextElement();
+      int encodedCharIndex=uri.indexOf(encodedChar);
+      while (encodedCharIndex != -1) {
+        uri=uri.substring(0,encodedCharIndex) + decodingMap.get(encodedChar) + uri.substring(encodedCharIndex + encodedChar.length());
+        encodedCharIndex=uri.indexOf(encodedChar,encodedCharIndex);
+      }
+    }
+  }
+  Log.info("Final URI: " + uri);
+  return uri;
+}

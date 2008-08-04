@@ -1,0 +1,8 @@
+{
+  keyUpAndDown(Characters.CONTROL_MENU);
+  keyUpAndDown(Characters.CONTROL_DOWN,6,0);
+  trackBallClick();
+  keyUpAndDown(Characters.CONTROL_DOWN);
+  keyUpAndDown(Characters.CONTROL_DOWN);
+  trackBallClick();
+}

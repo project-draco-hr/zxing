@@ -1,3 +1,0 @@
-{
-  pushScreen(new ZXingMainScreen());
-}

@@ -1,0 +1,6 @@
+{
+  if (field instanceof ButtonField) {
+    BrowserSession browserSession=Browser.getDefaultSession();
+    browserSession.displayPage(((FieldLabelProvider)field).getLabel());
+  }
+}

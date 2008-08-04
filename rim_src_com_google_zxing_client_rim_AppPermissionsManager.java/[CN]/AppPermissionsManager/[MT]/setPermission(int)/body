@@ -1,0 +1,20 @@
+{
+  boolean updatedPermissions=false;
+  ApplicationPermissions ap=apm.getApplicationPermissions();
+  if (ap.containsPermissionKey(permission)) {
+    int eventInjectorPermission=ap.getPermission(permission);
+    Log.info("permission (" + permission + "): "+ eventInjectorPermission);
+    if (eventInjectorPermission != ApplicationPermissions.VALUE_ALLOW) {
+      Log.info("Setting permission to VALUE_ALLOW.");
+      ap.addPermission(permission);
+      updatedPermissions=apm.invokePermissionsRequest(ap);
+    }
+  }
+ else {
+    Log.info("Setting permission (" + permission + ") to VALUE_ALLOW.");
+    ap.addPermission(permission);
+    updatedPermissions=apm.invokePermissionsRequest(ap);
+  }
+  Log.info("updatedPermissions: " + updatedPermissions);
+  return updatedPermissions;
+}

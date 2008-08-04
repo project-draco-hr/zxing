@@ -1,0 +1,3 @@
+{
+  pushScreen(new ZXingLMMainScreen());
+}

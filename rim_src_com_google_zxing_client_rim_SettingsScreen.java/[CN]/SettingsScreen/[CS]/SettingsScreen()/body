@@ -1,0 +1,17 @@
+{
+  setTitle(new LabelField("ZXing - Settings",DrawStyle.ELLIPSIS | USE_ALL_WIDTH));
+  Manager vfm=new VerticalFieldManager(FIELD_HCENTER);
+  settings=AppSettings.getInstance();
+  Boolean cameraResMsgSetting=settings.getBooleanItem(AppSettings.SETTING_CAM_RES_MSG);
+  boolean cameraResMsgSettingBool=(cameraResMsgSetting != null) && cameraResMsgSetting.booleanValue();
+  camResMsgCheckBox=new CheckboxField("Don't show camera resolution message",cameraResMsgSettingBool);
+  camResMsgCheckBox.setChangeListener(new ButtonListener(this));
+  vfm.add(camResMsgCheckBox);
+  Field clearHistoryButton=new ButtonField("Clear History",FIELD_HCENTER | ButtonField.CONSUME_CLICK);
+  clearHistoryButton.setChangeListener(new ButtonListener(this));
+  vfm.add(clearHistoryButton);
+  Field okButton=new ButtonField("OK",FIELD_HCENTER | ButtonField.CONSUME_CLICK);
+  okButton.setChangeListener(new ButtonListener(this));
+  vfm.add(okButton);
+  add(vfm);
+}

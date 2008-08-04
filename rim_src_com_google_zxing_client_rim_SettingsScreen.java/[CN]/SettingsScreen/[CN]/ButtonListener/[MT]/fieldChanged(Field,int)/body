@@ -1,0 +1,19 @@
+{
+  Log.debug("Field: " + field.getIndex() + " , context: "+ context);
+switch (field.getIndex()) {
+case 0:
+    settings.addItem(AppSettings.SETTING_CAM_RES_MSG,(camResMsgCheckBox.getChecked()) ? Boolean.TRUE : Boolean.FALSE);
+  changes=true;
+break;
+case 1:
+DecodeHistory.getInstance().clear();
+DecodeHistory.getInstance().persist();
+case 2:
+if (changes) {
+AppSettings.getInstance().persist();
+}
+UiEngine ui=Ui.getUiEngine();
+ui.popScreen(screen);
+break;
+}
+}

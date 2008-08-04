@@ -1,0 +1,29 @@
+{
+  super(DEFAULT_MENU | DEFAULT_CLOSE);
+  setTitle(new LabelField("ZXing",DrawStyle.ELLIPSIS | USE_ALL_WIDTH));
+  setChangeListener(null);
+  Manager vfm=new VerticalFieldManager(USE_ALL_WIDTH);
+  FieldChangeListener buttonListener=new ButtonListener();
+  Field snapButton=new ButtonField("Snap",FIELD_HCENTER | ButtonField.CONSUME_CLICK | USE_ALL_WIDTH);
+  snapButton.setChangeListener(buttonListener);
+  vfm.add(snapButton);
+  Field historyButton=new ButtonField("History",FIELD_HCENTER | ButtonField.CONSUME_CLICK);
+  historyButton.setChangeListener(buttonListener);
+  vfm.add(historyButton);
+  Field settingsButton=new ButtonField("Settings",FIELD_HCENTER | ButtonField.CONSUME_CLICK);
+  settingsButton.setChangeListener(buttonListener);
+  vfm.add(settingsButton);
+  Field aboutButton=new ButtonField("About",FIELD_HCENTER | ButtonField.CONSUME_CLICK);
+  aboutButton.setChangeListener(buttonListener);
+  vfm.add(aboutButton);
+  Field helpButton=new ButtonField("Help",FIELD_HCENTER | ButtonField.CONSUME_CLICK);
+  helpButton.setChangeListener(buttonListener);
+  vfm.add(helpButton);
+  vfm.setChangeListener(null);
+  add(vfm);
+  app=(ZXingUiApplication)UiApplication.getUiApplication();
+  imageListener=new QRCapturedJournalListener(this);
+  reader=new MultiFormatReader();
+  readerHints=new Hashtable(1);
+  readerHints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
+}

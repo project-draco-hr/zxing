@@ -1,0 +1,4 @@
+{
+  Object value=getItem(itemName);
+  return value instanceof Boolean ? (Boolean)value : Boolean.FALSE;
+}

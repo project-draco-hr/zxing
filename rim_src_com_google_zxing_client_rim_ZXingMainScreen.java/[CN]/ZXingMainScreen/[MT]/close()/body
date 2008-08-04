@@ -1,4 +1,0 @@
-{
-  app.removeFileSystemJournalListener(captureListener);
-  super.close();
-}

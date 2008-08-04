@@ -1,0 +1,5 @@
+{
+  app.removeFileSystemJournalListener(imageListener);
+  DecodeHistory.getInstance().persist();
+  super.close();
+}

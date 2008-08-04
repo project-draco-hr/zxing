@@ -1,0 +1,27 @@
+{
+  Log.debug("*** fieldChanged: " + field.getIndex());
+switch (field.getIndex()) {
+case 0:
+    try {
+      app.addFileSystemJournalListener(imageListener);
+      Camera.getInstance().invoke();
+      return;
+    }
+ catch (    Exception e) {
+      Log.error("!!! Problem invoking camera.!!!: " + e);
+    }
+  break;
+case 1:
+app.pushScreen(new HistoryScreen());
+break;
+case 2:
+app.pushScreen(new SettingsScreen());
+break;
+case 3:
+app.pushScreen(new AboutScreen());
+break;
+case 4:
+app.pushScreen(new HelpScreen());
+break;
+}
+}

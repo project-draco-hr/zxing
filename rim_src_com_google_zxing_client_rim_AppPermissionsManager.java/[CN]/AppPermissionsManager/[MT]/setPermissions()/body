@@ -1,0 +1,4 @@
+{
+  setPermission(ApplicationPermissions.PERMISSION_EVENT_INJECTOR);
+  setPermission(ApplicationPermissions.PERMISSION_FILE_API);
+}

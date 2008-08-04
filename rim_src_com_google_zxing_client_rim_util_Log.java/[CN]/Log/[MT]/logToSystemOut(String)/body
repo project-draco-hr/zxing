@@ -1,0 +1,5 @@
+{
+  if (logToSystemOut) {
+    System.out.println(message);
+  }
+}
