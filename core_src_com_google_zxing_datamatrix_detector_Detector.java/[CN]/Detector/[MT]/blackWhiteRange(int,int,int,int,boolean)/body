@@ -1,0 +1,45 @@
+{
+  int center=(minDim + maxDim) / 2;
+  int start=center;
+  while (start >= minDim) {
+    if (horizontal ? image.isBlack(start,fixedDimension) : image.isBlack(fixedDimension,start)) {
+      start--;
+    }
+ else {
+      int whiteRunStart=start;
+      do {
+        start--;
+      }
+ while (start >= minDim && !(horizontal ? image.isBlack(start,fixedDimension) : image.isBlack(fixedDimension,start)));
+      int whiteRunSize=whiteRunStart - start;
+      if (start < minDim || whiteRunSize > maxWhiteRun) {
+        start=whiteRunStart + 1;
+        break;
+      }
+    }
+  }
+  int end=center;
+  while (end < maxDim) {
+    if (horizontal ? image.isBlack(end,fixedDimension) : image.isBlack(fixedDimension,end)) {
+      end++;
+    }
+ else {
+      int whiteRunStart=end;
+      do {
+        end++;
+      }
+ while (end < maxDim && !(horizontal ? image.isBlack(end,fixedDimension) : image.isBlack(fixedDimension,end)));
+      int whiteRunSize=end - whiteRunStart;
+      if (end >= maxDim || whiteRunSize > maxWhiteRun) {
+        end=whiteRunStart - 1;
+        break;
+      }
+    }
+  }
+  if (end > start) {
+    return new int[]{start,end};
+  }
+ else {
+    return null;
+  }
+}

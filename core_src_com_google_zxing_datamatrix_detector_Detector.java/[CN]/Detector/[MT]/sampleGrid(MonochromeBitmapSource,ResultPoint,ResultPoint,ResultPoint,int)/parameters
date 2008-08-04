@@ -1,0 +1,5 @@
+MonochromeBitmapSource image
+ResultPoint topLeft
+ResultPoint bottomLeft
+ResultPoint bottomRight
+int dimension

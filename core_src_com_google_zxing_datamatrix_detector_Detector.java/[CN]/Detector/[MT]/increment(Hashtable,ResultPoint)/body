@@ -1,0 +1,4 @@
+{
+  Integer value=(Integer)table.get(key);
+  table.put(key,value == null ? INTEGERS[1] : INTEGERS[value.intValue() + 1]);
+}

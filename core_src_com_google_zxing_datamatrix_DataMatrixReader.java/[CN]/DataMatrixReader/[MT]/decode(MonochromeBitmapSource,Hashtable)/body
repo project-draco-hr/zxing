@@ -1,8 +1,15 @@
 {
   DecoderResult decoderResult;
   ResultPoint[] points;
-  BitMatrix bits=extractPureBits(image);
-  decoderResult=decoder.decode(bits);
-  points=NO_POINTS;
+  if (hints != null && hints.containsKey(DecodeHintType.PURE_BARCODE)) {
+    BitMatrix bits=extractPureBits(image);
+    decoderResult=decoder.decode(bits);
+    points=NO_POINTS;
+  }
+ else {
+    DetectorResult result=new Detector(image).detect();
+    decoderResult=decoder.decode(result.getBits());
+    points=result.getPoints();
+  }
   return new Result(decoderResult.getText(),decoderResult.getRawBytes(),points,BarcodeFormat.DATAMATRIX);
 }

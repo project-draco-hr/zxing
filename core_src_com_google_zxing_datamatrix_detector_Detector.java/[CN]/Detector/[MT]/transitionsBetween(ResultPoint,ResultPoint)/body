@@ -1,0 +1,35 @@
+{
+  int fromX=(int)from.getX();
+  int fromY=(int)from.getY();
+  int toX=(int)to.getX();
+  int toY=(int)to.getY();
+  boolean steep=Math.abs(toY - fromY) > Math.abs(toX - fromX);
+  if (steep) {
+    int temp=fromX;
+    fromX=fromY;
+    fromY=temp;
+    temp=toX;
+    toX=toY;
+    toY=temp;
+  }
+  int dx=Math.abs(toX - fromX);
+  int dy=Math.abs(toY - fromY);
+  int error=-dx >> 1;
+  int ystep=fromY < toY ? 1 : -1;
+  int xstep=fromX < toX ? 1 : -1;
+  int transitions=0;
+  boolean inBlack=image.isBlack(steep ? fromY : fromX,steep ? fromX : fromY);
+  for (int x=fromX, y=fromY; x != toX; x+=xstep) {
+    boolean isBlack=image.isBlack(steep ? y : x,steep ? x : y);
+    if (isBlack == !inBlack) {
+      transitions++;
+      inBlack=isBlack;
+    }
+    error+=dy;
+    if (error > 0) {
+      y+=ystep;
+      error-=dx;
+    }
+  }
+  return new ResultPointsAndTransitions(from,to,transitions);
+}

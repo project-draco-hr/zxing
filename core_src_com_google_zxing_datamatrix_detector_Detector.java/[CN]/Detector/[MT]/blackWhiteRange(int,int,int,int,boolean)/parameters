@@ -1,0 +1,5 @@
+int fixedDimension
+int maxWhiteRun
+int minDim
+int maxDim
+boolean horizontal

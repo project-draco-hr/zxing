@@ -1,3 +1,84 @@
 {
-  return new DetectorResult(null,null);
+  if (!BlackPointEstimationMethod.TWO_D_SAMPLING.equals(image.getLastEstimationMethod())) {
+    image.estimateBlackPoint(BlackPointEstimationMethod.TWO_D_SAMPLING,0);
+  }
+  int height=image.getHeight();
+  int width=image.getWidth();
+  int halfHeight=height >> 1;
+  int halfWidth=width >> 1;
+  int iSkip=Math.max(1,height / (MAX_MODULES << 2));
+  int jSkip=Math.max(1,width / (MAX_MODULES << 2));
+  int minI=0;
+  int maxI=height;
+  int minJ=0;
+  int maxJ=width;
+  ResultPoint pointA=findCornerFromCenter(halfHeight,-iSkip,minI,maxI,halfWidth,0,minJ,maxJ,halfWidth >> 2);
+  minI=(int)pointA.getY() - 1;
+  ResultPoint pointB=findCornerFromCenter(halfHeight,0,minI,maxI,halfWidth,-jSkip,minJ,maxJ,halfHeight >> 2);
+  minJ=(int)pointB.getX() - 1;
+  ResultPoint pointC=findCornerFromCenter(halfHeight,0,minI,maxI,halfWidth,jSkip,minJ,maxJ,halfHeight >> 2);
+  maxJ=(int)pointC.getX() + 1;
+  ResultPoint pointD=findCornerFromCenter(halfHeight,iSkip,minI,maxI,halfWidth,0,minJ,maxJ,halfWidth >> 2);
+  maxI=(int)pointD.getY() + 1;
+  pointA=findCornerFromCenter(halfHeight,-iSkip,minI,maxI,halfWidth,0,minJ,maxJ,halfWidth >> 2);
+  Vector transitions=new Vector(4);
+  transitions.addElement(transitionsBetween(pointA,pointB));
+  transitions.addElement(transitionsBetween(pointA,pointC));
+  transitions.addElement(transitionsBetween(pointB,pointD));
+  transitions.addElement(transitionsBetween(pointC,pointD));
+  Collections.insertionSort(transitions,new ResultPointsAndTransitionsComparator());
+  ResultPointsAndTransitions lSideOne=(ResultPointsAndTransitions)transitions.elementAt(0);
+  ResultPointsAndTransitions lSideTwo=(ResultPointsAndTransitions)transitions.elementAt(1);
+  Hashtable pointCount=new Hashtable();
+  increment(pointCount,lSideOne.getFrom());
+  increment(pointCount,lSideOne.getTo());
+  increment(pointCount,lSideTwo.getFrom());
+  increment(pointCount,lSideTwo.getTo());
+  ResultPoint maybeTopLeft=null;
+  ResultPoint bottomLeft=null;
+  ResultPoint maybeBottomRight=null;
+  Enumeration points=pointCount.keys();
+  while (points.hasMoreElements()) {
+    ResultPoint point=(ResultPoint)points.nextElement();
+    Integer value=(Integer)pointCount.get(point);
+    if (value.intValue() == 2) {
+      bottomLeft=point;
+    }
+ else {
+      if (maybeTopLeft == null) {
+        maybeTopLeft=point;
+      }
+ else {
+        maybeBottomRight=point;
+      }
+    }
+  }
+  ResultPoint[] corners=new ResultPoint[]{maybeTopLeft,bottomLeft,maybeBottomRight};
+  GenericResultPoint.orderBestPatterns(corners);
+  ResultPoint bottomRight=corners[0];
+  bottomLeft=corners[1];
+  ResultPoint topLeft=corners[2];
+  ResultPoint topRight;
+  if (!pointCount.containsKey(pointA)) {
+    topRight=pointA;
+  }
+ else   if (!pointCount.containsKey(pointB)) {
+    topRight=pointB;
+  }
+ else   if (!pointCount.containsKey(pointC)) {
+    topRight=pointC;
+  }
+ else {
+    topRight=pointD;
+  }
+  int dimension;
+  if (GenericResultPoint.crossProductZ(bottomLeft,bottomRight,topRight) < GenericResultPoint.crossProductZ(topRight,topLeft,bottomLeft)) {
+    dimension=transitionsBetween(topLeft,topRight).getTransitions();
+  }
+ else {
+    dimension=transitionsBetween(bottomRight,topRight).getTransitions();
+  }
+  dimension+=2;
+  BitMatrix bits=sampleGrid(image,topLeft,bottomLeft,bottomRight,dimension);
+  return new DetectorResult(bits,new ResultPoint[]{pointA,pointB,pointC,pointD});
 }
