@@ -1,5 +1,17 @@
 {
   for (  String arg : args) {
+    if (arg.equals("-row")) {
+      sMethod=BlackPointEstimationMethod.ROW_SAMPLING;
+    }
+ else     if (arg.equals("-2d")) {
+      sMethod=BlackPointEstimationMethod.TWO_D_SAMPLING;
+    }
+ else     if (arg.startsWith("-")) {
+      System.out.println("Ignoring unrecognized option: " + arg);
+    }
+  }
+  for (  String arg : args) {
+    if (arg.startsWith("-"))     continue;
     File inputFile=new File(arg);
     if (inputFile.exists()) {
       if (inputFile.isDirectory()) {
