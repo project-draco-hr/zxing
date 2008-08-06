@@ -6,5 +6,5 @@
   builder.write(0xA2,8);
   builder.write(0xA3,8);
   String result=DecodedBitStreamParser.decode(builder.toByteArray(),Version.getVersionForNumber(1));
-  assertEquals("???",result);
+  assertEquals("\u00a1\u00a2\u00a3",result);
 }
