@@ -3,7 +3,7 @@
   int endStart=decodeMiddle(row,startGuardRange,result);
   int[] endRange=decodeEnd(row,endStart);
   int end=endRange[1];
-  if (!row.isRange(end,Math.min(row.getSize(),end + 2 * (end - endRange[0])),false)) {
+  if (!row.isRange(end,Math.min(row.getSize(),end + (3 * (end - endRange[0])) / 2),false)) {
     throw new ReaderException("Pattern not followed by whitespace");
   }
   String resultString=result.toString();
