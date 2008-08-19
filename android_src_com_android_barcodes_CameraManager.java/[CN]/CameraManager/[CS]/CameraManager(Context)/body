@@ -1,0 +1,6 @@
+{
+  mContext=context;
+  mCamera=null;
+  mInitialized=false;
+  mPreviewing=false;
+}

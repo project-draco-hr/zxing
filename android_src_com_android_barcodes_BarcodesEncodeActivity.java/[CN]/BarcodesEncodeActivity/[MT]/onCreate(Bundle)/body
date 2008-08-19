@@ -1,0 +1,10 @@
+{
+  super.onCreate(icicle);
+  Intent intent=getIntent();
+  if (intent == null || !intent.getAction().equals(Intents.Encode.ACTION)) {
+    finish();
+  }
+ else {
+    setContentView(R.layout.encode);
+  }
+}

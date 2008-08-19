@@ -1,0 +1,32 @@
+{
+  mActivity=activity;
+  mMultiFormatReader=new MultiFormatReader();
+  if (mode == null || mode.length() == 0) {
+    SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
+    boolean decode1D=prefs.getBoolean(BarcodesPreferenceActivity.KEY_DECODE_1D,true);
+    boolean decodeQR=prefs.getBoolean(BarcodesPreferenceActivity.KEY_DECODE_QR,true);
+    if (decode1D && decodeQR) {
+      setDecodeAllMode();
+    }
+ else     if (decode1D) {
+      setDecode1DMode();
+    }
+ else     if (decodeQR) {
+      setDecodeQRMode();
+    }
+  }
+ else {
+    if (mode.equals(Intents.Scan.PRODUCT_MODE)) {
+      setDecodeProductMode();
+    }
+ else     if (mode.equals(Intents.Scan.ONE_D_MODE)) {
+      setDecode1DMode();
+    }
+ else     if (mode.equals(Intents.Scan.QR_CODE_MODE)) {
+      setDecodeQRMode();
+    }
+ else {
+      setDecodeAllMode();
+    }
+  }
+}

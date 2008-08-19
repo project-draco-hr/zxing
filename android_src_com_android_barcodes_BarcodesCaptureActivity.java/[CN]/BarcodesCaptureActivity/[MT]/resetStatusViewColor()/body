@@ -1,0 +1,4 @@
+{
+  View statusView=findViewById(R.id.status_view);
+  statusView.setBackgroundColor(getResources().getColor(R.color.status_view));
+}

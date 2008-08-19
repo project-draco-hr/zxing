@@ -1,0 +1,4 @@
+{
+  mResultPoints=CameraManager.get().convertResultPoints(resultPoints);
+  invalidate();
+}

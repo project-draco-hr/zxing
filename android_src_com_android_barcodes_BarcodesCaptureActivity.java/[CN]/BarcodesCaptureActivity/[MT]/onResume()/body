@@ -1,0 +1,16 @@
+{
+  super.onResume();
+  resetStatusView();
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
+  mPlayBeep=prefs.getBoolean(BarcodesPreferenceActivity.KEY_PLAY_BEEP,true);
+  initBeepSound();
+  Intent intent=getIntent();
+  if (intent != null && intent.getAction().equals(Intents.Scan.ACTION)) {
+    mScanIntent=true;
+    mDecodeMode=intent.getStringExtra(Intents.Scan.MODE);
+  }
+ else {
+    mScanIntent=false;
+    mDecodeMode=null;
+  }
+}

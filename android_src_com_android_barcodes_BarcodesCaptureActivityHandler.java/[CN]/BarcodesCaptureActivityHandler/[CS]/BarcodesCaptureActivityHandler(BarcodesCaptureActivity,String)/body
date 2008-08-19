@@ -1,0 +1,7 @@
+{
+  mActivity=activity;
+  mDecodeThread=new DecodeThread(activity,decodeMode);
+  mDecodeThread.start();
+  mState=State.SUCCESS;
+  restartPreviewAndDecode();
+}

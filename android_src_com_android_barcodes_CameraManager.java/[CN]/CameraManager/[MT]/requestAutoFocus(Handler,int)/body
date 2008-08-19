@@ -1,0 +1,7 @@
+{
+  if (mCamera != null && mPreviewing) {
+    mAutoFocusHandler=handler;
+    mAutoFocusMessage=message;
+    mCamera.autoFocus(autoFocusCallback);
+  }
+}

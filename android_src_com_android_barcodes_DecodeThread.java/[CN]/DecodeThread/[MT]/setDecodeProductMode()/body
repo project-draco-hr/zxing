@@ -1,0 +1,10 @@
+{
+  Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
+  Vector<BarcodeFormat> vector=new Vector<BarcodeFormat>();
+  vector.addElement(BarcodeFormat.UPC_A);
+  vector.addElement(BarcodeFormat.UPC_E);
+  vector.addElement(BarcodeFormat.EAN_13);
+  vector.addElement(BarcodeFormat.EAN_8);
+  hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
+  mMultiFormatReader.setHints(hints);
+}

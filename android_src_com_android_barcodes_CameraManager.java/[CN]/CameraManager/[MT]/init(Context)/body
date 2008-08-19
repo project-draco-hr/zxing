@@ -1,0 +1,5 @@
+{
+  if (mCameraManager == null) {
+    mCameraManager=new CameraManager(context);
+  }
+}

@@ -1,0 +1,17 @@
+{
+  if (mPlayBeep && mMediaPlayer == null) {
+    mMediaPlayer=new MediaPlayer();
+    mMediaPlayer.setAudioStreamType(AudioManager.STREAM_SYSTEM);
+    mMediaPlayer.setOnCompletionListener(mBeepListener);
+    AssetFileDescriptor file=getResources().openRawResourceFd(R.raw.beep);
+    try {
+      mMediaPlayer.setDataSource(file.getFileDescriptor(),file.getStartOffset(),file.getLength());
+      file.close();
+      mMediaPlayer.setVolume(0.15f,0.15f);
+      mMediaPlayer.prepare();
+    }
+ catch (    IOException e) {
+      mMediaPlayer=null;
+    }
+  }
+}

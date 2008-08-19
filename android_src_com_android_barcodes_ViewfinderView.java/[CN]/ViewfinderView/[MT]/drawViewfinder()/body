@@ -1,0 +1,4 @@
+{
+  mResultPoints=null;
+  invalidate();
+}

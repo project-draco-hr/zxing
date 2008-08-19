@@ -1,0 +1,8 @@
+{
+  resetStatusViewColor();
+  TextView textView=(TextView)findViewById(R.id.status_text_view);
+  textView.setText(R.string.msg_default_status);
+  Button actionButton=(Button)findViewById(R.id.status_action_button);
+  actionButton.setVisibility(View.GONE);
+  mLastResult="";
+}
