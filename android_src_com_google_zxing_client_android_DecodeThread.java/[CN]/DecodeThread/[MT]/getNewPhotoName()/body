@@ -1,3 +1,0 @@
-{
-  return "capture" + System.currentTimeMillis() + ".jpg";
-}

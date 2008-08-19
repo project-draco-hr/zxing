@@ -1,9 +1,0 @@
-{
-  if (bounds.right == bitmap.width() && bounds.bottom == bitmap.height()) {
-    canvas.drawBitmap(bitmap,0,0,null);
-  }
- else {
-    canvas.drawBitmap(bitmap,null,bounds,paint);
-  }
-  return true;
-}

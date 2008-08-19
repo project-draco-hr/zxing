@@ -1,7 +1,0 @@
-{
-  if (y != cachedRow) {
-    int width=image.width();
-    image.getPixels(rgbRow,0,width,0,y,width,1);
-    cachedRow=y;
-  }
-}

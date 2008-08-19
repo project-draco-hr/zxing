@@ -1,4 +1,0 @@
-{
-  Message message=Message.obtain(decodeThread.handler,R.id.set_decode_QR_mode);
-  message.sendToTarget();
-}
