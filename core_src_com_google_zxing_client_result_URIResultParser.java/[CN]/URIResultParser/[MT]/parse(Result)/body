@@ -3,6 +3,8 @@
   if (!isBasicallyValidURI(rawText)) {
     return null;
   }
-  String uri=massagePossibleURI(rawText);
-  return new URIParsedResult(uri,null);
+  if (rawText.startsWith("URL:")) {
+    rawText=rawText.substring(4);
+  }
+  return new URIParsedResult(rawText,null);
 }

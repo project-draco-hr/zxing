@@ -1,0 +1,4 @@
+{
+  URIParsedResult result=new URIParsedResult(uri,null);
+  assertEquals(expected,result.isPossiblyMaliciousURI());
+}
