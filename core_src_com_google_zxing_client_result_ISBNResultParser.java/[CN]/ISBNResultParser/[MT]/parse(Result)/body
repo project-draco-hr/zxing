@@ -1,0 +1,18 @@
+{
+  BarcodeFormat format=result.getBarcodeFormat();
+  if (!BarcodeFormat.EAN_13.equals(format)) {
+    return null;
+  }
+  String rawText=result.getText();
+  if (rawText == null) {
+    return null;
+  }
+  int length=rawText.length();
+  if (length != 13) {
+    return null;
+  }
+  if (!rawText.startsWith("978") && !rawText.startsWith("979")) {
+    return null;
+  }
+  return new ISBNParsedResult(rawText);
+}

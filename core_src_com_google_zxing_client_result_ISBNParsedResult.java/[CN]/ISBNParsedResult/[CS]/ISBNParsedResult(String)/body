@@ -1,0 +1,4 @@
+{
+  super(ParsedResultType.ISBN);
+  this.isbn=isbn;
+}
