@@ -9,6 +9,9 @@
  else   if (type.equals(ParsedResultType.EMAIL_ADDRESS)) {
     buttonText=R.string.button_email;
   }
+ else   if (type.equals(ParsedResultType.SMS)) {
+    buttonText=R.string.button_sms;
+  }
  else   if (type.equals(ParsedResultType.UPC)) {
     buttonText=R.string.button_lookup_product;
   }
