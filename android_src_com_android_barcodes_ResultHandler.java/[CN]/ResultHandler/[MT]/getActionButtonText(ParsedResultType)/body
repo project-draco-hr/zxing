@@ -18,6 +18,9 @@
  else   if (type.equals(ParsedResultType.GEO)) {
     buttonText=R.string.button_show_map;
   }
+ else   if (type.equals(ParsedResultType.ISBN)) {
+    buttonText=R.string.button_lookup_book;
+  }
  else {
     buttonText=0;
   }

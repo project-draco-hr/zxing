@@ -37,6 +37,11 @@
     Uri uri=Uri.parse("http://www.google.com/products?q=" + upcResult.getUPC());
     intent=new Intent(Intent.ACTION_VIEW,uri);
   }
+ else   if (type.equals(ParsedResultType.ISBN)) {
+    ISBNParsedResult isbnResult=(ISBNParsedResult)result;
+    Uri uri=Uri.parse("http://www.google.com/products?q=" + isbnResult.getISBN());
+    intent=new Intent(Intent.ACTION_VIEW,uri);
+  }
  else   if (type.equals(ParsedResultType.URI)) {
     URIParsedResult uriResult=(URIParsedResult)result;
     intent=new Intent(Intent.ACTION_VIEW,Uri.parse(uriResult.getURI()));
