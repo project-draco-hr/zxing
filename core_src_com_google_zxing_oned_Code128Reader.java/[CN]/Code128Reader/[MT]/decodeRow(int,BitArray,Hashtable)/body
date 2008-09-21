@@ -25,7 +25,9 @@ int lastCode=0;
 int code=0;
 int checksumTotal=startCode;
 int multiplier=0;
+boolean lastCharacterWasPrintable=true;
 while (!done) {
+lastCharacterWasPrintable=true;
 boolean unshift=isNextShifted;
 isNextShifted=false;
 lastCode=code;
@@ -53,6 +55,7 @@ result.append((char)(' ' + code));
 result.append((char)(code - 64));
 }
  else {
+lastCharacterWasPrintable=false;
 switch (code) {
 case CODE_FNC_1:
 case CODE_FNC_2:
@@ -80,6 +83,7 @@ if (code < 96) {
 result.append((char)(' ' + code));
 }
  else {
+lastCharacterWasPrintable=false;
 switch (code) {
 case CODE_FNC_1:
 case CODE_FNC_2:
@@ -110,6 +114,7 @@ result.append('0');
 result.append(code);
 }
  else {
+lastCharacterWasPrintable=false;
 switch (code) {
 case CODE_FNC_1:
 break;
@@ -145,7 +150,7 @@ if (checksumTotal % 103 != lastCode) {
 throw new ReaderException("Checksum failed");
 }
 int resultLength=result.length();
-if (resultLength > 0) {
+if (resultLength > 0 && lastCharacterWasPrintable) {
 if (codeSet == CODE_CODE_C) {
 result.delete(resultLength - 2,resultLength);
 }
