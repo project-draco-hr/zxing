@@ -55,7 +55,9 @@ result.append((char)(' ' + code));
 result.append((char)(code - 64));
 }
  else {
+if (code != CODE_STOP) {
 lastCharacterWasPrintable=false;
+}
 switch (code) {
 case CODE_FNC_1:
 case CODE_FNC_2:
@@ -83,7 +85,9 @@ if (code < 96) {
 result.append((char)(' ' + code));
 }
  else {
+if (code != CODE_STOP) {
 lastCharacterWasPrintable=false;
+}
 switch (code) {
 case CODE_FNC_1:
 case CODE_FNC_2:
@@ -114,7 +118,9 @@ result.append('0');
 result.append(code);
 }
  else {
+if (code != CODE_STOP) {
 lastCharacterWasPrintable=false;
+}
 switch (code) {
 case CODE_FNC_1:
 break;
