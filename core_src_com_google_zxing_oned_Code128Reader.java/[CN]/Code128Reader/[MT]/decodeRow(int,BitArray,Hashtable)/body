@@ -27,11 +27,13 @@ int checksumTotal=startCode;
 int multiplier=0;
 boolean lastCharacterWasPrintable=true;
 while (!done) {
-lastCharacterWasPrintable=true;
 boolean unshift=isNextShifted;
 isNextShifted=false;
 lastCode=code;
 code=decodeCode(row,counters,nextStart);
+if (code != CODE_STOP) {
+lastCharacterWasPrintable=true;
+}
 if (code != CODE_STOP) {
 multiplier++;
 checksumTotal+=multiplier * code;
