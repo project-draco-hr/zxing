@@ -3,21 +3,21 @@
   if (rawText == null || !rawText.startsWith("BEGIN:VCARD") || !rawText.endsWith("END:VCARD")) {
     return null;
   }
-  String[] names=matchVCardPrefixedField("FN",rawText);
+  String[] names=matchVCardPrefixedField("FN",rawText,true);
   if (names == null) {
-    names=matchVCardPrefixedField("N",rawText);
+    names=matchVCardPrefixedField("N",rawText,true);
     formatNames(names);
   }
-  String[] phoneNumbers=matchVCardPrefixedField("TEL",rawText);
-  String[] emails=matchVCardPrefixedField("EMAIL",rawText);
-  String note=matchSingleVCardPrefixedField("NOTE",rawText);
-  String address=matchSingleVCardPrefixedField("ADR",rawText);
+  String[] phoneNumbers=matchVCardPrefixedField("TEL",rawText,true);
+  String[] emails=matchVCardPrefixedField("EMAIL",rawText,true);
+  String note=matchSingleVCardPrefixedField("NOTE",rawText,false);
+  String address=matchSingleVCardPrefixedField("ADR",rawText,true);
   address=formatAddress(address);
-  String org=matchSingleVCardPrefixedField("ORG",rawText);
-  String birthday=matchSingleVCardPrefixedField("BDAY",rawText);
+  String org=matchSingleVCardPrefixedField("ORG",rawText,true);
+  String birthday=matchSingleVCardPrefixedField("BDAY",rawText,true);
   if (birthday != null && !isStringOfDigits(birthday,8)) {
     return null;
   }
-  String title=matchSingleVCardPrefixedField("TITLE",rawText);
+  String title=matchSingleVCardPrefixedField("TITLE",rawText,true);
   return new AddressBookParsedResult(names,phoneNumbers,emails,note,address,org,birthday,title);
 }

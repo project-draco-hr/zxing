@@ -1,7 +1,7 @@
 {
   Vector matches=null;
   int i=0;
-  int max=rawText.length();
+  final int max=rawText.length();
   while (i < max) {
     i=rawText.indexOf(prefix,i);
     if (i < 0) {
@@ -20,21 +20,23 @@
     }
     i++;
     int start=i;
-    boolean done=false;
-    while (!done) {
-      i=rawText.indexOf((int)'\n',i);
-      if (i < 0) {
-        i=rawText.length();
-        done=true;
+    i=rawText.indexOf((int)'\n',i);
+    if (i < 0) {
+      i=max;
+    }
+ else     if (i > start) {
+      if (matches == null) {
+        matches=new Vector(3);
       }
+      String element=rawText.substring(start,i);
+      if (trim) {
+        element=element.trim();
+      }
+      matches.addElement(element);
+      i++;
+    }
  else {
-        if (matches == null) {
-          matches=new Vector(3);
-        }
-        matches.addElement(rawText.substring(start,i - 1));
-        i++;
-        done=true;
-      }
+      i++;
     }
   }
   if (matches == null || matches.isEmpty()) {

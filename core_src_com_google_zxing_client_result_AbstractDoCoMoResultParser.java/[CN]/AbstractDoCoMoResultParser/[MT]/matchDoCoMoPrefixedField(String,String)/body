@@ -1,3 +1,0 @@
-{
-  return matchPrefixedField(prefix,rawText,';');
-}

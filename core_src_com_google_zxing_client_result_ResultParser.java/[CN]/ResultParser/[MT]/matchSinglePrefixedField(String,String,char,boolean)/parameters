@@ -1,2 +1,4 @@
 String prefix
 String rawText
+char endChar
+boolean trim

@@ -1,4 +1,0 @@
-{
-  String[] values=matchVCardPrefixedField(prefix,rawText);
-  return values == null ? null : values[0];
-}
