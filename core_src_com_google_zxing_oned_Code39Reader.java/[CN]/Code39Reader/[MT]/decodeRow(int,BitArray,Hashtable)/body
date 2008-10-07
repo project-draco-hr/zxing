@@ -24,6 +24,14 @@
   }
  while (decodedChar != '*');
   result.deleteCharAt(result.length() - 1);
+  int lastPatternSize=0;
+  for (int i=0; i < counters.length; i++) {
+    lastPatternSize+=counters[i];
+  }
+  int whiteSpaceAfterEnd=nextStart - lastStart - lastPatternSize;
+  if (nextStart != end && whiteSpaceAfterEnd / 2 < lastPatternSize) {
+    throw new ReaderException("Pattern not followed by whitespace");
+  }
   if (usingCheckDigit) {
     int max=result.length() - 1;
     int total=0;

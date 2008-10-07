@@ -153,6 +153,12 @@ break;
 }
 }
 }
+while (row.get(nextStart)) {
+nextStart++;
+}
+if (!row.isRange(nextStart,Math.min(row.getSize(),nextStart + (nextStart - lastStart) / 2),false)) {
+throw new ReaderException("Pattern not followed by whitespace");
+}
 checksumTotal-=multiplier * lastCode;
 if (checksumTotal % 103 != lastCode) {
 throw new ReaderException("Checksum failed");
