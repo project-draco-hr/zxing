@@ -1,16 +1,16 @@
 {
-  exp=new int[256];
-  log=new int[256];
+  exp_table=new int[256];
+  log_table=new int[256];
   int x=1;
   for (int i=0; i < 256; i++) {
-    exp[i]=x;
+    exp_table[i]=x;
     x<<=1;
     if (x >= 0x100) {
       x^=primitive;
     }
   }
   for (int i=0; i < 255; i++) {
-    log[exp[i]]=i;
+    log_table[exp_table[i]]=i;
   }
   zero=new GF256Poly(this,new int[]{0});
   one=new GF256Poly(this,new int[]{1});

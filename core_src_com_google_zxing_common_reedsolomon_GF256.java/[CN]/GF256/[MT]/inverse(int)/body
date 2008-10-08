@@ -2,5 +2,5 @@
   if (a == 0) {
     throw new ArithmeticException();
   }
-  return exp[255 - log[a]];
+  return exp_table[255 - log_table[a]];
 }

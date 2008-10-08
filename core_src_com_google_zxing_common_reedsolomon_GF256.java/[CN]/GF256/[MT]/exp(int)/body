@@ -1,3 +1,3 @@
 {
-  return exp[a];
+  return exp_table[a];
 }
