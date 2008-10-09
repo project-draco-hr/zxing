@@ -2,5 +2,5 @@
   if (a == 0) {
     throw new IllegalArgumentException();
   }
-  return log_table[a];
+  return logTable[a];
 }
