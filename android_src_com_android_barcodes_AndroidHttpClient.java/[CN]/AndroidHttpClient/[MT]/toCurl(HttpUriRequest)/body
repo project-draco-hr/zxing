@@ -1,0 +1,35 @@
+{
+  StringBuilder builder=new StringBuilder();
+  builder.append("curl ");
+  for (  Header header : request.getAllHeaders()) {
+    builder.append("--header \"");
+    builder.append(header.toString().trim());
+    builder.append("\" ");
+  }
+  URI uri=request.getURI();
+  if (request instanceof RequestWrapper) {
+    HttpRequest original=((RequestWrapper)request).getOriginal();
+    if (original instanceof HttpUriRequest) {
+      uri=((HttpUriRequest)original).getURI();
+    }
+  }
+  builder.append("\"");
+  builder.append(uri);
+  builder.append("\"");
+  if (request instanceof HttpEntityEnclosingRequest) {
+    HttpEntityEnclosingRequest entityRequest=(HttpEntityEnclosingRequest)request;
+    HttpEntity entity=entityRequest.getEntity();
+    if (entity != null && entity.isRepeatable()) {
+      if (entity.getContentLength() < 1024) {
+        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        entity.writeTo(stream);
+        String entityString=stream.toString();
+        builder.append(" --data-ascii \"").append(entityString).append("\"");
+      }
+ else {
+        builder.append(" [TOO MUCH DATA TO INCLUDE]");
+      }
+    }
+  }
+  return builder.toString();
+}

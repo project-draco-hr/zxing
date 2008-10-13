@@ -1,0 +1,10 @@
+{
+  InputStream responseStream=entity.getContent();
+  if (responseStream == null)   return responseStream;
+  Header header=entity.getContentEncoding();
+  if (header == null)   return responseStream;
+  String contentEncoding=header.getValue();
+  if (contentEncoding == null)   return responseStream;
+  if (contentEncoding.contains("gzip"))   responseStream=new GZIPInputStream(responseStream);
+  return responseStream;
+}

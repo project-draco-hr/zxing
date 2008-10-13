@@ -1,0 +1,3 @@
+{
+  return Log.isLoggable(tag,level);
+}

@@ -1,0 +1,6 @@
+{
+  if (mLeakedException != null) {
+    getConnectionManager().shutdown();
+    mLeakedException=null;
+  }
+}
