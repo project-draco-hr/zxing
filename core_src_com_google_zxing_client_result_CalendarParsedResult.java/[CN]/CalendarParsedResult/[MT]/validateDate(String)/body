@@ -1,6 +1,7 @@
 {
   if (date != null) {
-    if (date.length() != 16) {
+    int length=date.length();
+    if (length != 8 && length != 15 && length != 16) {
       throw new IllegalArgumentException();
     }
     for (int i=0; i < 8; i++) {
@@ -8,16 +9,18 @@
         throw new IllegalArgumentException();
       }
     }
-    if (date.charAt(8) != 'T') {
-      throw new IllegalArgumentException();
-    }
-    for (int i=9; i < 15; i++) {
-      if (!Character.isDigit(date.charAt(i))) {
+    if (length > 8) {
+      if (date.charAt(8) != 'T') {
         throw new IllegalArgumentException();
       }
-    }
-    if (date.charAt(15) != 'Z') {
-      throw new IllegalArgumentException();
+      for (int i=9; i < 15; i++) {
+        if (!Character.isDigit(date.charAt(i))) {
+          throw new IllegalArgumentException();
+        }
+      }
+      if (length == 16 && date.charAt(15) != 'Z') {
+        throw new IllegalArgumentException();
+      }
     }
   }
 }
