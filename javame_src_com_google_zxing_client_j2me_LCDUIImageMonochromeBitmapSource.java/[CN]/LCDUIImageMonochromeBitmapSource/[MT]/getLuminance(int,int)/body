@@ -1,6 +1,6 @@
 {
   int pixel;
-  if (cachedRow == y) {
+  if (cachedRow == y && rgbRow.length == width) {
     pixel=rgbRow[x];
   }
  else {
