@@ -13,9 +13,9 @@
       uri=((HttpUriRequest)original).getURI();
     }
   }
-  builder.append("\"");
+  builder.append('"');
   builder.append(uri);
-  builder.append("\"");
+  builder.append('"');
   if (request instanceof HttpEntityEnclosingRequest) {
     HttpEntityEnclosingRequest entityRequest=(HttpEntityEnclosingRequest)request;
     HttpEntity entity=entityRequest.getEntity();
@@ -24,7 +24,7 @@
         ByteArrayOutputStream stream=new ByteArrayOutputStream();
         entity.writeTo(stream);
         String entityString=stream.toString();
-        builder.append(" --data-ascii \"").append(entityString).append("\"");
+        builder.append(" --data-ascii \"").append(entityString).append('"');
       }
  else {
         builder.append(" [TOO MUCH DATA TO INCLUDE]");
