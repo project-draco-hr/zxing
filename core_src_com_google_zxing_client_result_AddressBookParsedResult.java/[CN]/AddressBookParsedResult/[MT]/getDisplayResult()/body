@@ -8,5 +8,6 @@
   maybeAppend(org,result);
   maybeAppend(birthday,result);
   maybeAppend(title,result);
+  maybeAppend(url,result);
   return result.toString();
 }

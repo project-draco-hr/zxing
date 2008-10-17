@@ -8,4 +8,5 @@
   this.org=org;
   this.birthday=birthday;
   this.title=title;
+  this.url=url;
 }

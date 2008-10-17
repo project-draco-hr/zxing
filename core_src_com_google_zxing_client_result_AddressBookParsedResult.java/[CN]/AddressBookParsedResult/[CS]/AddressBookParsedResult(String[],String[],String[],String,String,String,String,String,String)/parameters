@@ -6,3 +6,4 @@ String address
 String org
 String birthday
 String title
+String url
