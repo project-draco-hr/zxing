@@ -1,6 +1,0 @@
-{
-  Camera.Parameters parameters=mCamera.getParameters();
-  parameters.setPreviewSize(mScreenResolution.x,mScreenResolution.y);
-  mCamera.setParameters(parameters);
-  Log.v(TAG,"Setting params for preview: width " + mScreenResolution.x + " height "+ mScreenResolution.y);
-}

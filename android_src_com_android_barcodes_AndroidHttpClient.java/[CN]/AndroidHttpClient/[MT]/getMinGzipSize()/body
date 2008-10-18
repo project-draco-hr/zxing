@@ -1,3 +1,0 @@
-{
-  return DEFAULT_SYNC_MIN_GZIP_BYTES;
-}

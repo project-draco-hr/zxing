@@ -1,4 +1,0 @@
-{
-  mCaptureActivity=captureActivity;
-  mIntent=resultToIntent(result);
-}

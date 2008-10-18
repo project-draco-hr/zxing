@@ -1,6 +1,0 @@
-{
-  CameraManager.get().openDriver(holder);
-  if (mHandler == null) {
-    mHandler=new BarcodesCaptureActivityHandler(this,mDecodeMode);
-  }
-}

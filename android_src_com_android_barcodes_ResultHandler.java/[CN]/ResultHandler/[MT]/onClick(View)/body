@@ -1,5 +1,0 @@
-{
-  if (mIntent != null) {
-    mCaptureActivity.startActivity(mIntent);
-  }
-}

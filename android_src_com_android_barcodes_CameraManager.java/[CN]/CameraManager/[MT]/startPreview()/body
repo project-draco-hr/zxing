@@ -1,6 +1,0 @@
-{
-  if (mCamera != null && !mPreviewing) {
-    mCamera.startPreview();
-    mPreviewing=true;
-  }
-}

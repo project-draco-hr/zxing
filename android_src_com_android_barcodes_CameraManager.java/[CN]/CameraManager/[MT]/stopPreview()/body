@@ -1,9 +1,0 @@
-{
-  if (mCamera != null && mPreviewing) {
-    mCamera.setPreviewCallback(null);
-    mCamera.stopPreview();
-    mPreviewHandler=null;
-    mAutoFocusHandler=null;
-    mPreviewing=false;
-  }
-}

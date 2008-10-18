@@ -1,3 +1,0 @@
-{
-  return mYUVData[(y + mCrop.top) * mDataWidth + x + mCrop.left] & 0xff;
-}
