@@ -1,0 +1,32 @@
+{
+  AddressBookParsedResult result=(AddressBookParsedResult)mResult;
+  StringBuffer contents=new StringBuffer();
+  ParsedResult.maybeAppend(result.getNames(),contents);
+  int namesLength=contents.length();
+  ParsedResult.maybeAppend(result.getTitle(),contents);
+  ParsedResult.maybeAppend(result.getOrg(),contents);
+  ParsedResult.maybeAppend(result.getAddress(),contents);
+  String[] numbers=result.getPhoneNumbers();
+  if (numbers != null) {
+    for (    String number : numbers) {
+      ParsedResult.maybeAppend(PhoneNumberUtils.formatNumber(number),contents);
+    }
+  }
+  ParsedResult.maybeAppend(result.getEmails(),contents);
+  ParsedResult.maybeAppend(result.getURL(),contents);
+  String birthday=result.getBirthday();
+  if (birthday != null && birthday.length() > 0) {
+    SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd");
+    Date date=format.parse(birthday,new ParsePosition(0));
+    ParsedResult.maybeAppend(DateFormat.getDateInstance().format(date.getTime()),contents);
+  }
+  ParsedResult.maybeAppend(result.getNote(),contents);
+  if (namesLength > 0) {
+    SpannableString styled=new SpannableString(contents.toString());
+    styled.setSpan(new StyleSpan(android.graphics.Typeface.BOLD),0,namesLength,0);
+    return styled;
+  }
+ else {
+    return contents.toString();
+  }
+}

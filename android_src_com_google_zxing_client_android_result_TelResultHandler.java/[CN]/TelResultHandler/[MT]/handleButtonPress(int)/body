@@ -1,0 +1,13 @@
+{
+  TelParsedResult telResult=(TelParsedResult)mResult;
+switch (index) {
+case 0:
+    dialPhoneFromUri(telResult.getTelURI());
+  break;
+case 1:
+String[] numbers=new String[1];
+numbers[0]=telResult.getNumber();
+addContact(null,numbers,null,null,null,null,null);
+break;
+}
+}

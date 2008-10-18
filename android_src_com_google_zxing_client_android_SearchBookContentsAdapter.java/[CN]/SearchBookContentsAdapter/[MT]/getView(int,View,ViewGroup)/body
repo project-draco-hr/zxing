@@ -1,0 +1,18 @@
+{
+  SearchBookContentsListItem listItem;
+  if (view == null) {
+    LayoutInflater factory=LayoutInflater.from(getContext());
+    listItem=(SearchBookContentsListItem)factory.inflate(R.layout.search_book_contents_list_item,viewGroup,false);
+  }
+ else {
+    if (view instanceof SearchBookContentsListItem) {
+      listItem=(SearchBookContentsListItem)view;
+    }
+ else {
+      return view;
+    }
+  }
+  SearchBookContentsResult result=getItem(position);
+  listItem.set(result);
+  return listItem;
+}

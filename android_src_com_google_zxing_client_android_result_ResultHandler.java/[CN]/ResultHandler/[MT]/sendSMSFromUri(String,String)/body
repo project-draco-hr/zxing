@@ -1,0 +1,6 @@
+{
+  Intent intent=new Intent(Intent.ACTION_SENDTO,Uri.parse(uri));
+  putExtra(intent,"sms_body",body);
+  intent.putExtra("compose_mode",true);
+  launchIntent(intent);
+}

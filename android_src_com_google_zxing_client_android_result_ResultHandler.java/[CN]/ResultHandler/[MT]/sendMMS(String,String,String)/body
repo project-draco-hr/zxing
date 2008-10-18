@@ -1,0 +1,3 @@
+{
+  sendMMSFromUri("mmsto:" + phoneNumber,subject,body);
+}

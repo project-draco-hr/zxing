@@ -1,0 +1,5 @@
+{
+  mPageNumber=pageNumber;
+  mSnippet=snippet;
+  mValidSnippet=validSnippet;
+}

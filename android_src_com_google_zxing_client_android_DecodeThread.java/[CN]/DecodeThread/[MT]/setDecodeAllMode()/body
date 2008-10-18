@@ -1,0 +1,3 @@
+{
+  mMultiFormatReader.setHints(null);
+}

@@ -1,0 +1,7 @@
+{
+  if (mCamera != null && mPreviewing) {
+    mPreviewHandler=handler;
+    mPreviewMessage=message;
+    mCamera.setPreviewCallback(previewCallback);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  sendEmailFromUri("mailto:",mActivity.getString(R.string.msg_share_barcode),contents);
+}

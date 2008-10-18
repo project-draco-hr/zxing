@@ -1,0 +1,14 @@
+{
+  HttpParams params=new BasicHttpParams();
+  HttpConnectionParams.setStaleCheckingEnabled(params,false);
+  HttpConnectionParams.setConnectionTimeout(params,20 * 1000);
+  HttpConnectionParams.setSoTimeout(params,20 * 1000);
+  HttpConnectionParams.setSocketBufferSize(params,8192);
+  HttpClientParams.setRedirecting(params,false);
+  HttpProtocolParams.setUserAgent(params,userAgent);
+  SchemeRegistry schemeRegistry=new SchemeRegistry();
+  schemeRegistry.register(new Scheme("http",PlainSocketFactory.getSocketFactory(),80));
+  schemeRegistry.register(new Scheme("https",SSLSocketFactory.getSocketFactory(),443));
+  ClientConnectionManager manager=new ThreadSafeClientConnManager(params,schemeRegistry);
+  return new AndroidHttpClient(manager,params);
+}

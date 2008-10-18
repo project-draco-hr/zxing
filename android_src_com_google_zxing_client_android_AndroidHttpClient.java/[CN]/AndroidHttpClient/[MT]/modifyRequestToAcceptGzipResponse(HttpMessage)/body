@@ -1,0 +1,3 @@
+{
+  request.addHeader("Accept-Encoding","gzip");
+}

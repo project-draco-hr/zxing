@@ -1,0 +1,3 @@
+{
+  sendSMSFromUri("smsto:" + phoneNumber,body);
+}

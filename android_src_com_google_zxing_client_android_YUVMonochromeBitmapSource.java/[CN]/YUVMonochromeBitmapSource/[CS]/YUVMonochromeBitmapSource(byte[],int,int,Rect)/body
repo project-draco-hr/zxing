@@ -1,0 +1,7 @@
+{
+  mYUVData=yuvData;
+  mDataWidth=dataWidth;
+  mCrop=crop;
+  assert(crop.width() <= dataWidth);
+  assert(crop.height() <= dataHeight);
+}

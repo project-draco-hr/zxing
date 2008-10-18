@@ -1,0 +1,14 @@
+{
+  URIParsedResult uriResult=(URIParsedResult)mResult;
+switch (index) {
+case 0:
+    openURL(uriResult.getURI());
+  break;
+case 1:
+shareByEmail(uriResult.getURI());
+break;
+case 2:
+shareBySMS(uriResult.getURI());
+break;
+}
+}

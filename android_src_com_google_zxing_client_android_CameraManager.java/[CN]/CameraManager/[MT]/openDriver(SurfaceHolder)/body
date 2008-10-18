@@ -1,0 +1,11 @@
+{
+  if (mCamera == null) {
+    mCamera=Camera.open();
+    mCamera.setPreviewDisplay(holder);
+    if (!mInitialized) {
+      mInitialized=true;
+      getScreenResolution();
+    }
+    setCameraParameters();
+  }
+}

@@ -1,0 +1,8 @@
+{
+  CalendarParsedResult calendarResult=(CalendarParsedResult)mResult;
+switch (index) {
+case 0:
+    addCalendarEvent(calendarResult.getSummary(),calendarResult.getStart(),calendarResult.getEnd());
+  break;
+}
+}

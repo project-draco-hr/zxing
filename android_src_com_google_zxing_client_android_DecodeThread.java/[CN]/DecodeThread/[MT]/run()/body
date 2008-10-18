@@ -1,0 +1,17 @@
+{
+  Looper.prepare();
+  mHandler=new Handler(){
+    public void handleMessage(    Message message){
+switch (message.what) {
+case R.id.decode:
+        decode((byte[])message.obj,message.arg1,message.arg2);
+      break;
+case R.id.quit:
+    Looper.myLooper().quit();
+  break;
+}
+}
+}
+;
+Looper.loop();
+}

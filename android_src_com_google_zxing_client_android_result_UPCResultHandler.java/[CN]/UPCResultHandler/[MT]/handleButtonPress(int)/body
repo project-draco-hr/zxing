@@ -1,0 +1,11 @@
+{
+  UPCParsedResult upcResult=(UPCParsedResult)mResult;
+switch (index) {
+case 0:
+    openProductSearch(upcResult.getUPC());
+  break;
+case 1:
+webSearch(upcResult.getUPC());
+break;
+}
+}

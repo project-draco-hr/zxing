@@ -1,0 +1,10 @@
+{
+  SMSParsedResult smsResult=(SMSParsedResult)mResult;
+  StringBuffer contents=new StringBuffer();
+  ParsedResult.maybeAppend(PhoneNumberUtils.formatNumber(smsResult.getNumber()),contents);
+  ParsedResult.maybeAppend(smsResult.getVia(),contents);
+  ParsedResult.maybeAppend(smsResult.getSubject(),contents);
+  ParsedResult.maybeAppend(smsResult.getBody(),contents);
+  ParsedResult.maybeAppend(smsResult.getTitle(),contents);
+  return contents.toString();
+}

@@ -1,0 +1,27 @@
+{
+switch (message.what) {
+case R.id.auto_focus:
+    if (mState == State.PREVIEW) {
+      CameraManager.get().requestAutoFocus(this,R.id.auto_focus);
+    }
+  break;
+case R.id.restart_preview:
+restartPreviewAndDecode();
+break;
+case R.id.decode_succeeded:
+mState=State.SUCCESS;
+Bundle bundle=message.getData();
+Bitmap barcode=bundle.getParcelable(DecodeThread.BARCODE_BITMAP);
+int duration=message.arg1;
+mActivity.handleDecode((Result)message.obj,barcode,duration);
+break;
+case R.id.decode_failed:
+mState=State.PREVIEW;
+CameraManager.get().requestPreviewFrame(mDecodeThread.mHandler,R.id.decode);
+break;
+case R.id.return_scan_result:
+mActivity.setResult(Activity.RESULT_OK,(Intent)message.obj);
+mActivity.finish();
+break;
+}
+}

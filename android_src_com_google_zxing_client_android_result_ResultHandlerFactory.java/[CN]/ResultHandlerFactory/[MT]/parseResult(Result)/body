@@ -1,0 +1,4 @@
+{
+  ParsedResult result=ResultParser.parseResult(rawResult);
+  return result;
+}

@@ -1,0 +1,4 @@
+{
+  mResultBitmap=null;
+  invalidate();
+}

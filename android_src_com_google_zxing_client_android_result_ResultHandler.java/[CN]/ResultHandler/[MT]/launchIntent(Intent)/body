@@ -1,0 +1,5 @@
+{
+  if (intent != null) {
+    mActivity.startActivity(intent);
+  }
+}

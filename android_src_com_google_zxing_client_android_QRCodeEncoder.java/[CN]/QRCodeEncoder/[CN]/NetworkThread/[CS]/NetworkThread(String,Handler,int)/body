@@ -1,0 +1,5 @@
+{
+  mContents=contents;
+  mHandler=handler;
+  mPixelResolution=pixelResolution;
+}

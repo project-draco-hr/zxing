@@ -1,0 +1,13 @@
+{
+  super.onCreate(icicle);
+  Window window=getWindow();
+  window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+  setContentView(R.layout.capture);
+  CameraManager.init(getApplication());
+  mViewfinderView=(ViewfinderView)findViewById(R.id.viewfinder_view);
+  mResultView=findViewById(R.id.result_view);
+  mStatusView=findViewById(R.id.status_view);
+  mHandler=null;
+  mLastResult=null;
+  mHasSurface=false;
+}

@@ -1,0 +1,11 @@
+{
+  Intent intent=new Intent(Intent.ACTION_EDIT);
+  intent.setType("vnd.android.cursor.item/event");
+  intent.putExtra("beginTime",calculateMilliseconds(start));
+  if (start.length() == 8) {
+    intent.putExtra("allDay",true);
+  }
+  intent.putExtra("endTime",calculateMilliseconds(end));
+  intent.putExtra("title",summary);
+  launchIntent(intent);
+}

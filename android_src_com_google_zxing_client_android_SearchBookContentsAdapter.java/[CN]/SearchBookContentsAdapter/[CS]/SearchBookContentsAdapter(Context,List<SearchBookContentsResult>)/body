@@ -1,0 +1,3 @@
+{
+  super(context,R.layout.search_book_contents_list_item,0,items);
+}

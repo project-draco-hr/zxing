@@ -1,0 +1,6 @@
+{
+  mNetworkThread=null;
+  mQueryTextView.setEnabled(true);
+  mQueryTextView.selectAll();
+  mQueryButton.setEnabled(true);
+}

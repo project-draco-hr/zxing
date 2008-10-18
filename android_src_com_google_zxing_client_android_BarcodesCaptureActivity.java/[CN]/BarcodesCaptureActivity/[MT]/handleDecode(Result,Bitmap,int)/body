@@ -1,0 +1,42 @@
+{
+  mLastResult=rawResult;
+  playBeepSound();
+  drawResultPoints(barcode,rawResult);
+  if (mScanIntent) {
+    handleDecodeForScanIntent(rawResult,barcode,duration);
+  }
+ else {
+    mStatusView.setVisibility(View.GONE);
+    mViewfinderView.setVisibility(View.GONE);
+    mResultView.setVisibility(View.VISIBLE);
+    ImageView barcodeImageView=(ImageView)findViewById(R.id.barcode_image_view);
+    barcodeImageView.setMaxWidth(MAX_RESULT_IMAGE_SIZE);
+    barcodeImageView.setMaxHeight(MAX_RESULT_IMAGE_SIZE);
+    barcodeImageView.setImageBitmap(barcode);
+    TextView formatTextView=(TextView)findViewById(R.id.format_text_view);
+    formatTextView.setText(getString(R.string.msg_default_format) + ": " + rawResult.getBarcodeFormat().toString());
+    ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
+    TextView typeTextView=(TextView)findViewById(R.id.type_text_view);
+    typeTextView.setText(getString(R.string.msg_default_type) + ": " + resultHandler.getType().toString());
+    TextView contentsTextView=(TextView)findViewById(R.id.contents_text_view);
+    CharSequence title=getString(resultHandler.getDisplayTitle());
+    SpannableStringBuilder styled=new SpannableStringBuilder(title + "\n\n");
+    styled.setSpan(new UnderlineSpan(),0,title.length(),0);
+    styled.append(resultHandler.getDisplayContents());
+    contentsTextView.setText(styled);
+    int buttonCount=resultHandler.getButtonCount();
+    ViewGroup buttonView=(ViewGroup)findViewById(R.id.result_button_view);
+    buttonView.requestFocus();
+    for (int x=0; x < ResultHandler.MAX_BUTTON_COUNT; x++) {
+      Button button=(Button)buttonView.getChildAt(x);
+      if (x < buttonCount) {
+        button.setVisibility(View.VISIBLE);
+        button.setText(resultHandler.getButtonText(x));
+        button.setOnClickListener(new ResultButtonListener(resultHandler,x));
+      }
+ else {
+        button.setVisibility(View.GONE);
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  int width=mCrop.width();
+  int height=mCrop.height();
+  int[] pixels=new int[width * height];
+  for (int y=0; y < height; y++) {
+    int base=(y + mCrop.top) * mDataWidth + mCrop.left;
+    for (int x=0; x < width; x++) {
+      int grey=mYUVData[base + x] & 0xff;
+      pixels[y * width + x]=(0xff << 24) | (grey << 16) | (grey << 8)| grey;
+    }
+  }
+  Bitmap bitmap=Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
+  bitmap.setPixels(pixels,0,width,0,0,width,height);
+  return bitmap;
+}

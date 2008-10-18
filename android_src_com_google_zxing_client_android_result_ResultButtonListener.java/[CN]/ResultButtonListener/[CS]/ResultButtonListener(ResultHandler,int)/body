@@ -1,0 +1,4 @@
+{
+  mResultHandler=resultHandler;
+  mIndex=index;
+}

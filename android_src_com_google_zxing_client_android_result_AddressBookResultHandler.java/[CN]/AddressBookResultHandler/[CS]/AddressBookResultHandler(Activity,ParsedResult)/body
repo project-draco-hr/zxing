@@ -1,0 +1,19 @@
+{
+  super(activity,result);
+  AddressBookParsedResult addressResult=(AddressBookParsedResult)result;
+  String address=addressResult.getAddress();
+  boolean hasAddress=address != null && address.length() > 0;
+  String[] phoneNumbers=addressResult.getPhoneNumbers();
+  boolean hasPhoneNumber=phoneNumbers != null && phoneNumbers.length > 0;
+  String[] emails=addressResult.getEmails();
+  boolean hasEmailAddress=emails != null && emails.length > 0;
+  mFields=new boolean[MAX_BUTTON_COUNT];
+  mFields[0]=true;
+  mFields[1]=hasAddress;
+  mFields[2]=hasPhoneNumber;
+  mFields[3]=hasEmailAddress;
+  mButtonCount=0;
+  for (int x=0; x < MAX_BUTTON_COUNT; x++) {
+    if (mFields[x])     mButtonCount++;
+  }
+}

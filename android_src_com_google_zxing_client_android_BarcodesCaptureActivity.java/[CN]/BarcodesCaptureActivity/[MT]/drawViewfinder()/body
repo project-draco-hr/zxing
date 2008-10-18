@@ -1,0 +1,3 @@
+{
+  mViewfinderView.drawViewfinder();
+}

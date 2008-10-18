@@ -1,0 +1,11 @@
+{
+  Intent intent=new Intent(Contacts.Intents.Insert.ACTION,Contacts.People.CONTENT_URI);
+  putExtra(intent,Contacts.Intents.Insert.NAME,names);
+  putExtra(intent,Contacts.Intents.Insert.PHONE,phoneNumbers);
+  putExtra(intent,Contacts.Intents.Insert.EMAIL,emails);
+  putExtra(intent,Contacts.Intents.Insert.NOTES,note);
+  putExtra(intent,Contacts.Intents.Insert.POSTAL,address);
+  putExtra(intent,Contacts.Intents.Insert.COMPANY,org);
+  putExtra(intent,Contacts.Intents.Insert.JOB_TITLE,title);
+  launchIntent(intent);
+}

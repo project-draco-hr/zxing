@@ -1,0 +1,5 @@
+{
+  mISBN=isbn;
+  mQuery=query;
+  mHandler=handler;
+}

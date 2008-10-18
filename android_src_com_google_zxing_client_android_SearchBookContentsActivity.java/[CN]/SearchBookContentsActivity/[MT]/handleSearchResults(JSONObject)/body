@@ -1,0 +1,23 @@
+{
+  try {
+    int count=json.getInt("number_of_results");
+    mHeaderView.setText("Found " + ((count == 1) ? "1 result" : count + " results"));
+    if (count > 0) {
+      JSONArray results=json.getJSONArray("search_results");
+      SearchBookContentsResult.setQuery(mQueryTextView.getText().toString());
+      List<SearchBookContentsResult> items=new ArrayList<SearchBookContentsResult>(count);
+      for (int x=0; x < count; x++) {
+        items.add(parseResult(results.getJSONObject(x)));
+      }
+      mResultListView.setAdapter(new SearchBookContentsAdapter(this,items));
+    }
+ else {
+      mResultListView.setAdapter(null);
+    }
+  }
+ catch (  JSONException e) {
+    Log.e(TAG,e.toString());
+    mResultListView.setAdapter(null);
+    mHeaderView.setText(R.string.msg_sbc_failed);
+  }
+}

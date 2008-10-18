@@ -1,0 +1,5 @@
+{
+  super.onFinishInflate();
+  mPageNumberView=(TextView)findViewById(R.id.page_number_view);
+  mSnippetView=(TextView)findViewById(R.id.snippet_view);
+}

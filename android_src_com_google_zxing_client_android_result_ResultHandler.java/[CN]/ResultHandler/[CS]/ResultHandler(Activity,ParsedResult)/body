@@ -1,0 +1,4 @@
+{
+  mResult=result;
+  mActivity=activity;
+}

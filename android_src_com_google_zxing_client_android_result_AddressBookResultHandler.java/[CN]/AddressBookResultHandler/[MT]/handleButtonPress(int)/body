@@ -1,0 +1,20 @@
+{
+  AddressBookParsedResult addressResult=(AddressBookParsedResult)mResult;
+  int action=mapIndexToAction(index);
+switch (action) {
+case 0:
+    addContact(addressResult.getNames(),addressResult.getPhoneNumbers(),addressResult.getEmails(),addressResult.getNote(),addressResult.getAddress(),addressResult.getOrg(),addressResult.getTitle());
+  break;
+case 1:
+searchMap(addressResult.getAddress());
+break;
+case 2:
+dialPhone(addressResult.getPhoneNumbers()[0]);
+break;
+case 3:
+sendEmail(addressResult.getEmails()[0],null,null);
+break;
+default :
+break;
+}
+}

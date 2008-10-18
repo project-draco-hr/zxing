@@ -1,0 +1,3 @@
+{
+  return R.string.result_text;
+}

@@ -1,0 +1,14 @@
+{
+  ISBNParsedResult isbnResult=(ISBNParsedResult)mResult;
+switch (index) {
+case 0:
+    openProductSearch(isbnResult.getISBN());
+  break;
+case 1:
+openBookSearch(isbnResult.getISBN());
+break;
+case 2:
+searchBookContents(isbnResult.getISBN());
+break;
+}
+}

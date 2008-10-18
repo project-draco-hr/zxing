@@ -1,0 +1,5 @@
+{
+  Intent intent=new Intent(Intent.ACTION_WEB_SEARCH);
+  intent.putExtra("query",query);
+  launchIntent(intent);
+}

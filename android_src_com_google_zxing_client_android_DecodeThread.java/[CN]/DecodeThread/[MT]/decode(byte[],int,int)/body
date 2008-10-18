@@ -1,0 +1,27 @@
+{
+  Date startDate=new Date();
+  boolean success;
+  Result rawResult=null;
+  YUVMonochromeBitmapSource source=new YUVMonochromeBitmapSource(data,width,height,CameraManager.get().getFramingRect());
+  try {
+    rawResult=mMultiFormatReader.decodeWithState(source);
+    success=true;
+  }
+ catch (  ReaderException e) {
+    success=false;
+  }
+  Date endDate=new Date();
+  if (success) {
+    Message message=Message.obtain(mActivity.mHandler,R.id.decode_succeeded,rawResult);
+    message.arg1=(int)(endDate.getTime() - startDate.getTime());
+    Bundle bundle=new Bundle();
+    bundle.putParcelable(BARCODE_BITMAP,source.renderToBitmap());
+    message.setData(bundle);
+    message.sendToTarget();
+  }
+ else {
+    Message message=Message.obtain(mActivity.mHandler,R.id.decode_failed);
+    message.arg1=(int)(endDate.getTime() - startDate.getTime());
+    message.sendToTarget();
+  }
+}
