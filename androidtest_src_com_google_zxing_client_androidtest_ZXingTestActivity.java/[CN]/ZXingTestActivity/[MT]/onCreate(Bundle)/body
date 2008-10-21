@@ -1,0 +1,26 @@
+{
+  super.onCreate(icicle);
+  setContentView(R.layout.test);
+  Button scan_product=(Button)findViewById(R.id.scan_product);
+  scan_product.setOnClickListener(mScanProduct);
+  Button scan_qr_code=(Button)findViewById(R.id.scan_qr_code);
+  scan_qr_code.setOnClickListener(mScanQRCode);
+  Button test_camera=(Button)findViewById(R.id.test_camera);
+  test_camera.setOnClickListener(mTestCamera);
+  Button search_book_contents=(Button)findViewById(R.id.search_book_contents);
+  search_book_contents.setOnClickListener(mSearchBookContents);
+  Button encode_url=(Button)findViewById(R.id.encode_url);
+  encode_url.setOnClickListener(mEncodeURL);
+  Button encode_email=(Button)findViewById(R.id.encode_email);
+  encode_email.setOnClickListener(mEncodeEmail);
+  Button encode_phone=(Button)findViewById(R.id.encode_phone);
+  encode_phone.setOnClickListener(mEncodePhone);
+  Button encode_sms=(Button)findViewById(R.id.encode_sms);
+  encode_sms.setOnClickListener(mEncodeSMS);
+  Button encode_contact=(Button)findViewById(R.id.encode_contact);
+  encode_contact.setOnClickListener(mEncodeContact);
+  Button encode_location=(Button)findViewById(R.id.encode_location);
+  encode_location.setOnClickListener(mEncodeLocation);
+  Button encode_bad_data=(Button)findViewById(R.id.encode_bad_data);
+  encode_bad_data.setOnClickListener(mEncodeBadData);
+}

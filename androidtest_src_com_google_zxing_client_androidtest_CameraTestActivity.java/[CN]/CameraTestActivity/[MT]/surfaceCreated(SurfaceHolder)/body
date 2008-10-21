@@ -1,0 +1,4 @@
+{
+  CameraManager.get().openDriver(holder);
+  CameraManager.get().startPreview();
+}

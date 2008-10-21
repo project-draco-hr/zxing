@@ -1,0 +1,7 @@
+{
+  if (mCamera == null) {
+    mCamera=Camera.open();
+    mCamera.setPreviewDisplay(holder);
+    setCameraParameters();
+  }
+}

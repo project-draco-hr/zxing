@@ -1,0 +1,15 @@
+{
+  super.onPause();
+  CameraManager.get().stopPreview();
+  if (mSaveThread != null) {
+    Message quit=Message.obtain(mSaveThread.mHandler,R.id.quit);
+    quit.sendToTarget();
+    try {
+      mSaveThread.join();
+    }
+ catch (    InterruptedException e) {
+    }
+    mSaveThread=null;
+  }
+  CameraManager.get().closeDriver();
+}

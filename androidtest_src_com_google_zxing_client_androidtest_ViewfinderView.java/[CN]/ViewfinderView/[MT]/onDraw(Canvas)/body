@@ -1,0 +1,23 @@
+{
+  Rect frame=CameraManager.get().getFramingRect();
+  int width=canvas.getWidth();
+  int height=canvas.getHeight();
+  mPaint.setColor(mMaskColor);
+  mBox.set(0,0,width,frame.top);
+  canvas.drawRect(mBox,mPaint);
+  mBox.set(0,frame.top,frame.left,frame.bottom + 1);
+  canvas.drawRect(mBox,mPaint);
+  mBox.set(frame.right + 1,frame.top,width,frame.bottom + 1);
+  canvas.drawRect(mBox,mPaint);
+  mBox.set(0,frame.bottom + 1,width,height);
+  canvas.drawRect(mBox,mPaint);
+  mPaint.setColor(mFrameColor);
+  mBox.set(frame.left,frame.top,frame.right + 1,frame.top + 2);
+  canvas.drawRect(mBox,mPaint);
+  mBox.set(frame.left,frame.top + 2,frame.left + 2,frame.bottom - 1);
+  canvas.drawRect(mBox,mPaint);
+  mBox.set(frame.right - 1,frame.top,frame.right + 1,frame.bottom - 1);
+  canvas.drawRect(mBox,mPaint);
+  mBox.set(frame.left,frame.bottom - 1,frame.right + 1,frame.bottom + 1);
+  canvas.drawRect(mBox,mPaint);
+}

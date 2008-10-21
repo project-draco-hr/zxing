@@ -1,0 +1,5 @@
+{
+  Camera.Parameters parameters=mCamera.getParameters();
+  parameters.setPreviewSize(mScreenResolution.x,mScreenResolution.y);
+  mCamera.setParameters(parameters);
+}

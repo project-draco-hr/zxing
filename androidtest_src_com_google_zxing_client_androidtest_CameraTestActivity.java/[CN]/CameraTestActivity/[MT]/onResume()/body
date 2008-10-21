@@ -1,0 +1,7 @@
+{
+  super.onResume();
+  if (mSaveThread == null) {
+    mSaveThread=new SaveThread(this,CameraManager.get().getFramingRect());
+    mSaveThread.start();
+  }
+}

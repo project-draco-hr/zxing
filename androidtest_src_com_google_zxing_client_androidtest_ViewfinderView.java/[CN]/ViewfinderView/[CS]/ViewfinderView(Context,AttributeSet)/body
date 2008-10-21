@@ -1,0 +1,8 @@
+{
+  super(context,attrs);
+  mPaint=new Paint();
+  mBox=new Rect();
+  Resources resources=getResources();
+  mMaskColor=resources.getColor(R.color.viewfinder_mask);
+  mFrameColor=resources.getColor(R.color.viewfinder_frame);
+}

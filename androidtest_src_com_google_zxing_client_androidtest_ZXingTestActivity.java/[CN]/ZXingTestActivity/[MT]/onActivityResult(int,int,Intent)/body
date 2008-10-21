@@ -1,0 +1,12 @@
+{
+  if (requestCode == 0) {
+    if (resultCode == RESULT_OK) {
+      String contents=intent.getStringExtra("SCAN_RESULT");
+      String format=intent.getStringExtra("SCAN_RESULT_FORMAT");
+      showDialog(R.string.result_succeeded,"Format: " + format + "\nContents: "+ contents);
+    }
+ else     if (resultCode == RESULT_CANCELED) {
+      showDialog(R.string.result_failed,getString(R.string.result_failed_why));
+    }
+  }
+}

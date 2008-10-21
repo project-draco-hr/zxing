@@ -1,0 +1,30 @@
+{
+  File sdcard=new File("/sdcard");
+  if (sdcard.exists()) {
+    File barcodes=new File(sdcard,"barcodes");
+    if (barcodes.exists()) {
+      if (!barcodes.isDirectory()) {
+        Log.e(TAG,"/sdcard/barcodes exists but is not a directory");
+        return null;
+      }
+    }
+ else {
+      if (!barcodes.mkdir()) {
+        Log.e(TAG,"Could not create /sdcard/barcodes directory");
+        return null;
+      }
+    }
+    Date now=new Date();
+    String fileName=now.getTime() + ".jpg";
+    try {
+      return new FileOutputStream(new File(barcodes,fileName));
+    }
+ catch (    FileNotFoundException e) {
+      Log.e(TAG,"Could not create FileOutputStream");
+    }
+  }
+ else {
+    Log.e(TAG,"/sdcard does not exist");
+  }
+  return null;
+}
