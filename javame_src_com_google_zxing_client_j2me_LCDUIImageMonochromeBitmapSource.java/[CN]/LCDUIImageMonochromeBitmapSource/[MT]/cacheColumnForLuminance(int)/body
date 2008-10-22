@@ -1,0 +1,9 @@
+{
+  if (x != cachedColumn) {
+    if (rgbColumn.length != height) {
+      rgbColumn=new int[height];
+    }
+    image.getRGB(rgbColumn,0,1,x,0,1,height);
+    cachedColumn=x;
+  }
+}

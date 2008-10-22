@@ -1,0 +1,4 @@
+int x
+BitArray column
+int startY
+int getHeight

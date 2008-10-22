@@ -1,8 +1,9 @@
 {
   int center=(minDim + maxDim) / 2;
+  BitArray rowOrColumn=horizontal ? image.getBlackRow(fixedDimension,null,0,image.getWidth()) : image.getBlackColumn(fixedDimension,null,0,image.getHeight());
   int start=center;
   while (start >= minDim) {
-    if (horizontal ? image.isBlack(start,fixedDimension) : image.isBlack(fixedDimension,start)) {
+    if (rowOrColumn.get(start)) {
       start--;
     }
  else {
@@ -10,7 +11,7 @@
       do {
         start--;
       }
- while (start >= minDim && !(horizontal ? image.isBlack(start,fixedDimension) : image.isBlack(fixedDimension,start)));
+ while (start >= minDim && !rowOrColumn.get(start));
       int whiteRunSize=whiteRunStart - start;
       if (start < minDim || whiteRunSize > maxWhiteRun) {
         start=whiteRunStart + 1;
@@ -20,7 +21,7 @@
   }
   int end=center;
   while (end < maxDim) {
-    if (horizontal ? image.isBlack(end,fixedDimension) : image.isBlack(fixedDimension,end)) {
+    if (rowOrColumn.get(end)) {
       end++;
     }
  else {
@@ -28,7 +29,7 @@
       do {
         end++;
       }
- while (end < maxDim && !(horizontal ? image.isBlack(end,fixedDimension) : image.isBlack(fixedDimension,end)));
+ while (end < maxDim && !rowOrColumn.get(end));
       int whiteRunSize=end - whiteRunStart;
       if (end >= maxDim || whiteRunSize > maxWhiteRun) {
         end=whiteRunStart - 1;

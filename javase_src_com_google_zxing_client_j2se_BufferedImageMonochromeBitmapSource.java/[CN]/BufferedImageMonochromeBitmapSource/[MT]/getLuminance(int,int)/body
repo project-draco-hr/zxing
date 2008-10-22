@@ -3,6 +3,9 @@
   if (cachedRow == y) {
     pixel=rgbRow[x];
   }
+ else   if (cachedColumn == x) {
+    pixel=rgbColumn[y];
+  }
  else {
     pixel=image.getRGB(left + x,top + y);
   }
