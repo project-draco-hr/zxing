@@ -1,0 +1,30 @@
+{
+  RGBMonochromeBitmapSource source=null;
+  try {
+    source=new RGBMonochromeBitmapSource(path);
+  }
+ catch (  FileNotFoundException e) {
+    Log.e(TAG,e.toString());
+    return null;
+  }
+  BenchmarkItem item=new BenchmarkItem(path,RUNS);
+  for (int x=0; x < RUNS; x++) {
+    Date startDate=new Date();
+    boolean success;
+    Result result=null;
+    try {
+      result=mMultiFormatReader.decodeWithState(source);
+      success=true;
+    }
+ catch (    ReaderException e) {
+      success=false;
+    }
+    Date endDate=new Date();
+    if (x == 0) {
+      item.setDecoded(success);
+      item.setFormat(result != null ? result.getBarcodeFormat() : null);
+    }
+    item.addResult((int)(endDate.getTime() - startDate.getTime()));
+  }
+  return item;
+}

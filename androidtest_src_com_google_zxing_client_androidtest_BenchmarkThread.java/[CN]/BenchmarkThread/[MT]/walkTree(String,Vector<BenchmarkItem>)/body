@@ -1,0 +1,15 @@
+{
+  File file=new File(path);
+  if (file.isDirectory()) {
+    String[] files=file.list();
+    for (int x=0; x < files.length; x++) {
+      walkTree(file.getAbsolutePath() + "/" + files[x],items);
+    }
+  }
+ else {
+    BenchmarkItem item=decode(path);
+    if (item != null) {
+      items.addElement(item);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  mMultiFormatReader=new MultiFormatReader();
+  mMultiFormatReader.setHints(null);
+  Vector<BenchmarkItem> items=new Vector<BenchmarkItem>();
+  walkTree(mPath,items);
+  Message message=Message.obtain(mActivity.mHandler,R.id.benchmark_done);
+  message.obj=items;
+  message.sendToTarget();
+}

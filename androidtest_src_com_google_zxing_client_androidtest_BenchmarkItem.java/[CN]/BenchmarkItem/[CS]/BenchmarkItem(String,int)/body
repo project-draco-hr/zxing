@@ -1,0 +1,7 @@
+{
+  mPath=path;
+  mTimes=new int[runs];
+  mPosition=0;
+  mDecoded=false;
+  mFormat=null;
+}

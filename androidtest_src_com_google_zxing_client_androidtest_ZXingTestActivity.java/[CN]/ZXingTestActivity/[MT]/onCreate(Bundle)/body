@@ -1,12 +1,16 @@
 {
   super.onCreate(icicle);
   setContentView(R.layout.test);
+  Button test_camera=(Button)findViewById(R.id.test_camera);
+  test_camera.setOnClickListener(mTestCamera);
+  Button run_benchmark=(Button)findViewById(R.id.run_benchmark);
+  run_benchmark.setOnClickListener(mRunBenchmark);
   Button scan_product=(Button)findViewById(R.id.scan_product);
   scan_product.setOnClickListener(mScanProduct);
   Button scan_qr_code=(Button)findViewById(R.id.scan_qr_code);
   scan_qr_code.setOnClickListener(mScanQRCode);
-  Button test_camera=(Button)findViewById(R.id.test_camera);
-  test_camera.setOnClickListener(mTestCamera);
+  Button scan_anything=(Button)findViewById(R.id.scan_anything);
+  scan_anything.setOnClickListener(mScanAnything);
   Button search_book_contents=(Button)findViewById(R.id.search_book_contents);
   search_book_contents.setOnClickListener(mSearchBookContents);
   Button encode_url=(Button)findViewById(R.id.encode_url);

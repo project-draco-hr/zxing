@@ -1,0 +1,13 @@
+{
+  int size=mTimes.length;
+  int total=0;
+  for (int x=0; x < size; x++) {
+    total+=mTimes[x];
+  }
+  if (size > 0) {
+    return total / size;
+  }
+ else {
+    return 0;
+  }
+}

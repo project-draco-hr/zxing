@@ -1,0 +1,28 @@
+{
+  Bitmap bitmap=BitmapFactory.decodeFile(path);
+  if (bitmap == null) {
+    throw new FileNotFoundException("Couldn't open " + path);
+  }
+  int width=bitmap.getWidth();
+  int height=bitmap.getHeight();
+  int[] pixels=new int[width * height];
+  bitmap.getPixels(pixels,0,width,0,0,width,height);
+  mLuminances=new byte[width * height];
+  mWidth=width;
+  mHeight=height;
+  for (int y=0; y < height; y++) {
+    int offset=y * height;
+    for (int x=0; x < width; x++) {
+      int pixel=pixels[offset + x];
+      int r=(pixel >> 16) & 0xff;
+      int g=(pixel >> 8) & 0xff;
+      int b=pixel & 0xff;
+      if (r == g && g == b) {
+        mLuminances[offset + x]=(byte)r;
+      }
+ else {
+        mLuminances[offset + x]=(byte)((r + g + g+ b) >> 2);
+      }
+    }
+  }
+}
