@@ -2,7 +2,7 @@
   try {
     player=createPlayer();
     player.realize();
-    MultimediaManager multimediaManager=new DefaultMultimediaManager();
+    MultimediaManager multimediaManager=new AdvancedMultimediaManager();
     multimediaManager.setZoom(player);
     multimediaManager.setExposure(player);
     videoControl=(VideoControl)player.getControl("VideoControl");

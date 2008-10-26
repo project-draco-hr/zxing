@@ -1,6 +1,2 @@
 {
-  Control dummy=null;
-  ExposureControl dummy1=(ExposureControl)dummy;
-  FocusControl dummy2=(FocusControl)dummy;
-  ZoomControl dummy3=(ZoomControl)dummy;
 }

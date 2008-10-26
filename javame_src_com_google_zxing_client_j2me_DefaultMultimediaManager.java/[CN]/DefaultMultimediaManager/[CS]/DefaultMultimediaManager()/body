@@ -1,13 +1,2 @@
 {
-  try {
-    advancedMultimediaManager=(MultimediaManager)Class.forName("com.google.zxing.client.j2me.AdvancedMultimediaManager").newInstance();
-  }
- catch (  ClassNotFoundException cnfe) {
-  }
-catch (  IllegalAccessException iae) {
-  }
-catch (  InstantiationException ie) {
-  }
-catch (  NoClassDefFoundError ncdfe) {
-  }
 }

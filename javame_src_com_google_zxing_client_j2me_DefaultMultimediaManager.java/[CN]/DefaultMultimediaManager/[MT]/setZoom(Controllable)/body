@@ -1,5 +1,2 @@
 {
-  if (advancedMultimediaManager != null) {
-    advancedMultimediaManager.setZoom(player);
-  }
 }
