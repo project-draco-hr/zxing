@@ -1,6 +1,7 @@
 {
   mMultiFormatReader=new MultiFormatReader();
   mMultiFormatReader.setHints(null);
+  System.gc();
   Vector<BenchmarkItem> items=new Vector<BenchmarkItem>();
   walkTree(mPath,items);
   Message message=Message.obtain(mActivity.mHandler,R.id.benchmark_done);

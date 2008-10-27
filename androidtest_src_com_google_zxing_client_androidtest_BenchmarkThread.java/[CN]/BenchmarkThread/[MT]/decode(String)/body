@@ -9,9 +9,9 @@
   }
   BenchmarkItem item=new BenchmarkItem(path,RUNS);
   for (int x=0; x < RUNS; x++) {
-    Date startDate=new Date();
     boolean success;
     Result result=null;
+    long now=Debug.threadCpuTimeNanos();
     try {
       result=mMultiFormatReader.decodeWithState(source);
       success=true;
@@ -19,12 +19,12 @@
  catch (    ReaderException e) {
       success=false;
     }
-    Date endDate=new Date();
+    now=Debug.threadCpuTimeNanos() - now;
     if (x == 0) {
       item.setDecoded(success);
       item.setFormat(result != null ? result.getBarcodeFormat() : null);
     }
-    item.addResult((int)(endDate.getTime() - startDate.getTime()));
+    item.addResult((int)(now / 1000));
   }
   return item;
 }

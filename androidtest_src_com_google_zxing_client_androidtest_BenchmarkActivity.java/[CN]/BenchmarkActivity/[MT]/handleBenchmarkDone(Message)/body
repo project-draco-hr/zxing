@@ -4,9 +4,7 @@
   for (int x=0; x < items.size(); x++) {
     BenchmarkItem item=items.get(x);
     if (item != null) {
-      BarcodeFormat format=item.getFormat();
-      Log.v(TAG,(item.getDecoded() ? "DECODED: " : "FAILED: ") + item.getPath());
-      Log.v(TAG,"  Ran " + item.getCount() + " tests on "+ (format != null ? format.toString() : "unknown")+ " format with an average of "+ item.getAverageMilliseconds()+ " ms");
+      Log.v(TAG,item.toString());
       count++;
     }
   }

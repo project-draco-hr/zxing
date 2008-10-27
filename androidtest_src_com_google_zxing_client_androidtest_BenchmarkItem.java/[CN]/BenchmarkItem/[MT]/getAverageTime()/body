@@ -1,9 +1,16 @@
 {
   int size=mTimes.length;
   int total=0;
+  int max=mTimes[0];
   for (int x=0; x < size; x++) {
-    total+=mTimes[x];
+    int time=mTimes[x];
+    total+=time;
+    if (time > max) {
+      max=time;
+    }
   }
+  total-=max;
+  size--;
   if (size > 0) {
     return total / size;
   }
