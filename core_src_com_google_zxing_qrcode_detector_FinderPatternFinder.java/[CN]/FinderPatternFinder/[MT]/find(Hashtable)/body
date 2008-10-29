@@ -29,7 +29,7 @@
             if (foundPatternCross(stateCount)) {
               boolean confirmed=handlePossibleCenter(stateCount,i,j);
               if (confirmed) {
-                iSkip=1;
+                iSkip=2;
                 if (hasSkipped) {
                   done=haveMulitplyConfirmedCenters();
                 }
