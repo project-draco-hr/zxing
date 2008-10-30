@@ -1,0 +1,12 @@
+{
+  if (column == null || column.length < height) {
+    column=new int[height];
+  }
+  int offset=x;
+  for (int y=0; y < height; y++) {
+    int pixel=pixels[offset];
+    column[y]=(((pixel & 0x00FF0000) >> 16) + ((pixel & 0x0000FF00) >> 7) + (pixel & 0x000000FF)) >> 2;
+    offset+=width;
+  }
+  return column;
+}

@@ -5,12 +5,13 @@
  else {
     row.clear();
   }
-  cacheRowForLuminance(y);
+  initLuminances();
+  luminances=getLuminanceRow(y,luminances);
   if (lastMethod.equals(BlackPointEstimationMethod.ROW_SAMPLING)) {
-    int left=getLuminance(startX,y);
-    int center=getLuminance(startX + 1,y);
+    int left=luminances[startX];
+    int center=luminances[startX + 1];
     for (int x=1; x < getWidth - 1; x++) {
-      int right=getLuminance(startX + x + 1,y);
+      int right=luminances[startX + x + 1];
       int luminance=((center << 2) - left - right) >> 1;
       if (luminance < blackPoint) {
         row.set(x);
@@ -21,7 +22,7 @@
   }
  else {
     for (int x=0; x < getWidth; x++) {
-      if (getLuminance(startX + x,y) < blackPoint) {
+      if (luminances[startX + x] < blackPoint) {
         row.set(x);
       }
     }

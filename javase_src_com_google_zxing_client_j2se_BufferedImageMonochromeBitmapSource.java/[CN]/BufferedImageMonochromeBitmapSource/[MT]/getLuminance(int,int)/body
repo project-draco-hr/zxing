@@ -1,13 +1,4 @@
 {
-  int pixel;
-  if (cachedRow == y) {
-    pixel=rgbRow[x];
-  }
- else   if (cachedColumn == x) {
-    pixel=rgbColumn[y];
-  }
- else {
-    pixel=image.getRGB(left + x,top + y);
-  }
+  int pixel=image.getRGB(left + x,top + y);
   return (306 * ((pixel >> 16) & 0xFF) + 601 * ((pixel >> 8) & 0xFF) + 117 * (pixel & 0xFF)) >> 10;
 }

@@ -2,9 +2,5 @@
   this.image=image;
   height=image.getHeight();
   width=image.getWidth();
-  rgbRow=new int[width];
-  rgbColumn=new int[height];
   pixelHolder=new int[1];
-  cachedRow=-1;
-  cachedColumn=-1;
 }

@@ -1,5 +1,3 @@
 {
   this(image,0,0,image.getWidth(),image.getHeight());
-  rgbRow=new int[image.getWidth()];
-  cachedRow=-1;
 }

@@ -1,6 +1,0 @@
-{
-  if (x != cachedColumn) {
-    image.getRGB(left + x,top,1,height,rgbColumn,0,1);
-    cachedColumn=x;
-  }
-}

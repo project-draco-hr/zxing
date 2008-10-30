@@ -5,9 +5,10 @@
  else {
     column.clear();
   }
-  cacheColumnForLuminance(x);
+  initLuminances();
+  luminances=getLuminanceColumn(x,luminances);
   for (int y=0; y < getHeight; y++) {
-    if (getLuminance(x,startY + y) < blackPoint) {
+    if (luminances[startY + y] < blackPoint) {
       column.set(y);
     }
   }

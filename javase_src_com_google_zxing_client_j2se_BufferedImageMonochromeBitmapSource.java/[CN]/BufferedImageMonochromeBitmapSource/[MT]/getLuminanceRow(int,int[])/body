@@ -1,0 +1,11 @@
+{
+  if (row == null || row.length < width) {
+    row=new int[width];
+  }
+  image.getRGB(left,top + y,width,1,row,0,width);
+  for (int x=0; x < width; x++) {
+    int pixel=row[x];
+    row[x]=(306 * ((pixel >> 16) & 0xFF) + 601 * ((pixel >> 8) & 0xFF) + 117 * (pixel & 0xFF)) >> 10;
+  }
+  return row;
+}

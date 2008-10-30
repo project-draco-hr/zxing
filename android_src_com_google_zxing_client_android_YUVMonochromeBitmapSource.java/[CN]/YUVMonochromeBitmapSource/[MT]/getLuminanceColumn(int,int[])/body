@@ -1,0 +1,12 @@
+{
+  int height=getHeight();
+  if (column == null || column.length < height) {
+    column=new int[height];
+  }
+  int offset=mCrop.top * mDataWidth + mCrop.left + x;
+  for (int y=0; y < height; y++) {
+    column[y]=mYUVData[offset] & 0xff;
+    offset+=mDataWidth;
+  }
+  return column;
+}

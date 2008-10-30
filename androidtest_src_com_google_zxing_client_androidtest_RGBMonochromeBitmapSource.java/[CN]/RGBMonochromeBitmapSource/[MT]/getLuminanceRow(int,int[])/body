@@ -1,0 +1,11 @@
+{
+  int width=mWidth;
+  if (row == null || row.length < width) {
+    row=new int[width];
+  }
+  int offset=y * width;
+  for (int x=0; x < width; x++) {
+    row[x]=mLuminances[offset + x] & 0xff;
+  }
+  return row;
+}

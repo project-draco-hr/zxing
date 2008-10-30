@@ -1,0 +1,13 @@
+{
+  int width=mWidth;
+  int height=mHeight;
+  if (column == null || column.length < height) {
+    column=new int[height];
+  }
+  int offset=x;
+  for (int y=0; y < height; y++) {
+    column[y]=mLuminances[offset] & 0xff;
+    offset+=width;
+  }
+  return column;
+}
