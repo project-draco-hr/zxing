@@ -5,7 +5,7 @@
   boolean fc1InEffect=false;
   Mode mode;
   do {
-    if (bits.available() == 0) {
+    if (bits.available() < 4) {
       mode=Mode.TERMINATOR;
     }
  else {
