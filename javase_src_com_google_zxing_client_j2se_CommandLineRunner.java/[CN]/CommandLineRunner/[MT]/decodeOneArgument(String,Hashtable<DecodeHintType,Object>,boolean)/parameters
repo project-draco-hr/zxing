@@ -1,2 +1,3 @@
 String argument
 Hashtable<DecodeHintType,Object> hints
+boolean dumpResults

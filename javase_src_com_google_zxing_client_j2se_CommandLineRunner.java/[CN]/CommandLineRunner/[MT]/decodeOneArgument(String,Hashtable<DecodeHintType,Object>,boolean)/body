@@ -9,8 +9,21 @@
         if (filename.startsWith(".") || filename.endsWith(".txt")) {
           continue;
         }
-        if (decode(input.toURI(),hints)) {
+        Result result=decode(input.toURI(),hints);
+        if (result != null) {
           successful++;
+          if (dumpResults) {
+            String name=input.getAbsolutePath();
+            int pos=name.lastIndexOf('.');
+            if (pos > 0) {
+              name=name.substring(0,pos);
+            }
+            File dump=new File(name + ".txt");
+            dump.createNewFile();
+            FileOutputStream stream=new FileOutputStream(dump);
+            stream.write(result.getText().getBytes());
+            stream.close();
+          }
         }
         total++;
       }

@@ -1,9 +1,13 @@
 {
   Hashtable<DecodeHintType,Object> hints=null;
+  boolean dumpResults=false;
   for (  String arg : args) {
     if ("--try_harder".equals(arg)) {
       hints=new Hashtable<DecodeHintType,Object>(3);
       hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
+    }
+ else     if ("--dump_results".equals(arg)) {
+      dumpResults=true;
     }
  else     if (arg.startsWith("--")) {
       System.out.println("Unknown command line option " + arg);
@@ -12,7 +16,7 @@
   }
   for (  String arg : args) {
     if (!arg.startsWith("--")) {
-      decodeOneArgument(arg,hints);
+      decodeOneArgument(arg,hints,dumpResults);
     }
   }
 }

@@ -8,16 +8,16 @@
   }
   if (image == null) {
     System.err.println(uri.toString() + ": Could not load image");
-    return false;
+    return null;
   }
   try {
     MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
     Result result=new MultiFormatReader().decode(source,hints);
     System.out.println(uri.toString() + " (format: " + result.getBarcodeFormat()+ "):\n"+ result.getText());
-    return true;
+    return result;
   }
  catch (  ReaderException e) {
     System.out.println(uri.toString() + ": No barcode found");
-    return false;
+    return null;
   }
 }
