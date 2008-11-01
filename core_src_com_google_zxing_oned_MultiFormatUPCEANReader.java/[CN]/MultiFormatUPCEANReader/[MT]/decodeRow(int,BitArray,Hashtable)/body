@@ -1,27 +1,7 @@
 {
-  Vector possibleFormats=hints == null ? null : (Vector)hints.get(DecodeHintType.POSSIBLE_FORMATS);
-  Vector readers=new Vector();
-  if (possibleFormats != null) {
-    if (possibleFormats.contains(BarcodeFormat.EAN_13)) {
-      readers.addElement(new EAN13Reader());
-    }
- else     if (possibleFormats.contains(BarcodeFormat.UPC_A)) {
-      readers.addElement(new UPCAReader());
-    }
-    if (possibleFormats.contains(BarcodeFormat.EAN_8)) {
-      readers.addElement(new EAN8Reader());
-    }
-    if (possibleFormats.contains(BarcodeFormat.UPC_E)) {
-      readers.addElement(new UPCEReader());
-    }
-  }
-  if (readers.isEmpty()) {
-    readers.addElement(new EAN13Reader());
-    readers.addElement(new EAN8Reader());
-    readers.addElement(new UPCEReader());
-  }
   int[] startGuardPattern=AbstractUPCEANReader.findStartGuardPattern(row);
-  for (int i=0; i < readers.size(); i++) {
+  int size=readers.size();
+  for (int i=0; i < size; i++) {
     UPCEANReader reader=(UPCEANReader)readers.elementAt(i);
     Result result;
     try {

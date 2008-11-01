@@ -1,0 +1,20 @@
+{
+  Vector possibleFormats=hints == null ? null : (Vector)hints.get(DecodeHintType.POSSIBLE_FORMATS);
+  readers=new Vector();
+  if (possibleFormats != null) {
+    if (possibleFormats.contains(BarcodeFormat.EAN_13) || possibleFormats.contains(BarcodeFormat.UPC_A) || possibleFormats.contains(BarcodeFormat.EAN_8)|| possibleFormats.contains(BarcodeFormat.UPC_E)) {
+      readers.addElement(new MultiFormatUPCEANReader(hints));
+    }
+    if (possibleFormats.contains(BarcodeFormat.CODE_39)) {
+      readers.addElement(new Code39Reader());
+    }
+    if (possibleFormats.contains(BarcodeFormat.CODE_128)) {
+      readers.addElement(new Code128Reader());
+    }
+  }
+  if (readers.isEmpty()) {
+    readers.addElement(new MultiFormatUPCEANReader(hints));
+    readers.addElement(new Code39Reader());
+    readers.addElement(new Code128Reader());
+  }
+}
