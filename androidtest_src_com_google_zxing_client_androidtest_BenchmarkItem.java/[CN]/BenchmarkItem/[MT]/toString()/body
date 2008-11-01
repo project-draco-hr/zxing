@@ -4,11 +4,6 @@
   result.append(mPath);
   result.append(" (");
   result.append(getAverageTime());
-  result.append(" ms average)\n  ");
-  int size=mTimes.length;
-  for (int x=0; x < size; x++) {
-    result.append(mTimes[x]);
-    result.append(" ");
-  }
+  result.append(" us average)");
   return result.toString();
 }
