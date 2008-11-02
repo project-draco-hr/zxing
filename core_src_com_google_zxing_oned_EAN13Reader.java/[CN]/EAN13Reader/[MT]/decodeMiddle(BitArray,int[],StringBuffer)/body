@@ -1,5 +1,9 @@
 {
-  int[] counters=new int[4];
+  int[] counters=decodeMiddleCounters;
+  counters[0]=0;
+  counters[1]=0;
+  counters[2]=0;
+  counters[3]=0;
   int end=row.getSize();
   int rowOffset=startRange[1];
   int lgPatternFound=0;

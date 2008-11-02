@@ -1,0 +1,8 @@
+{
+  crossCheckStateCount[0]=0;
+  crossCheckStateCount[1]=0;
+  crossCheckStateCount[2]=0;
+  crossCheckStateCount[3]=0;
+  crossCheckStateCount[4]=0;
+  return crossCheckStateCount;
+}

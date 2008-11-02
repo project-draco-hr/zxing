@@ -6,4 +6,5 @@
   this.width=width;
   this.height=height;
   this.moduleSize=moduleSize;
+  this.crossCheckStateCount=new int[3];
 }

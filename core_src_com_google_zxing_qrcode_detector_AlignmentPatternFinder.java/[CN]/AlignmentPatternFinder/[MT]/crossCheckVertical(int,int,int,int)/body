@@ -1,7 +1,10 @@
 {
   MonochromeBitmapSource image=this.image;
   int maxI=image.getHeight();
-  int[] stateCount=new int[3];
+  int[] stateCount=crossCheckStateCount;
+  stateCount[0]=0;
+  stateCount[1]=0;
+  stateCount[2]=0;
   int i=startI;
   while (i >= 0 && image.isBlack(centerJ,i) && stateCount[1] <= maxCount) {
     stateCount[1]++;

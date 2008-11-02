@@ -1,4 +1,5 @@
 {
   this.image=image;
   this.possibleCenters=new Vector();
+  this.crossCheckStateCount=new int[5];
 }

@@ -1,0 +1,3 @@
+{
+  decodeMiddleCounters=new int[4];
+}
