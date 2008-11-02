@@ -1,0 +1,9 @@
+{
+  Writer out=new OutputStreamWriter(new FileOutputStream(file),Charset.forName("UTF8"));
+  try {
+    out.write(value);
+  }
+  finally {
+    out.close();
+  }
+}

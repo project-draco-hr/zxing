@@ -13,16 +13,7 @@
         if (result != null) {
           successful++;
           if (dumpResults) {
-            String name=input.getAbsolutePath();
-            int pos=name.lastIndexOf('.');
-            if (pos > 0) {
-              name=name.substring(0,pos);
-            }
-            File dump=new File(name + ".txt");
-            dump.createNewFile();
-            FileOutputStream stream=new FileOutputStream(dump);
-            stream.write(result.getText().getBytes());
-            stream.close();
+            dumpResult(input,result);
           }
         }
         total++;
@@ -30,7 +21,10 @@
       System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)\n");
     }
  else {
-      decode(inputFile.toURI(),hints);
+      Result result=decode(inputFile.toURI(),hints);
+      if (dumpResults) {
+        dumpResult(inputFile,result);
+      }
     }
   }
  else {
