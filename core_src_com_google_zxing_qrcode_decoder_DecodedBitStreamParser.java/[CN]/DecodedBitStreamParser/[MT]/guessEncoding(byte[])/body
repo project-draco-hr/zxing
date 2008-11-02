@@ -18,15 +18,8 @@
  else {
         lastWasPossibleDoubleByteStart=true;
         int nextValue=bytes[i + 1] & 0xFF;
-        if ((value & 0x1) == 0) {
-          if (nextValue < 0x9F || nextValue > 0xFC) {
-            return UTF8;
-          }
-        }
- else {
-          if (nextValue < 0x40 || nextValue > 0x9E) {
-            return UTF8;
-          }
+        if (nextValue < 0x40 || nextValue > 0xFC) {
+          return UTF8;
         }
       }
     }
