@@ -1,0 +1,5 @@
+{
+  super(ParsedResultType.PRODUCT);
+  this.productID=productID;
+  this.normalizedProductID=normalizedProductID;
+}

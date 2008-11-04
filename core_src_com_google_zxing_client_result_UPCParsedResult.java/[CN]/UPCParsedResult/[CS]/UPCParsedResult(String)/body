@@ -1,4 +1,0 @@
-{
-  super(ParsedResultType.UPC);
-  this.upc=upc;
-}
