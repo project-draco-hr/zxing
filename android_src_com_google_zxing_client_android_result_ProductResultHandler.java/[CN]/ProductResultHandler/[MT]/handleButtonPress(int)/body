@@ -1,0 +1,11 @@
+{
+  ProductParsedResult productResult=(ProductParsedResult)mResult;
+switch (index) {
+case 0:
+    openProductSearch(productResult.getNormalizedProductID());
+  break;
+case 1:
+webSearch(productResult.getNormalizedProductID());
+break;
+}
+}
