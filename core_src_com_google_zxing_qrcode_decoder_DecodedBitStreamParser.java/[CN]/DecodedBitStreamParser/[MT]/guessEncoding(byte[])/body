@@ -17,7 +17,12 @@
       canBeISO88591=false;
     }
     if (value >= 0xA1 && value <= 0xDF) {
-      maybeSingleByteKatakanaCount++;
+      if (!lastWasPossibleDoubleByteStart) {
+        maybeSingleByteKatakanaCount++;
+      }
+    }
+    if (!lastWasPossibleDoubleByteStart && ((value >= 0xF0 && value <= 0xFF) || value == 0x80 || value == 0xA0)) {
+      canBeShiftJIS=false;
     }
     if (((value >= 0x81 && value <= 0x9F) || (value >= 0xE0 && value <= 0xEF)) && i < length - 1) {
       sawDoubleByteStart=true;
@@ -31,6 +36,9 @@
           canBeShiftJIS=false;
         }
       }
+    }
+ else {
+      lastWasPossibleDoubleByteStart=false;
     }
   }
   if ((sawDoubleByteStart || 20 * maybeSingleByteKatakanaCount > length) && canBeShiftJIS) {
