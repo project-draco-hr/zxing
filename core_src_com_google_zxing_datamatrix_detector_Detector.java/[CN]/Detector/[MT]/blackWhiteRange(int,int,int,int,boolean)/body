@@ -19,6 +19,7 @@
       }
     }
   }
+  start++;
   int end=center;
   while (end < maxDim) {
     if (rowOrColumn.get(end)) {
@@ -37,6 +38,7 @@
       }
     }
   }
+  end--;
   if (end > start) {
     return new int[]{start,end};
   }
