@@ -3,7 +3,7 @@
   int[] syndromeCoefficients=new int[twoS];
   boolean noError=true;
   for (int i=0; i < twoS; i++) {
-    int eval=poly.evaluateAt(field.exp(i));
+    int eval=poly.evaluateAt(field.exp(dataMatrix ? i + 1 : i));
     syndromeCoefficients[syndromeCoefficients.length - 1 - i]=eval;
     if (eval != 0) {
       noError=false;
@@ -13,9 +13,14 @@
     return;
   }
   GF256Poly syndrome=new GF256Poly(field,syndromeCoefficients);
+  if (dataMatrix) {
+    syndrome=syndrome.multiply(field.buildMonomial(1,1));
+  }
   GF256Poly[] sigmaOmega=runEuclideanAlgorithm(field.buildMonomial(twoS,1),syndrome,twoS);
-  int[] errorLocations=findErrorLocations(sigmaOmega[0]);
-  int[] errorMagnitudes=findErrorMagnitudes(sigmaOmega[1],errorLocations);
+  GF256Poly sigma=sigmaOmega[0];
+  GF256Poly omega=sigmaOmega[1];
+  int[] errorLocations=findErrorLocations(sigma);
+  int[] errorMagnitudes=findErrorMagnitudes(omega,errorLocations);
   for (int i=0; i < errorLocations.length; i++) {
     int position=received.length - 1 - field.log(errorLocations[i]);
     received[position]=GF256.addOrSubtract(received[position],errorMagnitudes[i]);
