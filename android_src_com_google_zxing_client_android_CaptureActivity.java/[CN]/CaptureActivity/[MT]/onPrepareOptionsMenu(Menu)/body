@@ -1,0 +1,5 @@
+{
+  super.onPrepareOptionsMenu(menu);
+  menu.findItem(SHARE_ID).setVisible(mLastResult == null);
+  return true;
+}
