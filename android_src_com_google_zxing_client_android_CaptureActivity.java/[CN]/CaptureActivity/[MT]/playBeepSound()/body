@@ -1,0 +1,5 @@
+{
+  if (mPlayBeep && mMediaPlayer != null) {
+    mMediaPlayer.start();
+  }
+}

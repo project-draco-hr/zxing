@@ -1,0 +1,8 @@
+{
+  if (mState == State.SUCCESS) {
+    mState=State.PREVIEW;
+    CameraManager.get().requestPreviewFrame(mDecodeThread.mHandler,R.id.decode);
+    CameraManager.get().requestAutoFocus(this,R.id.auto_focus);
+    mActivity.drawViewfinder();
+  }
+}

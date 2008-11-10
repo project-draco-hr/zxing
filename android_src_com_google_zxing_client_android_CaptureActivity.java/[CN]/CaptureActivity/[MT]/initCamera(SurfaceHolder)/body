@@ -1,0 +1,7 @@
+{
+  CameraManager.get().openDriver(surfaceHolder);
+  if (mHandler == null) {
+    boolean beginScanning=mLastResult == null;
+    mHandler=new CaptureActivityHandler(this,mDecodeMode,beginScanning);
+  }
+}
