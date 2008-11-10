@@ -1,0 +1,10 @@
+{
+  super.onCreate(icicle);
+  setContentView(R.layout.share);
+  mContactButton=(Button)findViewById(R.id.contact_button);
+  mContactButton.setOnClickListener(mContactListener);
+  mBookmarkButton=(Button)findViewById(R.id.bookmark_button);
+  mBookmarkButton.setOnClickListener(mBookmarkListener);
+  mClipboardButton=(Button)findViewById(R.id.clipboard_button);
+  mClipboardButton.setOnClickListener(mClipboardListener);
+}

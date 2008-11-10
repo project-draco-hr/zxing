@@ -27,4 +27,6 @@
   encode_location.setOnClickListener(mEncodeLocation);
   Button encode_bad_data=(Button)findViewById(R.id.encode_bad_data);
   encode_bad_data.setOnClickListener(mEncodeBadData);
+  Button share_via_barcode=(Button)findViewById(R.id.share_via_barcode);
+  share_via_barcode.setOnClickListener(mShareViaBarcode);
 }

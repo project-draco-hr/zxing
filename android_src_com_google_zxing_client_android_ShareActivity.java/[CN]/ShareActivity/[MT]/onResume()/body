@@ -1,0 +1,12 @@
+{
+  super.onResume();
+  ClipboardManager clipboard=(ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+  if (clipboard.hasText()) {
+    mClipboardButton.setEnabled(true);
+    mClipboardButton.setText(R.string.button_share_clipboard);
+  }
+ else {
+    mClipboardButton.setEnabled(false);
+    mClipboardButton.setText(R.string.button_clipboard_empty);
+  }
+}

@@ -1,0 +1,45 @@
+{
+  ContentResolver resolver=getContentResolver();
+  Cursor contactCursor=resolver.query(contactUri,null,null,null,null);
+  Bundle bundle=new Bundle();
+  if (contactCursor != null && contactCursor.moveToFirst()) {
+    int nameColumn=contactCursor.getColumnIndex(Contacts.People.NAME);
+    String name=contactCursor.getString(nameColumn);
+    if (name == null || name.length() == 0) {
+      return;
+    }
+    bundle.putString(Contacts.Intents.Insert.NAME,name);
+    int phoneColumn=contactCursor.getColumnIndex(Contacts.People.NUMBER);
+    bundle.putString(Contacts.Intents.Insert.PHONE,contactCursor.getString(phoneColumn));
+    contactCursor.close();
+    Uri methodsUri=Uri.withAppendedPath(contactUri,Contacts.People.ContactMethods.CONTENT_DIRECTORY);
+    Cursor methodsCursor=resolver.query(methodsUri,METHODS_PROJECTION,null,null,null);
+    boolean foundEmail=false;
+    boolean foundPostal=false;
+    if (methodsCursor != null) {
+      while (methodsCursor.moveToNext()) {
+        final int kind=methodsCursor.getInt(METHODS_KIND_COLUMN);
+        final String data=methodsCursor.getString(METHODS_DATA_COLUMN);
+switch (kind) {
+case Contacts.KIND_EMAIL:
+          if (!foundEmail) {
+            bundle.putString(Contacts.Intents.Insert.EMAIL,data);
+            foundEmail=true;
+          }
+        break;
+case Contacts.KIND_POSTAL:
+      if (!foundPostal) {
+        bundle.putString(Contacts.Intents.Insert.POSTAL,data);
+        foundPostal=true;
+      }
+    break;
+}
+}
+methodsCursor.close();
+}
+Intent intent=new Intent(Intents.Encode.ACTION);
+intent.putExtra(Intents.Encode.TYPE,Contents.Type.CONTACT);
+intent.putExtra(Intents.Encode.DATA,bundle);
+startActivity(intent);
+}
+}

@@ -1,3 +1,3 @@
 {
-  sendSMSFromUri("smsto:",mActivity.getString(R.string.msg_share_barcode) + ":\n" + contents);
+  sendSMSFromUri("smsto:",mActivity.getString(R.string.msg_share_subject_line) + ":\n" + contents);
 }
