@@ -1,4 +1,5 @@
 String[] names
+String pronunciation
 String[] phoneNumbers
 String[] emails
 String note

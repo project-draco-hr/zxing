@@ -8,6 +8,7 @@
     return null;
   }
   String name=parseName(rawName[0]);
+  String pronunciation=matchSingleDoCoMoPrefixedField("SOUND:",rawText,true);
   String[] phoneNumbers=matchDoCoMoPrefixedField("TEL:",rawText,true);
   String email=matchSingleDoCoMoPrefixedField("EMAIL:",rawText,true);
   String note=matchSingleDoCoMoPrefixedField("NOTE:",rawText,false);
@@ -18,5 +19,5 @@
   }
   String url=matchSingleDoCoMoPrefixedField("URL:",rawText,true);
   String org=matchSingleDoCoMoPrefixedField("ORG:",rawText,true);
-  return new AddressBookParsedResult(maybeWrap(name),phoneNumbers,maybeWrap(email),note,address,org,birthday,null,url);
+  return new AddressBookParsedResult(maybeWrap(name),pronunciation,phoneNumbers,maybeWrap(email),note,address,org,birthday,null,url);
 }

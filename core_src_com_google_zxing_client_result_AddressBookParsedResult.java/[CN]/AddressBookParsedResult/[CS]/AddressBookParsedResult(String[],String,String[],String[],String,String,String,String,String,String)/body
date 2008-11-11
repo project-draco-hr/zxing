@@ -1,6 +1,7 @@
 {
   super(ParsedResultType.ADDRESSBOOK);
   this.names=names;
+  this.pronunciation=pronunciation;
   this.phoneNumbers=phoneNumbers;
   this.emails=emails;
   this.note=note;

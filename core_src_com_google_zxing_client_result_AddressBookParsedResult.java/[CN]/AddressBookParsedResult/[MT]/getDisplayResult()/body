@@ -1,6 +1,7 @@
 {
   StringBuffer result=new StringBuffer();
   maybeAppend(names,result);
+  maybeAppend(pronunciation,result);
   maybeAppend(title,result);
   maybeAppend(org,result);
   maybeAppend(address,result);
