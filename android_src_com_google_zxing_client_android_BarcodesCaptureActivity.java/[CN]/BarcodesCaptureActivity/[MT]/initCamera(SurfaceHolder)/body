@@ -1,7 +1,0 @@
-{
-  CameraManager.get().openDriver(surfaceHolder);
-  if (mHandler == null) {
-    boolean beginScanning=mLastResult == null;
-    mHandler=new BarcodesCaptureActivityHandler(this,mDecodeMode,beginScanning);
-  }
-}

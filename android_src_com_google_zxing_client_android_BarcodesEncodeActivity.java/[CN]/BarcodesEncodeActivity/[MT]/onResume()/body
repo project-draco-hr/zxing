@@ -1,6 +1,0 @@
-{
-  super.onResume();
-  LinearLayout layout=(LinearLayout)findViewById(R.id.encode_view);
-  layout.getViewTreeObserver().addOnGlobalLayoutListener(mLayoutListener);
-  mFirstLayout=true;
-}
