@@ -1,0 +1,11 @@
+{
+  Locale locale=Locale.getDefault();
+  if (locale == null) {
+    return DEFAULT_TLD;
+  }
+  String tld=GOOGLE_COUNTRY_TLD.get(locale);
+  if (tld == null) {
+    return DEFAULT_TLD;
+  }
+  return tld;
+}

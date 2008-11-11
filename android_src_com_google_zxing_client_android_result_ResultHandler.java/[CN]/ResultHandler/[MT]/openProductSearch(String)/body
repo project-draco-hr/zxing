@@ -1,4 +1,4 @@
 {
-  Uri uri=Uri.parse("http://www.google.com/products?q=" + upc);
+  Uri uri=Uri.parse("http://www.google." + LocaleManager.getCountryTLD() + "/products?q="+ upc);
   launchIntent(new Intent(Intent.ACTION_VIEW,uri));
 }

@@ -1,4 +1,4 @@
 {
-  mNetworkThread=new NetworkThread(mContents,handler,pixelResolution);
+  Thread mNetworkThread=new NetworkThread(mContents,handler,pixelResolution);
   mNetworkThread.start();
 }
