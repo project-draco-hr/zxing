@@ -10,6 +10,9 @@
       }
     }
     result[i]=field.multiply(errorEvaluator.evaluateAt(xiInverse),field.inverse(denominator));
+    if (dataMatrix) {
+      result[i]=field.multiply(result[i],xiInverse);
+    }
   }
   return result;
 }
