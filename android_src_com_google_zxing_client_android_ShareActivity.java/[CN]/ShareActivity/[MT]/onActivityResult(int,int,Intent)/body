@@ -2,7 +2,7 @@
   if (resultCode == RESULT_OK) {
 switch (requestCode) {
 case PICK_BOOKMARK:
-      Log.v("BOOKMARK",intent.toString());
+      showTextAsBarcode(intent.getStringExtra(Browser.BookmarkColumns.URL));
     break;
 case PICK_CONTACT:
   showContactAsBarcode(intent.getData());

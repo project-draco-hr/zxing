@@ -1,0 +1,12 @@
+{
+  if (mCursor.moveToPosition(position)) {
+    Intent intent=new Intent();
+    intent.putExtra(Browser.BookmarkColumns.TITLE,mCursor.getString(TITLE_COLUMN));
+    intent.putExtra(Browser.BookmarkColumns.URL,mCursor.getString(URL_COLUMN));
+    setResult(RESULT_OK,intent);
+  }
+ else {
+    setResult(RESULT_CANCELED);
+  }
+  finish();
+}
