@@ -1,2 +1,5 @@
 {
+  int value=matrix_.get(y,x);
+  Debug.DCHECK(value == 0 || value == 1);
+  return value;
 }

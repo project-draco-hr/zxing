@@ -1,0 +1,8 @@
+{
+  Debug.DCHECK_EQ(1,arraysize(kVerticalSeparationPattern[0]));
+  Debug.DCHECK_EQ(7,arraysize(kVerticalSeparationPattern));
+  for (int y=0; y < 7; ++y) {
+    Debug.DCHECK(IsEmpty(matrix.get(y_start + y,x_start)));
+    matrix.set(y_start + y,x_start,kVerticalSeparationPattern[y][0]);
+  }
+}

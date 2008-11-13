@@ -1,0 +1,10 @@
+{
+  Debug.DCHECK_EQ(5,arraysize(kPositionAdjustmentPattern[0]));
+  Debug.DCHECK_EQ(5,arraysize(kPositionAdjustmentPattern));
+  for (int y=0; y < 5; ++y) {
+    for (int x=0; x < 5; ++x) {
+      Debug.DCHECK(IsEmpty(matrix.get(y_start + y,x_start + x)));
+      matrix.set(y_start + y,x_start + x,kPositionAdjustmentPattern[y][x]);
+    }
+  }
+}

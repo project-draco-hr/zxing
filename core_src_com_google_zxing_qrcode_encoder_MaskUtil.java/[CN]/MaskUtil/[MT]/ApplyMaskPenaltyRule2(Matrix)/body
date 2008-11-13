@@ -1,0 +1,13 @@
+{
+  int penalty=0;
+  for (int y=0; y < matrix.height() - 1; ++y) {
+    for (int x=0; x < matrix.width() - 1; ++x) {
+      int value=matrix.get(y,x);
+      if (value == matrix.get(y + 0,x + 1) && value == matrix.get(y + 1,x + 0) && value == matrix.get(y + 1,x + 1)) {
+        penalty+=3;
+      }
+    }
+  }
+  Debug.LOG_INFO("\tApplyMaskPenaltyRule2: " + penalty);
+  return penalty;
+}

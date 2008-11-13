@@ -1,0 +1,7 @@
+{
+  EmbedPositionDetectionPatternsAndSeparators(matrix);
+  EmbedDarkDotAtLeftBottomCorner(matrix);
+  MaybeEmbedPositionAdjustmentPatterns(version,matrix);
+  EmbedTimingPatterns(matrix);
+  return true;
+}

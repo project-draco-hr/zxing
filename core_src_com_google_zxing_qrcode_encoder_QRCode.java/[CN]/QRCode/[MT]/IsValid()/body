@@ -1,2 +1,3 @@
 {
+  return (mode_ != MODE_UNDEFINED && ec_level_ != EC_LEVEL_UNDEFINED && version_ != -1 && matrix_width_ != -1 && mask_pattern_ != -1 && num_total_bytes_ != -1 && num_data_bytes_ != -1 && num_ec_bytes_ != -1 && num_rs_blocks_ != -1 && IsValidVersion(version_) && IsValidMode(mode_) && IsValidECLevel(ec_level_) && IsValidMatrixWidth(matrix_width_) && IsValidMaskPattern(mask_pattern_) && num_total_bytes_ == num_data_bytes_ + num_ec_bytes_ && matrix_ != null && matrix_width_ == matrix_.width() && matrix_width_ == kMinMatrixWidth + (version_ - 1) * 4 && matrix_.width() == matrix_.height());
 }

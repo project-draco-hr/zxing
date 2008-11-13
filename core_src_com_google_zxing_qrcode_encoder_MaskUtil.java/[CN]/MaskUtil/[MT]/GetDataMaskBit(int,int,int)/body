@@ -2,21 +2,21 @@
   Debug.DCHECK(QRCode.IsValidMaskPattern(mask_pattern));
 switch (mask_pattern) {
 case 0:
-    return (y + x) % 2 == 0;
+    return ((y + x) % 2 == 0) ? 1 : 0;
 case 1:
-  return y % 2 == 0;
+  return (y % 2 == 0) ? 1 : 0;
 case 2:
-return x % 3 == 0;
+return (x % 3 == 0) ? 1 : 0;
 case 3:
-return (y + x) % 3 == 0;
+return ((y + x) % 3 == 0) ? 1 : 0;
 case 4:
-return ((y / 2) + (x / 3)) % 2 == 0;
+return (((y / 2) + (x / 3)) % 2 == 0) ? 1 : 0;
 case 5:
-return ((y * x) % 2) + ((y * x) % 3) == 0;
+return (((y * x) % 2) + ((y * x) % 3) == 0) ? 1 : 0;
 case 6:
-return (((y * x) % 2) + ((y * x) % 3)) % 2 == 0;
+return ((((y * x) % 2) + ((y * x) % 3)) % 2 == 0) ? 1 : 0;
 case 7:
-return (((y * x) % 3) + ((y + x) % 2)) % 2 == 0;
+return ((((y * x) % 3) + ((y + x) % 2)) % 2 == 0) ? 1 : 0;
 default :
 ;
 }

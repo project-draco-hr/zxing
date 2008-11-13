@@ -1,0 +1,13 @@
+{
+  for (int i=8; i < matrix.width() - 8; ++i) {
+    final int bit=(i + 1) % 2;
+    Debug.DCHECK(IsValidValue(matrix.get(6,i)));
+    if (IsEmpty(matrix.get(6,i))) {
+      matrix.set(6,i,bit);
+    }
+    Debug.DCHECK(IsValidValue(matrix.get(i,6)));
+    if (IsEmpty(matrix.get(i,6))) {
+      matrix.set(i,6,bit);
+    }
+  }
+}

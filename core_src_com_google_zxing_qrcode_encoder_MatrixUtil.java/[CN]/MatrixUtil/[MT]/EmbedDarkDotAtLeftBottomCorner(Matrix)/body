@@ -1,0 +1,4 @@
+{
+  Debug.DCHECK(matrix.get(matrix.height() - 8,8) != 0);
+  matrix.set(matrix.height() - 8,8,1);
+}

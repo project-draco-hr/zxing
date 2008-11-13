@@ -1,0 +1,15 @@
+{
+  int num_dark_cells=0;
+  for (int y=0; y < matrix.height(); ++y) {
+    for (int x=0; x < matrix.width(); ++x) {
+      if (matrix.get(y,x) == 1) {
+        num_dark_cells+=1;
+      }
+    }
+  }
+  final int num_total_cells=matrix.height() * matrix.width();
+  double dark_ratio=(double)num_dark_cells / num_total_cells;
+  final int penalty=Math.abs((int)(dark_ratio * 100 - 50)) / 5 * 10;
+  Debug.LOG_INFO("\tApplyMaskPenaltyRule4: " + penalty);
+  return penalty;
+}

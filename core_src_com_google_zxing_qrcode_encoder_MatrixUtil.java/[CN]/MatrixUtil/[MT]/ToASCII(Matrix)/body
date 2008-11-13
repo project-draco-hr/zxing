@@ -1,0 +1,20 @@
+{
+  StringBuffer result=new StringBuffer();
+  for (int y=0; y < matrix.height(); ++y) {
+    for (int x=0; x < matrix.width(); ++x) {
+switch (matrix.get(y,x)) {
+case 0:
+        result.append(" 0");
+      break;
+case 1:
+    result.append(" 1");
+  break;
+default :
+result.append("  ");
+break;
+}
+}
+result.append("\n");
+}
+return result.toString();
+}

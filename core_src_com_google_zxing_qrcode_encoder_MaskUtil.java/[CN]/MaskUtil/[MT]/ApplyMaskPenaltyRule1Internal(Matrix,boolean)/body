@@ -1,0 +1,27 @@
+{
+  int penalty=0;
+  int num_same_bit_cells=0;
+  int prev_bit=-1;
+  final int i_limit=is_horizontal ? matrix.height() : matrix.width();
+  final int j_limit=is_horizontal ? matrix.width() : matrix.height();
+  for (int i=0; i < i_limit; ++i) {
+    for (int j=0; j < j_limit; ++j) {
+      final int bit=is_horizontal ? matrix.get(i,j) : matrix.get(j,i);
+      if (bit == prev_bit) {
+        num_same_bit_cells+=1;
+        if (num_same_bit_cells == 5) {
+          penalty+=3;
+        }
+ else         if (num_same_bit_cells > 5) {
+          penalty+=1;
+        }
+      }
+ else {
+        num_same_bit_cells=1;
+        prev_bit=bit;
+      }
+    }
+    num_same_bit_cells=0;
+  }
+  return penalty;
+}

@@ -1,0 +1,14 @@
+{
+  final int pdp_width=arraysize(kPositionDetectionPattern[0]);
+  EmbedPositionDetectionPattern(0,0,matrix);
+  EmbedPositionDetectionPattern(matrix.width() - pdp_width,0,matrix);
+  EmbedPositionDetectionPattern(0,matrix.width() - pdp_width,matrix);
+  final int hsp_width=arraysize(kHorizontalSeparationPattern[0]);
+  EmbedHorizontalSeparationPattern(0,hsp_width - 1,matrix);
+  EmbedHorizontalSeparationPattern(matrix.width() - hsp_width,hsp_width - 1,matrix);
+  EmbedHorizontalSeparationPattern(0,matrix.width() - hsp_width,matrix);
+  final int vsp_height=arraysize(kVerticalSeparationPattern);
+  EmbedVerticalSeparationPattern(vsp_height,0,matrix);
+  EmbedVerticalSeparationPattern(matrix.height() - vsp_height - 1,0,matrix);
+  EmbedVerticalSeparationPattern(vsp_height,matrix.height() - vsp_height,matrix);
+}
