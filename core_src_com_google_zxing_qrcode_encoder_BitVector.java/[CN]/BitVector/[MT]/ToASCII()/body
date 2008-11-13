@@ -1,0 +1,16 @@
+{
+  String result;
+  result.reserve(size_);
+  for (int i=0; i < size_; ++i) {
+    if (at(i) == 0) {
+      result.append("0");
+    }
+ else     if (at(i) == 1) {
+      result.append("1");
+    }
+ else {
+      Debug.DCHECK(false);
+    }
+  }
+  return result;
+}

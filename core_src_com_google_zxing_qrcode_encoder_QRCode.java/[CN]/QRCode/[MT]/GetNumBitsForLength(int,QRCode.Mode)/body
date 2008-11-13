@@ -1,0 +1,23 @@
+{
+  if (!IsValidVersion(version)) {
+    Debug.LOG_ERROR("Invalid version: " + version);
+    return -1;
+  }
+  if (!IsValidMode(mode)) {
+    Debug.LOG_ERROR("Invalid mode: " + mode);
+    return -1;
+  }
+  if (version >= 1 && version <= 9) {
+    return kNumBitsTable[0][mode];
+  }
+ else   if (version >= 10 && version <= 26) {
+    return kNumBitsTable[1][mode];
+  }
+ else   if (version >= 27 && version <= 40) {
+    return kNumBitsTable[2][mode];
+  }
+ else {
+    Debug.LOG_ERROR("Should not reach");
+  }
+  return -1;
+}

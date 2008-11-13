@@ -1,0 +1,3 @@
+int num_input_bytes
+QRCode.ECLevel ec_level
+QRCode.Mode mode

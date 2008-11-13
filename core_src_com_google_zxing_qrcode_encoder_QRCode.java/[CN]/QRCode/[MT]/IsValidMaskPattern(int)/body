@@ -1,0 +1,3 @@
+{
+  return mask_pattern >= 0 && mask_pattern < kNumMaskPatterns;
+}

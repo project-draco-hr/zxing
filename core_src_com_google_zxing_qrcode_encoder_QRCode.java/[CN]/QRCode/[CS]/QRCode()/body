@@ -1,0 +1,12 @@
+{
+  mode_=MODE_UNDEFINED;
+  ec_level_=EC_LEVEL_UNDEFINED;
+  version_=-1;
+  matrix_width_=-1;
+  mask_pattern_=-1;
+  num_total_bytes_=-1;
+  num_data_bytes_=-1;
+  num_ec_bytes_=-1;
+  num_rs_blocks_=-1;
+  matrix_=null;
+}
