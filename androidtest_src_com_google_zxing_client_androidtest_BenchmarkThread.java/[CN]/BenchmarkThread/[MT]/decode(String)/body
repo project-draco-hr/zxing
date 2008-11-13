@@ -1,5 +1,5 @@
 {
-  RGBMonochromeBitmapSource source=null;
+  RGBMonochromeBitmapSource source;
   try {
     source=new RGBMonochromeBitmapSource(path);
   }

@@ -22,13 +22,13 @@
   ParsedResult.maybeAppend(result.getURL(),contents);
   String birthday=result.getBirthday();
   if (birthday != null && birthday.length() > 0) {
-    SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd");
+    DateFormat format=new SimpleDateFormat("yyyyMMdd");
     Date date=format.parse(birthday,new ParsePosition(0));
     ParsedResult.maybeAppend(DateFormat.getDateInstance().format(date.getTime()),contents);
   }
   ParsedResult.maybeAppend(result.getNote(),contents);
   if (namesLength > 0) {
-    SpannableString styled=new SpannableString(contents.toString());
+    Spannable styled=new SpannableString(contents.toString());
     styled.setSpan(new StyleSpan(android.graphics.Typeface.BOLD),0,namesLength,0);
     return styled;
   }

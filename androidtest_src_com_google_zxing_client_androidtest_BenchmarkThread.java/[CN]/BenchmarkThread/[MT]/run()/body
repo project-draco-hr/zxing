@@ -2,7 +2,7 @@
   mMultiFormatReader=new MultiFormatReader();
   mMultiFormatReader.setHints(null);
   System.gc();
-  Vector<BenchmarkItem> items=new Vector<BenchmarkItem>();
+  List<BenchmarkItem> items=new ArrayList<BenchmarkItem>();
   walkTree(mPath,items);
   Message message=Message.obtain(mActivity.mHandler,R.id.benchmark_done);
   message.obj=items;

@@ -21,7 +21,7 @@
     HttpEntity entity=entityRequest.getEntity();
     if (entity != null && entity.isRepeatable()) {
       if (entity.getContentLength() < 1024) {
-        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        OutputStream stream=new ByteArrayOutputStream();
         entity.writeTo(stream);
         String entityString=stream.toString();
         builder.append(" --data-ascii \"").append(entityString).append('"');

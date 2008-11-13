@@ -10,7 +10,7 @@
  else {
     BenchmarkItem item=decode(path);
     if (item != null) {
-      items.addElement(item);
+      items.add(item);
     }
   }
 }

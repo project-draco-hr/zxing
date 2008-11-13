@@ -1,15 +1,15 @@
 {
   if (when.length() == 8) {
-    SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd");
+    DateFormat format=new SimpleDateFormat("yyyyMMdd");
     Date date=format.parse(when,new ParsePosition(0));
     ParsedResult.maybeAppend(DateFormat.getDateInstance().format(date.getTime()),result);
   }
  else {
-    SimpleDateFormat format=new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+    DateFormat format=new SimpleDateFormat("yyyyMMdd'T'HHmmss");
     Date date=format.parse(when.substring(0,15),new ParsePosition(0));
     long milliseconds=date.getTime();
     if (when.length() == 16 && when.charAt(15) == 'Z') {
-      GregorianCalendar calendar=new GregorianCalendar();
+      Calendar calendar=new GregorianCalendar();
       int offset=(calendar.get(Calendar.ZONE_OFFSET) + calendar.get(Calendar.DST_OFFSET));
       milliseconds+=offset;
     }

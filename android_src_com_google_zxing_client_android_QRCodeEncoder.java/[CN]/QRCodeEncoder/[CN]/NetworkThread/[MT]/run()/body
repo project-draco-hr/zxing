@@ -3,7 +3,7 @@
   try {
     String url=CHART_SERVER_URL + mPixelResolution + "x"+ mPixelResolution+ "&chl="+ mContents;
     URI uri=new URI("http",url,null);
-    HttpGet get=new HttpGet(uri);
+    HttpUriRequest get=new HttpGet(uri);
     client=AndroidHttpClient.newInstance(mUserAgent);
     HttpResponse response=client.execute(get);
     HttpEntity entity=response.getEntity();
