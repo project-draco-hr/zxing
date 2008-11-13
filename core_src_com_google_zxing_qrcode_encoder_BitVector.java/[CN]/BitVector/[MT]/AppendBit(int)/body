@@ -1,9 +1,9 @@
 {
   Debug.DCHECK(bit == 0 || bit == 1);
-  final int num_bits_in_last_byte=size_ % 8;
+  final int num_bits_in_last_byte=sizeInBits % 8;
   if (num_bits_in_last_byte == 0) {
-    bytes_.push_back(0);
+    appendByte(0);
   }
-  bytes_[bytes_.size() - 1]|=(bit << (7 - num_bits_in_last_byte));
-  ++size_;
+  array[array.length - 1]|=(bit << (7 - num_bits_in_last_byte));
+  ++sizeInBits;
 }

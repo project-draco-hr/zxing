@@ -1,2 +1,2 @@
-uint32 value
+int value
 int num_bits

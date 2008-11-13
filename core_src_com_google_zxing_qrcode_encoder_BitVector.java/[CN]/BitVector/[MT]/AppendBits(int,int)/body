@@ -1,0 +1,17 @@
+{
+  Debug.DCHECK(num_bits >= 0 && num_bits <= 32);
+  int num_bits_left=num_bits;
+  while (num_bits_left > 0) {
+    if (sizeInBits % 8 == 0 && num_bits_left >= 8) {
+      final int newByte=(value >> (num_bits_left - 8)) & 0xff;
+      appendByte(newByte);
+      sizeInBits+=8;
+      num_bits_left-=8;
+    }
+ else {
+      final int bit=(value >> (num_bits_left - 1)) & 1;
+      AppendBit(bit);
+      --num_bits_left;
+    }
+  }
+}

@@ -1,7 +1,6 @@
 {
-  String result;
-  result.reserve(size_);
-  for (int i=0; i < size_; ++i) {
+  StringBuffer result=new StringBuffer(sizeInBits);
+  for (int i=0; i < sizeInBits; ++i) {
     if (at(i) == 0) {
       result.append("0");
     }
@@ -12,5 +11,5 @@
       Debug.DCHECK(false);
     }
   }
-  return result;
+  return result.toString();
 }
