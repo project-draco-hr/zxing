@@ -1,6 +1,6 @@
 {
-  Debug.DCHECK_EQ(8,arraysize(kHorizontalSeparationPattern[0]));
-  Debug.DCHECK_EQ(1,arraysize(kHorizontalSeparationPattern));
+  Debug.DCHECK_EQ(8,kHorizontalSeparationPattern[0].length);
+  Debug.DCHECK_EQ(1,kHorizontalSeparationPattern.length);
   for (int x=0; x < 8; ++x) {
     Debug.DCHECK(IsEmpty(matrix.get(y_start,x_start + x)));
     matrix.set(y_start,x_start + x,kHorizontalSeparationPattern[0][x]);

@@ -1,0 +1,5 @@
+BitVector data_bits
+int ec_level
+int version
+int mask_pattern
+Matrix matrix

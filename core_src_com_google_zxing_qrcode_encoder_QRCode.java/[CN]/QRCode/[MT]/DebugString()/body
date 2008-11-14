@@ -24,7 +24,7 @@
   }
  else {
     result.append("\n matrix:");
-    result.append(MatrixUtil.ToASCII(matrix_));
+    result.append(matrix_.toString());
   }
   result.append("\n>>\n");
   return result.toString();

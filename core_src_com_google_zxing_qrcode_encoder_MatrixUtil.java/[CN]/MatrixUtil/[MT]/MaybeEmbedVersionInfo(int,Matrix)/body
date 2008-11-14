@@ -1,2 +1,20 @@
 {
+  if (version < 7) {
+    return true;
+  }
+  BitVector version_info_bits=new BitVector();
+  if (!MakeVersionInfoBits(version,version_info_bits)) {
+    return false;
+  }
+  Debug.DCHECK_EQ(18,version_info_bits.size());
+  int bit_index=6 * 3 - 1;
+  for (int i=0; i < 6; ++i) {
+    for (int j=0; j < 3; ++j) {
+      final int bit=version_info_bits.at(bit_index);
+      bit_index--;
+      matrix.set(matrix.height() - 11 + j,i,bit);
+      matrix.set(i,matrix.height() - 11 + j,bit);
+    }
+  }
+  return true;
 }

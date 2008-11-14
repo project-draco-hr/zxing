@@ -1,6 +1,6 @@
 {
-  Debug.DCHECK_EQ(7,arraysize(kPositionDetectionPattern[0]));
-  Debug.DCHECK_EQ(7,arraysize(kPositionDetectionPattern));
+  Debug.DCHECK_EQ(7,kPositionDetectionPattern[0].length);
+  Debug.DCHECK_EQ(7,kPositionDetectionPattern.length);
   for (int y=0; y < 7; ++y) {
     for (int x=0; x < 7; ++x) {
       Debug.DCHECK(IsEmpty(matrix.get(y_start + y,x_start + x)));

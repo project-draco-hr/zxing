@@ -1,8 +1,8 @@
 {
   StringBuffer result=new StringBuffer();
-  for (int y=0; y < matrix.height(); ++y) {
-    for (int x=0; x < matrix.width(); ++x) {
-switch (matrix.get(y,x)) {
+  for (int y=0; y < height; ++y) {
+    for (int x=0; x < width; ++x) {
+switch (bytes[y][x]) {
 case 0:
         result.append(" 0");
       break;
