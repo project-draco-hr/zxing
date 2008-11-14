@@ -1,0 +1,18 @@
+{
+  int num_letters=num_bytes;
+  if (mode == QRCode.MODE_KANJI) {
+    Debug.DCHECK_EQ(0,num_letters % 2);
+    num_letters/=2;
+  }
+  final int num_bits=QRCode.GetNumBitsForLength(version,mode);
+  if (num_bits == -1) {
+    Debug.LOG_ERROR("num_bits unset");
+    return false;
+  }
+  if (num_letters > ((1 << num_bits) - 1)) {
+    Debug.LOG_ERROR(num_letters + "is bigger than" + ((1 << num_bits) - 1));
+    return false;
+  }
+  bits.AppendBits(num_letters,num_bits);
+  return true;
+}

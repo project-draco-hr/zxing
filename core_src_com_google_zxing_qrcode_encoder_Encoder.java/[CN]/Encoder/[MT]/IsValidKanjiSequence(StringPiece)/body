@@ -1,0 +1,12 @@
+{
+  if (bytes.size() % 2 != 0) {
+    return false;
+  }
+  int i=0;
+  for (; i < bytes.size(); i+=2) {
+    if (!IsValidKanji(bytes[i],bytes[i + 1])) {
+      break;
+    }
+  }
+  return i == bytes.size();
+}

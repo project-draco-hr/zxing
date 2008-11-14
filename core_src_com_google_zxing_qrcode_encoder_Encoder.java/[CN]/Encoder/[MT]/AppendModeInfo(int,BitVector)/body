@@ -1,0 +1,9 @@
+{
+  final int code=QRCode.GetModeCode(mode);
+  if (code == -1) {
+    Debug.LOG_ERROR("Invalid mode: " + mode);
+    return false;
+  }
+  bits.AppendBits(code,4);
+  return true;
+}

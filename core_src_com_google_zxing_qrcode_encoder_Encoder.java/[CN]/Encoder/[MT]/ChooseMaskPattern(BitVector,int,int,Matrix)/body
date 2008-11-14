@@ -1,0 +1,21 @@
+{
+  if (!QRCode.IsValidMatrixWidth(matrix.width())) {
+    Debug.LOG_ERROR("Invalid matrix width: " + matrix.width());
+    return -1;
+  }
+  int min_penalty=Integer.MAX_VALUE;
+  int best_mask_pattern=-1;
+  for (int i=0; i < QRCode.kNumMaskPatterns; ++i) {
+    final int mask_pattern=i;
+    if (!MatrixUtil.BuildMatrix(bits,ec_level,version,mask_pattern,matrix)) {
+      return -1;
+    }
+    final int penalty=MaskUtil.CalculateMaskPenalty(matrix);
+    Debug.LOG_INFO("mask_pattern: " + mask_pattern + ", "+ "penalty: "+ penalty);
+    if (penalty < min_penalty) {
+      min_penalty=penalty;
+      best_mask_pattern=mask_pattern;
+    }
+  }
+  return best_mask_pattern;
+}

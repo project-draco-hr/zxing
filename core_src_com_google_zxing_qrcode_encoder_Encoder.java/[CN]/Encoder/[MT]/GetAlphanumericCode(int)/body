@@ -1,5 +1,5 @@
 {
-  if (code < arraysize(kAlphanumericTable)) {
+  if (code < kAlphanumericTable.length) {
     return kAlphanumericTable[code];
   }
   return -1;

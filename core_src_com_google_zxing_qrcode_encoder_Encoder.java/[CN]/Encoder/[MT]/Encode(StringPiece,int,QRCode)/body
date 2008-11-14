@@ -1,0 +1,36 @@
+{
+  final int mode=ChooseMode(bytes);
+  BitVector data_bits=new BitVector();
+  if (!AppendBytes(bytes,mode,data_bits)) {
+    return false;
+  }
+  final int num_input_bytes=data_bits.num_bytes();
+  if (!InitQRCode(num_input_bytes,ec_level,mode,qr_code)) {
+    return false;
+  }
+  BitVector header_and_data_bits=new BitVector();
+  if (!AppendModeInfo(qr_code.mode(),header_and_data_bits)) {
+    return false;
+  }
+  if (!AppendLengthInfo(bytes.size(),qr_code.version(),qr_code.mode(),header_and_data_bits)) {
+    return false;
+  }
+  header_and_data_bits.AppendBitVector(data_bits);
+  if (!TerminateBits(qr_code.num_data_bytes(),header_and_data_bits)) {
+    return false;
+  }
+  BitVector final_bits=new BitVector();
+  InterleaveWithECBytes(header_and_data_bits,qr_code.num_total_bytes(),qr_code.num_data_bytes(),qr_code.num_rs_blocks(),final_bits);
+  Matrix matrix=new Matrix(qr_code.matrix_width(),qr_code.matrix_width());
+  qr_code.set_mask_pattern(ChooseMaskPattern(final_bits,qr_code.ec_level(),qr_code.version(),matrix));
+  if (qr_code.mask_pattern() == -1) {
+    return false;
+  }
+  MatrixUtil.BuildMatrix(final_bits,qr_code.ec_level(),qr_code.version(),qr_code.mask_pattern(),matrix);
+  qr_code.set_matrix(matrix);
+  if (!qr_code.IsValid()) {
+    Debug.LOG_ERROR("Invalid QR code: " + qr_code.DebugString());
+    return false;
+  }
+  return true;
+}

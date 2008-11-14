@@ -1,0 +1,4 @@
+{
+  this.num_bytes=num_bytes;
+  this.block_info=block_info;
+}

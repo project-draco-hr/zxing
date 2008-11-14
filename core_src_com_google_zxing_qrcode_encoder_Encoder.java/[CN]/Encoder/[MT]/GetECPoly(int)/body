@@ -1,2 +1,6 @@
 {
+  Debug.DCHECK_GE(kMaxNumECBytes,ec_length);
+  final GF_Poly ec_poly=g_ec_polynomials[ec_length];
+  Debug.DCHECK(ec_poly);
+  return ec_poly;
 }

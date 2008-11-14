@@ -1,0 +1,16 @@
+{
+switch (mode) {
+case QRCode.MODE_NUMERIC:
+    return AppendNumericBytes(bytes,bits);
+case QRCode.MODE_ALPHANUMERIC:
+  return AppendAlphanumericBytes(bytes,bits);
+case QRCode.MODE_8BIT_BYTE:
+return Append8BitBytes(bytes,bits);
+case QRCode.MODE_KANJI:
+return AppendKanjiBytes(bytes,bits);
+default :
+break;
+}
+Debug.LOG_ERROR("Invalid mode: " + mode);
+return false;
+}

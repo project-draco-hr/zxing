@@ -1,0 +1,2 @@
+int ec_length
+int[] coefficients

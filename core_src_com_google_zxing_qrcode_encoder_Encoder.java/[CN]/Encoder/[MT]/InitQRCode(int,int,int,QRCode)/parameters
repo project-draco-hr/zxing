@@ -1,0 +1,4 @@
+int num_input_bytes
+int ec_level
+int mode
+QRCode qr_code

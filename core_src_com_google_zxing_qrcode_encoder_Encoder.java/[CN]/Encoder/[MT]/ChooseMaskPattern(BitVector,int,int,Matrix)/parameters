@@ -1,0 +1,4 @@
+BitVector bits
+int ec_level
+int version
+Matrix matrix
