@@ -1,0 +1,19 @@
+{
+  Random random=getRandom();
+  ReedSolomonEncoder encoder=new ReedSolomonEncoder(GF256.QR_CODE_FIELD);
+  ReedSolomonDecoder decoder=new ReedSolomonDecoder(GF256.QR_CODE_FIELD);
+  for (int i=0; i < 100; i++) {
+    int size=random.nextInt(1000);
+    int[] toEncode=new int[size];
+    int ecBytes=random.nextInt(2 * (1 + size / 8));
+    int dataBytes=size - ecBytes;
+    for (int j=0; j < dataBytes; j++) {
+      toEncode[j]=random.nextInt(256);
+    }
+    int[] original=new int[dataBytes];
+    System.arraycopy(toEncode,0,original,0,dataBytes);
+    encoder.encode(toEncode,ecBytes);
+    decoder.decode(toEncode,ecBytes);
+    assertArraysEqual(original,0,toEncode,0,dataBytes);
+  }
+}

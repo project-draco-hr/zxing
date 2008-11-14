@@ -1,7 +1,7 @@
 {
   int[] received=new int[DM_CODE_TEST_WITH_EC.length];
   System.arraycopy(DM_CODE_TEST_WITH_EC,0,received,0,received.length);
-  Random random=new Random(0xDEADBEEFL);
+  Random random=getRandom();
   corrupt(received,DM_CODE_CORRECTABLE + 1,random);
   try {
     checkQRRSDecode(received);

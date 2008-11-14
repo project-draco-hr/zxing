@@ -1,6 +1,6 @@
 {
   int[] received=new int[QR_CODE_TEST_WITH_EC.length];
-  Random random=new Random(0xDEADBEEFL);
+  Random random=getRandom();
   for (int i=0; i < received.length; i++) {
     System.arraycopy(QR_CODE_TEST_WITH_EC,0,received,0,received.length);
     received[i]=random.nextInt(256);
