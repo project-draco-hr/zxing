@@ -1,0 +1,10 @@
+{
+  int dataBytes=toEncode.length - ecBytes;
+  GF256Poly generator=buildGenerator(ecBytes);
+  int[] infoCoefficients=new int[dataBytes];
+  System.arraycopy(toEncode,0,infoCoefficients,0,dataBytes);
+  GF256Poly info=new GF256Poly(field,infoCoefficients);
+  info=info.multiplyByMonomial(ecBytes,1);
+  GF256Poly remainder=info.divide(generator)[1];
+  System.arraycopy(remainder.getCoefficients(),0,toEncode,dataBytes,ecBytes);
+}
