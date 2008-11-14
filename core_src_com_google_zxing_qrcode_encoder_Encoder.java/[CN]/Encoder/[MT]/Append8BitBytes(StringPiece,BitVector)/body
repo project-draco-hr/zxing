@@ -1,6 +1,0 @@
-{
-  for (int i=0; i < bytes.size(); ++i) {
-    bits.AppendBits(bytes[i],8);
-  }
-  return true;
-}

@@ -1,0 +1,4 @@
+{
+  bytes=byteArray;
+  size=bytes.length;
+}

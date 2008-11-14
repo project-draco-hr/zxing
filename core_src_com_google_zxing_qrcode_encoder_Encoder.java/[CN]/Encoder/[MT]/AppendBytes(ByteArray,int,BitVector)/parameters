@@ -1,0 +1,3 @@
+ByteArray bytes
+int mode
+BitVector bits

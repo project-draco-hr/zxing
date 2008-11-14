@@ -1,0 +1,7 @@
+{
+  bytes=new byte[count];
+  size=count;
+  for (int x=0; x < count; x++) {
+    bytes[x]=(byte)bits.at(x + offset);
+  }
+}

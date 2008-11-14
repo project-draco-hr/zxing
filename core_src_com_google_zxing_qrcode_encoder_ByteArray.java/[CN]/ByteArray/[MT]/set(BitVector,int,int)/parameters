@@ -1,0 +1,3 @@
+BitVector bits
+int offset
+int count

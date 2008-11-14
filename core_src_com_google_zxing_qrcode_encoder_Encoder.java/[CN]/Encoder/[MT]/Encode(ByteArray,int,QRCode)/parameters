@@ -1,0 +1,3 @@
+ByteArray bytes
+int ec_level
+QRCode qr_code

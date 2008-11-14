@@ -1,2 +1,42 @@
 {
+  Debug.DCHECK(bits.num_bytes() == num_data_bytes);
+  int data_bytes_offset=0;
+  int max_num_data_bytes=0;
+  int max_num_ec_bytes=0;
+  Vector<BlockPair> blocks=new Vector<BlockPair>(num_rs_blocks);
+  for (int i=0; i < num_rs_blocks; ++i) {
+    Integer num_data_bytes_in_block=new Integer(0);
+    Integer num_ec_bytes_in_block=new Integer(0);
+    GetNumDataBytesAndNumECBytesForBlockID(num_total_bytes,num_data_bytes,num_rs_blocks,i,num_data_bytes_in_block,num_ec_bytes_in_block);
+    ByteArray data_bytes=new ByteArray();
+    ByteArray ec_bytes=new ByteArray();
+    blocks.addElement(new BlockPair(data_bytes,ec_bytes));
+    data_bytes.set(bits,data_bytes_offset,num_data_bytes_in_block);
+    GenerateECBytes(data_bytes,num_ec_bytes_in_block,ec_bytes);
+    max_num_data_bytes=Math.max(max_num_data_bytes,data_bytes.size());
+    max_num_ec_bytes=Math.max(max_num_ec_bytes,ec_bytes.size());
+    data_bytes_offset+=num_data_bytes_in_block;
+  }
+  Debug.DCHECK_EQ(num_data_bytes,data_bytes_offset);
+  for (int i=0; i < max_num_data_bytes; ++i) {
+    for (int j=0; j < blocks.size(); ++j) {
+      final ByteArray data_bytes=blocks.elementAt(j).getDataBytes();
+      if (i < data_bytes.size()) {
+        result.AppendBits(data_bytes.at(i),8);
+      }
+    }
+  }
+  for (int i=0; i < max_num_ec_bytes; ++i) {
+    for (int j=0; j < blocks.size(); ++j) {
+      final ByteArray ec_bytes=blocks.elementAt(j).getErrorCorrectionBytes();
+      if (i < ec_bytes.size()) {
+        result.AppendBits(ec_bytes.at(i),8);
+      }
+    }
+  }
+  if (num_total_bytes == result.num_bytes()) {
+    return true;
+  }
+  Debug.LOG_ERROR("Interleaving error: " + num_total_bytes + " and "+ result.num_bytes()+ "differ.");
+  return false;
 }

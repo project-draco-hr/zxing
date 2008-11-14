@@ -1,0 +1,28 @@
+{
+  boolean has_numeric=false;
+  boolean has_alphanumeric=false;
+  boolean has_other=false;
+  for (int i=0; i < bytes.size(); ++i) {
+    final int oneByte=bytes.at(i);
+    if (oneByte >= '0' && oneByte <= '9') {
+      has_numeric=true;
+    }
+ else     if (GetAlphanumericCode(oneByte) != -1) {
+      has_alphanumeric=true;
+    }
+ else {
+      has_other=true;
+    }
+  }
+  if (has_other) {
+    return QRCode.MODE_8BIT_BYTE;
+  }
+ else   if (has_alphanumeric) {
+    return QRCode.MODE_ALPHANUMERIC;
+  }
+ else   if (has_numeric) {
+    return QRCode.MODE_NUMERIC;
+  }
+  Debug.DCHECK(bytes.empty());
+  return QRCode.MODE_8BIT_BYTE;
+}

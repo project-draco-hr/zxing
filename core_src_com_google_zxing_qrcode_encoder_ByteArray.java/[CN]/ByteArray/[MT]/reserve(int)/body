@@ -1,0 +1,9 @@
+{
+  if (bytes == null || bytes.length < capacity) {
+    byte[] newArray=new byte[capacity];
+    if (bytes != null) {
+      System.arraycopy(bytes,0,newArray,0,bytes.length);
+    }
+    bytes=newArray;
+  }
+}

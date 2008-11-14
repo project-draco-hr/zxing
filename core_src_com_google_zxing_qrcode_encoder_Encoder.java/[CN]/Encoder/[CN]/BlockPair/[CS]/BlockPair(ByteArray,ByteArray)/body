@@ -1,0 +1,4 @@
+{
+  dataBytes=data;
+  errorCorrectionBytes=errorCorrection;
+}
