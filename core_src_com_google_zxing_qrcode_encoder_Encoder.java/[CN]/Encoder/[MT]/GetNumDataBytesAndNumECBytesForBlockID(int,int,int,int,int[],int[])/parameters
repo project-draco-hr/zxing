@@ -2,5 +2,5 @@ int num_total_bytes
 int num_data_bytes
 int num_rs_blocks
 int block_id
-Integer num_data_bytes_in_block
-Integer num_ec_bytes_in_block
+int[] num_data_bytes_in_block
+int[] num_ec_bytes_in_block

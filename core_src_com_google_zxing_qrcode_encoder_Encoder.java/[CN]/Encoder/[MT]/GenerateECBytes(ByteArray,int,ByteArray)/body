@@ -1,2 +1,11 @@
 {
+  int numDataBytes=data_bytes.size();
+  int[] toEncode=new int[numDataBytes + ec_bytes.size()];
+  for (int i=0; i < numDataBytes; i++) {
+    toEncode[i]=data_bytes.at(i);
+  }
+  new ReedSolomonEncoder(GF256.QR_CODE_FIELD).encode(toEncode,num_ec_bytes_in_block);
+  for (int i=0; i < ec_bytes.size(); i++) {
+    ec_bytes.set(i,toEncode[numDataBytes + i]);
+  }
 }
