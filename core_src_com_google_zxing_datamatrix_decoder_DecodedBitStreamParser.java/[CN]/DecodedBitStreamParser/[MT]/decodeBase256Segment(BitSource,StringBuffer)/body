@@ -11,6 +11,6 @@
     count=250 * (d1 - 249) + bits.readBits(8);
   }
   for (int i=0; i < count; i++) {
-    result.append(unrandomize255State(bits.readBits(8),count));
+    result.append(unrandomize255State(bits.readBits(8),i));
   }
 }
