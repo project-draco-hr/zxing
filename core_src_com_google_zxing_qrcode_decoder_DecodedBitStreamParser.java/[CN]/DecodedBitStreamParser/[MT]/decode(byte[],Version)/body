@@ -3,6 +3,7 @@
   StringBuffer result=new StringBuffer();
   CharacterSetECI currentCharacterSetECI=null;
   boolean fc1InEffect=false;
+  Vector byteSegments=new Vector(1);
   Mode mode;
   do {
     if (bits.available() < 4) {
@@ -32,7 +33,7 @@
           decodeAlphanumericSegment(bits,result,count,fc1InEffect);
         }
  else         if (mode.equals(Mode.BYTE)) {
-          decodeByteSegment(bits,result,count,currentCharacterSetECI);
+          decodeByteSegment(bits,result,count,currentCharacterSetECI,byteSegments);
         }
  else         if (mode.equals(Mode.KANJI)) {
           decodeKanjiSegment(bits,result,count);
@@ -44,5 +45,5 @@
     }
   }
  while (!mode.equals(Mode.TERMINATOR));
-  return result.toString();
+  return new DecoderResult(bytes,result.toString(),byteSegments.isEmpty() ? null : byteSegments);
 }

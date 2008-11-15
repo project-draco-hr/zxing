@@ -1,2 +1,3 @@
 byte[] rawBytes
 String text
+Vector byteSegments

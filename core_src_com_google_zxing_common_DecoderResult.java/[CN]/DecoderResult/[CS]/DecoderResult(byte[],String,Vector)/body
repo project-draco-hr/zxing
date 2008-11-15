@@ -4,4 +4,5 @@
   }
   this.rawBytes=rawBytes;
   this.text=text;
+  this.byteSegments=byteSegments;
 }

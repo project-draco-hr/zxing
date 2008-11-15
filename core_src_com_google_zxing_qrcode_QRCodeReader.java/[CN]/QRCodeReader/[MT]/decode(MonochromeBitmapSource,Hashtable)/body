@@ -7,9 +7,13 @@
     points=NO_POINTS;
   }
  else {
-    DetectorResult result=new Detector(image).detect(hints);
-    decoderResult=decoder.decode(result.getBits());
-    points=result.getPoints();
+    DetectorResult detectorResult=new Detector(image).detect(hints);
+    decoderResult=decoder.decode(detectorResult.getBits());
+    points=detectorResult.getPoints();
   }
-  return new Result(decoderResult.getText(),decoderResult.getRawBytes(),points,BarcodeFormat.QR_CODE);
+  Result result=new Result(decoderResult.getText(),decoderResult.getRawBytes(),points,BarcodeFormat.QR_CODE);
+  if (decoderResult.getByteSegments() != null) {
+    result.putMetadata(ResultMetadataType.BYTE_SEGMENTS,decoderResult.getByteSegments());
+  }
+  return result;
 }

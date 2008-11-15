@@ -5,6 +5,6 @@
   builder.write(0xA1,8);
   builder.write(0xA2,8);
   builder.write(0xA3,8);
-  String result=DecodedBitStreamParser.decode(builder.toByteArray(),Version.getVersionForNumber(1));
+  String result=DecodedBitStreamParser.decode(builder.toByteArray(),Version.getVersionForNumber(1)).getText();
   assertEquals("\uff61\uff62\uff63",result);
 }

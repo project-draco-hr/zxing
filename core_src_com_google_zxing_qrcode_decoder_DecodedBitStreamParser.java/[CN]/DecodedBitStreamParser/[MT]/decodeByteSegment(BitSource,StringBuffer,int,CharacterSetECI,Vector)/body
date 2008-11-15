@@ -19,4 +19,5 @@
  catch (  UnsupportedEncodingException uce) {
     throw new ReaderException(uce.toString());
   }
+  byteSegments.addElement(readBytes);
 }
