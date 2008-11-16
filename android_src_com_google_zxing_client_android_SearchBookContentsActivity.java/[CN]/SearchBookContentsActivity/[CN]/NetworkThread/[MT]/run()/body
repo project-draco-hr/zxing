@@ -1,10 +1,9 @@
 {
   AndroidHttpClient client=null;
   try {
-    String url=BOOK_SEARCH_URL + mISBN + BOOK_SEARCH_COMMAND+ URLEncoder.encode(mQuery,"UTF8");
-    URI uri=new URI("http",url,null);
+    URI uri=new URI("http",null,"www.google.com",-1,"/books","vid=isbn" + mISBN + "&jscmd=SearchWithinVolume2&q="+ mQuery,null);
     HttpUriRequest get=new HttpGet(uri);
-    get.setHeader("cookie",getCookie("http:" + url));
+    get.setHeader("cookie",getCookie(uri.toString()));
     client=AndroidHttpClient.newInstance(mUserAgent);
     HttpResponse response=client.execute(get);
     if (response.getStatusLine().getStatusCode() == 200) {
@@ -19,7 +18,7 @@
       message.sendToTarget();
     }
  else {
-      Log.e(TAG,"HTTP returned " + response.getStatusLine().getStatusCode() + " for http:"+ url);
+      Log.e(TAG,"HTTP returned " + response.getStatusLine().getStatusCode() + " for "+ uri);
       Message message=Message.obtain(mHandler,R.id.search_book_contents_failed);
       message.sendToTarget();
     }

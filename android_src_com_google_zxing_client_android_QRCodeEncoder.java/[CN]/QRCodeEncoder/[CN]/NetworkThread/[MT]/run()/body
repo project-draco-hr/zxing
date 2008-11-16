@@ -1,8 +1,7 @@
 {
   AndroidHttpClient client=null;
   try {
-    String url=CHART_SERVER_URL + mPixelResolution + "x"+ mPixelResolution+ "&chl="+ mContents;
-    URI uri=new URI("http",url,null);
+    URI uri=new URI("http",null,"chart.apis.google.com",-1,"/chart","cht=qr&chs=" + mPixelResolution + "x"+ mPixelResolution+ "&chl="+ mContents,null);
     HttpUriRequest get=new HttpGet(uri);
     client=AndroidHttpClient.newInstance(mUserAgent);
     HttpResponse response=client.execute(get);
