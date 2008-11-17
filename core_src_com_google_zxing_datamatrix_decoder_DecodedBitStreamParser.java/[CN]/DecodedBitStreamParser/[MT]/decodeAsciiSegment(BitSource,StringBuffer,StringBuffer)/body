@@ -3,7 +3,7 @@
   do {
     int oneByte=bits.readBits(8);
     if (oneByte == 0) {
-      throw new ReaderException("0 is an invalid ASCII codeword");
+      throw ReaderException.getInstance();
     }
  else     if (oneByte <= 128) {
       oneByte=upperShift ? (oneByte + 128) : oneByte;
@@ -28,13 +28,13 @@
       return BASE256_ENCODE;
     }
  else     if (oneByte == 232) {
-      throw new ReaderException("Currently not supporting FNC1");
+      throw ReaderException.getInstance();
     }
  else     if (oneByte == 233) {
-      throw new ReaderException("Currently not supporting Structured Append");
+      throw ReaderException.getInstance();
     }
  else     if (oneByte == 234) {
-      throw new ReaderException("Currently not supporting Reader Programming");
+      throw ReaderException.getInstance();
     }
  else     if (oneByte == 235) {
       upperShift=true;
@@ -57,10 +57,10 @@
       return EDIFACT_ENCODE;
     }
  else     if (oneByte == 241) {
-      throw new ReaderException("Currently not supporting ECI Character");
+      throw ReaderException.getInstance();
     }
  else     if (oneByte >= 242) {
-      throw new ReaderException(oneByte + " should not be used in ASCII encodation");
+      throw ReaderException.getInstance();
     }
   }
  while (bits.available() > 0);

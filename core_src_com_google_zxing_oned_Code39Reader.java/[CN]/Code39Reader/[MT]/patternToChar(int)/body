@@ -4,5 +4,5 @@
       return ALPHABET[i];
     }
   }
-  throw new ReaderException("Pattern did not match character encoding");
+  throw ReaderException.getInstance();
 }

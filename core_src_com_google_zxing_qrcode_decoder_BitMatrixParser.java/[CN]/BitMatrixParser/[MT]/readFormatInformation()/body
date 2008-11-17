@@ -29,5 +29,5 @@
   if (parsedFormatInfo != null) {
     return parsedFormatInfo;
   }
-  throw new ReaderException("Could not decode format information");
+  throw ReaderException.getInstance();
 }

@@ -54,7 +54,7 @@
     }
   }
   if (maybeTopLeft == null || bottomLeft == null || maybeBottomRight == null) {
-    throw new ReaderException("Could not find three corners");
+    throw ReaderException.getInstance();
   }
   ResultPoint[] corners=new ResultPoint[]{maybeTopLeft,bottomLeft,maybeBottomRight};
   GenericResultPoint.orderBestPatterns(corners);

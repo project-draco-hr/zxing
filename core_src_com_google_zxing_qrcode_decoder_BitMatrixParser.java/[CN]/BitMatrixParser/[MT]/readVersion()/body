@@ -29,5 +29,5 @@
   if (parsedVersion != null) {
     return parsedVersion;
   }
-  throw new ReaderException("Could not decode version");
+  throw ReaderException.getInstance();
 }

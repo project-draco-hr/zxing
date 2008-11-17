@@ -39,7 +39,7 @@
           decodeKanjiSegment(bits,result,count);
         }
  else {
-          throw new ReaderException("Unsupported mode indicator");
+          throw ReaderException.getInstance();
         }
       }
     }

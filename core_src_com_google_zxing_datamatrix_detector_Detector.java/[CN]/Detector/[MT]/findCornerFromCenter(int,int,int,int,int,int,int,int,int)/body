@@ -10,7 +10,7 @@
     }
     if (range == null) {
       if (lastRange == null) {
-        throw new ReaderException("Center of image not within barcode");
+        throw ReaderException.getInstance();
       }
       if (dj == 0) {
         int lastI=i - di;
@@ -39,5 +39,5 @@
     }
     lastRange=range;
   }
-  throw new ReaderException("Couldn't find an end to barcode");
+  throw ReaderException.getInstance();
 }

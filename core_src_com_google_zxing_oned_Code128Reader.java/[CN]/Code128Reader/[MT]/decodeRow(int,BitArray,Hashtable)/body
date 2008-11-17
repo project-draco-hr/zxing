@@ -13,7 +13,7 @@ case CODE_START_C:
 codeSet=CODE_CODE_C;
 break;
 default :
-throw new ReaderException("Illegal start code");
+throw ReaderException.getInstance();
 }
 boolean done=false;
 boolean isNextShifted=false;
@@ -46,7 +46,7 @@ switch (code) {
 case CODE_START_A:
 case CODE_START_B:
 case CODE_START_C:
-throw new ReaderException("Unexpected start code");
+throw ReaderException.getInstance();
 }
 switch (codeSet) {
 case CODE_CODE_A:
@@ -157,11 +157,11 @@ while (row.get(nextStart)) {
 nextStart++;
 }
 if (!row.isRange(nextStart,Math.min(row.getSize(),nextStart + (nextStart - lastStart) / 2),false)) {
-throw new ReaderException("Pattern not followed by whitespace");
+throw ReaderException.getInstance();
 }
 checksumTotal-=multiplier * lastCode;
 if (checksumTotal % 103 != lastCode) {
-throw new ReaderException("Checksum failed");
+throw ReaderException.getInstance();
 }
 int resultLength=result.length();
 if (resultLength > 0 && lastCharacterWasPrintable) {
@@ -174,7 +174,7 @@ result.delete(resultLength - 1,resultLength);
 }
 String resultString=result.toString();
 if (resultString.length() == 0) {
-throw new ReaderException("Empty barcode found; assuming a false positive");
+throw ReaderException.getInstance();
 }
 float left=(float)(startPatternInfo[1] + startPatternInfo[0]) / 2.0f;
 float right=(float)(nextStart + lastStart) / 2.0f;

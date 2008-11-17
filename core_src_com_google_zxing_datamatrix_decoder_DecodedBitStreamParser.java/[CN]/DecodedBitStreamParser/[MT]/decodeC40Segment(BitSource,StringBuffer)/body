@@ -49,13 +49,13 @@ if (upperShift) {
 }
 }
  else if (cValue == 27) {
-throw new ReaderException("Currently not supporting FNC1");
+throw ReaderException.getInstance();
 }
  else if (cValue == 30) {
 upperShift=true;
 }
  else {
-throw new ReaderException(cValue + " is not valid in the C40 Shift 2 set");
+throw ReaderException.getInstance();
 }
 shift=0;
 break;
@@ -70,7 +70,7 @@ result.append((char)(cValue + 96));
 shift=0;
 break;
 default :
-throw new ReaderException("Invalid shift value");
+throw ReaderException.getInstance();
 }
 }
 }

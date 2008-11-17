@@ -9,7 +9,7 @@
     size++;
   }
   if (size < 3) {
-    throw new ReaderException("Could not find three finder patterns");
+    throw ReaderException.getInstance();
   }
   if (size > 3) {
     possibleCenters.setSize(size);

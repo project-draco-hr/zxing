@@ -7,14 +7,14 @@
     borderWidth++;
   }
   if (borderWidth == minDimension) {
-    throw new ReaderException("No black pixels found along diagonal");
+    throw ReaderException.getInstance();
   }
   int moduleEnd=borderWidth;
   while (moduleEnd < minDimension && image.isBlack(moduleEnd,moduleEnd)) {
     moduleEnd++;
   }
   if (moduleEnd == minDimension) {
-    throw new ReaderException("No end to black pixels found along diagonal");
+    throw ReaderException.getInstance();
   }
   int moduleSize=moduleEnd - borderWidth;
   int rowEndOfSymbol=width - 1;
@@ -22,17 +22,17 @@
     rowEndOfSymbol--;
   }
   if (rowEndOfSymbol < 0) {
-    throw new ReaderException("Can't find end of rightmost black module");
+    throw ReaderException.getInstance();
   }
   rowEndOfSymbol++;
   if ((rowEndOfSymbol - borderWidth) % moduleSize != 0) {
-    throw new ReaderException("Bad module size / width: " + moduleSize + " / "+ (rowEndOfSymbol - borderWidth));
+    throw ReaderException.getInstance();
   }
   int dimension=(rowEndOfSymbol - borderWidth) / moduleSize;
   borderWidth+=moduleSize >> 1;
   int sampleDimension=borderWidth + (dimension - 1) * moduleSize;
   if (sampleDimension >= width || sampleDimension >= height) {
-    throw new ReaderException("Estimated pure image size is beyond image boundaries");
+    throw ReaderException.getInstance();
   }
   BitMatrix bits=new BitMatrix(dimension);
   for (int i=0; i < dimension; i++) {

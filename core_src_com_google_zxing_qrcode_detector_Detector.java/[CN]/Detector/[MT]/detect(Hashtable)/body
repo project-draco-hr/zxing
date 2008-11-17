@@ -10,7 +10,7 @@
   FinderPattern bottomLeft=info.getBottomLeft();
   float moduleSize=calculateModuleSize(topLeft,topRight,bottomLeft);
   if (moduleSize < 1.0f) {
-    throw new ReaderException("Module size too small");
+    throw ReaderException.getInstance();
   }
   int dimension=computeDimension(topLeft,topRight,bottomLeft,moduleSize);
   Version provisionalVersion=Version.getProvisionalVersionForDimension(dimension);
@@ -31,7 +31,7 @@
       }
     }
     if (alignmentPattern == null) {
-      throw new ReaderException("Could not find alignment pattern");
+      throw ReaderException.getInstance();
     }
   }
   BitMatrix bits=sampleGrid(image,topLeft,topRight,bottomLeft,alignmentPattern,dimension);

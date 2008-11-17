@@ -57,5 +57,5 @@
   if (!possibleCenters.isEmpty()) {
     return (AlignmentPattern)possibleCenters.elementAt(0);
   }
-  throw new ReaderException("Could not find alignment pattern");
+  throw ReaderException.getInstance();
 }

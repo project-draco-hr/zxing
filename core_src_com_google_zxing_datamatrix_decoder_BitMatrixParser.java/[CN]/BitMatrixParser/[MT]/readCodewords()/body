@@ -59,7 +59,7 @@
   }
  while ((row < numRows) || (column < numColumns));
   if (resultOffset != version.getTotalCodewords()) {
-    throw new ReaderException("Did not read all codewords");
+    throw ReaderException.getInstance();
   }
   return result;
 }

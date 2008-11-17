@@ -30,7 +30,7 @@
   }
   int whiteSpaceAfterEnd=nextStart - lastStart - lastPatternSize;
   if (nextStart != end && whiteSpaceAfterEnd / 2 < lastPatternSize) {
-    throw new ReaderException("Pattern not followed by whitespace");
+    throw ReaderException.getInstance();
   }
   if (usingCheckDigit) {
     int max=result.length() - 1;
@@ -39,7 +39,7 @@
       total+=ALPHABET_STRING.indexOf(result.charAt(i));
     }
     if (total % 43 != ALPHABET_STRING.indexOf(result.charAt(max))) {
-      throw new ReaderException("Checksum failed");
+      throw ReaderException.getInstance();
     }
     result.deleteCharAt(max);
   }
@@ -48,7 +48,7 @@
     resultString=decodeExtended(resultString);
   }
   if (resultString.length() == 0) {
-    throw new ReaderException("Empty barcode found; assuming a false positive");
+    throw ReaderException.getInstance();
   }
   float left=(float)(start[1] + start[0]) / 2.0f;
   float right=(float)(nextStart + lastStart) / 2.0f;

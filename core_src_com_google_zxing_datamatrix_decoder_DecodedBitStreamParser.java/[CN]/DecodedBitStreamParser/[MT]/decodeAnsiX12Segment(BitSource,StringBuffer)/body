@@ -30,7 +30,7 @@
         result.append((char)(cValue + 51));
       }
  else {
-        throw new ReaderException(cValue + " is not valid in the ANSI X12 set");
+        throw ReaderException.getInstance();
       }
     }
   }

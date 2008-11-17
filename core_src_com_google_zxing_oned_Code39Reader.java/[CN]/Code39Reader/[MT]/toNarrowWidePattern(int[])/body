@@ -28,7 +28,7 @@
         if (counters[i] > maxNarrowCounter) {
           wideCounters--;
           if ((counter << 1) >= totalWideCountersWidth) {
-            throw new ReaderException("Wide bars vary too much in width, rejecting");
+            throw ReaderException.getInstance();
           }
         }
       }
@@ -36,5 +36,5 @@
     }
   }
  while (wideCounters > 3);
-  throw new ReaderException("Can't find 3 wide bars/spaces out of 9");
+  throw ReaderException.getInstance();
 }

@@ -5,5 +5,5 @@
       return;
     }
   }
-  throw new ReaderException("Unable to determine first digit");
+  throw ReaderException.getInstance();
 }

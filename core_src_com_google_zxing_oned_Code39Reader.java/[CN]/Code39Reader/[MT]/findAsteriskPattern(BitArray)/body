@@ -43,5 +43,5 @@
       isWhite=!isWhite;
     }
   }
-  throw new ReaderException("Can't find pattern");
+  throw ReaderException.getInstance();
 }

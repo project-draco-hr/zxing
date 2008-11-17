@@ -15,6 +15,6 @@
     return bestMatch;
   }
  else {
-    throw new ReaderException("Could not match any digit in pattern");
+    throw ReaderException.getInstance();
   }
 }

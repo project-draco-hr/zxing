@@ -12,7 +12,7 @@ case '+':
           decodedChar=(char)(next + 32);
         }
  else {
-          throw new ReaderException("Invalid extended code 39 sequence: " + c + next);
+          throw ReaderException.getInstance();
         }
       break;
 case '$':
@@ -20,7 +20,7 @@ case '$':
       decodedChar=(char)(next - 64);
     }
  else {
-      throw new ReaderException("Invalid extended code 39 sequence: " + c + next);
+      throw ReaderException.getInstance();
     }
   break;
 case '%':
@@ -31,7 +31,7 @@ if (next >= 'A' && next <= 'E') {
   decodedChar=(char)(next - 11);
 }
  else {
-  throw new ReaderException("Invalid extended code 39 sequence: " + c + next);
+  throw ReaderException.getInstance();
 }
 break;
 case '/':
@@ -42,7 +42,7 @@ decodedChar=(char)(next - 32);
 decodedChar=':';
 }
  else {
-throw new ReaderException("Invalid extended sequence: " + c + next);
+throw ReaderException.getInstance();
 }
 break;
 }

@@ -44,5 +44,5 @@
       }
     }
   }
-  throw new ReaderException("No barcode found");
+  throw ReaderException.getInstance();
 }
