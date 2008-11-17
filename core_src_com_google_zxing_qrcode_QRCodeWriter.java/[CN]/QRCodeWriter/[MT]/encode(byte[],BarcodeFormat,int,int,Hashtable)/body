@@ -1,0 +1,19 @@
+{
+  if (contents == null || contents.length == 0) {
+    throw new IllegalArgumentException("Found empty contents");
+  }
+  if (format != BarcodeFormat.QR_CODE) {
+    throw new IllegalArgumentException("Can only encode QR_CODE, but got " + format);
+  }
+  if (width < 0 || height < 0) {
+    throw new IllegalArgumentException("Requested dimensions are too small: " + width + "x"+ height);
+  }
+  int errorCorrectionLevel=QRCode.EC_LEVEL_L;
+  QRCode code=new QRCode();
+  if (Encoder.Encode(new ByteArray(contents),errorCorrectionLevel,code)) {
+    return renderResult(code,width,height);
+  }
+ else {
+    throw new IllegalStateException("Could not generate a QR Code");
+  }
+}

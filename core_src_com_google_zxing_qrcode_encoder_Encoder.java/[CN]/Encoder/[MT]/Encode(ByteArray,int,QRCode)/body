@@ -21,7 +21,7 @@
   }
   BitVector final_bits=new BitVector();
   InterleaveWithECBytes(header_and_data_bits,qr_code.num_total_bytes(),qr_code.num_data_bytes(),qr_code.num_rs_blocks(),final_bits);
-  Matrix matrix=new Matrix(qr_code.matrix_width(),qr_code.matrix_width());
+  ByteMatrix matrix=new ByteMatrix(qr_code.matrix_width(),qr_code.matrix_width());
   qr_code.set_mask_pattern(ChooseMaskPattern(final_bits,qr_code.ec_level(),qr_code.version(),matrix));
   if (qr_code.mask_pattern() == -1) {
     return false;

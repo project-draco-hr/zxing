@@ -1,0 +1,8 @@
+{
+  if (format == BarcodeFormat.QR_CODE) {
+    return new QRCodeWriter().encode(contents,format,width,height,hints);
+  }
+ else {
+    throw new IllegalArgumentException("No encoder available for format " + format);
+  }
+}
