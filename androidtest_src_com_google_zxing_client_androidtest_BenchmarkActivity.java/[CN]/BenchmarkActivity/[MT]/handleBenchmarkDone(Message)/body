@@ -1,5 +1,5 @@
 {
-  Vector<BenchmarkItem> items=(Vector<BenchmarkItem>)message.obj;
+  List<BenchmarkItem> items=(List<BenchmarkItem>)message.obj;
   int count=0;
   for (int x=0; x < items.size(); x++) {
     BenchmarkItem item=items.get(x);
