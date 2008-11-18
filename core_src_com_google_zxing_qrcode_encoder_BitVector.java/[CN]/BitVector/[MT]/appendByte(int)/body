@@ -1,9 +1,9 @@
 {
-  if (bytePosition >= array.length) {
+  if ((sizeInBits >> 3) == array.length) {
     byte[] newArray=new byte[array.length * 2];
     System.arraycopy(array,0,newArray,0,array.length);
     array=newArray;
   }
-  array[bytePosition]=(byte)value;
-  bytePosition++;
+  array[sizeInBits >> 3]=(byte)value;
+  sizeInBits+=8;
 }

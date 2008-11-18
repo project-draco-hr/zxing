@@ -1,0 +1,20 @@
+{
+  BitVector v=new BitVector();
+  v.AppendBits(0xdead,16);
+  assertEquals(1,v.at(0));
+  assertEquals(1,v.at(1));
+  assertEquals(0,v.at(2));
+  assertEquals(1,v.at(3));
+  assertEquals(1,v.at(4));
+  assertEquals(1,v.at(5));
+  assertEquals(1,v.at(6));
+  assertEquals(0,v.at(7));
+  assertEquals(1,v.at(8));
+  assertEquals(0,v.at(9));
+  assertEquals(1,v.at(10));
+  assertEquals(0,v.at(11));
+  assertEquals(1,v.at(12));
+  assertEquals(1,v.at(13));
+  assertEquals(0,v.at(14));
+  assertEquals(1,v.at(15));
+}

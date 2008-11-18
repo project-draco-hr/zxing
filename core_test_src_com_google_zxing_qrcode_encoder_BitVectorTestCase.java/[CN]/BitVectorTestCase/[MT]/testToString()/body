@@ -1,0 +1,5 @@
+{
+  BitVector v=new BitVector();
+  v.AppendBits(0xdead,16);
+  assertEquals("1101111010101101",v.toString());
+}

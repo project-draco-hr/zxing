@@ -1,0 +1,10 @@
+{
+  BitVector v=new BitVector();
+  assertEquals(0,v.num_bytes());
+  v.AppendBit(0);
+  assertEquals(0,v.num_bytes());
+  v.AppendBits(0,7);
+  assertEquals(1,v.num_bytes());
+  v.AppendBits(0,8);
+  assertEquals(2,v.num_bytes());
+}

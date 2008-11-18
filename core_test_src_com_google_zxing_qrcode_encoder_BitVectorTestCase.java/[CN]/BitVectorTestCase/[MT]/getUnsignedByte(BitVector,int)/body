@@ -1,0 +1,3 @@
+{
+  return v.getArray()[index] & 0xff;
+}

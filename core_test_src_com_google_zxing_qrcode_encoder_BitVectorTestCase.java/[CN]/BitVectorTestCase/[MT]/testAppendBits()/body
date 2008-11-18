@@ -1,0 +1,21 @@
+{
+{
+    BitVector v=new BitVector();
+    v.AppendBits(0x1,1);
+    assertEquals(1,v.size());
+    assertEquals(0x80,getUnsignedByte(v,0));
+  }
+{
+    BitVector v=new BitVector();
+    v.AppendBits(0xff,8);
+    assertEquals(8,v.size());
+    assertEquals(0xff,getUnsignedByte(v,0));
+  }
+{
+    BitVector v=new BitVector();
+    v.AppendBits(0xff7,12);
+    assertEquals(12,v.size());
+    assertEquals(0xff,getUnsignedByte(v,0));
+    assertEquals(0x70,getUnsignedByte(v,1));
+  }
+}

@@ -1,5 +1,4 @@
 {
-  sizeInBits=DEFAULT_SIZE_IN_BITS;
-  bytePosition=0;
-  array=new byte[DEFAULT_SIZE_IN_BITS / 8];
+  sizeInBits=0;
+  array=new byte[DEFAULT_SIZE_IN_BYTES];
 }

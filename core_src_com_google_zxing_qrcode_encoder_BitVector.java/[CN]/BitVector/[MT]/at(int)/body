@@ -1,6 +1,6 @@
 {
   Debug.DCHECK_LE(0,index);
   Debug.DCHECK_LT(index,sizeInBits);
-  final int value=array[index / 8];
-  return (value >> (7 - (index % 8))) & 1;
+  final int value=array[index >> 3] & 0xff;
+  return (value >> (7 - (index & 0x7))) & 1;
 }

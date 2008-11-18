@@ -37,6 +37,6 @@
   if (num_total_bytes == result.num_bytes()) {
     return true;
   }
-  Debug.LOG_ERROR("Interleaving error: " + num_total_bytes + " and "+ result.num_bytes()+ "differ.");
+  Debug.LOG_ERROR("Interleaving error: " + num_total_bytes + " and "+ result.num_bytes()+ " differ.");
   return false;
 }
