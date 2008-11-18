@@ -1,8 +1,14 @@
 {
   Intent intent=new Intent(Contacts.Intents.Insert.ACTION,Contacts.People.CONTENT_URI);
   putExtra(intent,Contacts.Intents.Insert.NAME,names);
-  putExtra(intent,Contacts.Intents.Insert.PHONE,phoneNumbers);
-  putExtra(intent,Contacts.Intents.Insert.EMAIL,emails);
+  int phoneCount=Math.min((phoneNumbers != null) ? phoneNumbers.length : 0,PHONE_INTENTS.length);
+  for (int x=0; x < phoneCount; x++) {
+    putExtra(intent,PHONE_INTENTS[x],phoneNumbers[x]);
+  }
+  int emailCount=Math.min((emails != null) ? emails.length : 0,EMAIL_INTENTS.length);
+  for (int x=0; x < emailCount; x++) {
+    putExtra(intent,EMAIL_INTENTS[x],emails[x]);
+  }
   putExtra(intent,Contacts.Intents.Insert.NOTES,note);
   putExtra(intent,Contacts.Intents.Insert.POSTAL,address);
   putExtra(intent,Contacts.Intents.Insert.COMPANY,org);
