@@ -1,0 +1,10 @@
+{
+  assertTrue(Encoder.IsValidKanji(0x82,0xa0));
+  assertTrue(Encoder.IsValidKanji(0x93,0xfa));
+  assertTrue(Encoder.IsValidKanji(0x8a,0xbf));
+  assertTrue(Encoder.IsValidKanji(0xe7,0x4e));
+  assertTrue(Encoder.IsValidKanji(0xea,0xa2));
+  assertFalse(Encoder.IsValidKanji('0','1'));
+  assertFalse(Encoder.IsValidKanji(0x82,0x7f));
+  assertFalse(Encoder.IsValidKanji(0xa0,0xa0));
+}

@@ -1,0 +1,6 @@
+{
+  assertEquals(0,MatrixUtil.FindMSBSet(0));
+  assertEquals(1,MatrixUtil.FindMSBSet(1));
+  assertEquals(8,MatrixUtil.FindMSBSet(0x80));
+  assertEquals(32,MatrixUtil.FindMSBSet(0x80000000));
+}

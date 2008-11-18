@@ -1,0 +1,7 @@
+{
+  assertFalse(QRCode.IsValidMode(QRCode.MODE_UNDEFINED));
+  assertTrue(QRCode.IsValidMode(QRCode.MODE_NUMERIC));
+  assertTrue(QRCode.IsValidMode(QRCode.MODE_ALPHANUMERIC));
+  assertTrue(QRCode.IsValidMode(QRCode.MODE_8BIT_BYTE));
+  assertFalse(QRCode.IsValidMode(QRCode.NUM_MODES));
+}

@@ -1,0 +1,6 @@
+{
+  assertFalse(QRCode.IsValidVersion(0));
+  assertTrue(QRCode.IsValidVersion(1));
+  assertTrue(QRCode.IsValidVersion(40));
+  assertFalse(QRCode.IsValidVersion(0));
+}

@@ -1,0 +1,29 @@
+{
+{
+    QRCode qr_code=new QRCode();
+    String expected="<<\n" + " mode: UNDEFINED\n" + " ec_level: UNDEFINED\n"+ " version: -1\n"+ " matrix_width: -1\n"+ " mask_pattern: -1\n"+ " num_total_bytes_: -1\n"+ " num_data_bytes: -1\n"+ " num_ec_bytes: -1\n"+ " num_rs_blocks: -1\n"+ " matrix: NULL\n"+ ">>\n";
+    assertEquals(expected,qr_code.toString());
+  }
+{
+    String expected="<<\n" + " mode: 8BIT_BYTE\n" + " ec_level: H\n"+ " version: 1\n"+ " matrix_width: 21\n"+ " mask_pattern: 3\n"+ " num_total_bytes_: 26\n"+ " num_data_bytes: 9\n"+ " num_ec_bytes: 17\n"+ " num_rs_blocks: 1\n"+ " matrix:\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ " 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ " 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ " 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ " 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ " 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ " 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ " 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ " 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ " 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ " 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\n"+ " 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\n"+ ">>\n";
+    QRCode qr_code=new QRCode();
+    qr_code.set_mode(QRCode.MODE_8BIT_BYTE);
+    qr_code.set_ec_level(QRCode.EC_LEVEL_H);
+    qr_code.set_version(1);
+    qr_code.set_matrix_width(21);
+    qr_code.set_mask_pattern(3);
+    qr_code.set_num_total_bytes(26);
+    qr_code.set_num_data_bytes(9);
+    qr_code.set_num_ec_bytes(17);
+    qr_code.set_num_rs_blocks(1);
+    ByteMatrix matrix=new ByteMatrix(21,21);
+    for (int y=0; y < 21; ++y) {
+      for (int x=0; x < 21; ++x) {
+        matrix.set(y,x,(y + x) % 2);
+      }
+    }
+    qr_code.set_matrix(matrix);
+    assertTrue(qr_code.IsValid());
+    assertEquals(expected,qr_code.toString());
+  }
+}

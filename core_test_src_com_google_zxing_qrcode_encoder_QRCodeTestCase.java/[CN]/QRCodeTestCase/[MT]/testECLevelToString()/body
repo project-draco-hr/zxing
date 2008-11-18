@@ -1,0 +1,8 @@
+{
+  assertEquals("UNDEFINED",QRCode.ECLevelToString(QRCode.EC_LEVEL_UNDEFINED));
+  assertEquals("L",QRCode.ECLevelToString(QRCode.EC_LEVEL_L));
+  assertEquals("M",QRCode.ECLevelToString(QRCode.EC_LEVEL_M));
+  assertEquals("Q",QRCode.ECLevelToString(QRCode.EC_LEVEL_Q));
+  assertEquals("H",QRCode.ECLevelToString(QRCode.EC_LEVEL_H));
+  assertEquals("UNKNOWN",QRCode.ECLevelToString(QRCode.NUM_EC_LEVELS));
+}

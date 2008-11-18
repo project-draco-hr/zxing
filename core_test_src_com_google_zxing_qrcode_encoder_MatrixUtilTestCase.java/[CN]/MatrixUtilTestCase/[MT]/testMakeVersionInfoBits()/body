@@ -1,0 +1,5 @@
+{
+  BitVector bits=new BitVector();
+  assertTrue(MatrixUtil.MakeVersionInfoBits(7,bits));
+  assertEquals("000111110010010100",bits.toString());
+}

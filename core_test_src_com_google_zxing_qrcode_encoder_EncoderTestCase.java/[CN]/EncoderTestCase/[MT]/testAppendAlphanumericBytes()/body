@@ -1,0 +1,26 @@
+{
+{
+    BitVector bits=new BitVector();
+    assertTrue(Encoder.AppendAlphanumericBytes(new ByteArray("A"),bits));
+    assertEquals("001010",bits.toString());
+  }
+{
+    BitVector bits=new BitVector();
+    assertTrue(Encoder.AppendAlphanumericBytes(new ByteArray("AB"),bits));
+    assertEquals("00111001101",bits.toString());
+  }
+{
+    BitVector bits=new BitVector();
+    assertTrue(Encoder.AppendAlphanumericBytes(new ByteArray("ABC"),bits));
+    assertEquals("00111001101" + "001100",bits.toString());
+  }
+{
+    BitVector bits=new BitVector();
+    assertTrue(Encoder.AppendAlphanumericBytes(new ByteArray(""),bits));
+    assertEquals("",bits.toString());
+  }
+{
+    BitVector bits=new BitVector();
+    assertFalse(Encoder.AppendAlphanumericBytes(new ByteArray("abc"),bits));
+  }
+}

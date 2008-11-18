@@ -1,0 +1,28 @@
+{
+  int[] num_data_bytes=new int[0];
+  int[] num_ec_bytes=new int[0];
+  Encoder.GetNumDataBytesAndNumECBytesForBlockID(26,9,1,0,num_data_bytes,num_ec_bytes);
+  assertEquals(9,num_data_bytes[0]);
+  assertEquals(17,num_ec_bytes[0]);
+  Encoder.GetNumDataBytesAndNumECBytesForBlockID(70,26,2,0,num_data_bytes,num_ec_bytes);
+  assertEquals(13,num_data_bytes[0]);
+  assertEquals(22,num_ec_bytes[0]);
+  Encoder.GetNumDataBytesAndNumECBytesForBlockID(70,26,2,1,num_data_bytes,num_ec_bytes);
+  assertEquals(13,num_data_bytes[0]);
+  assertEquals(22,num_ec_bytes[0]);
+  Encoder.GetNumDataBytesAndNumECBytesForBlockID(196,66,5,0,num_data_bytes,num_ec_bytes);
+  assertEquals(13,num_data_bytes[0]);
+  assertEquals(26,num_ec_bytes[0]);
+  Encoder.GetNumDataBytesAndNumECBytesForBlockID(196,66,5,4,num_data_bytes,num_ec_bytes);
+  assertEquals(14,num_data_bytes[0]);
+  assertEquals(26,num_ec_bytes[0]);
+  Encoder.GetNumDataBytesAndNumECBytesForBlockID(3706,1276,81,0,num_data_bytes,num_ec_bytes);
+  assertEquals(15,num_data_bytes[0]);
+  assertEquals(30,num_ec_bytes[0]);
+  Encoder.GetNumDataBytesAndNumECBytesForBlockID(3706,1276,81,20,num_data_bytes,num_ec_bytes);
+  assertEquals(16,num_data_bytes[0]);
+  assertEquals(30,num_ec_bytes[0]);
+  Encoder.GetNumDataBytesAndNumECBytesForBlockID(3706,1276,81,80,num_data_bytes,num_ec_bytes);
+  assertEquals(16,num_data_bytes[0]);
+  assertEquals(30,num_ec_bytes[0]);
+}

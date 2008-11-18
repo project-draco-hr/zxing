@@ -1,0 +1,2 @@
+int mask_pattern
+int[][] expected

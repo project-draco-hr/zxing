@@ -1,0 +1,23 @@
+{
+{
+    ByteMatrix matrix=new ByteMatrix(1,1);
+    matrix.set(0,0,0);
+    assertEquals(100,MaskUtil.ApplyMaskPenaltyRule4(matrix));
+  }
+{
+    ByteMatrix matrix=new ByteMatrix(1,2);
+    matrix.set(0,0,0);
+    matrix.set(0,0,1);
+    assertEquals(0,MaskUtil.ApplyMaskPenaltyRule4(matrix));
+  }
+{
+    ByteMatrix matrix=new ByteMatrix(1,6);
+    matrix.set(0,0,0);
+    matrix.set(0,1,1);
+    matrix.set(0,2,1);
+    matrix.set(0,3,1);
+    matrix.set(0,4,1);
+    matrix.set(0,5,0);
+    assertEquals(30,MaskUtil.ApplyMaskPenaltyRule4(matrix));
+  }
+}

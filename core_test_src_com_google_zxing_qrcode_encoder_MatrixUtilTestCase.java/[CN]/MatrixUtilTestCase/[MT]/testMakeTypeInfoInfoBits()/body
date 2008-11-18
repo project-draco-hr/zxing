@@ -1,0 +1,5 @@
+{
+  BitVector bits=new BitVector();
+  assertTrue(MatrixUtil.MakeTypeInfoBits(QRCode.EC_LEVEL_M,5,bits));
+  assertEquals("100000011001110",bits.toString());
+}

@@ -1,0 +1,20 @@
+{
+  for (int i=0; i < 10; ++i) {
+    assertEquals(i,Encoder.GetAlphanumericCode('0' + i));
+  }
+  for (int i=10; i < 36; ++i) {
+    assertEquals(i,Encoder.GetAlphanumericCode('A' + i - 10));
+  }
+  assertEquals(36,Encoder.GetAlphanumericCode(' '));
+  assertEquals(37,Encoder.GetAlphanumericCode('$'));
+  assertEquals(38,Encoder.GetAlphanumericCode('%'));
+  assertEquals(39,Encoder.GetAlphanumericCode('*'));
+  assertEquals(40,Encoder.GetAlphanumericCode('+'));
+  assertEquals(41,Encoder.GetAlphanumericCode('-'));
+  assertEquals(42,Encoder.GetAlphanumericCode('.'));
+  assertEquals(43,Encoder.GetAlphanumericCode('/'));
+  assertEquals(44,Encoder.GetAlphanumericCode(':'));
+  assertEquals(-1,Encoder.GetAlphanumericCode('a'));
+  assertEquals(-1,Encoder.GetAlphanumericCode('#'));
+  assertEquals(-1,Encoder.GetAlphanumericCode('\0'));
+}

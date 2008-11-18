@@ -1,0 +1,6 @@
+{
+  assertFalse(QRCode.IsValidMatrixWidth(20));
+  assertTrue(QRCode.IsValidMatrixWidth(21));
+  assertTrue(QRCode.IsValidMatrixWidth(177));
+  assertFalse(QRCode.IsValidMatrixWidth(178));
+}

@@ -1,0 +1,11 @@
+{
+{
+    BitVector bits=new BitVector();
+    byte[] dat1={(byte)0x93,0x5f};
+    assertTrue(Encoder.AppendKanjiBytes(new ByteArray(dat1),bits));
+    assertEquals("0110110011111",bits.toString());
+    byte[] dat2={(byte)0xe4,(byte)0xaa};
+    assertTrue(Encoder.AppendKanjiBytes(new ByteArray(dat2),bits));
+    assertEquals("0110110011111" + "1101010101010",bits.toString());
+  }
+}
