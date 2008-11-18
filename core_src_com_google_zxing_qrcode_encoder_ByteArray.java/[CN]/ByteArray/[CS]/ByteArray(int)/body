@@ -1,0 +1,4 @@
+{
+  bytes=new byte[size];
+  this.size=size;
+}

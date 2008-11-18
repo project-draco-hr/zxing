@@ -9,10 +9,9 @@
     int[] num_ec_bytes_in_block=new int[1];
     GetNumDataBytesAndNumECBytesForBlockID(num_total_bytes,num_data_bytes,num_rs_blocks,i,num_data_bytes_in_block,num_ec_bytes_in_block);
     ByteArray data_bytes=new ByteArray();
-    ByteArray ec_bytes=new ByteArray();
+    data_bytes.set(bits.getArray(),data_bytes_offset,num_data_bytes_in_block[0]);
+    ByteArray ec_bytes=GenerateECBytes(data_bytes,num_ec_bytes_in_block[0]);
     blocks.addElement(new BlockPair(data_bytes,ec_bytes));
-    data_bytes.set(bits,data_bytes_offset,num_data_bytes_in_block[0]);
-    GenerateECBytes(data_bytes,num_ec_bytes_in_block[0],ec_bytes);
     max_num_data_bytes=Math.max(max_num_data_bytes,data_bytes.size());
     max_num_ec_bytes=Math.max(max_num_ec_bytes,ec_bytes.size());
     data_bytes_offset+=num_data_bytes_in_block[0];
