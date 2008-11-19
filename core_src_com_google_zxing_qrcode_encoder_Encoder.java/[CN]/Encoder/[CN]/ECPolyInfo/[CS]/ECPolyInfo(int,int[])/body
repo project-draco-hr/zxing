@@ -1,4 +1,0 @@
-{
-  this.ec_length=ec_length;
-  this.coeffs=coefficients;
-}
