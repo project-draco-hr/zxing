@@ -1,7 +1,7 @@
 {
 {
     QRCode qr_code=new QRCode();
-    String expected="<<\n" + " mode: UNDEFINED\n" + " ec_level: UNDEFINED\n"+ " version: -1\n"+ " matrix_width: -1\n"+ " mask_pattern: -1\n"+ " num_total_bytes_: -1\n"+ " num_data_bytes: -1\n"+ " num_ec_bytes: -1\n"+ " num_rs_blocks: -1\n"+ " matrix: NULL\n"+ ">>\n";
+    String expected="<<\n" + " mode: UNDEFINED\n" + " ec_level: UNDEFINED\n"+ " version: -1\n"+ " matrix_width: -1\n"+ " mask_pattern: -1\n"+ " num_total_bytes_: -1\n"+ " num_data_bytes: -1\n"+ " num_ec_bytes: -1\n"+ " num_rs_blocks: -1\n"+ " matrix: null\n"+ ">>\n";
     assertEquals(expected,qr_code.toString());
   }
 {

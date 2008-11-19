@@ -3,8 +3,6 @@
   ByteMatrix matrix=new ByteMatrix(21,21);
   MatrixUtil.ClearMatrix(matrix);
   boolean info_okay=MatrixUtil.EmbedTypeInfo(QRCode.EC_LEVEL_M,5,matrix);
-  System.out.println(info_okay + "\n" + matrix.toString());
   assertTrue(info_okay);
   assertEquals(expected,matrix.toString());
-  assertFalse(true);
 }
