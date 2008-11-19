@@ -1,5 +1,4 @@
-byte[] contents
+String contents
 BarcodeFormat format
 int width
 int height
-Hashtable hints
