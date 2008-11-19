@@ -3,5 +3,4 @@
   if (!encodeContents(intent)) {
     throw new IllegalArgumentException("No valid data to encode.");
   }
-  mUserAgent=mActivity.getString(R.string.zxing_user_agent);
 }
