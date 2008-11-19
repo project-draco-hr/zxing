@@ -1,8 +1,11 @@
 {
   int num_dark_cells=0;
-  for (int y=0; y < matrix.height(); ++y) {
-    for (int x=0; x < matrix.width(); ++x) {
-      if (matrix.get(y,x) == 1) {
+  byte[][] array=matrix.getArray();
+  int width=matrix.width();
+  int height=matrix.height();
+  for (int y=0; y < height; ++y) {
+    for (int x=0; x < width; ++x) {
+      if (array[y][x] == 1) {
         num_dark_cells+=1;
       }
     }
