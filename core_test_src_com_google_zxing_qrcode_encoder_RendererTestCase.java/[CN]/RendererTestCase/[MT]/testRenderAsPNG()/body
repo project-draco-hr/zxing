@@ -1,7 +1,0 @@
-{
-  QRCode qr_code=new QRCode();
-  assertTrue(Encoder.Encode(new ByteArray("http://www.google.com/"),QRCode.EC_LEVEL_M,qr_code));
-  String result;
-  assertTrue(Renderer.RenderAsPNG(qr_code,3,result));
-  assertFalse(result.length() == 0);
-}

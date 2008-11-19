@@ -1,24 +1,24 @@
 {
 {
-    final char[] data_bytes={32,65,205,69,41,220,46,128,236};
+    final byte[] data_bytes={32,65,(byte)205,69,41,(byte)220,46,(byte)128,(byte)236};
     BitVector in=new BitVector();
-    for (    char data_byte : data_bytes) {
+    for (    byte data_byte : data_bytes) {
       in.AppendBits(data_byte,8);
     }
     BitVector out=new BitVector();
     assertTrue(Encoder.InterleaveWithECBytes(in,26,9,1,out));
-    final char[] expected={32,65,205,69,41,220,46,128,236,42,159,74,221,244,169,239,150,138,70,237,85,224,96,74,219,61};
-    assertEquals(new String(expected),out.toString());
+    final byte[] expected={32,65,(byte)205,69,41,(byte)220,46,(byte)128,(byte)236,42,(byte)159,74,(byte)221,(byte)244,(byte)169,(byte)239,(byte)150,(byte)138,70,(byte)237,85,(byte)224,96,74,(byte)219,61};
+    assertTrue(Arrays.equals(expected,out.getArray()));
   }
 {
-    final char[] data_bytes={67,70,22,38,54,70,86,102,118,134,150,166,182,198,214,230,247,7,23,39,55,71,87,103,119,135,151,166,22,38,54,70,86,102,118,134,150,166,182,198,214,230,247,7,23,39,55,71,87,103,119,135,151,160,236,17,236,17,236,17,236,17};
+    final byte[] data_bytes={67,70,22,38,54,70,86,102,118,(byte)134,(byte)150,(byte)166,(byte)182,(byte)198,(byte)214,(byte)230,(byte)247,7,23,39,55,71,87,103,119,(byte)135,(byte)151,(byte)166,22,38,54,70,86,102,118,(byte)134,(byte)150,(byte)166,(byte)182,(byte)198,(byte)214,(byte)230,(byte)247,7,23,39,55,71,87,103,119,(byte)135,(byte)151,(byte)160,(byte)236,17,(byte)236,17,(byte)236,17,(byte)236,17};
     BitVector in=new BitVector();
-    for (    char data_byte : data_bytes) {
+    for (    byte data_byte : data_bytes) {
       in.AppendBits(data_byte,8);
     }
     BitVector out=new BitVector();
     assertTrue(Encoder.InterleaveWithECBytes(in,134,62,4,out));
-    final char[] expected={67,230,54,55,70,247,70,71,22,7,86,87,38,23,102,103,54,39,118,119,70,55,134,135,86,71,150,151,102,87,166,160,118,103,182,236,134,119,198,17,150,135,214,236,166,151,230,17,182,166,247,236,198,22,7,17,214,38,23,236,39,17,175,155,245,236,80,146,56,74,155,165,133,142,64,183,132,13,178,54,132,108,45,113,53,50,214,98,193,152,233,147,50,71,65,190,82,51,209,199,171,54,12,112,57,113,155,117,211,164,117,30,158,225,31,190,242,38,140,61,179,154,214,138,147,87,27,96,77,47,187,49,156,214};
-    assertEquals(new String(expected),out.toString());
+    final byte[] expected={67,(byte)230,54,55,70,(byte)247,70,71,22,7,86,87,38,23,102,103,54,39,118,119,70,55,(byte)134,(byte)135,86,71,(byte)150,(byte)151,102,87,(byte)166,(byte)160,118,103,(byte)182,(byte)236,(byte)134,119,(byte)198,17,(byte)150,(byte)135,(byte)214,(byte)236,(byte)166,(byte)151,(byte)230,17,(byte)182,(byte)166,(byte)247,(byte)236,(byte)198,22,7,17,(byte)214,38,23,(byte)236,39,17,(byte)175,(byte)155,(byte)245,(byte)236,80,(byte)146,56,74,(byte)155,(byte)165,(byte)133,(byte)142,64,(byte)183,(byte)132,13,(byte)178,54,(byte)132,108,45,113,53,50,(byte)214,98,(byte)193,(byte)152,(byte)233,(byte)147,50,71,65,(byte)190,82,51,(byte)209,(byte)199,(byte)171,54,12,112,57,113,(byte)155,117,(byte)211,(byte)164,117,30,(byte)158,(byte)225,31,(byte)190,(byte)242,38,(byte)140,61,(byte)179,(byte)154,(byte)214,(byte)138,(byte)147,87,27,96,77,47,(byte)187,49,(byte)156,(byte)214};
+    assertTrue(Arrays.equals(expected,out.getArray()));
   }
 }

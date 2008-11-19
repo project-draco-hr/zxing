@@ -1,6 +1,6 @@
 {
-  int[] num_data_bytes=new int[0];
-  int[] num_ec_bytes=new int[0];
+  int[] num_data_bytes=new int[1];
+  int[] num_ec_bytes=new int[1];
   Encoder.GetNumDataBytesAndNumECBytesForBlockID(26,9,1,0,num_data_bytes,num_ec_bytes);
   assertEquals(9,num_data_bytes[0]);
   assertEquals(17,num_ec_bytes[0]);

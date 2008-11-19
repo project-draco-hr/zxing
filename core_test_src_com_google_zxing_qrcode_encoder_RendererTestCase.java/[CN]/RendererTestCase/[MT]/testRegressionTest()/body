@@ -1,6 +1,0 @@
-{
-  assertTrue(Compare("http://www.google.com/",QRCode.EC_LEVEL_M,3,"renderer-test-01.png"));
-  assertTrue(Compare("12345",QRCode.EC_LEVEL_L,2,"renderer-test-02.png"));
-  byte[] dat={(byte)0x83,0x65,(byte)0x83,0x58,(byte)0x83,0x67};
-  assertTrue(Compare(new String(dat),QRCode.EC_LEVEL_H,5,"renderer-test-03.png"));
-}

@@ -1,8 +1,0 @@
-{
-  String result;
-  assertTrue(Renderer.RenderAsPNGFromData(bytes,ec_level,cell_size,result));
-  String golden_file_name="test/data/qrcode_encode/" + golden_base_name;
-  String golden;
-  File.ReadFileToStringOrDie(golden_file_name,golden);
-  return golden == result;
-}
