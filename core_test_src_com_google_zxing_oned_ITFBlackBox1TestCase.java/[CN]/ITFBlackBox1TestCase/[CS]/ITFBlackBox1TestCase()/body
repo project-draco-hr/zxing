@@ -1,0 +1,4 @@
+{
+  super(new File("test/data/blackbox/itf-1"),new MultiFormatReader(),BarcodeFormat.ITF);
+  addTest(6,6,0.0f);
+}
