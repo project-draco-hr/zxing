@@ -13,6 +13,5 @@
       }
     }
   }
-  System.out.println("\tApplyMaskPenaltyRule3: " + penalty);
   return penalty;
 }

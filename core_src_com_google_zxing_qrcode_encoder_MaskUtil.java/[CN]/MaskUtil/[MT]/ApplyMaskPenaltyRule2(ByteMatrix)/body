@@ -11,6 +11,5 @@
       }
     }
   }
-  System.out.println("\tApplyMaskPenaltyRule2: " + penalty);
   return penalty;
 }

@@ -1,5 +1,4 @@
 {
   final int penalty=(ApplyMaskPenaltyRule1Internal(matrix,true) + ApplyMaskPenaltyRule1Internal(matrix,false));
-  System.out.println("\tApplyMaskPenaltyRule1: " + penalty);
   return penalty;
 }
