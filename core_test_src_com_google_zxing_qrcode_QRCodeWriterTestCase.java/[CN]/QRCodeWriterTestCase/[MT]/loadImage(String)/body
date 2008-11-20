@@ -1,0 +1,10 @@
+{
+  try {
+    File file=new File(BASE_IMAGE_PATH + fileName);
+    assertTrue("Please run from the 'core' directory",file.exists());
+    return ImageIO.read(file);
+  }
+ catch (  IOException e) {
+    return null;
+  }
+}
