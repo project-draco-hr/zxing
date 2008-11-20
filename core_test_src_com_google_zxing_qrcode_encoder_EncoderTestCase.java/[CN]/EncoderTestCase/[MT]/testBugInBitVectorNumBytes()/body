@@ -1,0 +1,9 @@
+{
+  final int arraySize=3518;
+  byte[] data_bytes=new byte[arraySize];
+  for (int x=0; x < arraySize; x++) {
+    data_bytes[x]='0';
+  }
+  QRCode qr_code=new QRCode();
+  Encoder.Encode(new ByteArray(data_bytes),QRCode.EC_LEVEL_L,qr_code);
+}
