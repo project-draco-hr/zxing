@@ -1,5 +1,5 @@
 {
-  super(new File("test/data/blackbox/itf14-1"),new MultiFormatReader(),BarcodeFormat.ITF_14);
-  addTest(0,0,0.0f);
-  addTest(0,0,180.0f);
+  super(new File("test/data/blackbox/itf14-1"),new ITF14Reader(),BarcodeFormat.ITF_14);
+  addTest(2,2,0.0f);
+  addTest(2,2,180.0f);
 }
