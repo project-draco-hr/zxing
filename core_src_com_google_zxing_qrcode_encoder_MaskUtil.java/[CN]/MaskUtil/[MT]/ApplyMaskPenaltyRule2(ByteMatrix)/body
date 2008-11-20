@@ -11,6 +11,6 @@
       }
     }
   }
-  Debug.LOG_INFO("\tApplyMaskPenaltyRule2: " + penalty);
+  System.out.println("\tApplyMaskPenaltyRule2: " + penalty);
   return penalty;
 }

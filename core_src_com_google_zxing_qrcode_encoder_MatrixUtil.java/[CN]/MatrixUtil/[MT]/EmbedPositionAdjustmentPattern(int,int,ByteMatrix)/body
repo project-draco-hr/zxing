@@ -1,9 +1,12 @@
 {
-  Debug.DCHECK_EQ(5,kPositionAdjustmentPattern[0].length);
-  Debug.DCHECK_EQ(5,kPositionAdjustmentPattern.length);
+  if (kPositionAdjustmentPattern[0].length != 5 || kPositionAdjustmentPattern.length != 5) {
+    throw new WriterException("Bad position adjustment");
+  }
   for (int y=0; y < 5; ++y) {
     for (int x=0; x < 5; ++x) {
-      Debug.DCHECK(IsEmpty(matrix.get(y_start + y,x_start + x)));
+      if (!IsEmpty(matrix.get(y_start + y,x_start + x))) {
+        throw new WriterException();
+      }
       matrix.set(y_start + y,x_start + x,kPositionAdjustmentPattern[y][x]);
     }
   }

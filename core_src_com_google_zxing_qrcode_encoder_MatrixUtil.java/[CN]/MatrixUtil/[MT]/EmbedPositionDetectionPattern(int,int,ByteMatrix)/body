@@ -1,9 +1,12 @@
 {
-  Debug.DCHECK_EQ(7,kPositionDetectionPattern[0].length);
-  Debug.DCHECK_EQ(7,kPositionDetectionPattern.length);
+  if (kPositionDetectionPattern[0].length != 7 || kPositionDetectionPattern.length != 7) {
+    throw new WriterException("Bad position detection pattern");
+  }
   for (int y=0; y < 7; ++y) {
     for (int x=0; x < 7; ++x) {
-      Debug.DCHECK(IsEmpty(matrix.get(y_start + y,x_start + x)));
+      if (!IsEmpty(matrix.get(y_start + y,x_start + x))) {
+        throw new WriterException();
+      }
       matrix.set(y_start + y,x_start + x,kPositionDetectionPattern[y][x]);
     }
   }

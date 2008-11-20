@@ -9,7 +9,6 @@ return 4;
 case QRCode.MODE_KANJI:
 return 8;
 default :
-break;
+throw new WriterException("Unknown mode: " + mode);
 }
-return -1;
 }

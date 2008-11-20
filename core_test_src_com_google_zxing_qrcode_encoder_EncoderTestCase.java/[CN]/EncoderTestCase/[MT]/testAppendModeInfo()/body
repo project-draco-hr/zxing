@@ -1,5 +1,5 @@
 {
   BitVector bits=new BitVector();
-  assertTrue(Encoder.AppendModeInfo(QRCode.MODE_NUMERIC,bits));
+  Encoder.AppendModeInfo(QRCode.MODE_NUMERIC,bits);
   assertEquals("0001",bits.toString());
 }

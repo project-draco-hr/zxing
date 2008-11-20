@@ -13,6 +13,6 @@
   final int num_total_cells=matrix.height() * matrix.width();
   double dark_ratio=(double)num_dark_cells / num_total_cells;
   final int penalty=Math.abs((int)(dark_ratio * 100 - 50)) / 5 * 10;
-  Debug.LOG_INFO("\tApplyMaskPenaltyRule4: " + penalty);
+  System.out.println("\tApplyMaskPenaltyRule4: " + penalty);
   return penalty;
 }

@@ -4,6 +4,6 @@
   ByteMatrix matrix=new ByteMatrix(21,21);
   MatrixUtil.ClearMatrix(matrix);
   MatrixUtil.EmbedBasicPatterns(1,matrix);
-  assertTrue(MatrixUtil.EmbedDataBits(bits,-1,matrix));
+  MatrixUtil.EmbedDataBits(bits,-1,matrix);
   assertEquals(expected,matrix.toString());
 }

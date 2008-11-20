@@ -2,7 +2,7 @@
   for (int i=0; i < bytes.size(); ++i) {
     int oneByte=bytes.at(i);
     if (oneByte < '0' || oneByte > '9') {
-      return false;
+      throw new WriterException("Non-digit found");
     }
   }
   for (int i=0; i < bytes.size(); ) {
@@ -23,5 +23,4 @@
       ++i;
     }
   }
-  return true;
 }

@@ -1,13 +1,7 @@
 {
   MatrixUtil.ClearMatrix(matrix);
-  if (!EmbedBasicPatterns(version,matrix)) {
-    return false;
-  }
-  if (!EmbedTypeInfo(ec_level,mask_pattern,matrix)) {
-    return false;
-  }
-  if (!MaybeEmbedVersionInfo(version,matrix)) {
-    return false;
-  }
-  return EmbedDataBits(data_bits,mask_pattern,matrix);
+  EmbedBasicPatterns(version,matrix);
+  EmbedTypeInfo(ec_level,mask_pattern,matrix);
+  MaybeEmbedVersionInfo(version,matrix);
+  EmbedDataBits(data_bits,mask_pattern,matrix);
 }

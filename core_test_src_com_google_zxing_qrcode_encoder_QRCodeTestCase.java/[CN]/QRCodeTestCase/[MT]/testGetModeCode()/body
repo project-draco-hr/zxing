@@ -3,5 +3,10 @@
   assertEquals(2,QRCode.GetModeCode(QRCode.MODE_ALPHANUMERIC));
   assertEquals(4,QRCode.GetModeCode(QRCode.MODE_8BIT_BYTE));
   assertEquals(8,QRCode.GetModeCode(QRCode.MODE_KANJI));
-  assertEquals(-1,QRCode.GetModeCode(QRCode.MODE_UNDEFINED));
+  try {
+    QRCode.GetModeCode(QRCode.MODE_UNDEFINED);
+    fail("Should have thrown exception");
+  }
+ catch (  WriterException we) {
+  }
 }

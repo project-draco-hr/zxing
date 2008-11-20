@@ -1,28 +1,41 @@
 {
 {
     BitVector bits=new BitVector();
-    assertTrue(Encoder.AppendBytes(new ByteArray("1"),QRCode.MODE_NUMERIC,bits));
+    Encoder.AppendBytes(new ByteArray("1"),QRCode.MODE_NUMERIC,bits);
     assertEquals("0001",bits.toString());
-    assertFalse(Encoder.AppendBytes(new ByteArray("A"),QRCode.MODE_NUMERIC,bits));
+    try {
+      Encoder.AppendBytes(new ByteArray("A"),QRCode.MODE_NUMERIC,bits);
+      fail("Should have thrown exception");
+    }
+ catch (    WriterException we) {
+    }
   }
 {
     BitVector bits=new BitVector();
-    assertTrue(Encoder.AppendBytes(new ByteArray("A"),QRCode.MODE_ALPHANUMERIC,bits));
+    Encoder.AppendBytes(new ByteArray("A"),QRCode.MODE_ALPHANUMERIC,bits);
     assertEquals("001010",bits.toString());
-    assertFalse(Encoder.AppendBytes(new ByteArray("a"),QRCode.MODE_ALPHANUMERIC,bits));
+    try {
+      Encoder.AppendBytes(new ByteArray("a"),QRCode.MODE_ALPHANUMERIC,bits);
+    }
+ catch (    WriterException we) {
+    }
   }
 {
     BitVector bits=new BitVector();
-    assertTrue(Encoder.AppendBytes(new ByteArray("abc"),QRCode.MODE_8BIT_BYTE,bits));
+    Encoder.AppendBytes(new ByteArray("abc"),QRCode.MODE_8BIT_BYTE,bits);
     assertEquals("01100001" + "01100010" + "01100011",bits.toString());
     byte[] bytes={0x00};
-    assertTrue(Encoder.AppendBytes(new ByteArray(bytes),QRCode.MODE_8BIT_BYTE,bits));
+    Encoder.AppendBytes(new ByteArray(bytes),QRCode.MODE_8BIT_BYTE,bits);
   }
 {
     BitVector bits=new BitVector();
     byte[] bytes={(byte)0x93,0x5f};
-    assertTrue(Encoder.AppendBytes(new ByteArray(bytes),QRCode.MODE_KANJI,bits));
+    Encoder.AppendBytes(new ByteArray(bytes),QRCode.MODE_KANJI,bits);
     assertEquals("0110110011111",bits.toString());
-    assertFalse(Encoder.AppendBytes(new ByteArray("a"),QRCode.MODE_KANJI,bits));
+    try {
+      Encoder.AppendBytes(new ByteArray("a"),QRCode.MODE_KANJI,bits);
+    }
+ catch (    WriterException we) {
+    }
   }
 }

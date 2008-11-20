@@ -13,7 +13,7 @@
         if (!IsEmpty(matrix.get(y,xx))) {
           continue;
         }
-        int bit=-1;
+        int bit;
         if (bit_index < data_bits.size()) {
           bit=data_bits.at(bit_index);
           ++bit_index;
@@ -21,10 +21,8 @@
  else {
           bit=0;
         }
-        Debug.DCHECK(IsValidValue(bit));
         if (mask_pattern != -1) {
           final int mask=MaskUtil.GetDataMaskBit(mask_pattern,xx,y);
-          Debug.DCHECK(mask == 0 || mask == 1);
           bit^=mask;
         }
         matrix.set(y,xx,bit);
@@ -35,10 +33,7 @@
     y+=direction;
     x-=2;
   }
-  if (bit_index < data_bits.size()) {
-    Debug.LOG_ERROR("Not all bits consumed: " + bit_index + "/"+ data_bits.size());
-    return false;
+  if (bit_index != data_bits.size()) {
+    throw new WriterException("Not all bits consumed: " + bit_index + "/"+ data_bits.size());
   }
-  Debug.DCHECK_EQ(bit_index,data_bits.size());
-  return true;
 }

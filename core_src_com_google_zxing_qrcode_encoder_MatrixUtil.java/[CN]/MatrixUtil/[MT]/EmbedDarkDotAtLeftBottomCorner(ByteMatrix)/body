@@ -1,4 +1,6 @@
 {
-  Debug.DCHECK(matrix.get(matrix.height() - 8,8) != 0);
+  if (matrix.get(matrix.height() - 8,8) == 0) {
+    throw new WriterException();
+  }
   matrix.set(matrix.height() - 8,8,1);
 }

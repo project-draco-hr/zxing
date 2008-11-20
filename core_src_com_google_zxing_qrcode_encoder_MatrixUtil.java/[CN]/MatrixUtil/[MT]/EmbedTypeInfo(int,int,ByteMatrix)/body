@@ -1,9 +1,6 @@
 {
   BitVector type_info_bits=new BitVector();
-  if (!MakeTypeInfoBits(ec_level,mask_pattern,type_info_bits)) {
-    return false;
-  }
-  Debug.DCHECK_EQ(15,type_info_bits.size());
+  MakeTypeInfoBits(ec_level,mask_pattern,type_info_bits);
   for (int i=0; i < type_info_bits.size(); ++i) {
     final int bit=type_info_bits.at(type_info_bits.size() - 1 - i);
     final int x1=kTypeInfoCoordinates[i][0];
@@ -20,5 +17,4 @@
       matrix.set(y2,x2,bit);
     }
   }
-  return true;
 }

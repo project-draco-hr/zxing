@@ -1,8 +1,11 @@
 {
-  Debug.DCHECK_EQ(1,kVerticalSeparationPattern[0].length);
-  Debug.DCHECK_EQ(7,kVerticalSeparationPattern.length);
+  if (kVerticalSeparationPattern[0].length != 1 || kVerticalSeparationPattern.length != 7) {
+    throw new WriterException("Bad vertical separation pattern");
+  }
   for (int y=0; y < 7; ++y) {
-    Debug.DCHECK(IsEmpty(matrix.get(y_start + y,x_start)));
+    if (!IsEmpty(matrix.get(y_start + y,x_start))) {
+      throw new WriterException();
+    }
     matrix.set(y_start + y,x_start,kVerticalSeparationPattern[y][0]);
   }
 }

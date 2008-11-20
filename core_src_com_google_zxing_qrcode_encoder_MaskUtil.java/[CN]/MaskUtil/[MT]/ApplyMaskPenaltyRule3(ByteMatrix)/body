@@ -13,6 +13,6 @@
       }
     }
   }
-  Debug.LOG_INFO("\tApplyMaskPenaltyRule3: " + penalty);
+  System.out.println("\tApplyMaskPenaltyRule3: " + penalty);
   return penalty;
 }

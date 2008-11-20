@@ -1,5 +1,7 @@
 {
-  Debug.DCHECK(bits.num_bytes() == num_data_bytes);
+  if (bits.num_bytes() != num_data_bytes) {
+    throw new WriterException("Number of bits and data bytes does not match");
+  }
   int data_bytes_offset=0;
   int max_num_data_bytes=0;
   int max_num_ec_bytes=0;
@@ -16,7 +18,9 @@
     max_num_ec_bytes=Math.max(max_num_ec_bytes,ec_bytes.size());
     data_bytes_offset+=num_data_bytes_in_block[0];
   }
-  Debug.DCHECK_EQ(num_data_bytes,data_bytes_offset);
+  if (num_data_bytes != data_bytes_offset) {
+    throw new WriterException("Data bytes does not match offset");
+  }
   for (int i=0; i < max_num_data_bytes; ++i) {
     for (int j=0; j < blocks.size(); ++j) {
       final ByteArray data_bytes=((BlockPair)blocks.elementAt(j)).getDataBytes();
@@ -33,9 +37,7 @@
       }
     }
   }
-  if (num_total_bytes == result.num_bytes()) {
-    return true;
+  if (num_total_bytes != result.num_bytes()) {
+    throw new WriterException("Interleaving error: " + num_total_bytes + " and "+ result.num_bytes()+ " differ.");
   }
-  Debug.LOG_ERROR("Interleaving error: " + num_total_bytes + " and "+ result.num_bytes()+ " differ.");
-  return false;
 }

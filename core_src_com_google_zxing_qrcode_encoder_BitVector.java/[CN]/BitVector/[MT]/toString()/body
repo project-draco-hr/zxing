@@ -8,7 +8,7 @@
       result.append("1");
     }
  else {
-      Debug.DCHECK(false);
+      throw new IllegalArgumentException("Byte isn't 0 or 1");
     }
   }
   return result.toString();

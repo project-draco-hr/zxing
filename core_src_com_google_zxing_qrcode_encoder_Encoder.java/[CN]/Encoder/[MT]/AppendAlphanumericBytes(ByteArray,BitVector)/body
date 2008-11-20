@@ -2,12 +2,12 @@
   for (int i=0; i < bytes.size(); ) {
     final int code1=GetAlphanumericCode(bytes.at(i));
     if (code1 == -1) {
-      return false;
+      throw new WriterException();
     }
     if (i + 1 < bytes.size()) {
       final int code2=GetAlphanumericCode(bytes.at(i + 1));
       if (code2 == -1) {
-        return false;
+        throw new WriterException();
       }
       bits.AppendBits(code1 * 45 + code2,11);
       i+=2;
@@ -17,5 +17,4 @@
       ++i;
     }
   }
-  return true;
 }

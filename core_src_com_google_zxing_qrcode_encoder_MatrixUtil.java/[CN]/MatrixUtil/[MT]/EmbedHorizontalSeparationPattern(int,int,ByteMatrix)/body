@@ -1,8 +1,11 @@
 {
-  Debug.DCHECK_EQ(8,kHorizontalSeparationPattern[0].length);
-  Debug.DCHECK_EQ(1,kHorizontalSeparationPattern.length);
+  if (kHorizontalSeparationPattern[0].length != 8 || kHorizontalSeparationPattern.length != 1) {
+    throw new WriterException("Bad horizontal separation pattern");
+  }
   for (int x=0; x < 8; ++x) {
-    Debug.DCHECK(IsEmpty(matrix.get(y_start,x_start + x)));
+    if (!IsEmpty(matrix.get(y_start,x_start + x))) {
+      throw new WriterException();
+    }
     matrix.set(y_start,x_start + x,kHorizontalSeparationPattern[0][x]);
   }
 }

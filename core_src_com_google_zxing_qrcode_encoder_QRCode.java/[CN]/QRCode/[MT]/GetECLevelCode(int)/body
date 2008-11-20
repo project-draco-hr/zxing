@@ -9,7 +9,6 @@ return 3;
 case QRCode.EC_LEVEL_H:
 return 2;
 default :
-break;
+throw new WriterException("Unknown EC level");
 }
-return -1;
 }

@@ -1,5 +1,7 @@
 {
-  Debug.DCHECK(num_bits >= 0 && num_bits <= 32);
+  if (num_bits < 0 || num_bits > 32) {
+    throw new IllegalArgumentException("Num bits must be between 0 and 32");
+  }
   int num_bits_left=num_bits;
   while (num_bits_left > 0) {
     if ((sizeInBits & 0x7) == 0 && num_bits_left >= 8) {

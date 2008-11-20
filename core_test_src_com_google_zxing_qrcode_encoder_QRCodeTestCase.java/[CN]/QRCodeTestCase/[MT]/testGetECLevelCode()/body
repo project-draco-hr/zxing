@@ -3,5 +3,10 @@
   assertEquals(0,QRCode.GetECLevelCode(QRCode.EC_LEVEL_M));
   assertEquals(3,QRCode.GetECLevelCode(QRCode.EC_LEVEL_Q));
   assertEquals(2,QRCode.GetECLevelCode(QRCode.EC_LEVEL_H));
-  assertEquals(-1,QRCode.GetECLevelCode(QRCode.EC_LEVEL_UNDEFINED));
+  try {
+    QRCode.GetECLevelCode(QRCode.EC_LEVEL_UNDEFINED);
+    fail("Should have thrown exception");
+  }
+ catch (  WriterException we) {
+  }
 }

@@ -1,10 +1,7 @@
 {
   final int ec_code=QRCode.GetECLevelCode(ec_level);
-  if (ec_code == -1) {
-    return false;
-  }
   if (!QRCode.IsValidMaskPattern(mask_pattern)) {
-    return false;
+    throw new WriterException("Invalid mask pattern");
   }
   final int type_info=(ec_code << 3) | mask_pattern;
   bits.AppendBits(type_info,5);
@@ -14,8 +11,6 @@
   mask_bits.AppendBits(kTypeInfoMaskPattern,15);
   bits.XOR(mask_bits);
   if (bits.size() != 15) {
-    Debug.LOG_ERROR("should not happen but we got: " + bits.size());
-    return false;
+    throw new WriterException("should not happen but we got: " + bits.size());
   }
-  return true;
 }

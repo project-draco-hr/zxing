@@ -23,6 +23,8 @@
  else   if (has_numeric) {
     return QRCode.MODE_NUMERIC;
   }
-  Debug.DCHECK(bytes.empty());
+  if (!bytes.empty()) {
+    throw new WriterException("Bytes left over");
+  }
   return QRCode.MODE_8BIT_BYTE;
 }

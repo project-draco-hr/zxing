@@ -1,22 +1,22 @@
 {
 {
     BitVector bits=new BitVector();
-    assertTrue(Encoder.AppendLengthInfo(1,1,QRCode.MODE_NUMERIC,bits));
+    Encoder.AppendLengthInfo(1,1,QRCode.MODE_NUMERIC,bits);
     assertEquals("0000000001",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    assertTrue(Encoder.AppendLengthInfo(2,10,QRCode.MODE_ALPHANUMERIC,bits));
+    Encoder.AppendLengthInfo(2,10,QRCode.MODE_ALPHANUMERIC,bits);
     assertEquals("00000000010",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    assertTrue(Encoder.AppendLengthInfo(255,27,QRCode.MODE_8BIT_BYTE,bits));
+    Encoder.AppendLengthInfo(255,27,QRCode.MODE_8BIT_BYTE,bits);
     assertEquals("0000000011111111",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    assertTrue(Encoder.AppendLengthInfo(1024,40,QRCode.MODE_KANJI,bits));
+    Encoder.AppendLengthInfo(1024,40,QRCode.MODE_KANJI,bits);
     assertEquals("001000000000",bits.toString());
   }
 }

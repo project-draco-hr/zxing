@@ -2,8 +2,7 @@
   qr_code.set_ec_level(ec_level);
   qr_code.set_mode(mode);
   if (!QRCode.IsValidECLevel(ec_level)) {
-    Debug.LOG_ERROR("Invalid EC level: " + ec_level);
-    return false;
+    throw new WriterException("Invalid EC level: " + ec_level);
   }
   for (int i=0; i < kRSBlockTable.length; ++i) {
     final RSBlockInfo row=kRSBlockTable[i];
@@ -18,9 +17,8 @@
       qr_code.set_num_rs_blocks(num_rs_blocks);
       qr_code.set_num_ec_bytes(num_bytes - num_data_bytes);
       qr_code.set_matrix_width(21 + i * 4);
-      return true;
+      return;
     }
   }
-  Debug.LOG_ERROR("Cannot find proper rs block info (input data too big?)");
-  return false;
+  throw new WriterException("Cannot find proper rs block info (input data too big?)");
 }

@@ -1,41 +1,41 @@
 {
 {
     BitVector v=new BitVector();
-    assertTrue(Encoder.TerminateBits(0,v));
+    Encoder.TerminateBits(0,v);
     assertEquals("",v.toString());
   }
 {
     BitVector v=new BitVector();
-    assertTrue(Encoder.TerminateBits(1,v));
+    Encoder.TerminateBits(1,v);
     assertEquals("00000000",v.toString());
   }
 {
     BitVector v=new BitVector();
     v.AppendBits(0,3);
-    assertTrue(Encoder.TerminateBits(1,v));
+    Encoder.TerminateBits(1,v);
     assertEquals("00000000",v.toString());
   }
 {
     BitVector v=new BitVector();
     v.AppendBits(0,5);
-    assertTrue(Encoder.TerminateBits(1,v));
+    Encoder.TerminateBits(1,v);
     assertEquals("00000000",v.toString());
   }
 {
     BitVector v=new BitVector();
     v.AppendBits(0,8);
-    assertTrue(Encoder.TerminateBits(1,v));
+    Encoder.TerminateBits(1,v);
     assertEquals("00000000",v.toString());
   }
 {
     BitVector v=new BitVector();
-    assertTrue(Encoder.TerminateBits(2,v));
+    Encoder.TerminateBits(2,v);
     assertEquals("0000000011101100",v.toString());
   }
 {
     BitVector v=new BitVector();
     v.AppendBits(0,1);
-    assertTrue(Encoder.TerminateBits(3,v));
+    Encoder.TerminateBits(3,v);
     assertEquals("000000001110110000010001",v.toString());
   }
 }
