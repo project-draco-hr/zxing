@@ -1,0 +1,12 @@
+{
+  int width=row.getSize();
+  int endStart=0;
+  while (endStart < width) {
+    if (row.get(endStart)) {
+      break;
+    }
+    endStart++;
+  }
+  if (endStart == width)   throw ReaderException.getInstance();
+  return endStart;
+}

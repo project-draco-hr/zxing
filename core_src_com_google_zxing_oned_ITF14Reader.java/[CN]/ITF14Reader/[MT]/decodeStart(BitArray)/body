@@ -1,0 +1,4 @@
+{
+  int endStart=skipWhiteSpace(row);
+  return findGuardPattern(row,endStart,START_PATTERN);
+}

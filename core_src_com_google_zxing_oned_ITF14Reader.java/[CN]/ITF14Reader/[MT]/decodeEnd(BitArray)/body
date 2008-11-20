@@ -1,0 +1,17 @@
+{
+  row.reverse();
+  int endStart=skipWhiteSpace(row);
+  int end[];
+  try {
+    end=findGuardPattern(row,endStart,END_PATTERN_REVERSED);
+  }
+ catch (  ReaderException e) {
+    row.reverse();
+    throw e;
+  }
+  int temp=end[0];
+  end[0]=row.getSize() - end[1];
+  end[1]=row.getSize() - temp;
+  row.reverse();
+  return end;
+}

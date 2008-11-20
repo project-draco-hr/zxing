@@ -1,0 +1,19 @@
+{
+  int[] counterDigitPair=new int[10];
+  int[] counterBlack=new int[5];
+  int[] counterWhite=new int[5];
+  for (int x=0; x < DIGIT_COUNT / 2 && payloadStart < payloadEnd; x++) {
+    recordPattern(row,payloadStart,counterDigitPair);
+    for (int k=0; k < 5; k++) {
+      counterBlack[k]=counterDigitPair[k * 2];
+      counterWhite[k]=counterDigitPair[(k * 2) + 1];
+    }
+    int bestMatch=decodeDigit(counterBlack);
+    resultString.append((char)('0' + bestMatch % 10));
+    bestMatch=decodeDigit(counterWhite);
+    resultString.append((char)('0' + bestMatch % 10));
+    for (int i=0; i < counterDigitPair.length; i++) {
+      payloadStart+=counterDigitPair[i];
+    }
+  }
+}
