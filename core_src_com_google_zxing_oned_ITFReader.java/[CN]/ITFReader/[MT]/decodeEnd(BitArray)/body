@@ -1,0 +1,20 @@
+{
+  row.reverse();
+  int endStart=skipWhiteSpace(row);
+  int endPattern[]=null;
+  try {
+    endPattern=findGuardPattern(row,endStart,END_PATTERN_REVERSED);
+  }
+ catch (  ReaderException e) {
+    row.reverse();
+    throw e;
+  }
+  if (this.narrowLineWidth * 10 > endPattern[0]) {
+    throw ReaderException.getInstance();
+  }
+  int temp=endPattern[0];
+  endPattern[0]=row.getSize() - endPattern[1];
+  endPattern[1]=row.getSize() - temp;
+  row.reverse();
+  return endPattern;
+}

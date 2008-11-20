@@ -2,7 +2,7 @@
   int[] counterDigitPair=new int[10];
   int[] counterBlack=new int[5];
   int[] counterWhite=new int[5];
-  for (int x=0; x < DIGIT_COUNT / 2 && payloadStart < payloadEnd; x++) {
+  for (int x=0; payloadStart < payloadEnd; x++) {
     recordPattern(row,payloadStart,counterDigitPair);
     for (int k=0; k < 5; k++) {
       counterBlack[k]=counterDigitPair[k * 2];

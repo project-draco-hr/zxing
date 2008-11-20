@@ -1,0 +1,9 @@
+{
+  int endStart=skipWhiteSpace(row);
+  int startPattern[]=findGuardPattern(row,endStart,START_PATTERN);
+  this.narrowLineWidth=(startPattern[1] - startPattern[0]) / 4;
+  if (this.narrowLineWidth * 10 > startPattern[0]) {
+    throw ReaderException.getInstance();
+  }
+  return startPattern;
+}

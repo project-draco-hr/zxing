@@ -1,0 +1,9 @@
+{
+  StringBuffer result=new StringBuffer(20);
+  int[] startRange=decodeStart(row);
+  int[] endRange=decodeEnd(row);
+  decodeMiddle(row,startRange[1],endRange[0],result);
+  String resultString=result.toString();
+  if (resultString.length() == 0 || resultString.length() % 2 == 1)   throw ReaderException.getInstance();
+  return new Result(resultString,null,new ResultPoint[]{new GenericResultPoint(startRange[1],(float)rowNumber),new GenericResultPoint(startRange[0],(float)rowNumber)},BarcodeFormat.ITF);
+}
