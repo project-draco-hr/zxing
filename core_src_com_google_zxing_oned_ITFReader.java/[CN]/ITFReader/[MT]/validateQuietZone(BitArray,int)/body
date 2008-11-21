@@ -1,0 +1,14 @@
+{
+  int quietCount=this.narrowLineWidth * 10;
+  int i=0;
+  for (i=startPattern - 1; quietCount > 0 && i >= 0; i--) {
+    if (row.get(i) == true)     break;
+    quietCount--;
+  }
+  if (quietCount != 0) {
+    throw ReaderException.getInstance();
+  }
+  if (i > this.narrowLineWidth * 20) {
+    throw ReaderException.getInstance();
+  }
+}

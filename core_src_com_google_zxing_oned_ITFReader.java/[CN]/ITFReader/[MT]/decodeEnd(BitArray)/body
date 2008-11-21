@@ -9,9 +9,7 @@
     row.reverse();
     throw e;
   }
-  if (this.narrowLineWidth * 10 > endPattern[0]) {
-    throw ReaderException.getInstance();
-  }
+  validateQuietZone(row,endPattern[0]);
   int temp=endPattern[0];
   endPattern[0]=row.getSize() - endPattern[1];
   endPattern[1]=row.getSize() - temp;
