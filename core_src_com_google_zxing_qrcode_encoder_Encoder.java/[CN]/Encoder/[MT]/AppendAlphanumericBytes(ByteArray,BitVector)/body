@@ -9,11 +9,11 @@
       if (code2 == -1) {
         throw new WriterException();
       }
-      bits.AppendBits(code1 * 45 + code2,11);
+      bits.appendBits(code1 * 45 + code2,11);
       i+=2;
     }
  else {
-      bits.AppendBits(code1,6);
+      bits.appendBits(code1,6);
       ++i;
     }
   }

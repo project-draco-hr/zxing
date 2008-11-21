@@ -1,12 +1,12 @@
 {
   BitVector v=new BitVector();
-  assertEquals(0,v.num_bytes());
-  v.AppendBit(0);
-  assertEquals(1,v.num_bytes());
-  v.AppendBits(0,7);
-  assertEquals(1,v.num_bytes());
-  v.AppendBits(0,8);
-  assertEquals(2,v.num_bytes());
-  v.AppendBits(0,1);
-  assertEquals(3,v.num_bytes());
+  assertEquals(0,v.sizeInBytes());
+  v.appendBit(0);
+  assertEquals(1,v.sizeInBytes());
+  v.appendBits(0,7);
+  assertEquals(1,v.sizeInBytes());
+  v.appendBits(0,8);
+  assertEquals(2,v.sizeInBytes());
+  v.appendBits(0,1);
+  assertEquals(3,v.sizeInBytes());
 }

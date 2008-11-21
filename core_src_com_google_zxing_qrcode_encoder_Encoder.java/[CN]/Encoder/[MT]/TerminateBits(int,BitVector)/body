@@ -4,25 +4,25 @@
     throw new WriterException("data bits cannot fit in the QR Code" + bits.size() + " > "+ capacity);
   }
   for (int i=0; i < 4 && bits.size() < capacity; ++i) {
-    bits.AppendBit(0);
+    bits.appendBit(0);
   }
   final int num_bits_in_last_byte=bits.size() % 8;
   if (num_bits_in_last_byte > 0) {
     final int num_padding_bits=8 - num_bits_in_last_byte;
     for (int i=0; i < num_padding_bits; ++i) {
-      bits.AppendBit(0);
+      bits.appendBit(0);
     }
   }
   if (bits.size() % 8 != 0) {
     throw new WriterException("Number of bits is not a multiple of 8");
   }
-  final int num_padding_bytes=num_data_bytes - bits.num_bytes();
+  final int num_padding_bytes=num_data_bytes - bits.sizeInBytes();
   for (int i=0; i < num_padding_bytes; ++i) {
     if (i % 2 == 0) {
-      bits.AppendBits(0xec,8);
+      bits.appendBits(0xec,8);
     }
  else {
-      bits.AppendBits(0x11,8);
+      bits.appendBits(0x11,8);
     }
   }
   if (bits.size() != capacity) {

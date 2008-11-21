@@ -1,5 +1,5 @@
 {
-  if (bits.num_bytes() != num_data_bytes) {
+  if (bits.sizeInBytes() != num_data_bytes) {
     throw new WriterException("Number of bits and data bytes does not match");
   }
   int data_bytes_offset=0;
@@ -25,7 +25,7 @@
     for (int j=0; j < blocks.size(); ++j) {
       final ByteArray data_bytes=((BlockPair)blocks.elementAt(j)).getDataBytes();
       if (i < data_bytes.size()) {
-        result.AppendBits(data_bytes.at(i),8);
+        result.appendBits(data_bytes.at(i),8);
       }
     }
   }
@@ -33,11 +33,11 @@
     for (int j=0; j < blocks.size(); ++j) {
       final ByteArray ec_bytes=((BlockPair)blocks.elementAt(j)).getErrorCorrectionBytes();
       if (i < ec_bytes.size()) {
-        result.AppendBits(ec_bytes.at(i),8);
+        result.appendBits(ec_bytes.at(i),8);
       }
     }
   }
-  if (num_total_bytes != result.num_bytes()) {
-    throw new WriterException("Interleaving error: " + num_total_bytes + " and "+ result.num_bytes()+ " differ.");
+  if (num_total_bytes != result.sizeInBytes()) {
+    throw new WriterException("Interleaving error: " + num_total_bytes + " and "+ result.sizeInBytes()+ " differ.");
   }
 }

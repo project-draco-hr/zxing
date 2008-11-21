@@ -11,19 +11,19 @@
   }
 {
     BitVector v=new BitVector();
-    v.AppendBits(0,3);
+    v.appendBits(0,3);
     Encoder.TerminateBits(1,v);
     assertEquals("00000000",v.toString());
   }
 {
     BitVector v=new BitVector();
-    v.AppendBits(0,5);
+    v.appendBits(0,5);
     Encoder.TerminateBits(1,v);
     assertEquals("00000000",v.toString());
   }
 {
     BitVector v=new BitVector();
-    v.AppendBits(0,8);
+    v.appendBits(0,8);
     Encoder.TerminateBits(1,v);
     assertEquals("00000000",v.toString());
   }
@@ -34,7 +34,7 @@
   }
 {
     BitVector v=new BitVector();
-    v.AppendBits(0,1);
+    v.appendBits(0,1);
     Encoder.TerminateBits(3,v);
     assertEquals("000000001110110000010001",v.toString());
   }

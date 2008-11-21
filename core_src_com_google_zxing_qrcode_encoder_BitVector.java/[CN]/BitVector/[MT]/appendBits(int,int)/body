@@ -11,7 +11,7 @@
     }
  else {
       final int bit=(value >> (num_bits_left - 1)) & 1;
-      AppendBit(bit);
+      appendBit(bit);
       --num_bits_left;
     }
   }

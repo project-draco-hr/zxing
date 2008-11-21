@@ -1,8 +1,8 @@
 {
   BitVector v1=new BitVector();
-  v1.AppendBits(0xbe,8);
+  v1.appendBits(0xbe,8);
   BitVector v2=new BitVector();
-  v2.AppendBits(0xef,8);
-  v1.AppendBitVector(v2);
+  v2.appendBits(0xef,8);
+  v1.appendBitVector(v2);
   assertEquals("1011111011101111",v1.toString());
 }

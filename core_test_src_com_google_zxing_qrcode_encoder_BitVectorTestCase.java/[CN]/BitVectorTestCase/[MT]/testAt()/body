@@ -1,6 +1,6 @@
 {
   BitVector v=new BitVector();
-  v.AppendBits(0xdead,16);
+  v.appendBits(0xdead,16);
   assertEquals(1,v.at(0));
   assertEquals(1,v.at(1));
   assertEquals(0,v.at(2));

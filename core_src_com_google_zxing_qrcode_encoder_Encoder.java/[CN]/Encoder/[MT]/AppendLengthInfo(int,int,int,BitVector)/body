@@ -10,5 +10,5 @@
   if (num_letters > ((1 << num_bits) - 1)) {
     throw new WriterException(num_letters + "is bigger than" + ((1 << num_bits) - 1));
   }
-  bits.AppendBits(num_letters,num_bits);
+  bits.appendBits(num_letters,num_bits);
 }

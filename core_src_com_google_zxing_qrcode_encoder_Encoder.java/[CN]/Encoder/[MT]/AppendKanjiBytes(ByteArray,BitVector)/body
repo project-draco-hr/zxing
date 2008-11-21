@@ -18,6 +18,6 @@
       throw new WriterException("Invalid byte sequence: " + bytes);
     }
     final int encoded=((subtracted >> 8) * 0xc0) + (subtracted & 0xff);
-    bits.AppendBits(encoded,13);
+    bits.appendBits(encoded,13);
   }
 }

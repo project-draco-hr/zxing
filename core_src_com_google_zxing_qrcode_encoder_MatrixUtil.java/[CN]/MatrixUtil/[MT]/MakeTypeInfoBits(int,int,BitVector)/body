@@ -4,12 +4,12 @@
     throw new WriterException("Invalid mask pattern");
   }
   final int type_info=(ec_code << 3) | mask_pattern;
-  bits.AppendBits(type_info,5);
+  bits.appendBits(type_info,5);
   final int bch_code=MatrixUtil.CalculateBCHCode(type_info,kTypeInfoPoly);
-  bits.AppendBits(bch_code,10);
+  bits.appendBits(bch_code,10);
   BitVector mask_bits=new BitVector();
-  mask_bits.AppendBits(kTypeInfoMaskPattern,15);
-  bits.XOR(mask_bits);
+  mask_bits.appendBits(kTypeInfoMaskPattern,15);
+  bits.xor(mask_bits);
   if (bits.size() != 15) {
     throw new WriterException("should not happen but we got: " + bits.size());
   }

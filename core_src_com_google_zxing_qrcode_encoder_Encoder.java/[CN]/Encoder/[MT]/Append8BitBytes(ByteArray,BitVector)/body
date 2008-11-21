@@ -1,5 +1,5 @@
 {
   for (int i=0; i < bytes.size(); ++i) {
-    bits.AppendBits(bytes.at(i),8);
+    bits.appendBits(bytes.at(i),8);
   }
 }

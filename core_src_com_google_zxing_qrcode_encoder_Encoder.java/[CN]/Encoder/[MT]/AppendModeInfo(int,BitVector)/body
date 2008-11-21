@@ -1,4 +1,4 @@
 {
   final int code=QRCode.GetModeCode(mode);
-  bits.AppendBits(code,4);
+  bits.appendBits(code,4);
 }
