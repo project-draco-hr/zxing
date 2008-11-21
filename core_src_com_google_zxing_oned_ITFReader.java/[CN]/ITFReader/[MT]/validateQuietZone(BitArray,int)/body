@@ -8,7 +8,4 @@
   if (quietCount != 0) {
     throw ReaderException.getInstance();
   }
-  if (i > this.narrowLineWidth * 20) {
-    throw ReaderException.getInstance();
-  }
 }
