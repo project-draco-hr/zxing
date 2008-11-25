@@ -1,0 +1,9 @@
+{
+  if (keyCode == KeyEvent.KEYCODE_BACK) {
+    if (mWebView.canGoBack()) {
+      mWebView.goBack();
+      return true;
+    }
+  }
+  return super.onKeyDown(keyCode,event);
+}

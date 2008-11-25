@@ -10,4 +10,5 @@
   mHandler=null;
   mLastResult=null;
   mHasSurface=false;
+  showHelpOnFirstLaunch();
 }

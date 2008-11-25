@@ -1,0 +1,16 @@
+{
+  super.onCreate(icicle);
+  setContentView(R.layout.help);
+  mWebView=(WebView)findViewById(R.id.help_contents);
+  mWebView.setWebViewClient(new HelpClient());
+  if (icicle != null) {
+    mWebView.restoreState(icicle);
+  }
+ else {
+    mWebView.loadUrl(DEFAULT_URL);
+  }
+  mBackButton=(Button)findViewById(R.id.back_button);
+  mBackButton.setOnClickListener(mBackListener);
+  Button exitButton=(Button)findViewById(R.id.exit_button);
+  exitButton.setOnClickListener(mExitListener);
+}

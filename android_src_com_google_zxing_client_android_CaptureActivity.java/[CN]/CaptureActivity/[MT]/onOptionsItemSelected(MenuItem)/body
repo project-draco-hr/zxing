@@ -16,11 +16,9 @@ case SETTINGS_ID:
   }
 case HELP_ID:
 {
-  AlertDialog.Builder builder=new AlertDialog.Builder(this);
-  builder.setTitle(R.string.title_help);
-  builder.setMessage(R.string.msg_help);
-  builder.setPositiveButton(R.string.button_ok,null);
-  builder.show();
+  Intent intent=new Intent(Intent.ACTION_VIEW);
+  intent.setClassName(this,HelpActivity.class.getName());
+  startActivity(intent);
   break;
 }
 case ABOUT_ID:

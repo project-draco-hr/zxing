@@ -1,0 +1,3 @@
+{
+  mWebView.saveState(state);
+}
