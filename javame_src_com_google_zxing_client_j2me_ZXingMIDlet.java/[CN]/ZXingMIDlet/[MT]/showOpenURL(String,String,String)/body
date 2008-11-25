@@ -1,6 +1,6 @@
 {
   Alert alert=new Alert(title,display,null,AlertType.CONFIRMATION);
-  alert.setTimeout(Alert.FOREVER);
+  alert.setTimeout(ALERT_TIMEOUT_MS);
   Command yes=new Command("Yes",Command.OK,1);
   alert.addCommand(yes);
   Command no=new Command("No",Command.CANCEL,1);

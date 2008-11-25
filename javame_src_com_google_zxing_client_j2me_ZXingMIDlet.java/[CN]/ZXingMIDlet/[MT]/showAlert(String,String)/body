@@ -1,5 +1,5 @@
 {
   Alert alert=new Alert(title,text,null,AlertType.INFO);
-  alert.setTimeout(Alert.FOREVER);
+  alert.setTimeout(ALERT_TIMEOUT_MS);
   showAlert(alert);
 }
