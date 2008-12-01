@@ -12,6 +12,10 @@
       mResultListView.setAdapter(new SearchBookContentsAdapter(this,items));
     }
  else {
+      String searchable=json.optString("searchable");
+      if (searchable != null && searchable.equals("false")) {
+        mHeaderView.setText(R.string.msg_sbc_book_not_searchable);
+      }
       mResultListView.setAdapter(null);
     }
   }
