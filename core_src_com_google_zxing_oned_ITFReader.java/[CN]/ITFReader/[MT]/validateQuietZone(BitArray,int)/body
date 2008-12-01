@@ -1,8 +1,9 @@
 {
   int quietCount=this.narrowLineWidth * 10;
-  int i=0;
-  for (i=startPattern - 1; quietCount > 0 && i >= 0; i--) {
-    if (row.get(i) == true)     break;
+  for (int i=startPattern - 1; quietCount > 0 && i >= 0; i--) {
+    if (row.get(i)) {
+      break;
+    }
     quietCount--;
   }
   if (quietCount != 0) {

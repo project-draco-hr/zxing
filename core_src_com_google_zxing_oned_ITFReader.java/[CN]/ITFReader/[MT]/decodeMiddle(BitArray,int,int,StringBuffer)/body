@@ -2,11 +2,12 @@
   int[] counterDigitPair=new int[10];
   int[] counterBlack=new int[5];
   int[] counterWhite=new int[5];
-  for (int x=0; payloadStart < payloadEnd; x++) {
+  while (payloadStart < payloadEnd) {
     recordPattern(row,payloadStart,counterDigitPair);
     for (int k=0; k < 5; k++) {
-      counterBlack[k]=counterDigitPair[k * 2];
-      counterWhite[k]=counterDigitPair[(k * 2) + 1];
+      int twoK=k << 1;
+      counterBlack[k]=counterDigitPair[twoK];
+      counterWhite[k]=counterDigitPair[twoK + 1];
     }
     int bestMatch=decodeDigit(counterBlack);
     resultString.append((char)('0' + bestMatch % 10));

@@ -1,7 +1,7 @@
 {
   row.reverse();
   int endStart=skipWhiteSpace(row);
-  int endPattern[]=null;
+  int endPattern[];
   try {
     endPattern=findGuardPattern(row,endStart,END_PATTERN_REVERSED);
   }
