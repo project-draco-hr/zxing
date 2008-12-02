@@ -1,8 +1,8 @@
 {
-  assertFalse(QRCode.IsValidECLevel(QRCode.EC_LEVEL_UNDEFINED));
-  assertTrue(QRCode.IsValidECLevel(QRCode.EC_LEVEL_L));
-  assertTrue(QRCode.IsValidECLevel(QRCode.EC_LEVEL_Q));
-  assertTrue(QRCode.IsValidECLevel(QRCode.EC_LEVEL_M));
-  assertTrue(QRCode.IsValidECLevel(QRCode.EC_LEVEL_H));
-  assertFalse(QRCode.IsValidECLevel(QRCode.NUM_EC_LEVELS));
+  assertFalse(QRCode.isValidECLevel(QRCode.EC_LEVEL_UNDEFINED));
+  assertTrue(QRCode.isValidECLevel(QRCode.EC_LEVEL_L));
+  assertTrue(QRCode.isValidECLevel(QRCode.EC_LEVEL_Q));
+  assertTrue(QRCode.isValidECLevel(QRCode.EC_LEVEL_M));
+  assertTrue(QRCode.isValidECLevel(QRCode.EC_LEVEL_H));
+  assertFalse(QRCode.isValidECLevel(QRCode.NUM_EC_LEVELS));
 }

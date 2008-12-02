@@ -1,18 +1,18 @@
 {
-  if (num_bits < 0 || num_bits > 32) {
+  if (numBits < 0 || numBits > 32) {
     throw new IllegalArgumentException("Num bits must be between 0 and 32");
   }
-  int num_bits_left=num_bits;
-  while (num_bits_left > 0) {
-    if ((sizeInBits & 0x7) == 0 && num_bits_left >= 8) {
-      final int newByte=(value >> (num_bits_left - 8)) & 0xff;
+  int numBitsLeft=numBits;
+  while (numBitsLeft > 0) {
+    if ((sizeInBits & 0x7) == 0 && numBitsLeft >= 8) {
+      final int newByte=(value >> (numBitsLeft - 8)) & 0xff;
       appendByte(newByte);
-      num_bits_left-=8;
+      numBitsLeft-=8;
     }
  else {
-      final int bit=(value >> (num_bits_left - 1)) & 1;
+      final int bit=(value >> (numBitsLeft - 1)) & 1;
       appendBit(bit);
-      --num_bits_left;
+      --numBitsLeft;
     }
   }
 }

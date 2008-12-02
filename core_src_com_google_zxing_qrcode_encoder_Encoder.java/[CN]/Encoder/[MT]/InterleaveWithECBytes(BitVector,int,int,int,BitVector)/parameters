@@ -1,5 +1,0 @@
-BitVector bits
-int num_total_bytes
-int num_data_bytes
-int num_rs_blocks
-BitVector result

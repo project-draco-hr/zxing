@@ -1,0 +1,20 @@
+{
+  BitVector typeInfoBits=new BitVector();
+  makeTypeInfoBits(ecLevel,maskPattern,typeInfoBits);
+  for (int i=0; i < typeInfoBits.size(); ++i) {
+    final int bit=typeInfoBits.at(typeInfoBits.size() - 1 - i);
+    final int x1=TYPE_INFO_COORDINATES[i][0];
+    final int y1=TYPE_INFO_COORDINATES[i][1];
+    matrix.set(y1,x1,bit);
+    if (i < 8) {
+      final int x2=matrix.width() - i - 1;
+      final int y2=8;
+      matrix.set(y2,x2,bit);
+    }
+ else {
+      final int x2=8;
+      final int y2=matrix.height() - 7 + (i - 8);
+      matrix.set(y2,x2,bit);
+    }
+  }
+}

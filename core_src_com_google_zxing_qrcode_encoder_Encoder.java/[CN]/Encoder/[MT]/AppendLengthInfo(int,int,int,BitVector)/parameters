@@ -1,4 +1,0 @@
-int num_bytes
-int version
-int mode
-BitVector bits

@@ -1,5 +1,5 @@
 {
-  ByteMatrix input=code.matrix();
+  ByteMatrix input=code.getMatrix();
   int inputWidth=input.width();
   int inputHeight=input.height();
   int qrWidth=inputWidth + (QUIET_ZONE_SIZE * 2);

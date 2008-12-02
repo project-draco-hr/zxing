@@ -1,12 +1,12 @@
 {
-  mode_=MODE_UNDEFINED;
-  ec_level_=EC_LEVEL_UNDEFINED;
-  version_=-1;
-  matrix_width_=-1;
-  mask_pattern_=-1;
-  num_total_bytes_=-1;
-  num_data_bytes_=-1;
-  num_ec_bytes_=-1;
-  num_rs_blocks_=-1;
-  matrix_=null;
+  mode=MODE_UNDEFINED;
+  ecLevel=EC_LEVEL_UNDEFINED;
+  version=-1;
+  matrixWidth=-1;
+  maskPattern=-1;
+  numTotalBytes=-1;
+  numDataBytes=-1;
+  numECBytes=-1;
+  numRSBlocks=-1;
+  matrix=null;
 }

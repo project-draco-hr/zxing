@@ -1,0 +1,11 @@
+{
+  if (HORIZONTAL_SEPARATION_PATTERN[0].length != 8 || HORIZONTAL_SEPARATION_PATTERN.length != 1) {
+    throw new WriterException("Bad horizontal separation pattern");
+  }
+  for (int x=0; x < 8; ++x) {
+    if (!isEmpty(matrix.get(yStart,xStart + x))) {
+      throw new WriterException();
+    }
+    matrix.set(yStart,xStart + x,HORIZONTAL_SEPARATION_PATTERN[0][x]);
+  }
+}

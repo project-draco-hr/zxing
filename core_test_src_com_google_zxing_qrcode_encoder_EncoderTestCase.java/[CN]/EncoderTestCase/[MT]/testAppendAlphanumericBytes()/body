@@ -1,28 +1,28 @@
 {
 {
     BitVector bits=new BitVector();
-    Encoder.AppendAlphanumericBytes(new ByteArray("A"),bits);
+    Encoder.appendAlphanumericBytes(new ByteArray("A"),bits);
     assertEquals("001010",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.AppendAlphanumericBytes(new ByteArray("AB"),bits);
+    Encoder.appendAlphanumericBytes(new ByteArray("AB"),bits);
     assertEquals("00111001101",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.AppendAlphanumericBytes(new ByteArray("ABC"),bits);
+    Encoder.appendAlphanumericBytes(new ByteArray("ABC"),bits);
     assertEquals("00111001101" + "001100",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.AppendAlphanumericBytes(new ByteArray(""),bits);
+    Encoder.appendAlphanumericBytes(new ByteArray(""),bits);
     assertEquals("",bits.toString());
   }
 {
     BitVector bits=new BitVector();
     try {
-      Encoder.AppendAlphanumericBytes(new ByteArray("abc"),bits);
+      Encoder.appendAlphanumericBytes(new ByteArray("abc"),bits);
     }
  catch (    WriterException we) {
     }

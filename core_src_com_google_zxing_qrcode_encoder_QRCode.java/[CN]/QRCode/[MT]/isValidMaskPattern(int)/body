@@ -1,0 +1,3 @@
+{
+  return maskPattern >= 0 && maskPattern < NUM_MASK_PATTERNS;
+}

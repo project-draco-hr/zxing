@@ -1,0 +1,3 @@
+{
+  return ecLevel >= 0 && ecLevel < NUM_EC_LEVELS;
+}

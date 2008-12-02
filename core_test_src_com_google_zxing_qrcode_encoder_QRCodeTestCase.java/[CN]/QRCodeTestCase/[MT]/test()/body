@@ -1,37 +1,37 @@
 {
-  QRCode qr_code=new QRCode();
-  assertFalse(qr_code.IsValid());
-  qr_code.set_mode(QRCode.MODE_8BIT_BYTE);
-  qr_code.set_ec_level(QRCode.EC_LEVEL_H);
-  qr_code.set_version(7);
-  qr_code.set_matrix_width(45);
-  qr_code.set_mask_pattern(3);
-  qr_code.set_num_total_bytes(196);
-  qr_code.set_num_data_bytes(66);
-  qr_code.set_num_ec_bytes(130);
-  qr_code.set_num_rs_blocks(5);
-  assertEquals(QRCode.MODE_8BIT_BYTE,qr_code.mode());
-  assertEquals(QRCode.EC_LEVEL_H,qr_code.ec_level());
-  assertEquals(7,qr_code.version());
-  assertEquals(45,qr_code.matrix_width());
-  assertEquals(3,qr_code.mask_pattern());
-  assertEquals(196,qr_code.num_total_bytes());
-  assertEquals(66,qr_code.num_data_bytes());
-  assertEquals(130,qr_code.num_ec_bytes());
-  assertEquals(5,qr_code.num_rs_blocks());
-  assertFalse(qr_code.IsValid());
+  QRCode qrCode=new QRCode();
+  assertFalse(qrCode.isValid());
+  qrCode.setMode(QRCode.MODE_8BIT_BYTE);
+  qrCode.setECLevel(QRCode.EC_LEVEL_H);
+  qrCode.setVersion(7);
+  qrCode.setMatrixWidth(45);
+  qrCode.setMaskPattern(3);
+  qrCode.setNumTotalBytes(196);
+  qrCode.setNumDataBytes(66);
+  qrCode.setNumECBytes(130);
+  qrCode.setNumRSBlocks(5);
+  assertEquals(QRCode.MODE_8BIT_BYTE,qrCode.getMode());
+  assertEquals(QRCode.EC_LEVEL_H,qrCode.getECLevel());
+  assertEquals(7,qrCode.getVersion());
+  assertEquals(45,qrCode.getMatrixWidth());
+  assertEquals(3,qrCode.getMaskPattern());
+  assertEquals(196,qrCode.getNumTotalBytes());
+  assertEquals(66,qrCode.getNumDataBytes());
+  assertEquals(130,qrCode.getNumECBytes());
+  assertEquals(5,qrCode.getNumRSBlocks());
+  assertFalse(qrCode.isValid());
   ByteMatrix matrix=new ByteMatrix(45,45);
   for (int y=0; y < 45; ++y) {
     for (int x=0; x < 45; ++x) {
       matrix.set(y,x,(y + x) % 2);
     }
   }
-  qr_code.set_matrix(matrix);
-  assertEquals(matrix,qr_code.matrix());
-  assertTrue(qr_code.IsValid());
+  qrCode.setMatrix(matrix);
+  assertEquals(matrix,qrCode.getMatrix());
+  assertTrue(qrCode.isValid());
   for (int y=0; y < 45; ++y) {
     for (int x=0; x < 45; ++x) {
-      assertEquals((y + x) % 2,qr_code.at(x,y));
+      assertEquals((y + x) % 2,qrCode.at(x,y));
     }
   }
 }

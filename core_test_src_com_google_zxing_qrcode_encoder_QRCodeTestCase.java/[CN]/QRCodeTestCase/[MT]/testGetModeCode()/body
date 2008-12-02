@@ -1,10 +1,10 @@
 {
-  assertEquals(1,QRCode.GetModeCode(QRCode.MODE_NUMERIC));
-  assertEquals(2,QRCode.GetModeCode(QRCode.MODE_ALPHANUMERIC));
-  assertEquals(4,QRCode.GetModeCode(QRCode.MODE_8BIT_BYTE));
-  assertEquals(8,QRCode.GetModeCode(QRCode.MODE_KANJI));
+  assertEquals(1,QRCode.getModeCode(QRCode.MODE_NUMERIC));
+  assertEquals(2,QRCode.getModeCode(QRCode.MODE_ALPHANUMERIC));
+  assertEquals(4,QRCode.getModeCode(QRCode.MODE_8BIT_BYTE));
+  assertEquals(8,QRCode.getModeCode(QRCode.MODE_KANJI));
   try {
-    QRCode.GetModeCode(QRCode.MODE_UNDEFINED);
+    QRCode.getModeCode(QRCode.MODE_UNDEFINED);
     fail("Should have thrown exception");
   }
  catch (  WriterException we) {

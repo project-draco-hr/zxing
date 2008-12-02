@@ -1,2 +1,2 @@
-int num_bytes
-int[][] block_info
+int numBytes
+int[][] blockInfo

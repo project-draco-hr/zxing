@@ -1,8 +1,0 @@
-{
-  final int msb_set_in_poly=FindMSBSet(poly);
-  value<<=msb_set_in_poly - 1;
-  while (FindMSBSet(value) >= msb_set_in_poly) {
-    value^=poly << (FindMSBSet(value) - msb_set_in_poly);
-  }
-  return value;
-}

@@ -1,0 +1,30 @@
+{
+  if (blockID >= numRSBlocks) {
+    throw new WriterException("Block ID too large");
+  }
+  final int numRsBlocksInGroup2=numTotalBytes % numRSBlocks;
+  final int numRsBlocksInGroup1=numRSBlocks - numRsBlocksInGroup2;
+  final int numTotalBytesInGroup1=numTotalBytes / numRSBlocks;
+  final int numTotalBytesInGroup2=numTotalBytesInGroup1 + 1;
+  final int numDataBytesInGroup1=numDataBytes / numRSBlocks;
+  final int numDataBytesInGroup2=numDataBytesInGroup1 + 1;
+  final int numEcBytesInGroup1=numTotalBytesInGroup1 - numDataBytesInGroup1;
+  final int numEcBytesInGroup2=numTotalBytesInGroup2 - numDataBytesInGroup2;
+  if (numEcBytesInGroup1 != numEcBytesInGroup2) {
+    throw new WriterException("EC bytes mismatch");
+  }
+  if (numRSBlocks != numRsBlocksInGroup1 + numRsBlocksInGroup2) {
+    throw new WriterException("RS blocks mismatch");
+  }
+  if (numTotalBytes != ((numDataBytesInGroup1 + numEcBytesInGroup1) * numRsBlocksInGroup1) + ((numDataBytesInGroup2 + numEcBytesInGroup2) * numRsBlocksInGroup2)) {
+    throw new WriterException("Total bytes mismatch");
+  }
+  if (blockID < numRsBlocksInGroup1) {
+    numDataBytesInBlock[0]=numDataBytesInGroup1;
+    numECBytesInBlock[0]=numEcBytesInGroup1;
+  }
+ else {
+    numDataBytesInBlock[0]=numDataBytesInGroup2;
+    numECBytesInBlock[0]=numEcBytesInGroup2;
+  }
+}

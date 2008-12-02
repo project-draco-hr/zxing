@@ -1,0 +1,13 @@
+{
+  if (POSITION_DETECTION_PATTERN[0].length != 7 || POSITION_DETECTION_PATTERN.length != 7) {
+    throw new WriterException("Bad position detection pattern");
+  }
+  for (int y=0; y < 7; ++y) {
+    for (int x=0; x < 7; ++x) {
+      if (!isEmpty(matrix.get(yStart + y,xStart + x))) {
+        throw new WriterException();
+      }
+      matrix.set(yStart + y,xStart + x,POSITION_DETECTION_PATTERN[y][x]);
+    }
+  }
+}

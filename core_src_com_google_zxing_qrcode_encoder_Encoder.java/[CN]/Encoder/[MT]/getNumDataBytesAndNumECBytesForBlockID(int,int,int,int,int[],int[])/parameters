@@ -1,0 +1,6 @@
+int numTotalBytes
+int numDataBytes
+int numRSBlocks
+int blockID
+int[] numDataBytesInBlock
+int[] numECBytesInBlock

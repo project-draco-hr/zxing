@@ -1,0 +1,4 @@
+int numBytes
+int version
+int mode
+BitVector bits

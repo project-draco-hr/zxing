@@ -1,4 +1,0 @@
-{
-  final int penalty=(ApplyMaskPenaltyRule1Internal(matrix,true) + ApplyMaskPenaltyRule1Internal(matrix,false));
-  return penalty;
-}

@@ -1,0 +1,14 @@
+{
+switch (ecLevel) {
+case QRCode.EC_LEVEL_L:
+    return 1;
+case QRCode.EC_LEVEL_M:
+  return 0;
+case QRCode.EC_LEVEL_Q:
+return 3;
+case QRCode.EC_LEVEL_H:
+return 2;
+default :
+throw new WriterException("Unknown EC level");
+}
+}

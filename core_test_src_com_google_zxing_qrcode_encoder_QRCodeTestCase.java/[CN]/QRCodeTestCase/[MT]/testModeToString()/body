@@ -1,7 +1,7 @@
 {
-  assertEquals("UNDEFINED",QRCode.ModeToString(QRCode.MODE_UNDEFINED));
-  assertEquals("NUMERIC",QRCode.ModeToString(QRCode.MODE_NUMERIC));
-  assertEquals("ALPHANUMERIC",QRCode.ModeToString(QRCode.MODE_ALPHANUMERIC));
-  assertEquals("8BIT_BYTE",QRCode.ModeToString(QRCode.MODE_8BIT_BYTE));
-  assertEquals("UNKNOWN",QRCode.ModeToString(QRCode.NUM_MODES));
+  assertEquals("UNDEFINED",QRCode.modeToString(QRCode.MODE_UNDEFINED));
+  assertEquals("NUMERIC",QRCode.modeToString(QRCode.MODE_NUMERIC));
+  assertEquals("ALPHANUMERIC",QRCode.modeToString(QRCode.MODE_ALPHANUMERIC));
+  assertEquals("8BIT_BYTE",QRCode.modeToString(QRCode.MODE_8BIT_BYTE));
+  assertEquals("UNKNOWN",QRCode.modeToString(QRCode.NUM_MODES));
 }

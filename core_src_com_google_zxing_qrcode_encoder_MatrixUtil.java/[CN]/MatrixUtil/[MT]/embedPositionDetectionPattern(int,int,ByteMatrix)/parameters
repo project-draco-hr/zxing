@@ -1,0 +1,3 @@
+int xStart
+int yStart
+ByteMatrix matrix

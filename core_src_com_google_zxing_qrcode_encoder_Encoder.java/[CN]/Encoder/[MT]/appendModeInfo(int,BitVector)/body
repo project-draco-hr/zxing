@@ -1,0 +1,4 @@
+{
+  final int code=QRCode.getModeCode(mode);
+  bits.appendBits(code,4);
+}

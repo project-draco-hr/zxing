@@ -1,6 +1,6 @@
 {
-  assertFalse(QRCode.IsValidMaskPattern(-1));
-  assertTrue(QRCode.IsValidMaskPattern(0));
-  assertTrue(QRCode.IsValidMaskPattern(7));
-  assertFalse(QRCode.IsValidMaskPattern(8));
+  assertFalse(QRCode.isValidMaskPattern(-1));
+  assertTrue(QRCode.isValidMaskPattern(0));
+  assertTrue(QRCode.isValidMaskPattern(7));
+  assertFalse(QRCode.isValidMaskPattern(8));
 }

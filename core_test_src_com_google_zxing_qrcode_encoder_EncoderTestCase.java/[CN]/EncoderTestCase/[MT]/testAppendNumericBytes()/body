@@ -1,33 +1,33 @@
 {
 {
     BitVector bits=new BitVector();
-    Encoder.AppendNumericBytes(new ByteArray("1"),bits);
+    Encoder.appendNumericBytes(new ByteArray("1"),bits);
     assertEquals("0001",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.AppendNumericBytes(new ByteArray("12"),bits);
+    Encoder.appendNumericBytes(new ByteArray("12"),bits);
     assertEquals("0001100",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.AppendNumericBytes(new ByteArray("123"),bits);
+    Encoder.appendNumericBytes(new ByteArray("123"),bits);
     assertEquals("0001111011",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.AppendNumericBytes(new ByteArray("1234"),bits);
+    Encoder.appendNumericBytes(new ByteArray("1234"),bits);
     assertEquals("0001111011" + "0100",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.AppendNumericBytes(new ByteArray(""),bits);
+    Encoder.appendNumericBytes(new ByteArray(""),bits);
     assertEquals("",bits.toString());
   }
 {
     BitVector bits=new BitVector();
     try {
-      Encoder.AppendNumericBytes(new ByteArray("abc"),bits);
+      Encoder.appendNumericBytes(new ByteArray("abc"),bits);
     }
  catch (    WriterException we) {
     }

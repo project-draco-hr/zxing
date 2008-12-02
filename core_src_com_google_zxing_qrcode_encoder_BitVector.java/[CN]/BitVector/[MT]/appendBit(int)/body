@@ -2,11 +2,11 @@
   if (!(bit == 0 || bit == 1)) {
     throw new IllegalArgumentException("Bad bit");
   }
-  final int num_bits_in_last_byte=sizeInBits & 0x7;
-  if (num_bits_in_last_byte == 0) {
+  final int numBitsInLastByte=sizeInBits & 0x7;
+  if (numBitsInLastByte == 0) {
     appendByte(0);
     sizeInBits-=8;
   }
-  array[sizeInBits >> 3]|=(bit << (7 - num_bits_in_last_byte));
+  array[sizeInBits >> 3]|=(bit << (7 - numBitsInLastByte));
   ++sizeInBits;
 }

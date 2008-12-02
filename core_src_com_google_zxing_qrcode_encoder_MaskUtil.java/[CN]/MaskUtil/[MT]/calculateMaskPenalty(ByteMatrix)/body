@@ -1,0 +1,8 @@
+{
+  int penalty=0;
+  penalty+=applyMaskPenaltyRule1(matrix);
+  penalty+=applyMaskPenaltyRule2(matrix);
+  penalty+=applyMaskPenaltyRule3(matrix);
+  penalty+=applyMaskPenaltyRule4(matrix);
+  return penalty;
+}

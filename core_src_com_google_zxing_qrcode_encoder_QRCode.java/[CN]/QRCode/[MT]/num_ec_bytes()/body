@@ -1,3 +1,0 @@
-{
-  return num_ec_bytes_;
-}

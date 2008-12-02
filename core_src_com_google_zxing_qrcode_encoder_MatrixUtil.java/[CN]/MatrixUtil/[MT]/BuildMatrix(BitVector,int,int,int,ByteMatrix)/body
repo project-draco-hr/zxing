@@ -1,7 +1,0 @@
-{
-  MatrixUtil.ClearMatrix(matrix);
-  EmbedBasicPatterns(version,matrix);
-  EmbedTypeInfo(ec_level,mask_pattern,matrix);
-  MaybeEmbedVersionInfo(version,matrix);
-  EmbedDataBits(data_bits,mask_pattern,matrix);
-}

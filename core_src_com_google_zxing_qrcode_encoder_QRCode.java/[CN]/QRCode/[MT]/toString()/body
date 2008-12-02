@@ -2,29 +2,29 @@
   StringBuffer result=new StringBuffer();
   result.append("<<\n");
   result.append(" mode: ");
-  result.append(ModeToString(mode_));
-  result.append("\n ec_level: ");
-  result.append(ECLevelToString(ec_level_));
+  result.append(modeToString(mode));
+  result.append("\n ecLevel: ");
+  result.append(ecLevelToString(ecLevel));
   result.append("\n version: ");
-  result.append(version_);
-  result.append("\n matrix_width: ");
-  result.append(matrix_width_);
-  result.append("\n mask_pattern: ");
-  result.append(mask_pattern_);
-  result.append("\n num_total_bytes_: ");
-  result.append(num_total_bytes_);
-  result.append("\n num_data_bytes: ");
-  result.append(num_data_bytes_);
-  result.append("\n num_ec_bytes: ");
-  result.append(num_ec_bytes_);
-  result.append("\n num_rs_blocks: ");
-  result.append(num_rs_blocks_);
-  if (matrix_ == null) {
+  result.append(version);
+  result.append("\n matrixWidth: ");
+  result.append(matrixWidth);
+  result.append("\n maskPattern: ");
+  result.append(maskPattern);
+  result.append("\n numTotalBytes: ");
+  result.append(numTotalBytes);
+  result.append("\n numDataBytes: ");
+  result.append(numDataBytes);
+  result.append("\n numECBytes: ");
+  result.append(numECBytes);
+  result.append("\n numRSBlocks: ");
+  result.append(numRSBlocks);
+  if (matrix == null) {
     result.append("\n matrix: null\n");
   }
  else {
     result.append("\n matrix:\n");
-    result.append(matrix_.toString());
+    result.append(matrix.toString());
   }
   result.append(">>\n");
   return result.toString();

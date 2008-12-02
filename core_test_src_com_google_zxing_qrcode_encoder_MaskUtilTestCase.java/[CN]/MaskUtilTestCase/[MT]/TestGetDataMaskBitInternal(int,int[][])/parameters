@@ -1,2 +1,2 @@
-int mask_pattern
+int maskPattern
 int[][] expected

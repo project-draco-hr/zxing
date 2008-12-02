@@ -1,0 +1,7 @@
+{
+  MatrixUtil.clearMatrix(matrix);
+  embedBasicPatterns(version,matrix);
+  embedTypeInfo(ecLevel,maskPattern,matrix);
+  maybeEmbedVersionInfo(version,matrix);
+  embedDataBits(dataBits,maskPattern,matrix);
+}

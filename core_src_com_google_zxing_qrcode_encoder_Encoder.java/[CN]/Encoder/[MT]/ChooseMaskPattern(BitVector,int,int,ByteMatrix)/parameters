@@ -1,4 +1,0 @@
-BitVector bits
-int ec_level
-int version
-ByteMatrix matrix

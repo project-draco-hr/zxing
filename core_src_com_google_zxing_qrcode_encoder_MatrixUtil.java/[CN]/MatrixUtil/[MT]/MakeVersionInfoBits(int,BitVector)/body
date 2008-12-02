@@ -1,8 +1,0 @@
-{
-  bits.appendBits(version,6);
-  final int bch_code=MatrixUtil.CalculateBCHCode(version,kVersionInfoPoly);
-  bits.appendBits(bch_code,12);
-  if (bits.size() != 18) {
-    throw new WriterException("should not happen but we got: " + bits.size());
-  }
-}
