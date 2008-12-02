@@ -1,6 +1,6 @@
 {
   if (versionNumber < 1 || versionNumber > 40) {
-    throw ReaderException.getInstance();
+    throw new IllegalArgumentException();
   }
   return VERSIONS[versionNumber - 1];
 }

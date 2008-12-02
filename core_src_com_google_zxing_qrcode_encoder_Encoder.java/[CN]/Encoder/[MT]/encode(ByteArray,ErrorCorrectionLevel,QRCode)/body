@@ -1,5 +1,5 @@
 {
-  final int mode=chooseMode(bytes);
+  final Mode mode=chooseMode(bytes);
   BitVector dataBits=new BitVector();
   appendBytes(bytes,mode,dataBits);
   final int numInputBytes=dataBits.sizeInBytes();

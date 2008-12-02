@@ -2,7 +2,7 @@
   StringBuffer result=new StringBuffer();
   result.append("<<\n");
   result.append(" mode: ");
-  result.append(modeToString(mode));
+  result.append(mode);
   result.append("\n ecLevel: ");
   result.append(ecLevel);
   result.append("\n version: ");

@@ -1,3 +1,0 @@
-{
-  return mode >= 0 && mode < NUM_MODES;
-}

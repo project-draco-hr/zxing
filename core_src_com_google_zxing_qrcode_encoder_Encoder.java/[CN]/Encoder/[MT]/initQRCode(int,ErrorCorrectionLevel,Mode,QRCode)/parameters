@@ -1,4 +1,4 @@
 int numInputBytes
 ErrorCorrectionLevel ecLevel
-int mode
+Mode mode
 QRCode qrCode

@@ -15,16 +15,16 @@
     }
   }
   if (hasOther) {
-    return QRCode.MODE_8BIT_BYTE;
+    return Mode.BYTE;
   }
  else   if (hasAlphanumeric) {
-    return QRCode.MODE_ALPHANUMERIC;
+    return Mode.ALPHANUMERIC;
   }
  else   if (hasNumeric) {
-    return QRCode.MODE_NUMERIC;
+    return Mode.NUMERIC;
   }
   if (!bytes.empty()) {
     throw new WriterException("Bytes left over");
   }
-  return QRCode.MODE_8BIT_BYTE;
+  return Mode.BYTE;
 }

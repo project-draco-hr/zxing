@@ -1,12 +1,12 @@
 {
   int numLetters=numBytes;
-  if (mode == QRCode.MODE_KANJI) {
+  if (mode.equals(Mode.KANJI)) {
     if (numLetters % 2 != 0) {
       throw new WriterException("Number of letters must be even");
     }
     numLetters/=2;
   }
-  final int numBits=QRCode.getNumBitsForLength(version,mode);
+  final int numBits=mode.getCharacterCountBits(Version.getVersionForNumber(version));
   if (numLetters > ((1 << numBits) - 1)) {
     throw new WriterException(numLetters + "is bigger than" + ((1 << numBits) - 1));
   }
