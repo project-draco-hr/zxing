@@ -1,0 +1,3 @@
+ErrorCorrectionLevel ecLevel
+int maskPattern
+BitVector bits

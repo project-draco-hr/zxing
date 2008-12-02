@@ -8,11 +8,11 @@
   if (width < 0 || height < 0) {
     throw new IllegalArgumentException("Requested dimensions are too small: " + width + "x"+ height);
   }
-  int errorCorrectionLevel=QRCode.EC_LEVEL_L;
+  ErrorCorrectionLevel errorCorrectionLevel=ErrorCorrectionLevel.L;
   if (hints != null) {
-    Integer requestedECLevel=(Integer)hints.get(EncodeHintType.ERROR_CORRECTION);
+    ErrorCorrectionLevel requestedECLevel=(ErrorCorrectionLevel)hints.get(EncodeHintType.ERROR_CORRECTION);
     if (requestedECLevel != null) {
-      errorCorrectionLevel=requestedECLevel.intValue();
+      errorCorrectionLevel=requestedECLevel;
     }
   }
   QRCode code=new QRCode();

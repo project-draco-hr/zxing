@@ -1,0 +1,4 @@
+String contents
+ErrorCorrectionLevel ecLevel
+int resolution
+String fileName

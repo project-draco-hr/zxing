@@ -1,0 +1,3 @@
+ByteArray bytes
+ErrorCorrectionLevel ecLevel
+QRCode qrCode

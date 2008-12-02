@@ -4,7 +4,7 @@
   result.append(" mode: ");
   result.append(modeToString(mode));
   result.append("\n ecLevel: ");
-  result.append(ecLevelToString(ecLevel));
+  result.append(ecLevel);
   result.append("\n version: ");
   result.append(version);
   result.append("\n matrixWidth: ");

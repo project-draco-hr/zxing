@@ -2,7 +2,7 @@
   QRCode qrCode=new QRCode();
   assertFalse(qrCode.isValid());
   qrCode.setMode(QRCode.MODE_8BIT_BYTE);
-  qrCode.setECLevel(QRCode.EC_LEVEL_H);
+  qrCode.setECLevel(ErrorCorrectionLevel.H);
   qrCode.setVersion(7);
   qrCode.setMatrixWidth(45);
   qrCode.setMaskPattern(3);
@@ -11,7 +11,7 @@
   qrCode.setNumECBytes(130);
   qrCode.setNumRSBlocks(5);
   assertEquals(QRCode.MODE_8BIT_BYTE,qrCode.getMode());
-  assertEquals(QRCode.EC_LEVEL_H,qrCode.getECLevel());
+  assertEquals(ErrorCorrectionLevel.H,qrCode.getECLevel());
   assertEquals(7,qrCode.getVersion());
   assertEquals(45,qrCode.getMatrixWidth());
   assertEquals(3,qrCode.getMaskPattern());

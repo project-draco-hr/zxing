@@ -1,6 +1,6 @@
 {
   mode=MODE_UNDEFINED;
-  ecLevel=EC_LEVEL_UNDEFINED;
+  ecLevel=null;
   version=-1;
   matrixWidth=-1;
   maskPattern=-1;

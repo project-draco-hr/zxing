@@ -5,5 +5,5 @@
     dataBytes[x]='0';
   }
   QRCode qrCode=new QRCode();
-  Encoder.encode(new ByteArray(dataBytes),QRCode.EC_LEVEL_L,qrCode);
+  Encoder.encode(new ByteArray(dataBytes),ErrorCorrectionLevel.L,qrCode);
 }

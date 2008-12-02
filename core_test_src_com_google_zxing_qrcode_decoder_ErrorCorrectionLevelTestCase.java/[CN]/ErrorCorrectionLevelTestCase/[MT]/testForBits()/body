@@ -7,6 +7,6 @@
     ErrorCorrectionLevel.forBits(4);
     fail("Should have thrown an exception");
   }
- catch (  ReaderException re) {
+ catch (  IllegalArgumentException iae) {
   }
 }
