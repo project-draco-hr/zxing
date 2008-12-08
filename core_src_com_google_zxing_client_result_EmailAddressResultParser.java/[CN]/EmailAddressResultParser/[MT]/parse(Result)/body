@@ -4,7 +4,7 @@
     return null;
   }
   String emailAddress;
-  if (rawText.startsWith("mailto:")) {
+  if (rawText.startsWith("mailto:") || rawText.startsWith("MAILTO:")) {
     emailAddress=rawText.substring(7);
     int queryStart=emailAddress.indexOf('?');
     if (queryStart >= 0) {

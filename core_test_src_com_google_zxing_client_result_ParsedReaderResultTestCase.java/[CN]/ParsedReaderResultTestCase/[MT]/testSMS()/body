@@ -1,5 +1,6 @@
 {
   doTestResult("sms:+15551212",ParsedResultType.SMS);
+  doTestResult("SMS:+15551212",ParsedResultType.SMS);
   doTestResult("SMSTO:+15551212",ParsedResultType.SMS);
   doTestResult("smsto:+15551212",ParsedResultType.SMS);
   doTestResult("sms:+15551212;via=999333",ParsedResultType.SMS);

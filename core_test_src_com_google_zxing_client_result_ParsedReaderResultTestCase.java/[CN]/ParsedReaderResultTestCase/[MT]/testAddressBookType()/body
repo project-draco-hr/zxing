@@ -2,5 +2,5 @@
   doTestResult("MECARD:N:Sean Owen;;",ParsedResultType.ADDRESSBOOK);
   doTestResult("MECARD:TEL:+12125551212;N:Sean Owen;;",ParsedResultType.ADDRESSBOOK);
   doTestResult("MECARD:TEL:+12125551212;N:Sean Owen;URL:google.com;;",ParsedResultType.ADDRESSBOOK);
-  doTestResult("TEL:+12125551212;N:Sean Owen;;",ParsedResultType.TEXT);
+  doTestResult("N:Sean Owen;TEL:+12125551212;;",ParsedResultType.TEXT);
 }

@@ -1,5 +1,6 @@
 {
   doTestResult("geo:1,2",ParsedResultType.GEO);
+  doTestResult("GEO:1,2",ParsedResultType.GEO);
   doTestResult("geo:1,2,3",ParsedResultType.GEO);
   doTestResult("geo:100.33,-32.3344,3.35",ParsedResultType.GEO);
   doTestResult("geography",ParsedResultType.TEXT);
