@@ -1,5 +1,5 @@
 {
-  Date startDate=new Date();
+  long start=System.currentTimeMillis();
   boolean success;
   Result rawResult=null;
   YUVMonochromeBitmapSource source=new YUVMonochromeBitmapSource(data,width,height,CameraManager.get().getFramingRect());
@@ -10,10 +10,10 @@
  catch (  ReaderException e) {
     success=false;
   }
-  Date endDate=new Date();
+  long end=System.currentTimeMillis();
   if (success) {
     Message message=Message.obtain(mActivity.mHandler,R.id.decode_succeeded,rawResult);
-    message.arg1=(int)(endDate.getTime() - startDate.getTime());
+    message.arg1=(int)(end - start);
     Bundle bundle=new Bundle();
     bundle.putParcelable(BARCODE_BITMAP,source.renderToBitmap());
     message.setData(bundle);
@@ -21,7 +21,7 @@
   }
  else {
     Message message=Message.obtain(mActivity.mHandler,R.id.decode_failed);
-    message.arg1=(int)(endDate.getTime() - startDate.getTime());
+    message.arg1=(int)(end - start);
     message.sendToTarget();
   }
 }
