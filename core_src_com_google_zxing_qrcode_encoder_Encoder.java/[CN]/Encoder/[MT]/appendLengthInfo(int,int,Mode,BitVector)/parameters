@@ -1,4 +1,4 @@
-int numBytes
+int numLetters
 int version
 Mode mode
 BitVector bits

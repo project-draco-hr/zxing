@@ -1,6 +1,0 @@
-{
-  assertFalse(QRCode.isValidMatrixWidth(20));
-  assertTrue(QRCode.isValidMatrixWidth(21));
-  assertTrue(QRCode.isValidMatrixWidth(177));
-  assertFalse(QRCode.isValidMatrixWidth(178));
-}

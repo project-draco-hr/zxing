@@ -1,5 +1,5 @@
 {
-  final int msbSetInPoly=findMSBSet(poly);
+  int msbSetInPoly=findMSBSet(poly);
   value<<=msbSetInPoly - 1;
   while (findMSBSet(value) >= msbSetInPoly) {
     value^=poly << (findMSBSet(value) - msbSetInPoly);

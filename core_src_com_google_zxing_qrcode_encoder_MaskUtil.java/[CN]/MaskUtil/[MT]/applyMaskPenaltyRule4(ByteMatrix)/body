@@ -10,7 +10,7 @@
       }
     }
   }
-  final int numTotalCells=matrix.height() * matrix.width();
+  int numTotalCells=matrix.height() * matrix.width();
   double darkRatio=(double)numDarkCells / numTotalCells;
   return Math.abs((int)(darkRatio * 100 - 50)) / 5 * 10;
 }

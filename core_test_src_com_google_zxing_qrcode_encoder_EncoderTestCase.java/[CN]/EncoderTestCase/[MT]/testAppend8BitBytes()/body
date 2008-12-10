@@ -1,12 +1,12 @@
 {
 {
     BitVector bits=new BitVector();
-    Encoder.append8BitBytes(new ByteArray("abc"),bits);
+    Encoder.append8BitBytes("abc",bits);
     assertEquals("01100001" + "01100010" + "01100011",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.append8BitBytes(new ByteArray(""),bits);
+    Encoder.append8BitBytes("",bits);
     assertEquals("",bits.toString());
   }
 }

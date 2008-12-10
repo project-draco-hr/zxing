@@ -1,12 +1,9 @@
 {
-  if (!QRCode.isValidMatrixWidth(matrix.width())) {
-    throw new WriterException("Invalid matrix width: " + matrix.width());
-  }
   int minPenalty=Integer.MAX_VALUE;
   int bestMaskPattern=-1;
   for (int maskPattern=0; maskPattern < QRCode.NUM_MASK_PATTERNS; maskPattern++) {
     MatrixUtil.buildMatrix(bits,ecLevel,version,maskPattern,matrix);
-    final int penalty=MaskUtil.calculateMaskPenalty(matrix);
+    int penalty=calculateMaskPenalty(matrix);
     if (penalty < minPenalty) {
       minPenalty=penalty;
       bestMaskPattern=maskPattern;

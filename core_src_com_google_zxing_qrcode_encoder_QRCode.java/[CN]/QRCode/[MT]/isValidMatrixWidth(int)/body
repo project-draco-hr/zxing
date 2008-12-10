@@ -1,3 +1,0 @@
-{
-  return width >= MIN_MATRIX_WIDTH && width <= MAX_MATRIX_WIDTH;
-}

@@ -1,3 +1,0 @@
-{
-  return version >= MIN_VERSION && version <= MAX_VERSION;
-}

@@ -1,15 +1,12 @@
 {
-  assertEquals(Mode.NUMERIC,Encoder.chooseMode(new ByteArray("0")));
-  assertEquals(Mode.NUMERIC,Encoder.chooseMode(new ByteArray("0123456789")));
-  assertEquals(Mode.ALPHANUMERIC,Encoder.chooseMode(new ByteArray("A")));
-  assertEquals(Mode.ALPHANUMERIC,Encoder.chooseMode(new ByteArray("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:")));
-  assertEquals(Mode.BYTE,Encoder.chooseMode(new ByteArray("a")));
-  assertEquals(Mode.BYTE,Encoder.chooseMode(new ByteArray("#")));
-  assertEquals(Mode.BYTE,Encoder.chooseMode(new ByteArray("")));
-  byte[] dat1={0x8,0xa,0x8,0xa,0x8,0xa,0x8,(byte)0xa6};
-  assertEquals(Mode.BYTE,Encoder.chooseMode(new ByteArray(dat1)));
-  byte[] dat2={0x9,0xf,0x9,0x7b};
-  assertEquals(Mode.BYTE,Encoder.chooseMode(new ByteArray(dat2)));
-  byte[] dat3={0xe,0x4,0x9,0x5,0x9,0x61};
-  assertEquals(Mode.BYTE,Encoder.chooseMode(new ByteArray(dat3)));
+  assertEquals(Mode.NUMERIC,Encoder.chooseMode("0"));
+  assertEquals(Mode.NUMERIC,Encoder.chooseMode("0123456789"));
+  assertEquals(Mode.ALPHANUMERIC,Encoder.chooseMode("A"));
+  assertEquals(Mode.ALPHANUMERIC,Encoder.chooseMode("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:"));
+  assertEquals(Mode.BYTE,Encoder.chooseMode("a"));
+  assertEquals(Mode.BYTE,Encoder.chooseMode("#"));
+  assertEquals(Mode.BYTE,Encoder.chooseMode(""));
+  assertEquals(Mode.BYTE,Encoder.chooseMode(shiftJISString(new byte[]{0x8,0xa,0x8,0xa,0x8,0xa,0x8,(byte)0xa6})));
+  assertEquals(Mode.BYTE,Encoder.chooseMode(shiftJISString(new byte[]{0x9,0xf,0x9,0x7b})));
+  assertEquals(Mode.BYTE,Encoder.chooseMode(shiftJISString(new byte[]{0xe,0x4,0x9,0x5,0x9,0x61})));
 }

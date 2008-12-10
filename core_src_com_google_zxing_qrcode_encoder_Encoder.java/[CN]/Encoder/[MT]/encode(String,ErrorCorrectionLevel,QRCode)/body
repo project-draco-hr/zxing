@@ -1,0 +1,21 @@
+{
+  Mode mode=chooseMode(content);
+  BitVector dataBits=new BitVector();
+  appendBytes(content,mode,dataBits);
+  int numInputBytes=dataBits.sizeInBytes();
+  initQRCode(numInputBytes,ecLevel,mode,qrCode);
+  BitVector headerAndDataBits=new BitVector();
+  appendModeInfo(qrCode.getMode(),headerAndDataBits);
+  appendLengthInfo(content.length(),qrCode.getVersion(),qrCode.getMode(),headerAndDataBits);
+  headerAndDataBits.appendBitVector(dataBits);
+  terminateBits(qrCode.getNumDataBytes(),headerAndDataBits);
+  BitVector finalBits=new BitVector();
+  interleaveWithECBytes(headerAndDataBits,qrCode.getNumTotalBytes(),qrCode.getNumDataBytes(),qrCode.getNumRSBlocks(),finalBits);
+  ByteMatrix matrix=new ByteMatrix(qrCode.getMatrixWidth(),qrCode.getMatrixWidth());
+  qrCode.setMaskPattern(chooseMaskPattern(finalBits,qrCode.getECLevel(),qrCode.getVersion(),matrix));
+  MatrixUtil.buildMatrix(finalBits,qrCode.getECLevel(),qrCode.getVersion(),qrCode.getMaskPattern(),matrix);
+  qrCode.setMatrix(matrix);
+  if (!qrCode.isValid()) {
+    throw new WriterException("Invalid QR code: " + qrCode.toString());
+  }
+}

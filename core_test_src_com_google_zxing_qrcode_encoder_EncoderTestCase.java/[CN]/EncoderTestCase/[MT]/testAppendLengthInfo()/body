@@ -16,7 +16,7 @@
   }
 {
     BitVector bits=new BitVector();
-    Encoder.appendLengthInfo(1024,40,Mode.KANJI,bits);
+    Encoder.appendLengthInfo(512,40,Mode.KANJI,bits);
     assertEquals("001000000000",bits.toString());
   }
 }

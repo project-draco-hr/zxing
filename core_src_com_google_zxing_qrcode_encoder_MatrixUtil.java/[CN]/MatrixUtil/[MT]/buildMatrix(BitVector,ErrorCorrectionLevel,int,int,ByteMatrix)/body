@@ -1,5 +1,5 @@
 {
-  MatrixUtil.clearMatrix(matrix);
+  clearMatrix(matrix);
   embedBasicPatterns(version,matrix);
   embedTypeInfo(ecLevel,maskPattern,matrix);
   maybeEmbedVersionInfo(version,matrix);

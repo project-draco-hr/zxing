@@ -1,28 +1,28 @@
 {
 {
     BitVector bits=new BitVector();
-    Encoder.appendAlphanumericBytes(new ByteArray("A"),bits);
+    Encoder.appendAlphanumericBytes("A",bits);
     assertEquals("001010",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.appendAlphanumericBytes(new ByteArray("AB"),bits);
+    Encoder.appendAlphanumericBytes("AB",bits);
     assertEquals("00111001101",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.appendAlphanumericBytes(new ByteArray("ABC"),bits);
+    Encoder.appendAlphanumericBytes("ABC",bits);
     assertEquals("00111001101" + "001100",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.appendAlphanumericBytes(new ByteArray(""),bits);
+    Encoder.appendAlphanumericBytes("",bits);
     assertEquals("",bits.toString());
   }
 {
     BitVector bits=new BitVector();
     try {
-      Encoder.appendAlphanumericBytes(new ByteArray("abc"),bits);
+      Encoder.appendAlphanumericBytes("abc",bits);
     }
  catch (    WriterException we) {
     }

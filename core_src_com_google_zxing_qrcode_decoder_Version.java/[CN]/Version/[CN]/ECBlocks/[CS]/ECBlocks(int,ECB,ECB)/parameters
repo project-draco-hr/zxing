@@ -1,3 +1,3 @@
-int ecCodewords
+int ecCodewordsPerBlock
 ECB ecBlocks1
 ECB ecBlocks2

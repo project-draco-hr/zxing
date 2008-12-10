@@ -2,6 +2,6 @@
   if (index < 0 || index >= sizeInBits) {
     throw new IllegalArgumentException("Bad index: " + index);
   }
-  final int value=array[index >> 3] & 0xff;
+  int value=array[index >> 3] & 0xff;
   return (value >> (7 - (index & 0x7))) & 1;
 }

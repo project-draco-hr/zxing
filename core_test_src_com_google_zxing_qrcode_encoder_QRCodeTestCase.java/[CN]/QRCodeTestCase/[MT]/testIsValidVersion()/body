@@ -1,6 +1,0 @@
-{
-  assertFalse(QRCode.isValidVersion(0));
-  assertTrue(QRCode.isValidVersion(1));
-  assertTrue(QRCode.isValidVersion(40));
-  assertFalse(QRCode.isValidVersion(0));
-}

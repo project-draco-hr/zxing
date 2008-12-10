@@ -2,10 +2,10 @@
   StringBuffer result=new StringBuffer(sizeInBits);
   for (int i=0; i < sizeInBits; ++i) {
     if (at(i) == 0) {
-      result.append("0");
+      result.append('0');
     }
  else     if (at(i) == 1) {
-      result.append("1");
+      result.append('1');
     }
  else {
       throw new IllegalArgumentException("Byte isn't 0 or 1");

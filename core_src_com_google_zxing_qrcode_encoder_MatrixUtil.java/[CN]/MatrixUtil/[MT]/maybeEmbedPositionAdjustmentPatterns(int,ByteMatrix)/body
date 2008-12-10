@@ -2,13 +2,13 @@
   if (version < 2) {
     return;
   }
-  final int index=version - 1;
-  final int[] coordinates=POSITION_ADJUSTMENT_PATTERN_COORDINATE_TABLE[index];
-  final int numCoordinates=POSITION_ADJUSTMENT_PATTERN_COORDINATE_TABLE[index].length;
+  int index=version - 1;
+  int[] coordinates=POSITION_ADJUSTMENT_PATTERN_COORDINATE_TABLE[index];
+  int numCoordinates=POSITION_ADJUSTMENT_PATTERN_COORDINATE_TABLE[index].length;
   for (int i=0; i < numCoordinates; ++i) {
     for (int j=0; j < numCoordinates; ++j) {
-      final int y=coordinates[i];
-      final int x=coordinates[j];
+      int y=coordinates[i];
+      int x=coordinates[j];
       if (x == -1 || y == -1) {
         continue;
       }

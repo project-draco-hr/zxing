@@ -23,7 +23,7 @@
   }
   for (int i=0; i < maxNumDataBytes; ++i) {
     for (int j=0; j < blocks.size(); ++j) {
-      final ByteArray dataBytes=((BlockPair)blocks.elementAt(j)).getDataBytes();
+      ByteArray dataBytes=((BlockPair)blocks.elementAt(j)).getDataBytes();
       if (i < dataBytes.size()) {
         result.appendBits(dataBytes.at(i),8);
       }
@@ -31,7 +31,7 @@
   }
   for (int i=0; i < maxNumEcBytes; ++i) {
     for (int j=0; j < blocks.size(); ++j) {
-      final ByteArray ecBytes=((BlockPair)blocks.elementAt(j)).getErrorCorrectionBytes();
+      ByteArray ecBytes=((BlockPair)blocks.elementAt(j)).getErrorCorrectionBytes();
       if (i < ecBytes.size()) {
         result.appendBits(ecBytes.at(i),8);
       }

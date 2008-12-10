@@ -1,14 +1,14 @@
 {
-  final int capacity=numDataBytes * 8;
+  int capacity=numDataBytes << 3;
   if (bits.size() > capacity) {
     throw new WriterException("data bits cannot fit in the QR Code" + bits.size() + " > "+ capacity);
   }
   for (int i=0; i < 4 && bits.size() < capacity; ++i) {
     bits.appendBit(0);
   }
-  final int numBitsInLastByte=bits.size() % 8;
+  int numBitsInLastByte=bits.size() % 8;
   if (numBitsInLastByte > 0) {
-    final int numPaddingBits=8 - numBitsInLastByte;
+    int numPaddingBits=8 - numBitsInLastByte;
     for (int i=0; i < numPaddingBits; ++i) {
       bits.appendBit(0);
     }
@@ -16,7 +16,7 @@
   if (bits.size() % 8 != 0) {
     throw new WriterException("Number of bits is not a multiple of 8");
   }
-  final int numPaddingBytes=numDataBytes - bits.sizeInBytes();
+  int numPaddingBytes=numDataBytes - bits.sizeInBytes();
   for (int i=0; i < numPaddingBytes; ++i) {
     if (i % 2 == 0) {
       bits.appendBits(0xec,8);

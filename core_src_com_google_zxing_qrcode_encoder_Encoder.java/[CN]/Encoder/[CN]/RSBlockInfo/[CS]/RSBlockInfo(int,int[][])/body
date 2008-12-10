@@ -1,4 +1,0 @@
-{
-  this.numBytes=numBytes;
-  this.blockInfo=blockInfo;
-}

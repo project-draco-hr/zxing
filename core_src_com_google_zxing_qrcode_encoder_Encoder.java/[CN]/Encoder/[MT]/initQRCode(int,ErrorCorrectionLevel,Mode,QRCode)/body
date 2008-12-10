@@ -1,19 +1,20 @@
 {
   qrCode.setECLevel(ecLevel);
   qrCode.setMode(mode);
-  for (int i=0; i < RS_BLOCK_TABLE.length; ++i) {
-    final RSBlockInfo row=RS_BLOCK_TABLE[i];
-    final int numBytes=row.numBytes;
-    final int numEcBytes=row.blockInfo[ecLevel.ordinal()][0];
-    final int numRSBlocks=row.blockInfo[ecLevel.ordinal()][1];
-    final int numDataBytes=numBytes - numEcBytes;
+  for (int versionNum=1; versionNum <= 40; versionNum++) {
+    Version version=Version.getVersionForNumber(versionNum);
+    int numBytes=version.getTotalCodewords();
+    Version.ECBlocks ecBlocks=version.getECBlocksForLevel(ecLevel);
+    int numEcBytes=ecBlocks.getTotalECCodewords();
+    int numRSBlocks=ecBlocks.getNumBlocks();
+    int numDataBytes=numBytes - numEcBytes;
     if (numDataBytes >= numInputBytes + 3) {
-      qrCode.setVersion(i + 1);
+      qrCode.setVersion(versionNum);
       qrCode.setNumTotalBytes(numBytes);
       qrCode.setNumDataBytes(numDataBytes);
       qrCode.setNumRSBlocks(numRSBlocks);
-      qrCode.setNumECBytes(numBytes - numDataBytes);
-      qrCode.setMatrixWidth(21 + i * 4);
+      qrCode.setNumECBytes(numEcBytes);
+      qrCode.setMatrixWidth(version.getDimensionForVersion());
       return;
     }
   }

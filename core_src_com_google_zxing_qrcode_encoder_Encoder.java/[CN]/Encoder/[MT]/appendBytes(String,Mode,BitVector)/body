@@ -1,0 +1,17 @@
+{
+  if (mode.equals(Mode.NUMERIC)) {
+    appendNumericBytes(content,bits);
+  }
+ else   if (mode.equals(Mode.ALPHANUMERIC)) {
+    appendAlphanumericBytes(content,bits);
+  }
+ else   if (mode.equals(Mode.BYTE)) {
+    append8BitBytes(content,bits);
+  }
+ else   if (mode.equals(Mode.KANJI)) {
+    appendKanjiBytes(content,bits);
+  }
+ else {
+    throw new WriterException("Invalid mode: " + mode);
+  }
+}

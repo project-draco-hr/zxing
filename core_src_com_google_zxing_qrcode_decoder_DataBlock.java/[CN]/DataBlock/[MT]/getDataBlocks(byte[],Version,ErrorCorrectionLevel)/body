@@ -11,7 +11,7 @@
     Version.ECB ecBlock=ecBlockArray[j];
     for (int i=0; i < ecBlock.getCount(); i++) {
       int numDataCodewords=ecBlock.getDataCodewords();
-      int numBlockCodewords=ecBlocks.getECCodewords() + numDataCodewords;
+      int numBlockCodewords=ecBlocks.getECCodewordsPerBlock() + numDataCodewords;
       result[numResultBlocks++]=new DataBlock(numDataCodewords,new byte[numBlockCodewords]);
     }
   }
@@ -28,7 +28,7 @@
     longerBlocksStartAt--;
   }
   longerBlocksStartAt++;
-  int shorterBlocksNumDataCodewords=shorterBlocksTotalCodewords - ecBlocks.getECCodewords();
+  int shorterBlocksNumDataCodewords=shorterBlocksTotalCodewords - ecBlocks.getECCodewordsPerBlock();
   int rawCodewordsOffset=0;
   for (int i=0; i < shorterBlocksNumDataCodewords; i++) {
     for (int j=0; j < numResultBlocks; j++) {

@@ -1,9 +1,8 @@
 {
-  final int arraySize=3518;
-  byte[] dataBytes=new byte[arraySize];
-  for (int x=0; x < arraySize; x++) {
-    dataBytes[x]='0';
+  StringBuilder builder=new StringBuilder(3518);
+  for (int x=0; x < 3518; x++) {
+    builder.append('0');
   }
   QRCode qrCode=new QRCode();
-  Encoder.encode(new ByteArray(dataBytes),ErrorCorrectionLevel.L,qrCode);
+  Encoder.encode(builder.toString(),ErrorCorrectionLevel.L,qrCode);
 }

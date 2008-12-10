@@ -1,4 +1,0 @@
-{
-  bytes=string.getBytes();
-  size=bytes.length;
-}

@@ -1,13 +1,13 @@
 {
-  final int pdpWidth=POSITION_DETECTION_PATTERN[0].length;
+  int pdpWidth=POSITION_DETECTION_PATTERN[0].length;
   embedPositionDetectionPattern(0,0,matrix);
   embedPositionDetectionPattern(matrix.width() - pdpWidth,0,matrix);
   embedPositionDetectionPattern(0,matrix.width() - pdpWidth,matrix);
-  final int hspWidth=HORIZONTAL_SEPARATION_PATTERN[0].length;
+  int hspWidth=HORIZONTAL_SEPARATION_PATTERN[0].length;
   embedHorizontalSeparationPattern(0,hspWidth - 1,matrix);
   embedHorizontalSeparationPattern(matrix.width() - hspWidth,hspWidth - 1,matrix);
   embedHorizontalSeparationPattern(0,matrix.width() - hspWidth,matrix);
-  final int vspSize=VERTICAL_SEPARATION_PATTERN.length;
+  int vspSize=VERTICAL_SEPARATION_PATTERN.length;
   embedVerticalSeparationPattern(vspSize,0,matrix);
   embedVerticalSeparationPattern(matrix.height() - vspSize - 1,0,matrix);
   embedVerticalSeparationPattern(vspSize,matrix.height() - vspSize,matrix);

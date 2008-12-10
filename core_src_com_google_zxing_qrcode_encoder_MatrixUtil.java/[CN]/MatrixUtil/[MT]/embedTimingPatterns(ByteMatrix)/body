@@ -1,6 +1,6 @@
 {
   for (int i=8; i < matrix.width() - 8; ++i) {
-    final int bit=(i + 1) % 2;
+    int bit=(i + 1) % 2;
     if (!isValidValue(matrix.get(6,i))) {
       throw new WriterException();
     }

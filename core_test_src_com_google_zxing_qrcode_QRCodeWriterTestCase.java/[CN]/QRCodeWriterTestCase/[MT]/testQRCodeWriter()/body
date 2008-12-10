@@ -1,19 +1,19 @@
 {
-  final int bigEnough=256;
+  int bigEnough=256;
   QRCodeWriter writer=new QRCodeWriter();
   ByteMatrix matrix=writer.encode("http://www.google.com/",BarcodeFormat.QR_CODE,bigEnough,bigEnough,null);
-  assertTrue(matrix != null);
+  assertNotNull(matrix);
   assertEquals(bigEnough,matrix.width());
   assertEquals(bigEnough,matrix.height());
-  final int tooSmall=20;
+  int tooSmall=20;
   matrix=writer.encode("http://www.google.com/",BarcodeFormat.QR_CODE,tooSmall,tooSmall,null);
-  assertTrue(matrix != null);
+  assertNotNull(matrix);
   assertTrue(tooSmall < matrix.width());
   assertTrue(tooSmall < matrix.height());
-  final int strangeWidth=500;
-  final int strangeHeight=100;
+  int strangeWidth=500;
+  int strangeHeight=100;
   matrix=writer.encode("http://www.google.com/",BarcodeFormat.QR_CODE,strangeWidth,strangeHeight,null);
-  assertTrue(matrix != null);
+  assertNotNull(matrix);
   assertEquals(strangeWidth,matrix.width());
   assertEquals(strangeHeight,matrix.height());
 }

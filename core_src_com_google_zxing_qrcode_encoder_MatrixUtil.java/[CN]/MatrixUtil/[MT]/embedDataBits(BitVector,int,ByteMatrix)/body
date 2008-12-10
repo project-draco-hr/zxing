@@ -9,7 +9,7 @@
     }
     while (y >= 0 && y < matrix.height()) {
       for (int i=0; i < 2; ++i) {
-        final int xx=x - i;
+        int xx=x - i;
         if (!isEmpty(matrix.get(y,xx))) {
           continue;
         }
@@ -22,7 +22,7 @@
           bit=0;
         }
         if (maskPattern != -1) {
-          final int mask=MaskUtil.getDataMaskBit(maskPattern,xx,y);
+          int mask=MaskUtil.getDataMaskBit(maskPattern,xx,y);
           bit^=mask;
         }
         matrix.set(y,xx,bit);
@@ -34,6 +34,6 @@
     x-=2;
   }
   if (bitIndex != dataBits.size()) {
-    throw new WriterException("Not all bits consumed: " + bitIndex + "/"+ dataBits.size());
+    throw new WriterException("Not all bits consumed: " + bitIndex + '/'+ dataBits.size());
   }
 }

@@ -1,6 +1,4 @@
 {
-  assertTrue(compareToGoldenFile("http://www.google.com/",ErrorCorrectionLevel.M,99,"renderer-test-01.png"));
-  assertTrue(compareToGoldenFile("12345",ErrorCorrectionLevel.L,58,"renderer-test-02.png"));
-  final byte[] KATAKANA_INPUT={(byte)0x83,0x65,(byte)0x83,0x58,(byte)0x83,0x67};
-  assertTrue(compareToGoldenFile(new String(KATAKANA_INPUT),ErrorCorrectionLevel.H,145,"renderer-test-03.png"));
+  compareToGoldenFile("http://www.google.com/",ErrorCorrectionLevel.M,99,"renderer-test-01.png");
+  compareToGoldenFile("12345",ErrorCorrectionLevel.L,58,"renderer-test-02.png");
 }

@@ -1,11 +1,7 @@
 {
-{
-    BitVector bits=new BitVector();
-    byte[] dat1={(byte)0x93,0x5f};
-    Encoder.appendKanjiBytes(new ByteArray(dat1),bits);
-    assertEquals("0110110011111",bits.toString());
-    byte[] dat2={(byte)0xe4,(byte)0xaa};
-    Encoder.appendKanjiBytes(new ByteArray(dat2),bits);
-    assertEquals("0110110011111" + "1101010101010",bits.toString());
-  }
+  BitVector bits=new BitVector();
+  Encoder.appendKanjiBytes(shiftJISString(new byte[]{(byte)0x93,0x5f}),bits);
+  assertEquals("0110110011111",bits.toString());
+  Encoder.appendKanjiBytes(shiftJISString(new byte[]{(byte)0xe4,(byte)0xaa}),bits);
+  assertEquals("0110110011111" + "1101010101010",bits.toString());
 }

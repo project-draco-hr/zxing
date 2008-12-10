@@ -2,14 +2,14 @@
   if (blockID >= numRSBlocks) {
     throw new WriterException("Block ID too large");
   }
-  final int numRsBlocksInGroup2=numTotalBytes % numRSBlocks;
-  final int numRsBlocksInGroup1=numRSBlocks - numRsBlocksInGroup2;
-  final int numTotalBytesInGroup1=numTotalBytes / numRSBlocks;
-  final int numTotalBytesInGroup2=numTotalBytesInGroup1 + 1;
-  final int numDataBytesInGroup1=numDataBytes / numRSBlocks;
-  final int numDataBytesInGroup2=numDataBytesInGroup1 + 1;
-  final int numEcBytesInGroup1=numTotalBytesInGroup1 - numDataBytesInGroup1;
-  final int numEcBytesInGroup2=numTotalBytesInGroup2 - numDataBytesInGroup2;
+  int numRsBlocksInGroup2=numTotalBytes % numRSBlocks;
+  int numRsBlocksInGroup1=numRSBlocks - numRsBlocksInGroup2;
+  int numTotalBytesInGroup1=numTotalBytes / numRSBlocks;
+  int numTotalBytesInGroup2=numTotalBytesInGroup1 + 1;
+  int numDataBytesInGroup1=numDataBytes / numRSBlocks;
+  int numDataBytesInGroup2=numDataBytesInGroup1 + 1;
+  int numEcBytesInGroup1=numTotalBytesInGroup1 - numDataBytesInGroup1;
+  int numEcBytesInGroup2=numTotalBytesInGroup2 - numDataBytesInGroup2;
   if (numEcBytesInGroup1 != numEcBytesInGroup2) {
     throw new WriterException("EC bytes mismatch");
   }

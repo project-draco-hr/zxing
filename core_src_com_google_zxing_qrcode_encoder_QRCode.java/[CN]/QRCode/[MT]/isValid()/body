@@ -1,3 +1,3 @@
 {
-  return mode != null && ecLevel != null && version != -1 && matrixWidth != -1 && maskPattern != -1 && numTotalBytes != -1 && numDataBytes != -1 && numECBytes != -1 && numRSBlocks != -1 && isValidVersion(version) && isValidMatrixWidth(matrixWidth) && isValidMaskPattern(maskPattern) && numTotalBytes == numDataBytes + numECBytes && matrix != null && matrixWidth == matrix.width() && matrixWidth == MIN_MATRIX_WIDTH + (version - 1) * 4 && matrix.width() == matrix.height();
+  return mode != null && ecLevel != null && version != -1 && matrixWidth != -1 && maskPattern != -1 && numTotalBytes != -1 && numDataBytes != -1 && numECBytes != -1 && numRSBlocks != -1 && isValidMaskPattern(maskPattern) && numTotalBytes == numDataBytes + numECBytes && matrix != null && matrixWidth == matrix.width() && matrix.width() == matrix.height();
 }
