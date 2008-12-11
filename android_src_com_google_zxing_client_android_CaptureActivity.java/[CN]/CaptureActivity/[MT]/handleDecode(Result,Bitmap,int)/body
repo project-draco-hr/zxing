@@ -1,6 +1,6 @@
 {
   mLastResult=rawResult;
-  playBeepSound();
+  playBeepSoundAndVibrate();
   drawResultPoints(barcode,rawResult);
   if (mScanIntent) {
     handleDecodeForScanIntent(rawResult,barcode,duration);
@@ -22,7 +22,8 @@
     CharSequence title=getString(resultHandler.getDisplayTitle());
     SpannableStringBuilder styled=new SpannableStringBuilder(title + "\n\n");
     styled.setSpan(new UnderlineSpan(),0,title.length(),0);
-    styled.append(resultHandler.getDisplayContents());
+    CharSequence displayContents=resultHandler.getDisplayContents();
+    styled.append(displayContents);
     contentsTextView.setText(styled);
     int buttonCount=resultHandler.getButtonCount();
     ViewGroup buttonView=(ViewGroup)findViewById(R.id.result_button_view);
@@ -37,6 +38,10 @@
  else {
         button.setVisibility(View.GONE);
       }
+    }
+    if (mCopyToClipboard) {
+      ClipboardManager clipboard=(ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+      clipboard.setText(displayContents);
     }
   }
 }

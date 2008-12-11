@@ -24,5 +24,7 @@
   }
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
   mPlayBeep=prefs.getBoolean(PreferencesActivity.KEY_PLAY_BEEP,true);
+  mVibrate=prefs.getBoolean(PreferencesActivity.KEY_VIBRATE,false);
+  mCopyToClipboard=prefs.getBoolean(PreferencesActivity.KEY_COPY_TO_CLIPBOARD,true);
   initBeepSound();
 }

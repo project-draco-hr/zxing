@@ -5,5 +5,4 @@
   preferences.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
   mDecode1D=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_1D);
   mDecodeQR=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_QR);
-  mPlayBeep=(CheckBoxPreference)preferences.findPreference(KEY_PLAY_BEEP);
 }
