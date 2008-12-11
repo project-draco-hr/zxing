@@ -2,8 +2,12 @@
   if (index < mButtonCount) {
     int count=-1;
     for (int x=0; x < MAX_BUTTON_COUNT; x++) {
-      if (mFields[x])       count++;
-      if (count == index)       return x;
+      if (mFields[x]) {
+        count++;
+      }
+      if (count == index) {
+        return x;
+      }
     }
   }
   return -1;

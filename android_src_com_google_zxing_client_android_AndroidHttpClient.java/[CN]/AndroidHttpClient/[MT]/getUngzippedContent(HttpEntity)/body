@@ -11,6 +11,8 @@
   if (contentEncoding == null) {
     return responseStream;
   }
-  if (contentEncoding.contains("gzip"))   responseStream=new GZIPInputStream(responseStream);
+  if (contentEncoding.contains("gzip")) {
+    responseStream=new GZIPInputStream(responseStream);
+  }
   return responseStream;
 }

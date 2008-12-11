@@ -1,6 +1,6 @@
 {
   super.onResume();
-  ClipboardManager clipboard=(ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+  ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
   if (clipboard.hasText()) {
     mClipboardButton.setEnabled(true);
     mClipboardButton.setText(R.string.button_share_clipboard);

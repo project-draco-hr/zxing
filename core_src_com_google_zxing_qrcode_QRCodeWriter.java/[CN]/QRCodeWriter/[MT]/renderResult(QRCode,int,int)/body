@@ -15,7 +15,7 @@
   for (int y=0; y < topPadding; y++) {
     setRowColor(outputArray[y],(byte)255);
   }
-  final byte[][] inputArray=input.getArray();
+  byte[][] inputArray=input.getArray();
   for (int y=0; y < inputHeight; y++) {
     for (int x=0; x < leftPadding; x++) {
       row[x]=(byte)255;

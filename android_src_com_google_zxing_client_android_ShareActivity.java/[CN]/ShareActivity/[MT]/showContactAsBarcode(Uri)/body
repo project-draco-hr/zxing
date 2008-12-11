@@ -18,8 +18,8 @@
     boolean foundPostal=false;
     if (methodsCursor != null) {
       while (methodsCursor.moveToNext()) {
-        final int kind=methodsCursor.getInt(METHODS_KIND_COLUMN);
-        final String data=methodsCursor.getString(METHODS_DATA_COLUMN);
+        int kind=methodsCursor.getInt(METHODS_KIND_COLUMN);
+        String data=methodsCursor.getString(METHODS_DATA_COLUMN);
 switch (kind) {
 case Contacts.KIND_EMAIL:
           if (!foundEmail) {

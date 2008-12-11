@@ -1,7 +1,7 @@
 {
   Vector matches=null;
   int i=0;
-  final int max=rawText.length();
+  int max=rawText.length();
   while (i < max) {
     i=rawText.indexOf(prefix,i);
     if (i < 0) {

@@ -22,7 +22,6 @@ case HELP_ID:
   break;
 }
 case ABOUT_ID:
-{
 AlertDialog.Builder builder=new AlertDialog.Builder(this);
 builder.setTitle(R.string.title_about);
 builder.setMessage(getString(R.string.msg_about) + "\n\n" + getString(R.string.zxing_url));
@@ -31,7 +30,6 @@ builder.setPositiveButton(R.string.button_open_browser,mAboutListener);
 builder.setNegativeButton(R.string.button_cancel,null);
 builder.show();
 break;
-}
 }
 return super.onOptionsItemSelected(item);
 }

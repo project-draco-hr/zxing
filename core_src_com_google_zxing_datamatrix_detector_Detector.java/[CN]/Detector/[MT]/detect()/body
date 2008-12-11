@@ -56,7 +56,7 @@
   if (maybeTopLeft == null || bottomLeft == null || maybeBottomRight == null) {
     throw ReaderException.getInstance();
   }
-  ResultPoint[] corners=new ResultPoint[]{maybeTopLeft,bottomLeft,maybeBottomRight};
+  ResultPoint[] corners={maybeTopLeft,bottomLeft,maybeBottomRight};
   GenericResultPoint.orderBestPatterns(corners);
   ResultPoint bottomRight=corners[0];
   bottomLeft=corners[1];

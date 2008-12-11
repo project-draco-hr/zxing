@@ -1,7 +1,11 @@
 {
-  if (intent == null)   return false;
+  if (intent == null) {
+    return false;
+  }
   String type=intent.getStringExtra(Intents.Encode.TYPE);
-  if (type == null || type.length() == 0)   return false;
+  if (type == null || type.length() == 0) {
+    return false;
+  }
   if (type.equals(Contents.Type.TEXT)) {
     String string=intent.getStringExtra(Intents.Encode.DATA);
     if (string != null && string.length() > 0) {
