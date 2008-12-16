@@ -1,0 +1,11 @@
+{
+  String input=Validators.filterNumber(tel.getText());
+  if (input.length() < 1) {
+    return "";
+  }
+  Validators.validateNumber(input);
+  if (input.contains(";")) {
+    throw new GeneratorException("Tel must not contains ; characters");
+  }
+  return input;
+}

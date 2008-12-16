@@ -1,0 +1,13 @@
+{
+  String inputName=name.getText();
+  if (inputName.length() < 1) {
+    throw new GeneratorException("Name must be at least 1 character.");
+  }
+  if (inputName.contains("\n")) {
+    throw new GeneratorException("Name should not contanains \\n characters.");
+  }
+  if (inputName.contains(";")) {
+    throw new GeneratorException("Name must not contains ; characters");
+  }
+  return inputName;
+}

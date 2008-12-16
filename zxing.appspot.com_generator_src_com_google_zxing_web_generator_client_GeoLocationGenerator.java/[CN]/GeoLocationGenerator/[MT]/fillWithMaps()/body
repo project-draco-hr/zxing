@@ -1,0 +1,42 @@
+{
+  String link=mapsLink.getText();
+  if (!link.matches("http://maps.google.com/.*")) {
+    return;
+  }
+  String q="";
+  if (link.matches(".*&q=[^&]*&.*")) {
+    for (int i=link.indexOf("&q=") + 3; i < link.length() && link.charAt(i) != '&'; ++i) {
+      q+=link.charAt(i);
+    }
+    q=q.replace("+"," ");
+    q=q.replace("%26","&");
+  }
+  String lat="";
+  String lon="";
+  if (link.matches(".*&s?ll=[^&]*&.*")) {
+    boolean beforeComa=true;
+    int start=0;
+    if (link.indexOf("&sll=") == -1) {
+      start=link.indexOf("&ll=") + 4;
+    }
+ else {
+      start=link.indexOf("&sll=") + 5;
+    }
+    for (int i=start; i < link.length() && link.charAt(i) != '&'; ++i) {
+      if (beforeComa) {
+        if (link.charAt(i) == ',') {
+          beforeComa=false;
+        }
+ else {
+          lat+=link.charAt(i);
+        }
+      }
+ else {
+        lon+=link.charAt(i);
+      }
+    }
+  }
+  query.setText(URL.decode(q));
+  latitude.setText(lat);
+  longitude.setText(lon);
+}

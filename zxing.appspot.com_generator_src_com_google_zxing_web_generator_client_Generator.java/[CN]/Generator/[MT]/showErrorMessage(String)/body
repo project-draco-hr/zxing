@@ -1,0 +1,4 @@
+{
+  Element errorElement=DOM.getElementById("errorMessageID");
+  errorElement.setInnerHTML(error);
+}

@@ -1,0 +1,4 @@
+{
+  String message=getTextField();
+  return message;
+}

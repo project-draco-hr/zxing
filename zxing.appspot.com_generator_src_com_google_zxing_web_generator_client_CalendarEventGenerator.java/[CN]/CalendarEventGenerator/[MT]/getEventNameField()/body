@@ -1,0 +1,10 @@
+{
+  String inputName=eventName.getText();
+  if (inputName.length() < 1) {
+    throw new GeneratorException("Event name must be at least 1 character.");
+  }
+  if (inputName.contains("\n")) {
+    throw new GeneratorException("Event name should not contain \\n characters.");
+  }
+  return "SUMMARY:" + inputName + "\n";
+}

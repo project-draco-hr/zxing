@@ -1,0 +1,4 @@
+{
+  if (widget == number)   getTelField();
+  if (widget == message)   getMessageField();
+}

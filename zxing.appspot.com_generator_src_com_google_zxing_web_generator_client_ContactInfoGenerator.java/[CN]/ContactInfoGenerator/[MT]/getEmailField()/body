@@ -1,0 +1,11 @@
+{
+  String input=email.getText();
+  if (input.length() < 1) {
+    return "";
+  }
+  Validators.validateEmail(input);
+  if (input.contains(";")) {
+    throw new GeneratorException("Email must not contains ; characters");
+  }
+  return input;
+}

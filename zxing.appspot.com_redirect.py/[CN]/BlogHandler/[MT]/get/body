@@ -1,0 +1,2 @@
+def get(self, tail=''):
+    self.redirect(('/generator/' + tail), permanent=True)

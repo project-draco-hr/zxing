@@ -1,0 +1,7 @@
+{
+  String input=text.getText();
+  if (input.length() == 0) {
+    throw new GeneratorException("Text should be at least 1 character.");
+  }
+  return input;
+}

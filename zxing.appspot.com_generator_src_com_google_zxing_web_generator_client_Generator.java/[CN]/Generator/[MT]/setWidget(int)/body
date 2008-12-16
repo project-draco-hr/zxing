@@ -1,0 +1,11 @@
+{
+  if (id >= 0 && id < generators.size()) {
+    topPanel.setWidget(1,0,generators.get(id).getWidget());
+    genList.setSelectedIndex(id);
+    selectedGenerator=generators.get(id);
+    eraseErrorMessage();
+    invalidateBarcode();
+    genList.setFocus(false);
+    selectedGenerator.setFocus();
+  }
+}

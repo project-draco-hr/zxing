@@ -1,0 +1,7 @@
+{
+  latitude.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
+  longitude.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
+  latitude.addChangeListener(listener);
+  longitude.addChangeListener(listener);
+  query.addChangeListener(listener);
+}

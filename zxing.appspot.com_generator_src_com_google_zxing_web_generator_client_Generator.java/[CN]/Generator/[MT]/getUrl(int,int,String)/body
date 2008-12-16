@@ -1,0 +1,9 @@
+{
+  String result="http://chart.apis.google.com/chart?cht=qr&chs=";
+  result+=sizeX;
+  result+="x";
+  result+=sizeY;
+  result+="&chl=";
+  result+=URL.encode(content);
+  return result;
+}

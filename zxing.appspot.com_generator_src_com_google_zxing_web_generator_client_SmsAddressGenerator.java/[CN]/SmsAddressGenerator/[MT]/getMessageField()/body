@@ -1,0 +1,7 @@
+{
+  String inputMessage=message.getText();
+  if (inputMessage.length() > 150) {
+    throw new GeneratorException("Sms message can not be longer than 150 characters.");
+  }
+  return inputMessage;
+}

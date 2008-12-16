@@ -1,0 +1,13 @@
+{
+  String input=company.getText();
+  if (input.length() < 1) {
+    return "";
+  }
+  if (input.contains("\n")) {
+    throw new GeneratorException("Company should not contanains \\n characters.");
+  }
+  if (input.contains(";")) {
+    throw new GeneratorException("Company must not contains ; characters");
+  }
+  return input;
+}

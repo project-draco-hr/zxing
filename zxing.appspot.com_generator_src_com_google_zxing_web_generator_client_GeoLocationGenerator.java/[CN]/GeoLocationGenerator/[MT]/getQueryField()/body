@@ -1,0 +1,5 @@
+{
+  String que=query.getText();
+  que=que.replace("&","%26");
+  return que;
+}

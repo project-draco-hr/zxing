@@ -1,0 +1,11 @@
+{
+  String input=url.getText();
+  if (input.length() < 1) {
+    return "";
+  }
+  Validators.validateUrl(input);
+  if (input.contains(";")) {
+    throw new GeneratorException("URL must not contains ; characters");
+  }
+  return input;
+}

@@ -1,0 +1,8 @@
+{
+  String input=email.getText();
+  if (input.length() < 1) {
+    throw new GeneratorException("Email must be present.");
+  }
+  Validators.validateEmail(input);
+  return input;
+}

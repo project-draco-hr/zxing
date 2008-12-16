@@ -1,0 +1,9 @@
+{
+  if (table != null) {
+    return table;
+  }
+  table=new Grid(1,2);
+  table.setText(0,0,"Phone number");
+  table.setWidget(0,1,number);
+  return table;
+}

@@ -1,0 +1,9 @@
+{
+  if (table != null) {
+    return table;
+  }
+  table=new Grid(1,2);
+  table.setText(0,0,"Address");
+  table.setWidget(0,1,email);
+  return table;
+}

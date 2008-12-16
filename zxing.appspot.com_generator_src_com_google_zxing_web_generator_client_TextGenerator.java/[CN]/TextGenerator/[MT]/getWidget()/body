@@ -1,0 +1,10 @@
+{
+  if (table != null) {
+    return table;
+  }
+  table=new Grid(1,2);
+  table.getColumnFormatter().addStyleName(0,"firstColumn");
+  table.setText(0,0,"Text content");
+  table.setWidget(0,1,text);
+  return table;
+}

@@ -1,0 +1,4 @@
+{
+  if (widget == latitude)   getLatitudeField();
+  if (widget == longitude)   getLongitudeField();
+}

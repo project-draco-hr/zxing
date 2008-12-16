@@ -1,0 +1,13 @@
+{
+  String input=address.getText();
+  if (input.length() < 1) {
+    return "";
+  }
+  if (input.contains("\n")) {
+    throw new GeneratorException("Address must not contain \\n characters.");
+  }
+  if (input.contains(";")) {
+    throw new GeneratorException("Address must not contains ; characters");
+  }
+  return input;
+}

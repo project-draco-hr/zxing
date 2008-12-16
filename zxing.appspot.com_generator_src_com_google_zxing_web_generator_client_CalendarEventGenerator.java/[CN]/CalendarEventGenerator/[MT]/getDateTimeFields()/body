@@ -1,0 +1,6 @@
+{
+  if (fullDay.isChecked()) {
+    return getFullDayDateFields();
+  }
+  return getDateTimeValues();
+}

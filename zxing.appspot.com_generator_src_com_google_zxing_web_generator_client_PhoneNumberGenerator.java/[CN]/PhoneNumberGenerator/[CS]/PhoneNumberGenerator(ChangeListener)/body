@@ -1,0 +1,4 @@
+{
+  number.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
+  number.addChangeListener(listener);
+}

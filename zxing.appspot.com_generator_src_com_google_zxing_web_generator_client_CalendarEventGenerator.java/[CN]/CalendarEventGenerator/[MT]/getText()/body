@@ -1,0 +1,10 @@
+{
+  String eventName=getEventNameField();
+  String dates=getDateTimeFields();
+  String output="";
+  output+="BEGIN:VEVENT\n";
+  output+=eventName;
+  output+=dates;
+  output+="END:VEVENT\n";
+  return output;
+}

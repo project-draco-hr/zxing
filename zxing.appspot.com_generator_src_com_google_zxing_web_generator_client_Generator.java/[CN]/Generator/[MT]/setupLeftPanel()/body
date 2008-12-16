@@ -1,0 +1,39 @@
+{
+  topPanel.setHTML(2,0,"<span id=\"errorMessageID\" class=\"" + StylesDefs.ERROR_MESSAGE + "\"></span>");
+  for (  GeneratorSource generator : generators) {
+    genList.addItem(generator.getName());
+    setGridStyle(generator.getWidget());
+  }
+  sizeList.addItem("S","120");
+  sizeList.addItem("M","230");
+  sizeList.addItem("L","350");
+  sizeList.setSelectedIndex(2);
+  genList.addChangeListener(new ChangeListener(){
+    public void onChange(    Widget sender){
+      int i=genList.getSelectedIndex();
+      setWidget(i);
+    }
+  }
+);
+  Grid selectionTable=new Grid(1,2);
+  selectionTable.setText(0,0,"Contents");
+  selectionTable.setWidget(0,1,genList);
+  setGridStyle(selectionTable);
+  topPanel.setWidget(0,0,selectionTable);
+  Grid generateGrid=new Grid(1,2);
+  setGridStyle(generateGrid);
+  generateButton=new Button("Generate &rarr;");
+  generateButton.addClickListener(new ClickListener(){
+    public void onClick(    Widget sender){
+      generate();
+    }
+  }
+);
+  generateGrid.setWidget(0,1,generateButton);
+  topPanel.setWidget(4,0,generateGrid);
+  Grid sizeTable=new Grid(1,2);
+  sizeTable.setText(0,0,"Barcode size");
+  sizeTable.setWidget(0,1,sizeList);
+  setGridStyle(sizeTable);
+  topPanel.setWidget(3,0,sizeTable);
+}

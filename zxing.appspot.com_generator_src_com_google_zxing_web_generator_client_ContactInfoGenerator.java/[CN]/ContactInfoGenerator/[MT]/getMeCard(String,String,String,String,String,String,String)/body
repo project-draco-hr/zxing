@@ -1,0 +1,12 @@
+{
+  String output="MECARD:";
+  output+="N:" + name + ";";
+  output+=company.length() > 0 ? "ORG:" + company + ";" : "";
+  output+=tel.length() > 0 ? "TEL:" + tel + ";" : "";
+  output+=url.length() > 0 ? "URL:" + url + ";" : "";
+  output+=email.length() > 0 ? "EMAIL:" + email + ";" : "";
+  output+=address.length() > 0 ? "ADR:" + address + ";" : "";
+  output+=memo.length() > 0 ? "NOTE:" + memo + ";" : "";
+  output+=";";
+  return output;
+}
