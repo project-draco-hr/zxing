@@ -1,0 +1,13 @@
+{
+  if (sender == latitude || sender == longitude) {
+    try {
+      double lat=Double.parseDouble(getLatitudeField());
+      double lon=Double.parseDouble(getLongitudeField());
+      setMapMarker(lat,lon,true);
+    }
+ catch (    NumberFormatException e) {
+    }
+catch (    GeneratorException e) {
+    }
+  }
+}

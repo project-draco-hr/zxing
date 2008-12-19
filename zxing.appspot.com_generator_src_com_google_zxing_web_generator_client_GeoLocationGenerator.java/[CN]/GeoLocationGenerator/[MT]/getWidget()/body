@@ -2,7 +2,7 @@
   if (table != null) {
     return table;
   }
-  table=new Grid(5,2);
+  table=new Grid(7,2);
   table.setText(0,0,"Latitude");
   table.setWidget(0,1,latitude);
   table.setText(1,0,"Longitude");
@@ -20,5 +20,18 @@
 );
   table.setWidget(4,0,fill);
   table.setWidget(4,1,mapsLink);
+  map.setSize("256px","256px");
+  map.addControl(new SmallMapControl());
+  map.addMapClickHandler(new MapClickHandler(){
+    public void onClick(    MapClickEvent event){
+      mapClick(event);
+    }
+  }
+);
+  table.setText(5,0,"OR");
+  table.setText(5,1,"use the map to select a location:");
+  SimplePanel sp=new SimplePanel();
+  sp.add(map);
+  table.setWidget(6,1,sp);
   return table;
 }

@@ -39,4 +39,7 @@
   query.setText(URL.decode(q));
   latitude.setText(lat);
   longitude.setText(lon);
+  changeListener.onChange(latitude);
+  changeListener.onChange(longitude);
+  this.onChange(latitude);
 }

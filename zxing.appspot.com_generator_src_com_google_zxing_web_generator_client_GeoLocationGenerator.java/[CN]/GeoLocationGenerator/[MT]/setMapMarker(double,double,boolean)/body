@@ -1,0 +1,25 @@
+{
+  if (mapMarker != null) {
+    map.removeOverlay(mapMarker);
+  }
+  LatLng ll=LatLng.newInstance(lat,lon);
+  if (zoomAndCenter) {
+    map.setCenter(ll);
+    map.setZoomLevel(12);
+  }
+  if (mapMarker != null) {
+    mapMarker.setLatLng(ll);
+  }
+ else {
+    MarkerOptions opt=MarkerOptions.newInstance();
+    opt.setDraggable(true);
+    mapMarker=new Marker(ll,opt);
+    mapMarker.addMarkerDragEndHandler(new MarkerDragEndHandler(){
+      public void onDragEnd(      MarkerDragEndEvent event){
+        mapMarkerMoved();
+      }
+    }
+);
+  }
+  map.addOverlay(mapMarker);
+}

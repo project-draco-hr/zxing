@@ -1,0 +1,7 @@
+{
+  latitude.setText("" + event.getLatLng().getLatitude());
+  longitude.setText("" + event.getLatLng().getLongitude());
+  setMapMarker(event.getLatLng().getLatitude(),event.getLatLng().getLongitude(),false);
+  changeListener.onChange(latitude);
+  changeListener.onChange(longitude);
+}

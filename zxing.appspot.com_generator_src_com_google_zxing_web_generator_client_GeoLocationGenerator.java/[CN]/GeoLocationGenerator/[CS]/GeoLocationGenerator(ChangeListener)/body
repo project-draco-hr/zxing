@@ -1,7 +1,10 @@
 {
+  this.changeListener=listener;
   latitude.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
   longitude.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
   latitude.addChangeListener(listener);
+  latitude.addChangeListener(this);
   longitude.addChangeListener(listener);
+  longitude.addChangeListener(this);
   query.addChangeListener(listener);
 }
