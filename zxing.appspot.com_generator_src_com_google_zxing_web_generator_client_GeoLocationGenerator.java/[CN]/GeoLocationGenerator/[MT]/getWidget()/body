@@ -22,6 +22,7 @@
   table.setWidget(4,1,mapsLink);
   map.setSize("256px","256px");
   map.addControl(new SmallMapControl());
+  map.getElement().getStyle().setProperty("overflow","hidden");
   map.addMapClickHandler(new MapClickHandler(){
     public void onClick(    MapClickEvent event){
       mapClick(event);
