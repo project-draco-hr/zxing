@@ -1,6 +1,6 @@
 {
   StringBuffer result=new StringBuffer();
-  maybeAppend(uri,result);
   maybeAppend(title,result);
+  maybeAppend(uri,result);
   return result.toString();
 }

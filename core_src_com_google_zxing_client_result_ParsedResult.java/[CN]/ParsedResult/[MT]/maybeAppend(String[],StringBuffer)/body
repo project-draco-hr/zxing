@@ -1,10 +1,12 @@
 {
   if (value != null) {
     for (int i=0; i < value.length; i++) {
-      if (result.length() > 0) {
-        result.append('\n');
+      if (value[i] != null && value[i].length() > 0) {
+        if (result.length() > 0) {
+          result.append('\n');
+        }
+        result.append(value[i]);
       }
-      result.append(value[i]);
     }
   }
 }

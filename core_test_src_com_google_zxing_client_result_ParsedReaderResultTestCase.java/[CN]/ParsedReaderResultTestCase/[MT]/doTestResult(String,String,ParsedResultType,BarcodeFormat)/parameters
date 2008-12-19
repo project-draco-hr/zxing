@@ -1,3 +1,4 @@
-String text
+String contents
+String goldenResult
 ParsedResultType type
 BarcodeFormat format
