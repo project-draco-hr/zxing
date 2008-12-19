@@ -13,7 +13,8 @@
   try {
     MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
     Result result=new MultiFormatReader().decode(source,hints);
-    System.out.println(uri.toString() + " (format: " + result.getBarcodeFormat()+ "):\n"+ result.getText());
+    ParsedResult parsedResult=ResultParser.parseResult(result);
+    System.out.println(uri.toString() + " (format: " + result.getBarcodeFormat()+ ", type: "+ parsedResult.getType()+ "):\nRaw result:\n"+ result.getText()+ "\nParsed result:\n"+ parsedResult.getDisplayResult());
     return result;
   }
  catch (  ReaderException e) {

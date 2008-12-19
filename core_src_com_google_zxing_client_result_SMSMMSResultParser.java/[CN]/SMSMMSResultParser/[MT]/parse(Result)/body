@@ -13,9 +13,18 @@
  else {
     return null;
   }
+  Hashtable nameValuePairs=parseNameValuePairs(rawText);
+  String subject=null;
+  String body=null;
+  boolean querySyntax=false;
+  if (nameValuePairs != null && nameValuePairs.size() > 0) {
+    subject=(String)nameValuePairs.get("subject");
+    body=(String)nameValuePairs.get("body");
+    querySyntax=true;
+  }
   int queryStart=rawText.indexOf('?',prefixLength);
   String smsURIWithoutQuery;
-  if (queryStart < 0) {
+  if (queryStart < 0 || !querySyntax) {
     smsURIWithoutQuery=rawText.substring(prefixLength);
   }
  else {
@@ -37,13 +46,6 @@
  else {
       via=null;
     }
-  }
-  Hashtable nameValuePairs=parseNameValuePairs(rawText);
-  String subject=null;
-  String body=null;
-  if (nameValuePairs != null) {
-    subject=(String)nameValuePairs.get("subject");
-    body=(String)nameValuePairs.get("body");
   }
   if (body == null) {
     int bodyStart=number.indexOf(':');

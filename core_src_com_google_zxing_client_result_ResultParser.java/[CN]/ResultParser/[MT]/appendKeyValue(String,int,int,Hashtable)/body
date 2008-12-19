@@ -6,8 +6,4 @@
     value=urlDecode(value);
     result.put(key,value);
   }
- else {
-    String key=uri.substring(paramStart,paramEnd);
-    result.put(key,null);
-  }
 }

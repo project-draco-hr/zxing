@@ -6,4 +6,6 @@
   doTestResult("mms:+15551212;via=999333",ParsedResultType.SMS);
   doTestResult("mms:+15551212?subject=foo&body=bar",ParsedResultType.SMS);
   doTestResult("mms:+15551212:subject",ParsedResultType.SMS);
+  doTestResult("mms:+15551212:What's up?",ParsedResultType.SMS);
+  doTestResult("mms:212-555-1212:Here's a longer message. Should be fine.",ParsedResultType.SMS);
 }
