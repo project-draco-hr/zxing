@@ -1,5 +1,5 @@
 {
-  if (!number.matches("[0-9]+")) {
+  if (!number.matches("\\+?[0-9]+")) {
     throw new GeneratorException("Phone number must be digits only.");
   }
 }
