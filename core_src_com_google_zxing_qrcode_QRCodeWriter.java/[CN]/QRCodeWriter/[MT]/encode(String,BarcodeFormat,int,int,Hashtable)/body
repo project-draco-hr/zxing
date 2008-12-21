@@ -6,7 +6,7 @@
     throw new IllegalArgumentException("Can only encode QR_CODE, but got " + format);
   }
   if (width < 0 || height < 0) {
-    throw new IllegalArgumentException("Requested dimensions are too small: " + width + "x"+ height);
+    throw new IllegalArgumentException("Requested dimensions are too small: " + width + 'x'+ height);
   }
   ErrorCorrectionLevel errorCorrectionLevel=ErrorCorrectionLevel.L;
   if (hints != null) {
