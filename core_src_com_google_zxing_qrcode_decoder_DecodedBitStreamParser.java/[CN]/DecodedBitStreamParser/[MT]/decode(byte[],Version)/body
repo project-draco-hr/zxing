@@ -10,18 +10,24 @@
       mode=Mode.TERMINATOR;
     }
  else {
-      mode=Mode.forBits(bits.readBits(4));
+      try {
+        mode=Mode.forBits(bits.readBits(4));
+      }
+ catch (      IllegalArgumentException iae) {
+        throw ReaderException.getInstance();
+      }
     }
     if (!mode.equals(Mode.TERMINATOR)) {
       if (mode.equals(Mode.FNC1_FIRST_POSITION) || mode.equals(Mode.FNC1_SECOND_POSITION)) {
         fc1InEffect=true;
       }
  else       if (mode.equals(Mode.ECI)) {
-        int value=parseECIValue(bits);
         try {
+          int value=parseECIValue(bits);
           currentCharacterSetECI=CharacterSetECI.getCharacterSetECIByValue(value);
         }
  catch (        IllegalArgumentException iae) {
+          throw ReaderException.getInstance();
         }
       }
  else {

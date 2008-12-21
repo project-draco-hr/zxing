@@ -1,4 +1,7 @@
 {
+  if (rawCodewords.length != version.getTotalCodewords()) {
+    throw new IllegalArgumentException();
+  }
   Version.ECBlocks ecBlocks=version.getECBlocksForLevel(ecLevel);
   int totalBlocks=0;
   Version.ECB[] ecBlockArray=ecBlocks.getECBlocks();
@@ -22,9 +25,6 @@
     if (numCodewords == shorterBlocksTotalCodewords) {
       break;
     }
-    if (numCodewords != shorterBlocksTotalCodewords + 1) {
-      throw new IllegalArgumentException("Data block sizes differ by more than 1");
-    }
     longerBlocksStartAt--;
   }
   longerBlocksStartAt++;
@@ -44,9 +44,6 @@
       int iOffset=j < longerBlocksStartAt ? i : i + 1;
       result[j].codewords[iOffset]=rawCodewords[rawCodewordsOffset++];
     }
-  }
-  if (rawCodewordsOffset != rawCodewords.length) {
-    throw new IllegalArgumentException();
   }
   return result;
 }
