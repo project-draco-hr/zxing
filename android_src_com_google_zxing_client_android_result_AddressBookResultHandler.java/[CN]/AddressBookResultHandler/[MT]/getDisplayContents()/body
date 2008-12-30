@@ -7,7 +7,7 @@
   if (pronunciation != null && pronunciation.length() > 0) {
     contents.append("\n(");
     contents.append(pronunciation);
-    contents.append(")");
+    contents.append(')');
   }
   ParsedResult.maybeAppend(result.getTitle(),contents);
   ParsedResult.maybeAppend(result.getOrg(),contents);

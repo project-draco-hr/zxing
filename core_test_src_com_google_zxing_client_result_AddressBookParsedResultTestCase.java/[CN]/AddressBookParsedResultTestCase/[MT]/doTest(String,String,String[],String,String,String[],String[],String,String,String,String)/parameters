@@ -1,0 +1,11 @@
+String contents
+String title
+String[] names
+String pronunciation
+String address
+String[] emails
+String[] phoneNumbers
+String org
+String url
+String birthday
+String note

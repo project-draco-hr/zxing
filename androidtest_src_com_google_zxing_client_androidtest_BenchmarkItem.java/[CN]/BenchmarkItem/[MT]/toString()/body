@@ -1,5 +1,5 @@
 {
-  StringBuffer result=new StringBuffer();
+  StringBuilder result=new StringBuilder();
   result.append(mDecoded ? ("DECODED " + mFormat.toString() + ": ") : "FAILED: ");
   result.append(mPath);
   result.append(" (");

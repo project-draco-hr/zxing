@@ -1,7 +1,7 @@
 {
   String query=address;
   if (title != null && title.length() > 0) {
-    query=query + " (" + title+ ")";
+    query=query + " (" + title+ ')';
   }
   launchIntent(new Intent(Intent.ACTION_VIEW,Uri.parse("geo:0,0?q=" + Uri.encode(query))));
 }

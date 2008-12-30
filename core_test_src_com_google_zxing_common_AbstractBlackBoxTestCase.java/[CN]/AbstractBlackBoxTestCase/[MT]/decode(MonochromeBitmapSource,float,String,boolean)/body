@@ -18,12 +18,12 @@
     return false;
   }
   if (!expectedFormat.equals(result.getBarcodeFormat())) {
-    System.out.println("Format mismatch: expected '" + expectedFormat + "' but got '"+ result.getBarcodeFormat()+ "'"+ suffix);
+    System.out.println("Format mismatch: expected '" + expectedFormat + "' but got '"+ result.getBarcodeFormat()+ '\''+ suffix);
     return false;
   }
   String resultText=result.getText();
   if (!expectedText.equals(resultText)) {
-    System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ "'"+ suffix);
+    System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\''+ suffix);
     return false;
   }
   return true;

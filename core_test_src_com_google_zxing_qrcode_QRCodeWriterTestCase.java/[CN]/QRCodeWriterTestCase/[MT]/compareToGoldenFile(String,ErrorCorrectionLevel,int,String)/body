@@ -4,7 +4,7 @@
   ByteMatrix goldenResult=createMatrixFromImage(image);
   assertNotNull(goldenResult);
   QRCodeWriter writer=new QRCodeWriter();
-  Hashtable hints=new Hashtable();
+  Hashtable<EncodeHintType,Object> hints=new Hashtable<EncodeHintType,Object>();
   hints.put(EncodeHintType.ERROR_CORRECTION,ecLevel);
   ByteMatrix generatedResult=writer.encode(contents,BarcodeFormat.QR_CODE,resolution,resolution,hints);
   assertEquals("Width should be " + resolution + ", but was "+ generatedResult.width(),resolution,generatedResult.width());

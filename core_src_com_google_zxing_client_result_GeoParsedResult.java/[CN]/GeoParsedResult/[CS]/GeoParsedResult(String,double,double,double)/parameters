@@ -1,0 +1,4 @@
+String geoURI
+double latitude
+double longitude
+double altitude
