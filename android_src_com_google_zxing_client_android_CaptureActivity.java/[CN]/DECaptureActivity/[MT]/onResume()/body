@@ -10,7 +10,8 @@
     surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
   }
   Intent intent=getIntent();
-  if (intent != null && (intent.getAction().equals(Intents.Scan.ACTION) || intent.getAction().equals(Intents.Scan.DEPRECATED_ACTION))) {
+  String action=intent.getAction();
+  if (intent != null && action != null && (action.equals(Intents.Scan.ACTION) || action.equals(Intents.Scan.DEPRECATED_ACTION))) {
     mScanIntent=true;
     mDecodeMode=intent.getStringExtra(Intents.Scan.MODE);
     resetStatusView();
