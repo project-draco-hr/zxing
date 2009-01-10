@@ -3,20 +3,20 @@
   Cursor contactCursor=resolver.query(contactUri,null,null,null,null);
   Bundle bundle=new Bundle();
   if (contactCursor != null && contactCursor.moveToFirst()) {
-    int nameColumn=contactCursor.getColumnIndex(Contacts.People.NAME);
+    int nameColumn=contactCursor.getColumnIndex(Contacts.PeopleColumns.NAME);
     String name=contactCursor.getString(nameColumn);
     if (name == null || name.length() == 0) {
       return;
     }
     bundle.putString(Contacts.Intents.Insert.NAME,name);
-    int phoneColumn=contactCursor.getColumnIndex(Contacts.People.NUMBER);
+    int phoneColumn=contactCursor.getColumnIndex(Contacts.PhonesColumns.NUMBER);
     bundle.putString(Contacts.Intents.Insert.PHONE,contactCursor.getString(phoneColumn));
     contactCursor.close();
     Uri methodsUri=Uri.withAppendedPath(contactUri,Contacts.People.ContactMethods.CONTENT_DIRECTORY);
     Cursor methodsCursor=resolver.query(methodsUri,METHODS_PROJECTION,null,null,null);
-    boolean foundEmail=false;
-    boolean foundPostal=false;
     if (methodsCursor != null) {
+      boolean foundEmail=false;
+      boolean foundPostal=false;
       while (methodsCursor.moveToNext()) {
         int kind=methodsCursor.getInt(METHODS_KIND_COLUMN);
         String data=methodsCursor.getString(METHODS_DATA_COLUMN);
