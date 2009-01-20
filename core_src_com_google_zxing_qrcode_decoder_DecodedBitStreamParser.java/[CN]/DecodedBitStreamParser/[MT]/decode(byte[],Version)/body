@@ -21,6 +21,9 @@
       if (mode.equals(Mode.FNC1_FIRST_POSITION) || mode.equals(Mode.FNC1_SECOND_POSITION)) {
         fc1InEffect=true;
       }
+ else       if (mode.equals(Mode.STRUCTURED_APPEND)) {
+        throw ReaderException.getInstance();
+      }
  else       if (mode.equals(Mode.ECI)) {
         try {
           int value=parseECIValue(bits);
