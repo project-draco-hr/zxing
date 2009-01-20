@@ -1,10 +1,6 @@
 {
-  Alert alert=new Alert(title,display,null,AlertType.CONFIRMATION);
-  alert.setTimeout(ALERT_TIMEOUT_MS);
-  Command yes=new Command("Yes",Command.OK,1);
-  alert.addCommand(yes);
-  Command no=new Command("No",Command.CANCEL,1);
-  alert.addCommand(no);
+  confirmation.setTitle(title);
+  confirmation.setString(display);
   CommandListener listener=new CommandListener(){
     public void commandAction(    Command command,    Displayable displayable){
       if (command.getCommandType() == Command.OK) {
@@ -24,6 +20,6 @@
     }
   }
 ;
-  alert.setCommandListener(listener);
-  showAlert(alert);
+  confirmation.setCommandListener(listener);
+  showAlert(confirmation);
 }

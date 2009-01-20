@@ -1,5 +1,6 @@
 {
-  Alert alert=new Alert(title,text,null,AlertType.INFO);
-  alert.setTimeout(ALERT_TIMEOUT_MS);
+  alert.setTitle(title);
+  alert.setString(text);
+  alert.setType(AlertType.INFO);
   showAlert(alert);
 }

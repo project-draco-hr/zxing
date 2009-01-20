@@ -1,3 +1,6 @@
 {
-  showAlert(new Alert("Error",message,null,AlertType.ERROR));
+  alert.setTitle("Error");
+  alert.setString(message);
+  alert.setType(AlertType.ERROR);
+  showAlert(alert);
 }
