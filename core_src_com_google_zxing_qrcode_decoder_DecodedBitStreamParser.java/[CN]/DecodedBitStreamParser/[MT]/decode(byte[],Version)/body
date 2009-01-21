@@ -22,7 +22,7 @@
         fc1InEffect=true;
       }
  else       if (mode.equals(Mode.STRUCTURED_APPEND)) {
-        throw ReaderException.getInstance();
+        bits.readBits(16);
       }
  else       if (mode.equals(Mode.ECI)) {
         try {
