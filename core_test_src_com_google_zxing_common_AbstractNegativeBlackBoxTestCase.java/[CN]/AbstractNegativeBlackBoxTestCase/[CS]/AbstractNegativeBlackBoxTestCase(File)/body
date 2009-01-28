@@ -1,4 +1,0 @@
-{
-  super(testBase,new MultiFormatReader(),null);
-  testResults=new ArrayList<TestResult>();
-}

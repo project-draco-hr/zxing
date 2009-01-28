@@ -1,0 +1,4 @@
+{
+  super(testBasePathSuffix,new MultiFormatReader(),null);
+  testResults=new ArrayList<TestResult>();
+}

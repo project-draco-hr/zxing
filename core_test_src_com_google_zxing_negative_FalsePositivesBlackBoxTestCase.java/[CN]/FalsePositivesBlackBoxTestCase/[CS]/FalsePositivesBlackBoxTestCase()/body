@@ -1,5 +1,5 @@
 {
-  super(new File("test/data/blackbox/falsepositives"));
+  super("test/data/blackbox/falsepositives");
   addTest(2,0.0f);
   addTest(0,90.0f);
   addTest(0,180.0f);

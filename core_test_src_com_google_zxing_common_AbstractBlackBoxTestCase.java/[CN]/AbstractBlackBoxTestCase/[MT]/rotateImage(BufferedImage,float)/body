@@ -4,7 +4,7 @@
   }
  else {
     AffineTransform at=new AffineTransform();
-    at.rotate(Math.toRadians(degrees),original.getWidth() / 2.0f,original.getHeight() / 2.0f);
+    at.rotate(Math.toRadians(degrees),original.getWidth() / 2.0,original.getHeight() / 2.0);
     BufferedImageOp op=new AffineTransformOp(at,AffineTransformOp.TYPE_BICUBIC);
     return op.filter(original,null);
   }

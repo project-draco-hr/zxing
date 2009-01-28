@@ -1,4 +1,8 @@
 {
+  File testBase=new File(testBasePathSuffix);
+  if (!testBase.exists()) {
+    testBase=new File("core/" + testBasePathSuffix);
+  }
   this.testBase=testBase;
   this.barcodeReader=barcodeReader;
   this.expectedFormat=expectedFormat;

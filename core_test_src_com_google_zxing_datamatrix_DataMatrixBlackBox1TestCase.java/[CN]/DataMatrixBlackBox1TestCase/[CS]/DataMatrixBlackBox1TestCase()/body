@@ -1,5 +1,5 @@
 {
-  super(new File("test/data/blackbox/datamatrix-1"),new DataMatrixReader(),BarcodeFormat.DATAMATRIX);
+  super("test/data/blackbox/datamatrix-1",new DataMatrixReader(),BarcodeFormat.DATAMATRIX);
   addTest(7,7,0.0f);
   addTest(7,7,90.0f);
   addTest(6,6,180.0f);

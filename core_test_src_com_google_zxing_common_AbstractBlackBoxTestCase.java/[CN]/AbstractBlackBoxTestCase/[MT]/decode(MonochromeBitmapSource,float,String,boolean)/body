@@ -11,7 +11,7 @@
         hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
       }
     }
-    result=getReader().decode(source,hints);
+    result=barcodeReader.decode(source,hints);
   }
  catch (  ReaderException re) {
     System.out.println(re + suffix);
