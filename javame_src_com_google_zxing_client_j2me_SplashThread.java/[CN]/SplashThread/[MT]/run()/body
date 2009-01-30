@@ -1,0 +1,11 @@
+{
+synchronized (this) {
+    try {
+      repaint();
+      wait(tout);
+    }
+ catch (    InterruptedException ie) {
+    }
+  }
+  zXingMIDlet.splashDone();
+}

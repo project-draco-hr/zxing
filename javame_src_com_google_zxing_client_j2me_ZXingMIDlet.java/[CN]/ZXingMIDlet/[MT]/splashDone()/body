@@ -1,0 +1,9 @@
+{
+  try {
+    videoControl.setVisible(true);
+    player.start();
+  }
+ catch (  MediaException me) {
+  }
+  Display.getDisplay(this).setCurrent(canvas);
+}

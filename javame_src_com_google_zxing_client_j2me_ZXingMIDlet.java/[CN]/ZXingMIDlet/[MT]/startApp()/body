@@ -1,5 +1,8 @@
 {
   try {
+    Image image=Image.createImage("/res/zxing-icon.png");
+    SplashThread splash=new SplashThread(this,2000,image);
+    Display.getDisplay(this).setCurrent(splash);
     player=createPlayer();
     player.realize();
     MultimediaManager multimediaManager=buildMultimediaManager();
@@ -11,9 +14,6 @@
     videoControl.initDisplayMode(VideoControl.USE_DIRECT_VIDEO,canvas);
     videoControl.setDisplayLocation(0,0);
     videoControl.setDisplaySize(canvas.getWidth(),canvas.getHeight());
-    videoControl.setVisible(true);
-    player.start();
-    Display.getDisplay(this).setCurrent(canvas);
   }
  catch (  IOException ioe) {
     throw new MIDletStateChangeException(ioe.toString());
