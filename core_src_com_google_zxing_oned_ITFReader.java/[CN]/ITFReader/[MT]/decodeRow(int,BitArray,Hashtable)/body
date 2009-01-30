@@ -4,8 +4,19 @@
   int[] endRange=decodeEnd(row);
   decodeMiddle(row,startRange[1],endRange[0],result);
   String resultString=result.toString();
+  int[] allowedLengths=(int[])hints.get(DecodeHintType.ALLOWED_LENGTHS);
+  if (allowedLengths == null) {
+    allowedLengths=DEFAULT_ALLOWED_LENGTHS;
+  }
   int length=resultString.length();
-  if (length != 6 && length != 10 && length != 14) {
+  boolean lengthOK=false;
+  for (int i=0; i < allowedLengths.length; i++) {
+    if (length == allowedLengths[i]) {
+      lengthOK=true;
+      break;
+    }
+  }
+  if (!lengthOK) {
     throw ReaderException.getInstance();
   }
   return new Result(resultString,null,new ResultPoint[]{new GenericResultPoint(startRange[1],(float)rowNumber),new GenericResultPoint(startRange[0],(float)rowNumber)},BarcodeFormat.ITF);
