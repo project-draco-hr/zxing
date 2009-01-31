@@ -1,7 +1,9 @@
 {
-  CharacterSetECI eci=(CharacterSetECI)VALUE_TO_ECI.get(new Integer(value));
-  if (eci == null) {
-    throw new IllegalArgumentException("Unsupported value: " + value);
+  if (VALUE_TO_ECI == null) {
+    initialize();
   }
-  return eci;
+  if (value < 0 || value >= 900) {
+    throw new IllegalArgumentException("Bad ECI value: " + value);
+  }
+  return (CharacterSetECI)VALUE_TO_ECI.get(new Integer(value));
 }

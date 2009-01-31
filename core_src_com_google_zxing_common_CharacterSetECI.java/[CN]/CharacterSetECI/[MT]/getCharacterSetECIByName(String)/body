@@ -1,0 +1,6 @@
+{
+  if (NAME_TO_ECI == null) {
+    initialize();
+  }
+  return (CharacterSetECI)NAME_TO_ECI.get(name);
+}

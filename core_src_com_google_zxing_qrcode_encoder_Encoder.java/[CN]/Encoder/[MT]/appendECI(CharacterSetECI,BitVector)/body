@@ -1,0 +1,4 @@
+{
+  bits.appendBits(Mode.ECI.getBits(),4);
+  bits.appendBits(eci.getValue(),8);
+}

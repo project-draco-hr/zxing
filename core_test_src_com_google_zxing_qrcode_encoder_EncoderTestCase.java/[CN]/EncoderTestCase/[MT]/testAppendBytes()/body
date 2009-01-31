@@ -1,28 +1,28 @@
 {
 {
     BitVector bits=new BitVector();
-    Encoder.appendBytes("1",Mode.NUMERIC,bits);
+    Encoder.appendBytes("1",Mode.NUMERIC,bits,Encoder.DEFAULT_BYTE_MODE_ENCODING);
     assertEquals("0001",bits.toString());
   }
 {
     BitVector bits=new BitVector();
-    Encoder.appendBytes("A",Mode.ALPHANUMERIC,bits);
+    Encoder.appendBytes("A",Mode.ALPHANUMERIC,bits,Encoder.DEFAULT_BYTE_MODE_ENCODING);
     assertEquals("001010",bits.toString());
     try {
-      Encoder.appendBytes("a",Mode.ALPHANUMERIC,bits);
+      Encoder.appendBytes("a",Mode.ALPHANUMERIC,bits,Encoder.DEFAULT_BYTE_MODE_ENCODING);
     }
  catch (    WriterException we) {
     }
   }
 {
     BitVector bits=new BitVector();
-    Encoder.appendBytes("abc",Mode.BYTE,bits);
+    Encoder.appendBytes("abc",Mode.BYTE,bits,Encoder.DEFAULT_BYTE_MODE_ENCODING);
     assertEquals("011000010110001001100011",bits.toString());
-    Encoder.appendBytes("\0",Mode.BYTE,bits);
+    Encoder.appendBytes("\0",Mode.BYTE,bits,Encoder.DEFAULT_BYTE_MODE_ENCODING);
   }
 {
     BitVector bits=new BitVector();
-    Encoder.appendBytes(shiftJISString(new byte[]{(byte)0x93,0x5f}),Mode.KANJI,bits);
+    Encoder.appendBytes(shiftJISString(new byte[]{(byte)0x93,0x5f}),Mode.KANJI,bits,Encoder.DEFAULT_BYTE_MODE_ENCODING);
     assertEquals("0110110011111",bits.toString());
   }
 }

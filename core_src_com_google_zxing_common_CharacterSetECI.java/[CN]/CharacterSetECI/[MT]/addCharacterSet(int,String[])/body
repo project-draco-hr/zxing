@@ -1,0 +1,7 @@
+{
+  CharacterSetECI eci=new CharacterSetECI(value,encodingNames[0]);
+  VALUE_TO_ECI.put(new Integer(value),eci);
+  for (int i=0; i < encodingNames.length; i++) {
+    NAME_TO_ECI.put(encodingNames[i],eci);
+  }
+}

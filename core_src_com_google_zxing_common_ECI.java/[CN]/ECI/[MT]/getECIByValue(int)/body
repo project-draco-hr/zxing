@@ -5,5 +5,5 @@
   if (value < 900) {
     return CharacterSetECI.getCharacterSetECIByValue(value);
   }
-  throw new IllegalArgumentException("Unsupported ECI value: " + value);
+  return null;
 }
