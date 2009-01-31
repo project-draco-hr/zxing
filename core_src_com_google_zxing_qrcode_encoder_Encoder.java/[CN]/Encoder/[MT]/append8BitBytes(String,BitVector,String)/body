@@ -1,7 +1,7 @@
 {
   byte[] bytes;
   try {
-    bytes=content.getBytes("ISO-8859-1");
+    bytes=content.getBytes(encoding);
   }
  catch (  UnsupportedEncodingException uee) {
     throw new WriterException(uee.toString());

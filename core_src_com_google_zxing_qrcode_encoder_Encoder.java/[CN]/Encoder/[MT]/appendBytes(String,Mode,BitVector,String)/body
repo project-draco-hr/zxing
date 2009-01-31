@@ -6,7 +6,7 @@
     appendAlphanumericBytes(content,bits);
   }
  else   if (mode.equals(Mode.BYTE)) {
-    append8BitBytes(content,bits);
+    append8BitBytes(content,bits,encoding);
   }
  else   if (mode.equals(Mode.KANJI)) {
     appendKanjiBytes(content,bits);
