@@ -1,8 +1,10 @@
 {
   try {
     Image image=Image.createImage("/res/zxing-icon.png");
-    SplashThread splash=new SplashThread(this,2000,image);
+    Displayable splash=new SplashThread(this,2000,image);
     Display.getDisplay(this).setCurrent(splash);
+    resultHistory=new Vector(5);
+    history=new Menu(this,"Scan History","Use");
     player=createPlayer();
     player.realize();
     MultimediaManager multimediaManager=buildMultimediaManager();

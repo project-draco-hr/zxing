@@ -1,0 +1,4 @@
+{
+  ParsedResult result=(ParsedResult)resultHistory.elementAt(history.getSelectedIndex());
+  barcodeAction(result);
+}

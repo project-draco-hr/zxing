@@ -1,6 +1,9 @@
 {
   int type=command.getCommandType();
-  if (type == Command.EXIT || type == Command.STOP || type == Command.BACK || type == Command.CANCEL) {
+  if (command == history) {
+    zXingMIDlet.historyRequest();
+  }
+ else   if (type == Command.EXIT || type == Command.STOP || type == Command.BACK || type == Command.CANCEL) {
     snapshotThread.stop();
     zXingMIDlet.stop();
   }

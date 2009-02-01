@@ -1,0 +1,7 @@
+{
+  String result="";
+  if (getSelectedIndex() != -1) {
+    result=getString(getSelectedIndex());
+  }
+  return result;
+}
