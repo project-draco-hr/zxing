@@ -1,8 +1,5 @@
 {
-  ExposureControl exposureControl=(ExposureControl)player.getControl("javax.microedition.amms.control.camera.ExposureControl");
-  if (exposureControl == null) {
-    exposureControl=(ExposureControl)player.getControl("ExposureControl");
-  }
+  ExposureControl exposureControl=(ExposureControl)getControl(player,"javax.microedition.amms.control.camera.ExposureControl");
   if (exposureControl != null) {
     int[] supportedISOs=exposureControl.getSupportedISOs();
     if (supportedISOs != null && supportedISOs.length > 0) {

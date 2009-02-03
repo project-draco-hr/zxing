@@ -1,8 +1,5 @@
 {
-  FocusControl focusControl=(FocusControl)player.getControl("javax.microedition.amms.control.camera.FocusControl");
-  if (focusControl == null) {
-    focusControl=(FocusControl)player.getControl("FocusControl");
-  }
+  FocusControl focusControl=(FocusControl)getControl(player,"javax.microedition.amms.control.camera.FocusControl");
   if (focusControl != null) {
     try {
       if (focusControl.isMacroSupported() && !focusControl.getMacro()) {

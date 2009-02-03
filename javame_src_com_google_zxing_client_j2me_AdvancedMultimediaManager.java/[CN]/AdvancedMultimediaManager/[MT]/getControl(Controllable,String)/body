@@ -1,0 +1,8 @@
+{
+  Control control=player.getControl(fullName);
+  if (control == null) {
+    String shortName=fullName.substring(fullName.lastIndexOf('.') + 1);
+    control=player.getControl(shortName);
+  }
+  return control;
+}
