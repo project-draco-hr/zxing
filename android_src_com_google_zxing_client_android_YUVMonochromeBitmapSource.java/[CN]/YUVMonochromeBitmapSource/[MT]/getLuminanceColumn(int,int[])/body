@@ -3,10 +3,12 @@
   if (column == null || column.length < height) {
     column=new int[height];
   }
-  int offset=mCrop.top * mDataWidth + mCrop.left + x;
+  int dataWidth=mDataWidth;
+  int offset=mCropTop * dataWidth + mCropLeft + x;
+  byte[] yuvData=mYUVData;
   for (int y=0; y < height; y++) {
-    column[y]=mYUVData[offset] & 0xff;
-    offset+=mDataWidth;
+    column[y]=yuvData[offset] & 0xff;
+    offset+=dataWidth;
   }
   return column;
 }

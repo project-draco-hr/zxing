@@ -3,9 +3,10 @@
   if (row == null || row.length < width) {
     row=new int[width];
   }
-  int offset=(y + mCrop.top) * mDataWidth + mCrop.left;
+  int offset=(y + mCropTop) * mDataWidth + mCropLeft;
+  byte[] yuvData=mYUVData;
   for (int x=0; x < width; x++) {
-    row[x]=mYUVData[offset + x] & 0xff;
+    row[x]=yuvData[offset + x] & 0xff;
   }
   return row;
 }

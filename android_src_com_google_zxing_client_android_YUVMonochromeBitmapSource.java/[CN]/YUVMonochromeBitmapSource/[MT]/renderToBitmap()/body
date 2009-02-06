@@ -1,11 +1,11 @@
 {
-  int width=mCrop.width();
-  int height=mCrop.height();
+  int width=getWidth();
+  int height=getHeight();
   int[] pixels=new int[width * height];
-  for (int y=0; y < height; y++) {
-    int base=(y + mCrop.top) * mDataWidth + mCrop.left;
+  byte[] yuvData=mYUVData;
+  for (int y=0, base=mCropTop * mDataWidth + mCropLeft; y < height; y++, base+=mDataWidth) {
     for (int x=0; x < width; x++) {
-      int grey=mYUVData[base + x] & 0xff;
+      int grey=yuvData[base + x] & 0xff;
       pixels[y * width + x]=(0xff << 24) | (grey << 16) | (grey << 8)| grey;
     }
   }

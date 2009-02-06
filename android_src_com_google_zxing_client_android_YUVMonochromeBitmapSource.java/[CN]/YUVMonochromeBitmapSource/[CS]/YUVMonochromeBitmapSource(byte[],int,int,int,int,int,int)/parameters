@@ -1,0 +1,7 @@
+byte[] yuvData
+int dataWidth
+int dataHeight
+int cropTop
+int cropLeft
+int cropBottom
+int cropRight

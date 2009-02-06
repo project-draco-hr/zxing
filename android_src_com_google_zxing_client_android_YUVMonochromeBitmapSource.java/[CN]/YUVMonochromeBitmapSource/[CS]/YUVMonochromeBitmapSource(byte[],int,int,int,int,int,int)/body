@@ -1,0 +1,11 @@
+{
+  if (cropRight - cropLeft > dataWidth || cropBottom - cropTop > dataHeight) {
+    throw new IllegalArgumentException();
+  }
+  mYUVData=yuvData;
+  mDataWidth=dataWidth;
+  this.mCropTop=cropTop;
+  this.mCropLeft=cropLeft;
+  this.mCropBottom=cropBottom;
+  this.mCropRight=cropRight;
+}
