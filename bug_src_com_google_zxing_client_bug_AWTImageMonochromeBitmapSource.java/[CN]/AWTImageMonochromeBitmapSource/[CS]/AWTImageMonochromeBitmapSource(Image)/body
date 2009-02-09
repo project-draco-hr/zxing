@@ -1,6 +1,7 @@
 {
-  height=image.getHeight(null);
-  width=image.getWidth(null);
+  super(image.getHeight(null),image.getWidth(null));
+  int height=getHeight();
+  int width=getWidth();
   pixels=new int[height * width];
   PixelGrabber grabber=new PixelGrabber(image,0,0,width,height,pixels,0,width);
   try {

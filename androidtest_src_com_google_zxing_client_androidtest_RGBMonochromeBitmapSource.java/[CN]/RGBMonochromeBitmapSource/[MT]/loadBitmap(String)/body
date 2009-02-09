@@ -1,0 +1,7 @@
+{
+  Bitmap bitmap=BitmapFactory.decodeFile(path);
+  if (bitmap == null) {
+    throw new FileNotFoundException("Couldn't open " + path);
+  }
+  return bitmap;
+}

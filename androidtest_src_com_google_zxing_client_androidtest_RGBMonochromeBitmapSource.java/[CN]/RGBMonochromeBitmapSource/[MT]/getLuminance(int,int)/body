@@ -1,3 +1,3 @@
 {
-  return mLuminances[y * mWidth + x] & 0xff;
+  return mLuminances[y * getWidth() + x] & 0xff;
 }

@@ -1,4 +1,5 @@
 {
+  super(cropBottom - cropTop,cropRight - cropLeft);
   if (cropRight - cropLeft > dataWidth || cropBottom - cropTop > dataHeight) {
     throw new IllegalArgumentException();
   }
@@ -6,6 +7,4 @@
   mDataWidth=dataWidth;
   this.mCropTop=cropTop;
   this.mCropLeft=cropLeft;
-  this.mCropBottom=cropBottom;
-  this.mCropRight=cropRight;
 }

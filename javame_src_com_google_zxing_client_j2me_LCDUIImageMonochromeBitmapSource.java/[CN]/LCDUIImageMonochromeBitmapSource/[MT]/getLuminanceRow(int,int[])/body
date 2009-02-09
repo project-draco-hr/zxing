@@ -1,4 +1,5 @@
 {
+  int width=getWidth();
   if (row == null || row.length < width) {
     row=new int[width];
   }

@@ -1,6 +1,6 @@
 {
-  int width=mWidth;
-  int height=mHeight;
+  int width=getWidth();
+  int height=getHeight();
   if (column == null || column.length < height) {
     column=new int[height];
   }

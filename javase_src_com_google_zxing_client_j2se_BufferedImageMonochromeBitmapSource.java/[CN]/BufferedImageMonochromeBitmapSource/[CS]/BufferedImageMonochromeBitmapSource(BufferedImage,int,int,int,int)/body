@@ -1,4 +1,5 @@
 {
+  super(bottom - top,right - left);
   this.image=image;
   int sourceHeight=image.getHeight();
   int sourceWidth=image.getWidth();
@@ -7,6 +8,4 @@
   }
   this.left=left;
   this.top=top;
-  this.width=right - left;
-  this.height=bottom - top;
 }

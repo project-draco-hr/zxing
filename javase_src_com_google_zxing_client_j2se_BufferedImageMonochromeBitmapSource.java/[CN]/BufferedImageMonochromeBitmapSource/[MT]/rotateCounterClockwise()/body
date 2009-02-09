@@ -8,5 +8,5 @@
   BufferedImageOp op=new AffineTransformOp(transform,AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
   BufferedImage rotatedImage=new BufferedImage(sourceHeight,sourceWidth,image.getType());
   op.filter(image,rotatedImage);
-  return new BufferedImageMonochromeBitmapSource(rotatedImage,top,sourceWidth - (left + width),top + height,sourceWidth - left);
+  return new BufferedImageMonochromeBitmapSource(rotatedImage,top,sourceWidth - (left + getWidth()),top + getHeight(),sourceWidth - left);
 }
