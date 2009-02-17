@@ -1,0 +1,5 @@
+Activity activity
+int stringTitle
+int stringMessage
+int stringButtonYes
+int stringButtonNo

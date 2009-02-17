@@ -1,0 +1,4 @@
+{
+  this.contents=contents;
+  this.formatName=formatName;
+}

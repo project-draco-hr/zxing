@@ -1,0 +1,10 @@
+{
+  Intent intentScan=new Intent("com.google.zxing.client.android.SCAN");
+  intentScan.addCategory(Intent.CATEGORY_DEFAULT);
+  try {
+    activity.startActivityForResult(intentScan,REQUEST_CODE);
+  }
+ catch (  ActivityNotFoundException e) {
+    showDownloadDialog(activity,stringTitle,stringMessage,stringButtonYes,stringButtonNo);
+  }
+}

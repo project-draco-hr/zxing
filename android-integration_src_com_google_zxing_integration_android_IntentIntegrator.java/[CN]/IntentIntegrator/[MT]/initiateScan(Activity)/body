@@ -1,0 +1,3 @@
+{
+  initiateScan(activity,"Install Barcode Scanner?","This application requires Barcode Scanner. Would you like to install it?","Yes","No");
+}
