@@ -31,7 +31,7 @@
         }
       }
     }
-    readingUp=!readingUp;
+    readingUp^=true;
   }
   if (resultOffset != version.getTotalCodewords()) {
     throw ReaderException.getInstance();

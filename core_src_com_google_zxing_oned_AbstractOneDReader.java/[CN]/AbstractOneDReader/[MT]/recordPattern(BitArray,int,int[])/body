@@ -12,7 +12,7 @@
   int i=start;
   while (i < end) {
     boolean pixel=row.get(i);
-    if ((!pixel && isWhite) || (pixel && !isWhite)) {
+    if (pixel ^ isWhite) {
       counters[counterPosition]++;
     }
  else {
@@ -22,7 +22,7 @@
       }
  else {
         counters[counterPosition]=1;
-        isWhite=!isWhite;
+        isWhite^=true;
       }
     }
     i++;

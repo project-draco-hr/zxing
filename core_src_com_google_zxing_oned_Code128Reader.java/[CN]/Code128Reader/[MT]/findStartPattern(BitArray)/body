@@ -14,7 +14,7 @@
   int patternLength=counters.length;
   for (int i=rowOffset; i < width; i++) {
     boolean pixel=row.get(i);
-    if ((!pixel && isWhite) || (pixel && !isWhite)) {
+    if (pixel ^ isWhite) {
       counters[counterPosition]++;
     }
  else {
@@ -45,7 +45,7 @@
         counterPosition++;
       }
       counters[counterPosition]=1;
-      isWhite=!isWhite;
+      isWhite^=true;
     }
   }
   throw ReaderException.getInstance();
