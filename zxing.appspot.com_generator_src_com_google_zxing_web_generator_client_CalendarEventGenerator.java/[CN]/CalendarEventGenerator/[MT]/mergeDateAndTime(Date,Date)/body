@@ -1,7 +1,7 @@
 {
   DateTimeFormat extractDate=DateTimeFormat.getFormat("yyyyMMdd");
-  DateTimeFormat extractTime=DateTimeFormat.getFormat("kkmm");
-  DateTimeFormat merger=DateTimeFormat.getFormat("yyyyMMddkkmmss");
+  DateTimeFormat extractTime=DateTimeFormat.getFormat("HHmm");
+  DateTimeFormat merger=DateTimeFormat.getFormat("yyyyMMddHHmmss");
   String d=extractDate.format(date);
   String t=extractTime.format(time) + "00";
   return merger.parse(d + t);

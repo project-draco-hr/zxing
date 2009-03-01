@@ -1,6 +1,6 @@
 {
-  latitude.setText("" + event.getLatLng().getLatitude());
-  longitude.setText("" + event.getLatLng().getLongitude());
+  latitude.setText(String.valueOf(event.getLatLng().getLatitude()));
+  longitude.setText(String.valueOf(event.getLatLng().getLongitude()));
   setMapMarker(event.getLatLng().getLatitude(),event.getLatLng().getLongitude(),false);
   changeListener.onChange(latitude);
   changeListener.onChange(longitude);

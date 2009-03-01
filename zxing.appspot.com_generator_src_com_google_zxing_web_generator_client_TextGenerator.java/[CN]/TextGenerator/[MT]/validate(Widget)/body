@@ -1,3 +1,5 @@
 {
-  if (widget == text)   getTextField();
+  if (widget == text) {
+    getTextField();
+  }
 }

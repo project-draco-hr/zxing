@@ -1,4 +1,3 @@
 {
-  String message=getTextField();
-  return message;
+  return getTextField();
 }

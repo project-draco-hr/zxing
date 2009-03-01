@@ -1,3 +1,0 @@
-{
-  return time2.getTime() - time1.getTime();
-}

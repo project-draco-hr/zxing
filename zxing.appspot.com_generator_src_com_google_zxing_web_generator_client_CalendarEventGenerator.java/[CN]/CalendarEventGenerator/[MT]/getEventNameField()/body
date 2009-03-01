@@ -6,5 +6,5 @@
   if (inputName.contains("\n")) {
     throw new GeneratorException("Event name should not contain \\n characters.");
   }
-  return "SUMMARY:" + inputName + "\n";
+  return "SUMMARY:" + inputName + "\r\n";
 }

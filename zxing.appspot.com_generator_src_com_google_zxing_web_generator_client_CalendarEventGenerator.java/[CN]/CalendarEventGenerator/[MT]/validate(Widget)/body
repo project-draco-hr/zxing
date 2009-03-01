@@ -1,4 +1,8 @@
 {
-  if (widget == eventName)   getEventNameField();
-  if (widget == datePicker1 || widget == timePicker1 || widget == datePicker2 || widget == timePicker2)   getDateTimeFields();
+  if (widget == eventName) {
+    getEventNameField();
+  }
+ else   if (widget == datePicker1 || widget == timePicker1 || widget == datePicker2 || widget == timePicker2) {
+    getDateTimeFields();
+  }
 }

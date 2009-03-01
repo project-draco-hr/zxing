@@ -3,7 +3,7 @@
   String inputMessage=getMessageField();
   String output=inputNumber;
   if (inputMessage.length() > 0) {
-    output+=":" + inputMessage;
+    output+=':' + inputMessage;
   }
   return "smsto:" + output;
 }

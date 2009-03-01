@@ -14,18 +14,18 @@
   String lat="";
   String lon="";
   if (link.matches(".*&s?ll=[^&]*&.*")) {
-    boolean beforeComa=true;
-    int start=0;
+    int start;
     if (link.indexOf("&sll=") == -1) {
       start=link.indexOf("&ll=") + 4;
     }
  else {
       start=link.indexOf("&sll=") + 5;
     }
+    boolean beforeComma=true;
     for (int i=start; i < link.length() && link.charAt(i) != '&'; ++i) {
-      if (beforeComa) {
+      if (beforeComma) {
         if (link.charAt(i) == ',') {
-          beforeComa=false;
+          beforeComma=false;
         }
  else {
           lat+=link.charAt(i);

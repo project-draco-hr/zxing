@@ -13,7 +13,7 @@
       Date time1=timePicker1.getDateTime();
       Date time2=timePicker2.getDateTime();
       if (time2.after(time)) {
-        long diff=timeDifference(time,time2);
+        long diff=time2.getTime() - time.getTime();
         timePicker2.setDateTime(addMilliseconds(time1,diff));
       }
  else {

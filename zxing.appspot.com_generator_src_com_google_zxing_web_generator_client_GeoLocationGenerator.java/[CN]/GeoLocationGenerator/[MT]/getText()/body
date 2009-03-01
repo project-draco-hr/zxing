@@ -10,8 +10,8 @@
   }
   String lat=getLatitudeField();
   String lon=getLongitudeField();
-  if (que.length() > 0) {
-    return "geo:" + lat + ","+ lon+ "?q="+ que;
+  if (null != que && que.length() > 0) {
+    return "geo:" + lat + ','+ lon+ "?q="+ que;
   }
-  return "geo:" + lat + ","+ lon;
+  return "geo:" + lat + ','+ lon;
 }

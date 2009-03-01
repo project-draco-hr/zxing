@@ -1,4 +1,3 @@
 {
-  String input=getUrlField();
-  return input;
+  return getUrlField();
 }
