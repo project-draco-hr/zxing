@@ -1,0 +1,8 @@
+{
+  for (int i=0; i < ATEXT_SYMBOLS.length; i++) {
+    if (c == ATEXT_SYMBOLS[i]) {
+      return true;
+    }
+  }
+  return false;
+}

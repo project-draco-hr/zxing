@@ -3,21 +3,17 @@
     return false;
   }
   boolean atFound=false;
-  boolean periodFound=false;
   for (int i=0; i < email.length(); i++) {
     char c=email.charAt(i);
+    if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < '0' || c > '9')&& !isAtextSymbol(c)) {
+      return false;
+    }
     if (c == '@') {
       if (atFound) {
         return false;
       }
       atFound=true;
     }
- else     if (c == '.') {
-      periodFound=true;
-    }
- else     if (c == ' ' || c == '\n') {
-      return false;
-    }
   }
-  return atFound && periodFound;
+  return atFound;
 }
