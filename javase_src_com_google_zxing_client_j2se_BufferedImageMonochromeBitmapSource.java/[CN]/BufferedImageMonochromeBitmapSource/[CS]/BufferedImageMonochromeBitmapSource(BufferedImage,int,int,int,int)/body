@@ -1,5 +1,5 @@
 {
-  super(bottom - top,right - left);
+  super(right - left,bottom - top);
   this.image=image;
   int sourceHeight=image.getHeight();
   int sourceWidth=image.getWidth();
