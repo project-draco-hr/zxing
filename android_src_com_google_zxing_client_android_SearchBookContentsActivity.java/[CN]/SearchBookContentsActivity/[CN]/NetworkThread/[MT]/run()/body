@@ -4,7 +4,7 @@
     URI uri=new URI("http",null,"www.google.com",-1,"/books","vid=isbn" + mISBN + "&jscmd=SearchWithinVolume2&q="+ mQuery,null);
     HttpUriRequest get=new HttpGet(uri);
     get.setHeader("cookie",getCookie(uri.toString()));
-    client=AndroidHttpClient.newInstance(mUserAgent);
+    client=AndroidHttpClient.newInstance(USER_AGENT);
     HttpResponse response=client.execute(get);
     if (response.getStatusLine().getStatusCode() == 200) {
       HttpEntity entity=response.getEntity();

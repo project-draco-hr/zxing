@@ -1,5 +1,14 @@
 {
   if (intent != null) {
-    mActivity.startActivity(intent);
+    try {
+      mActivity.startActivity(intent);
+    }
+ catch (    ActivityNotFoundException e) {
+      AlertDialog.Builder builder=new AlertDialog.Builder(mActivity);
+      builder.setTitle(mActivity.getString(R.string.app_name));
+      builder.setMessage(mActivity.getString(R.string.msg_intent_failed));
+      builder.setPositiveButton(R.string.button_ok,null);
+      builder.show();
+    }
   }
 }

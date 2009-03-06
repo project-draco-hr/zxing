@@ -22,5 +22,4 @@
   LayoutInflater factory=LayoutInflater.from(this);
   mHeaderView=(TextView)factory.inflate(R.layout.search_book_contents_header,mResultListView,false);
   mResultListView.addHeaderView(mHeaderView);
-  mUserAgent=getString(R.string.zxing_user_agent);
 }

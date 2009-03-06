@@ -3,7 +3,7 @@
   if (cookie == null || cookie.length() == 0) {
     Log.v(TAG,"Book Search cookie was missing or expired");
     HttpUriRequest head=new HttpHead(url);
-    AndroidHttpClient client=AndroidHttpClient.newInstance(mUserAgent);
+    AndroidHttpClient client=AndroidHttpClient.newInstance(USER_AGENT);
     try {
       HttpResponse response=client.execute(head);
       if (response.getStatusLine().getStatusCode() == 200) {
