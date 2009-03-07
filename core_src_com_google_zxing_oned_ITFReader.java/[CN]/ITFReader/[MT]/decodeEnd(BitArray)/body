@@ -1,18 +1,15 @@
 {
   row.reverse();
-  int endStart=skipWhiteSpace(row);
-  int[] endPattern;
   try {
-    endPattern=findGuardPattern(row,endStart,END_PATTERN_REVERSED);
+    int endStart=skipWhiteSpace(row);
+    int[] endPattern=findGuardPattern(row,endStart,END_PATTERN_REVERSED);
+    validateQuietZone(row,endPattern[0]);
+    int temp=endPattern[0];
+    endPattern[0]=row.getSize() - endPattern[1];
+    endPattern[1]=row.getSize() - temp;
+    return endPattern;
   }
- catch (  ReaderException e) {
+  finally {
     row.reverse();
-    throw e;
   }
-  validateQuietZone(row,endPattern[0]);
-  int temp=endPattern[0];
-  endPattern[0]=row.getSize() - endPattern[1];
-  endPattern[1]=row.getSize() - temp;
-  row.reverse();
-  return endPattern;
 }

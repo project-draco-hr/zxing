@@ -4,7 +4,10 @@
   int[] endRange=decodeEnd(row);
   decodeMiddle(row,startRange[1],endRange[0],result);
   String resultString=result.toString();
-  int[] allowedLengths=(int[])hints.get(DecodeHintType.ALLOWED_LENGTHS);
+  int[] allowedLengths=null;
+  if (hints != null) {
+    allowedLengths=(int[])hints.get(DecodeHintType.ALLOWED_LENGTHS);
+  }
   if (allowedLengths == null) {
     allowedLengths=DEFAULT_ALLOWED_LENGTHS;
   }
