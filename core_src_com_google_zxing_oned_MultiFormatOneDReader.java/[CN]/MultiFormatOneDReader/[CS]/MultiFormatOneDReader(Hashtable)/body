@@ -19,5 +19,6 @@
     readers.addElement(new MultiFormatUPCEANReader(hints));
     readers.addElement(new Code39Reader());
     readers.addElement(new Code128Reader());
+    readers.addElement(new ITFReader());
   }
 }
