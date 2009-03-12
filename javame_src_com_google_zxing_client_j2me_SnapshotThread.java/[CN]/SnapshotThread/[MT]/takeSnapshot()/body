@@ -1,21 +1,9 @@
 {
-  String supportsVideoCapture=System.getProperty("supports.video.capture");
-  if ("false".equals(supportsVideoCapture)) {
-    throw new MediaException("supports.video.capture is false");
-  }
-  String bestEncoding=null;
-  String videoSnapshotEncodings=System.getProperty("video.snapshot.encodings");
-  if (videoSnapshotEncodings != null) {
-    int pngEncodingStart=videoSnapshotEncodings.indexOf("encoding=png");
-    if (pngEncodingStart >= 0) {
-      int space=videoSnapshotEncodings.indexOf(' ',pngEncodingStart);
-      bestEncoding=space >= 0 ? videoSnapshotEncodings.substring(pngEncodingStart,space) : videoSnapshotEncodings.substring(pngEncodingStart);
-    }
-  }
+  String bestEncoding=guessBestEncoding();
   VideoControl videoControl=zXingMIDlet.getVideoControl();
   byte[] snapshot=null;
   try {
-    snapshot=videoControl.getSnapshot(bestEncoding);
+    snapshot=videoControl.getSnapshot("".equals(bestEncoding) ? null : bestEncoding);
   }
  catch (  MediaException me) {
   }
