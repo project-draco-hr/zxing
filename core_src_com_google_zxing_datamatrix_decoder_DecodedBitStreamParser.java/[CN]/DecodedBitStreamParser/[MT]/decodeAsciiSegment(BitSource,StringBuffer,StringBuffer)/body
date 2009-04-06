@@ -28,13 +28,10 @@
       return BASE256_ENCODE;
     }
  else     if (oneByte == 232) {
-      throw ReaderException.getInstance();
     }
  else     if (oneByte == 233) {
-      throw ReaderException.getInstance();
     }
  else     if (oneByte == 234) {
-      throw ReaderException.getInstance();
     }
  else     if (oneByte == 235) {
       upperShift=true;
@@ -57,7 +54,6 @@
       return EDIFACT_ENCODE;
     }
  else     if (oneByte == 241) {
-      throw ReaderException.getInstance();
     }
  else     if (oneByte >= 242) {
       throw ReaderException.getInstance();

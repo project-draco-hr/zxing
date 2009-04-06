@@ -57,13 +57,7 @@
  else {
     topRight=pointD;
   }
-  int dimension;
-  if (GenericResultPoint.crossProductZ(bottomLeft,bottomRight,topRight) < GenericResultPoint.crossProductZ(topRight,topLeft,bottomLeft)) {
-    dimension=transitionsBetween(topLeft,topRight).getTransitions();
-  }
- else {
-    dimension=transitionsBetween(bottomRight,topRight).getTransitions();
-  }
+  int dimension=Math.min(transitionsBetween(topLeft,topRight).getTransitions(),transitionsBetween(bottomRight,topRight).getTransitions());
   dimension+=2;
   BitMatrix bits=sampleGrid(image,topLeft,bottomLeft,bottomRight,dimension);
   return new DetectorResult(bits,new ResultPoint[]{pointA,pointB,pointC,pointD});
