@@ -9,6 +9,7 @@
     int bitsDifference=FormatInformation.numBitsDiffering(versionBits,targetVersion);
     if (bitsDifference < bestDifference) {
       bestVersion=i + 7;
+      bestDifference=bitsDifference;
     }
   }
   if (bestDifference <= 3) {
