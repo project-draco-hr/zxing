@@ -1,7 +1,5 @@
 {
   if (luminances == null) {
-    int width=getWidth();
-    int height=getHeight();
     int max=width > height ? width : height;
     luminances=new int[max];
   }

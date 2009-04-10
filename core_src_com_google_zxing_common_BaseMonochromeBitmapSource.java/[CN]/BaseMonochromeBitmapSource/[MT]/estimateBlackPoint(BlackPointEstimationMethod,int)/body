@@ -23,7 +23,7 @@
       }
     }
  else {
-      throw new IllegalArgumentException("Unknown method: " + method);
+      throw new IllegalArgumentException("Unknown method");
     }
     blackPoint=BlackPointEstimator.estimate(histogram) << LUMINANCE_SHIFT;
     lastMethod=method;
