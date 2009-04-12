@@ -11,6 +11,9 @@
     if (possibleFormats.contains(BarcodeFormat.QR_CODE)) {
       readers.addElement(new QRCodeReader());
     }
+    if (possibleFormats.contains(BarcodeFormat.DATAMATRIX)) {
+      readers.addElement(new DataMatrixReader());
+    }
     if (addOneDReader && tryHarder) {
       readers.addElement(new MultiFormatOneDReader(hints));
     }
