@@ -3,7 +3,6 @@
     @Override protected BasicHttpProcessor createHttpProcessor(){
       BasicHttpProcessor processor=super.createHttpProcessor();
       processor.addRequestInterceptor(sThreadCheckInterceptor);
-      processor.addRequestInterceptor(new CurlLogger());
       return processor;
     }
     @Override protected HttpContext createHttpContext(){

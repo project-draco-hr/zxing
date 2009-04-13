@@ -1,3 +1,0 @@
-{
-  Log.println(level,tag,message);
-}

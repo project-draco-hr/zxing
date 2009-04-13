@@ -1,6 +1,0 @@
-{
-  LoggingConfiguration configuration=curlConfiguration;
-  if (configuration != null && configuration.isLoggable() && request instanceof HttpUriRequest) {
-    configuration.println(toCurl((HttpUriRequest)request));
-  }
-}
