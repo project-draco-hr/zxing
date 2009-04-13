@@ -5,10 +5,9 @@
   if (contactCursor != null && contactCursor.moveToFirst()) {
     int nameColumn=contactCursor.getColumnIndex(Contacts.PeopleColumns.NAME);
     String name=contactCursor.getString(nameColumn);
-    if (name == null || name.length() == 0) {
-      return;
+    if (name != null && name.length() > 0) {
+      bundle.putString(Contacts.Intents.Insert.NAME,name);
     }
-    bundle.putString(Contacts.Intents.Insert.NAME,name);
     contactCursor.close();
     Uri phonesUri=Uri.withAppendedPath(contactUri,Contacts.People.Phones.CONTENT_DIRECTORY);
     Cursor phonesCursor=resolver.query(phonesUri,PHONES_PROJECTION,null,null,null);

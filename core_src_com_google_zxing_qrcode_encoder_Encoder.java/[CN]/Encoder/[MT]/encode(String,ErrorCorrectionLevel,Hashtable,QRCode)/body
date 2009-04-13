@@ -1,11 +1,11 @@
 {
-  String characterEncoding=hints == null ? null : (String)hints.get(EncodeHintType.CHARACTER_SET);
-  if (characterEncoding == null) {
-    characterEncoding=DEFAULT_BYTE_MODE_ENCODING;
+  String encoding=hints == null ? null : (String)hints.get(EncodeHintType.CHARACTER_SET);
+  if (encoding == null) {
+    encoding=DEFAULT_BYTE_MODE_ENCODING;
   }
   Mode mode=chooseMode(content);
   BitVector dataBits=new BitVector();
-  appendBytes(content,mode,dataBits,characterEncoding);
+  appendBytes(content,mode,dataBits,encoding);
   int numInputBytes=dataBits.sizeInBytes();
   initQRCode(numInputBytes,ecLevel,mode,qrCode);
   BitVector headerAndDataBits=new BitVector();
