@@ -16,6 +16,7 @@
     return;
   }
   HttpGet getRequest=new HttpGet(imageURI);
+  getRequest.addHeader("Connection","close");
   try {
     HttpResponse getResponse=client.execute(getRequest);
     if (getResponse.getStatusLine().getStatusCode() != HttpServletResponse.SC_OK) {
