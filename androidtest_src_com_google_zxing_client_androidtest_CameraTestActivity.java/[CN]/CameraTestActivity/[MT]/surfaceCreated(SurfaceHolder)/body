@@ -1,4 +1,9 @@
 {
-  CameraManager.get().openDriver(holder);
+  try {
+    CameraManager.get().openDriver(holder);
+  }
+ catch (  IOException ioe) {
+    throw new RuntimeException(ioe);
+  }
   CameraManager.get().startPreview();
 }
