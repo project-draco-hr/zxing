@@ -1,10 +1,10 @@
 {
   String rawText=result.getText();
+  if (rawText != null && rawText.startsWith("URL:")) {
+    rawText=rawText.substring(4);
+  }
   if (!isBasicallyValidURI(rawText)) {
     return null;
-  }
-  if (rawText.startsWith("URL:")) {
-    rawText=rawText.substring(4);
   }
   return new URIParsedResult(rawText,null);
 }
