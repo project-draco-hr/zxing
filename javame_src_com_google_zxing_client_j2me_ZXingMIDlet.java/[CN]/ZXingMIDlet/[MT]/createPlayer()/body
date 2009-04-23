@@ -7,11 +7,18 @@
     }
  catch (    MediaException me) {
     }
+catch (    NullPointerException npe) {
+    }
 catch (    Error e) {
     }
   }
   if (player == null) {
-    player=Manager.createPlayer("capture://video");
+    try {
+      player=Manager.createPlayer("capture://video");
+    }
+ catch (    NullPointerException npe) {
+      throw new MediaException("Image/video capture not supported on this phone");
+    }
   }
   return player;
 }
