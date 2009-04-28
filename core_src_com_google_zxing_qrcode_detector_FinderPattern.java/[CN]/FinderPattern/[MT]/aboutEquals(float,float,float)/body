@@ -1,5 +1,5 @@
 {
-  if (Math.abs(i - posY) <= moduleSize && Math.abs(j - posX) <= moduleSize) {
+  if (Math.abs(i - getY()) <= moduleSize && Math.abs(j - getX()) <= moduleSize) {
     float moduleSizeDiff=Math.abs(moduleSize - estimatedModuleSize);
     return moduleSizeDiff <= 1.0f || moduleSizeDiff / estimatedModuleSize <= 1.0f;
   }

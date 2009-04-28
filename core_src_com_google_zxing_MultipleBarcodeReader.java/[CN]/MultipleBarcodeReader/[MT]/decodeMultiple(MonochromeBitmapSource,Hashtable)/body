@@ -1,0 +1,13 @@
+{
+  Vector results=new Vector();
+  doDecodeMultiple(image,hints,results,0,0);
+  if (results.isEmpty()) {
+    throw ReaderException.getInstance();
+  }
+  int numResults=results.size();
+  Result[] resultArray=new Result[numResults];
+  for (int i=0; i < numResults; i++) {
+    resultArray[i]=(Result)results.elementAt(i);
+  }
+  return resultArray;
+}

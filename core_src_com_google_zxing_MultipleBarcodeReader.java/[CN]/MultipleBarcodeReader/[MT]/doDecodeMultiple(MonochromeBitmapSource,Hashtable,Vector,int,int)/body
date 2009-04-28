@@ -1,0 +1,41 @@
+{
+  Result result;
+  try {
+    result=delegate.decode(image,hints);
+  }
+ catch (  ReaderException re) {
+    return;
+  }
+  results.addElement(translateResultPoints(result,xOffset,yOffset));
+  ResultPoint[] resultPoints=result.getResultPoints();
+  if (resultPoints == null || resultPoints.length == 0) {
+    return;
+  }
+  int width=image.getWidth();
+  int height=image.getHeight();
+  float minX=width;
+  float minY=height;
+  float maxX=0.0f;
+  float maxY=0.0f;
+  for (int i=0; i < resultPoints.length; i++) {
+    ResultPoint point=resultPoints[i];
+    float x=point.getX();
+    float y=point.getY();
+    if (x < minX) {
+      minX=x;
+    }
+    if (y < minY) {
+      minY=y;
+    }
+    if (x > maxX) {
+      maxX=x;
+    }
+    if (y > maxY) {
+      maxY=y;
+    }
+  }
+  doDecodeMultiple(new CroppedMonochromeBitmapSource(image,0,0,(int)minX,height),hints,results,0,0);
+  doDecodeMultiple(new CroppedMonochromeBitmapSource(image,0,0,width,(int)minY),hints,results,0,0);
+  doDecodeMultiple(new CroppedMonochromeBitmapSource(image,(int)maxX,0,width,height),hints,results,(int)maxX,0);
+  doDecodeMultiple(new CroppedMonochromeBitmapSource(image,0,(int)maxY,width,height),hints,results,0,(int)maxY);
+}

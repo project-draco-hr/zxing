@@ -14,5 +14,5 @@
   }
   float left=(float)(startGuardRange[1] + startGuardRange[0]) / 2.0f;
   float right=(float)(endRange[1] + endRange[0]) / 2.0f;
-  return new Result(resultString,null,new ResultPoint[]{new GenericResultPoint(left,(float)rowNumber),new GenericResultPoint(right,(float)rowNumber)},getBarcodeFormat());
+  return new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},getBarcodeFormat());
 }

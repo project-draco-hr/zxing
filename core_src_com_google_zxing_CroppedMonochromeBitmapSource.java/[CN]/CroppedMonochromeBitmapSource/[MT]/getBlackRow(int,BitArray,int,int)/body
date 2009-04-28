@@ -1,0 +1,3 @@
+{
+  return delegate.getBlackRow(top + y,row,left + startX,getWidth);
+}

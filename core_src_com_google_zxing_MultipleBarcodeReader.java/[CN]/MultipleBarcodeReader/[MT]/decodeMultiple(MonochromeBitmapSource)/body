@@ -1,0 +1,3 @@
+{
+  return decodeMultiple(image,null);
+}

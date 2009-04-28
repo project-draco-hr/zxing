@@ -40,7 +40,7 @@
     throw ReaderException.getInstance();
   }
   ResultPoint[] corners={maybeTopLeft,bottomLeft,maybeBottomRight};
-  GenericResultPoint.orderBestPatterns(corners);
+  ResultPoint.orderBestPatterns(corners);
   ResultPoint bottomRight=corners[0];
   bottomLeft=corners[1];
   ResultPoint topLeft=corners[2];

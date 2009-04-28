@@ -1,9 +1,0 @@
-{
-  StringBuffer result=new StringBuffer(25);
-  result.append('(');
-  result.append(posX);
-  result.append(',');
-  result.append(posY);
-  result.append(')');
-  return result.toString();
-}

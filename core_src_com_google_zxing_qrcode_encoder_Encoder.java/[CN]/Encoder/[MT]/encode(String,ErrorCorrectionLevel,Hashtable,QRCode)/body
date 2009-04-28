@@ -3,14 +3,21 @@
   if (encoding == null) {
     encoding=DEFAULT_BYTE_MODE_ENCODING;
   }
-  Mode mode=chooseMode(content);
+  Mode mode=chooseMode(content,encoding);
   BitVector dataBits=new BitVector();
   appendBytes(content,mode,dataBits,encoding);
   int numInputBytes=dataBits.sizeInBytes();
   initQRCode(numInputBytes,ecLevel,mode,qrCode);
   BitVector headerAndDataBits=new BitVector();
+  if (mode == Mode.BYTE && !DEFAULT_BYTE_MODE_ENCODING.equals(encoding)) {
+    CharacterSetECI eci=CharacterSetECI.getCharacterSetECIByName(encoding);
+    if (eci != null) {
+      appendECI(eci,headerAndDataBits);
+    }
+  }
   appendModeInfo(mode,headerAndDataBits);
-  appendLengthInfo(content.length(),qrCode.getVersion(),mode,headerAndDataBits);
+  int numLetters=mode.equals(Mode.BYTE) ? dataBits.sizeInBytes() : content.length();
+  appendLengthInfo(numLetters,qrCode.getVersion(),mode,headerAndDataBits);
   headerAndDataBits.appendBitVector(dataBits);
   terminateBits(qrCode.getNumDataBytes(),headerAndDataBits);
   BitVector finalBits=new BitVector();

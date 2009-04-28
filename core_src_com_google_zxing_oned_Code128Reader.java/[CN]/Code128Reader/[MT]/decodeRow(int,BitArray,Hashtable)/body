@@ -178,5 +178,5 @@ throw ReaderException.getInstance();
 }
 float left=(float)(startPatternInfo[1] + startPatternInfo[0]) / 2.0f;
 float right=(float)(nextStart + lastStart) / 2.0f;
-return new Result(resultString,null,new ResultPoint[]{new GenericResultPoint(left,(float)rowNumber),new GenericResultPoint(right,(float)rowNumber)},BarcodeFormat.CODE_128);
+return new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODE_128);
 }

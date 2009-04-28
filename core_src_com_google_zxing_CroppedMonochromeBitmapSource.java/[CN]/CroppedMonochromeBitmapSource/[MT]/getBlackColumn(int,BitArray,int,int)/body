@@ -1,0 +1,3 @@
+{
+  return delegate.getBlackColumn(left + x,column,top + startY,getHeight);
+}

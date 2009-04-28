@@ -85,6 +85,6 @@
     }
   }
   FinderPattern[] patternInfo=selectBestPatterns();
-  GenericResultPoint.orderBestPatterns(patternInfo);
+  ResultPoint.orderBestPatterns(patternInfo);
   return new FinderPatternInfo(patternInfo);
 }

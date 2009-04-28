@@ -1,0 +1,4 @@
+{
+  MonochromeBitmapSource rotated=delegate.rotateCounterClockwise();
+  return new CroppedMonochromeBitmapSource(rotated,top,delegate.getWidth() - right,delegate.getHeight() - bottom,left);
+}

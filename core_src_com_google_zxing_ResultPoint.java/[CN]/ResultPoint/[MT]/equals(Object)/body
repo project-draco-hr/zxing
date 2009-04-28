@@ -1,0 +1,7 @@
+{
+  if (other instanceof ResultPoint) {
+    ResultPoint otherPoint=(ResultPoint)other;
+    return x == otherPoint.x && y == otherPoint.y;
+  }
+  return false;
+}

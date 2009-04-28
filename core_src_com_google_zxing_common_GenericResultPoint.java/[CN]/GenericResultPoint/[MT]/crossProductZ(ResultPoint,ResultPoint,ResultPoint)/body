@@ -1,5 +1,0 @@
-{
-  float bX=pointB.getX();
-  float bY=pointB.getY();
-  return ((pointC.getX() - bX) * (pointA.getY() - bY)) - ((pointC.getY() - bY) * (pointA.getX() - bX));
-}
