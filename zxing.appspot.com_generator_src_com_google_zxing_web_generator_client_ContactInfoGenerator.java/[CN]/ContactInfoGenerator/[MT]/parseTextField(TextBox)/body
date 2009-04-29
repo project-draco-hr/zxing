@@ -1,0 +1,13 @@
+{
+  String input=textBox.getText();
+  if (input.length() < 1) {
+    return "";
+  }
+  if (input.contains("\n")) {
+    throw new GeneratorException("Field must not contain \\n characters.");
+  }
+  if (input.contains(";")) {
+    throw new GeneratorException("Field must not contains ; characters");
+  }
+  return input;
+}

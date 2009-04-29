@@ -5,6 +5,7 @@
   String url=getUrlField();
   String email=getEmailField();
   String address=getAddressField();
+  String address2=getAddress2Field();
   String memo=getMemoField();
-  return getMeCard(name,company,tel,url,email,address,memo);
+  return getMeCard(name,company,tel,url,email,address,address2,memo);
 }

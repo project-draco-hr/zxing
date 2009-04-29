@@ -1,13 +1,3 @@
 {
-  String input=memo.getText();
-  if (input.length() < 1) {
-    return "";
-  }
-  if (input.contains("\n")) {
-    throw new GeneratorException("Memo must not contain \\n characters.");
-  }
-  if (input.contains(";")) {
-    throw new GeneratorException("Memo must not contains ; characters");
-  }
-  return input;
+  return parseTextField(memo);
 }

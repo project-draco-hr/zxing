@@ -4,6 +4,7 @@
   if (widget == tel)   getTelField();
   if (widget == email)   getEmailField();
   if (widget == address)   getAddressField();
+  if (widget == address2)   getAddress2Field();
   if (widget == url)   getUrlField();
   if (widget == memo)   getMemoField();
 }
