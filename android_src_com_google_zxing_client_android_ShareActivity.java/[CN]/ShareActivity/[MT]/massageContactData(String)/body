@@ -1,0 +1,9 @@
+{
+  if (data.indexOf('\n') >= 0) {
+    data=data.replace("\n"," ");
+  }
+  if (data.indexOf('\r') >= 0) {
+    data=data.replace("\r"," ");
+  }
+  return data;
+}
