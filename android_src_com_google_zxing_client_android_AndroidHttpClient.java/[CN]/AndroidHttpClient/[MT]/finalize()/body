@@ -1,7 +1,0 @@
-{
-  super.finalize();
-  if (mLeakedException != null) {
-    Log.e(TAG,"Leak found",mLeakedException);
-    mLeakedException=null;
-  }
-}

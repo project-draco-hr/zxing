@@ -13,5 +13,6 @@
     }
   }
  catch (  PackageManager.NameNotFoundException e) {
+    Log.w(TAG,e);
   }
 }

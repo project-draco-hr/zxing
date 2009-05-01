@@ -1,6 +1,6 @@
 {
   AbstractHttpEntity entity;
-  if (data.length < getMinGzipSize()) {
+  if (data.length < DEFAULT_SYNC_MIN_GZIP_BYTES) {
     entity=new ByteArrayEntity(data);
   }
  else {
