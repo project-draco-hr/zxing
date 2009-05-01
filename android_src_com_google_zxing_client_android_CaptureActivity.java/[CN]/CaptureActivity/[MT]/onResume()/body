@@ -11,13 +11,33 @@
   }
   Intent intent=getIntent();
   String action=intent.getAction();
-  if (intent != null && action != null && (action.equals(Intents.Scan.ACTION) || action.equals(Intents.Scan.DEPRECATED_ACTION))) {
-    mScanIntent=true;
-    mDecodeMode=intent.getStringExtra(Intents.Scan.MODE);
-    resetStatusView();
+  String dataString=intent.getDataString();
+  if (intent != null && action != null) {
+    if (action.equals(Intents.Scan.ACTION) || action.equals(Intents.Scan.DEPRECATED_ACTION)) {
+      mSource=Source.NATIVE_APP_INTENT;
+      mDecodeMode=intent.getStringExtra(Intents.Scan.MODE);
+      resetStatusView();
+    }
+ else     if (dataString != null && dataString.contains(PRODUCT_SEARCH_URL_PREFIX) && dataString.contains(PRODUCT_SEARCH_URL_PREFIX)) {
+      mSource=Source.PRODUCT_SEARCH_LINK;
+      mSourceUrl=dataString;
+      mDecodeMode=Intents.Scan.PRODUCT_MODE;
+      resetStatusView();
+    }
+ else     if (dataString != null && dataString.equals(ZXING_URL)) {
+      mSource=Source.ZXING_LINK;
+      mSourceUrl=dataString;
+      mDecodeMode=null;
+      resetStatusView();
+    }
+ else {
+      mSource=Source.NONE;
+      mDecodeMode=null;
+      resetStatusView();
+    }
   }
  else {
-    mScanIntent=false;
+    mSource=Source.NONE;
     mDecodeMode=null;
     if (mLastResult == null) {
       resetStatusView();

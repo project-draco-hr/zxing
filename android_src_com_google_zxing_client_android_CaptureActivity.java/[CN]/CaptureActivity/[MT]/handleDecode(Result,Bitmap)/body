@@ -1,0 +1,15 @@
+{
+  mLastResult=rawResult;
+  playBeepSoundAndVibrate();
+  drawResultPoints(barcode,rawResult);
+switch (mSource) {
+case NATIVE_APP_INTENT:
+case PRODUCT_SEARCH_LINK:
+    handleDecodeExternally(rawResult,barcode);
+  break;
+case ZXING_LINK:
+case NONE:
+handleDecodeInternally(rawResult,barcode);
+break;
+}
+}

@@ -1,0 +1,27 @@
+{
+  mViewfinderView.drawResultBitmap(barcode);
+  ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
+  TextView textView=(TextView)findViewById(R.id.status_text_view);
+  textView.setGravity(Gravity.CENTER);
+  textView.setTextSize(18.0f);
+  textView.setText(getString(resultHandler.getDisplayTitle()));
+  mStatusView.setBackgroundColor(getResources().getColor(R.color.transparent));
+  if (mCopyToClipboard) {
+    ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+    clipboard.setText(resultHandler.getDisplayContents());
+  }
+  if (mSource == Source.NATIVE_APP_INTENT) {
+    Intent intent=new Intent(getIntent().getAction());
+    intent.putExtra(Intents.Scan.RESULT,rawResult.toString());
+    intent.putExtra(Intents.Scan.RESULT_FORMAT,rawResult.getBarcodeFormat().toString());
+    Message message=Message.obtain(mHandler,R.id.return_scan_result);
+    message.obj=intent;
+    mHandler.sendMessageDelayed(message,INTENT_RESULT_DURATION);
+  }
+ else   if (mSource == Source.PRODUCT_SEARCH_LINK) {
+    Message message=Message.obtain(mHandler,R.id.launch_product_query);
+    int end=mSourceUrl.lastIndexOf("/scan");
+    message.obj=mSourceUrl.substring(0,end) + "?q=" + resultHandler.getDisplayContents().toString()+ "&source=zxing";
+    mHandler.sendMessageDelayed(message,INTENT_RESULT_DURATION);
+  }
+}

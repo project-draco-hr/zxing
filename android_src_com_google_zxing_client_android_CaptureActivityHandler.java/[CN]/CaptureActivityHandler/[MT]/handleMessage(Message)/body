@@ -12,8 +12,7 @@ case R.id.decode_succeeded:
 mState=State.SUCCESS;
 Bundle bundle=message.getData();
 Bitmap barcode=bundle.getParcelable(DecodeThread.BARCODE_BITMAP);
-int duration=message.arg1;
-mActivity.handleDecode((Result)message.obj,barcode,duration);
+mActivity.handleDecode((Result)message.obj,barcode);
 break;
 case R.id.decode_failed:
 mState=State.PREVIEW;
@@ -22,6 +21,10 @@ break;
 case R.id.return_scan_result:
 mActivity.setResult(Activity.RESULT_OK,(Intent)message.obj);
 mActivity.finish();
+break;
+case R.id.launch_product_query:
+String url=(String)message.obj;
+mActivity.startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));
 break;
 }
 }
