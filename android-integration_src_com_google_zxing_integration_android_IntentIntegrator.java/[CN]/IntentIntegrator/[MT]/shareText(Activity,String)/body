@@ -1,0 +1,3 @@
+{
+  shareText(activity,text,DEFAULT_TITLE,DEFAULT_MESSAGE,DEFAULT_YES,DEFAULT_NO);
+}

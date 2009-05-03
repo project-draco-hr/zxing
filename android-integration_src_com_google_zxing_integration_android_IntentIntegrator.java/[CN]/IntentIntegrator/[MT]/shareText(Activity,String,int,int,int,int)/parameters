@@ -1,0 +1,6 @@
+Activity activity
+String text
+int stringTitle
+int stringMessage
+int stringButtonYes
+int stringButtonNo

@@ -1,0 +1,3 @@
+{
+  shareText(activity,text,activity.getString(stringTitle),activity.getString(stringMessage),activity.getString(stringButtonYes),activity.getString(stringButtonNo));
+}

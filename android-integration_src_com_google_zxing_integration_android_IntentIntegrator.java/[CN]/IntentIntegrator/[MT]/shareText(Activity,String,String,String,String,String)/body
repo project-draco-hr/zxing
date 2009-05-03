@@ -1,0 +1,12 @@
+{
+  Intent intent=new Intent();
+  intent.setAction("com.google.zxing.client.android.ENCODE");
+  intent.putExtra("ENCODE_TYPE","TEXT_TYPE");
+  intent.putExtra("ENCODE_DATA",text);
+  try {
+    activity.startActivity(intent);
+  }
+ catch (  ActivityNotFoundException e) {
+    showDownloadDialog(activity,stringTitle,stringMessage,stringButtonYes,stringButtonNo);
+  }
+}
