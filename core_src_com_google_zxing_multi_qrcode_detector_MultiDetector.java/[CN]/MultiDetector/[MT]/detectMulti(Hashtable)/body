@@ -1,0 +1,29 @@
+{
+  MonochromeBitmapSource image=getImage();
+  if (!BlackPointEstimationMethod.TWO_D_SAMPLING.equals(image.getLastEstimationMethod())) {
+    image.estimateBlackPoint(BlackPointEstimationMethod.TWO_D_SAMPLING,0);
+  }
+  MultiFinderPatternFinder finder=new MultiFinderPatternFinder(image);
+  FinderPatternInfo[] info=finder.findMulti(hints);
+  if (info == null || info.length == 0) {
+    throw ReaderException.getInstance();
+  }
+  Vector result=new Vector();
+  for (int i=0; i < info.length; i++) {
+    try {
+      result.addElement(processFinderPatternInfo(info[i]));
+    }
+ catch (    ReaderException e) {
+    }
+  }
+  if (result.isEmpty()) {
+    return EMPTY_DETECTOR_RESULTS;
+  }
+ else {
+    DetectorResult[] resultArray=new DetectorResult[result.size()];
+    for (int i=0; i < result.size(); i++) {
+      resultArray[i]=(DetectorResult)result.elementAt(i);
+    }
+    return resultArray;
+  }
+}
