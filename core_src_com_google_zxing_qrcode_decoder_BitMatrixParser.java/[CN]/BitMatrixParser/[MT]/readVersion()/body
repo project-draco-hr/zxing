@@ -15,7 +15,7 @@
     }
   }
   parsedVersion=Version.decodeVersionInformation(versionBits);
-  if (parsedVersion != null) {
+  if (parsedVersion != null && parsedVersion.getDimensionForVersion() == dimension) {
     return parsedVersion;
   }
   versionBits=0;
@@ -26,7 +26,7 @@
     }
   }
   parsedVersion=Version.decodeVersionInformation(versionBits);
-  if (parsedVersion != null) {
+  if (parsedVersion != null && parsedVersion.getDimensionForVersion() == dimension) {
     return parsedVersion;
   }
   throw ReaderException.getInstance();
