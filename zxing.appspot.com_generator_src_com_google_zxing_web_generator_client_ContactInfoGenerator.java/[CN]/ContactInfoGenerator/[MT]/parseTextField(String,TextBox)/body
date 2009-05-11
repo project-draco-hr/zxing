@@ -4,10 +4,10 @@
     return "";
   }
   if (input.contains("\n")) {
-    throw new GeneratorException("Field must not contain \\n characters.");
+    throw new GeneratorException(name + " field must not contain \\n characters.");
   }
   if (input.contains(";")) {
-    throw new GeneratorException("Field must not contains ; characters");
+    throw new GeneratorException(name + " field must not contains ; characters");
   }
   return input;
 }
