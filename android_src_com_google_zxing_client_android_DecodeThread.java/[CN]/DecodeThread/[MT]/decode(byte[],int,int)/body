@@ -12,8 +12,8 @@
   }
   long end=System.currentTimeMillis();
   if (success) {
+    Log.v(TAG,"Found barcode (" + (end - start) + " ms):\n"+ rawResult.toString());
     Message message=Message.obtain(mActivity.mHandler,R.id.decode_succeeded,rawResult);
-    message.arg1=(int)(end - start);
     Bundle bundle=new Bundle();
     bundle.putParcelable(BARCODE_BITMAP,source.renderToBitmap());
     message.setData(bundle);
@@ -21,7 +21,6 @@
   }
  else {
     Message message=Message.obtain(mActivity.mHandler,R.id.decode_failed);
-    message.arg1=(int)(end - start);
     message.sendToTarget();
   }
 }
