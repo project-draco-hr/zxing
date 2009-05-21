@@ -22,10 +22,21 @@
       }
     }
   }
+  int totalFound=0;
+  int totalMustPass=0;
   for (int x=0; x < testCount; x++) {
     System.out.println("Rotation " + testResults.get(x).getRotation() + " degrees:");
     System.out.println("  " + passedCounts[x] + " of "+ imageFiles.length+ " images passed ("+ testResults.get(x).getMustPassCount()+ " required)");
     System.out.println("  " + tryHarderCounts[x] + " of "+ imageFiles.length+ " images passed with try harder ("+ testResults.get(x).getTryHarderCount()+ " required)");
+    totalFound+=passedCounts[x];
+    totalFound+=tryHarderCounts[x];
+    totalMustPass+=testResults.get(x).getMustPassCount();
+    totalMustPass+=testResults.get(x).getTryHarderCount();
+  }
+  int totalTests=imageFiles.length * testCount * 2;
+  System.out.println("TOTALS:\n  Decoded " + totalFound + " images out of "+ totalTests+ " ("+ (totalFound * 100 / totalTests)+ "%)");
+  if (totalFound > totalMustPass) {
+    System.out.println("  *** Test too lax by " + (totalFound - totalMustPass) + " images");
   }
   for (int x=0; x < testCount; x++) {
     assertTrue("Rotation " + testResults.get(x).getRotation() + " degrees: Too many images failed",passedCounts[x] >= testResults.get(x).getMustPassCount());
