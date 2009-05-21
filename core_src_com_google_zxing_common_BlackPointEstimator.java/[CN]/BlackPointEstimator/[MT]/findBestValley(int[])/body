@@ -1,22 +1,22 @@
 {
-  int numBuckets=histogram.length;
+  int numBuckets=buckets.length;
   int maxBucketCount=0;
   int firstPeak=0;
   int firstPeakSize=0;
   for (int i=0; i < numBuckets; i++) {
-    if (histogram[i] > firstPeakSize) {
+    if (buckets[i] > firstPeakSize) {
       firstPeak=i;
-      firstPeakSize=histogram[i];
+      firstPeakSize=buckets[i];
     }
-    if (histogram[i] > maxBucketCount) {
-      maxBucketCount=histogram[i];
+    if (buckets[i] > maxBucketCount) {
+      maxBucketCount=buckets[i];
     }
   }
   int secondPeak=0;
   int secondPeakScore=0;
   for (int i=0; i < numBuckets; i++) {
     int distanceToBiggest=i - firstPeak;
-    int score=histogram[i] * distanceToBiggest * distanceToBiggest;
+    int score=buckets[i] * distanceToBiggest * distanceToBiggest;
     if (score > secondPeakScore) {
       secondPeak=i;
       secondPeakScore=score;
@@ -34,7 +34,7 @@
   int bestValleyScore=-1;
   for (int i=secondPeak - 1; i > firstPeak; i--) {
     int fromFirst=i - firstPeak;
-    int score=fromFirst * fromFirst * (secondPeak - i)* (maxBucketCount - histogram[i]);
+    int score=fromFirst * fromFirst * (secondPeak - i)* (maxBucketCount - buckets[i]);
     if (score > bestValleyScore) {
       bestValley=i;
       bestValleyScore=score;
