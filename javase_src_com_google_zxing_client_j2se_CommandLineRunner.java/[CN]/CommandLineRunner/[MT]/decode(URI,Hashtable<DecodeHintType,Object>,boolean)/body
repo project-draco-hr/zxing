@@ -12,6 +12,9 @@
   }
   try {
     MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
+    if (dumpBlackPoint) {
+      dumpBlackPoint(uri,image,source);
+    }
     Result result=new MultiFormatReader().decode(source,hints);
     ParsedResult parsedResult=ResultParser.parseResult(result);
     System.out.println(uri.toString() + " (format: " + result.getBarcodeFormat()+ ", type: "+ parsedResult.getType()+ "):\nRaw result:\n"+ result.getText()+ "\nParsed result:\n"+ parsedResult.getDisplayResult());

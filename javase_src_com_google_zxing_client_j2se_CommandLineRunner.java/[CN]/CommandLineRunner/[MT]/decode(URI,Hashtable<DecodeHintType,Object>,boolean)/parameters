@@ -1,2 +1,3 @@
 URI uri
 Hashtable<DecodeHintType,Object> hints
+boolean dumpBlackPoint
