@@ -31,16 +31,23 @@
     if (!lastWasPossibleDoubleByteStart && ((value >= 0xF0 && value <= 0xFF) || value == 0x80 || value == 0xA0)) {
       canBeShiftJIS=false;
     }
-    if (((value >= 0x81 && value <= 0x9F) || (value >= 0xE0 && value <= 0xEF)) && i < length - 1) {
-      sawDoubleByteStart=true;
+    if (((value >= 0x81 && value <= 0x9F) || (value >= 0xE0 && value <= 0xEF))) {
       if (lastWasPossibleDoubleByteStart) {
         lastWasPossibleDoubleByteStart=false;
       }
  else {
         lastWasPossibleDoubleByteStart=true;
-        int nextValue=bytes[i + 1] & 0xFF;
-        if (nextValue < 0x40 || nextValue > 0xFC) {
+        if (i >= bytes.length - 1) {
           canBeShiftJIS=false;
+        }
+ else {
+          int nextValue=bytes[i + 1] & 0xFF;
+          if (nextValue < 0x40 || nextValue > 0xFC) {
+            canBeShiftJIS=false;
+          }
+ else {
+            sawDoubleByteStart=true;
+          }
         }
       }
     }
