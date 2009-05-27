@@ -1,7 +1,7 @@
 {
-  StringBuffer result=new StringBuffer(20);
   int[] startRange=decodeStart(row);
   int[] endRange=decodeEnd(row);
+  StringBuffer result=new StringBuffer(20);
   decodeMiddle(row,startRange[1],endRange[0],result);
   String resultString=result.toString();
   int[] allowedLengths=null;
