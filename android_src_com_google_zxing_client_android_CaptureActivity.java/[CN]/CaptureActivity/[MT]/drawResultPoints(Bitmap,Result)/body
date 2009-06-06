@@ -4,19 +4,19 @@
     Canvas canvas=new Canvas(barcode);
     Paint paint=new Paint();
     paint.setColor(getResources().getColor(R.color.result_image_border));
-    paint.setStrokeWidth(3);
+    paint.setStrokeWidth(3.0f);
     paint.setStyle(Paint.Style.STROKE);
     Rect border=new Rect(2,2,barcode.getWidth() - 2,barcode.getHeight() - 2);
     canvas.drawRect(border,paint);
     paint.setColor(getResources().getColor(R.color.result_points));
     if (points.length == 2) {
-      paint.setStrokeWidth(4);
+      paint.setStrokeWidth(4.0f);
       canvas.drawLine(points[0].getX(),points[0].getY(),points[1].getX(),points[1].getY(),paint);
     }
  else {
-      paint.setStrokeWidth(10);
-      for (int x=0; x < points.length; x++) {
-        canvas.drawPoint(points[x].getX(),points[x].getY(),paint);
+      paint.setStrokeWidth(10.0f);
+      for (      ResultPoint point : points) {
+        canvas.drawPoint(point.getX(),point.getY(),paint);
       }
     }
   }

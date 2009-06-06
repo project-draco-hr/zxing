@@ -1,5 +1,11 @@
 {
-  CameraManager.get().openDriver(surfaceHolder);
+  try {
+    CameraManager.get().openDriver(surfaceHolder);
+  }
+ catch (  IOException ioe) {
+    Log.w(TAG,ioe);
+    return;
+  }
   if (mHandler == null) {
     boolean beginScanning=mLastResult == null;
     mHandler=new CaptureActivityHandler(this,mDecodeMode,beginScanning);
