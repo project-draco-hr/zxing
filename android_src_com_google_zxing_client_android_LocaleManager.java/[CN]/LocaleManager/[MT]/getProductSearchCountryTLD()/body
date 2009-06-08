@@ -1,11 +1,3 @@
 {
-  Locale locale=Locale.getDefault();
-  if (locale == null) {
-    return DEFAULT_TLD;
-  }
-  String tld=GOOGLE_PRODUCT_SEARCH_COUNTRY_TLD.get(locale);
-  if (tld == null) {
-    return DEFAULT_TLD;
-  }
-  return tld;
+  return doGetTLD(GOOGLE_PRODUCT_SEARCH_COUNTRY_TLD);
 }
