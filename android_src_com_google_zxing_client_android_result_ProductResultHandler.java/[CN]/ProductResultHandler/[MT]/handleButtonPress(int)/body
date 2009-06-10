@@ -7,5 +7,9 @@ case 0:
 case 1:
 webSearch(productResult.getNormalizedProductID());
 break;
+case 2:
+String url=mCustomProductSearch.replace("%s",productResult.getNormalizedProductID());
+openURL(url);
+break;
 }
 }

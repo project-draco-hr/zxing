@@ -10,5 +10,9 @@ break;
 case 2:
 searchBookContents(isbnResult.getISBN());
 break;
+case 3:
+String url=mCustomProductSearch.replace("%s",isbnResult.getISBN());
+openURL(url);
+break;
 }
 }

@@ -1,3 +1,3 @@
 {
-  return mButtons.length;
+  return mCustomProductSearch != null ? mButtons.length : mButtons.length - 1;
 }

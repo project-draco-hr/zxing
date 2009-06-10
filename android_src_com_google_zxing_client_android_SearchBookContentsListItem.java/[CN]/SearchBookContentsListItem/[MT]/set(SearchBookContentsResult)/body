@@ -6,7 +6,7 @@
       String lowerQuery=SearchBookContentsResult.getQuery().toLowerCase();
       String lowerSnippet=snippet.toLowerCase();
       Spannable styledSnippet=new SpannableString(snippet);
-      StyleSpan boldSpan=new StyleSpan(android.graphics.Typeface.BOLD);
+      StyleSpan boldSpan=new StyleSpan(Typeface.BOLD);
       int queryLength=lowerQuery.length();
       int offset=0;
       while (true) {

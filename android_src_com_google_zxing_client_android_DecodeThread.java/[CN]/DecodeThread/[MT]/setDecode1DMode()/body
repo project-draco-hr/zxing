@@ -1,6 +1,6 @@
 {
   Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
-  Vector<BarcodeFormat> vector=new Vector<BarcodeFormat>();
+  Vector<BarcodeFormat> vector=new Vector<BarcodeFormat>(7);
   vector.addElement(BarcodeFormat.UPC_A);
   vector.addElement(BarcodeFormat.UPC_E);
   vector.addElement(BarcodeFormat.EAN_13);

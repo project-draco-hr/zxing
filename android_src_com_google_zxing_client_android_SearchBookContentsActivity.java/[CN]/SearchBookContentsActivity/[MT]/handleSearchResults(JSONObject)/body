@@ -1,7 +1,7 @@
 {
   try {
     int count=json.getInt("number_of_results");
-    mHeaderView.setText("Found " + ((count == 1) ? "1 result" : count + " results"));
+    mHeaderView.setText("Found " + (count == 1 ? "1 result" : count + " results"));
     if (count > 0) {
       JSONArray results=json.getJSONArray("search_results");
       SearchBookContentsResult.setQuery(mQueryTextView.getText().toString());
@@ -13,7 +13,7 @@
     }
  else {
       String searchable=json.optString("searchable");
-      if (searchable != null && searchable.equals("false")) {
+      if ("false".equals(searchable)) {
         mHeaderView.setText(R.string.msg_sbc_book_not_searchable);
       }
       mResultListView.setAdapter(null);
