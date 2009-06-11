@@ -1,0 +1,16 @@
+{
+  if (diagonal == null || diagonal.getSize() < size) {
+    diagonal=new BitArray(size);
+  }
+ else {
+    diagonal.clear();
+  }
+  for (int i=0; i < size; i++) {
+    if (isBlack(x,y)) {
+      diagonal.set(i);
+    }
+    x+=dx;
+    y+=dy;
+  }
+  return diagonal;
+}

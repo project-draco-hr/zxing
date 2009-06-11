@@ -1,0 +1,3 @@
+{
+  return delegate.getBlackDiagonal(left + x,top + y,dx,dy,diagonal,size);
+}
