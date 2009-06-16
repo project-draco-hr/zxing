@@ -1,0 +1,5 @@
+{
+  super("test/data/blackbox/ean13-4",new MultiFormatReader(),BarcodeFormat.EAN_13);
+  addTest(6,12,0.0f);
+  addTest(7,13,180.0f);
+}

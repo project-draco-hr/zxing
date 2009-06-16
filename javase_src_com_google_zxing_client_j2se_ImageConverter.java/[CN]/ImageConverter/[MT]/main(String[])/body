@@ -18,6 +18,13 @@
     if (inputFile.exists()) {
       if (inputFile.isDirectory()) {
         for (        File input : inputFile.listFiles()) {
+          String filename=input.getName().toLowerCase();
+          if (filename.startsWith(".") || filename.endsWith(".txt")) {
+            continue;
+          }
+          if (filename.contains(".mono.png") || filename.contains(".row.png") || filename.contains(".2d.png")) {
+            continue;
+          }
           convertImage(input.toURI());
         }
       }
