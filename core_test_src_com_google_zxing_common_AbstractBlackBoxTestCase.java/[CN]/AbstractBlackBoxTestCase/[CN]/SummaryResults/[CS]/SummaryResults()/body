@@ -1,0 +1,5 @@
+{
+  totalFound=0;
+  totalMustPass=0;
+  totalTests=0;
+}
