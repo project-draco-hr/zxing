@@ -1,0 +1,16 @@
+{
+  if (startColor != 0 && startColor != 1) {
+    throw new IllegalArgumentException("startColor must be either 0 or 1, but got: " + startColor);
+  }
+  byte color=(byte)startColor;
+  int numAdded=0;
+  for (int i=0; i < pattern.length; i++) {
+    for (int j=0; j < pattern[i]; j++) {
+      target[pos]=color;
+      pos+=1;
+      numAdded+=1;
+    }
+    color^=1;
+  }
+  return numAdded;
+}

@@ -1,4 +1,4 @@
 {
-  Thread encodeThread=new EncodeThread(mContents,handler,pixelResolution);
+  Thread encodeThread=new EncodeThread(mContents,handler,pixelResolution,mFormat);
   encodeThread.start();
 }

@@ -2,4 +2,5 @@
   mContents=contents;
   mHandler=handler;
   mPixelResolution=pixelResolution;
+  mFormat=format;
 }

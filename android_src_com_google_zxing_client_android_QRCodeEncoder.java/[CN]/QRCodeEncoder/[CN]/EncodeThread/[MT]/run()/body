@@ -1,6 +1,6 @@
 {
   try {
-    ByteMatrix result=new MultiFormatWriter().encode(mContents,BarcodeFormat.QR_CODE,mPixelResolution,mPixelResolution);
+    ByteMatrix result=new MultiFormatWriter().encode(mContents,mFormat,mPixelResolution,mPixelResolution);
     int width=result.width();
     int height=result.height();
     byte[][] array=result.getArray();

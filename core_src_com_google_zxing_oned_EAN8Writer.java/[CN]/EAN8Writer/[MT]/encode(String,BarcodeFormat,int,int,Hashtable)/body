@@ -1,0 +1,6 @@
+{
+  if (format != BarcodeFormat.EAN_8) {
+    throw new IllegalArgumentException("Can only encode EAN_8, but got " + format);
+  }
+  return super.encode(contents,format,width,height,hints);
+}

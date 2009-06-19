@@ -1,5 +1,11 @@
 {
-  if (format == BarcodeFormat.QR_CODE) {
+  if (format == BarcodeFormat.EAN_8) {
+    return new EAN8Writer().encode(contents,format,width,height,hints);
+  }
+ else   if (format == BarcodeFormat.EAN_13) {
+    return new EAN13Writer().encode(contents,format,width,height,hints);
+  }
+ else   if (format == BarcodeFormat.QR_CODE) {
     return new QRCodeWriter().encode(contents,format,width,height,hints);
   }
  else {

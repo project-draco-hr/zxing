@@ -50,6 +50,7 @@ methodsCursor.close();
 Intent intent=new Intent(Intents.Encode.ACTION);
 intent.putExtra(Intents.Encode.TYPE,Contents.Type.CONTACT);
 intent.putExtra(Intents.Encode.DATA,bundle);
+intent.putExtra(Intents.Encode.FORMAT,Contents.Format.QR_CODE);
 startActivity(intent);
 }
 }

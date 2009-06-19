@@ -1,0 +1,19 @@
+{
+  if (contents.length() != 8) {
+    throw new IllegalArgumentException("Requested contents should be 8 digits long, but got " + contents.length());
+  }
+  byte[] result=new byte[codeWidth];
+  int pos=0;
+  pos+=appendPattern(result,pos,AbstractUPCEANReader.START_END_PATTERN,1);
+  for (int i=0; i <= 3; i++) {
+    int digit=Integer.parseInt(contents.substring(i,i + 1));
+    pos+=appendPattern(result,pos,AbstractUPCEANReader.L_PATTERNS[digit],0);
+  }
+  pos+=appendPattern(result,pos,AbstractUPCEANReader.MIDDLE_PATTERN,0);
+  for (int i=4; i <= 7; i++) {
+    int digit=Integer.parseInt(contents.substring(i,i + 1));
+    pos+=appendPattern(result,pos,AbstractUPCEANReader.L_PATTERNS[digit],1);
+  }
+  pos+=appendPattern(result,pos,AbstractUPCEANReader.START_END_PATTERN,1);
+  return result;
+}
