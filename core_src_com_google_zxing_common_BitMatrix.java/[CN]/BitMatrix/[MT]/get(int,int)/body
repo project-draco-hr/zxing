@@ -1,4 +1,4 @@
 {
-  int offset=y * dimension + x;
-  return ((bits[offset >> 5] >>> (offset & 0x1F)) & 0x01) != 0;
+  int offset=y * rowSize + (x >> 5);
+  return ((bits[offset] >>> (x & 0x1f)) & 1) != 0;
 }

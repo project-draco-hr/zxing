@@ -1,3 +1,6 @@
 {
-  return dimension;
+  if (width != height) {
+    throw new RuntimeException("Can't call getDimension() on a non-square matrix");
+  }
+  return width;
 }

@@ -1,0 +1,10 @@
+{
+  if (row == null || row.getSize() < width) {
+    row=new BitArray(width);
+  }
+  int offset=y * rowSize;
+  for (int x=0; x < rowSize; x++) {
+    row.setBulk(x * 32,bits[offset + x]);
+  }
+  return row;
+}

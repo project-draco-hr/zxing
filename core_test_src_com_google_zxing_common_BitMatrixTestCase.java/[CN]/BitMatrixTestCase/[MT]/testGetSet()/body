@@ -1,16 +1,16 @@
 {
   BitMatrix matrix=new BitMatrix(33);
   assertEquals(33,matrix.getDimension());
-  for (int i=0; i < 33; i++) {
-    for (int j=0; j < 33; j++) {
-      if (i * j % 3 == 0) {
-        matrix.set(j,i);
+  for (int y=0; y < 33; y++) {
+    for (int x=0; x < 33; x++) {
+      if (y * x % 3 == 0) {
+        matrix.set(x,y);
       }
     }
   }
-  for (int i=0; i < 33; i++) {
-    for (int j=0; j < 33; j++) {
-      assertEquals(i * j % 3 == 0,matrix.get(j,i));
+  for (int y=0; y < 33; y++) {
+    for (int x=0; x < 33; x++) {
+      assertEquals(y * x % 3 == 0,matrix.get(x,y));
     }
   }
 }
