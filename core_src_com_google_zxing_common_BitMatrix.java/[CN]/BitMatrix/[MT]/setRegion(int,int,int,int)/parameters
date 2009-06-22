@@ -1,4 +1,4 @@
-int topI
-int leftJ
-int height
+int left
+int top
 int width
+int height

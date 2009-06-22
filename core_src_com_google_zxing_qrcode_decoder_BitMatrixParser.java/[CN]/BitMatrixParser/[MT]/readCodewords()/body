@@ -17,10 +17,10 @@
     for (int count=0; count < dimension; count++) {
       int i=readingUp ? dimension - 1 - count : count;
       for (int col=0; col < 2; col++) {
-        if (!functionPattern.get(i,j - col)) {
+        if (!functionPattern.get(j - col,i)) {
           bitsRead++;
           currentByte<<=1;
-          if (bitMatrix.get(i,j - col)) {
+          if (bitMatrix.get(j - col,i)) {
             currentByte|=1;
           }
           if (bitsRead == 8) {

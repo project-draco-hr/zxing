@@ -36,7 +36,7 @@
     }
  else {
       do {
-        if ((row < numRows) && (column >= 0) && !readMappingMatrix.get(row,column)) {
+        if ((row < numRows) && (column >= 0) && !readMappingMatrix.get(column,row)) {
           result[resultOffset++]=(byte)readUtah(row,column,numRows,numColumns);
         }
         row-=2;
@@ -46,7 +46,7 @@
       row+=1;
       column+=3;
       do {
-        if ((row >= 0) && (column < numColumns) && !readMappingMatrix.get(row,column)) {
+        if ((row >= 0) && (column < numColumns) && !readMappingMatrix.get(column,row)) {
           result[resultOffset++]=(byte)readUtah(row,column,numRows,numColumns);
         }
         row+=2;

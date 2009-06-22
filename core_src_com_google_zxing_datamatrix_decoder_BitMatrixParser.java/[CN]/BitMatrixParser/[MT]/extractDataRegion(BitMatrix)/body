@@ -19,9 +19,9 @@
         int writeRowOffset=dataRegionRowOffset + i;
         for (int j=0; j < dataRegionSizeColumns; ++j) {
           int readColumnOffset=dataRegionColumn * (dataRegionSizeColumns + 2) + 1 + j;
-          if (bitMatrix.get(readRowOffset,readColumnOffset)) {
+          if (bitMatrix.get(readColumnOffset,readRowOffset)) {
             int writeColumnOffset=dataRegionColumnOffset + j;
-            bitMatrixWithoutAlignment.set(writeRowOffset,writeColumnOffset);
+            bitMatrixWithoutAlignment.set(writeColumnOffset,writeRowOffset);
           }
         }
       }

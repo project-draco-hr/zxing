@@ -7,6 +7,6 @@
     column+=numColumns;
     row+=4 - ((numColumns + 4) & 0x07);
   }
-  readMappingMatrix.set(row,column);
-  return mappingBitMatrix.get(row,column);
+  readMappingMatrix.set(column,row);
+  return mappingBitMatrix.get(column,row);
 }

@@ -3,7 +3,7 @@
   mask.unmaskBitMatrix(bits,dimension);
   for (int i=0; i < dimension; i++) {
     for (int j=0; j < dimension; j++) {
-      assertEquals("(" + i + ','+ j+ ')',condition.isMasked(i,j),bits.get(i,j));
+      assertEquals("(" + i + ','+ j+ ')',condition.isMasked(i,j),bits.get(j,i));
     }
   }
 }

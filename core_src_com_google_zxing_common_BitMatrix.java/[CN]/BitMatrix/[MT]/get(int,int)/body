@@ -1,4 +1,4 @@
 {
-  int offset=i + dimension * j;
+  int offset=y * dimension + x;
   return ((bits[offset >> 5] >>> (offset & 0x1F)) & 0x01) != 0;
 }

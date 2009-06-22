@@ -1,8 +1,8 @@
 {
-  for (int y=0; y < dimension; y++) {
-    for (int x=0; x < dimension; x++) {
-      if (isMasked(x,y)) {
-        bits.flip(x,y);
+  for (int i=0; i < dimension; i++) {
+    for (int j=0; j < dimension; j++) {
+      if (isMasked(i,j)) {
+        bits.flip(j,i);
       }
     }
   }
