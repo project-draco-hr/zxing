@@ -19,7 +19,7 @@
     ByteMatrix matrix=new ByteMatrix(21,21);
     for (int y=0; y < 21; ++y) {
       for (int x=0; x < 21; ++x) {
-        matrix.set(y,x,(y + x) % 2);
+        matrix.set(x,y,(y + x) % 2);
       }
     }
     qrCode.setMatrix(matrix);

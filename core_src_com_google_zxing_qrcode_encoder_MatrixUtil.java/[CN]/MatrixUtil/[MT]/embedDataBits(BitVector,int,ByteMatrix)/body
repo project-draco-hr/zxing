@@ -10,7 +10,7 @@
     while (y >= 0 && y < matrix.height()) {
       for (int i=0; i < 2; ++i) {
         int xx=x - i;
-        if (!isEmpty(matrix.get(y,xx))) {
+        if (!isEmpty(matrix.get(xx,y))) {
           continue;
         }
         int bit;
@@ -26,7 +26,7 @@
             bit^=0x1;
           }
         }
-        matrix.set(y,xx,bit);
+        matrix.set(xx,y,bit);
       }
       y+=direction;
     }

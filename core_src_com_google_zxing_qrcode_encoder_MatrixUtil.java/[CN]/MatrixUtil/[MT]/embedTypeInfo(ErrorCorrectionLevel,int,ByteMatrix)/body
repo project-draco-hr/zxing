@@ -5,16 +5,16 @@
     int bit=typeInfoBits.at(typeInfoBits.size() - 1 - i);
     int x1=TYPE_INFO_COORDINATES[i][0];
     int y1=TYPE_INFO_COORDINATES[i][1];
-    matrix.set(y1,x1,bit);
+    matrix.set(x1,y1,bit);
     if (i < 8) {
       int x2=matrix.width() - i - 1;
       int y2=8;
-      matrix.set(y2,x2,bit);
+      matrix.set(x2,y2,bit);
     }
  else {
       int x2=8;
       int y2=matrix.height() - 7 + (i - 8);
-      matrix.set(y2,x2,bit);
+      matrix.set(x2,y2,bit);
     }
   }
 }

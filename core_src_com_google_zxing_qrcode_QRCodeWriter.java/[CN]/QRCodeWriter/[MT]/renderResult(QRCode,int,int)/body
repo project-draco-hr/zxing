@@ -9,7 +9,7 @@
   int multiple=Math.min(outputWidth / qrWidth,outputHeight / qrHeight);
   int leftPadding=(outputWidth - (inputWidth * multiple)) / 2;
   int topPadding=(outputHeight - (inputHeight * multiple)) / 2;
-  ByteMatrix output=new ByteMatrix(outputHeight,outputWidth);
+  ByteMatrix output=new ByteMatrix(outputWidth,outputHeight);
   byte[][] outputArray=output.getArray();
   byte[] row=new byte[outputWidth];
   for (int y=0; y < topPadding; y++) {

@@ -3,9 +3,9 @@
     throw new WriterException("Bad horizontal separation pattern");
   }
   for (int x=0; x < 8; ++x) {
-    if (!isEmpty(matrix.get(yStart,xStart + x))) {
+    if (!isEmpty(matrix.get(xStart + x,yStart))) {
       throw new WriterException();
     }
-    matrix.set(yStart,xStart + x,HORIZONTAL_SEPARATION_PATTERN[0][x]);
+    matrix.set(xStart + x,yStart,HORIZONTAL_SEPARATION_PATTERN[0][x]);
   }
 }

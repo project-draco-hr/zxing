@@ -12,7 +12,7 @@
       if (x == -1 || y == -1) {
         continue;
       }
-      if (isEmpty(matrix.get(y,x))) {
+      if (isEmpty(matrix.get(x,y))) {
         embedPositionAdjustmentPattern(x - 2,y - 2,matrix);
       }
     }
