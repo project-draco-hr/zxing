@@ -1,0 +1,4 @@
+{
+  int temp=x * y;
+  return (temp & 0x01) + (temp % 3) == 0;
+}
