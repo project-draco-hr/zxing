@@ -1,0 +1,4 @@
+{
+  super("test/data/blackbox/pdf417",new MultiFormatReader(),BarcodeFormat.PDF417);
+  addTest(1,1,0.0f);
+}

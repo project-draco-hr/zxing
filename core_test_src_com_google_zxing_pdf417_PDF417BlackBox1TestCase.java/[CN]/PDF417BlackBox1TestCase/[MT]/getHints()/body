@@ -1,0 +1,7 @@
+{
+  Hashtable<DecodeHintType,Object> table=new Hashtable<DecodeHintType,Object>();
+  Vector v=new Vector();
+  v.add(BarcodeFormat.PDF417);
+  table.put(DecodeHintType.POSSIBLE_FORMATS,v);
+  return table;
+}
