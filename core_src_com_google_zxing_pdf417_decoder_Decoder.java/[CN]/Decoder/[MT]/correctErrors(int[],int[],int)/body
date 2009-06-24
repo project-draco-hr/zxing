@@ -3,13 +3,10 @@
     throw ReaderException.getInstance();
   }
   int result=0;
-  if (debug) {
-    System.out.println("Corrected errors: " + result);
-  }
   if (erasures != null) {
     int numErasures=erasures.length;
     if (result > 0) {
-      numErasures=numErasures - result;
+      numErasures-=result;
     }
     if (numErasures > MAX_ERRORS) {
       throw ReaderException.getInstance();

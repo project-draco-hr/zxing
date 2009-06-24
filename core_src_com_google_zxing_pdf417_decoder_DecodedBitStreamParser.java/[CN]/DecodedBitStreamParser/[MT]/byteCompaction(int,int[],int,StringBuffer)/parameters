@@ -1,4 +1,4 @@
 int mode
-int codewords[]
+int[] codewords
 int codeIndex
 StringBuffer result

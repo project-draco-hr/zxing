@@ -1,10 +1,9 @@
 {
-  int code;
   int count=0;
   boolean end=false;
-  int numericCodewords[]=new int[MAX_NUMERIC_CODEWORDS];
+  int[] numericCodewords=new int[MAX_NUMERIC_CODEWORDS];
   while ((codeIndex < codewords.length) && !end) {
-    code=codewords[codeIndex++];
+    int code=codewords[codeIndex++];
     if (code < TEXT_COMPACTION_MODE_LATCH) {
       numericCodewords[count]=code;
       count++;

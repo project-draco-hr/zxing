@@ -1,15 +1,15 @@
 {
   int width=bitMatrix.getDimension();
   int height=width;
-  int rowHeight=0;
-  int rowNumber=0;
-  boolean rowInProgress=false;
-  int matchingConsecutiveScans=0;
-  int next=0;
-  int codewords[]=new int[MAX_CW_CAPACITY];
   erasures=new int[MAX_CW_CAPACITY];
   float moduleWidth=1.0f;
-  int rowCounters[]=new int[width];
+  int[] rowCounters=new int[width];
+  int[] codewords=new int[MAX_CW_CAPACITY];
+  int next=0;
+  int matchingConsecutiveScans=0;
+  boolean rowInProgress=false;
+  int rowNumber=0;
+  int rowHeight=0;
   for (int i=1; i < height; i++) {
     if (rowNumber >= MAX_ROWS) {
       return null;
@@ -33,7 +33,6 @@
     }
  else {
       if (rowInProgress) {
-        if (debug)         System.out.println("Row Height=" + rowHeight + " Row Number="+ rowNumber);
         next=processRow(rowCounters,rowNumber,rowHeight,moduleWidth,codewords,next);
         if (next == -1) {
           return null;
@@ -50,7 +49,6 @@
     rowHeight++;
   }
   if (rowInProgress) {
-    if (debug)     System.out.println("Row Height=" + rowHeight + " Row Number="+ rowNumber);
     if (rowNumber >= MAX_ROWS) {
       return null;
     }
@@ -58,7 +56,6 @@
     rowNumber++;
     rows=rowNumber;
   }
-  if (debug)   System.out.println("Errors=" + eraseCount);
   erasures=trimArray(erasures,eraseCount);
   return trimArray(codewords,next);
 }

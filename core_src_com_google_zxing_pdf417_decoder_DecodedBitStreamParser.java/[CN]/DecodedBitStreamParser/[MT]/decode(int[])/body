@@ -43,6 +43,5 @@ code=codewords[codeIndex++];
 throw ReaderException.getInstance();
 }
 }
-if (debug) System.out.println(result);
 return new DecoderResult(null,result.toString(),null);
 }

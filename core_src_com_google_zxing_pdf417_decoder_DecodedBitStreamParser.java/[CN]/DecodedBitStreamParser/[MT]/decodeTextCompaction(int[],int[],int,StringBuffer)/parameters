@@ -1,4 +1,4 @@
-int textCompactionData[]
-int byteCompactionData[]
+int[] textCompactionData
+int[] byteCompactionData
 int length
 StringBuffer result

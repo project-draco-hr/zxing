@@ -1,13 +1,12 @@
 {
-  int symbol=0;
   int pixelsInSymbol=0;
   for (int j=0; j < counters.length; j++) {
     pixelsInSymbol+=counters[j];
   }
   float avgModuleWidth=(pixelsInSymbol / 17.0f);
-  if (debug)   System.out.println("Average Module Width = " + avgModuleWidth);
   boolean toggle=true;
   int shift=0;
+  int symbol=0;
   for (int j=0; j < counters.length; j++) {
     if (counters[j] < moduleWidth && counters[j] > 0) {
       counters[j]=(int)moduleWidth;

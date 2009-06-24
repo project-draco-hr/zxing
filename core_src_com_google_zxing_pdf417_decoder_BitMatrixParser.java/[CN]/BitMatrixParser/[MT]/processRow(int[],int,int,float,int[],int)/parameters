@@ -1,6 +1,6 @@
-int rowCounters[]
+int[] rowCounters
 int rowNumber
 int rowHeight
 float moduleWidth
-int codewords[]
+int[] codewords
 int next

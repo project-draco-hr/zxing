@@ -10,7 +10,7 @@
     result=add(result.toString(),value1);
   }
   for (int j=0; j < tens; j++) {
-    result=add(result.toString(),(value1 + "0").substring(1));
+    result=add(result.toString(),(value1 + '0').substring(1));
   }
   for (int j=0; j < hundreds; j++) {
     result=add(result.toString(),(value1 + "00").substring(2));

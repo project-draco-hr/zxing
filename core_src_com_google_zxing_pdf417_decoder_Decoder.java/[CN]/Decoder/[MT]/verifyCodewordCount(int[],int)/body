@@ -1,21 +1,16 @@
 {
-  int numberOfCodewords=0;
   if (codewords.length < 4) {
-    if (debug)     System.out.println("Not enough codewords " + codewords.length);
     throw ReaderException.getInstance();
   }
-  numberOfCodewords=codewords[0];
+  int numberOfCodewords=codewords[0];
   if (numberOfCodewords > codewords.length) {
-    if (debug)     System.out.println("Invalid number of codewords[0]=" + numberOfCodewords + " codewords.length="+ codewords.length);
     throw ReaderException.getInstance();
   }
   if (numberOfCodewords == 0) {
     if (numECCodewords < codewords.length) {
       codewords[0]=codewords.length - numECCodewords;
-      if (debug)       System.out.println("Codewords[0] is zero, resetting to " + (codewords[0]));
     }
  else {
-      if (debug)       System.out.println("Codewords[0] is zero, no data codewords");
       throw ReaderException.getInstance();
     }
   }

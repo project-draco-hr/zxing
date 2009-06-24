@@ -7,7 +7,7 @@
   int patternStart=rowOffset;
   for (int x=rowOffset; x < width; x++) {
     boolean pixel=row.get(x);
-    if ((!pixel && isWhite) || (pixel && !isWhite)) {
+    if (pixel ^ isWhite) {
       counters[counterPosition]++;
     }
  else {

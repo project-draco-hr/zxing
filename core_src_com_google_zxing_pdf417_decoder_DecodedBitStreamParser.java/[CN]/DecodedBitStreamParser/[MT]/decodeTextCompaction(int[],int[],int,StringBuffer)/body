@@ -54,7 +54,7 @@ case LOWER:
 break;
 case MIXED:
 if (subModeCh < PL) {
-ch=mixed_chars[subModeCh];
+ch=MIXED_CHARS[subModeCh];
 }
  else {
 if (subModeCh == PL) {
@@ -79,7 +79,7 @@ if (subModeCh == PL) {
 break;
 case PUNCT:
 if (subModeCh < PS) {
-ch=punct_chars[subModeCh];
+ch=PUNCT_CHARS[subModeCh];
 }
  else {
 if (subModeCh == PAL) {
@@ -93,7 +93,7 @@ break;
 case PUNCT_SHIFT:
 subMode=priorToShiftMode;
 if (subModeCh < PS) {
-ch=punct_chars[subModeCh];
+ch=PUNCT_CHARS[subModeCh];
 }
  else {
 if (subModeCh == PAL) {

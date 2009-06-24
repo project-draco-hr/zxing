@@ -1,2 +1,2 @@
-int codewords[]
+int[] codewords
 int numECCodewords

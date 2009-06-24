@@ -2,7 +2,7 @@
   StringBuffer accum=null;
   StringBuffer value=null;
   for (int i=0; i < count; i++) {
-    value=multiply(exp900[count - i - 1],codewords[i]);
+    value=multiply(EXP900[count - i - 1],codewords[i]);
     if (accum == null) {
       accum=value;
     }
@@ -20,6 +20,5 @@
   if (result == null) {
     result=accum.toString();
   }
-  if (debug)   System.out.println("Big Integer=" + result);
   return result;
 }

@@ -1,12 +1,12 @@
 {
   int first=0;
-  int upto=symbolTable.length;
+  int upto=SYMBOL_TABLE.length;
   while (first < upto) {
     int mid=(first + upto) / 2;
-    if (symbol < symbolTable[mid]) {
+    if (symbol < SYMBOL_TABLE[mid]) {
       upto=mid;
     }
- else     if (symbol > symbolTable[mid]) {
+ else     if (symbol > SYMBOL_TABLE[mid]) {
       first=mid + 1;
     }
  else {

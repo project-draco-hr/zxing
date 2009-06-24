@@ -9,7 +9,6 @@
     row=image.getBlackRow(i,null,0,width / 4);
     loc=findGuardPattern(row,0,START_PATTERN);
     if (loc != null) {
-      if (debug)       System.out.println("Found START pattern at X=" + loc[0] + " End X="+ loc[1]+ ", Y="+ i);
       result[0]=new ResultPoint(loc[0],i);
       result[4]=new ResultPoint(loc[1],i);
       found=true;
@@ -22,7 +21,6 @@
       row=image.getBlackRow(i,null,0,width / 4);
       loc=findGuardPattern(row,0,START_PATTERN);
       if (loc != null) {
-        if (debug)         System.out.println("Found START pattern at X=" + loc[0] + " End X="+ loc[1]+ ", Y="+ i);
         result[1]=new ResultPoint(loc[0],i);
         result[5]=new ResultPoint(loc[1],i);
         found=true;
@@ -37,7 +35,6 @@
       row.reverse();
       loc=findGuardPattern(row,0,STOP_PATTERN_REVERSE);
       if (loc != null) {
-        if (debug)         System.out.println("Found STOP pattern at X=" + (width - loc[0]) + " End X="+ (width - loc[1])+ ", Y="+ i);
         result[2]=new ResultPoint(width - loc[0],i);
         result[6]=new ResultPoint(width - loc[1],i);
         found=true;
@@ -52,7 +49,6 @@
       row.reverse();
       loc=findGuardPattern(row,0,STOP_PATTERN_REVERSE);
       if (loc != null) {
-        if (debug)         System.out.println("Found STOP pattern at X=" + (width - loc[0]) + " End X="+ (width - loc[1])+ ", Y="+ i);
         result[3]=new ResultPoint(width - loc[0],i);
         result[7]=new ResultPoint(width - loc[1],i);
         found=true;
@@ -60,10 +56,5 @@
       }
     }
   }
-  if (found) {
-    return result;
-  }
- else {
-    return null;
-  }
+  return found ? result : null;
 }
