@@ -1,0 +1,6 @@
+{
+  int topRowDimension=round(ResultPoint.distance(topLeft,topRight) / moduleWidth);
+  int bottomRowDimension=round(ResultPoint.distance(bottomLeft,bottomRight) / moduleWidth);
+  int dimension=((((topRowDimension + bottomRowDimension) >> 1) + 8) / 17) * 17;
+  return dimension;
+}

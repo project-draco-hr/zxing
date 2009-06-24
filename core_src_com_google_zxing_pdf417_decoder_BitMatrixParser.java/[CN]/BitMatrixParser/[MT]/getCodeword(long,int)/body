@@ -1,0 +1,15 @@
+{
+  long cw=0;
+  long sym=symbol;
+  sym&=0x3ffff;
+  int i=findCodewordIndex(sym);
+  if (i != -1) {
+    cw=codewordTable[i] - 1;
+    cw=cw % 929;
+  }
+ else {
+    if (debug)     System.out.println("UNABLE TO FIND " + symbol);
+    return -1;
+  }
+  return (int)cw;
+}

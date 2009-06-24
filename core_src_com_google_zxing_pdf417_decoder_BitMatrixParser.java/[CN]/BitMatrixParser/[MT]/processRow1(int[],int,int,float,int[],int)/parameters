@@ -1,0 +1,6 @@
+int rowCounters[]
+int rowNumber
+int rowHeight
+float moduleWidth
+int codewords[]
+int next

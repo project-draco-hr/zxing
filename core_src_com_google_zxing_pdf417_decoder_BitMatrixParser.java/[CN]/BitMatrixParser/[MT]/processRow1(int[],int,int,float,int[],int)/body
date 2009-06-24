@@ -1,0 +1,107 @@
+{
+  int width=bitMatrix.getDimension();
+  int columnNumber=0;
+  int firstBlack=0;
+  for (firstBlack=0; firstBlack < width; firstBlack++) {
+    if (rowCounters[firstBlack] >= rowHeight / 2) {
+      break;
+    }
+  }
+  int counters[]=new int[8];
+  int state=0;
+  long symbol=0;
+  for (int i=firstBlack; i < width; i++) {
+    if (state == 1 || state == 3 || state == 5 || state == 7) {
+      if (rowCounters[i] >= rowHeight / 2 || i == width - 1) {
+        if (i == width - 1) {
+          counters[state]++;
+        }
+        state++;
+        if (state < 8) {
+          counters[state]++;
+        }
+      }
+ else {
+        counters[state]++;
+      }
+    }
+ else {
+      if (rowCounters[i] < rowHeight / 2) {
+        state++;
+        if (state == 7 && i == width - 1) {
+          i--;
+        }
+ else {
+          counters[state]++;
+        }
+      }
+ else {
+        if (state < 8) {
+          counters[state]++;
+        }
+      }
+    }
+    if (state == 8) {
+      if (columnNumber >= MAX_COLUMNS) {
+        return -1;
+      }
+      if (columnNumber > 0) {
+        symbol=getSymbol(counters,rowNumber,moduleWidth);
+        int cw=getCodeword(symbol,rowNumber);
+        if (cw < 0) {
+          erasures[eraseCount]=next;
+          next++;
+          eraseCount++;
+        }
+ else {
+          codewords[next++]=cw;
+        }
+      }
+ else {
+        symbol=getSymbol(counters,rowNumber,moduleWidth);
+        int cw=getCodeword(symbol,rowNumber);
+        if (debug) {
+          System.out.println("Left Column CW=" + cw + " Cluster="+ rowNumber % 3);
+        }
+        if (ecLevel < 0) {
+switch (rowNumber % 3) {
+case 0:
+            break;
+case 1:
+          leftColumnECData=cw;
+        break;
+case 2:
+      break;
+  }
+}
+}
+i--;
+counters=new int[8];
+columns=columnNumber;
+columnNumber++;
+state=0;
+symbol=0;
+}
+}
+if (columnNumber > 1) {
+columns--;
+--next;
+if (ecLevel < 0) {
+switch (rowNumber % 3) {
+case 0:
+break;
+case 1:
+break;
+case 2:
+rightColumnECData=codewords[next];
+if (rightColumnECData == leftColumnECData && leftColumnECData != 0) {
+ecLevel=((rightColumnECData % 30) - rows % 3) / 3;
+}
+break;
+}
+}
+codewords[next]=0;
+if (debug) System.out.println("Right Column CW=" + codewords[next] + " Cluster="+ rowNumber % 3);
+}
+return next;
+}

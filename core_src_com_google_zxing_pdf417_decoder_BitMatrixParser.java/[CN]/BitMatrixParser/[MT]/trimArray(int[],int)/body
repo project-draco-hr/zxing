@@ -1,0 +1,12 @@
+{
+  if (size > 0) {
+    int a[]=new int[size];
+    for (int i=0; i < size; i++) {
+      a[i]=array[i];
+    }
+    return a;
+  }
+ else {
+    return null;
+  }
+}

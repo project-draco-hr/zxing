@@ -1,0 +1,64 @@
+{
+  int width=bitMatrix.getDimension();
+  int height=width;
+  int rowHeight=0;
+  int rowNumber=0;
+  boolean rowInProgress=false;
+  int matchingConsecutiveScans=0;
+  int next=0;
+  int codewords[]=new int[MAX_CW_CAPACITY];
+  erasures=new int[MAX_CW_CAPACITY];
+  float moduleWidth=1.0f;
+  int rowCounters[]=new int[width];
+  for (int i=1; i < height; i++) {
+    if (rowNumber >= MAX_ROWS) {
+      return null;
+    }
+    int rowDifference=0;
+    for (int j=0; j < width; j++) {
+      if (bitMatrix.get(i,j) != bitMatrix.get(i - 1,j)) {
+        rowDifference++;
+      }
+    }
+    if (rowDifference <= moduleWidth * MAX_ROW_DIFFERENCE) {
+      for (int j=0; j < width; j++) {
+        if (bitMatrix.get(i,j)) {
+          rowCounters[j]++;
+        }
+      }
+      matchingConsecutiveScans++;
+      if (matchingConsecutiveScans >= moduleWidth * 2) {
+        rowInProgress=true;
+      }
+    }
+ else {
+      if (rowInProgress) {
+        if (debug)         System.out.println("Row Height=" + rowHeight + " Row Number="+ rowNumber);
+        next=processRow(rowCounters,rowNumber,rowHeight,moduleWidth,codewords,next);
+        if (next == -1) {
+          return null;
+        }
+        for (int j=0; j < rowCounters.length; j++) {
+          rowCounters[j]=0;
+        }
+        rowNumber++;
+        rowHeight=0;
+      }
+      matchingConsecutiveScans=0;
+      rowInProgress=false;
+    }
+    rowHeight++;
+  }
+  if (rowInProgress) {
+    if (debug)     System.out.println("Row Height=" + rowHeight + " Row Number="+ rowNumber);
+    if (rowNumber >= MAX_ROWS) {
+      return null;
+    }
+    next=processRow(rowCounters,rowNumber,rowHeight,moduleWidth,codewords,next);
+    rowNumber++;
+    rows=rowNumber;
+  }
+  if (debug)   System.out.println("Errors=" + eraseCount);
+  erasures=trimArray(erasures,eraseCount);
+  return trimArray(codewords,next);
+}

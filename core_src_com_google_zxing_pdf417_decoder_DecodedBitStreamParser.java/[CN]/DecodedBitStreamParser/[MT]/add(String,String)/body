@@ -1,0 +1,27 @@
+{
+  StringBuffer temp1=new StringBuffer(5);
+  StringBuffer temp2=new StringBuffer(5);
+  StringBuffer result=new StringBuffer(value1.length());
+  for (int i=0; i < value1.length(); i++) {
+    result.append('0');
+  }
+  int carry=0;
+  for (int i=value1.length() - 3; i > -1; i-=3) {
+    temp1.setLength(0);
+    temp1.append(value1.charAt(i));
+    temp1.append(value1.charAt(i + 1));
+    temp1.append(value1.charAt(i + 2));
+    temp2.setLength(0);
+    temp2.append(value2.charAt(i));
+    temp2.append(value2.charAt(i + 1));
+    temp2.append(value2.charAt(i + 2));
+    int intValue1=Integer.parseInt(temp1.toString());
+    int intValue2=Integer.parseInt(temp2.toString());
+    int sumval=(intValue1 + intValue2 + carry) % 1000;
+    carry=(intValue1 + intValue2 + carry) / 1000;
+    result.setCharAt(i + 2,(char)((sumval % 10) + '0'));
+    result.setCharAt(i + 1,(char)(((sumval / 10) % 10) + '0'));
+    result.setCharAt(i,(char)((sumval / 100) + '0'));
+  }
+  return result;
+}

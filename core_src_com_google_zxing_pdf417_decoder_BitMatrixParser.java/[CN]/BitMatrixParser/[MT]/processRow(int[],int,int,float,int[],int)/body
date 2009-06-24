@@ -1,0 +1,60 @@
+{
+  int width=bitMatrix.getDimension();
+  int columnNumber=0;
+  long symbol=0;
+  for (int i=0; i < width; i+=MODULES_IN_SYMBOL) {
+    for (int mask=MODULES_IN_SYMBOL - 1; mask >= 0; mask--) {
+      if (rowCounters[i + (MODULES_IN_SYMBOL - 1 - mask)] >= rowHeight / 2) {
+        symbol|=1 << mask;
+      }
+    }
+    if (columnNumber > 0) {
+      int cw=getCodeword(symbol,rowNumber);
+      if (cw < 0 && i < width - MODULES_IN_SYMBOL) {
+        erasures[eraseCount]=next;
+        next++;
+        eraseCount++;
+      }
+ else {
+        codewords[next++]=cw;
+      }
+    }
+ else {
+      int cw=getCodeword(symbol,rowNumber);
+      if (ecLevel < 0) {
+switch (rowNumber % 3) {
+case 0:
+          break;
+case 1:
+        leftColumnECData=cw;
+      break;
+case 2:
+    break;
+}
+}
+}
+symbol=0;
+columns=columnNumber;
+columnNumber++;
+}
+if (columnNumber > 1) {
+columns--;
+--next;
+if (ecLevel < 0) {
+switch (rowNumber % 3) {
+case 0:
+break;
+case 1:
+break;
+case 2:
+rightColumnECData=codewords[next];
+if (rightColumnECData == leftColumnECData && leftColumnECData != 0) {
+ecLevel=((rightColumnECData % 30) - rows % 3) / 3;
+}
+break;
+}
+}
+codewords[next]=0;
+}
+return next;
+}

@@ -1,0 +1,19 @@
+{
+  if ((erasures != null && erasures.length > numECCodewords / 2 + MAX_ERRORS) || (numECCodewords < 0 || numECCodewords > MAX_EC_CODEWORDS)) {
+    throw ReaderException.getInstance();
+  }
+  int result=0;
+  if (debug) {
+    System.out.println("Corrected errors: " + result);
+  }
+  if (erasures != null) {
+    int numErasures=erasures.length;
+    if (result > 0) {
+      numErasures=numErasures - result;
+    }
+    if (numErasures > MAX_ERRORS) {
+      throw ReaderException.getInstance();
+    }
+  }
+  return result;
+}

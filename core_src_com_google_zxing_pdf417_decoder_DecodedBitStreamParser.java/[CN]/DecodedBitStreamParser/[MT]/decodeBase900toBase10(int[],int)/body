@@ -1,0 +1,25 @@
+{
+  StringBuffer accum=null;
+  StringBuffer value=null;
+  for (int i=0; i < count; i++) {
+    value=multiply(exp900[count - i - 1],codewords[i]);
+    if (accum == null) {
+      accum=value;
+    }
+ else {
+      accum=add(accum.toString(),value.toString());
+    }
+  }
+  String result=null;
+  for (int i=0; i < accum.length(); i++) {
+    if (accum.charAt(i) == '1') {
+      result=accum.toString().substring(i + 1);
+      break;
+    }
+  }
+  if (result == null) {
+    result=accum.toString();
+  }
+  if (debug)   System.out.println("Big Integer=" + result);
+  return result;
+}

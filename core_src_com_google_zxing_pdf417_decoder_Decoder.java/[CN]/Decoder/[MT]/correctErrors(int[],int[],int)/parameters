@@ -1,0 +1,3 @@
+int[] codewords
+int[] erasures
+int numECCodewords

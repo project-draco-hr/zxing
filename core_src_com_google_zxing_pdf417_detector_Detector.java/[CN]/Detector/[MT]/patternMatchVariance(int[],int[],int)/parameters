@@ -1,0 +1,3 @@
+int[] counters
+int[] pattern
+int maxIndividualVariance

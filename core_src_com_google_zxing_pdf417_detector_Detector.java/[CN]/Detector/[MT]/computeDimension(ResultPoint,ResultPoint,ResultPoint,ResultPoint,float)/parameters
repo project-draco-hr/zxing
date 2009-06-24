@@ -1,0 +1,5 @@
+ResultPoint topLeft
+ResultPoint topRight
+ResultPoint bottomLeft
+ResultPoint bottomRight
+float moduleWidth
