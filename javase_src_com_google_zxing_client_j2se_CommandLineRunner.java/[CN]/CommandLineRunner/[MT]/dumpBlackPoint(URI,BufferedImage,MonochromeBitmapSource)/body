@@ -25,7 +25,7 @@
       }
       continue;
     }
-    source.getBlackRow(y,row,0,width);
+    row=source.getBlackRow(y,row,0,width);
     int offset=y * stride + width;
     for (int x=0; x < width; x++) {
       if (row.get(x)) {
@@ -39,7 +39,7 @@
   try {
     source.estimateBlackPoint(BlackPointEstimationMethod.TWO_D_SAMPLING,0);
     for (int y=0; y < height; y++) {
-      source.getBlackRow(y,row,0,width);
+      row=source.getBlackRow(y,row,0,width);
       int offset=y * stride + width * 2;
       for (int x=0; x < width; x++) {
         if (row.get(x)) {
