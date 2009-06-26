@@ -18,7 +18,7 @@
   Bitmap bitmap=Bitmap.createBitmap(colors,framingWidth,framingHeight,Bitmap.Config.ARGB_8888);
   OutputStream outStream=getNewPhotoOutputStream();
   if (outStream != null) {
-    bitmap.compress(Bitmap.CompressFormat.JPEG,80,outStream);
+    bitmap.compress(Bitmap.CompressFormat.PNG,100,outStream);
     try {
       outStream.close();
       Message message=Message.obtain(mActivity.mHandler,R.id.save_succeeded);
