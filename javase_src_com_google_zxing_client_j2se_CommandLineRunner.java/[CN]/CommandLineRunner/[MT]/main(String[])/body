@@ -3,12 +3,11 @@
     printUsage();
     return;
   }
-  Hashtable<DecodeHintType,Object> hints=null;
+  Hashtable<DecodeHintType,Object> hints=buildHints();
   boolean dumpResults=false;
   boolean dumpBlackPoint=false;
   for (  String arg : args) {
     if ("--try_harder".equals(arg)) {
-      hints=new Hashtable<DecodeHintType,Object>(3);
       hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
     }
  else     if ("--dump_results".equals(arg)) {
