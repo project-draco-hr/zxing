@@ -8,9 +8,7 @@
   }
   boolean done=false;
   int[] stateCount=new int[5];
-  BitArray blackRow=new BitArray(maxJ);
   for (int i=iSkip - 1; i < maxI && !done; i+=iSkip) {
-    blackRow=image.getBlackRow(i,blackRow,0,maxJ);
     stateCount[0]=0;
     stateCount[1]=0;
     stateCount[2]=0;
@@ -18,7 +16,7 @@
     stateCount[4]=0;
     int currentState=0;
     for (int j=0; j < maxJ; j++) {
-      if (blackRow.get(j)) {
+      if (image.get(j,i)) {
         if ((currentState & 1) == 1) {
           currentState++;
         }
@@ -46,7 +44,7 @@
                 do {
                   j++;
                 }
- while (j < maxJ && !blackRow.get(j));
+ while (j < maxJ && !image.get(j,i));
                 j--;
               }
               currentState=0;

@@ -1,4 +1,4 @@
-BinaryBitmap image
+BitMatrix image
 int dimension
 float p1ToX
 float p1ToY

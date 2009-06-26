@@ -2,12 +2,12 @@
   DecoderResult decoderResult;
   ResultPoint[] points;
   if (hints != null && hints.containsKey(DecodeHintType.PURE_BARCODE)) {
-    BitMatrix bits=extractPureBits(image);
+    BitMatrix bits=extractPureBits(image.getBlackMatrix());
     decoderResult=decoder.decode(bits);
     points=NO_POINTS;
   }
  else {
-    DetectorResult detectorResult=new Detector(image).detect(hints);
+    DetectorResult detectorResult=new Detector(image.getBlackMatrix()).detect(hints);
     decoderResult=decoder.decode(detectorResult.getBits());
     points=detectorResult.getPoints();
   }

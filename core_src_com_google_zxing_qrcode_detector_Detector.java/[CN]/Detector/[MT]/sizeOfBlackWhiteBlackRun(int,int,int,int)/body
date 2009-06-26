@@ -18,12 +18,12 @@
     int realX=steep ? y : x;
     int realY=steep ? x : y;
     if (state == 1) {
-      if (image.isBlack(realX,realY)) {
+      if (image.get(realX,realY)) {
         state++;
       }
     }
  else {
-      if (!image.isBlack(realX,realY)) {
+      if (!image.get(realX,realY)) {
         state++;
       }
     }

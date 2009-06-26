@@ -1,5 +1,5 @@
 {
-  BinaryBitmap image=getImage();
+  BitMatrix image=getImage();
   MultiFinderPatternFinder finder=new MultiFinderPatternFinder(image);
   FinderPatternInfo[] info=finder.findMulti(hints);
   if (info == null || info.length == 0) {

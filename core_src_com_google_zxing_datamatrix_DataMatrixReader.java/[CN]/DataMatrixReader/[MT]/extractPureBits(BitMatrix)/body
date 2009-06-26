@@ -3,32 +3,32 @@
   int width=image.getWidth();
   int minDimension=Math.min(height,width);
   int borderWidth=0;
-  while (borderWidth < minDimension && !image.isBlack(borderWidth,borderWidth)) {
+  while (borderWidth < minDimension && !image.get(borderWidth,borderWidth)) {
     borderWidth++;
   }
   if (borderWidth == minDimension) {
     throw ReaderException.getInstance();
   }
-  int moduleEnd=borderWidth;
-  while (moduleEnd < minDimension && image.isBlack(moduleEnd,moduleEnd)) {
+  int moduleEnd=borderWidth + 1;
+  while (moduleEnd < width && image.get(moduleEnd,borderWidth)) {
     moduleEnd++;
   }
-  if (moduleEnd == minDimension) {
+  if (moduleEnd == width) {
     throw ReaderException.getInstance();
   }
   int moduleSize=moduleEnd - borderWidth;
-  int rowEndOfSymbol=width - 1;
-  while (rowEndOfSymbol >= 0 && !image.isBlack(rowEndOfSymbol,borderWidth)) {
-    rowEndOfSymbol--;
+  int columnEndOfSymbol=height - 1;
+  while (columnEndOfSymbol >= 0 && !image.get(borderWidth,columnEndOfSymbol)) {
+    columnEndOfSymbol--;
   }
-  if (rowEndOfSymbol < 0) {
+  if (columnEndOfSymbol < 0) {
     throw ReaderException.getInstance();
   }
-  rowEndOfSymbol++;
-  if ((rowEndOfSymbol - borderWidth) % moduleSize != 0) {
+  columnEndOfSymbol++;
+  if ((columnEndOfSymbol - borderWidth) % moduleSize != 0) {
     throw ReaderException.getInstance();
   }
-  int dimension=(rowEndOfSymbol - borderWidth) / moduleSize;
+  int dimension=(columnEndOfSymbol - borderWidth) / moduleSize;
   borderWidth+=moduleSize >> 1;
   int sampleDimension=borderWidth + (dimension - 1) * moduleSize;
   if (sampleDimension >= width || sampleDimension >= height) {
@@ -38,7 +38,7 @@
   for (int i=0; i < dimension; i++) {
     int iOffset=borderWidth + i * moduleSize;
     for (int j=0; j < dimension; j++) {
-      if (image.isBlack(borderWidth + j * moduleSize,iOffset)) {
+      if (image.get(borderWidth + j * moduleSize,iOffset)) {
         bits.set(j,i);
       }
     }

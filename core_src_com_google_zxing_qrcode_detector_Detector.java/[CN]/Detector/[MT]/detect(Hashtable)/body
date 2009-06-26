@@ -1,5 +1,4 @@
 {
-  BinaryBitmap image=this.image;
   FinderPatternFinder finder=new FinderPatternFinder(image);
   FinderPatternInfo info=finder.find(hints);
   return processFinderPatternInfo(info);
