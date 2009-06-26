@@ -1,0 +1,4 @@
+{
+  binarizeEntireImage();
+  return matrix;
+}

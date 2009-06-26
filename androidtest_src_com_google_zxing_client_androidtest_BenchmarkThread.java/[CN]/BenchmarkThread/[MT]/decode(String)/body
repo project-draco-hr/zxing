@@ -1,7 +1,7 @@
 {
-  RGBMonochromeBitmapSource source;
+  RGBLuminanceSource source;
   try {
-    source=new RGBMonochromeBitmapSource(path);
+    source=new RGBLuminanceSource(path);
   }
  catch (  FileNotFoundException e) {
     Log.e(TAG,e.toString());
@@ -13,7 +13,8 @@
     Result result=null;
     long now=Debug.threadCpuTimeNanos();
     try {
-      result=mMultiFormatReader.decodeWithState(source);
+      BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
+      result=mMultiFormatReader.decodeWithState(bitmap);
       success=true;
     }
  catch (    ReaderException e) {

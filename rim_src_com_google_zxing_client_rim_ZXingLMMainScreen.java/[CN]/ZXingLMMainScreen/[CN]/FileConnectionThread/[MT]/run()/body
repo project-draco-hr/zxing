@@ -33,13 +33,14 @@
   }
   if (capturedImage != null) {
     Log.info("Got image...");
-    MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);
+    LuminanceSource source=new LCDUIImageLuminanceSource(capturedImage);
+    BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
     Result result;
     ReasonableTimer decodingTimer=null;
     try {
       decodingTimer=new ReasonableTimer();
       Log.info("Attempting to decode image...");
-      result=reader.decode(source,readerHints);
+      result=reader.decode(bitmap,readerHints);
       decodingTimer.finished();
     }
  catch (    ReaderException e) {

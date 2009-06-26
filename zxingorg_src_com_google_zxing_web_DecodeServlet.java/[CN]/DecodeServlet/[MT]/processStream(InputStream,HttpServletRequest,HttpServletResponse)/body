@@ -7,7 +7,9 @@
   Reader reader=new MultiFormatReader();
   Result result;
   try {
-    result=reader.decode(new BufferedImageMonochromeBitmapSource(image),HINTS);
+    LuminanceSource source=new BufferedImageLuminanceSource(image);
+    BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
+    result=reader.decode(bitmap,HINTS);
   }
  catch (  ReaderException re) {
     log.info("DECODE FAILED: " + re.toString());

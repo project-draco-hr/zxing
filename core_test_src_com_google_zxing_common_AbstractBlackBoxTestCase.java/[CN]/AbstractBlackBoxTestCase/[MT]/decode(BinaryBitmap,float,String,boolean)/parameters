@@ -1,0 +1,4 @@
+BinaryBitmap source
+float rotation
+String expectedText
+boolean tryHarder

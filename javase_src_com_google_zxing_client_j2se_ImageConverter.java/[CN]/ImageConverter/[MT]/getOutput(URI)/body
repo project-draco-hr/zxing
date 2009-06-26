@@ -9,7 +9,7 @@
     if (dotpos != -1) {
       name=name.substring(0,dotpos);
     }
-    String suffix=(sMethod == BlackPointEstimationMethod.ROW_SAMPLING) ? "row" : "2d";
+    String suffix=rowSampling ? "row" : "2d";
     result=new File(name + '.' + suffix+ '.'+ FORMAT);
   }
   return result;

@@ -1,6 +1,0 @@
-{
-  if (luminances == null) {
-    int max=width > height ? width : height;
-    luminances=new int[max];
-  }
-}

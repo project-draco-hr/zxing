@@ -1,0 +1,6 @@
+BinaryBitmap image
+ResultPoint topLeft
+ResultPoint topRight
+ResultPoint bottomLeft
+ResultPoint alignmentPattern
+int dimension

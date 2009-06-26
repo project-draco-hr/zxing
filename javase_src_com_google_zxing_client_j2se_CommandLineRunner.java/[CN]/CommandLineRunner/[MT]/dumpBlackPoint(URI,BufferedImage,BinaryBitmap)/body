@@ -1,0 +1,78 @@
+{
+  String inputName=uri.getPath();
+  if (inputName.contains(".mono.png")) {
+    return;
+  }
+  int width=bitmap.getWidth();
+  int height=bitmap.getHeight();
+  int stride=width * 3;
+  int[] pixels=new int[stride * height];
+  int[] argb=new int[width];
+  for (int y=0; y < height; y++) {
+    image.getRGB(0,y,width,1,argb,0,width);
+    System.arraycopy(argb,0,pixels,y * stride,width);
+  }
+  argb=null;
+  BitArray row=new BitArray(width);
+  for (int y=0; y < height; y++) {
+    try {
+      row=bitmap.getBlackRow(y,row);
+    }
+ catch (    ReaderException e) {
+      int offset=y * stride + width;
+      for (int x=0; x < width; x++) {
+        pixels[offset + x]=0xffff0000;
+      }
+      continue;
+    }
+    int offset=y * stride + width;
+    for (int x=0; x < width; x++) {
+      if (row.get(x)) {
+        pixels[offset + x]=0xff000000;
+      }
+ else {
+        pixels[offset + x]=0xffffffff;
+      }
+    }
+  }
+  try {
+    for (int y=0; y < height; y++) {
+      BitMatrix matrix=bitmap.getBlackMatrix();
+      int offset=y * stride + width * 2;
+      for (int x=0; x < width; x++) {
+        if (matrix.get(x,y)) {
+          pixels[offset + x]=0xff000000;
+        }
+ else {
+          pixels[offset + x]=0xffffffff;
+        }
+      }
+    }
+  }
+ catch (  ReaderException e) {
+  }
+  BufferedImage result=new BufferedImage(stride,height,BufferedImage.TYPE_INT_ARGB);
+  result.setRGB(0,0,stride,height,pixels,0,stride);
+  String resultName=inputName;
+  if (uri.getScheme().equals("http")) {
+    int pos=resultName.lastIndexOf('/');
+    if (pos > 0) {
+      resultName="." + resultName.substring(pos);
+    }
+  }
+  int pos=resultName.lastIndexOf('.');
+  if (pos > 0) {
+    resultName=resultName.substring(0,pos);
+  }
+  resultName+=".mono.png";
+  try {
+    OutputStream outStream=new FileOutputStream(resultName);
+    ImageIO.write(result,"png",outStream);
+  }
+ catch (  FileNotFoundException e) {
+    System.out.println("Could not create " + resultName);
+  }
+catch (  IOException e) {
+    System.out.println("Could not write to " + resultName);
+  }
+}

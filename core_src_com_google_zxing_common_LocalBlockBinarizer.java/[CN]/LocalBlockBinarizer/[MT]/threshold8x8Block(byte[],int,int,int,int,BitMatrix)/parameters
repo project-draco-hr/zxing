@@ -1,0 +1,6 @@
+byte[] luminances
+int xoffset
+int yoffset
+int threshold
+int stride
+BitMatrix matrix

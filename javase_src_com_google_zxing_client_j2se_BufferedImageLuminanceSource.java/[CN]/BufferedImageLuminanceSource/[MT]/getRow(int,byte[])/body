@@ -1,0 +1,19 @@
+{
+  if (y < 0 || y >= getHeight()) {
+    throw new IllegalArgumentException("Requested row is outside the image: " + y);
+  }
+  int width=getWidth();
+  if (row == null || row.length < width) {
+    row=new byte[width];
+  }
+  if (rgbData == null || rgbData.length < width) {
+    rgbData=new int[width];
+  }
+  image.getRGB(left,top + y,width,1,rgbData,0,image.getWidth());
+  for (int x=0; x < width; x++) {
+    int pixel=rgbData[x];
+    int luminance=(306 * ((pixel >> 16) & 0xFF) + 601 * ((pixel >> 8) & 0xFF) + 117 * (pixel & 0xFF)) >> 10;
+    row[x]=(byte)luminance;
+  }
+  return row;
+}

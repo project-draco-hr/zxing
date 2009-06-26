@@ -1,0 +1,13 @@
+{
+  for (int y=0; y < height; y++) {
+    int offset=y * width;
+    int left=luminances[offset] & 0xff;
+    int center=luminances[offset + 1] & 0xff;
+    for (int x=1; x < width - 1; x++) {
+      int right=luminances[offset + x + 1] & 0xff;
+      luminances[x]=(byte)(((center << 2) - left - right) >> 1);
+      left=center;
+      center=right;
+    }
+  }
+}

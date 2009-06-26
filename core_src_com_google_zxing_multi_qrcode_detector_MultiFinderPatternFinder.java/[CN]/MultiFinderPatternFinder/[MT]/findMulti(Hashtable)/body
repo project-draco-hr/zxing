@@ -1,6 +1,6 @@
 {
   boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
-  MonochromeBitmapSource image=getImage();
+  BinaryBitmap image=getImage();
   int maxI=image.getHeight();
   int maxJ=image.getWidth();
   int iSkip=(int)(maxI / (MAX_MODULES * 4.0f) * 3);

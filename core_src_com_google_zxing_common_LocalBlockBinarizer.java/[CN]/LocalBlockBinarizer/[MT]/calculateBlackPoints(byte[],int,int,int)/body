@@ -1,0 +1,26 @@
+{
+  int[][] blackPoints=new int[subHeight][subWidth];
+  for (int y=0; y < subHeight; y++) {
+    for (int x=0; x < subWidth; x++) {
+      int sum=0;
+      int min=255;
+      int max=0;
+      for (int yy=0; yy < 8; yy++) {
+        int offset=(y * 8 + yy) * stride + (x * 8);
+        for (int xx=0; xx < 8; xx++) {
+          int pixel=luminances[offset + xx] & 0xff;
+          sum+=pixel;
+          if (pixel < min) {
+            min=pixel;
+          }
+          if (pixel > max) {
+            max=pixel;
+          }
+        }
+      }
+      int average=(max - min > 24) ? (sum >> 6) : (min >> 1);
+      blackPoints[y][x]=average;
+    }
+  }
+  return blackPoints;
+}

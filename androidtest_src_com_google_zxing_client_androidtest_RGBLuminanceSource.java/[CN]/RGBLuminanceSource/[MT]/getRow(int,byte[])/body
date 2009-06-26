@@ -1,0 +1,11 @@
+{
+  if (y < 0 || y >= getHeight()) {
+    throw new IllegalArgumentException("Requested row is outside the image: " + y);
+  }
+  int width=getWidth();
+  if (row == null || row.length < width) {
+    row=new byte[width];
+  }
+  System.arraycopy(luminances,y * width,row,0,width);
+  return row;
+}

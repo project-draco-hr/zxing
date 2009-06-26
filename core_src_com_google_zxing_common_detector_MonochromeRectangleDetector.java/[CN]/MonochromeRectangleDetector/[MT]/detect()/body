@@ -1,7 +1,4 @@
 {
-  if (!BlackPointEstimationMethod.TWO_D_SAMPLING.equals(image.getLastEstimationMethod())) {
-    image.estimateBlackPoint(BlackPointEstimationMethod.TWO_D_SAMPLING,0);
-  }
   int height=image.getHeight();
   int width=image.getWidth();
   int halfHeight=height >> 1;

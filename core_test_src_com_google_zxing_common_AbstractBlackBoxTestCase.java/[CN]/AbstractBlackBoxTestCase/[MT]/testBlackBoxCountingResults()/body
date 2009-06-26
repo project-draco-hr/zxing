@@ -13,11 +13,12 @@
     for (int x=0; x < testCount; x++) {
       float rotation=testResults.get(x).getRotation();
       BufferedImage rotatedImage=rotateImage(image,rotation);
-      MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(rotatedImage);
-      if (decode(source,rotation,expectedText,false)) {
+      LuminanceSource source=new BufferedImageLuminanceSource(rotatedImage);
+      BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
+      if (decode(bitmap,rotation,expectedText,false)) {
         passedCounts[x]++;
       }
-      if (decode(source,rotation,expectedText,true)) {
+      if (decode(bitmap,rotation,expectedText,true)) {
         tryHarderCounts[x]++;
       }
     }

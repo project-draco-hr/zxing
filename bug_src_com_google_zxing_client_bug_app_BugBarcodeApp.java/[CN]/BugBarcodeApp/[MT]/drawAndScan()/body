@@ -7,8 +7,9 @@
   }
   imageCanvas.repaint();
   try {
-    MonochromeBitmapSource source=new AWTImageMonochromeBitmapSource(image);
-    Result result=reader.decode(source);
+    LuminanceSource source=new AWTImageLuminanceSource(image);
+    BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
+    Result result=reader.decode(bitmap);
     barcodeLabel.setText(result.getText());
   }
  catch (  ReaderException re) {

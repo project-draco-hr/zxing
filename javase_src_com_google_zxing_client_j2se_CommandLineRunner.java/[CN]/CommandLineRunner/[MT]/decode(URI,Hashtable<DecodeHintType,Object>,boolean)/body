@@ -11,11 +11,12 @@
     return null;
   }
   try {
-    MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
+    LuminanceSource source=new BufferedImageLuminanceSource(image);
+    BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
     if (dumpBlackPoint) {
-      dumpBlackPoint(uri,image,source);
+      dumpBlackPoint(uri,image,bitmap);
     }
-    Result result=new MultiFormatReader().decode(source,hints);
+    Result result=new MultiFormatReader().decode(bitmap,hints);
     ParsedResult parsedResult=ResultParser.parseResult(result);
     System.out.println(uri.toString() + " (format: " + result.getBarcodeFormat()+ ", type: "+ parsedResult.getType()+ "):\nRaw result:\n"+ result.getText()+ "\nParsed result:\n"+ parsedResult.getDisplayResult());
     return result;

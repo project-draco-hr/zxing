@@ -1,3 +1,0 @@
-{
-  this(yuvData,dataWidth,dataHeight,crop.top,crop.left,crop.bottom,crop.right);
-}

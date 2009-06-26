@@ -1,0 +1,47 @@
+{
+  int width=image.getWidth();
+  int height=image.getHeight();
+  BitArray row=new BitArray(width);
+  int middle=height >> 1;
+  boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
+  int rowStep=Math.max(1,height >> (tryHarder ? 7 : 4));
+  int maxLines;
+  if (tryHarder) {
+    maxLines=height;
+  }
+ else {
+    maxLines=9;
+  }
+  for (int x=0; x < maxLines; x++) {
+    int rowStepsAboveOrBelow=(x + 1) >> 1;
+    boolean isAbove=(x & 0x01) == 0;
+    int rowNumber=middle + rowStep * (isAbove ? rowStepsAboveOrBelow : -rowStepsAboveOrBelow);
+    if (rowNumber < 0 || rowNumber >= height) {
+      break;
+    }
+    try {
+      row=image.getBlackRow(rowNumber,row);
+    }
+ catch (    ReaderException re) {
+      continue;
+    }
+    for (int attempt=0; attempt < 2; attempt++) {
+      if (attempt == 1) {
+        row.reverse();
+      }
+      try {
+        Result result=decodeRow(rowNumber,row,hints);
+        if (attempt == 1) {
+          result.putMetadata(ResultMetadataType.ORIENTATION,new Integer(180));
+          ResultPoint[] points=result.getResultPoints();
+          points[0]=new ResultPoint(width - points[0].getX() - 1,points[0].getY());
+          points[1]=new ResultPoint(width - points[1].getX() - 1,points[1].getY());
+        }
+        return result;
+      }
+ catch (      ReaderException re) {
+      }
+    }
+  }
+  throw ReaderException.getInstance();
+}

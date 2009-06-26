@@ -1,7 +1,0 @@
-{
-  if (!method.equals(lastMethod) || argument != lastArgument) {
-    blackPoint=BlackPointEstimator.estimate(this,method,argument);
-    lastMethod=method;
-    lastArgument=argument;
-  }
-}

@@ -1,0 +1,4 @@
+{
+  super(image.getWidth(),image.getHeight());
+  this.image=image;
+}

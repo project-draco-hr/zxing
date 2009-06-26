@@ -1,5 +1,5 @@
 {
-  MonochromeBitmapSource image=this.image;
+  BinaryBitmap image=this.image;
   int maxJ=image.getWidth();
   int[] stateCount=getCrossCheckStateCount();
   int j=startJ;

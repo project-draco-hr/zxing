@@ -6,9 +6,10 @@
       multimediaManager.setFocus(player);
       byte[] snapshot=takeSnapshot();
       Image capturedImage=Image.createImage(snapshot,0,snapshot.length);
-      MonochromeBitmapSource source=new LCDUIImageMonochromeBitmapSource(capturedImage);
+      LuminanceSource source=new LCDUIImageLuminanceSource(capturedImage);
+      BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
       Reader reader=new MultiFormatReader();
-      Result result=reader.decode(source);
+      Result result=reader.decode(bitmap);
       zXingMIDlet.handleDecodedText(result);
     }
  catch (    ReaderException re) {

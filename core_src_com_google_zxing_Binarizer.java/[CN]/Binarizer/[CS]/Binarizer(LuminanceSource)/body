@@ -1,0 +1,6 @@
+{
+  if (source == null) {
+    throw new IllegalArgumentException("Source must be non-null.");
+  }
+  this.source=source;
+}

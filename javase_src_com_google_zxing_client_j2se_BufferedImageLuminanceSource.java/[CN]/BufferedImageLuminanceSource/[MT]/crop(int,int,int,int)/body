@@ -1,0 +1,3 @@
+{
+  return new BufferedImageLuminanceSource(image,left,top,width,height);
+}

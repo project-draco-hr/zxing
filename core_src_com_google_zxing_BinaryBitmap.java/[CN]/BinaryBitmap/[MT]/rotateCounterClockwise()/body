@@ -1,0 +1,4 @@
+{
+  LuminanceSource newSource=binarizer.getLuminanceSource().rotateCounterClockwise();
+  return new BinaryBitmap(binarizer.createBinarizer(newSource));
+}

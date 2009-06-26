@@ -1,0 +1,17 @@
+{
+  int width=getWidth();
+  int height=getHeight();
+  int area=width * height;
+  byte[] matrix=new byte[area];
+  int[] rgb=new int[area];
+  image.getRGB(rgb,0,width,0,0,width,height);
+  for (int y=0; y < height; y++) {
+    int offset=y * width;
+    for (int x=0; x < width; x++) {
+      int pixel=rgb[offset + x];
+      int luminance=(((pixel & 0x00FF0000) >> 16) + ((pixel & 0x0000FF00) >> 7) + (pixel & 0x000000FF)) >> 2;
+      matrix[offset + x]=(byte)luminance;
+    }
+  }
+  return matrix;
+}

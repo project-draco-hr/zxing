@@ -9,10 +9,11 @@
   if (image == null) {
     return "Could not decode image";
   }
-  MonochromeBitmapSource source=new BufferedImageMonochromeBitmapSource(image);
+  LuminanceSource source=new BufferedImageLuminanceSource(image);
+  BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
   Result result;
   try {
-    result=new MultiFormatReader().decode(source);
+    result=new MultiFormatReader().decode(bitmap);
   }
  catch (  ReaderException re) {
     return re.toString();

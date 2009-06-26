@@ -1,5 +1,0 @@
-{
-  super(image.getWidth(),image.getHeight());
-  this.image=image;
-  pixelHolder=new int[1];
-}

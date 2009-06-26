@@ -1,0 +1,3 @@
+byte[] luminances
+int width
+int height

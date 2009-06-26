@@ -1,0 +1,14 @@
+{
+  if (matrix == null) {
+    LuminanceSource source=getLuminanceSource();
+    byte[] luminances=source.getMatrix();
+    int width=source.getWidth();
+    int height=source.getHeight();
+    sharpenRow(luminances,width,height);
+    int subWidth=width >> 3;
+    int subHeight=height >> 3;
+    int[][] blackPoints=calculateBlackPoints(luminances,subWidth,subHeight,width);
+    matrix=new BitMatrix(width,height);
+    calculateThresholdForBlock(luminances,subWidth,subHeight,width,blackPoints,matrix);
+  }
+}

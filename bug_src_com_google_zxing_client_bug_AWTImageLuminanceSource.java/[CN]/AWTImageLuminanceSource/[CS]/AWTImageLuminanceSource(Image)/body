@@ -1,0 +1,13 @@
+{
+  super(image.getWidth(null),image.getHeight(null));
+  int width=getWidth();
+  int height=getHeight();
+  pixels=new int[width * height];
+  PixelGrabber grabber=new PixelGrabber(image,0,0,width,height,pixels,0,width);
+  try {
+    grabber.grabPixels();
+  }
+ catch (  InterruptedException ie) {
+    throw ReaderException.getInstance();
+  }
+}

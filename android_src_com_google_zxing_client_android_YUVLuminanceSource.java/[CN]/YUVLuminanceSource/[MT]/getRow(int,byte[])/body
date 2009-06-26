@@ -1,0 +1,15 @@
+{
+  if (y < 0 || y >= getHeight()) {
+    throw new IllegalArgumentException("Requested row is outside the image: " + y);
+  }
+  int width=getWidth();
+  if (row == null || row.length < width) {
+    row=new byte[width];
+  }
+  int offset=(y + top) * dataWidth + left;
+  byte[] yuv=yuvData;
+  for (int x=0; x < width; x++) {
+    row[x]=yuv[offset + x];
+  }
+  return row;
+}

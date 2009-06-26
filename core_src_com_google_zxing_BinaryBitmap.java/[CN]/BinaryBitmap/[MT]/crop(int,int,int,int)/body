@@ -1,0 +1,4 @@
+{
+  LuminanceSource newSource=binarizer.getLuminanceSource().crop(left,top,width,height);
+  return new BinaryBitmap(binarizer.createBinarizer(newSource));
+}

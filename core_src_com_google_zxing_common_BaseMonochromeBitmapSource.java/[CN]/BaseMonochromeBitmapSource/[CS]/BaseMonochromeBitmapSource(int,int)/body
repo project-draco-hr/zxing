@@ -1,7 +1,0 @@
-{
-  this.height=height;
-  this.width=width;
-  blackPoint=0x7F;
-  lastMethod=null;
-  lastArgument=0;
-}
