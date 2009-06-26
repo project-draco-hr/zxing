@@ -6,7 +6,7 @@
   bitmap.getPixels(pixels,0,width,0,0,width,height);
   luminances=new byte[width * height];
   for (int y=0; y < height; y++) {
-    int offset=y * height;
+    int offset=y * width;
     for (int x=0; x < width; x++) {
       int pixel=pixels[offset + x];
       int r=(pixel >> 16) & 0xff;
