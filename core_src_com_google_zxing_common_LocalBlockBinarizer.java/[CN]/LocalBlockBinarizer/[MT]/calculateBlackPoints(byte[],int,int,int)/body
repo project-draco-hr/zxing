@@ -6,7 +6,7 @@
       int min=255;
       int max=0;
       for (int yy=0; yy < 8; yy++) {
-        int offset=(y * 8 + yy) * stride + (x * 8);
+        int offset=((y << 3) + yy) * stride + (x << 3);
         for (int xx=0; xx < 8; xx++) {
           int pixel=luminances[offset + xx] & 0xff;
           sum+=pixel;
