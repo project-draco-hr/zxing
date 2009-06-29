@@ -35,9 +35,12 @@
     totalMustPass+=testResults.get(x).getTryHarderCount();
   }
   int totalTests=imageFiles.length * testCount * 2;
-  System.out.println("TOTALS:\n  Decoded " + totalFound + " images out of "+ totalTests+ " ("+ (totalFound * 100 / totalTests)+ "%)");
+  System.out.println("TOTALS:\n  Decoded " + totalFound + " images out of "+ totalTests+ " ("+ (totalFound * 100 / totalTests)+ "%, "+ totalMustPass+ " required)");
   if (totalFound > totalMustPass) {
     System.out.println("  *** Test too lax by " + (totalFound - totalMustPass) + " images");
+  }
+ else   if (totalFound < totalMustPass) {
+    System.out.println("  *** Test failed by " + (totalMustPass - totalFound) + " images");
   }
   if (assertOnFailure) {
     for (int x=0; x < testCount; x++) {
