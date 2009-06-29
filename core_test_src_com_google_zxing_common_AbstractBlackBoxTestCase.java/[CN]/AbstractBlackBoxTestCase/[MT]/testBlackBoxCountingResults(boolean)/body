@@ -39,9 +39,11 @@
   if (totalFound > totalMustPass) {
     System.out.println("  *** Test too lax by " + (totalFound - totalMustPass) + " images");
   }
-  for (int x=0; x < testCount; x++) {
-    assertTrue("Rotation " + testResults.get(x).getRotation() + " degrees: Too many images failed",passedCounts[x] >= testResults.get(x).getMustPassCount());
-    assertTrue("Try harder, Rotation " + testResults.get(x).getRotation() + " degrees: Too many images failed",tryHarderCounts[x] >= testResults.get(x).getTryHarderCount());
+  if (assertOnFailure) {
+    for (int x=0; x < testCount; x++) {
+      assertTrue("Rotation " + testResults.get(x).getRotation() + " degrees: Too many images failed",passedCounts[x] >= testResults.get(x).getMustPassCount());
+      assertTrue("Try harder, Rotation " + testResults.get(x).getRotation() + " degrees: Too many images failed",tryHarderCounts[x] >= testResults.get(x).getTryHarderCount());
+    }
   }
   return new SummaryResults(totalFound,totalMustPass,totalTests);
 }
