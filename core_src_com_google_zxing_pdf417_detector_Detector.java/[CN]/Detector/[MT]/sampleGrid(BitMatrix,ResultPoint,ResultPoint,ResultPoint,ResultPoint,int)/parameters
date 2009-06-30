@@ -1,4 +1,4 @@
-BinaryBitmap image
+BitMatrix matrix
 ResultPoint topLeft
 ResultPoint bottomLeft
 ResultPoint topRight

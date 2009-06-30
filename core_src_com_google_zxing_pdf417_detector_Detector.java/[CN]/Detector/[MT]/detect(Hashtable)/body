@@ -1,7 +1,8 @@
 {
-  ResultPoint[] vertices=findVertices(image);
+  BitMatrix matrix=image.getBlackMatrix();
+  ResultPoint[] vertices=findVertices(matrix);
   if (vertices == null) {
-    vertices=findVertices180(image);
+    vertices=findVertices180(matrix);
   }
   if (vertices != null) {
     float moduleWidth=computeModuleWidth(vertices);
@@ -9,7 +10,7 @@
       throw ReaderException.getInstance();
     }
     int dimension=computeDimension(vertices[4],vertices[6],vertices[5],vertices[7],moduleWidth);
-    BitMatrix bits=sampleGrid(image,vertices[4],vertices[5],vertices[6],vertices[7],dimension);
+    BitMatrix bits=sampleGrid(matrix,vertices[4],vertices[5],vertices[6],vertices[7],dimension);
     return new DetectorResult(bits,new ResultPoint[]{vertices[4],vertices[5],vertices[6],vertices[7]});
   }
  else {

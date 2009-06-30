@@ -1,0 +1,5 @@
+BitMatrix matrix
+int column
+int row
+int width
+int[] pattern

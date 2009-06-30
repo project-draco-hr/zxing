@@ -1,13 +1,12 @@
 {
-  int height=image.getHeight();
-  int width=image.getWidth();
+  int height=matrix.getHeight();
+  int width=matrix.getWidth();
+  int halfWidth=width >> 1;
   ResultPoint[] result=new ResultPoint[8];
-  BitArray row=null;
   boolean found=false;
   int[] loc=null;
   for (int i=0; i < height; i++) {
-    row=image.getBlackRow(i,null,0,width / 4);
-    loc=findGuardPattern(row,0,START_PATTERN);
+    loc=findGuardPattern(matrix,0,i,halfWidth,START_PATTERN);
     if (loc != null) {
       result[0]=new ResultPoint(loc[0],i);
       result[4]=new ResultPoint(loc[1],i);
@@ -18,8 +17,7 @@
   if (found) {
     found=false;
     for (int i=height - 1; i > 0; i--) {
-      row=image.getBlackRow(i,null,0,width / 4);
-      loc=findGuardPattern(row,0,START_PATTERN);
+      loc=findGuardPattern(matrix,0,i,halfWidth,START_PATTERN);
       if (loc != null) {
         result[1]=new ResultPoint(loc[0],i);
         result[5]=new ResultPoint(loc[1],i);
@@ -31,12 +29,10 @@
   if (found) {
     found=false;
     for (int i=0; i < height; i++) {
-      row=image.getBlackRow(i,null,(width * 3) / 4,width / 4);
-      row.reverse();
-      loc=findGuardPattern(row,0,STOP_PATTERN_REVERSE);
+      loc=findGuardPattern(matrix,halfWidth,i,halfWidth,STOP_PATTERN);
       if (loc != null) {
-        result[2]=new ResultPoint(width - loc[0],i);
-        result[6]=new ResultPoint(width - loc[1],i);
+        result[2]=new ResultPoint(loc[1],i);
+        result[6]=new ResultPoint(loc[0],i);
         found=true;
         break;
       }
@@ -45,12 +41,10 @@
   if (found) {
     found=false;
     for (int i=height - 1; i > 0; i--) {
-      row=image.getBlackRow(i,null,(width * 3) / 4,width / 4);
-      row.reverse();
-      loc=findGuardPattern(row,0,STOP_PATTERN_REVERSE);
+      loc=findGuardPattern(matrix,halfWidth,i,halfWidth,STOP_PATTERN);
       if (loc != null) {
-        result[3]=new ResultPoint(width - loc[0],i);
-        result[7]=new ResultPoint(width - loc[1],i);
+        result[3]=new ResultPoint(loc[1],i);
+        result[7]=new ResultPoint(loc[0],i);
         found=true;
         break;
       }
