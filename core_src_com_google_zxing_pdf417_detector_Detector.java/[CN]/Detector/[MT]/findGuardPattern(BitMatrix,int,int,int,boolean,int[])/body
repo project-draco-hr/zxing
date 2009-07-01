@@ -1,7 +1,7 @@
 {
   int patternLength=pattern.length;
   int[] counters=new int[patternLength];
-  boolean isWhite=false;
+  boolean isWhite=whiteFirst;
   int counterPosition=0;
   int patternStart=column;
   for (int x=column; x < column + width; x++) {
