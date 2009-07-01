@@ -1,6 +1,0 @@
-{
-  if (matrix == null) {
-    matrix=binarizer.getBlackMatrix();
-  }
-  return matrix.get(x,y);
-}
