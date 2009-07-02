@@ -1,0 +1,32 @@
+{
+  float skew=vertices[4].getY() - vertices[6].getY();
+  if (skew > SKEW_THRESHOLD) {
+    float length=vertices[4].getX() - vertices[0].getX();
+    float deltax=vertices[6].getX() - vertices[0].getX();
+    float deltay=vertices[6].getY() - vertices[0].getY();
+    float correction=length * deltay / deltax;
+    vertices[4]=new ResultPoint(vertices[4].getX(),vertices[4].getY() + correction);
+  }
+ else   if (-skew > SKEW_THRESHOLD) {
+    float length=vertices[2].getX() - vertices[6].getX();
+    float deltax=vertices[2].getX() - vertices[4].getX();
+    float deltay=vertices[2].getY() - vertices[4].getY();
+    float correction=length * deltay / deltax;
+    vertices[6]=new ResultPoint(vertices[6].getX(),vertices[6].getY() - correction);
+  }
+  skew=vertices[7].getY() - vertices[5].getY();
+  if (skew > SKEW_THRESHOLD) {
+    float length=vertices[5].getX() - vertices[1].getX();
+    float deltax=vertices[7].getX() - vertices[1].getX();
+    float deltay=vertices[7].getY() - vertices[1].getY();
+    float correction=length * deltay / deltax;
+    vertices[5]=new ResultPoint(vertices[5].getX(),vertices[5].getY() + correction);
+  }
+ else   if (-skew > SKEW_THRESHOLD) {
+    float length=vertices[3].getX() - vertices[7].getX();
+    float deltax=vertices[3].getX() - vertices[5].getX();
+    float deltay=vertices[3].getY() - vertices[5].getY();
+    float correction=length * deltay / deltax;
+    vertices[7]=new ResultPoint(vertices[7].getX(),vertices[7].getY() - correction);
+  }
+}
