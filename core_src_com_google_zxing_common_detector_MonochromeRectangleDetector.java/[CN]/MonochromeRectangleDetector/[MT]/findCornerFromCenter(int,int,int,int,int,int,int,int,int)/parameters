@@ -1,9 +1,9 @@
-int centerI
-int di
-int minI
-int maxI
-int centerJ
-int dj
-int minJ
-int maxJ
+int centerX
+int deltaX
+int left
+int right
+int centerY
+int deltaY
+int top
+int bottom
 int maxWhiteRun

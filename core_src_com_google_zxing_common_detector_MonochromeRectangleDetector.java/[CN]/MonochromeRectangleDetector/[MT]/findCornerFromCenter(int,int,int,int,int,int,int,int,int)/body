@@ -1,39 +1,39 @@
 {
   int[] lastRange=null;
-  for (int i=centerI, j=centerJ; i < maxI && i >= minI && j < maxJ && j >= minJ; i+=di, j+=dj) {
+  for (int y=centerY, x=centerX; y < bottom && y >= top && x < right && x >= left; y+=deltaY, x+=deltaX) {
     int[] range;
-    if (dj == 0) {
-      range=blackWhiteRange(i,maxWhiteRun,minJ,maxJ,true);
+    if (deltaX == 0) {
+      range=blackWhiteRange(y,maxWhiteRun,left,right,true);
     }
  else {
-      range=blackWhiteRange(j,maxWhiteRun,minI,maxI,false);
+      range=blackWhiteRange(x,maxWhiteRun,top,bottom,false);
     }
     if (range == null) {
       if (lastRange == null) {
         throw ReaderException.getInstance();
       }
-      if (dj == 0) {
-        int lastI=i - di;
-        if (lastRange[0] < centerJ) {
-          if (lastRange[1] > centerJ) {
-            return new ResultPoint(di > 0 ? lastRange[0] : lastRange[1],lastI);
+      if (deltaX == 0) {
+        int lastY=y - deltaY;
+        if (lastRange[0] < centerX) {
+          if (lastRange[1] > centerX) {
+            return new ResultPoint(deltaY > 0 ? lastRange[0] : lastRange[1],lastY);
           }
-          return new ResultPoint(lastRange[0],lastI);
+          return new ResultPoint(lastRange[0],lastY);
         }
  else {
-          return new ResultPoint(lastRange[1],lastI);
+          return new ResultPoint(lastRange[1],lastY);
         }
       }
  else {
-        int lastJ=j - dj;
-        if (lastRange[0] < centerI) {
-          if (lastRange[1] > centerI) {
-            return new ResultPoint(lastJ,dj < 0 ? lastRange[0] : lastRange[1]);
+        int lastX=x - deltaX;
+        if (lastRange[0] < centerY) {
+          if (lastRange[1] > centerY) {
+            return new ResultPoint(lastX,deltaX < 0 ? lastRange[0] : lastRange[1]);
           }
-          return new ResultPoint(lastJ,lastRange[0]);
+          return new ResultPoint(lastX,lastRange[0]);
         }
  else {
-          return new ResultPoint(lastJ,lastRange[1]);
+          return new ResultPoint(lastX,lastRange[1]);
         }
       }
     }
