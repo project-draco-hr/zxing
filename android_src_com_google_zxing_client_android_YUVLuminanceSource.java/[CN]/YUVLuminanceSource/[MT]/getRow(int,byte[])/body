@@ -7,9 +7,6 @@
     row=new byte[width];
   }
   int offset=(y + top) * dataWidth + left;
-  byte[] yuv=yuvData;
-  for (int x=0; x < width; x++) {
-    row[x]=yuv[offset + x];
-  }
+  System.arraycopy(yuvData,offset,row,0,width);
   return row;
 }

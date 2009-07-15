@@ -6,13 +6,15 @@
   }
   int area=width * height;
   byte[] matrix=new byte[area];
-  byte[] yuv=yuvData;
   int inputOffset=top * dataWidth + left;
+  if (width == dataWidth) {
+    System.arraycopy(yuvData,inputOffset,matrix,0,area);
+    return matrix;
+  }
+  byte[] yuv=yuvData;
   for (int y=0; y < height; y++) {
     int outputOffset=y * width;
-    for (int x=0; x < width; x++) {
-      matrix[outputOffset + x]=yuv[inputOffset + x];
-    }
+    System.arraycopy(yuv,inputOffset,matrix,outputOffset,width);
     inputOffset+=dataWidth;
   }
   return matrix;
