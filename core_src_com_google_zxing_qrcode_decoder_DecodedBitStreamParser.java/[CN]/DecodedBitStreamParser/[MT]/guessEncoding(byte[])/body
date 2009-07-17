@@ -8,7 +8,7 @@
   int length=bytes.length;
   boolean canBeISO88591=true;
   boolean canBeShiftJIS=true;
-  boolean sawDoubleByteStart=false;
+  int maybeDoubleByteCount=0;
   int maybeSingleByteKatakanaCount=0;
   boolean sawLatin1Supplement=false;
   boolean lastWasPossibleDoubleByteStart=false;
@@ -46,7 +46,7 @@
             canBeShiftJIS=false;
           }
  else {
-            sawDoubleByteStart=true;
+            maybeDoubleByteCount++;
           }
         }
       }
@@ -55,7 +55,7 @@
       lastWasPossibleDoubleByteStart=false;
     }
   }
-  if (canBeShiftJIS && (sawDoubleByteStart || 20 * maybeSingleByteKatakanaCount > length)) {
+  if (canBeShiftJIS && (maybeDoubleByteCount >= 3 || 20 * maybeSingleByteKatakanaCount > length)) {
     return SHIFT_JIS;
   }
   if (!sawLatin1Supplement && canBeISO88591) {
