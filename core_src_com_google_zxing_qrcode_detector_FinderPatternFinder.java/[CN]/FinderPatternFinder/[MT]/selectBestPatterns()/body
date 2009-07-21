@@ -1,24 +1,16 @@
 {
-  Collections.insertionSort(possibleCenters,new CenterComparator());
-  int size=0;
-  int max=possibleCenters.size();
-  while (size < max) {
-    if (((FinderPattern)possibleCenters.elementAt(size)).getCount() < CENTER_QUORUM) {
-      break;
-    }
-    size++;
-  }
-  if (size < 3) {
+  if (possibleCenters.size() < 3) {
     throw ReaderException.getInstance();
   }
-  if (size > 3) {
-    possibleCenters.setSize(size);
-    float averageModuleSize=0.0f;
-    for (int i=0; i < size; i++) {
-      averageModuleSize+=((FinderPattern)possibleCenters.elementAt(i)).getEstimatedModuleSize();
-    }
-    averageModuleSize/=(float)size;
-    Collections.insertionSort(possibleCenters,new ClosestToAverageComparator(averageModuleSize));
+  Collections.insertionSort(possibleCenters,new CenterComparator());
+  if (possibleCenters.size() > 3) {
+    possibleCenters.setSize(3);
   }
+  float averageModuleSize=0.0f;
+  for (int i=0; i < 3; i++) {
+    averageModuleSize+=((FinderPattern)possibleCenters.elementAt(i)).getEstimatedModuleSize();
+  }
+  averageModuleSize/=3.0f;
+  Collections.insertionSort(possibleCenters,new ClosestToAverageComparator(averageModuleSize));
   return new FinderPattern[]{(FinderPattern)possibleCenters.elementAt(0),(FinderPattern)possibleCenters.elementAt(1),(FinderPattern)possibleCenters.elementAt(2)};
 }
