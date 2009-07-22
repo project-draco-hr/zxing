@@ -52,5 +52,5 @@
     }
   }
  while (!mode.equals(Mode.TERMINATOR));
-  return new DecoderResult(bytes,result.toString(),byteSegments.isEmpty() ? null : byteSegments);
+  return new DecoderResult(bytes,result.toString(),byteSegments.isEmpty() ? null : byteSegments,ecLevel);
 }

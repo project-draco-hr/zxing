@@ -1,2 +1,3 @@
 byte[] bytes
 Version version
+ErrorCorrectionLevel ecLevel

@@ -19,5 +19,5 @@
       resultBytes[resultOffset++]=codewordBytes[i];
     }
   }
-  return DecodedBitStreamParser.decode(resultBytes,version);
+  return DecodedBitStreamParser.decode(resultBytes,version,ecLevel);
 }
