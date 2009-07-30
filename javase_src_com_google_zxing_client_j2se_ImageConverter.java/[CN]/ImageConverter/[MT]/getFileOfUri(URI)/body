@@ -1,7 +1,8 @@
 {
   String name=uri.getPath();
   int slashPos=name.lastIndexOf((int)'/');
-  String parent, basename;
+  String parent;
+  String basename;
   if (slashPos != -1 && slashPos != name.length() - 1) {
     parent=name.substring(0,slashPos);
     basename=name.substring(slashPos + 1);

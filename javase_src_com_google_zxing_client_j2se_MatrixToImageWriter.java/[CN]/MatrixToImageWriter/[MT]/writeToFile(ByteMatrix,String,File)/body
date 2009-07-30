@@ -1,0 +1,4 @@
+{
+  BufferedImage image=toBufferedImage(matrix);
+  ImageIO.write(image,format,file);
+}

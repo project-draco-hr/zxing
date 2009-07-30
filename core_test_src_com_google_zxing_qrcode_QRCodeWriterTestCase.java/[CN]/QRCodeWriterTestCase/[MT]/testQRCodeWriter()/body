@@ -3,17 +3,17 @@
   QRCodeWriter writer=new QRCodeWriter();
   ByteMatrix matrix=writer.encode("http://www.google.com/",BarcodeFormat.QR_CODE,bigEnough,bigEnough,null);
   assertNotNull(matrix);
-  assertEquals(bigEnough,matrix.width());
-  assertEquals(bigEnough,matrix.height());
+  assertEquals(bigEnough,matrix.getWidth());
+  assertEquals(bigEnough,matrix.getHeight());
   int tooSmall=20;
   matrix=writer.encode("http://www.google.com/",BarcodeFormat.QR_CODE,tooSmall,tooSmall,null);
   assertNotNull(matrix);
-  assertTrue(tooSmall < matrix.width());
-  assertTrue(tooSmall < matrix.height());
+  assertTrue(tooSmall < matrix.getWidth());
+  assertTrue(tooSmall < matrix.getHeight());
   int strangeWidth=500;
   int strangeHeight=100;
   matrix=writer.encode("http://www.google.com/",BarcodeFormat.QR_CODE,strangeWidth,strangeHeight,null);
   assertNotNull(matrix);
-  assertEquals(strangeWidth,matrix.width());
-  assertEquals(strangeHeight,matrix.height());
+  assertEquals(strangeWidth,matrix.getWidth());
+  assertEquals(strangeHeight,matrix.getHeight());
 }

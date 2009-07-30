@@ -12,7 +12,6 @@
     image.getRGB(0,y,width,1,argb,0,width);
     System.arraycopy(argb,0,pixels,y * stride,width);
   }
-  argb=null;
   BitArray row=new BitArray(width);
   for (int y=0; y < height; y++) {
     try {
@@ -54,10 +53,10 @@
   BufferedImage result=new BufferedImage(stride,height,BufferedImage.TYPE_INT_ARGB);
   result.setRGB(0,0,stride,height,pixels,0,stride);
   String resultName=inputName;
-  if (uri.getScheme().equals("http")) {
+  if ("http".equals(uri.getScheme())) {
     int pos=resultName.lastIndexOf('/');
     if (pos > 0) {
-      resultName="." + resultName.substring(pos);
+      resultName='.' + resultName.substring(pos);
     }
   }
   int pos=resultName.lastIndexOf('.');

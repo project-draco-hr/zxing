@@ -7,7 +7,7 @@
   Hashtable<EncodeHintType,Object> hints=new Hashtable<EncodeHintType,Object>();
   hints.put(EncodeHintType.ERROR_CORRECTION,ecLevel);
   ByteMatrix generatedResult=writer.encode(contents,BarcodeFormat.QR_CODE,resolution,resolution,hints);
-  assertEquals("Width should be " + resolution + ", but was "+ generatedResult.width(),resolution,generatedResult.width());
-  assertEquals("Height should be " + resolution + ", but was "+ generatedResult.height(),resolution,generatedResult.height());
+  assertEquals("Width should be " + resolution + ", but was "+ generatedResult.getWidth(),resolution,generatedResult.getWidth());
+  assertEquals("Height should be " + resolution + ", but was "+ generatedResult.getHeight(),resolution,generatedResult.getHeight());
   assertTrue("Expected " + goldenResult.toString() + " but got "+ generatedResult.toString(),Arrays.deepEquals(goldenResult.getArray(),generatedResult.getArray()));
 }

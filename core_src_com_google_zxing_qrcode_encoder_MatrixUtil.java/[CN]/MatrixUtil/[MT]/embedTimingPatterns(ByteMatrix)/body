@@ -1,5 +1,5 @@
 {
-  for (int i=8; i < matrix.width() - 8; ++i) {
+  for (int i=8; i < matrix.getWidth() - 8; ++i) {
     int bit=(i + 1) % 2;
     if (!isValidValue(matrix.get(i,6))) {
       throw new WriterException();

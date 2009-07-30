@@ -1,6 +1,6 @@
 {
-  if (matrix.get(8,matrix.height() - 8) == 0) {
+  if (matrix.get(8,matrix.getHeight() - 8) == 0) {
     throw new WriterException();
   }
-  matrix.set(8,matrix.height() - 8,1);
+  matrix.set(8,matrix.getHeight() - 8,1);
 }

@@ -1,8 +1,8 @@
 {
   int numDarkCells=0;
   byte[][] array=matrix.getArray();
-  int width=matrix.width();
-  int height=matrix.height();
+  int width=matrix.getWidth();
+  int height=matrix.getHeight();
   for (int y=0; y < height; ++y) {
     for (int x=0; x < width; ++x) {
       if (array[y][x] == 1) {
@@ -10,7 +10,7 @@
       }
     }
   }
-  int numTotalCells=matrix.height() * matrix.width();
+  int numTotalCells=matrix.getHeight() * matrix.getWidth();
   double darkRatio=(double)numDarkCells / numTotalCells;
   return Math.abs((int)(darkRatio * 100 - 50)) / 5 * 10;
 }

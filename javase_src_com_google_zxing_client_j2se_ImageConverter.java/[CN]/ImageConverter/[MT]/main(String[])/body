@@ -1,9 +1,9 @@
 {
   for (  String arg : args) {
-    if (arg.equals("-row")) {
+    if ("-row".equals(arg)) {
       rowSampling=true;
     }
- else     if (arg.equals("-2d")) {
+ else     if ("-2d".equals(arg)) {
       rowSampling=false;
     }
  else     if (arg.startsWith("-")) {
