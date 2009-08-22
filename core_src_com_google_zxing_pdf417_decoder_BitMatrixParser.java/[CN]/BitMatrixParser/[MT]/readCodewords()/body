@@ -33,7 +33,7 @@
     }
  else {
       if (rowInProgress) {
-        next=processRow(rowCounters,rowNumber,rowHeight,moduleWidth,codewords,next);
+        next=processRow(rowCounters,rowNumber,rowHeight,codewords,next);
         if (next == -1) {
           return null;
         }
@@ -52,7 +52,7 @@
     if (rowNumber >= MAX_ROWS) {
       return null;
     }
-    next=processRow(rowCounters,rowNumber,rowHeight,moduleWidth,codewords,next);
+    next=processRow(rowCounters,rowNumber,rowHeight,codewords,next);
     rowNumber++;
     rows=rowNumber;
   }

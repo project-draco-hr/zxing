@@ -2,13 +2,12 @@
   long sym=symbol;
   sym&=0x3ffff;
   int i=findCodewordIndex(sym);
-  long cw=0;
   if (i == -1) {
     return -1;
   }
  else {
-    cw=CODEWORD_TABLE[i] - 1;
+    long cw=CODEWORD_TABLE[i] - 1;
     cw%=929;
+    return (int)cw;
   }
-  return (int)cw;
 }

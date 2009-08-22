@@ -4,12 +4,12 @@
   long symbol=0;
   for (int i=0; i < width; i+=MODULES_IN_SYMBOL) {
     for (int mask=MODULES_IN_SYMBOL - 1; mask >= 0; mask--) {
-      if (rowCounters[i + (MODULES_IN_SYMBOL - 1 - mask)] >= rowHeight / 2) {
+      if (rowCounters[i + (MODULES_IN_SYMBOL - 1 - mask)] >= rowHeight >>> 1) {
         symbol|=1 << mask;
       }
     }
     if (columnNumber > 0) {
-      int cw=getCodeword(symbol,rowNumber);
+      int cw=getCodeword(symbol);
       if (cw < 0 && i < width - MODULES_IN_SYMBOL) {
         erasures[eraseCount]=next;
         next++;
@@ -20,7 +20,7 @@
       }
     }
  else {
-      int cw=getCodeword(symbol,rowNumber);
+      int cw=getCodeword(symbol);
       if (ecLevel < 0) {
 switch (rowNumber % 3) {
 case 0:
@@ -34,11 +34,9 @@ case 2:
 }
 }
 symbol=0;
-columns=columnNumber;
 columnNumber++;
 }
 if (columnNumber > 1) {
-columns--;
 --next;
 if (ecLevel < 0) {
 switch (rowNumber % 3) {
