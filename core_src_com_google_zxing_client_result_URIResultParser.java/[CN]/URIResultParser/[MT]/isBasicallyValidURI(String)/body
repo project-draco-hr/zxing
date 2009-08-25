@@ -3,8 +3,5 @@
     return false;
   }
   int period=uri.indexOf('.');
-  if (period >= uri.length() - 2) {
-    return false;
-  }
-  return period >= 0 || uri.indexOf(':') >= 0;
+  return period < uri.length() - 2 && (period >= 0 || uri.indexOf(':') >= 0);
 }

@@ -3,37 +3,29 @@
   int height=image.getHeight();
   int halfWidth=width / 2;
   int halfHeight=height / 2;
-{
-    BinaryBitmap topLeft=image.crop(0,0,halfWidth,halfHeight);
-    try {
-      return delegate.decode(topLeft,hints);
-    }
- catch (    ReaderException re) {
-    }
+  BinaryBitmap topLeft=image.crop(0,0,halfWidth,halfHeight);
+  try {
+    return delegate.decode(topLeft,hints);
   }
-{
-    BinaryBitmap topRight=image.crop(halfWidth,0,width,halfHeight);
-    try {
-      return delegate.decode(topRight,hints);
-    }
- catch (    ReaderException re) {
-    }
+ catch (  ReaderException re) {
   }
-{
-    BinaryBitmap bottomLeft=image.crop(0,halfHeight,halfWidth,height);
-    try {
-      return delegate.decode(bottomLeft,hints);
-    }
- catch (    ReaderException re) {
-    }
+  BinaryBitmap topRight=image.crop(halfWidth,0,width,halfHeight);
+  try {
+    return delegate.decode(topRight,hints);
   }
-{
-    BinaryBitmap bottomRight=image.crop(halfWidth,halfHeight,width,height);
-    try {
-      return delegate.decode(bottomRight,hints);
-    }
- catch (    ReaderException re) {
-    }
+ catch (  ReaderException re) {
+  }
+  BinaryBitmap bottomLeft=image.crop(0,halfHeight,halfWidth,height);
+  try {
+    return delegate.decode(bottomLeft,hints);
+  }
+ catch (  ReaderException re) {
+  }
+  BinaryBitmap bottomRight=image.crop(halfWidth,halfHeight,width,height);
+  try {
+    return delegate.decode(bottomRight,hints);
+  }
+ catch (  ReaderException re) {
   }
   int quarterWidth=halfWidth / 2;
   int quarterHeight=halfHeight / 2;
