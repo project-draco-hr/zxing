@@ -1,7 +1,12 @@
 {
+  String result=null;
   if (mCamera == null) {
     mCamera=Camera.open();
     mCamera.setPreviewDisplay(holder);
+    if (getParameters) {
+      result=collectCameraParameters();
+    }
     setCameraParameters();
   }
+  return result;
 }

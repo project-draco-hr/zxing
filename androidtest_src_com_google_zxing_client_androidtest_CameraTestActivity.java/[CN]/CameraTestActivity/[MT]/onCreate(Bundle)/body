@@ -4,7 +4,13 @@
   Window window=getWindow();
   window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
   window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-  setContentView(R.layout.camera_test);
+  mGetCameraParameters=getIntent().getBooleanExtra(GET_CAMERA_PARAMETERS,false);
+  if (mGetCameraParameters) {
+    setContentView(R.layout.camera_parameters);
+  }
+ else {
+    setContentView(R.layout.camera_test);
+  }
   CameraManager.init(getApplication());
   SurfaceView surfaceView=(SurfaceView)findViewById(R.id.preview_view);
   SurfaceHolder surfaceHolder=surfaceView.getHolder();

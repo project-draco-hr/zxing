@@ -1,9 +1,12 @@
 {
   try {
-    CameraManager.get().openDriver(holder);
+    String parameters=CameraManager.get().openDriver(holder,mGetCameraParameters);
+    CameraManager.get().startPreview();
+    if (mGetCameraParameters) {
+      collectStatsAndSendEmail(parameters);
+    }
   }
- catch (  IOException ioe) {
-    throw new RuntimeException(ioe);
+ catch (  IOException e) {
+    throw new RuntimeException(e);
   }
-  CameraManager.get().startPreview();
 }

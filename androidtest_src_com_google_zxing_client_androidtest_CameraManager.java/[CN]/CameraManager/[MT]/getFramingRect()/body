@@ -1,6 +1,6 @@
 {
   if (mFramingRect == null) {
-    int width=mScreenResolution.x;
+    int width=mScreenResolution.x * 3 / 4;
     int height=mScreenResolution.y * 3 / 4;
     int leftOffset=(mScreenResolution.x - width) / 2;
     int topOffset=(mScreenResolution.y - height) / 2;

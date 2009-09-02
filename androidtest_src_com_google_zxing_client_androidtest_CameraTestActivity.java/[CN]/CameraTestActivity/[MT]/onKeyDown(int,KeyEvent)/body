@@ -1,15 +1,17 @@
 {
-  if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
-    if (event.getRepeatCount() == 0) {
-      CameraManager.get().requestAutoFocus(mHandler,R.id.auto_focus);
+  if (!mGetCameraParameters) {
+    if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
+      if (event.getRepeatCount() == 0) {
+        CameraManager.get().requestAutoFocus(mHandler,R.id.auto_focus);
+      }
+      return true;
     }
-    return true;
-  }
- else   if (keyCode == KeyEvent.KEYCODE_CAMERA || keyCode == KeyEvent.KEYCODE_SEARCH) {
-    if (event.getRepeatCount() == 0) {
-      CameraManager.get().requestPreviewFrame(mSaveThread.mHandler,R.id.save);
+ else     if (keyCode == KeyEvent.KEYCODE_CAMERA || keyCode == KeyEvent.KEYCODE_SEARCH) {
+      if (event.getRepeatCount() == 0) {
+        CameraManager.get().requestPreviewFrame(mSaveThread.mHandler,R.id.save);
+      }
+      return true;
     }
-    return true;
   }
   return super.onKeyDown(keyCode,event);
 }
