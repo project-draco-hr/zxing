@@ -1,8 +1,8 @@
 {
-  mLastResult=rawResult;
+  lastResult=rawResult;
   playBeepSoundAndVibrate();
   drawResultPoints(barcode,rawResult);
-switch (mSource) {
+switch (source) {
 case NATIVE_APP_INTENT:
 case PRODUCT_SEARCH_LINK:
     handleDecodeExternally(rawResult,barcode);

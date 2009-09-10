@@ -1,16 +1,16 @@
 {
   super.onCreate(icicle);
   setContentView(R.layout.help);
-  mWebView=(WebView)findViewById(R.id.help_contents);
-  mWebView.setWebViewClient(new HelpClient());
+  webView=(WebView)findViewById(R.id.help_contents);
+  webView.setWebViewClient(new HelpClient());
   if (icicle != null) {
-    mWebView.restoreState(icicle);
+    webView.restoreState(icicle);
   }
  else {
-    mWebView.loadUrl(DEFAULT_URL);
+    webView.loadUrl(DEFAULT_URL);
   }
-  mBackButton=(Button)findViewById(R.id.back_button);
-  mBackButton.setOnClickListener(mBackListener);
+  backButton=(Button)findViewById(R.id.back_button);
+  backButton.setOnClickListener(backListener);
   Button doneButton=(Button)findViewById(R.id.done_button);
-  doneButton.setOnClickListener(mDoneListener);
+  doneButton.setOnClickListener(doneListener);
 }

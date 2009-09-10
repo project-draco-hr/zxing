@@ -3,5 +3,5 @@
   Vector<BarcodeFormat> vector=new Vector<BarcodeFormat>(1);
   vector.addElement(BarcodeFormat.QR_CODE);
   hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
-  mMultiFormatReader.setHints(hints);
+  multiFormatReader.setHints(hints);
 }

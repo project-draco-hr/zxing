@@ -1,5 +1,5 @@
 {
-  TelParsedResult telResult=(TelParsedResult)mResult;
+  TelParsedResult telResult=(TelParsedResult)result;
 switch (index) {
 case 0:
     dialPhoneFromUri(telResult.getTelURI());

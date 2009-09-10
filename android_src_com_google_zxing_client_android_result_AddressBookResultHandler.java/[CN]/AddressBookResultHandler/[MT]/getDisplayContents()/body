@@ -1,5 +1,5 @@
 {
-  AddressBookParsedResult result=(AddressBookParsedResult)mResult;
+  AddressBookParsedResult result=(AddressBookParsedResult)this.result;
   StringBuffer contents=new StringBuffer();
   ParsedResult.maybeAppend(result.getNames(),contents);
   int namesLength=contents.length();

@@ -1,7 +1,7 @@
 {
 switch (message.what) {
 case R.id.auto_focus:
-    if (mState == State.PREVIEW) {
+    if (state == State.PREVIEW) {
       CameraManager.get().requestAutoFocus(this,R.id.auto_focus);
     }
   break;
@@ -9,22 +9,22 @@ case R.id.restart_preview:
 restartPreviewAndDecode();
 break;
 case R.id.decode_succeeded:
-mState=State.SUCCESS;
+state=State.SUCCESS;
 Bundle bundle=message.getData();
 Bitmap barcode=bundle.getParcelable(DecodeThread.BARCODE_BITMAP);
-mActivity.handleDecode((Result)message.obj,barcode);
+activity.handleDecode((Result)message.obj,barcode);
 break;
 case R.id.decode_failed:
-mState=State.PREVIEW;
-CameraManager.get().requestPreviewFrame(mDecodeThread.mHandler,R.id.decode);
+state=State.PREVIEW;
+CameraManager.get().requestPreviewFrame(decodeThread.handler,R.id.decode);
 break;
 case R.id.return_scan_result:
-mActivity.setResult(Activity.RESULT_OK,(Intent)message.obj);
-mActivity.finish();
+activity.setResult(Activity.RESULT_OK,(Intent)message.obj);
+activity.finish();
 break;
 case R.id.launch_product_query:
 String url=(String)message.obj;
-mActivity.startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));
+activity.startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));
 break;
 }
 }

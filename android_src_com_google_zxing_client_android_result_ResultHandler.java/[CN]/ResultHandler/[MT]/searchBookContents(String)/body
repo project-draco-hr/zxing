@@ -1,6 +1,6 @@
 {
   Intent intent=new Intent(Intents.SearchBookContents.ACTION);
-  intent.setClassName(mActivity,SearchBookContentsActivity.class.getName());
+  intent.setClassName(activity,SearchBookContentsActivity.class.getName());
   putExtra(intent,Intents.SearchBookContents.ISBN,isbn);
   launchIntent(intent);
 }

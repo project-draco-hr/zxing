@@ -1,6 +1,6 @@
 {
-  mContext=context;
-  mCamera=null;
-  mInitialized=false;
-  mPreviewing=false;
+  this.context=context;
+  camera=null;
+  initialized=false;
+  previewing=false;
 }

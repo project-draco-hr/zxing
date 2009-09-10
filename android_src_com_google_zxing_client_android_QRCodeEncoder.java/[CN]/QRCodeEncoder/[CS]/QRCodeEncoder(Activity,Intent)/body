@@ -1,5 +1,5 @@
 {
-  mActivity=activity;
+  this.activity=activity;
   if (!encodeContents(intent)) {
     throw new IllegalArgumentException("No valid data to encode.");
   }

@@ -1,5 +1,5 @@
 {
-  URIParsedResult uriResult=(URIParsedResult)mResult;
+  URIParsedResult uriResult=(URIParsedResult)result;
 switch (index) {
 case 0:
     openURL(uriResult.getURI());

@@ -1,7 +1,7 @@
 {
   Intent intent=new Intent(Intent.ACTION_SENDTO,Uri.parse(uri));
   if (subject == null || subject.length() == 0) {
-    putExtra(intent,"subject",mActivity.getString(R.string.msg_default_mms_subject));
+    putExtra(intent,"subject",activity.getString(R.string.msg_default_mms_subject));
   }
  else {
     putExtra(intent,"subject",subject);

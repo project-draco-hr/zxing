@@ -1,10 +1,10 @@
 {
-  mState=State.DONE;
+  state=State.DONE;
   CameraManager.get().stopPreview();
-  Message quit=Message.obtain(mDecodeThread.mHandler,R.id.quit);
+  Message quit=Message.obtain(decodeThread.handler,R.id.quit);
   quit.sendToTarget();
   try {
-    mDecodeThread.join();
+    decodeThread.join();
   }
  catch (  InterruptedException e) {
   }

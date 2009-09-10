@@ -1,7 +1,7 @@
 {
   if (keyCode == KeyEvent.KEYCODE_BACK) {
-    if (mWebView.canGoBack()) {
-      mWebView.goBack();
+    if (webView.canGoBack()) {
+      webView.goBack();
       return true;
     }
   }

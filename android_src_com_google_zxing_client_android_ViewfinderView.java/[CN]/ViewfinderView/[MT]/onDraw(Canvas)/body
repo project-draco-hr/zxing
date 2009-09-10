@@ -2,35 +2,35 @@
   Rect frame=CameraManager.get().getFramingRect();
   int width=canvas.getWidth();
   int height=canvas.getHeight();
-  mPaint.setColor(mResultBitmap != null ? mResultColor : mMaskColor);
-  mBox.set(0,0,width,frame.top);
-  canvas.drawRect(mBox,mPaint);
-  mBox.set(0,frame.top,frame.left,frame.bottom + 1);
-  canvas.drawRect(mBox,mPaint);
-  mBox.set(frame.right + 1,frame.top,width,frame.bottom + 1);
-  canvas.drawRect(mBox,mPaint);
-  mBox.set(0,frame.bottom + 1,width,height);
-  canvas.drawRect(mBox,mPaint);
-  if (mResultBitmap != null) {
-    mPaint.setAlpha(255);
-    canvas.drawBitmap(mResultBitmap,frame.left,frame.top,mPaint);
+  paint.setColor(resultBitmap != null ? resultColor : maskColor);
+  box.set(0,0,width,frame.top);
+  canvas.drawRect(box,paint);
+  box.set(0,frame.top,frame.left,frame.bottom + 1);
+  canvas.drawRect(box,paint);
+  box.set(frame.right + 1,frame.top,width,frame.bottom + 1);
+  canvas.drawRect(box,paint);
+  box.set(0,frame.bottom + 1,width,height);
+  canvas.drawRect(box,paint);
+  if (resultBitmap != null) {
+    paint.setAlpha(255);
+    canvas.drawBitmap(resultBitmap,frame.left,frame.top,paint);
   }
  else {
-    mPaint.setColor(mFrameColor);
-    mBox.set(frame.left,frame.top,frame.right + 1,frame.top + 2);
-    canvas.drawRect(mBox,mPaint);
-    mBox.set(frame.left,frame.top + 2,frame.left + 2,frame.bottom - 1);
-    canvas.drawRect(mBox,mPaint);
-    mBox.set(frame.right - 1,frame.top,frame.right + 1,frame.bottom - 1);
-    canvas.drawRect(mBox,mPaint);
-    mBox.set(frame.left,frame.bottom - 1,frame.right + 1,frame.bottom + 1);
-    canvas.drawRect(mBox,mPaint);
-    mPaint.setColor(mLaserColor);
-    mPaint.setAlpha(SCANNER_ALPHA[mScannerAlpha]);
-    mScannerAlpha=(mScannerAlpha + 1) % SCANNER_ALPHA.length;
+    paint.setColor(frameColor);
+    box.set(frame.left,frame.top,frame.right + 1,frame.top + 2);
+    canvas.drawRect(box,paint);
+    box.set(frame.left,frame.top + 2,frame.left + 2,frame.bottom - 1);
+    canvas.drawRect(box,paint);
+    box.set(frame.right - 1,frame.top,frame.right + 1,frame.bottom - 1);
+    canvas.drawRect(box,paint);
+    box.set(frame.left,frame.bottom - 1,frame.right + 1,frame.bottom + 1);
+    canvas.drawRect(box,paint);
+    paint.setColor(laserColor);
+    paint.setAlpha(SCANNER_ALPHA[scannerAlpha]);
+    scannerAlpha=(scannerAlpha + 1) % SCANNER_ALPHA.length;
     int middle=frame.height() / 2 + frame.top;
-    mBox.set(frame.left + 2,middle - 1,frame.right - 1,middle + 2);
-    canvas.drawRect(mBox,mPaint);
-    postInvalidateDelayed(ANIMATION_DELAY,mBox.left,mBox.top,mBox.right,mBox.bottom);
+    box.set(frame.left + 2,middle - 1,frame.right - 1,middle + 2);
+    canvas.drawRect(box,paint);
+    postInvalidateDelayed(ANIMATION_DELAY,box.left,box.top,box.right,box.bottom);
   }
 }

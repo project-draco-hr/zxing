@@ -1,5 +1,5 @@
 {
-  String contents=mResult.getDisplayResult();
+  String contents=result.getDisplayResult();
   contents=contents.replace("\r","");
   return PhoneNumberUtils.formatNumber(contents);
 }

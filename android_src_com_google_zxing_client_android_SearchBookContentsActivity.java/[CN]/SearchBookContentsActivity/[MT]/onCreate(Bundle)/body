@@ -3,23 +3,23 @@
   CookieSyncManager.createInstance(this);
   CookieManager.getInstance().removeExpiredCookie();
   Intent intent=getIntent();
-  if (intent == null || (!intent.getAction().equals(Intents.SearchBookContents.ACTION) && !intent.getAction().equals(Intents.SearchBookContents.DEPRECATED_ACTION))) {
+  if (intent == null || (!intent.getAction().equals(Intents.SearchBookContents.ACTION))) {
     finish();
     return;
   }
-  mISBN=intent.getStringExtra(Intents.SearchBookContents.ISBN);
-  setTitle(getString(R.string.sbc_name) + ": ISBN " + mISBN);
+  isbn=intent.getStringExtra(Intents.SearchBookContents.ISBN);
+  setTitle(getString(R.string.sbc_name) + ": ISBN " + isbn);
   setContentView(R.layout.search_book_contents);
-  mQueryTextView=(EditText)findViewById(R.id.query_text_view);
+  queryTextView=(EditText)findViewById(R.id.query_text_view);
   String initialQuery=intent.getStringExtra(Intents.SearchBookContents.QUERY);
   if (initialQuery != null && initialQuery.length() > 0) {
-    mQueryTextView.setText(initialQuery);
+    queryTextView.setText(initialQuery);
   }
-  mQueryTextView.setOnKeyListener(mKeyListener);
-  mQueryButton=(Button)findViewById(R.id.query_button);
-  mQueryButton.setOnClickListener(mButtonListener);
-  mResultListView=(ListView)findViewById(R.id.result_list_view);
+  queryTextView.setOnKeyListener(keyListener);
+  queryButton=(Button)findViewById(R.id.query_button);
+  queryButton.setOnClickListener(buttonListener);
+  resultListView=(ListView)findViewById(R.id.result_list_view);
   LayoutInflater factory=LayoutInflater.from(this);
-  mHeaderView=(TextView)factory.inflate(R.layout.search_book_contents_header,mResultListView,false);
-  mResultListView.addHeaderView(mHeaderView);
+  headerView=(TextView)factory.inflate(R.layout.search_book_contents_header,resultListView,false);
+  resultListView.addHeaderView(headerView);
 }

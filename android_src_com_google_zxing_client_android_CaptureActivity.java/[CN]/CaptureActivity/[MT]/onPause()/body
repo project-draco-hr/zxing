@@ -1,8 +1,8 @@
 {
   super.onPause();
-  if (mHandler != null) {
-    mHandler.quitSynchronously();
-    mHandler=null;
+  if (handler != null) {
+    handler.quitSynchronously();
+    handler=null;
   }
   CameraManager.get().closeDriver();
 }

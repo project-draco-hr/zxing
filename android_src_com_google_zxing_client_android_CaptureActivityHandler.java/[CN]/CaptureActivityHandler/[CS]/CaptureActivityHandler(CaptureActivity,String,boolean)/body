@@ -1,8 +1,8 @@
 {
-  mActivity=activity;
-  mDecodeThread=new DecodeThread(activity,decodeMode);
-  mDecodeThread.start();
-  mState=State.SUCCESS;
+  this.activity=activity;
+  decodeThread=new DecodeThread(activity,decodeMode);
+  decodeThread.start();
+  state=State.SUCCESS;
   CameraManager.get().startPreview();
   if (beginScanning) {
     restartPreviewAndDecode();

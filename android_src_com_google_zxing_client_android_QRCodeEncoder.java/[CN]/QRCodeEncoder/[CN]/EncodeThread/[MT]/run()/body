@@ -1,6 +1,6 @@
 {
   try {
-    ByteMatrix result=new MultiFormatWriter().encode(mContents,mFormat,mPixelResolution,mPixelResolution);
+    ByteMatrix result=new MultiFormatWriter().encode(contents,format,pixelResolution,pixelResolution);
     int width=result.getWidth();
     int height=result.getHeight();
     byte[][] array=result.getArray();
@@ -13,18 +13,18 @@
     }
     Bitmap bitmap=Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
     bitmap.setPixels(pixels,0,width,0,0,width,height);
-    Message message=Message.obtain(mHandler,R.id.encode_succeeded);
+    Message message=Message.obtain(handler,R.id.encode_succeeded);
     message.obj=bitmap;
     message.sendToTarget();
   }
  catch (  WriterException e) {
     Log.e(TAG,e.toString());
-    Message message=Message.obtain(mHandler,R.id.encode_failed);
+    Message message=Message.obtain(handler,R.id.encode_failed);
     message.sendToTarget();
   }
 catch (  IllegalArgumentException e) {
     Log.e(TAG,e.toString());
-    Message message=Message.obtain(mHandler,R.id.encode_failed);
+    Message message=Message.obtain(handler,R.id.encode_failed);
     message.sendToTarget();
   }
 }

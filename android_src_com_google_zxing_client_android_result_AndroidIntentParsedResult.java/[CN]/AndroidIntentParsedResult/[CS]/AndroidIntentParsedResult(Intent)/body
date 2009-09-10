@@ -1,4 +1,0 @@
-{
-  super(ParsedResultType.ANDROID_INTENT);
-  mIntent=intent;
-}

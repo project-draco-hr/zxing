@@ -1,11 +1,11 @@
 {
   super(context,attrs);
-  mPaint=new Paint();
-  mBox=new Rect();
+  paint=new Paint();
+  box=new Rect();
   Resources resources=getResources();
-  mMaskColor=resources.getColor(R.color.viewfinder_mask);
-  mResultColor=resources.getColor(R.color.result_view);
-  mFrameColor=resources.getColor(R.color.viewfinder_frame);
-  mLaserColor=resources.getColor(R.color.viewfinder_laser);
-  mScannerAlpha=0;
+  maskColor=resources.getColor(R.color.viewfinder_mask);
+  resultColor=resources.getColor(R.color.result_view);
+  frameColor=resources.getColor(R.color.viewfinder_frame);
+  laserColor=resources.getColor(R.color.viewfinder_laser);
+  scannerAlpha=0;
 }

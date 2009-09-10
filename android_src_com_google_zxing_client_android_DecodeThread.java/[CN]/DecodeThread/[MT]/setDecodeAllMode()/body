@@ -10,5 +10,5 @@
   vector.addElement(BarcodeFormat.ITF);
   vector.addElement(BarcodeFormat.QR_CODE);
   hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
-  mMultiFormatReader.setHints(hints);
+  multiFormatReader.setHints(hints);
 }

@@ -2,33 +2,33 @@
   if (type.equals(Contents.Type.TEXT)) {
     String data=intent.getStringExtra(Intents.Encode.DATA);
     if (data != null && data.length() > 0) {
-      mContents=data;
-      mDisplayContents=data;
-      mTitle=mActivity.getString(R.string.contents_text);
+      contents=data;
+      displayContents=data;
+      title=activity.getString(R.string.contents_text);
     }
   }
  else   if (type.equals(Contents.Type.EMAIL)) {
     String data=intent.getStringExtra(Intents.Encode.DATA);
     if (data != null && data.length() > 0) {
-      mContents="mailto:" + data;
-      mDisplayContents=data;
-      mTitle=mActivity.getString(R.string.contents_email);
+      contents="mailto:" + data;
+      displayContents=data;
+      title=activity.getString(R.string.contents_email);
     }
   }
  else   if (type.equals(Contents.Type.PHONE)) {
     String data=intent.getStringExtra(Intents.Encode.DATA);
     if (data != null && data.length() > 0) {
-      mContents="tel:" + data;
-      mDisplayContents=PhoneNumberUtils.formatNumber(data);
-      mTitle=mActivity.getString(R.string.contents_phone);
+      contents="tel:" + data;
+      displayContents=PhoneNumberUtils.formatNumber(data);
+      title=activity.getString(R.string.contents_phone);
     }
   }
  else   if (type.equals(Contents.Type.SMS)) {
     String data=intent.getStringExtra(Intents.Encode.DATA);
     if (data != null && data.length() > 0) {
-      mContents="sms:" + data;
-      mDisplayContents=PhoneNumberUtils.formatNumber(data);
-      mTitle=mActivity.getString(R.string.contents_sms);
+      contents="sms:" + data;
+      displayContents=PhoneNumberUtils.formatNumber(data);
+      title=activity.getString(R.string.contents_sms);
     }
   }
  else   if (type.equals(Contents.Type.CONTACT)) {
@@ -63,13 +63,13 @@
       }
       if (newDisplayContents.length() > 0) {
         newContents.append(';');
-        mContents=newContents.toString();
-        mDisplayContents=newDisplayContents.toString();
-        mTitle=mActivity.getString(R.string.contents_contact);
+        contents=newContents.toString();
+        displayContents=newDisplayContents.toString();
+        title=activity.getString(R.string.contents_contact);
       }
  else {
-        mContents=null;
-        mDisplayContents=null;
+        contents=null;
+        displayContents=null;
       }
     }
   }
@@ -79,9 +79,9 @@
       float latitude=bundle.getFloat("LAT",Float.MAX_VALUE);
       float longitude=bundle.getFloat("LONG",Float.MAX_VALUE);
       if (latitude != Float.MAX_VALUE && longitude != Float.MAX_VALUE) {
-        mContents="geo:" + latitude + ','+ longitude;
-        mDisplayContents=latitude + "," + longitude;
-        mTitle=mActivity.getString(R.string.contents_location);
+        contents="geo:" + latitude + ','+ longitude;
+        displayContents=latitude + "," + longitude;
+        title=activity.getString(R.string.contents_location);
       }
     }
   }

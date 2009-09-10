@@ -7,15 +7,15 @@
   boolean hasPhoneNumber=phoneNumbers != null && phoneNumbers.length > 0;
   String[] emails=addressResult.getEmails();
   boolean hasEmailAddress=emails != null && emails.length > 0;
-  mFields=new boolean[MAX_BUTTON_COUNT];
-  mFields[0]=true;
-  mFields[1]=hasAddress;
-  mFields[2]=hasPhoneNumber;
-  mFields[3]=hasEmailAddress;
-  mButtonCount=0;
+  fields=new boolean[MAX_BUTTON_COUNT];
+  fields[0]=true;
+  fields[1]=hasAddress;
+  fields[2]=hasPhoneNumber;
+  fields[3]=hasEmailAddress;
+  buttonCount=0;
   for (int x=0; x < MAX_BUTTON_COUNT; x++) {
-    if (mFields[x]) {
-      mButtonCount++;
+    if (fields[x]) {
+      buttonCount++;
     }
   }
 }

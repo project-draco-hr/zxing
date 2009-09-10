@@ -1,5 +1,5 @@
 {
-  ISBNParsedResult isbnResult=(ISBNParsedResult)mResult;
+  ISBNParsedResult isbnResult=(ISBNParsedResult)result;
 switch (index) {
 case 0:
     openProductSearch(isbnResult.getISBN());
@@ -11,7 +11,7 @@ case 2:
 searchBookContents(isbnResult.getISBN());
 break;
 case 3:
-String url=mCustomProductSearch.replace("%s",isbnResult.getISBN());
+String url=customProductSearch.replace("%s",isbnResult.getISBN());
 openURL(url);
 break;
 }

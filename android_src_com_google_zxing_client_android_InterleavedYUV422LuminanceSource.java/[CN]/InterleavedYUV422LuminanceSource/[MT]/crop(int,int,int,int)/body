@@ -1,0 +1,3 @@
+{
+  return new InterleavedYUV422LuminanceSource(yuvData,dataWidth,dataHeight,left,top,width,height);
+}

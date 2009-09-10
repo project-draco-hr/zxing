@@ -1,5 +1,5 @@
 {
-  GeoParsedResult geoResult=(GeoParsedResult)mResult;
+  GeoParsedResult geoResult=(GeoParsedResult)result;
 switch (index) {
 case 0:
     openMap(geoResult.getGeoURI());

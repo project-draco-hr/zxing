@@ -1,4 +1,3 @@
 {
-  ParsedResult result=ResultParser.parseResult(rawResult);
-  return result;
+  return ResultParser.parseResult(rawResult);
 }

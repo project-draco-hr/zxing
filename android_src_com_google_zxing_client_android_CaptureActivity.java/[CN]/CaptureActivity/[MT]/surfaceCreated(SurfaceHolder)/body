@@ -1,6 +1,6 @@
 {
-  if (!mHasSurface) {
-    mHasSurface=true;
+  if (!hasSurface) {
+    hasSurface=true;
     initCamera(holder);
   }
 }

@@ -3,6 +3,6 @@
   addPreferencesFromResource(R.xml.preferences);
   PreferenceScreen preferences=getPreferenceScreen();
   preferences.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-  mDecode1D=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_1D);
-  mDecodeQR=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_QR);
+  decode1D=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_1D);
+  decodeQR=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_QR);
 }

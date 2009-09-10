@@ -6,5 +6,5 @@
   vector.addElement(BarcodeFormat.EAN_13);
   vector.addElement(BarcodeFormat.EAN_8);
   hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
-  mMultiFormatReader.setHints(hints);
+  multiFormatReader.setHints(hints);
 }

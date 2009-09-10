@@ -1,5 +1,5 @@
 {
-  mISBN=isbn;
-  mQuery=query;
-  mHandler=handler;
+  this.isbn=isbn;
+  this.query=query;
+  this.handler=handler;
 }

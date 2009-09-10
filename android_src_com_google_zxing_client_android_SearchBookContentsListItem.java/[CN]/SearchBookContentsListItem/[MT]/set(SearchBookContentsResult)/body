@@ -1,5 +1,5 @@
 {
-  mPageNumberView.setText(result.getPageNumber());
+  pageNumberView.setText(result.getPageNumber());
   String snippet=result.getSnippet();
   if (snippet.length() > 0) {
     if (result.getValidSnippet()) {
@@ -17,13 +17,13 @@
         styledSnippet.setSpan(boldSpan,pos,pos + queryLength,0);
         offset=pos + queryLength;
       }
-      mSnippetView.setText(styledSnippet);
+      snippetView.setText(styledSnippet);
     }
  else {
-      mSnippetView.setText(snippet);
+      snippetView.setText(snippet);
     }
   }
  else {
-    mSnippetView.setText("");
+    snippetView.setText("");
   }
 }

@@ -5,11 +5,11 @@
   window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
   setContentView(R.layout.capture);
   CameraManager.init(getApplication());
-  mViewfinderView=(ViewfinderView)findViewById(R.id.viewfinder_view);
-  mResultView=findViewById(R.id.result_view);
-  mStatusView=findViewById(R.id.status_view);
-  mHandler=null;
-  mLastResult=null;
-  mHasSurface=false;
+  viewfinderView=(ViewfinderView)findViewById(R.id.viewfinder_view);
+  resultView=findViewById(R.id.result_view);
+  statusView=findViewById(R.id.status_view);
+  handler=null;
+  lastResult=null;
+  hasSurface=false;
   showHelpOnFirstLaunch();
 }

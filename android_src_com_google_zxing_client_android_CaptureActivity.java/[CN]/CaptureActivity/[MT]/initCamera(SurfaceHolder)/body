@@ -6,8 +6,8 @@
     Log.w(TAG,ioe);
     return;
   }
-  if (mHandler == null) {
-    boolean beginScanning=mLastResult == null;
-    mHandler=new CaptureActivityHandler(this,mDecodeMode,beginScanning);
+  if (handler == null) {
+    boolean beginScanning=lastResult == null;
+    handler=new CaptureActivityHandler(this,decodeMode,beginScanning);
   }
 }

@@ -1,4 +1,4 @@
 {
-  String contents=mResult.getDisplayResult();
+  String contents=result.getDisplayResult();
   return contents.replace("\r","");
 }

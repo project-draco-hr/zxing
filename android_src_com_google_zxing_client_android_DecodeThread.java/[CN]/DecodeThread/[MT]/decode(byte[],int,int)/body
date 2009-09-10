@@ -2,11 +2,10 @@
   long start=System.currentTimeMillis();
   boolean success;
   Result rawResult=null;
-  Rect rect=CameraManager.get().getFramingRect();
-  YUVLuminanceSource source=new YUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
+  BaseLuminanceSource source=CameraManager.get().buildLuminanceSource(data,width,height);
   BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
   try {
-    rawResult=mMultiFormatReader.decodeWithState(bitmap);
+    rawResult=multiFormatReader.decodeWithState(bitmap);
     success=true;
   }
  catch (  ReaderException e) {
@@ -15,14 +14,14 @@
   long end=System.currentTimeMillis();
   if (success) {
     Log.v(TAG,"Found barcode (" + (end - start) + " ms):\n"+ rawResult.toString());
-    Message message=Message.obtain(mActivity.mHandler,R.id.decode_succeeded,rawResult);
+    Message message=Message.obtain(activity.handler,R.id.decode_succeeded,rawResult);
     Bundle bundle=new Bundle();
-    bundle.putParcelable(BARCODE_BITMAP,source.renderToBitmap());
+    bundle.putParcelable(BARCODE_BITMAP,source.renderCroppedGreyscaleBitmap());
     message.setData(bundle);
     message.sendToTarget();
   }
  else {
-    Message message=Message.obtain(mActivity.mHandler,R.id.decode_failed);
+    Message message=Message.obtain(activity.handler,R.id.decode_failed);
     message.sendToTarget();
   }
 }

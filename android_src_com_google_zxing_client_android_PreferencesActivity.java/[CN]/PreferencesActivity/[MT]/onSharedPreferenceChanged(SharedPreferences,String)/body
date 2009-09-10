@@ -1,10 +1,10 @@
 {
   if (key.equals(KEY_DECODE_1D)) {
-    mDecodeQR.setEnabled(mDecode1D.isChecked());
-    mDecodeQR.setChecked(true);
+    decodeQR.setEnabled(decode1D.isChecked());
+    decodeQR.setChecked(true);
   }
  else   if (key.equals(KEY_DECODE_QR)) {
-    mDecode1D.setEnabled(mDecodeQR.isChecked());
-    mDecode1D.setChecked(true);
+    decode1D.setEnabled(decodeQR.isChecked());
+    decode1D.setChecked(true);
   }
 }

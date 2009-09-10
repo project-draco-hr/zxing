@@ -1,9 +1,9 @@
 {
-  if (mCamera == null) {
-    mCamera=Camera.open();
-    mCamera.setPreviewDisplay(holder);
-    if (!mInitialized) {
-      mInitialized=true;
+  if (camera == null) {
+    camera=Camera.open();
+    camera.setPreviewDisplay(holder);
+    if (!initialized) {
+      initialized=true;
       getScreenResolution();
     }
     setCameraParameters();

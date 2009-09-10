@@ -1,6 +1,6 @@
 {
-  mContents=contents;
-  mHandler=handler;
-  mPixelResolution=pixelResolution;
-  mFormat=format;
+  this.contents=contents;
+  this.handler=handler;
+  this.pixelResolution=pixelResolution;
+  this.format=format;
 }

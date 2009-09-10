@@ -1,13 +1,13 @@
 {
 switch (index) {
 case 0:
-    webSearch(mResult.getDisplayResult());
+    webSearch(result.getDisplayResult());
   break;
 case 1:
-shareByEmail(mResult.getDisplayResult());
+shareByEmail(result.getDisplayResult());
 break;
 case 2:
-shareBySMS(mResult.getDisplayResult());
+shareBySMS(result.getDisplayResult());
 break;
 }
 }

@@ -1,7 +1,7 @@
 {
-  mStatusView.setVisibility(View.GONE);
-  mViewfinderView.setVisibility(View.GONE);
-  mResultView.setVisibility(View.VISIBLE);
+  statusView.setVisibility(View.GONE);
+  viewfinderView.setVisibility(View.GONE);
+  resultView.setVisibility(View.VISIBLE);
   ImageView barcodeImageView=(ImageView)findViewById(R.id.barcode_image_view);
   barcodeImageView.setMaxWidth(MAX_RESULT_IMAGE_SIZE);
   barcodeImageView.setMaxHeight(MAX_RESULT_IMAGE_SIZE);
@@ -32,7 +32,7 @@
       button.setVisibility(View.GONE);
     }
   }
-  if (mCopyToClipboard) {
+  if (copyToClipboard) {
     ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
     clipboard.setText(displayContents);
   }

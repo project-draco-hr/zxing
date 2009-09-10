@@ -1,4 +1,4 @@
 {
-  mResultHandler=resultHandler;
-  mIndex=index;
+  this.resultHandler=resultHandler;
+  this.index=index;
 }

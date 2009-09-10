@@ -1,10 +1,10 @@
 {
-  if (mProgressDialog != null) {
-    mProgressDialog.dismiss();
-    mProgressDialog=null;
+  if (progressDialog != null) {
+    progressDialog.dismiss();
+    progressDialog=null;
   }
   AlertDialog.Builder builder=new AlertDialog.Builder(this);
   builder.setMessage(message);
-  builder.setPositiveButton(R.string.button_ok,mClickListener);
+  builder.setPositiveButton(R.string.button_ok,clickListener);
   builder.show();
 }

@@ -1,4 +1,4 @@
 {
-  mResult=result;
-  mActivity=activity;
+  this.result=result;
+  this.activity=activity;
 }

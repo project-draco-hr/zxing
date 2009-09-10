@@ -1,13 +1,13 @@
 {
   if (keyCode == KeyEvent.KEYCODE_BACK) {
-    if (mSource == Source.NATIVE_APP_INTENT) {
+    if (source == Source.NATIVE_APP_INTENT) {
       setResult(RESULT_CANCELED);
       finish();
       return true;
     }
- else     if ((mSource == Source.NONE || mSource == Source.ZXING_LINK) && mLastResult != null) {
+ else     if ((source == Source.NONE || source == Source.ZXING_LINK) && lastResult != null) {
       resetStatusView();
-      mHandler.sendEmptyMessage(R.id.restart_preview);
+      handler.sendEmptyMessage(R.id.restart_preview);
       return true;
     }
   }

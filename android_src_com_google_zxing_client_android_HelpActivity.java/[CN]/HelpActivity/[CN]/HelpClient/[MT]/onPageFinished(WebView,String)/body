@@ -1,4 +1,4 @@
 {
   setTitle(view.getTitle());
-  mBackButton.setEnabled(view.canGoBack());
+  backButton.setEnabled(view.canGoBack());
 }
