@@ -1,10 +1,10 @@
 {
-  FormatInformation expected=FormatInformation.decodeFormatInformation(0x2BED ^ 0x5412);
+  FormatInformation expected=FormatInformation.decodeFormatInformation(MASKED_TEST_FORMAT_INFO);
   assertEquals((byte)0x07,expected.getDataMask());
   assertEquals(ErrorCorrectionLevel.Q,expected.getErrorCorrectionLevel());
-  assertEquals(expected,FormatInformation.decodeFormatInformation(0x2BED));
-  assertEquals(expected,FormatInformation.decodeFormatInformation(0x2BEF ^ 0x5412));
-  assertEquals(expected,FormatInformation.decodeFormatInformation(0x2BEE ^ 0x5412));
-  assertEquals(expected,FormatInformation.decodeFormatInformation(0x2BEA ^ 0x5412));
-  assertNull(FormatInformation.decodeFormatInformation(0x2BE2 ^ 0x5412));
+  assertEquals(expected,FormatInformation.decodeFormatInformation(UNMASKED_TEST_FORMAT_INFO));
+  assertEquals(expected,FormatInformation.decodeFormatInformation(MASKED_TEST_FORMAT_INFO ^ 0x01));
+  assertEquals(expected,FormatInformation.decodeFormatInformation(MASKED_TEST_FORMAT_INFO ^ 0x03));
+  assertEquals(expected,FormatInformation.decodeFormatInformation(MASKED_TEST_FORMAT_INFO ^ 0x07));
+  assertNull(FormatInformation.decodeFormatInformation(MASKED_TEST_FORMAT_INFO ^ 0x0F));
 }

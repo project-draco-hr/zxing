@@ -1,14 +1,13 @@
 {
-  int unmaskedFormatInfo=rawFormatInfo ^ FORMAT_INFO_MASK_QR;
   int bestDifference=Integer.MAX_VALUE;
   int bestFormatInfo=0;
   for (int i=0; i < FORMAT_INFO_DECODE_LOOKUP.length; i++) {
     int[] decodeInfo=FORMAT_INFO_DECODE_LOOKUP[i];
     int targetInfo=decodeInfo[0];
-    if (targetInfo == unmaskedFormatInfo) {
+    if (targetInfo == maskedFormatInfo) {
       return new FormatInformation(decodeInfo[1]);
     }
-    int bitsDifference=numBitsDiffering(unmaskedFormatInfo,targetInfo);
+    int bitsDifference=numBitsDiffering(maskedFormatInfo,targetInfo);
     if (bitsDifference < bestDifference) {
       bestFormatInfo=decodeInfo[1];
       bestDifference=bitsDifference;
