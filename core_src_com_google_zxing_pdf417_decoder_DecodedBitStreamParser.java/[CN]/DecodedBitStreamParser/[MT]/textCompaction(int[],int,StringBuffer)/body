@@ -2,10 +2,9 @@
   int[] textCompactionData=new int[codewords[0] << 1];
   int[] byteCompactionData=new int[codewords[0] << 1];
   int index=0;
-  int code=0;
   boolean end=false;
   while ((codeIndex < codewords[0]) && !end) {
-    code=codewords[codeIndex++];
+    int code=codewords[codeIndex++];
     if (code < TEXT_COMPACTION_MODE_LATCH) {
       textCompactionData[index]=code / 30;
       textCompactionData[index + 1]=code % 30;

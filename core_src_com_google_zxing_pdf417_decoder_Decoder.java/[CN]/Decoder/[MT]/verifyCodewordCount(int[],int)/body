@@ -14,5 +14,4 @@
       throw ReaderException.getInstance();
     }
   }
-  return 1;
 }

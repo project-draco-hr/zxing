@@ -4,9 +4,8 @@
   int halfWidth=width >> 1;
   ResultPoint[] result=new ResultPoint[8];
   boolean found=false;
-  int[] loc=null;
   for (int i=height - 1; i > 0; i--) {
-    loc=findGuardPattern(matrix,halfWidth,i,halfWidth,true,START_PATTERN_REVERSE);
+    int[] loc=findGuardPattern(matrix,halfWidth,i,halfWidth,true,START_PATTERN_REVERSE);
     if (loc != null) {
       result[0]=new ResultPoint(loc[1],i);
       result[4]=new ResultPoint(loc[0],i);
@@ -17,7 +16,7 @@
   if (found) {
     found=false;
     for (int i=0; i < height; i++) {
-      loc=findGuardPattern(matrix,halfWidth,i,halfWidth,true,START_PATTERN_REVERSE);
+      int[] loc=findGuardPattern(matrix,halfWidth,i,halfWidth,true,START_PATTERN_REVERSE);
       if (loc != null) {
         result[1]=new ResultPoint(loc[1],i);
         result[5]=new ResultPoint(loc[0],i);
@@ -29,7 +28,7 @@
   if (found) {
     found=false;
     for (int i=height - 1; i > 0; i--) {
-      loc=findGuardPattern(matrix,0,i,halfWidth,false,STOP_PATTERN_REVERSE);
+      int[] loc=findGuardPattern(matrix,0,i,halfWidth,false,STOP_PATTERN_REVERSE);
       if (loc != null) {
         result[2]=new ResultPoint(loc[0],i);
         result[6]=new ResultPoint(loc[1],i);
@@ -41,7 +40,7 @@
   if (found) {
     found=false;
     for (int i=0; i < height; i++) {
-      loc=findGuardPattern(matrix,0,i,halfWidth,false,STOP_PATTERN_REVERSE);
+      int[] loc=findGuardPattern(matrix,0,i,halfWidth,false,STOP_PATTERN_REVERSE);
       if (loc != null) {
         result[3]=new ResultPoint(loc[0],i);
         result[7]=new ResultPoint(loc[1],i);

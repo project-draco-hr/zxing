@@ -4,10 +4,9 @@
     long value=0;
     char[] decodedData=new char[6];
     int[] byteCompactedCodewords=new int[6];
-    int code=0;
     boolean end=false;
     while ((codeIndex < codewords[0]) && !end) {
-      code=codewords[codeIndex++];
+      int code=codewords[codeIndex++];
       if (code < TEXT_COMPACTION_MODE_LATCH) {
         byteCompactedCodewords[count]=code;
         count++;
@@ -36,10 +35,9 @@
  else   if (mode == BYTE_COMPACTION_MODE_LATCH_6) {
     int count=0;
     long value=0;
-    int code=0;
     boolean end=false;
     while ((codeIndex < codewords[0]) && !end) {
-      code=codewords[codeIndex++];
+      int code=codewords[codeIndex++];
       if (code < TEXT_COMPACTION_MODE_LATCH) {
         count+=1;
         value*=900;
