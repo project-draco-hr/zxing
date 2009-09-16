@@ -15,37 +15,45 @@
     response.sendRedirect("badurl.jspx");
     return;
   }
-  HttpGet getRequest=new HttpGet(imageURI);
+  HttpUriRequest getRequest=new HttpGet(imageURI);
   getRequest.addHeader("Connection","close");
+  HttpResponse getResponse;
   try {
-    HttpResponse getResponse=client.execute(getRequest);
-    if (getResponse.getStatusLine().getStatusCode() != HttpServletResponse.SC_OK) {
-      response.sendRedirect("badurl.jspx");
-      return;
-    }
-    if (!isSizeOK(getResponse)) {
-      response.sendRedirect("badimage.jspx");
-      return;
-    }
-    log.info("Decoding " + imageURI);
-    InputStream is=getResponse.getEntity().getContent();
-    try {
-      processStream(is,request,response);
-    }
-  finally {
-      is.close();
-    }
+    getResponse=client.execute(getRequest);
   }
  catch (  IllegalArgumentException iae) {
     getRequest.abort();
     response.sendRedirect("badurl.jspx");
+    return;
   }
 catch (  SocketException se) {
     getRequest.abort();
     response.sendRedirect("badurl.jspx");
+    return;
   }
 catch (  UnknownHostException uhe) {
     getRequest.abort();
     response.sendRedirect("badurl.jspx");
+    return;
+  }
+  if (getResponse.getStatusLine().getStatusCode() != HttpServletResponse.SC_OK) {
+    response.sendRedirect("badurl.jspx");
+    return;
+  }
+  if (!isSizeOK(getResponse)) {
+    response.sendRedirect("badimage.jspx");
+    return;
+  }
+  log.info("Decoding " + imageURI);
+  HttpEntity entity=getResponse.getEntity();
+  InputStream is=entity.getContent();
+  try {
+    processStream(is,request,response);
+  }
+  finally {
+    entity.consumeContent();
+    is.close();
+    connectionManager.closeExpiredConnections();
+    connectionManager.closeIdleConnections(0L,TimeUnit.MILLISECONDS);
   }
 }

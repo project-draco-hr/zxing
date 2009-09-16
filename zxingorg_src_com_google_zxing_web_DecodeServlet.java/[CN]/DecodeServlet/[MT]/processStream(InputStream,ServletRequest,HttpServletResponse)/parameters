@@ -1,3 +1,3 @@
 InputStream is
-HttpServletRequest request
+ServletRequest request
 HttpServletResponse response
