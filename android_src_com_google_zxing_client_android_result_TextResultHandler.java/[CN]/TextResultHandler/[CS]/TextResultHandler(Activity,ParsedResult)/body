@@ -1,3 +1,5 @@
 {
   super(activity,result);
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
+  customProductSearch=prefs.getString(PreferencesActivity.KEY_CUSTOM_PRODUCT_SEARCH,null);
 }

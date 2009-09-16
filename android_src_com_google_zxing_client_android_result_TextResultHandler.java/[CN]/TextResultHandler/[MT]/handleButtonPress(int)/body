@@ -1,13 +1,18 @@
 {
+  String text=result.getDisplayResult();
 switch (index) {
 case 0:
-    webSearch(result.getDisplayResult());
+    webSearch(text);
   break;
 case 1:
-shareByEmail(result.getDisplayResult());
+shareByEmail(text);
 break;
 case 2:
-shareBySMS(result.getDisplayResult());
+shareBySMS(text);
+break;
+case 3:
+String url=customProductSearch.replace("%s",text);
+openURL(url);
 break;
 }
 }
