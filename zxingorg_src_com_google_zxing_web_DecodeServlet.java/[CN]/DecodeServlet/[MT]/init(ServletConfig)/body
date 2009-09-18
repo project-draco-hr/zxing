@@ -1,13 +1,11 @@
 {
   Logger logger=Logger.getLogger("com.google.zxing");
   logger.addHandler(new ServletContextLogHandler(servletConfig.getServletContext()));
-  HttpParams params=new BasicHttpParams();
+  params=new BasicHttpParams();
   HttpProtocolParams.setVersion(params,HttpVersion.HTTP_1_1);
-  SchemeRegistry registry=new SchemeRegistry();
+  registry=new SchemeRegistry();
   registry.register(new Scheme("http",PlainSocketFactory.getSocketFactory(),80));
   registry.register(new Scheme("https",SSLSocketFactory.getSocketFactory(),443));
-  connectionManager=new ThreadSafeClientConnManager(params,registry);
-  client=new DefaultHttpClient(connectionManager,params);
   diskFileItemFactory=new DiskFileItemFactory();
   log.info("DecodeServlet configured");
 }
