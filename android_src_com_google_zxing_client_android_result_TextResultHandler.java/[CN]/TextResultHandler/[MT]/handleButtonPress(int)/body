@@ -1,5 +1,5 @@
 {
-  String text=result.getDisplayResult();
+  String text=getResult().getDisplayResult();
 switch (index) {
 case 0:
     webSearch(text);

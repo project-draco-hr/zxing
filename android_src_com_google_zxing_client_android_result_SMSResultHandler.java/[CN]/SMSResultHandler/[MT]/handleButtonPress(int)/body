@@ -1,5 +1,5 @@
 {
-  SMSParsedResult smsResult=(SMSParsedResult)result;
+  SMSParsedResult smsResult=(SMSParsedResult)getResult();
 switch (index) {
 case 0:
     sendSMS(smsResult.getNumber(),smsResult.getBody());

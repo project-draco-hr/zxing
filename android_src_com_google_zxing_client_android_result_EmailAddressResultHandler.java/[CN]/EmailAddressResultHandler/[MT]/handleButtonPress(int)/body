@@ -1,5 +1,5 @@
 {
-  EmailAddressParsedResult emailResult=(EmailAddressParsedResult)result;
+  EmailAddressParsedResult emailResult=(EmailAddressParsedResult)getResult();
 switch (index) {
 case 0:
     sendEmailFromUri(emailResult.getMailtoURI(),null,null);

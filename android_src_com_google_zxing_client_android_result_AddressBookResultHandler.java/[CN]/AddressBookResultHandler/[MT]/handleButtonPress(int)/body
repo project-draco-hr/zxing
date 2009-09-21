@@ -1,5 +1,5 @@
 {
-  AddressBookParsedResult addressResult=(AddressBookParsedResult)result;
+  AddressBookParsedResult addressResult=(AddressBookParsedResult)getResult();
   int action=mapIndexToAction(index);
 switch (action) {
 case 0:

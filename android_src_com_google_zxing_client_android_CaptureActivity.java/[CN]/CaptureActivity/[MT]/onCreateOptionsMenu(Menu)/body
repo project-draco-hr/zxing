@@ -1,6 +1,7 @@
 {
   super.onCreateOptionsMenu(menu);
   menu.add(0,SHARE_ID,0,R.string.menu_share).setIcon(R.drawable.share_menu_item);
+  menu.add(0,HISTORY_ID,0,R.string.menu_history).setIcon(android.R.drawable.ic_menu_recent_history);
   menu.add(0,SETTINGS_ID,0,R.string.menu_settings).setIcon(android.R.drawable.ic_menu_preferences);
   menu.add(0,HELP_ID,0,R.string.menu_help).setIcon(android.R.drawable.ic_menu_help);
   menu.add(0,ABOUT_ID,0,R.string.menu_about).setIcon(android.R.drawable.ic_menu_info_details);

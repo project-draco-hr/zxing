@@ -1,5 +1,5 @@
 {
-  SMSParsedResult smsResult=(SMSParsedResult)result;
+  SMSParsedResult smsResult=(SMSParsedResult)getResult();
   StringBuffer contents=new StringBuffer();
   ParsedResult.maybeAppend(PhoneNumberUtils.formatNumber(smsResult.getNumber()),contents);
   ParsedResult.maybeAppend(smsResult.getVia(),contents);

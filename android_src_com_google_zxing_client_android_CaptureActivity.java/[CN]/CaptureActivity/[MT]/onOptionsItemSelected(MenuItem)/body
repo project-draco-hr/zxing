@@ -7,19 +7,25 @@ case SHARE_ID:
       startActivity(intent);
       break;
     }
-case SETTINGS_ID:
+case HISTORY_ID:
 {
-    Intent intent=new Intent(Intent.ACTION_VIEW);
-    intent.setClassName(this,PreferencesActivity.class.getName());
-    startActivity(intent);
+    AlertDialog historyAlert=historyManager.buildAlert();
+    historyAlert.show();
     break;
   }
-case HELP_ID:
+case SETTINGS_ID:
 {
   Intent intent=new Intent(Intent.ACTION_VIEW);
-  intent.setClassName(this,HelpActivity.class.getName());
+  intent.setClassName(this,PreferencesActivity.class.getName());
   startActivity(intent);
   break;
+}
+case HELP_ID:
+{
+Intent intent=new Intent(Intent.ACTION_VIEW);
+intent.setClassName(this,HelpActivity.class.getName());
+startActivity(intent);
+break;
 }
 case ABOUT_ID:
 AlertDialog.Builder builder=new AlertDialog.Builder(this);

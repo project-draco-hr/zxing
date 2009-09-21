@@ -11,12 +11,12 @@ break;
 case R.id.decode_succeeded:
 state=State.SUCCESS;
 Bundle bundle=message.getData();
-Bitmap barcode=bundle.getParcelable(DecodeThread.BARCODE_BITMAP);
+Bitmap barcode=bundle == null ? null : (Bitmap)bundle.getParcelable(DecodeThread.BARCODE_BITMAP);
 activity.handleDecode((Result)message.obj,barcode);
 break;
 case R.id.decode_failed:
 state=State.PREVIEW;
-CameraManager.get().requestPreviewFrame(decodeThread.handler,R.id.decode);
+CameraManager.get().requestPreviewFrame(decodeThread.getHandler(),R.id.decode);
 break;
 case R.id.return_scan_result:
 activity.setResult(Activity.RESULT_OK,(Intent)message.obj);

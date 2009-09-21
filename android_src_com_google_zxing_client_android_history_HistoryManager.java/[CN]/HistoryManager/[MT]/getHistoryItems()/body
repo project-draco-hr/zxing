@@ -1,0 +1,15 @@
+{
+  SQLiteOpenHelper helper=new DBHelper(activity);
+  SQLiteDatabase db=helper.getReadableDatabase();
+  List<String> items=new ArrayList<String>();
+  try {
+    Cursor cursor=db.query(DBHelper.TABLE_NAME,new String[]{DBHelper.TEXT_COL},null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
+    while (cursor.moveToNext()) {
+      items.add(cursor.getString(0));
+    }
+  }
+  finally {
+    db.close();
+  }
+  return items;
+}

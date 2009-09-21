@@ -1,5 +1,5 @@
 {
-  ProductParsedResult productResult=(ProductParsedResult)result;
+  ProductParsedResult productResult=(ProductParsedResult)getResult();
 switch (index) {
 case 0:
     openProductSearch(productResult.getNormalizedProductID());

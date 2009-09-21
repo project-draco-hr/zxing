@@ -1,15 +1,21 @@
 {
   lastResult=rawResult;
-  playBeepSoundAndVibrate();
-  drawResultPoints(barcode,rawResult);
+  historyManager.addHistoryItem(rawResult.getText());
+  if (barcode != null) {
+    playBeepSoundAndVibrate();
+    drawResultPoints(barcode,rawResult);
 switch (source) {
 case NATIVE_APP_INTENT:
 case PRODUCT_SEARCH_LINK:
-    handleDecodeExternally(rawResult,barcode);
-  break;
+      handleDecodeExternally(rawResult,barcode);
+    break;
 case ZXING_LINK:
 case NONE:
-handleDecodeInternally(rawResult,barcode);
+  handleDecodeInternally(rawResult,barcode);
 break;
+}
+}
+ else {
+handleDecodeInternally(rawResult,null);
 }
 }

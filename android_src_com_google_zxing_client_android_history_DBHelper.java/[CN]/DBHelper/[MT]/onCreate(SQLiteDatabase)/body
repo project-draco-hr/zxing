@@ -1,0 +1,3 @@
+{
+  sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME + " ("+ ID_COL+ " INTEGER PRIMARY KEY, "+ TEXT_COL+ " TEXT, "+ TIMESTAMP_COL+ " INTEGER"+ ");");
+}

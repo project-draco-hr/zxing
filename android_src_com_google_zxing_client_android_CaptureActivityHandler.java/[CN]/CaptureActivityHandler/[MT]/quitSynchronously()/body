@@ -1,7 +1,7 @@
 {
   state=State.DONE;
   CameraManager.get().stopPreview();
-  Message quit=Message.obtain(decodeThread.handler,R.id.quit);
+  Message quit=Message.obtain(decodeThread.getHandler(),R.id.quit);
   quit.sendToTarget();
   try {
     decodeThread.join();

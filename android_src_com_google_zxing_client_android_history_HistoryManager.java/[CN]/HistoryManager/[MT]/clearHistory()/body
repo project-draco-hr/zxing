@@ -1,0 +1,10 @@
+{
+  SQLiteOpenHelper helper=new DBHelper(activity);
+  SQLiteDatabase db=helper.getWritableDatabase();
+  try {
+    db.delete(DBHelper.TABLE_NAME,null,null);
+  }
+  finally {
+    db.close();
+  }
+}

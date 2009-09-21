@@ -11,5 +11,6 @@
   handler=null;
   lastResult=null;
   hasSurface=false;
+  historyManager=new HistoryManager(this);
   showHelpOnFirstLaunch();
 }

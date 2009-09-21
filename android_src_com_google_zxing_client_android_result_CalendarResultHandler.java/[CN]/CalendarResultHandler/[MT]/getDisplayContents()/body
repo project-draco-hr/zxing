@@ -1,5 +1,5 @@
 {
-  CalendarParsedResult calResult=(CalendarParsedResult)result;
+  CalendarParsedResult calResult=(CalendarParsedResult)getResult();
   StringBuffer result=new StringBuffer();
   ParsedResult.maybeAppend(calResult.getSummary(),result);
   appendTime(calResult.getStart(),result);
