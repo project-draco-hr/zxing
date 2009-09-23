@@ -1,3 +1,0 @@
-{
-  return TAGSERVER_URI_PREFIX;
-}

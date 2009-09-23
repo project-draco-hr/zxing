@@ -1,6 +1,0 @@
-{
-  if (date == null) {
-    return null;
-  }
-  return "20" + date.substring(0,6) + 'T'+ date.substring(6)+ "00Z";
-}
