@@ -64,14 +64,24 @@
     resultName=resultName.substring(0,pos);
   }
   resultName+=".mono.png";
+  OutputStream outStream=null;
   try {
-    OutputStream outStream=new FileOutputStream(resultName);
+    outStream=new FileOutputStream(resultName);
     ImageIO.write(result,"png",outStream);
   }
  catch (  FileNotFoundException e) {
-    System.out.println("Could not create " + resultName);
+    System.err.println("Could not create " + resultName);
   }
 catch (  IOException e) {
-    System.out.println("Could not write to " + resultName);
+    System.err.println("Could not write to " + resultName);
+  }
+ finally {
+    try {
+      if (outStream != null) {
+        outStream.close();
+      }
+    }
+ catch (    IOException ioe) {
+    }
   }
 }

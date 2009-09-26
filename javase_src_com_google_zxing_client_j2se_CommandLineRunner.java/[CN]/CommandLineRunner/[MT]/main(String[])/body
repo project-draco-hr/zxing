@@ -17,7 +17,7 @@
       dumpBlackPoint=true;
     }
  else     if (arg.startsWith("-")) {
-      System.out.println("Unknown command line option " + arg);
+      System.err.println("Unknown command line option " + arg);
       printUsage();
       return;
     }

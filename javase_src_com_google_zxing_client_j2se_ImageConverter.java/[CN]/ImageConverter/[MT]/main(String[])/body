@@ -7,7 +7,7 @@
       rowSampling=false;
     }
  else     if (arg.startsWith("-")) {
-      System.out.println("Ignoring unrecognized option: " + arg);
+      System.err.println("Ignoring unrecognized option: " + arg);
     }
   }
   for (  String arg : args) {

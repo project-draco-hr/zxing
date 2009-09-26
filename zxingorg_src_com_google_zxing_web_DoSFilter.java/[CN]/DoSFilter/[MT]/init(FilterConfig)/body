@@ -2,7 +2,7 @@
   context=filterConfig.getServletContext();
   String bannedIPs=filterConfig.getInitParameter("bannedIPs");
   if (bannedIPs != null) {
-    for (    String ip : bannedIPs.split(",")) {
+    for (    String ip : COMMA_PATTERN.split(bannedIPs)) {
       manuallyBannedIPAddresses.add(ip.trim());
     }
   }
