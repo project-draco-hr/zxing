@@ -1,2 +1,4 @@
 {
+  sqLiteDatabase.delete(TABLE_NAME,null,null);
+  onCreate(sqLiteDatabase);
 }

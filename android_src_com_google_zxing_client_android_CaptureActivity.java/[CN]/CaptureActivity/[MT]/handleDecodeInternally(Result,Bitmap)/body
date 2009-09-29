@@ -2,24 +2,17 @@
   statusView.setVisibility(View.GONE);
   viewfinderView.setVisibility(View.GONE);
   resultView.setVisibility(View.VISIBLE);
-  ImageView barcodeImageView=(ImageView)findViewById(R.id.barcode_image_view);
   if (barcode == null) {
-    barcodeImageView.setVisibility(View.GONE);
+    barcode=((BitmapDrawable)getResources().getDrawable(R.drawable.unknown_barcode)).getBitmap();
   }
- else {
-    barcodeImageView.setVisibility(View.VISIBLE);
-    barcodeImageView.setMaxWidth(MAX_RESULT_IMAGE_SIZE);
-    barcodeImageView.setMaxHeight(MAX_RESULT_IMAGE_SIZE);
-    barcodeImageView.setImageBitmap(barcode);
-  }
+  ImageView barcodeImageView=(ImageView)findViewById(R.id.barcode_image_view);
+  barcodeImageView.setVisibility(View.VISIBLE);
+  barcodeImageView.setMaxWidth(MAX_RESULT_IMAGE_SIZE);
+  barcodeImageView.setMaxHeight(MAX_RESULT_IMAGE_SIZE);
+  barcodeImageView.setImageBitmap(barcode);
   TextView formatTextView=(TextView)findViewById(R.id.format_text_view);
-  if (rawResult.getBarcodeFormat() == null) {
-    formatTextView.setVisibility(View.GONE);
-  }
- else {
-    formatTextView.setVisibility(View.VISIBLE);
-    formatTextView.setText(getString(R.string.msg_default_format) + ": " + rawResult.getBarcodeFormat().toString());
-  }
+  formatTextView.setVisibility(View.VISIBLE);
+  formatTextView.setText(getString(R.string.msg_default_format) + ": " + rawResult.getBarcodeFormat().toString());
   ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
   TextView typeTextView=(TextView)findViewById(R.id.type_text_view);
   typeTextView.setText(getString(R.string.msg_default_type) + ": " + resultHandler.getType().toString());
@@ -34,7 +27,7 @@
   ViewGroup buttonView=(ViewGroup)findViewById(R.id.result_button_view);
   buttonView.requestFocus();
   for (int x=0; x < ResultHandler.MAX_BUTTON_COUNT; x++) {
-    Button button=(Button)buttonView.getChildAt(x);
+    TextView button=(TextView)buttonView.getChildAt(x);
     if (x < buttonCount) {
       button.setVisibility(View.VISIBLE);
       button.setText(resultHandler.getButtonText(x));

@@ -1,0 +1,23 @@
+{
+  SQLiteOpenHelper helper=new DBHelper(activity);
+  SQLiteDatabase db=helper.getWritableDatabase();
+  Cursor cursor=null;
+  try {
+    cursor=db.query(DBHelper.TABLE_NAME,TEXT_COL_PROJECTION,DBHelper.TEXT_COL + "=?",new String[]{result.getText()},null,null,null,null);
+    if (cursor.moveToNext()) {
+      return;
+    }
+    ContentValues values=new ContentValues();
+    values.put(DBHelper.TEXT_COL,result.getText());
+    values.put(DBHelper.FORMAT_COL,result.getBarcodeFormat().toString());
+    values.put(DBHelper.DISPLAY_COL,result.getText());
+    values.put(DBHelper.TIMESTAMP_COL,System.currentTimeMillis());
+    db.insert(DBHelper.TABLE_NAME,DBHelper.TIMESTAMP_COL,values);
+  }
+  finally {
+    if (cursor != null) {
+      cursor.close();
+    }
+    db.close();
+  }
+}

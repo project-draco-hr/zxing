@@ -1,14 +1,19 @@
 {
   SQLiteOpenHelper helper=new DBHelper(activity);
+  List<Result> items=new ArrayList<Result>();
   SQLiteDatabase db=helper.getReadableDatabase();
-  List<String> items=new ArrayList<String>();
+  Cursor cursor=null;
   try {
-    Cursor cursor=db.query(DBHelper.TABLE_NAME,new String[]{DBHelper.TEXT_COL},null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
+    cursor=db.query(DBHelper.TABLE_NAME,TEXT_FORMAT_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
     while (cursor.moveToNext()) {
-      items.add(cursor.getString(0));
+      Result result=new Result(cursor.getString(0),null,null,BarcodeFormat.valueOf(cursor.getString(1)));
+      items.add(result);
     }
   }
   finally {
+    if (cursor != null) {
+      cursor.close();
+    }
     db.close();
   }
   return items;

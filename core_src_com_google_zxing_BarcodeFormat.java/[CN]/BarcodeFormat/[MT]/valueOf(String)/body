@@ -1,0 +1,7 @@
+{
+  BarcodeFormat format=(BarcodeFormat)VALUES.get(name);
+  if (format == null) {
+    throw new IllegalArgumentException();
+  }
+  return format;
+}

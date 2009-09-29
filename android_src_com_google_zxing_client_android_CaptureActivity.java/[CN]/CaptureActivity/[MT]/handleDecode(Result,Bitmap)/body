@@ -1,7 +1,10 @@
 {
   lastResult=rawResult;
-  historyManager.addHistoryItem(rawResult.getText());
-  if (barcode != null) {
+  historyManager.addHistoryItem(rawResult);
+  if (barcode == null) {
+    handleDecodeInternally(rawResult,null);
+  }
+ else {
     playBeepSoundAndVibrate();
     drawResultPoints(barcode,rawResult);
 switch (source) {
@@ -14,8 +17,5 @@ case NONE:
   handleDecodeInternally(rawResult,barcode);
 break;
 }
-}
- else {
-handleDecodeInternally(rawResult,null);
 }
 }
