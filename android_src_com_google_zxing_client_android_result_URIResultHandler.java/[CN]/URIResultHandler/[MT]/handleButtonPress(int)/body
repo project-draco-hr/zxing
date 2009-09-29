@@ -1,14 +1,21 @@
 {
   URIParsedResult uriResult=(URIParsedResult)getResult();
+  String uri=uriResult.getURI();
 switch (index) {
 case 0:
-    openURL(uriResult.getURI());
+    openURL(uri);
   break;
 case 1:
-shareByEmail(uriResult.getURI());
+shareByEmail(uri);
 break;
 case 2:
-shareBySMS(uriResult.getURI());
+shareBySMS(uri);
+break;
+case 3:
+int equals=uri.indexOf('=');
+String id=uri.substring(equals + 1);
+String readBookURI="http://books.google." + LocaleManager.getBookSearchCountryTLD() + "/m#Read?id="+ id;
+openURL(readBookURI);
 break;
 }
 }
