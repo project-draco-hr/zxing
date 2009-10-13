@@ -1,5 +1,5 @@
 {
   CharacterSetECI eci=new CharacterSetECI(value,encodingName);
-  VALUE_TO_ECI.put(Integer.valueOf(value),eci);
+  VALUE_TO_ECI.put(new Integer(value),eci);
   NAME_TO_ECI.put(encodingName,eci);
 }
