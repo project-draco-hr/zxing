@@ -2,6 +2,6 @@
   if (camera != null && previewing) {
     previewHandler=handler;
     previewMessage=message;
-    camera.setPreviewCallback(previewCallback);
+    camera.setOneShotPreviewCallback(previewCallback);
   }
 }

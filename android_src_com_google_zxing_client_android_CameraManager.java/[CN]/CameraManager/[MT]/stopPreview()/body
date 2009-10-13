@@ -1,6 +1,5 @@
 {
   if (camera != null && previewing) {
-    camera.setPreviewCallback(null);
     camera.stopPreview();
     previewHandler=null;
     autoFocusHandler=null;
