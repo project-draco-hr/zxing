@@ -1,7 +1,4 @@
 {
-  if (intent == null) {
-    return false;
-  }
   String format=intent.getStringExtra(Intents.Encode.FORMAT);
   if (format == null || format.length() == 0 || format.equals(Contents.Format.QR_CODE)) {
     String type=intent.getStringExtra(Intents.Encode.TYPE);

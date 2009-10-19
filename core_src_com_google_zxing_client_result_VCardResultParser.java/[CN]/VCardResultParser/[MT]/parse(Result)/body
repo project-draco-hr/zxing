@@ -1,6 +1,6 @@
 {
   String rawText=result.getText();
-  if (rawText == null || !rawText.startsWith("BEGIN:VCARD") || !rawText.endsWith("END:VCARD")) {
+  if (rawText == null || !rawText.startsWith("BEGIN:VCARD")) {
     return null;
   }
   String[] names=matchVCardPrefixedField("FN",rawText,true);

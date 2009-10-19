@@ -1,6 +1,17 @@
 {
   this.activity=activity;
-  if (!encodeContents(intent)) {
+  if (intent == null) {
     throw new IllegalArgumentException("No valid data to encode.");
+  }
+  String action=intent.getAction();
+  if (action.equals(Intents.Encode.ACTION)) {
+    if (!encodeContentsFromZXingIntent(intent)) {
+      throw new IllegalArgumentException("No valid data to encode.");
+    }
+  }
+ else   if (action.equals(Intent.ACTION_SEND)) {
+    if (!encodeContentsFromShareIntent(intent)) {
+      throw new IllegalArgumentException("No valid data to encode.");
+    }
   }
 }

@@ -1,0 +1,26 @@
+{
+  format=BarcodeFormat.QR_CODE;
+  try {
+    Uri uri=(Uri)intent.getExtras().getParcelable(Intent.EXTRA_STREAM);
+    InputStream stream=activity.getContentResolver().openInputStream(uri);
+    int length=stream.available();
+    byte[] vcard=new byte[length];
+    stream.read(vcard,0,length);
+    String vcardString=new String(vcard,"utf-8");
+    Result result=new Result(vcardString,vcard,null,BarcodeFormat.QR_CODE);
+    ParsedResult parsedResult=ResultParser.parseResult(result);
+    if (!(parsedResult instanceof AddressBookParsedResult)) {
+      return false;
+    }
+    if (!encodeQRCodeContents((AddressBookParsedResult)parsedResult)) {
+      return false;
+    }
+  }
+ catch (  FileNotFoundException e) {
+    return false;
+  }
+catch (  IOException e) {
+    return false;
+  }
+  return contents != null && contents.length() > 0;
+}

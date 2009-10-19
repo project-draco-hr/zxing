@@ -1,0 +1,52 @@
+{
+  StringBuilder newContents=new StringBuilder();
+  StringBuilder newDisplayContents=new StringBuilder();
+  newContents.append("MECARD:");
+  String[] names=contact.getNames();
+  if (names != null && names.length > 0) {
+    newContents.append("N:").append(names[0]).append(';');
+    newDisplayContents.append(names[0]);
+  }
+  String address=contact.getAddress();
+  if (address != null && address.length() > 0) {
+    newContents.append("ADR:").append(address).append(';');
+    newDisplayContents.append('\n').append(address);
+  }
+  String[] phoneNumbers=contact.getPhoneNumbers();
+  if (phoneNumbers != null) {
+    for (int x=0; x < phoneNumbers.length; x++) {
+      String phone=phoneNumbers[x];
+      if (phone != null && phone.length() > 0) {
+        newContents.append("TEL:").append(phone).append(';');
+        newDisplayContents.append('\n').append(PhoneNumberUtils.formatNumber(phone));
+      }
+    }
+  }
+  String[] emails=contact.getEmails();
+  if (emails != null) {
+    for (int x=0; x < emails.length; x++) {
+      String email=emails[x];
+      if (email != null && email.length() > 0) {
+        newContents.append("EMAIL:").append(email).append(';');
+        newDisplayContents.append('\n').append(email);
+      }
+    }
+  }
+  String url=contact.getURL();
+  if (url != null && url.length() > 0) {
+    newContents.append("URL:").append(url).append(';');
+    newDisplayContents.append('\n').append(url);
+  }
+  if (newDisplayContents.length() > 0) {
+    newContents.append(';');
+    contents=newContents.toString();
+    displayContents=newDisplayContents.toString();
+    title=activity.getString(R.string.contents_contact);
+    return true;
+  }
+ else {
+    contents=null;
+    displayContents=null;
+    return false;
+  }
+}
