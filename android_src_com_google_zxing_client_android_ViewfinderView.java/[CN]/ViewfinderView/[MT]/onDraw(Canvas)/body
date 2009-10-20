@@ -1,5 +1,8 @@
 {
   Rect frame=CameraManager.get().getFramingRect();
+  if (frame == null) {
+    return;
+  }
   int width=canvas.getWidth();
   int height=canvas.getHeight();
   paint.setColor(resultBitmap != null ? resultColor : maskColor);

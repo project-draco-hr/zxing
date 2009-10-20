@@ -1,7 +1,8 @@
 {
   if (playBeep && mediaPlayer == null) {
+    setVolumeControlStream(AudioManager.STREAM_MUSIC);
     mediaPlayer=new MediaPlayer();
-    mediaPlayer.setAudioStreamType(AudioManager.STREAM_SYSTEM);
+    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
     mediaPlayer.setOnCompletionListener(beepListener);
     AssetFileDescriptor file=getResources().openRawResourceFd(R.raw.beep);
     try {

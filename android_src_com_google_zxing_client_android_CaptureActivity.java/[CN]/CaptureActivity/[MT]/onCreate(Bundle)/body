@@ -1,5 +1,4 @@
 {
-  Log.i(TAG,"Creating CaptureActivity");
   super.onCreate(icicle);
   Window window=getWindow();
   window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

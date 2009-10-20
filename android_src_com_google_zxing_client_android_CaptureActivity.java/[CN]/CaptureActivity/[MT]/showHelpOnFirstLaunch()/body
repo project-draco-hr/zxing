@@ -10,9 +10,11 @@
       Intent intent=new Intent(Intent.ACTION_VIEW);
       intent.setClassName(this,HelpActivity.class.getName());
       startActivity(intent);
+      return true;
     }
   }
  catch (  PackageManager.NameNotFoundException e) {
     Log.w(TAG,e);
   }
+  return false;
 }
