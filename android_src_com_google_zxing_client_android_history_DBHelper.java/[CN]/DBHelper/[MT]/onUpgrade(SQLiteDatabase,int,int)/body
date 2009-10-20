@@ -1,4 +1,4 @@
 {
-  sqLiteDatabase.delete(TABLE_NAME,null,null);
+  sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
   onCreate(sqLiteDatabase);
 }
