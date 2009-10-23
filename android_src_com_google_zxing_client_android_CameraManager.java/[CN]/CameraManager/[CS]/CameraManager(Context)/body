@@ -3,7 +3,7 @@
   camera=null;
   initialized=false;
   previewing=false;
-  if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.CUPCAKE) {
+  if (Integer.parseInt(Build.VERSION.SDK) <= Build.VERSION_CODES.CUPCAKE) {
     useOneShotPreviewCallback=false;
   }
  else {
