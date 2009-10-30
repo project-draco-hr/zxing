@@ -8,7 +8,12 @@
     return;
   }
   isbn=intent.getStringExtra(Intents.SearchBookContents.ISBN);
-  setTitle(getString(R.string.sbc_name) + ": ISBN " + isbn);
+  if (isbn.startsWith("http://google.com/books?id=")) {
+    setTitle(getString(R.string.sbc_name));
+  }
+ else {
+    setTitle(getString(R.string.sbc_name) + ": ISBN " + isbn);
+  }
   setContentView(R.layout.search_book_contents);
   queryTextView=(EditText)findViewById(R.id.query_text_view);
   String initialQuery=intent.getStringExtra(Intents.SearchBookContents.QUERY);

@@ -1,3 +1,4 @@
+String pageId
 String pageNumber
 String snippet
 boolean validSnippet

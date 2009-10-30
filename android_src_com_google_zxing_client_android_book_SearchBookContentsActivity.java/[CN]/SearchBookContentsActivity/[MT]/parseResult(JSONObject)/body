@@ -1,5 +1,6 @@
 {
   try {
+    String pageId=json.getString("page_id");
     String pageNumber=json.getString("page_number");
     if (pageNumber.length() > 0) {
       pageNumber=getString(R.string.msg_sbc_page) + ' ' + pageNumber;
@@ -20,9 +21,9 @@
       snippet='(' + getString(R.string.msg_sbc_snippet_unavailable) + ')';
       valid=false;
     }
-    return new SearchBookContentsResult(pageNumber,snippet,valid);
+    return new SearchBookContentsResult(pageId,pageNumber,snippet,valid);
   }
  catch (  JSONException e) {
-    return new SearchBookContentsResult(getString(R.string.msg_sbc_no_page_returned),"",false);
+    return new SearchBookContentsResult(getString(R.string.msg_sbc_no_page_returned),"","",false);
   }
 }

@@ -1,4 +1,5 @@
 {
+  this.pageId=pageId;
   this.pageNumber=pageNumber;
   this.snippet=snippet;
   this.validSnippet=validSnippet;

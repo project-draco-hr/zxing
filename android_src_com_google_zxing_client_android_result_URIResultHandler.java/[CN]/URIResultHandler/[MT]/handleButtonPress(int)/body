@@ -12,10 +12,7 @@ case 2:
 shareBySMS(uri);
 break;
 case 3:
-int equals=uri.indexOf('=');
-String id=uri.substring(equals + 1);
-String readBookURI="http://books.google." + LocaleManager.getBookSearchCountryTLD() + "/m#Read?id="+ id;
-openURL(readBookURI);
+searchBookContents(uri);
 break;
 }
 }
