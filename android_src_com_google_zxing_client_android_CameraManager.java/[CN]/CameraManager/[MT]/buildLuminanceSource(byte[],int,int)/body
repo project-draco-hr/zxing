@@ -8,7 +8,9 @@ default :
   if (previewFormatString.equals("yuv422i-yuyv")) {
     return new InterleavedYUV422LuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
   }
-break;
+ else   if (previewFormatString.equals("yuv420p")) {
+    return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
+  }
+throw new IllegalArgumentException("Unsupported picture format: " + previewFormat + '/'+ previewFormatString);
 }
-return null;
 }
