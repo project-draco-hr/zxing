@@ -5,7 +5,7 @@
   while (nextStart < end && !row.get(nextStart)) {
     nextStart++;
   }
-  StringBuffer result=new StringBuffer();
+  StringBuffer result=new StringBuffer(20);
   int[] counters=new int[9];
   char decodedChar;
   int lastStart;

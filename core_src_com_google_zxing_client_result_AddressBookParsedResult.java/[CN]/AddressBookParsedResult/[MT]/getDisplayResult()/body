@@ -1,5 +1,5 @@
 {
-  StringBuffer result=new StringBuffer();
+  StringBuffer result=new StringBuffer(100);
   maybeAppend(names,result);
   maybeAppend(pronunciation,result);
   maybeAppend(title,result);
