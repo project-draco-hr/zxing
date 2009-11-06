@@ -1,5 +1,16 @@
 {
-  Camera.Parameters parameters=mCamera.getParameters();
-  parameters.setPreviewSize(mScreenResolution.x,mScreenResolution.y);
-  mCamera.setParameters(parameters);
+  Camera.Parameters parameters=camera.getParameters();
+  Camera.Size size=parameters.getPreviewSize();
+  Log.v(TAG,"Default preview size: " + size.width + ", "+ size.height);
+  previewFormat=parameters.getPreviewFormat();
+  previewFormatString=parameters.get("preview-format");
+  Log.v(TAG,"Default preview format: " + previewFormat + '/'+ previewFormatString);
+  cameraResolution=new Point();
+  cameraResolution.x=(screenResolution.x >> 3) << 3;
+  cameraResolution.y=(screenResolution.y >> 3) << 3;
+  Log.v(TAG,"Setting preview size: " + cameraResolution.x + ", "+ cameraResolution.y);
+  parameters.setPreviewSize(cameraResolution.x,cameraResolution.y);
+  parameters.set("flash-value",2);
+  parameters.set("flash-mode","off");
+  camera.setParameters(parameters);
 }

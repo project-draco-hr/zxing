@@ -1,6 +1,5 @@
 {
-  if (mCameraManager == null) {
-    mCameraManager=new CameraManager(context);
-    mCameraManager.getScreenResolution();
+  if (cameraManager == null) {
+    cameraManager=new CameraManager(context);
   }
 }

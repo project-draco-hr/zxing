@@ -1,5 +1,12 @@
 {
-  mContext=context;
-  mCamera=null;
-  mPreviewing=false;
+  this.context=context;
+  camera=null;
+  initialized=false;
+  previewing=false;
+  if (Integer.parseInt(Build.VERSION.SDK) <= Build.VERSION_CODES.CUPCAKE) {
+    useOneShotPreviewCallback=false;
+  }
+ else {
+    useOneShotPreviewCallback=true;
+  }
 }

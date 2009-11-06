@@ -1,6 +1,6 @@
 {
-  if (mCamera != null) {
-    mCamera.release();
-    mCamera=null;
+  if (camera != null) {
+    camera.release();
+    camera=null;
   }
 }
