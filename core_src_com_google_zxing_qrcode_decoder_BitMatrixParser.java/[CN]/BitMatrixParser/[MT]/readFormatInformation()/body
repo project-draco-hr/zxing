@@ -3,14 +3,14 @@
     return parsedFormatInfo;
   }
   int formatInfoBits=0;
-  for (int j=0; j < 6; j++) {
-    formatInfoBits=copyBit(8,j,formatInfoBits);
-  }
-  formatInfoBits=copyBit(8,7,formatInfoBits);
-  formatInfoBits=copyBit(8,8,formatInfoBits);
-  formatInfoBits=copyBit(7,8,formatInfoBits);
-  for (int i=5; i >= 0; i--) {
+  for (int i=0; i < 6; i++) {
     formatInfoBits=copyBit(i,8,formatInfoBits);
+  }
+  formatInfoBits=copyBit(7,8,formatInfoBits);
+  formatInfoBits=copyBit(8,8,formatInfoBits);
+  formatInfoBits=copyBit(8,7,formatInfoBits);
+  for (int j=5; j >= 0; j--) {
+    formatInfoBits=copyBit(8,j,formatInfoBits);
   }
   parsedFormatInfo=FormatInformation.decodeFormatInformation(formatInfoBits);
   if (parsedFormatInfo != null) {
