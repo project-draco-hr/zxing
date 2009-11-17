@@ -6,7 +6,7 @@
   if (row == null || row.length < width) {
     row=new byte[width];
   }
-  int offset=(y + top) * dataWidth * 2 + (left * 2);
+  int offset=((y + top) * dataWidth << 1) + (left << 1);
   byte[] yuv=yuvData;
   for (int x=0; x < width; x++) {
     row[x]=yuv[offset + (x << 1)];

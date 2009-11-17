@@ -3,14 +3,15 @@
   int height=getHeight();
   int area=width * height;
   byte[] matrix=new byte[area];
-  int inputOffset=top * dataWidth * 2 + (left * 2);
+  int dataWidth=this.dataWidth;
+  int inputOffset=(top * dataWidth << 1) + (left << 1);
   byte[] yuv=yuvData;
   for (int y=0; y < height; y++) {
     int outputOffset=y * width;
     for (int x=0; x < width; x++) {
       matrix[outputOffset + x]=yuv[inputOffset + (x << 1)];
     }
-    inputOffset+=(dataWidth * 2);
+    inputOffset+=(dataWidth << 1);
   }
   return matrix;
 }
