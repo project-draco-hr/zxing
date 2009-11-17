@@ -1,0 +1,12 @@
+{
+  if (position >= 0 && position < labelsPackages.size()) {
+    String url="market://search?q=pname:" + labelsPackages.get(position)[1];
+    Intent intent=new Intent();
+    intent.putExtra(Browser.BookmarkColumns.URL,url);
+    setResult(RESULT_OK,intent);
+  }
+ else {
+    setResult(RESULT_CANCELED);
+  }
+  finish();
+}

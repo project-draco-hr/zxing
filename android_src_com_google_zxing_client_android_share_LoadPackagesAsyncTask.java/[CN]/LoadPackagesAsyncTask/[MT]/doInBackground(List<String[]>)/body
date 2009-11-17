@@ -1,0 +1,18 @@
+{
+  List<String[]> labelsPackages=objects[0];
+  PackageManager packageManager=appPickerActivity.getPackageManager();
+  List<ApplicationInfo> appInfos=packageManager.getInstalledApplications(0);
+  for (  ApplicationInfo appInfo : appInfos) {
+    CharSequence label=appInfo.loadLabel(packageManager);
+    if (label != null) {
+      labelsPackages.add(new String[]{label.toString(),appInfo.packageName});
+    }
+  }
+  Collections.sort(labelsPackages,new Comparator<String[]>(){
+    public int compare(    String[] o1,    String[] o2){
+      return o1[0].compareTo(o2[0]);
+    }
+  }
+);
+  return labelsPackages;
+}
