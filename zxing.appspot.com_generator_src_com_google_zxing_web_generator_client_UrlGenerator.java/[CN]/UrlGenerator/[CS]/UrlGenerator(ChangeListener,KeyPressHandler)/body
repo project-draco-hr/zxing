@@ -1,4 +1,5 @@
 {
   url.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
   url.addChangeListener(listener);
+  url.addKeyPressHandler(keyListener);
 }

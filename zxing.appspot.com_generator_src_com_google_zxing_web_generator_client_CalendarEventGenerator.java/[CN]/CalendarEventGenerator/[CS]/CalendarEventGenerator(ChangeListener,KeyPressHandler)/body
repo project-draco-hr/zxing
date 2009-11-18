@@ -1,12 +1,14 @@
 {
   eventName.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
   eventName.addChangeListener(listener);
+  eventName.addKeyPressHandler(keyListener);
   datePicker1.setAnimationEnabled(true);
   datePicker2.setAnimationEnabled(true);
   timePicker2.setDateTime(addMilliseconds(timePicker1.getDateTime(),ONE_HOUR));
   timePicker1PreviousDate=timePicker1.getDateTime();
   buildTimeZoneList();
   timeZones.setSelectedIndex(25);
+  timeZones.addKeyPressHandler(keyListener);
   timePicker1.addChangeHandler(new ChangeHandler<Date>(){
     public void onChange(    ChangeEvent<Date> event){
       Date time=timePicker1PreviousDate;
