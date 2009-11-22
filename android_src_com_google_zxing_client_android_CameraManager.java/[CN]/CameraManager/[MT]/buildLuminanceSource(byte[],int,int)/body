@@ -2,15 +2,16 @@
   Rect rect=getFramingRect();
 switch (previewFormat) {
 case PixelFormat.YCbCr_420_SP:
+    return new PlanarYUV420LuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
 case PixelFormat.YCbCr_422_SP:
-    return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
+  return new PlanarYUV422LuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
 default :
-  if (previewFormatString.equals("yuv422i-yuyv")) {
-    return new InterleavedYUV422LuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
-  }
- else   if (previewFormatString.equals("yuv420p")) {
-    return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
-  }
-throw new IllegalArgumentException("Unsupported picture format: " + previewFormat + '/'+ previewFormatString);
+if (previewFormatString.equals("yuv422i-yuyv")) {
+  return new InterleavedYUV422LuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
 }
+ else if (previewFormatString.equals("yuv420p")) {
+  return new PlanarYUV420LuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
+}
+}
+throw new IllegalArgumentException("Unsupported picture format: " + previewFormat + '/'+ previewFormatString);
 }
