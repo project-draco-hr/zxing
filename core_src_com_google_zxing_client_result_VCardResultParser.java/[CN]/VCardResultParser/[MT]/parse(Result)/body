@@ -15,7 +15,7 @@
   address=formatAddress(address);
   String org=matchSingleVCardPrefixedField("ORG",rawText,true);
   String birthday=matchSingleVCardPrefixedField("BDAY",rawText,true);
-  if (birthday != null && !isStringOfDigits(birthday,8)) {
+  if (!isLikeVCardDate(birthday)) {
     return null;
   }
   String title=matchSingleVCardPrefixedField("TITLE",rawText,true);
