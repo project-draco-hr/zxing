@@ -1,3 +1,16 @@
 {
-  return packageName == null || packageName.startsWith("com.android.") || (packageName.startsWith("com.google.android.") && !packageName.startsWith("com.google.android.apps."));
+  if (packageName == null) {
+    return true;
+  }
+  for (  String prefix : PKG_PREFIX_WHITELIST) {
+    if (packageName.startsWith(prefix)) {
+      return false;
+    }
+  }
+  for (  String prefix : PKG_PREFIX_BLACKLIST) {
+    if (packageName.startsWith(prefix)) {
+      return true;
+    }
+  }
+  return false;
 }

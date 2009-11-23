@@ -1,5 +1,7 @@
 {
   super.onCreate(icicle);
   dialog=ProgressDialog.show(this,"",getString(R.string.msg_loading_apps),true,true);
-  new LoadPackagesAsyncTask(this).execute(labelsPackages);
+  if (labelsPackages.isEmpty()) {
+    new LoadPackagesAsyncTask(this).execute(labelsPackages);
+  }
 }
