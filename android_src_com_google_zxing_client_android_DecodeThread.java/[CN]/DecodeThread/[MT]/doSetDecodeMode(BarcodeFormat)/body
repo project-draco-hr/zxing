@@ -1,0 +1,10 @@
+{
+  Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
+  Vector<BarcodeFormat> vector=new Vector<BarcodeFormat>(formats.length);
+  for (  BarcodeFormat format : formats) {
+    vector.addElement(format);
+  }
+  hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
+  hints.put(DecodeHintType.NEED_RESULT_POINT_CALLBACK,resultPointCallback);
+  multiFormatReader.setHints(hints);
+}

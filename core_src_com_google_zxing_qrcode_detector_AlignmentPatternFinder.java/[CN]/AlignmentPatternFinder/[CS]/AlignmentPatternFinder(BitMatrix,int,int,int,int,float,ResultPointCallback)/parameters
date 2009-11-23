@@ -4,3 +4,4 @@ int startY
 int width
 int height
 float moduleSize
+ResultPointCallback resultPointCallback

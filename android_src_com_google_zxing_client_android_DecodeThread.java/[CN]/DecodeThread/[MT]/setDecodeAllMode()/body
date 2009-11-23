@@ -1,14 +1,3 @@
 {
-  Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
-  Vector<BarcodeFormat> vector=new Vector<BarcodeFormat>(8);
-  vector.addElement(BarcodeFormat.UPC_A);
-  vector.addElement(BarcodeFormat.UPC_E);
-  vector.addElement(BarcodeFormat.EAN_13);
-  vector.addElement(BarcodeFormat.EAN_8);
-  vector.addElement(BarcodeFormat.CODE_39);
-  vector.addElement(BarcodeFormat.CODE_128);
-  vector.addElement(BarcodeFormat.ITF);
-  vector.addElement(BarcodeFormat.QR_CODE);
-  hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
-  multiFormatReader.setHints(hints);
+  doSetDecodeMode(BarcodeFormat.UPC_A,BarcodeFormat.UPC_E,BarcodeFormat.EAN_13,BarcodeFormat.EAN_8,BarcodeFormat.CODE_39,BarcodeFormat.CODE_128,BarcodeFormat.ITF,BarcodeFormat.QR_CODE);
 }

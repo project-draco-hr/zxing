@@ -7,6 +7,6 @@
   }
   int alignmentAreaTopY=Math.max(0,estAlignmentY - allowance);
   int alignmentAreaBottomY=Math.min(image.getHeight() - 1,estAlignmentY + allowance);
-  AlignmentPatternFinder alignmentFinder=new AlignmentPatternFinder(image,alignmentAreaLeftX,alignmentAreaTopY,alignmentAreaRightX - alignmentAreaLeftX,alignmentAreaBottomY - alignmentAreaTopY,overallEstModuleSize);
+  AlignmentPatternFinder alignmentFinder=new AlignmentPatternFinder(image,alignmentAreaLeftX,alignmentAreaTopY,alignmentAreaRightX - alignmentAreaLeftX,alignmentAreaBottomY - alignmentAreaTopY,overallEstModuleSize,resultPointCallback);
   return alignmentFinder.find();
 }

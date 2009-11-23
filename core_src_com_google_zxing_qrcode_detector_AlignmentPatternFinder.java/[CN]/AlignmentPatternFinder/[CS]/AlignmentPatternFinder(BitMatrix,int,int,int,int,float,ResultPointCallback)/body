@@ -7,4 +7,5 @@
   this.height=height;
   this.moduleSize=moduleSize;
   this.crossCheckStateCount=new int[3];
+  this.resultPointCallback=resultPointCallback;
 }

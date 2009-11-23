@@ -1,7 +1,3 @@
 {
-  Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
-  Vector<BarcodeFormat> vector=new Vector<BarcodeFormat>(1);
-  vector.addElement(BarcodeFormat.QR_CODE);
-  hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
-  multiFormatReader.setHints(hints);
+  doSetDecodeMode(BarcodeFormat.QR_CODE);
 }

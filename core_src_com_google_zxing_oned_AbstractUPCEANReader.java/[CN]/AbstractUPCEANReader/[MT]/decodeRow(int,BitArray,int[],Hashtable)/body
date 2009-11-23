@@ -1,8 +1,18 @@
 {
+  ResultPointCallback resultPointCallback=hints == null ? null : (ResultPointCallback)hints.get(DecodeHintType.NEED_RESULT_POINT_CALLBACK);
+  if (resultPointCallback != null) {
+    resultPointCallback.foundPossibleResultPoint(new ResultPoint((startGuardRange[0] + startGuardRange[1]) / 2.0f,rowNumber));
+  }
   StringBuffer result=decodeRowStringBuffer;
   result.setLength(0);
   int endStart=decodeMiddle(row,startGuardRange,result);
+  if (resultPointCallback != null) {
+    resultPointCallback.foundPossibleResultPoint(new ResultPoint(endStart,rowNumber));
+  }
   int[] endRange=decodeEnd(row,endStart);
+  if (resultPointCallback != null) {
+    resultPointCallback.foundPossibleResultPoint(new ResultPoint((endRange[0] + endRange[1]) / 2.0f,rowNumber));
+  }
   int end=endRange[1];
   int quietEnd=end + (end - endRange[0]);
   if (quietEnd >= row.getSize() || !row.isRange(end,quietEnd,false)) {

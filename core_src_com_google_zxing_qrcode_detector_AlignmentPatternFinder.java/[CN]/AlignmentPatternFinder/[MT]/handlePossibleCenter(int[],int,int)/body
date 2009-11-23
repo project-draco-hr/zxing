@@ -11,7 +11,11 @@
         return new AlignmentPattern(centerJ,centerI,estimatedModuleSize);
       }
     }
-    possibleCenters.addElement(new AlignmentPattern(centerJ,centerI,estimatedModuleSize));
+    ResultPoint point=new AlignmentPattern(centerJ,centerI,estimatedModuleSize);
+    possibleCenters.addElement(point);
+    if (resultPointCallback != null) {
+      resultPointCallback.foundPossibleResultPoint(point);
+    }
   }
   return null;
 }

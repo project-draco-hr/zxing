@@ -17,7 +17,11 @@
         }
       }
       if (!found) {
-        possibleCenters.addElement(new FinderPattern(centerJ,centerI,estimatedModuleSize));
+        ResultPoint point=new FinderPattern(centerJ,centerI,estimatedModuleSize);
+        possibleCenters.addElement(point);
+        if (resultPointCallback != null) {
+          resultPointCallback.foundPossibleResultPoint(point);
+        }
       }
       return true;
     }

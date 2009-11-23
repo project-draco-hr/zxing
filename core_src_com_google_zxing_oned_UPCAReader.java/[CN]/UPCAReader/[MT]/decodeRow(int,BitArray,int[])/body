@@ -1,3 +1,0 @@
-{
-  return maybeReturnResult(ean13Reader.decodeRow(rowNumber,row,startGuardRange));
-}

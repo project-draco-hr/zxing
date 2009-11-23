@@ -1,6 +1,7 @@
 {
   this.activity=activity;
   multiFormatReader=new MultiFormatReader();
+  this.resultPointCallback=resultPointCallback;
   if (mode == null || mode.length() == 0) {
     SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
     boolean decode1D=prefs.getBoolean(PreferencesActivity.KEY_DECODE_1D,true);

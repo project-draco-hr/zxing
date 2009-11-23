@@ -1,0 +1,3 @@
+{
+  viewfinderView.addPossibleResultPoint(point);
+}
