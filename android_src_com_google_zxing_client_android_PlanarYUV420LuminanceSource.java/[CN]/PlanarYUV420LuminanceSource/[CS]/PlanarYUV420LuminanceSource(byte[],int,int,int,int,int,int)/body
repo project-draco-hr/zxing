@@ -1,3 +1,0 @@
-{
-  super(yuvData,dataWidth,dataHeight,left,top,width,height);
-}

@@ -1,3 +1,0 @@
-{
-  return new PlanarYUV422LuminanceSource(getYUVData(),getDataWidth(),getDataHeight(),left,top,width,height);
-}

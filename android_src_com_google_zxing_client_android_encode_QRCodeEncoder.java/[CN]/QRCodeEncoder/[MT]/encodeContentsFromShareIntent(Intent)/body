@@ -6,7 +6,7 @@
     int length=stream.available();
     byte[] vcard=new byte[length];
     stream.read(vcard,0,length);
-    String vcardString=new String(vcard,Charset.forName("UTF-8"));
+    String vcardString=new String(vcard,"UTF-8");
     Log.d(TAG,"Encoding share intent content: " + vcardString);
     Result result=new Result(vcardString,vcard,null,BarcodeFormat.QR_CODE);
     ParsedResult parsedResult=ResultParser.parseResult(result);
