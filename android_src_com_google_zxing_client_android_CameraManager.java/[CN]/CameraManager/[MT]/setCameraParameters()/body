@@ -12,5 +12,7 @@
   parameters.setPreviewSize(cameraResolution.x,cameraResolution.y);
   parameters.set("flash-value",2);
   parameters.set("flash-mode","off");
+  parameters.set("zoom","2.0");
+  parameters.set("taking-picture-zoom","20");
   camera.setParameters(parameters);
 }
