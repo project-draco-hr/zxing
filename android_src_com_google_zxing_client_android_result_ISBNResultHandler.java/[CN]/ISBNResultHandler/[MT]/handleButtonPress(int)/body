@@ -1,12 +1,14 @@
 {
-  ISBNParsedResult isbnResult=(ISBNParsedResult)getResult();
+  showNotOurResults(index,new AlertDialog.OnClickListener(){
+    public void onClick(    DialogInterface dialogInterface,    int i){
+      ISBNParsedResult isbnResult=(ISBNParsedResult)getResult();
 switch (index) {
 case 0:
-    openProductSearch(isbnResult.getISBN());
-  break;
+        openProductSearch(isbnResult.getISBN());
+      break;
 case 1:
-openBookSearch(isbnResult.getISBN());
-break;
+    openBookSearch(isbnResult.getISBN());
+  break;
 case 2:
 searchBookContents(isbnResult.getISBN());
 break;
@@ -15,4 +17,7 @@ String url=customProductSearch.replace("%s",isbnResult.getISBN());
 openURL(url);
 break;
 }
+}
+}
+);
 }

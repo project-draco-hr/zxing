@@ -1,0 +1,13 @@
+{
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
+  if (prefs.getBoolean(PreferencesActivity.KEY_NOT_OUR_RESULTS_SHOWN,false)) {
+    proceedListener.onClick(null,index);
+  }
+ else {
+    prefs.edit().putBoolean(PreferencesActivity.KEY_NOT_OUR_RESULTS_SHOWN,true);
+    AlertDialog.Builder builder=new AlertDialog.Builder(activity);
+    builder.setMessage(R.string.msg_not_our_results);
+    builder.setPositiveButton(R.string.button_ok,proceedListener);
+    builder.show();
+  }
+}

@@ -1,15 +1,20 @@
 {
-  ProductParsedResult productResult=(ProductParsedResult)getResult();
+  showNotOurResults(index,new AlertDialog.OnClickListener(){
+    public void onClick(    DialogInterface dialogInterface,    int i){
+      ProductParsedResult productResult=(ProductParsedResult)getResult();
 switch (index) {
 case 0:
-    openProductSearch(productResult.getNormalizedProductID());
-  break;
+        openProductSearch(productResult.getNormalizedProductID());
+      break;
 case 1:
-webSearch(productResult.getNormalizedProductID());
-break;
+    webSearch(productResult.getNormalizedProductID());
+  break;
 case 2:
 String url=customProductSearch.replace("%s",productResult.getNormalizedProductID());
 openURL(url);
 break;
 }
+}
+}
+);
 }
