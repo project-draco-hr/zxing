@@ -1,0 +1,10 @@
+{
+  int n=xValues.length;
+  for (int i=0; i < n; i++) {
+    float x=xValues[i];
+    float y=yValues[i];
+    float denominator=a13 * x + a23 * y + a33;
+    xValues[i]=(a11 * x + a21 * y + a31) / denominator;
+    yValues[i]=(a12 * x + a22 * y + a32) / denominator;
+  }
+}

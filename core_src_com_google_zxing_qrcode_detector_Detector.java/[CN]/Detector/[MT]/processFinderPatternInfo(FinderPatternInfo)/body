@@ -25,7 +25,8 @@
       }
     }
   }
-  BitMatrix bits=sampleGrid(image,topLeft,topRight,bottomLeft,alignmentPattern,dimension);
+  PerspectiveTransform transform=createTransform(topLeft,topRight,bottomLeft,alignmentPattern,dimension);
+  BitMatrix bits=sampleGrid(image,transform,dimension);
   ResultPoint[] points;
   if (alignmentPattern == null) {
     points=new ResultPoint[]{bottomLeft,topLeft,topRight};

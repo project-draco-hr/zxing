@@ -1,0 +1,3 @@
+BitMatrix image
+int dimension
+PerspectiveTransform transform
