@@ -6,19 +6,19 @@
   int parities=EAN13Reader.FIRST_DIGIT_ENCODINGS[firstDigit];
   byte[] result=new byte[codeWidth];
   int pos=0;
-  pos+=appendPattern(result,pos,AbstractUPCEANReader.START_END_PATTERN,1);
+  pos+=appendPattern(result,pos,UPCEANReader.START_END_PATTERN,1);
   for (int i=1; i <= 6; i++) {
     int digit=Integer.parseInt(contents.substring(i,i + 1));
     if ((parities >> (6 - i) & 1) == 1) {
       digit+=10;
     }
-    pos+=appendPattern(result,pos,AbstractUPCEANReader.L_AND_G_PATTERNS[digit],0);
+    pos+=appendPattern(result,pos,UPCEANReader.L_AND_G_PATTERNS[digit],0);
   }
-  pos+=appendPattern(result,pos,AbstractUPCEANReader.MIDDLE_PATTERN,0);
+  pos+=appendPattern(result,pos,UPCEANReader.MIDDLE_PATTERN,0);
   for (int i=7; i <= 12; i++) {
     int digit=Integer.parseInt(contents.substring(i,i + 1));
-    pos+=appendPattern(result,pos,AbstractUPCEANReader.L_PATTERNS[digit],1);
+    pos+=appendPattern(result,pos,UPCEANReader.L_PATTERNS[digit],1);
   }
-  pos+=appendPattern(result,pos,AbstractUPCEANReader.START_END_PATTERN,1);
+  pos+=appendPattern(result,pos,UPCEANReader.START_END_PATTERN,1);
   return result;
 }

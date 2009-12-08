@@ -1,6 +1,6 @@
 {
   int inputWidth=code.length;
-  int fullWidth=inputWidth + (AbstractUPCEANReader.START_END_PATTERN.length << 1);
+  int fullWidth=inputWidth + (UPCEANReader.START_END_PATTERN.length << 1);
   int outputWidth=Math.max(width,fullWidth);
   int outputHeight=Math.max(1,height);
   int multiple=outputWidth / fullWidth;

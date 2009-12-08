@@ -1,0 +1,3 @@
+{
+  return ean13Reader.decodeMiddle(row,startRange,resultString);
+}

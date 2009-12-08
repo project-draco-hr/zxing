@@ -1,5 +1,5 @@
 {
-  int[] startGuardPattern=AbstractUPCEANReader.findStartGuardPattern(row);
+  int[] startGuardPattern=UPCEANReader.findStartGuardPattern(row);
   int size=readers.size();
   for (int i=0; i < size; i++) {
     UPCEANReader reader=(UPCEANReader)readers.elementAt(i);
