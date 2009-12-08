@@ -29,8 +29,15 @@
       if (attempt == 1) {
         row.reverse();
         if (hints != null && hints.containsKey(DecodeHintType.NEED_RESULT_POINT_CALLBACK)) {
-          hints=(Hashtable)hints.clone();
-          hints.remove(DecodeHintType.NEED_RESULT_POINT_CALLBACK);
+          Hashtable newHints=new Hashtable();
+          Enumeration hintEnum=hints.keys();
+          while (hintEnum.hasMoreElements()) {
+            Object key=hintEnum.nextElement();
+            if (!key.equals(DecodeHintType.NEED_RESULT_POINT_CALLBACK)) {
+              newHints.put(key,hints.get(key));
+            }
+          }
+          hints=newHints;
         }
       }
       try {
