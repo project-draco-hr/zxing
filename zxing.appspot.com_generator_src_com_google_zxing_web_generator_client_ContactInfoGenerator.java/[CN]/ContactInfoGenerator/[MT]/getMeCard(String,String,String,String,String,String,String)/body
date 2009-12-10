@@ -2,7 +2,6 @@
   StringBuilder output=new StringBuilder();
   output.append("MECARD:");
   output.append("N:").append(name).append(';');
-  maybeAppend(output,"ORG:",company);
   maybeAppend(output,"TEL:",tel);
   maybeAppend(output,"URL:",url);
   maybeAppend(output,"EMAIL:",email);
