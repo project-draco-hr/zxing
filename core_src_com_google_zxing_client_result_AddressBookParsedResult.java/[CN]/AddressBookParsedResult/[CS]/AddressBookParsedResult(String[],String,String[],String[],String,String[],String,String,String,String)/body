@@ -5,7 +5,7 @@
   this.phoneNumbers=phoneNumbers;
   this.emails=emails;
   this.note=note;
-  this.address=address;
+  this.addresses=addresses;
   this.org=org;
   this.birthday=birthday;
   this.title=title;

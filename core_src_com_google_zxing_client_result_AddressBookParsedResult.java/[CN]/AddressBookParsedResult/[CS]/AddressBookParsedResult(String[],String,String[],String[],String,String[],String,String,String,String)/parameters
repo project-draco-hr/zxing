@@ -1,11 +1,10 @@
-String contents
-String title
 String[] names
 String pronunciation
-String address
-String[] emails
 String[] phoneNumbers
-String org
-String url
-String birthday
+String[] emails
 String note
+String[] addresses
+String org
+String birthday
+String title
+String url

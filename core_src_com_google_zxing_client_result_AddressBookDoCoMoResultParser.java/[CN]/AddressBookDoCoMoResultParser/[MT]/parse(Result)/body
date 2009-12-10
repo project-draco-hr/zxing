@@ -12,12 +12,12 @@
   String[] phoneNumbers=matchDoCoMoPrefixedField("TEL:",rawText,true);
   String[] emails=matchDoCoMoPrefixedField("EMAIL:",rawText,true);
   String note=matchSingleDoCoMoPrefixedField("NOTE:",rawText,false);
-  String address=matchSingleDoCoMoPrefixedField("ADR:",rawText,true);
+  String[] addresses=matchDoCoMoPrefixedField("ADR:",rawText,true);
   String birthday=matchSingleDoCoMoPrefixedField("BDAY:",rawText,true);
   if (birthday != null && !isStringOfDigits(birthday,8)) {
     birthday=null;
   }
   String url=matchSingleDoCoMoPrefixedField("URL:",rawText,true);
   String org=matchSingleDoCoMoPrefixedField("ORG:",rawText,true);
-  return new AddressBookParsedResult(maybeWrap(name),pronunciation,phoneNumbers,emails,note,address,org,birthday,null,url);
+  return new AddressBookParsedResult(maybeWrap(name),pronunciation,phoneNumbers,emails,note,addresses,org,birthday,null,url);
 }

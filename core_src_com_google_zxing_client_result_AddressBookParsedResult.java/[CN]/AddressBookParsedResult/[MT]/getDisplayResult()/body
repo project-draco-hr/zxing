@@ -4,7 +4,7 @@
   maybeAppend(pronunciation,result);
   maybeAppend(title,result);
   maybeAppend(org,result);
-  maybeAppend(address,result);
+  maybeAppend(addresses,result);
   maybeAppend(phoneNumbers,result);
   maybeAppend(emails,result);
   maybeAppend(url,result);

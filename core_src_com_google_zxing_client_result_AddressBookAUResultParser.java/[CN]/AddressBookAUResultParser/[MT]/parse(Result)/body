@@ -9,5 +9,6 @@
   String[] emails=matchMultipleValuePrefix("MAIL",3,rawText,true);
   String note=matchSinglePrefixedField("MEMORY:",rawText,'\r',false);
   String address=matchSinglePrefixedField("ADD:",rawText,'\r',true);
-  return new AddressBookParsedResult(maybeWrap(name),pronunciation,phoneNumbers,emails,note,address,null,null,null,null);
+  String[] addresses=address == null ? null : new String[]{address};
+  return new AddressBookParsedResult(maybeWrap(name),pronunciation,phoneNumbers,emails,note,addresses,null,null,null,null);
 }

@@ -6,7 +6,7 @@
   assertEquals(title,addressResult.getTitle());
   assertTrue(Arrays.equals(names,addressResult.getNames()));
   assertEquals(pronunciation,addressResult.getPronunciation());
-  assertEquals(address,addressResult.getAddress());
+  assertTrue(Arrays.equals(addresses,addressResult.getAddresses()));
   assertTrue(Arrays.equals(emails,addressResult.getEmails()));
   assertTrue(Arrays.equals(phoneNumbers,addressResult.getPhoneNumbers()));
   assertEquals(org,addressResult.getOrg());
