@@ -23,5 +23,8 @@
 catch (  IOException e) {
     return false;
   }
+catch (  NullPointerException e) {
+    return false;
+  }
   return contents != null && contents.length() > 0;
 }

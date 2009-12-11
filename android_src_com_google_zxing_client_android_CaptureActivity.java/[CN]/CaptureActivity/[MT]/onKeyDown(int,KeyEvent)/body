@@ -7,7 +7,9 @@
     }
  else     if ((source == Source.NONE || source == Source.ZXING_LINK) && lastResult != null) {
       resetStatusView();
-      handler.sendEmptyMessage(R.id.restart_preview);
+      if (handler != null) {
+        handler.sendEmptyMessage(R.id.restart_preview);
+      }
       return true;
     }
   }

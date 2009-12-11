@@ -4,6 +4,12 @@
   }
  catch (  IOException ioe) {
     Log.w(TAG,ioe);
+    displayFrameworkBugMessageAndExit();
+    return;
+  }
+catch (  RuntimeException e) {
+    Log.e(TAG,e.toString());
+    displayFrameworkBugMessageAndExit();
     return;
   }
   if (handler == null) {
