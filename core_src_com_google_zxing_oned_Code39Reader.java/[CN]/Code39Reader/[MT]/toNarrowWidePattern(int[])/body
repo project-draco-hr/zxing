@@ -28,7 +28,7 @@
         if (counters[i] > maxNarrowCounter) {
           wideCounters--;
           if ((counter << 1) >= totalWideCountersWidth) {
-            throw ReaderException.getInstance();
+            return -1;
           }
         }
       }
@@ -36,5 +36,5 @@
     }
   }
  while (wideCounters > 3);
-  throw ReaderException.getInstance();
+  return -1;
 }

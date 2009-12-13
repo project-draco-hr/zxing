@@ -12,6 +12,9 @@
   do {
     recordPattern(row,nextStart,counters);
     int pattern=toNarrowWidePattern(counters);
+    if (pattern < 0) {
+      throw ReaderException.getInstance();
+    }
     decodedChar=patternToChar(pattern);
     result.append(decodedChar);
     lastStart=nextStart;
