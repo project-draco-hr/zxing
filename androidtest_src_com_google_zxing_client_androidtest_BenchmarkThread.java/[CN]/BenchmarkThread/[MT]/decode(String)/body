@@ -13,7 +13,7 @@
     Result result=null;
     long now=Debug.threadCpuTimeNanos();
     try {
-      BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
+      BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
       result=mMultiFormatReader.decodeWithState(bitmap);
       success=true;
     }

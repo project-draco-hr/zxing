@@ -10,7 +10,7 @@
     return "Could not decode image";
   }
   LuminanceSource source=new BufferedImageLuminanceSource(image);
-  BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
+  BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
   Result result;
   try {
     result=new MultiFormatReader().decode(bitmap);

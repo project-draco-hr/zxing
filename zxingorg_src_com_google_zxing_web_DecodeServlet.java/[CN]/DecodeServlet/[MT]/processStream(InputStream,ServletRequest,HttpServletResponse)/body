@@ -8,7 +8,7 @@
   Result result;
   try {
     LuminanceSource source=new BufferedImageLuminanceSource(image);
-    BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
+    BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
     result=reader.decode(bitmap,HINTS);
   }
  catch (  ReaderException re) {

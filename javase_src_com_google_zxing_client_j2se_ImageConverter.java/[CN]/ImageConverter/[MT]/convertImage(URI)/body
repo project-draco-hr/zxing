@@ -1,7 +1,7 @@
 {
   BufferedImage image=ImageIO.read(uri.toURL());
   LuminanceSource source=new BufferedImageLuminanceSource(image);
-  BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
+  BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
   int width=bitmap.getWidth();
   int height=bitmap.getHeight();
   BufferedImage result=new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);

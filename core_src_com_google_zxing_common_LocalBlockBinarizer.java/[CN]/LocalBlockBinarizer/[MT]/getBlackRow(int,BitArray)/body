@@ -1,4 +1,0 @@
-{
-  binarizeEntireImage();
-  return matrix.getRow(y,row);
-}
