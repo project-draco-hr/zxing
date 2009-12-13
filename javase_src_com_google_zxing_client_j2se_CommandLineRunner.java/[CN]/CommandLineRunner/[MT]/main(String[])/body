@@ -3,12 +3,16 @@
     printUsage();
     return;
   }
-  Hashtable<DecodeHintType,Object> hints=buildHints();
+  boolean tryHarder=false;
+  boolean productsOnly=false;
   boolean dumpResults=false;
   boolean dumpBlackPoint=false;
   for (  String arg : args) {
     if ("--try_harder".equals(arg)) {
-      hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
+      tryHarder=true;
+    }
+ else     if ("--products_only".equals(arg)) {
+      productsOnly=true;
     }
  else     if ("--dump_results".equals(arg)) {
       dumpResults=true;
@@ -22,6 +26,7 @@
       return;
     }
   }
+  Hashtable<DecodeHintType,Object> hints=buildHints(tryHarder,productsOnly);
   for (  String arg : args) {
     if (!arg.startsWith("--")) {
       decodeOneArgument(arg,hints,dumpResults,dumpBlackPoint);
