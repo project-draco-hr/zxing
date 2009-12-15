@@ -1,6 +1,7 @@
 {
   StringBuilder output=new StringBuilder();
   output.append("MECARD:");
+  name=name.replace(",","");
   output.append("N:").append(name).append(';');
   maybeAppend(output,"TEL:",tel);
   maybeAppend(output,"URL:",url);
