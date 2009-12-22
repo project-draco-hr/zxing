@@ -36,6 +36,9 @@
     if (error > 0) {
       y+=ystep;
       error-=dx;
+      if (y == toY) {
+        break;
+      }
     }
   }
   int diffX=toX - fromX;

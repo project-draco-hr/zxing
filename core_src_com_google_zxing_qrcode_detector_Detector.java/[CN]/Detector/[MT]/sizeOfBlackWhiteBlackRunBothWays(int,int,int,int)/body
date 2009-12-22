@@ -4,14 +4,14 @@
   if (otherToX < 0) {
     otherToX=-1;
   }
- else   if (otherToX >= image.getWidth()) {
+ else   if (otherToX > image.getWidth()) {
     otherToX=image.getWidth();
   }
   int otherToY=fromY - (toY - fromY);
   if (otherToY < 0) {
     otherToY=-1;
   }
- else   if (otherToY >= image.getHeight()) {
+ else   if (otherToY > image.getHeight()) {
     otherToY=image.getHeight();
   }
   result+=sizeOfBlackWhiteBlackRun(fromX,fromY,otherToX,otherToY);
