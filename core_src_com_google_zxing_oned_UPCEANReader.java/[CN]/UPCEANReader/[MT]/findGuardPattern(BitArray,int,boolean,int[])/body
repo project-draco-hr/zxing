@@ -34,7 +34,7 @@
         counterPosition++;
       }
       counters[counterPosition]=1;
-      isWhite=!isWhite;
+      isWhite^=true;
     }
   }
   throw ReaderException.getInstance();

@@ -22,7 +22,7 @@
       }
  else {
         counters[counterPosition]=1;
-        isWhite=!isWhite;
+        isWhite^=true;
       }
     }
     i++;
