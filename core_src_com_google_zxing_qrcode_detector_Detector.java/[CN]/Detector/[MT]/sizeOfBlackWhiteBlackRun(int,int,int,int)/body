@@ -34,11 +34,11 @@
     }
     error+=dy;
     if (error > 0) {
-      y+=ystep;
-      error-=dx;
       if (y == toY) {
         break;
       }
+      y+=ystep;
+      error-=dx;
     }
   }
   int diffX=toX - fromX;
