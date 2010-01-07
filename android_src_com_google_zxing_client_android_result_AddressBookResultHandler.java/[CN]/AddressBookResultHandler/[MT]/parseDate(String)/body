@@ -1,0 +1,12 @@
+{
+  for (  DateFormat currentFomat : DATE_FORMATS) {
+synchronized (currentFomat) {
+      currentFomat.setLenient(false);
+      Date result=currentFomat.parse(s,new ParsePosition(0));
+      if (result != null) {
+        return result;
+      }
+    }
+  }
+  return null;
+}
