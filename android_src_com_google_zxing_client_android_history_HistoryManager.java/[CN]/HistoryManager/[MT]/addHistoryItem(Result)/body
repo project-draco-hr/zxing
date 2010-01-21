@@ -1,4 +1,7 @@
 {
+  if (!activity.getIntent().getBooleanExtra(Intents.Scan.SAVE_HISTORY,true)) {
+    return;
+  }
   SQLiteOpenHelper helper=new DBHelper(activity);
   SQLiteDatabase db=helper.getWritableDatabase();
   Cursor cursor=null;

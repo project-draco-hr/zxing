@@ -1,0 +1,19 @@
+{
+  StringBuilder historyText=new StringBuilder();
+  SQLiteOpenHelper helper=new DBHelper(activity);
+  SQLiteDatabase db=helper.getReadableDatabase();
+  Cursor cursor=null;
+  try {
+    cursor=db.query(DBHelper.TABLE_NAME,TEXT_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
+    while (cursor.moveToNext()) {
+      historyText.append(cursor.getString(0)).append('\n');
+    }
+  }
+  finally {
+    if (cursor != null) {
+      cursor.close();
+    }
+    db.close();
+  }
+  return historyText.toString();
+}
