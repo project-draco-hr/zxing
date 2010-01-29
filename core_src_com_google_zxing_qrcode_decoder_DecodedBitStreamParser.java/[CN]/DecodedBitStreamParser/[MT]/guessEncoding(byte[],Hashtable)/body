@@ -1,4 +1,10 @@
 {
+  if (hints != null) {
+    String characterSet=(String)hints.get(DecodeHintType.CHARACTER_SET);
+    if (characterSet != null) {
+      return characterSet;
+    }
+  }
   if (ASSUME_SHIFT_JIS) {
     return SHIFT_JIS;
   }

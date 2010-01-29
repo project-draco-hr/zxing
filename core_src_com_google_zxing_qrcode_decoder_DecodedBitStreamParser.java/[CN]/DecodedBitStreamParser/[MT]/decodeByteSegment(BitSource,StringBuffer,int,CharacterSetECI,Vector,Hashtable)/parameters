@@ -3,3 +3,4 @@ StringBuffer result
 int count
 CharacterSetECI currentCharacterSetECI
 Vector byteSegments
+Hashtable hints

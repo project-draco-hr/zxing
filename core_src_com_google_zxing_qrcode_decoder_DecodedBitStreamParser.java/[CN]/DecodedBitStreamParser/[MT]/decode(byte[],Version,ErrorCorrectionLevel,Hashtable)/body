@@ -40,7 +40,7 @@
           decodeAlphanumericSegment(bits,result,count,fc1InEffect);
         }
  else         if (mode.equals(Mode.BYTE)) {
-          decodeByteSegment(bits,result,count,currentCharacterSetECI,byteSegments);
+          decodeByteSegment(bits,result,count,currentCharacterSetECI,byteSegments,hints);
         }
  else         if (mode.equals(Mode.KANJI)) {
           decodeKanjiSegment(bits,result,count);
