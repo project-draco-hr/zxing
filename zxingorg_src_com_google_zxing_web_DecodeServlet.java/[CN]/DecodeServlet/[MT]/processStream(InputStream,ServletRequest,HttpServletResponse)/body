@@ -12,9 +12,16 @@
     result=reader.decode(bitmap,HINTS);
   }
  catch (  ReaderException re) {
-    log.info("DECODE FAILED: " + re.toString());
-    response.sendRedirect("notfound.jspx");
-    return;
+    try {
+      LuminanceSource source=new BufferedImageLuminanceSource(image);
+      BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
+      result=reader.decode(bitmap,HINTS);
+    }
+ catch (    ReaderException re2) {
+      log.info("DECODE FAILED: " + re.toString());
+      response.sendRedirect("notfound.jspx");
+      return;
+    }
   }
   if (request.getParameter("full") == null) {
     response.setContentType("text/plain");
