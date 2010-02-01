@@ -8,6 +8,9 @@
   }
  catch (  ReaderException re) {
   }
+ finally {
+    multiFormatReader.reset();
+  }
   if (rawResult != null) {
     long end=System.currentTimeMillis();
     Log.v(TAG,"Found barcode (" + (end - start) + " ms):\n"+ rawResult.toString());

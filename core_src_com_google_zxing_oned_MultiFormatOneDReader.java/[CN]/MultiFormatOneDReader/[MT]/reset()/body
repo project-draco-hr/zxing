@@ -1,0 +1,7 @@
+{
+  int size=readers.size();
+  for (int i=0; i < size; i++) {
+    Reader reader=(Reader)readers.elementAt(i);
+    reader.reset();
+  }
+}
