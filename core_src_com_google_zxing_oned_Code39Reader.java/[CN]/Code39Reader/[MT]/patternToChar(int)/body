@@ -4,5 +4,5 @@
       return ALPHABET[i];
     }
   }
-  throw ReaderException.getInstance();
+  throw NotFoundException.getNotFoundInstance();
 }

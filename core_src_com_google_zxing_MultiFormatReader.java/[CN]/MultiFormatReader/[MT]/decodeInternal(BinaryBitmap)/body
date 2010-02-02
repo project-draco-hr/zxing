@@ -8,5 +8,5 @@
  catch (    ReaderException re) {
     }
   }
-  throw ReaderException.getInstance();
+  throw NotFoundException.getNotFoundInstance();
 }

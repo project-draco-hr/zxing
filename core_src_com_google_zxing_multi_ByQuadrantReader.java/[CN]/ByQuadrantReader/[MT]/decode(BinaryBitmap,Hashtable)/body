@@ -7,25 +7,25 @@
   try {
     return delegate.decode(topLeft,hints);
   }
- catch (  ReaderException re) {
+ catch (  NotFoundException re) {
   }
   BinaryBitmap topRight=image.crop(halfWidth,0,halfWidth,halfHeight);
   try {
     return delegate.decode(topRight,hints);
   }
- catch (  ReaderException re) {
+ catch (  NotFoundException re) {
   }
   BinaryBitmap bottomLeft=image.crop(0,halfHeight,halfWidth,halfHeight);
   try {
     return delegate.decode(bottomLeft,hints);
   }
- catch (  ReaderException re) {
+ catch (  NotFoundException re) {
   }
   BinaryBitmap bottomRight=image.crop(halfWidth,halfHeight,halfWidth,halfHeight);
   try {
     return delegate.decode(bottomRight,hints);
   }
- catch (  ReaderException re) {
+ catch (  NotFoundException re) {
   }
   int quarterWidth=halfWidth / 2;
   int quarterHeight=halfHeight / 2;

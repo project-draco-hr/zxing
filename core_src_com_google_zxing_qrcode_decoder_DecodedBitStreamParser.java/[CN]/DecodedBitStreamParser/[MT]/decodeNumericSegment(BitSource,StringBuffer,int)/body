@@ -2,7 +2,7 @@
   while (count >= 3) {
     int threeDigitsBits=bits.readBits(10);
     if (threeDigitsBits >= 1000) {
-      throw ReaderException.getInstance();
+      throw FormatException.getFormatInstance();
     }
     result.append(ALPHANUMERIC_CHARS[threeDigitsBits / 100]);
     result.append(ALPHANUMERIC_CHARS[(threeDigitsBits / 10) % 10]);
@@ -12,7 +12,7 @@
   if (count == 2) {
     int twoDigitsBits=bits.readBits(7);
     if (twoDigitsBits >= 100) {
-      throw ReaderException.getInstance();
+      throw FormatException.getFormatInstance();
     }
     result.append(ALPHANUMERIC_CHARS[twoDigitsBits / 10]);
     result.append(ALPHANUMERIC_CHARS[twoDigitsBits % 10]);
@@ -20,7 +20,7 @@
  else   if (count == 1) {
     int digitBits=bits.readBits(4);
     if (digitBits >= 10) {
-      throw ReaderException.getInstance();
+      throw FormatException.getFormatInstance();
     }
     result.append(ALPHANUMERIC_CHARS[digitBits]);
   }

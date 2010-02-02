@@ -1,6 +1,6 @@
 {
   if ((erasures != null && erasures.length > numECCodewords / 2 + MAX_ERRORS) || (numECCodewords < 0 || numECCodewords > MAX_EC_CODEWORDS)) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
   int result=0;
   if (erasures != null) {
@@ -9,7 +9,7 @@
       numErasures-=result;
     }
     if (numErasures > MAX_ERRORS) {
-      throw ReaderException.getInstance();
+      throw FormatException.getFormatInstance();
     }
   }
   return result;

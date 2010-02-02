@@ -9,7 +9,7 @@
     rsDecoder.decode(codewordsInts,numECCodewords);
   }
  catch (  ReedSolomonException rse) {
-    throw ReaderException.getInstance();
+    throw ChecksumException.getChecksumInstance();
   }
   for (int i=0; i < numDataCodewords; i++) {
     codewordBytes[i]=(byte)codewordsInts[i];

@@ -55,5 +55,5 @@
   if (!possibleCenters.isEmpty()) {
     return (AlignmentPattern)possibleCenters.elementAt(0);
   }
-  throw ReaderException.getInstance();
+  throw NotFoundException.getNotFoundInstance();
 }

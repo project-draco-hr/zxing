@@ -59,7 +59,7 @@
   }
  while ((row < numRows) || (column < numColumns));
   if (resultOffset != version.getTotalCodewords()) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
   return result;
 }

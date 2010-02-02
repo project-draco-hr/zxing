@@ -13,7 +13,7 @@
     recordPattern(row,nextStart,counters);
     int pattern=toNarrowWidePattern(counters);
     if (pattern < 0) {
-      throw ReaderException.getInstance();
+      throw NotFoundException.getNotFoundInstance();
     }
     decodedChar=patternToChar(pattern);
     result.append(decodedChar);
@@ -33,7 +33,7 @@
   }
   int whiteSpaceAfterEnd=nextStart - lastStart - lastPatternSize;
   if (nextStart != end && whiteSpaceAfterEnd / 2 < lastPatternSize) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   if (usingCheckDigit) {
     int max=result.length() - 1;
@@ -42,7 +42,7 @@
       total+=ALPHABET_STRING.indexOf(result.charAt(i));
     }
     if (total % 43 != ALPHABET_STRING.indexOf(result.charAt(max))) {
-      throw ReaderException.getInstance();
+      throw ChecksumException.getChecksumInstance();
     }
     result.deleteCharAt(max);
   }
@@ -51,7 +51,7 @@
     resultString=decodeExtended(resultString);
   }
   if (resultString.length() == 0) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   float left=(float)(start[1] + start[0]) / 2.0f;
   float right=(float)(nextStart + lastStart) / 2.0f;

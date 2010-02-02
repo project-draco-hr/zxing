@@ -13,7 +13,7 @@ case CODE_START_C:
 codeSet=CODE_CODE_C;
 break;
 default :
-throw ReaderException.getInstance();
+throw FormatException.getFormatInstance();
 }
 boolean done=false;
 boolean isNextShifted=false;
@@ -46,7 +46,7 @@ switch (code) {
 case CODE_START_A:
 case CODE_START_B:
 case CODE_START_C:
-throw ReaderException.getInstance();
+throw FormatException.getFormatInstance();
 }
 switch (codeSet) {
 case CODE_CODE_A:
@@ -158,11 +158,11 @@ while (nextStart < width && row.get(nextStart)) {
 nextStart++;
 }
 if (!row.isRange(nextStart,Math.min(width,nextStart + (nextStart - lastStart) / 2),false)) {
-throw ReaderException.getInstance();
+throw NotFoundException.getNotFoundInstance();
 }
 checksumTotal-=multiplier * lastCode;
 if (checksumTotal % 103 != lastCode) {
-throw ReaderException.getInstance();
+throw ChecksumException.getChecksumInstance();
 }
 int resultLength=result.length();
 if (resultLength > 0 && lastCharacterWasPrintable) {
@@ -175,7 +175,7 @@ result.delete(resultLength - 1,resultLength);
 }
 String resultString=result.toString();
 if (resultString.length() == 0) {
-throw ReaderException.getInstance();
+throw FormatException.getFormatInstance();
 }
 float left=(float)(startPatternInfo[1] + startPatternInfo[0]) / 2.0f;
 float right=(float)(nextStart + lastStart) / 2.0f;

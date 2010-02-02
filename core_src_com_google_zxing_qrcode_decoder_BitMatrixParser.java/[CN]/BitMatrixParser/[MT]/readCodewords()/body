@@ -34,7 +34,7 @@
     readingUp^=true;
   }
   if (resultOffset != version.getTotalCodewords()) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
   return result;
 }

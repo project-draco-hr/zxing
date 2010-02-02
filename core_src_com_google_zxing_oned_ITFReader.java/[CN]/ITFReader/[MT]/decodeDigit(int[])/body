@@ -14,6 +14,6 @@
     return bestMatch;
   }
  else {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
 }

@@ -2,7 +2,7 @@
   Vector possibleCenters=getPossibleCenters();
   int size=possibleCenters.size();
   if (size < 3) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   if (size == 3) {
     return new FinderPattern[][]{new FinderPattern[]{(FinderPattern)possibleCenters.elementAt(0),(FinderPattern)possibleCenters.elementAt(1),(FinderPattern)possibleCenters.elementAt(2)}};
@@ -64,5 +64,5 @@
     }
     return resultArray;
   }
-  throw ReaderException.getInstance();
+  throw NotFoundException.getNotFoundInstance();
 }

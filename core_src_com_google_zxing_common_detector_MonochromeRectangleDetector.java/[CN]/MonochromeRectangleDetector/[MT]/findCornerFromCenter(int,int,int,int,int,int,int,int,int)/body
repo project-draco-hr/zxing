@@ -10,7 +10,7 @@
     }
     if (range == null) {
       if (lastRange == null) {
-        throw ReaderException.getInstance();
+        throw NotFoundException.getNotFoundInstance();
       }
       if (deltaX == 0) {
         int lastY=y - deltaY;
@@ -39,5 +39,5 @@
     }
     lastRange=range;
   }
-  throw ReaderException.getInstance();
+  throw NotFoundException.getNotFoundInstance();
 }

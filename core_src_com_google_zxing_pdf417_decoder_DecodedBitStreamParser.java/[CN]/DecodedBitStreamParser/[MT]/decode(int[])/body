@@ -40,7 +40,7 @@ if (codeIndex < codewords.length) {
 code=codewords[codeIndex++];
 }
  else {
-throw ReaderException.getInstance();
+throw FormatException.getFormatInstance();
 }
 }
 return new DecoderResult(null,result.toString(),null,null);

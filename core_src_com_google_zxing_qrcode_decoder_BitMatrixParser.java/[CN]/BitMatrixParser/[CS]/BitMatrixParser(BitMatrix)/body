@@ -1,7 +1,7 @@
 {
   int dimension=bitMatrix.getDimension();
   if (dimension < 21 || (dimension & 0x03) != 1) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
   this.bitMatrix=bitMatrix;
 }

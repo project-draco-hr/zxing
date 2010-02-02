@@ -1,17 +1,17 @@
 {
   if (codewords.length < 4) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
   int numberOfCodewords=codewords[0];
   if (numberOfCodewords > codewords.length) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
   if (numberOfCodewords == 0) {
     if (numECCodewords < codewords.length) {
       codewords[0]=codewords.length - numECCodewords;
     }
  else {
-      throw ReaderException.getInstance();
+      throw FormatException.getFormatInstance();
     }
   }
 }

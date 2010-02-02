@@ -37,7 +37,7 @@
     }
   }
   if (maybeTopLeft == null || bottomLeft == null || maybeBottomRight == null) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   ResultPoint[] corners={maybeTopLeft,bottomLeft,maybeBottomRight};
   ResultPoint.orderBestPatterns(corners);

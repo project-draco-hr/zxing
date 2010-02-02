@@ -17,9 +17,19 @@
       BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
       result=reader.decode(bitmap,HINTS);
     }
- catch (    ReaderException re2) {
-      log.info("DECODE FAILED: " + re.toString());
+ catch (    NotFoundException nfe) {
+      log.info("Not found: " + re.toString());
       response.sendRedirect("notfound.jspx");
+      return;
+    }
+catch (    FormatException fe) {
+      log.info("Format problem: " + re.toString());
+      response.sendRedirect("format.jspx");
+      return;
+    }
+catch (    ChecksumException ce) {
+      log.info("Checksum problem: " + re.toString());
+      response.sendRedirect("format.jspx");
       return;
     }
   }

@@ -8,7 +8,7 @@
     }
   }
   if (numTransitionsLeft >= 0) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   recordPattern(row,start + 1,counters);
 }

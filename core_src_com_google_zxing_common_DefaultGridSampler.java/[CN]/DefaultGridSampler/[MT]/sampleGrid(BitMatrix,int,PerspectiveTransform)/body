@@ -18,7 +18,7 @@
       }
     }
  catch (    ArrayIndexOutOfBoundsException aioobe) {
-      throw ReaderException.getInstance();
+      throw NotFoundException.getNotFoundInstance();
     }
   }
   return bits;

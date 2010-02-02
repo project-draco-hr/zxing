@@ -26,7 +26,7 @@ case BASE256_ENCODE:
 decodeBase256Segment(bits,result,byteSegments);
 break;
 default :
-throw ReaderException.getInstance();
+throw FormatException.getFormatInstance();
 }
 mode=ASCII_ENCODE;
 }

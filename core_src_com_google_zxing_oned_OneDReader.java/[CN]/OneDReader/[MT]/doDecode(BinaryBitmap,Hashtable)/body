@@ -22,7 +22,7 @@
     try {
       row=image.getBlackRow(rowNumber,row);
     }
- catch (    ReaderException re) {
+ catch (    NotFoundException nfe) {
       continue;
     }
     for (int attempt=0; attempt < 2; attempt++) {
@@ -54,5 +54,5 @@
       }
     }
   }
-  throw ReaderException.getInstance();
+  throw NotFoundException.getNotFoundInstance();
 }

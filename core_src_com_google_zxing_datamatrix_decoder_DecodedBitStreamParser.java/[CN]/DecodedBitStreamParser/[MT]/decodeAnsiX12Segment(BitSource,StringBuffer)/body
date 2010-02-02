@@ -30,7 +30,7 @@
         result.append((char)(cValue + 51));
       }
  else {
-        throw ReaderException.getInstance();
+        throw FormatException.getFormatInstance();
       }
     }
   }

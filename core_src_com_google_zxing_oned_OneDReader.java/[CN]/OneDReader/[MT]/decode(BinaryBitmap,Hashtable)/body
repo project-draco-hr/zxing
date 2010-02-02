@@ -2,7 +2,7 @@
   try {
     return doDecode(image,hints);
   }
- catch (  ReaderException re) {
+ catch (  NotFoundException nfe) {
     boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
     if (tryHarder && image.isRotateSupported()) {
       BinaryBitmap rotatedImage=image.rotateCounterClockwise();
@@ -21,7 +21,7 @@
       return result;
     }
  else {
-      throw re;
+      throw nfe;
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   byte[] readBytes=new byte[count];
   if (count << 3 > bits.available()) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
   for (int i=0; i < count; i++) {
     readBytes[i]=(byte)bits.readBits(8);
@@ -17,7 +17,7 @@
     result.append(new String(readBytes,encoding));
   }
  catch (  UnsupportedEncodingException uce) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
   byteSegments.addElement(readBytes);
 }

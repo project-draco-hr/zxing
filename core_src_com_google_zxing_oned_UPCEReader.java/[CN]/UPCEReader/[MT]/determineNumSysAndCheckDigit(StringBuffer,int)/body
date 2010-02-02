@@ -8,5 +8,5 @@
       }
     }
   }
-  throw ReaderException.getInstance();
+  throw NotFoundException.getNotFoundInstance();
 }

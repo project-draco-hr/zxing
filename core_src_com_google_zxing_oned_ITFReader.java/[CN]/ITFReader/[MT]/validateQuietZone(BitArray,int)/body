@@ -7,6 +7,6 @@
     quietCount--;
   }
   if (quietCount != 0) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
 }

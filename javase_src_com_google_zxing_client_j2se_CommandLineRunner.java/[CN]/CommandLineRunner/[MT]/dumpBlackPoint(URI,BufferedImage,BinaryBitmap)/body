@@ -17,7 +17,7 @@
     try {
       row=bitmap.getBlackRow(y,row);
     }
- catch (    ReaderException e) {
+ catch (    NotFoundException nfe) {
       int offset=y * stride + width;
       for (int x=0; x < width; x++) {
         pixels[offset + x]=0xffff0000;
@@ -48,7 +48,7 @@
       }
     }
   }
- catch (  ReaderException e) {
+ catch (  NotFoundException nfe) {
   }
   BufferedImage result=new BufferedImage(stride,height,BufferedImage.TYPE_INT_ARGB);
   result.setRGB(0,0,stride,height,pixels,0,stride);

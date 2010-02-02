@@ -10,19 +10,17 @@
  else {
     correctCodeWordVertices(vertices,false);
   }
-  if (vertices != null) {
-    float moduleWidth=computeModuleWidth(vertices);
-    if (moduleWidth < 1.0f) {
-      throw ReaderException.getInstance();
-    }
-    int dimension=computeDimension(vertices[4],vertices[6],vertices[5],vertices[7],moduleWidth);
-    if (dimension < 1) {
-      throw ReaderException.getInstance();
-    }
-    BitMatrix bits=sampleGrid(matrix,vertices[4],vertices[5],vertices[6],vertices[7],dimension);
-    return new DetectorResult(bits,new ResultPoint[]{vertices[4],vertices[5],vertices[6],vertices[7]});
+  if (vertices == null) {
+    throw NotFoundException.getNotFoundInstance();
   }
- else {
-    throw ReaderException.getInstance();
+  float moduleWidth=computeModuleWidth(vertices);
+  if (moduleWidth < 1.0f) {
+    throw NotFoundException.getNotFoundInstance();
   }
+  int dimension=computeDimension(vertices[4],vertices[6],vertices[5],vertices[7],moduleWidth);
+  if (dimension < 1) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  BitMatrix bits=sampleGrid(matrix,vertices[4],vertices[5],vertices[6],vertices[7],dimension);
+  return new DetectorResult(bits,new ResultPoint[]{vertices[4],vertices[5],vertices[6],vertices[7]});
 }

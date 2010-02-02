@@ -16,11 +16,11 @@
   int end=endRange[1];
   int quietEnd=end + (end - endRange[0]);
   if (quietEnd >= row.getSize() || !row.isRange(end,quietEnd,false)) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   String resultString=result.toString();
   if (!checkChecksum(resultString)) {
-    throw ReaderException.getInstance();
+    throw ChecksumException.getChecksumInstance();
   }
   float left=(float)(startGuardRange[1] + startGuardRange[0]) / 2.0f;
   float right=(float)(endRange[1] + endRange[0]) / 2.0f;

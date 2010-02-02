@@ -29,5 +29,5 @@
   if (parsedFormatInfo != null) {
     return parsedFormatInfo;
   }
-  throw ReaderException.getInstance();
+  throw FormatException.getFormatInstance();
 }

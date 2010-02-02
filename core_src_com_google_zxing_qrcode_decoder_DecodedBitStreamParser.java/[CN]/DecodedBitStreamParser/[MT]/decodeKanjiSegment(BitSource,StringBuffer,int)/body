@@ -19,6 +19,6 @@
     result.append(new String(buffer,SHIFT_JIS));
   }
  catch (  UnsupportedEncodingException uee) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
 }

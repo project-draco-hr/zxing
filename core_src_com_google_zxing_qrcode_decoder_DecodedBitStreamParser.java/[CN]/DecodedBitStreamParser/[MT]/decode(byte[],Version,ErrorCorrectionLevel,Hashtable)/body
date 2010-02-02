@@ -14,7 +14,7 @@
         mode=Mode.forBits(bits.readBits(4));
       }
  catch (      IllegalArgumentException iae) {
-        throw ReaderException.getInstance();
+        throw FormatException.getFormatInstance();
       }
     }
     if (!mode.equals(Mode.TERMINATOR)) {
@@ -28,7 +28,7 @@
         int value=parseECIValue(bits);
         currentCharacterSetECI=CharacterSetECI.getCharacterSetECIByValue(value);
         if (currentCharacterSetECI == null) {
-          throw ReaderException.getInstance();
+          throw FormatException.getFormatInstance();
         }
       }
  else {
@@ -46,7 +46,7 @@
           decodeKanjiSegment(bits,result,count);
         }
  else {
-          throw ReaderException.getInstance();
+          throw FormatException.getFormatInstance();
         }
       }
     }

@@ -28,7 +28,7 @@
     secondPeak=temp;
   }
   if (secondPeak - firstPeak <= numBuckets >> 4) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   int bestValley=secondPeak - 1;
   int bestValleyScore=-1;

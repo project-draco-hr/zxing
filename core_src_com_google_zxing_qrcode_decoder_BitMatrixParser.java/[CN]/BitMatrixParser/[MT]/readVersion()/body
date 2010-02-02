@@ -28,5 +28,5 @@
   if (parsedVersion != null && parsedVersion.getDimensionForVersion() == dimension) {
     return parsedVersion;
   }
-  throw ReaderException.getInstance();
+  throw FormatException.getFormatInstance();
 }

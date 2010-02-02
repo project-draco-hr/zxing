@@ -4,7 +4,7 @@
   FinderPattern bottomLeft=info.getBottomLeft();
   float moduleSize=calculateModuleSize(topLeft,topRight,bottomLeft);
   if (moduleSize < 1.0f) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   int dimension=computeDimension(topLeft,topRight,bottomLeft,moduleSize);
   Version provisionalVersion=Version.getProvisionalVersionForDimension(dimension);
@@ -21,7 +21,7 @@
         alignmentPattern=findAlignmentInRegion(moduleSize,estAlignmentX,estAlignmentY,(float)i);
         break;
       }
- catch (      ReaderException re) {
+ catch (      NotFoundException re) {
       }
     }
   }

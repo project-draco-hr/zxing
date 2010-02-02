@@ -30,5 +30,5 @@
       isWhite=!isWhite;
     }
   }
-  throw ReaderException.getInstance();
+  throw NotFoundException.getNotFoundInstance();
 }

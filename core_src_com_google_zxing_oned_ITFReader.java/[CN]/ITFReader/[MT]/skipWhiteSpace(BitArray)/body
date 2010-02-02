@@ -8,7 +8,7 @@
     endStart++;
   }
   if (endStart == width) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   return endStart;
 }

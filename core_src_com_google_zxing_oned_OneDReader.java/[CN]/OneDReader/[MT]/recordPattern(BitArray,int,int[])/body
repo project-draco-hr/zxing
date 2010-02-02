@@ -5,7 +5,7 @@
   }
   int end=row.getSize();
   if (start >= end) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   boolean isWhite=!row.get(start);
   int counterPosition=0;
@@ -28,6 +28,6 @@
     i++;
   }
   if (!(counterPosition == numCounters || (counterPosition == numCounters - 1 && i == end))) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
 }

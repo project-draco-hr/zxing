@@ -10,7 +10,7 @@ case 2:
 dimension--;
 break;
 case 3:
-throw ReaderException.getInstance();
+throw NotFoundException.getNotFoundInstance();
 }
 return dimension;
 }

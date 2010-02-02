@@ -4,6 +4,6 @@
     return new Result(text.substring(1),null,result.getResultPoints(),BarcodeFormat.UPC_A);
   }
  else {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
 }

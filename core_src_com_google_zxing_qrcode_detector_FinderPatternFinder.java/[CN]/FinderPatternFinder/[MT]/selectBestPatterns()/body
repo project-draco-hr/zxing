@@ -1,7 +1,7 @@
 {
   int startSize=possibleCenters.size();
   if (startSize < 3) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   if (startSize > 3) {
     float totalModuleSize=0.0f;

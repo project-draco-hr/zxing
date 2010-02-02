@@ -49,13 +49,13 @@ if (upperShift) {
 }
 }
  else if (cValue == 27) {
-throw ReaderException.getInstance();
+throw FormatException.getFormatInstance();
 }
  else if (cValue == 30) {
 upperShift=true;
 }
  else {
-throw ReaderException.getInstance();
+throw FormatException.getFormatInstance();
 }
 shift=0;
 break;
@@ -70,7 +70,7 @@ result.append((char)(cValue + 96));
 shift=0;
 break;
 default :
-throw ReaderException.getInstance();
+throw FormatException.getFormatInstance();
 }
 }
 }

@@ -1,7 +1,7 @@
 {
   int dimension=bitMatrix.getDimension();
   if (dimension < 10 || dimension > 144 || (dimension & 0x01) != 0) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
   version=readVersion(bitMatrix);
   this.mappingBitMatrix=extractDataRegion(bitMatrix);

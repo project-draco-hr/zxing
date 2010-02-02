@@ -8,14 +8,14 @@
     borderWidth++;
   }
   if (borderWidth == minDimension) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   int moduleEnd=borderWidth;
   while (moduleEnd < minDimension && matrix.get(moduleEnd,moduleEnd)) {
     moduleEnd++;
   }
   if (moduleEnd == minDimension) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   int moduleSize=moduleEnd - borderWidth;
   int rowEndOfSymbol=width - 1;
@@ -23,17 +23,17 @@
     rowEndOfSymbol--;
   }
   if (rowEndOfSymbol < 0) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   rowEndOfSymbol++;
   if ((rowEndOfSymbol - borderWidth) % moduleSize != 0) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   int dimension=(rowEndOfSymbol - borderWidth) / moduleSize;
   borderWidth+=moduleSize >> 1;
   int sampleDimension=borderWidth + (dimension - 1) * moduleSize;
   if (sampleDimension >= width || sampleDimension >= height) {
-    throw ReaderException.getInstance();
+    throw NotFoundException.getNotFoundInstance();
   }
   BitMatrix bits=new BitMatrix(dimension);
   for (int y=0; y < dimension; y++) {

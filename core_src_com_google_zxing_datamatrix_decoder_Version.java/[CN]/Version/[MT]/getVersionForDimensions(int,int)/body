@@ -1,6 +1,6 @@
 {
   if ((numRows & 0x01) != 0 || (numColumns & 0x01) != 0) {
-    throw ReaderException.getInstance();
+    throw FormatException.getFormatInstance();
   }
   int numVersions=VERSIONS.length;
   for (int i=0; i < numVersions; ++i) {
@@ -9,5 +9,5 @@
       return version;
     }
   }
-  throw ReaderException.getInstance();
+  throw FormatException.getFormatInstance();
 }

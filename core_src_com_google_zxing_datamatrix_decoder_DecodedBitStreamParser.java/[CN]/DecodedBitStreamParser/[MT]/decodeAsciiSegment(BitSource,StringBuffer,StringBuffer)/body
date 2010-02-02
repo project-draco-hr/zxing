@@ -3,7 +3,7 @@
   do {
     int oneByte=bits.readBits(8);
     if (oneByte == 0) {
-      throw ReaderException.getInstance();
+      throw FormatException.getFormatInstance();
     }
  else     if (oneByte <= 128) {
       oneByte=upperShift ? (oneByte + 128) : oneByte;
@@ -56,7 +56,7 @@
  else     if (oneByte == 241) {
     }
  else     if (oneByte >= 242) {
-      throw ReaderException.getInstance();
+      throw FormatException.getFormatInstance();
     }
   }
  while (bits.available() > 0);

@@ -21,7 +21,7 @@
     System.out.println(uri.toString() + " (format: " + result.getBarcodeFormat()+ ", type: "+ parsedResult.getType()+ "):\nRaw result:\n"+ result.getText()+ "\nParsed result:\n"+ parsedResult.getDisplayResult());
     return result;
   }
- catch (  ReaderException e) {
+ catch (  NotFoundException nfe) {
     System.out.println(uri.toString() + ": No barcode found");
     return null;
   }
