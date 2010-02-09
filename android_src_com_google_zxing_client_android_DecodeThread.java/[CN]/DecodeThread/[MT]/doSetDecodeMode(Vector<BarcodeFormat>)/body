@@ -1,8 +1,0 @@
-{
-  Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
-  if (vector != null) {
-    hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
-  }
-  hints.put(DecodeHintType.NEED_RESULT_POINT_CALLBACK,resultPointCallback);
-  multiFormatReader.setHints(hints);
-}

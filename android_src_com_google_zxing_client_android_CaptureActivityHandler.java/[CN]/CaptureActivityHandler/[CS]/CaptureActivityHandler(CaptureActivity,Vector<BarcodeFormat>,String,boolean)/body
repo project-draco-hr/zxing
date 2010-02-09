@@ -1,6 +1,6 @@
 {
   this.activity=activity;
-  decodeThread=new DecodeThread(activity,decodeFormats,new ViewfinderResultPointCallback(activity.getViewfinderView()));
+  decodeThread=new DecodeThread(activity,decodeFormats,characterSet,new ViewfinderResultPointCallback(activity.getViewfinderView()));
   decodeThread.start();
   state=State.SUCCESS;
   CameraManager.get().startPreview();

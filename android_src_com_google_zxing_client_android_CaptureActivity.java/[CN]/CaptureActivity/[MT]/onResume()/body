@@ -35,10 +35,12 @@
       decodeFormats=null;
       resetStatusView();
     }
+    characterSet=intent.getStringExtra(Intents.Scan.CHARACTER_SET);
   }
  else {
     source=Source.NONE;
     decodeFormats=null;
+    characterSet=null;
     if (lastResult == null) {
       resetStatusView();
     }
