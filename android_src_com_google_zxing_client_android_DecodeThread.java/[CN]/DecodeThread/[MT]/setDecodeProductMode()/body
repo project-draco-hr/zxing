@@ -1,3 +1,0 @@
-{
-  doSetDecodeMode(BarcodeFormat.UPC_A,BarcodeFormat.UPC_E,BarcodeFormat.EAN_13,BarcodeFormat.EAN_8,BarcodeFormat.RSS14);
-}

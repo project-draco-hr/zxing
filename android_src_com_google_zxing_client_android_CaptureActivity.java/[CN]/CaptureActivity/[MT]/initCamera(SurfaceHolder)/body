@@ -14,6 +14,6 @@ catch (  RuntimeException e) {
   }
   if (handler == null) {
     boolean beginScanning=lastResult == null;
-    handler=new CaptureActivityHandler(this,decodeMode,beginScanning);
+    handler=new CaptureActivityHandler(this,decodeFormats,beginScanning);
   }
 }

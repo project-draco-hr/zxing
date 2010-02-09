@@ -15,30 +15,30 @@
   if (intent != null && action != null) {
     if (action.equals(Intents.Scan.ACTION)) {
       source=Source.NATIVE_APP_INTENT;
-      decodeMode=intent.getStringExtra(Intents.Scan.MODE);
+      decodeFormats=parseDecodeFormats(intent);
       resetStatusView();
     }
  else     if (dataString != null && dataString.contains(PRODUCT_SEARCH_URL_PREFIX) && dataString.contains(PRODUCT_SEARCH_URL_SUFFIX)) {
       source=Source.PRODUCT_SEARCH_LINK;
       sourceUrl=dataString;
-      decodeMode=Intents.Scan.PRODUCT_MODE;
+      decodeFormats=PRODUCT_FORMATS;
       resetStatusView();
     }
  else     if (dataString != null && dataString.equals(ZXING_URL)) {
       source=Source.ZXING_LINK;
       sourceUrl=dataString;
-      decodeMode=null;
+      decodeFormats=null;
       resetStatusView();
     }
  else {
       source=Source.NONE;
-      decodeMode=null;
+      decodeFormats=null;
       resetStatusView();
     }
   }
  else {
     source=Source.NONE;
-    decodeMode=null;
+    decodeFormats=null;
     if (lastResult == null) {
       resetStatusView();
     }
