@@ -2,13 +2,12 @@
   Rect rect=getFramingRect();
 switch (previewFormat) {
 case PixelFormat.YCbCr_420_SP:
-    return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
 case PixelFormat.YCbCr_422_SP:
-  return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
+    return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
 default :
-if (previewFormatString.equals("yuv420p")) {
-  return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
-}
+  if ("yuv420p".equals(previewFormatString)) {
+    return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
+  }
 }
 throw new IllegalArgumentException("Unsupported picture format: " + previewFormat + '/'+ previewFormatString);
 }
