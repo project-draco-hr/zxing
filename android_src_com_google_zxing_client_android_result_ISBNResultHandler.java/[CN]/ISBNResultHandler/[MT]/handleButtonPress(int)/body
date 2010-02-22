@@ -13,8 +13,13 @@ case 2:
 searchBookContents(isbnResult.getISBN());
 break;
 case 3:
+if (customProductSearch != null) {
 String url=customProductSearch.replace("%s",isbnResult.getISBN());
 openURL(url);
+}
+ else {
+openGoogleShopper(isbnResult.getISBN());
+}
 break;
 }
 }

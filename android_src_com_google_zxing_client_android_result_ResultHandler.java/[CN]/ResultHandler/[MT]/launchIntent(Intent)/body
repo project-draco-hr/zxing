@@ -5,8 +5,8 @@
     }
  catch (    ActivityNotFoundException e) {
       AlertDialog.Builder builder=new AlertDialog.Builder(activity);
-      builder.setTitle(activity.getString(R.string.app_name));
-      builder.setMessage(activity.getString(R.string.msg_intent_failed));
+      builder.setTitle(R.string.app_name);
+      builder.setMessage(R.string.msg_intent_failed);
       builder.setPositiveButton(R.string.button_ok,null);
       builder.show();
     }
