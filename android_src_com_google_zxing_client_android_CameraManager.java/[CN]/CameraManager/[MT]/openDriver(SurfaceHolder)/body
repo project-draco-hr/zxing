@@ -1,6 +1,9 @@
 {
   if (camera == null) {
     camera=Camera.open();
+    if (camera == null) {
+      throw new IOException();
+    }
     camera.setPreviewDisplay(holder);
     if (!initialized) {
       initialized=true;
