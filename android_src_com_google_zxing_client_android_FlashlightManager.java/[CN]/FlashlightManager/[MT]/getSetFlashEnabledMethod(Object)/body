@@ -1,0 +1,7 @@
+{
+  if (iHardwareService == null) {
+    return null;
+  }
+  Class<?> proxyClass=iHardwareService.getClass();
+  return maybeGetMethod(proxyClass,"setFlashlightEnabled",boolean.class);
+}

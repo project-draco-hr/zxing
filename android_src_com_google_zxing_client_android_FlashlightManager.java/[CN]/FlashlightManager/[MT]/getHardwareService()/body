@@ -1,0 +1,23 @@
+{
+  Class<?> serviceManagerClass=maybeForName("android.os.ServiceManager");
+  if (serviceManagerClass == null) {
+    return null;
+  }
+  Method getServiceMethod=maybeGetMethod(serviceManagerClass,"getService",String.class);
+  if (getServiceMethod == null) {
+    return null;
+  }
+  Object hardwareService=invoke(getServiceMethod,null,"hardware");
+  if (hardwareService == null) {
+    return null;
+  }
+  Class<?> iHardwareServiceStubClass=maybeForName("android.os.IHardwareService$Stub");
+  if (iHardwareServiceStubClass == null) {
+    return null;
+  }
+  Method asInterfaceMethod=maybeGetMethod(iHardwareServiceStubClass,"asInterface",IBinder.class);
+  if (asInterfaceMethod == null) {
+    return null;
+  }
+  return invoke(asInterfaceMethod,null,hardwareService);
+}

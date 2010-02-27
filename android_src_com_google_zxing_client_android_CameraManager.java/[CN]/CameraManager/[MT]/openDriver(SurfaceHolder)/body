@@ -10,5 +10,6 @@
       getScreenResolution();
     }
     setCameraParameters();
+    FlashlightManager.enableFlashlight();
   }
 }

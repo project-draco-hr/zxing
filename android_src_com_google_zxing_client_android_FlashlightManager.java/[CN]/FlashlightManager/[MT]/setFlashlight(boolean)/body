@@ -1,0 +1,5 @@
+{
+  if (iHardwareService != null) {
+    invoke(setFlashEnabledMethod,iHardwareService,active);
+  }
+}
