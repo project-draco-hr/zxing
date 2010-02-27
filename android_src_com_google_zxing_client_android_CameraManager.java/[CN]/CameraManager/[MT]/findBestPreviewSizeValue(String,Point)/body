@@ -19,7 +19,7 @@
       Log.w(TAG,"Bad preview-size");
       continue;
     }
-    int newDiff=Math.abs(newX - TARGET_PREVIEW_WIDTH) + Math.abs(newY - TARGET_PREVIEW_HEIGHT);
+    int newDiff=Math.abs(newX - screenResolution.x) + Math.abs(newY - screenResolution.y);
     if (newDiff == 0) {
       bestX=newX;
       bestY=newY;
