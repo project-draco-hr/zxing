@@ -1,7 +1,0 @@
-{
-  FormatInformation formatInfo=doDecodeFormatInformation(maskedFormatInfo);
-  if (formatInfo != null) {
-    return formatInfo;
-  }
-  return doDecodeFormatInformation(maskedFormatInfo ^ FORMAT_INFO_MASK_QR);
-}
