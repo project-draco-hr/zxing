@@ -8,6 +8,7 @@
     if (currentVersion > lastVersion) {
       prefs.edit().putInt(PreferencesActivity.KEY_HELP_VERSION_SHOWN,currentVersion).commit();
       Intent intent=new Intent(Intent.ACTION_VIEW);
+      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
       intent.setClassName(this,HelpActivity.class.getName());
       startActivity(intent);
       return true;

@@ -3,6 +3,7 @@ switch (item.getItemId()) {
 case SHARE_ID:
 {
       Intent intent=new Intent(Intent.ACTION_VIEW);
+      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
       intent.setClassName(this,ShareActivity.class.getName());
       startActivity(intent);
       break;
@@ -16,6 +17,7 @@ case HISTORY_ID:
 case SETTINGS_ID:
 {
   Intent intent=new Intent(Intent.ACTION_VIEW);
+  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
   intent.setClassName(this,PreferencesActivity.class.getName());
   startActivity(intent);
   break;
@@ -23,6 +25,7 @@ case SETTINGS_ID:
 case HELP_ID:
 {
 Intent intent=new Intent(Intent.ACTION_VIEW);
+intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 intent.setClassName(this,HelpActivity.class.getName());
 startActivity(intent);
 break;
