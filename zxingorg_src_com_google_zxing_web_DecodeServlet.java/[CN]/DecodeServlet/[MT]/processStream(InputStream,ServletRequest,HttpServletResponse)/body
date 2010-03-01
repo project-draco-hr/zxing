@@ -5,33 +5,36 @@
     return;
   }
   Reader reader=new MultiFormatReader();
-  Result result;
+  LuminanceSource source=new BufferedImageLuminanceSource(image);
+  BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
+  Result result=null;
+  ReaderException savedException=null;
   try {
-    LuminanceSource source=new BufferedImageLuminanceSource(image);
-    BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
-    result=reader.decode(bitmap,HINTS);
+    result=reader.decode(bitmap,HINTS_PURE);
   }
  catch (  ReaderException re) {
+    savedException=re;
+  }
+  if (result == null) {
     try {
-      LuminanceSource source=new BufferedImageLuminanceSource(image);
-      BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
       result=reader.decode(bitmap,HINTS);
     }
- catch (    NotFoundException nfe) {
-      log.info("Not found: " + re.toString());
-      response.sendRedirect("notfound.jspx");
-      return;
+ catch (    ReaderException re) {
+      savedException=re;
     }
-catch (    FormatException fe) {
-      log.info("Format problem: " + re.toString());
-      response.sendRedirect("format.jspx");
-      return;
+  }
+  if (result == null) {
+    try {
+      BinaryBitmap hybridBitmap=new BinaryBitmap(new HybridBinarizer(source));
+      result=reader.decode(hybridBitmap,HINTS);
     }
-catch (    ChecksumException ce) {
-      log.info("Checksum problem: " + re.toString());
-      response.sendRedirect("format.jspx");
-      return;
+ catch (    ReaderException re) {
+      savedException=re;
     }
+  }
+  if (result == null) {
+    handleException(savedException,response);
+    return;
   }
   if (request.getParameter("full") == null) {
     response.setContentType("text/plain");

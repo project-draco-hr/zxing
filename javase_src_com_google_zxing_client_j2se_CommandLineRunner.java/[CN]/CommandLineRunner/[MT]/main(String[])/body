@@ -4,12 +4,16 @@
     return;
   }
   boolean tryHarder=false;
+  boolean pureBarcode=false;
   boolean productsOnly=false;
   boolean dumpResults=false;
   boolean dumpBlackPoint=false;
   for (  String arg : args) {
     if ("--try_harder".equals(arg)) {
       tryHarder=true;
+    }
+ else     if ("--pure_barcode".equals(arg)) {
+      pureBarcode=true;
     }
  else     if ("--products_only".equals(arg)) {
       productsOnly=true;
@@ -26,7 +30,7 @@
       return;
     }
   }
-  Hashtable<DecodeHintType,Object> hints=buildHints(tryHarder,productsOnly);
+  Hashtable<DecodeHintType,Object> hints=buildHints(tryHarder,pureBarcode,productsOnly);
   for (  String arg : args) {
     if (!arg.startsWith("--")) {
       decodeOneArgument(arg,hints,dumpResults,dumpBlackPoint);

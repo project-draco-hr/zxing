@@ -17,5 +17,8 @@
   if (tryHarder) {
     hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
   }
+  if (pureBarcode) {
+    hints.put(DecodeHintType.PURE_BARCODE,Boolean.TRUE);
+  }
   return hints;
 }
