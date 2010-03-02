@@ -10,7 +10,7 @@
     try {
       result.addElement(processFinderPatternInfo(info[i]));
     }
- catch (    FormatException e) {
+ catch (    ReaderException e) {
     }
   }
   if (result.isEmpty()) {
