@@ -1,0 +1,5 @@
+{
+  this.value=value;
+  this.startEnd=startEnd;
+  this.resultPoints=new ResultPoint[]{new ResultPoint((float)start,(float)rowNumber),new ResultPoint((float)end,(float)rowNumber)};
+}

@@ -1,0 +1,8 @@
+{
+  for (int value=0; value < FINDER_PATTERNS.length; value++) {
+    if (patternMatchVariance(counters,FINDER_PATTERNS[value],MAX_INDIVIDUAL_VARIANCE) < MAX_AVG_VARIANCE) {
+      return value;
+    }
+  }
+  throw NotFoundException.getNotFoundInstance();
+}

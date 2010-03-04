@@ -1,0 +1,4 @@
+BitArray row
+int rowNumber
+boolean right
+int[] startEnd

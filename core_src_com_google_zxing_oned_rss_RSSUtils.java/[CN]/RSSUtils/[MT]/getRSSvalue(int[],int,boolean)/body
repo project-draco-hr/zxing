@@ -1,0 +1,31 @@
+{
+  int elements=widths.length;
+  int n=0;
+  for (int i=0; i < elements; i++) {
+    n+=widths[i];
+  }
+  int val=0;
+  int narrowMask=0;
+  for (int bar=0; bar < elements - 1; bar++) {
+    int elmWidth;
+    for (elmWidth=1, narrowMask|=(1 << bar); elmWidth < widths[bar]; elmWidth++, narrowMask&=~(1 << bar)) {
+      int subVal=combins(n - elmWidth - 1,elements - bar - 2);
+      if (noNarrow && (narrowMask == 0) && (n - elmWidth - (elements - bar - 1) >= elements - bar - 1)) {
+        subVal-=combins(n - elmWidth - (elements - bar),elements - bar - 2);
+      }
+      if (elements - bar - 1 > 1) {
+        int lessVal=0;
+        for (int mxwElement=n - elmWidth - (elements - bar - 2); mxwElement > maxWidth; mxwElement--) {
+          lessVal+=combins(n - elmWidth - mxwElement- 1,elements - bar - 3);
+        }
+        subVal-=lessVal * (elements - 1 - bar);
+      }
+ else       if (n - elmWidth > maxWidth) {
+        subVal--;
+      }
+      val+=subVal;
+    }
+    n-=elmWidth;
+  }
+  return (val);
+}

@@ -1,0 +1,5 @@
+int val
+int n
+int elements
+int maxWidth
+boolean noNarrow

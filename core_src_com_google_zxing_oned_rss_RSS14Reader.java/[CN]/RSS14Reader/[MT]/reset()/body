@@ -1,0 +1,4 @@
+{
+  possibleLeftPairs.clear();
+  possibleRightPairs.clear();
+}

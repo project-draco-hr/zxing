@@ -1,0 +1,3 @@
+int[] widths
+int maxWidth
+boolean noNarrow

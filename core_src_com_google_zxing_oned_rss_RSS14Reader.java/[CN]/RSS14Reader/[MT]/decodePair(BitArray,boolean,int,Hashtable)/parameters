@@ -1,0 +1,4 @@
+BitArray row
+boolean right
+int rowNumber
+Hashtable hints

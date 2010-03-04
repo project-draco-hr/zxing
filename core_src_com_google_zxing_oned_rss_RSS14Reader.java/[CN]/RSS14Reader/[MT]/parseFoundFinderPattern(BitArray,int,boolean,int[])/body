@@ -1,0 +1,22 @@
+{
+  boolean firstIsBlack=row.get(startEnd[0]);
+  int firstElementStart=startEnd[0] - 1;
+  while (firstElementStart >= 0 && firstIsBlack ^ row.get(firstElementStart)) {
+    firstElementStart--;
+  }
+  firstElementStart++;
+  int firstCounter=startEnd[0] - firstElementStart;
+  int[] counters=decodeFinderCounters;
+  for (int i=counters.length - 1; i > 0; i--) {
+    counters[i]=counters[i - 1];
+  }
+  counters[0]=firstCounter;
+  int value=parseFinderValue(counters);
+  int start=firstElementStart;
+  int end=startEnd[1];
+  if (right) {
+    start=row.getSize() - 1 - start;
+    end=row.getSize() - 1 - end;
+  }
+  return new FinderPattern(value,new int[]{firstElementStart,startEnd[1]},start,end,rowNumber);
+}

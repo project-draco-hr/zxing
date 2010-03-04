@@ -1,0 +1,20 @@
+{
+  try {
+    int[] startEnd=findFinderPattern(row,0,right);
+    FinderPattern pattern=parseFoundFinderPattern(row,rowNumber,right,startEnd);
+    ResultPointCallback resultPointCallback=hints == null ? null : (ResultPointCallback)hints.get(DecodeHintType.NEED_RESULT_POINT_CALLBACK);
+    if (resultPointCallback != null) {
+      float center=(startEnd[0] + startEnd[1]) / 2.0f;
+      if (right) {
+        center=row.getSize() - 1 - center;
+      }
+      resultPointCallback.foundPossibleResultPoint(new ResultPoint(center,rowNumber));
+    }
+    DataCharacter outside=decodeDataCharacter(row,pattern,true);
+    DataCharacter inside=decodeDataCharacter(row,pattern,false);
+    return new Pair(1597 * outside.getValue() + inside.getValue(),outside.getChecksumPortion() + 4 * inside.getChecksumPortion(),pattern);
+  }
+ catch (  NotFoundException re) {
+    return null;
+  }
+}
