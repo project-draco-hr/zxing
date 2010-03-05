@@ -3,11 +3,21 @@
   setContentView(R.layout.help);
   webView=(WebView)findViewById(R.id.help_contents);
   webView.setWebViewClient(new HelpClient());
+  Intent intent=getIntent();
   if (icicle != null) {
     webView.restoreState(icicle);
   }
+ else   if (intent != null) {
+    String page=intent.getStringExtra(REQUESTED_PAGE_KEY);
+    if (page != null && page.length() > 0) {
+      webView.loadUrl(BASE_URL + page);
+    }
  else {
-    webView.loadUrl(DEFAULT_URL);
+      webView.loadUrl(BASE_URL + DEFAULT_PAGE);
+    }
+  }
+ else {
+    webView.loadUrl(BASE_URL + DEFAULT_PAGE);
   }
   backButton=(Button)findViewById(R.id.back_button);
   backButton.setOnClickListener(backListener);
