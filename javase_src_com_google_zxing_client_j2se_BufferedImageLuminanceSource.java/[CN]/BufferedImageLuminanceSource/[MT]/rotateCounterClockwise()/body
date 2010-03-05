@@ -5,9 +5,10 @@
   int sourceWidth=image.getWidth();
   int sourceHeight=image.getHeight();
   AffineTransform transform=new AffineTransform(0.0,-1.0,1.0,0.0,0.0,sourceWidth);
-  BufferedImageOp op=new AffineTransformOp(transform,AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
   BufferedImage rotatedImage=new BufferedImage(sourceHeight,sourceWidth,image.getType());
-  op.filter(image,rotatedImage);
+  Graphics2D g=rotatedImage.createGraphics();
+  g.drawImage(image,transform,null);
+  g.dispose();
   int width=getWidth();
   return new BufferedImageLuminanceSource(rotatedImage,top,sourceWidth - (left + width),getHeight(),width);
 }
