@@ -1,0 +1,33 @@
+{
+  String zoomSupportedString=parameters.get("zoom-supported");
+  if (zoomSupportedString != null && !Boolean.parseBoolean(zoomSupportedString)) {
+    return;
+  }
+  int tenDesiredZoom=TEN_DESIRED_ZOOM;
+  String maxZoomString=parameters.get("max-zoom");
+  if (maxZoomString != null) {
+    try {
+      int tenMaxZoom=(int)(10.0 * Double.parseDouble(maxZoomString));
+      if (tenDesiredZoom > tenMaxZoom) {
+        tenDesiredZoom=tenMaxZoom;
+      }
+    }
+ catch (    NumberFormatException nfe) {
+      Log.w(TAG,"Bad max-zoom: " + maxZoomString);
+    }
+  }
+  String takingPictureZoomString=parameters.get("taking-picture-zoom-max");
+  if (takingPictureZoomString != null) {
+    try {
+      int tenMaxZoom=Integer.parseInt(takingPictureZoomString);
+      if (tenDesiredZoom > tenMaxZoom) {
+        tenDesiredZoom=tenMaxZoom;
+      }
+    }
+ catch (    NumberFormatException nfe) {
+      Log.w(TAG,"Bad taking-picture-zoom-max: " + takingPictureZoomString);
+    }
+  }
+  parameters.set("zoom",String.valueOf(tenDesiredZoom / 10.0));
+  parameters.set("taking-picture-zoom",tenDesiredZoom);
+}

@@ -6,7 +6,7 @@
     previewSize=previewSize.trim();
     int dimPosition=previewSize.indexOf('x');
     if (dimPosition < 0) {
-      Log.w(TAG,"Bad preview-size");
+      Log.w(TAG,"Bad preview-size: " + previewSize);
       continue;
     }
     int newX;
@@ -16,7 +16,7 @@
       newY=Integer.parseInt(previewSize.substring(dimPosition + 1));
     }
  catch (    NumberFormatException nfe) {
-      Log.w(TAG,"Bad preview-size");
+      Log.w(TAG,"Bad preview-size: " + previewSize);
       continue;
     }
     int newDiff=Math.abs(newX - screenResolution.x) + Math.abs(newY - screenResolution.y);

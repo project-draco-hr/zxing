@@ -6,9 +6,7 @@
   cameraResolution=getCameraResolution(parameters);
   Log.v(TAG,"Setting preview size: " + cameraResolution.x + ", "+ cameraResolution.y);
   parameters.setPreviewSize(cameraResolution.x,cameraResolution.y);
-  parameters.set("flash-value",2);
-  parameters.set("flash-mode","off");
-  parameters.set("zoom","2.0");
-  parameters.set("taking-picture-zoom","20");
+  setFlash(parameters);
+  setZoom(parameters);
   camera.setParameters(parameters);
 }

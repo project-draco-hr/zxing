@@ -1,0 +1,4 @@
+{
+  parameters.set("flash-value",2);
+  parameters.set("flash-mode","off");
+}
