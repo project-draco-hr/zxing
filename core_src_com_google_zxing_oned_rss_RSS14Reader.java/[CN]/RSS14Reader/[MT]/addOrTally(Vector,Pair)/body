@@ -1,0 +1,18 @@
+{
+  if (pair == null) {
+    return;
+  }
+  Enumeration e=possiblePairs.elements();
+  boolean found=false;
+  while (e.hasMoreElements()) {
+    Pair other=(Pair)e.nextElement();
+    if (other.getValue() == pair.getValue()) {
+      other.incrementCount();
+      found=true;
+      break;
+    }
+  }
+  if (!found) {
+    possiblePairs.addElement(pair);
+  }
+}
