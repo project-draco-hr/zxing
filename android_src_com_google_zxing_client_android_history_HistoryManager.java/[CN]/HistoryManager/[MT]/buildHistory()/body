@@ -1,12 +1,16 @@
 {
-  StringBuilder historyText=new StringBuilder();
+  StringBuilder historyText=new StringBuilder(1000);
   SQLiteOpenHelper helper=new DBHelper(activity);
   SQLiteDatabase db=helper.getReadableDatabase();
   Cursor cursor=null;
   try {
-    cursor=db.query(DBHelper.TABLE_NAME,TEXT_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
+    cursor=db.query(DBHelper.TABLE_NAME,EXPORT_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
     while (cursor.moveToNext()) {
-      historyText.append(cursor.getString(0)).append('\n');
+      for (int col=0; col < EXPORT_COL_PROJECTION.length; col++) {
+        historyText.append('"').append(massageHistoryField(cursor.getString(col)));
+      }
+      long timestamp=cursor.getLong(EXPORT_COL_PROJECTION.length - 1);
+      historyText.append('"').append(massageHistoryField(EXPORT_DATE_TIME_FORMAT.format(new Date(timestamp)))).append('"').append('\n');
     }
   }
   finally {
@@ -15,5 +19,5 @@
     }
     db.close();
   }
-  return historyText.toString();
+  return historyText;
 }
