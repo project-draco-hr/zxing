@@ -1,0 +1,6 @@
+{
+  if (format != BarcodeFormat.ITF) {
+    throw new IllegalArgumentException("Can only encode ITF, but got " + format);
+  }
+  return super.encode(contents,format,width,height,hints);
+}

@@ -1,0 +1,6 @@
+{
+  if (format != BarcodeFormat.CODE_39) {
+    throw new IllegalArgumentException("Can only encode CODE_39, but got " + format);
+  }
+  return super.encode(contents,format,width,height,hints);
+}

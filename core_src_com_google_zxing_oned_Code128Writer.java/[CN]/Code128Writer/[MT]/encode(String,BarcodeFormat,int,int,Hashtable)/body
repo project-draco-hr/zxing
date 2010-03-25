@@ -1,0 +1,6 @@
+{
+  if (format != BarcodeFormat.CODE_128) {
+    throw new IllegalArgumentException("Can only encode CODE_128, but got " + format);
+  }
+  return super.encode(contents,format,width,height,hints);
+}
