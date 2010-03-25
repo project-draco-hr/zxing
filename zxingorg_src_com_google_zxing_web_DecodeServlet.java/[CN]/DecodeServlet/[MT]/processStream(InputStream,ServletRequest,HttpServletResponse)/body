@@ -7,32 +7,53 @@
   Reader reader=new MultiFormatReader();
   LuminanceSource source=new BufferedImageLuminanceSource(image);
   BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
-  Result result=null;
+  Collection<Result> results=new ArrayList<Result>(1);
   ReaderException savedException=null;
   try {
-    result=reader.decode(bitmap,HINTS_PURE);
+    MultipleBarcodeReader multiReader=new GenericMultipleBarcodeReader(reader);
+    Result[] theResults=multiReader.decodeMultiple(bitmap,HINTS);
+    if (theResults != null) {
+      results.addAll(Arrays.asList(theResults));
+    }
   }
  catch (  ReaderException re) {
     savedException=re;
   }
-  if (result == null) {
+  if (results.isEmpty()) {
     try {
-      result=reader.decode(bitmap,HINTS);
+      Result theResult=reader.decode(bitmap,HINTS_PURE);
+      if (theResult != null) {
+        results.add(theResult);
+      }
     }
  catch (    ReaderException re) {
       savedException=re;
     }
   }
-  if (result == null) {
+  if (results.isEmpty()) {
+    try {
+      Result theResult=reader.decode(bitmap,HINTS);
+      if (theResult != null) {
+        results.add(theResult);
+      }
+    }
+ catch (    ReaderException re) {
+      savedException=re;
+    }
+  }
+  if (results.isEmpty()) {
     try {
       BinaryBitmap hybridBitmap=new BinaryBitmap(new HybridBinarizer(source));
-      result=reader.decode(hybridBitmap,HINTS);
+      Result theResult=reader.decode(hybridBitmap,HINTS);
+      if (theResult != null) {
+        results.add(theResult);
+      }
     }
  catch (    ReaderException re) {
       savedException=re;
     }
   }
-  if (result == null) {
+  if (results.isEmpty()) {
     handleException(savedException,response);
     return;
   }
@@ -41,37 +62,17 @@
     response.setCharacterEncoding("UTF8");
     Writer out=new OutputStreamWriter(response.getOutputStream(),"UTF8");
     try {
-      out.write(result.getText());
+      for (      Result result : results) {
+        out.write(result.getText());
+        out.write('\n');
+      }
     }
   finally {
       out.close();
     }
   }
  else {
-    request.setAttribute("result",result);
-    byte[] rawBytes=result.getRawBytes();
-    if (rawBytes != null) {
-      request.setAttribute("rawBytesString",arrayToString(rawBytes));
-    }
- else {
-      request.setAttribute("rawBytesString","(Not applicable)");
-    }
-    String text=result.getText();
-    if (text != null) {
-      request.setAttribute("text",StringEscapeUtils.escapeXml(text));
-    }
- else {
-      request.setAttribute("text","(Not applicable)");
-    }
-    ParsedResult parsedResult=ResultParser.parseResult(result);
-    request.setAttribute("parsedResult",parsedResult);
-    String displayResult=parsedResult.getDisplayResult();
-    if (displayResult != null) {
-      request.setAttribute("displayResult",StringEscapeUtils.escapeXml(displayResult));
-    }
- else {
-      request.setAttribute("displayResult","(Not applicable)");
-    }
+    request.setAttribute("results",results);
     request.getRequestDispatcher("decoderesult.jspx").forward(request,response);
   }
 }
