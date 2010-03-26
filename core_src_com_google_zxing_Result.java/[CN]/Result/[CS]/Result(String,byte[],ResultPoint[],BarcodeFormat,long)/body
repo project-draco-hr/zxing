@@ -1,0 +1,11 @@
+{
+  if (text == null && rawBytes == null) {
+    throw new IllegalArgumentException("Text and bytes are null");
+  }
+  this.text=text;
+  this.rawBytes=rawBytes;
+  this.resultPoints=resultPoints;
+  this.format=format;
+  this.resultMetadata=null;
+  this.timestamp=timestamp;
+}

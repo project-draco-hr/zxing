@@ -1,0 +1,5 @@
+String text
+byte[] rawBytes
+ResultPoint[] resultPoints
+BarcodeFormat format
+long timestamp

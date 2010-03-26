@@ -4,9 +4,9 @@
   SQLiteDatabase db=helper.getReadableDatabase();
   Cursor cursor=null;
   try {
-    cursor=db.query(DBHelper.TABLE_NAME,TEXT_FORMAT_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
+    cursor=db.query(DBHelper.TABLE_NAME,GET_ITEM_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
     while (cursor.moveToNext()) {
-      Result result=new Result(cursor.getString(0),null,null,BarcodeFormat.valueOf(cursor.getString(1)));
+      Result result=new Result(cursor.getString(0),null,null,BarcodeFormat.valueOf(cursor.getString(1)),cursor.getLong(2));
       items.add(result);
     }
   }
