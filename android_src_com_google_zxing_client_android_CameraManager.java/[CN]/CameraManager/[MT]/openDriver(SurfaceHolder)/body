@@ -10,6 +10,9 @@
       getScreenResolution();
     }
     setCameraParameters();
-    FlashlightManager.enableFlashlight();
+    SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
+    if (prefs.getBoolean(PreferencesActivity.KEY_FRONT_LIGHT,true)) {
+      FlashlightManager.enableFlashlight();
+    }
   }
 }
