@@ -1,0 +1,4 @@
+int bitOffset
+byte[] array
+int offset
+int numBytes

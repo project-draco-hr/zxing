@@ -1,14 +1,15 @@
 {
   try {
-    ByteMatrix result=new MultiFormatWriter().encode(contents,format,pixelResolution,pixelResolution);
+    BitMatrix result=new MultiFormatWriter().encode(contents,format,pixelResolution,pixelResolution);
     int width=result.getWidth();
     int height=result.getHeight();
-    byte[][] array=result.getArray();
     int[] pixels=new int[width * height];
     for (int y=0; y < height; y++) {
+      int offset=y * width;
       for (int x=0; x < width; x++) {
-        int grey=array[y][x] & 0xff;
-        pixels[y * width + x]=0xff000000 | (0x00010101 * grey);
+        if (!result.get(x,y)) {
+          pixels[offset + x]=WHITE;
+        }
       }
     }
     Bitmap bitmap=Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);

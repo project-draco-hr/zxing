@@ -1,5 +1,5 @@
 {
-  int width=bitMatrix.getDimension();
+  int width=bitMatrix.getWidth();
   int columnNumber=0;
   long symbol=0;
   for (int i=0; i < width; i+=MODULES_IN_SYMBOL) {

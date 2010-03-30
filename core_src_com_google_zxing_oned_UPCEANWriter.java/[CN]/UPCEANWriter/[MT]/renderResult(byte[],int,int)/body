@@ -5,26 +5,11 @@
   int outputHeight=Math.max(1,height);
   int multiple=outputWidth / fullWidth;
   int leftPadding=(outputWidth - (inputWidth * multiple)) / 2;
-  ByteMatrix output=new ByteMatrix(outputWidth,outputHeight);
-  byte[][] outputArray=output.getArray();
-  byte[] row=new byte[outputWidth];
-  for (int x=0; x < leftPadding; x++) {
-    row[x]=(byte)255;
-  }
-  int offset=leftPadding;
-  for (int x=0; x < inputWidth; x++) {
-    byte value=(code[x] == 1) ? 0 : (byte)255;
-    for (int z=0; z < multiple; z++) {
-      row[offset + z]=value;
+  BitMatrix output=new BitMatrix(outputWidth,outputHeight);
+  for (int inputX=0, outputX=leftPadding; inputX < inputWidth; inputX++, outputX+=multiple) {
+    if (code[inputX] == 1) {
+      output.setRegion(outputX,0,multiple,outputHeight);
     }
-    offset+=multiple;
-  }
-  offset=leftPadding + (inputWidth * multiple);
-  for (int x=offset; x < outputWidth; x++) {
-    row[x]=(byte)255;
-  }
-  for (int z=0; z < outputHeight; z++) {
-    System.arraycopy(row,0,outputArray[z],0,outputWidth);
   }
   return output;
 }

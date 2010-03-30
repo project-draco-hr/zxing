@@ -9,37 +9,13 @@
   int multiple=Math.min(outputWidth / qrWidth,outputHeight / qrHeight);
   int leftPadding=(outputWidth - (inputWidth * multiple)) / 2;
   int topPadding=(outputHeight - (inputHeight * multiple)) / 2;
-  ByteMatrix output=new ByteMatrix(outputWidth,outputHeight);
-  byte[][] outputArray=output.getArray();
-  byte[] row=new byte[outputWidth];
-  for (int y=0; y < topPadding; y++) {
-    setRowColor(outputArray[y],(byte)255);
-  }
-  byte[][] inputArray=input.getArray();
-  for (int y=0; y < inputHeight; y++) {
-    for (int x=0; x < leftPadding; x++) {
-      row[x]=(byte)255;
-    }
-    int offset=leftPadding;
-    for (int x=0; x < inputWidth; x++) {
-      byte value=(inputArray[y][x] == 1) ? 0 : (byte)255;
-      for (int z=0; z < multiple; z++) {
-        row[offset + z]=value;
+  BitMatrix output=new BitMatrix(outputWidth,outputHeight);
+  for (int inputY=0, outputY=topPadding; inputY < inputHeight; inputY++, outputY+=multiple) {
+    for (int inputX=0, outputX=leftPadding; inputX < inputWidth; inputX++, outputX+=multiple) {
+      if (input.get(inputX,inputY) == 1) {
+        output.setRegion(outputX,outputY,multiple,multiple);
       }
-      offset+=multiple;
     }
-    offset=leftPadding + (inputWidth * multiple);
-    for (int x=offset; x < outputWidth; x++) {
-      row[x]=(byte)255;
-    }
-    offset=topPadding + (y * multiple);
-    for (int z=0; z < multiple; z++) {
-      System.arraycopy(row,0,outputArray[offset + z],0,outputWidth);
-    }
-  }
-  int offset=topPadding + (inputHeight * multiple);
-  for (int y=offset; y < outputHeight; y++) {
-    setRowColor(outputArray[y],(byte)255);
   }
   return output;
 }

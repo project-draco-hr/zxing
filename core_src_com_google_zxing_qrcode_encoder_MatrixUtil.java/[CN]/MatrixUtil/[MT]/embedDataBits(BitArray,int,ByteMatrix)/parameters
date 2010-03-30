@@ -1,0 +1,3 @@
+BitArray dataBits
+int maskPattern
+ByteMatrix matrix

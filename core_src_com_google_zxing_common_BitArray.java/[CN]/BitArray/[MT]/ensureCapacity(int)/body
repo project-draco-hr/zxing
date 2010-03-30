@@ -1,0 +1,7 @@
+{
+  if (size > bits.length << 5) {
+    int[] newBits=makeArray(size);
+    System.arraycopy(bits,0,newBits,0,bits.length);
+    this.bits=newBits;
+  }
+}

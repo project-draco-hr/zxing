@@ -1,13 +1,13 @@
 {
   BufferedImage image=loadImage(fileName);
   assertNotNull(image);
-  ByteMatrix goldenResult=createMatrixFromImage(image);
+  BitMatrix goldenResult=createMatrixFromImage(image);
   assertNotNull(goldenResult);
   QRCodeWriter writer=new QRCodeWriter();
   Hashtable<EncodeHintType,Object> hints=new Hashtable<EncodeHintType,Object>();
   hints.put(EncodeHintType.ERROR_CORRECTION,ecLevel);
-  ByteMatrix generatedResult=writer.encode(contents,BarcodeFormat.QR_CODE,resolution,resolution,hints);
-  assertEquals("Width should be " + resolution + ", but was "+ generatedResult.getWidth(),resolution,generatedResult.getWidth());
-  assertEquals("Height should be " + resolution + ", but was "+ generatedResult.getHeight(),resolution,generatedResult.getHeight());
-  assertTrue("Expected " + goldenResult.toString() + " but got "+ generatedResult.toString(),Arrays.deepEquals(goldenResult.getArray(),generatedResult.getArray()));
+  BitMatrix generatedResult=writer.encode(contents,BarcodeFormat.QR_CODE,resolution,resolution,hints);
+  assertEquals(resolution,generatedResult.getWidth());
+  assertEquals(resolution,generatedResult.getHeight());
+  assertEquals(goldenResult,generatedResult);
 }

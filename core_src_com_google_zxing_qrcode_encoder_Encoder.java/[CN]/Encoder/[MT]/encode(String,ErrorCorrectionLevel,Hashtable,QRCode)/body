@@ -4,11 +4,11 @@
     encoding=DEFAULT_BYTE_MODE_ENCODING;
   }
   Mode mode=chooseMode(content,encoding);
-  BitVector dataBits=new BitVector();
+  BitArray dataBits=new BitArray();
   appendBytes(content,mode,dataBits,encoding);
-  int numInputBytes=dataBits.sizeInBytes();
+  int numInputBytes=dataBits.getSizeInBytes();
   initQRCode(numInputBytes,ecLevel,mode,qrCode);
-  BitVector headerAndDataBits=new BitVector();
+  BitArray headerAndDataBits=new BitArray();
   if (mode == Mode.BYTE && !DEFAULT_BYTE_MODE_ENCODING.equals(encoding)) {
     CharacterSetECI eci=CharacterSetECI.getCharacterSetECIByName(encoding);
     if (eci != null) {
@@ -16,11 +16,11 @@
     }
   }
   appendModeInfo(mode,headerAndDataBits);
-  int numLetters=mode.equals(Mode.BYTE) ? dataBits.sizeInBytes() : content.length();
+  int numLetters=mode.equals(Mode.BYTE) ? dataBits.getSizeInBytes() : content.length();
   appendLengthInfo(numLetters,qrCode.getVersion(),mode,headerAndDataBits);
-  headerAndDataBits.appendBitVector(dataBits);
+  headerAndDataBits.appendBitArray(dataBits);
   terminateBits(qrCode.getNumDataBytes(),headerAndDataBits);
-  BitVector finalBits=new BitVector();
+  BitArray finalBits=new BitArray();
   interleaveWithECBytes(headerAndDataBits,qrCode.getNumTotalBytes(),qrCode.getNumDataBytes(),qrCode.getNumRSBlocks(),finalBits);
   ByteMatrix matrix=new ByteMatrix(qrCode.getMatrixWidth(),qrCode.getMatrixWidth());
   qrCode.setMaskPattern(chooseMaskPattern(finalBits,qrCode.getECLevel(),qrCode.getVersion(),matrix));

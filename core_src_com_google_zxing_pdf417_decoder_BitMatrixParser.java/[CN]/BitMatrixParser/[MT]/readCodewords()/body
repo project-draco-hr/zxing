@@ -1,5 +1,5 @@
 {
-  int width=bitMatrix.getDimension();
+  int width=bitMatrix.getWidth();
   int height=width;
   erasures=new int[MAX_CW_CAPACITY];
   float moduleWidth=1.0f;

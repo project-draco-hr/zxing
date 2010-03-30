@@ -1,5 +1,0 @@
-BitVector dataBits
-ErrorCorrectionLevel ecLevel
-int version
-int maskPattern
-ByteMatrix matrix

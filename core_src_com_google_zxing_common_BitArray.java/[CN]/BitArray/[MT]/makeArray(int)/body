@@ -1,7 +1,3 @@
 {
-  int arraySize=size >> 5;
-  if ((size & 0x1F) != 0) {
-    arraySize++;
-  }
-  return new int[arraySize];
+  return new int[(size + 31) >> 5];
 }

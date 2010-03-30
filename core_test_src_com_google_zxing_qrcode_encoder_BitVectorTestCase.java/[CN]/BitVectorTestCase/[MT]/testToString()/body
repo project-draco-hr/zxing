@@ -1,5 +1,5 @@
 {
-  BitVector v=new BitVector();
+  BitArray v=new BitArray();
   v.appendBits(0xdead,16);
-  assertEquals("1101111010101101",v.toString());
+  assertEquals(" XX.XXXX. X.X.XX.X",v.toString());
 }

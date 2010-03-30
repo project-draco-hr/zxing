@@ -1,9 +1,9 @@
 {
-  int dimension=bitMatrix.getDimension();
+  int dimension=bitMatrix.getHeight();
   if (dimension < 10 || dimension > 144 || (dimension & 0x01) != 0) {
     throw FormatException.getFormatInstance();
   }
   version=readVersion(bitMatrix);
   this.mappingBitMatrix=extractDataRegion(bitMatrix);
-  this.readMappingMatrix=new BitMatrix(this.mappingBitMatrix.getDimension());
+  this.readMappingMatrix=new BitMatrix(this.mappingBitMatrix.getHeight());
 }

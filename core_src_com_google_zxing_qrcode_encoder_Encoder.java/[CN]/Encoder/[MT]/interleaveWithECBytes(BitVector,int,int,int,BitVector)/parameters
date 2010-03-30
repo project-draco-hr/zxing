@@ -1,5 +1,0 @@
-BitVector bits
-int numTotalBytes
-int numDataBytes
-int numRSBlocks
-BitVector result

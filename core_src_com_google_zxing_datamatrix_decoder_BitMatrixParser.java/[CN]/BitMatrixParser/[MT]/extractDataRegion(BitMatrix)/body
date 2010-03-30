@@ -1,7 +1,7 @@
 {
   int symbolSizeRows=version.getSymbolSizeRows();
   int symbolSizeColumns=version.getSymbolSizeColumns();
-  if (bitMatrix.getDimension() != symbolSizeRows) {
+  if (bitMatrix.getHeight() != symbolSizeRows) {
     throw new IllegalArgumentException("Dimension of bitMarix must match the version size");
   }
   int dataRegionSizeRows=version.getDataRegionSizeRows();

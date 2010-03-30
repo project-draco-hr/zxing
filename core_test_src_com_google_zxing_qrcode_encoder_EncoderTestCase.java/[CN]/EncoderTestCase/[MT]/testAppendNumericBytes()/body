@@ -1,26 +1,26 @@
 {
 {
-    BitVector bits=new BitVector();
+    BitArray bits=new BitArray();
     Encoder.appendNumericBytes("1",bits);
-    assertEquals("0001",bits.toString());
+    assertEquals(" ...X",bits.toString());
   }
 {
-    BitVector bits=new BitVector();
+    BitArray bits=new BitArray();
     Encoder.appendNumericBytes("12",bits);
-    assertEquals("0001100",bits.toString());
+    assertEquals(" ...XX..",bits.toString());
   }
 {
-    BitVector bits=new BitVector();
+    BitArray bits=new BitArray();
     Encoder.appendNumericBytes("123",bits);
-    assertEquals("0001111011",bits.toString());
+    assertEquals(" ...XXXX. XX",bits.toString());
   }
 {
-    BitVector bits=new BitVector();
+    BitArray bits=new BitArray();
     Encoder.appendNumericBytes("1234",bits);
-    assertEquals("0001111011" + "0100",bits.toString());
+    assertEquals(" ...XXXX. XX.X..",bits.toString());
   }
 {
-    BitVector bits=new BitVector();
+    BitArray bits=new BitArray();
     Encoder.appendNumericBytes("",bits);
     assertEquals("",bits.toString());
   }

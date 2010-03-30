@@ -1,3 +1,0 @@
-{
-  return (sizeInBits + 7) >> 3;
-}

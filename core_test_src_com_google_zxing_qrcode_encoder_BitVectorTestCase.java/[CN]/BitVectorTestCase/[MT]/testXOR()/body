@@ -1,21 +1,18 @@
 {
 {
-    BitVector v1=new BitVector();
+    BitArray v1=new BitArray();
     v1.appendBits(0x5555aaaa,32);
-    BitVector v2=new BitVector();
+    BitArray v2=new BitArray();
     v2.appendBits(0xaaaa5555,32);
     v1.xor(v2);
-    assertEquals(0xff,getUnsignedByte(v1,0));
-    assertEquals(0xff,getUnsignedByte(v1,1));
-    assertEquals(0xff,getUnsignedByte(v1,2));
-    assertEquals(0xff,getUnsignedByte(v1,3));
+    assertEquals(0xffffffffL,getUnsignedInt(v1,0));
   }
 {
-    BitVector v1=new BitVector();
+    BitArray v1=new BitArray();
     v1.appendBits(0x2a,7);
-    BitVector v2=new BitVector();
+    BitArray v2=new BitArray();
     v2.appendBits(0x55,7);
     v1.xor(v2);
-    assertEquals(0xfe,getUnsignedByte(v1,0));
+    assertEquals(0xfe000000L,getUnsignedInt(v1,0));
   }
 }

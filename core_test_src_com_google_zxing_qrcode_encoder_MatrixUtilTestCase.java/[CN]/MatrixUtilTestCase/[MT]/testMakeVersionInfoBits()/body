@@ -1,5 +1,5 @@
 {
-  BitVector bits=new BitVector();
+  BitArray bits=new BitArray();
   MatrixUtil.makeVersionInfoBits(7,bits);
-  assertEquals("000111110010010100",bits.toString());
+  assertEquals(" ...XXXXX ..X..X.X ..",bits.toString());
 }

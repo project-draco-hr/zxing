@@ -2,12 +2,12 @@
   if (version < 7) {
     return;
   }
-  BitVector versionInfoBits=new BitVector();
+  BitArray versionInfoBits=new BitArray();
   makeVersionInfoBits(version,versionInfoBits);
   int bitIndex=6 * 3 - 1;
   for (int i=0; i < 6; ++i) {
     for (int j=0; j < 3; ++j) {
-      int bit=versionInfoBits.at(bitIndex);
+      boolean bit=versionInfoBits.get(bitIndex);
       bitIndex--;
       matrix.set(i,matrix.getHeight() - 11 + j,bit);
       matrix.set(matrix.getHeight() - 11 + j,i,bit);

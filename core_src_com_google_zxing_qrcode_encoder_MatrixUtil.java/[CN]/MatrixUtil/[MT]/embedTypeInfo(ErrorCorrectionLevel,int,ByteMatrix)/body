@@ -1,8 +1,8 @@
 {
-  BitVector typeInfoBits=new BitVector();
+  BitArray typeInfoBits=new BitArray();
   makeTypeInfoBits(ecLevel,maskPattern,typeInfoBits);
-  for (int i=0; i < typeInfoBits.size(); ++i) {
-    int bit=typeInfoBits.at(typeInfoBits.size() - 1 - i);
+  for (int i=0; i < typeInfoBits.getSize(); ++i) {
+    boolean bit=typeInfoBits.get(typeInfoBits.getSize() - 1 - i);
     int x1=TYPE_INFO_COORDINATES[i][0];
     int y1=TYPE_INFO_COORDINATES[i][1];
     matrix.set(x1,y1,bit);

@@ -1,0 +1,4 @@
+{
+  this.size=0;
+  this.bits=new int[1];
+}

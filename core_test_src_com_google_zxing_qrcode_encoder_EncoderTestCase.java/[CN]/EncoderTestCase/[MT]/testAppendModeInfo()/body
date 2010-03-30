@@ -1,5 +1,5 @@
 {
-  BitVector bits=new BitVector();
+  BitArray bits=new BitArray();
   Encoder.appendModeInfo(Mode.NUMERIC,bits);
-  assertEquals("0001",bits.toString());
+  assertEquals(" ...X",bits.toString());
 }

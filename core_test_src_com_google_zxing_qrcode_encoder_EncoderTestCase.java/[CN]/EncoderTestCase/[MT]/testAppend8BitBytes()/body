@@ -1,11 +1,11 @@
 {
 {
-    BitVector bits=new BitVector();
+    BitArray bits=new BitArray();
     Encoder.append8BitBytes("abc",bits,Encoder.DEFAULT_BYTE_MODE_ENCODING);
-    assertEquals("01100001" + "01100010" + "01100011",bits.toString());
+    assertEquals(" .XX....X .XX...X. .XX...XX",bits.toString());
   }
 {
-    BitVector bits=new BitVector();
+    BitArray bits=new BitArray();
     Encoder.append8BitBytes("",bits,Encoder.DEFAULT_BYTE_MODE_ENCODING);
     assertEquals("",bits.toString());
   }

@@ -1,5 +1,5 @@
 {
-  BitVector bits=new BitVector();
+  BitArray bits=new BitArray();
   MatrixUtil.makeTypeInfoBits(ErrorCorrectionLevel.M,5,bits);
-  assertEquals("100000011001110",bits.toString());
+  assertEquals(" X......X X..XXX.",bits.toString());
 }

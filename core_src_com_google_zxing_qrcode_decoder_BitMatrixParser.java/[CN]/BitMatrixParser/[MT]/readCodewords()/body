@@ -2,7 +2,7 @@
   FormatInformation formatInfo=readFormatInformation();
   Version version=readVersion();
   DataMask dataMask=DataMask.forReference((int)formatInfo.getDataMask());
-  int dimension=bitMatrix.getDimension();
+  int dimension=bitMatrix.getHeight();
   dataMask.unmaskBitMatrix(bitMatrix,dimension);
   BitMatrix functionPattern=version.buildFunctionPattern();
   boolean readingUp=true;

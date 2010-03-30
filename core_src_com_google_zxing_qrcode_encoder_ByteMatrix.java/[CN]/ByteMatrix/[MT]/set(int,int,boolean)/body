@@ -1,0 +1,3 @@
+{
+  bytes[y][x]=(byte)(value ? 1 : 0);
+}
