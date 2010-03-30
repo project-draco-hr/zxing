@@ -2,14 +2,14 @@
   statusView.setVisibility(View.GONE);
   viewfinderView.setVisibility(View.GONE);
   resultView.setVisibility(View.VISIBLE);
-  if (barcode == null) {
-    barcode=((BitmapDrawable)getResources().getDrawable(R.drawable.unknown_barcode)).getBitmap();
-  }
   ImageView barcodeImageView=(ImageView)findViewById(R.id.barcode_image_view);
+  if (barcode == null) {
+    barcodeImageView.setImageResource(R.drawable.zxing_icon);
+  }
+ else {
+    barcodeImageView.setImageBitmap(barcode);
+  }
   barcodeImageView.setVisibility(View.VISIBLE);
-  barcodeImageView.setMaxWidth(MAX_RESULT_IMAGE_SIZE);
-  barcodeImageView.setMaxHeight(MAX_RESULT_IMAGE_SIZE);
-  barcodeImageView.setImageBitmap(barcode);
   TextView formatTextView=(TextView)findViewById(R.id.format_text_view);
   formatTextView.setVisibility(View.VISIBLE);
   formatTextView.setText(getString(R.string.msg_default_format) + ": " + rawResult.getBarcodeFormat().toString());
