@@ -3,14 +3,7 @@
   if (rawText == null) {
     return null;
   }
-  int prefixLength;
-  if (rawText.startsWith("sms:") || rawText.startsWith("SMS:") || rawText.startsWith("mms:")|| rawText.startsWith("MMS:")) {
-    prefixLength=4;
-  }
- else   if (rawText.startsWith("smsto:") || rawText.startsWith("SMSTO:") || rawText.startsWith("mmsto:")|| rawText.startsWith("MMSTO:")) {
-    prefixLength=6;
-  }
- else {
+  if (!(rawText.startsWith("sms:") || rawText.startsWith("SMS:") || rawText.startsWith("mms:")|| rawText.startsWith("MMS:"))) {
     return null;
   }
   Hashtable nameValuePairs=parseNameValuePairs(rawText);
@@ -22,37 +15,23 @@
     body=(String)nameValuePairs.get("body");
     querySyntax=true;
   }
-  int queryStart=rawText.indexOf('?',prefixLength);
+  int queryStart=rawText.indexOf('?',4);
   String smsURIWithoutQuery;
   if (queryStart < 0 || !querySyntax) {
-    smsURIWithoutQuery=rawText.substring(prefixLength);
+    smsURIWithoutQuery=rawText.substring(4);
   }
  else {
-    smsURIWithoutQuery=rawText.substring(prefixLength,queryStart);
+    smsURIWithoutQuery=rawText.substring(4,queryStart);
   }
-  int numberEnd=smsURIWithoutQuery.indexOf(';');
-  String number;
-  String via;
-  if (numberEnd < 0) {
-    number=smsURIWithoutQuery;
-    via=null;
+  int lastComma=-1;
+  int comma;
+  Vector numbers=new Vector(1);
+  Vector vias=new Vector(1);
+  while ((comma=smsURIWithoutQuery.indexOf(',',lastComma + 1)) > lastComma) {
+    String numberPart=smsURIWithoutQuery.substring(lastComma + 1,comma);
+    addNumberVia(numbers,vias,numberPart);
+    lastComma=comma;
   }
- else {
-    number=smsURIWithoutQuery.substring(0,numberEnd);
-    String maybeVia=smsURIWithoutQuery.substring(numberEnd + 1);
-    if (maybeVia.startsWith("via=")) {
-      via=maybeVia.substring(4);
-    }
- else {
-      via=null;
-    }
-  }
-  if (body == null) {
-    int bodyStart=number.indexOf(':');
-    if (bodyStart >= 0) {
-      body=number.substring(bodyStart + 1);
-      number=number.substring(0,bodyStart);
-    }
-  }
-  return new SMSParsedResult("sms:" + number,number,via,subject,body,null);
+  addNumberVia(numbers,vias,smsURIWithoutQuery.substring(lastComma + 1));
+  return new SMSParsedResult(toStringArray(numbers),toStringArray(vias),subject,body);
 }

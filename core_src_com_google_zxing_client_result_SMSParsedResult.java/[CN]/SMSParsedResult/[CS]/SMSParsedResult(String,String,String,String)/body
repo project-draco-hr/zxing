@@ -1,0 +1,7 @@
+{
+  super(ParsedResultType.SMS);
+  this.numbers=new String[]{number};
+  this.vias=new String[]{via};
+  this.subject=subject;
+  this.body=body;
+}

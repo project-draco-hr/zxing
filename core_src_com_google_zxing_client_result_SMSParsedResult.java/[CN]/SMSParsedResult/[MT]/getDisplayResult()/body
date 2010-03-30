@@ -1,9 +1,7 @@
 {
   StringBuffer result=new StringBuffer(100);
-  maybeAppend(number,result);
-  maybeAppend(via,result);
+  maybeAppend(numbers,result);
   maybeAppend(subject,result);
   maybeAppend(body,result);
-  maybeAppend(title,result);
   return result.toString();
 }

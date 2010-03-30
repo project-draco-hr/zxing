@@ -1,9 +1,0 @@
-{
-  super(ParsedResultType.SMS);
-  this.smsURI=smsURI;
-  this.number=number;
-  this.via=via;
-  this.subject=subject;
-  this.body=body;
-  this.title=title;
-}

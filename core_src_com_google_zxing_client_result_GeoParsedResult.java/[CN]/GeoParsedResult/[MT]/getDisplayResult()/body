@@ -1,9 +1,9 @@
 {
-  StringBuffer result=new StringBuffer(50);
+  StringBuffer result=new StringBuffer();
   result.append(latitude);
   result.append(", ");
   result.append(longitude);
-  if (altitude > 0.0f) {
+  if (altitude > 0.0) {
     result.append(", ");
     result.append(altitude);
     result.append('m');

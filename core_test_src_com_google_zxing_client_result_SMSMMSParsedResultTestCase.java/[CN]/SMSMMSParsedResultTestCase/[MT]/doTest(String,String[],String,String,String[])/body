@@ -1,0 +1,10 @@
+{
+  Result fakeResult=new Result(contents,null,null,BarcodeFormat.QR_CODE);
+  ParsedResult result=ResultParser.parseResult(fakeResult);
+  assertSame(ParsedResultType.SMS,result.getType());
+  SMSParsedResult smsResult=(SMSParsedResult)result;
+  assertTrue(Arrays.equals(numbers,smsResult.getNumbers()));
+  assertEquals(subject,smsResult.getSubject());
+  assertEquals(body,smsResult.getBody());
+  assertTrue(Arrays.equals(vias,smsResult.getVias()));
+}

@@ -1,6 +1,5 @@
 {
   super(ParsedResultType.GEO);
-  this.geoURI=geoURI;
   this.latitude=latitude;
   this.longitude=longitude;
   this.altitude=altitude;
