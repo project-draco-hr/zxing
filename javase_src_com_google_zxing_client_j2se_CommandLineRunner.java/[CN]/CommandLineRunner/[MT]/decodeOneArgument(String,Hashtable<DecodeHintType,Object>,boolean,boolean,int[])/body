@@ -12,7 +12,7 @@
         if (filename.contains(".mono.png")) {
           continue;
         }
-        Result result=decode(input.toURI(),hints,dumpBlackPoint);
+        Result result=decode(input.toURI(),hints,dumpBlackPoint,crop);
         if (result != null) {
           successful++;
           if (dumpResults) {
@@ -24,13 +24,13 @@
       System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)\n");
     }
  else {
-      Result result=decode(inputFile.toURI(),hints,dumpBlackPoint);
+      Result result=decode(inputFile.toURI(),hints,dumpBlackPoint,crop);
       if (dumpResults) {
         dumpResult(inputFile,result);
       }
     }
   }
  else {
-    decode(new URI(argument),hints,dumpBlackPoint);
+    decode(new URI(argument),hints,dumpBlackPoint,crop);
   }
 }

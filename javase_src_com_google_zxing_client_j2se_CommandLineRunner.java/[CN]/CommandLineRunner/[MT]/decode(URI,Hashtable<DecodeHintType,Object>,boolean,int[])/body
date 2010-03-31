@@ -11,7 +11,13 @@
     return null;
   }
   try {
-    LuminanceSource source=new BufferedImageLuminanceSource(image);
+    LuminanceSource source;
+    if (crop == null) {
+      source=new BufferedImageLuminanceSource(image);
+    }
+ else {
+      source=new BufferedImageLuminanceSource(image,crop[0],crop[1],crop[2],crop[3]);
+    }
     BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
     if (dumpBlackPoint) {
       dumpBlackPoint(uri,image,bitmap);

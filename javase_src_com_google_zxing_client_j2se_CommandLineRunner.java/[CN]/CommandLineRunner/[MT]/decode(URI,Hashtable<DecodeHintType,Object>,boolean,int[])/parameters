@@ -1,3 +1,4 @@
 URI uri
 Hashtable<DecodeHintType,Object> hints
 boolean dumpBlackPoint
+int[] crop
