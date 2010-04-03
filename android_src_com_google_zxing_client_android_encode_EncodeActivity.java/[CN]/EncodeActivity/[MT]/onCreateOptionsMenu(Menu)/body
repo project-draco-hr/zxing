@@ -1,0 +1,5 @@
+{
+  super.onCreateOptionsMenu(menu);
+  menu.add(0,Menu.FIRST,0,R.string.menu_share).setIcon(android.R.drawable.ic_menu_share);
+  return true;
+}
