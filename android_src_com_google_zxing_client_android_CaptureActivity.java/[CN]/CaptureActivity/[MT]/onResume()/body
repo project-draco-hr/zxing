@@ -24,10 +24,12 @@
       decodeFormats=PRODUCT_FORMATS;
       resetStatusView();
     }
- else     if (dataString != null && dataString.equals(ZXING_URL)) {
+ else     if (dataString != null && dataString.startsWith(ZXING_URL)) {
       source=Source.ZXING_LINK;
       sourceUrl=dataString;
-      decodeFormats=null;
+      Uri inputUri=Uri.parse(sourceUrl);
+      returnUrlTemplate=inputUri.getQueryParameter(RETURN_URL_PARAM);
+      decodeFormats=parseDecodeFormats(inputUri);
       resetStatusView();
     }
  else {

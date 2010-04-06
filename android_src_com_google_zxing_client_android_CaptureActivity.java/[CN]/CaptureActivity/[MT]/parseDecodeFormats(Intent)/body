@@ -1,27 +1,3 @@
 {
-  String scanFormats=intent.getStringExtra(Intents.Scan.SCAN_FORMATS);
-  if (scanFormats != null) {
-    Vector<BarcodeFormat> formats=new Vector<BarcodeFormat>();
-    try {
-      for (      String format : COMMA_PATTERN.split(scanFormats)) {
-        formats.add(BarcodeFormat.valueOf(format));
-      }
-      return formats;
-    }
- catch (    IllegalArgumentException iae) {
-    }
-  }
-  String decodeMode=intent.getStringExtra(Intents.Scan.MODE);
-  if (decodeMode != null) {
-    if (Intents.Scan.PRODUCT_MODE.equals(decodeMode)) {
-      return PRODUCT_FORMATS;
-    }
-    if (Intents.Scan.QR_CODE_MODE.equals(decodeMode)) {
-      return QR_CODE_FORMATS;
-    }
-    if (Intents.Scan.ONE_D_MODE.equals(decodeMode)) {
-      return ONE_D_FORMATS;
-    }
-  }
-  return null;
+  return parseDecodeFormats(Arrays.asList(COMMA_PATTERN.split(intent.getStringExtra(Intents.Scan.SCAN_FORMATS))),intent.getStringExtra(Intents.Scan.MODE));
 }

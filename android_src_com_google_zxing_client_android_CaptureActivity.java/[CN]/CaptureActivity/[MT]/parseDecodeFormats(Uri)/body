@@ -1,0 +1,7 @@
+{
+  List<String> formats=inputUri.getQueryParameters(Intents.Scan.SCAN_FORMATS);
+  if (formats.size() == 1) {
+    formats=Arrays.asList(COMMA_PATTERN.split(formats.get(0)));
+  }
+  return parseDecodeFormats(formats,inputUri.getQueryParameter(Intents.Scan.MODE));
+}

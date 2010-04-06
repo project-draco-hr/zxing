@@ -13,8 +13,15 @@ case PRODUCT_SEARCH_LINK:
       handleDecodeExternally(rawResult,barcode);
     break;
 case ZXING_LINK:
+  if (returnUrlTemplate == null) {
+    handleDecodeInternally(rawResult,barcode);
+  }
+ else {
+    handleDecodeExternally(rawResult,barcode);
+  }
+break;
 case NONE:
-  handleDecodeInternally(rawResult,barcode);
+handleDecodeInternally(rawResult,barcode);
 break;
 }
 }
