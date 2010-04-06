@@ -2,7 +2,7 @@
   DecoderResult decoderResult;
   ResultPoint[] points;
   if (hints != null && hints.containsKey(DecodeHintType.PURE_BARCODE)) {
-    BitMatrix bits=extractPureBits(image);
+    BitMatrix bits=QRCodeReader.extractPureBits(image.getBlackMatrix());
     decoderResult=decoder.decode(bits);
     points=NO_POINTS;
   }
