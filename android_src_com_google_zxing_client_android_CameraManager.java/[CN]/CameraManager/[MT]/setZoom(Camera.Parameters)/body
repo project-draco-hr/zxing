@@ -28,7 +28,11 @@
       Log.w(TAG,"Bad taking-picture-zoom-max: " + takingPictureZoomMaxString);
     }
   }
-  if (maxZoomString != null) {
+  String motZoomValues=parameters.get("mot-zoom-values");
+  if (motZoomValues != null) {
+    tenDesiredZoom=findBestMotZoomValue(motZoomValues,tenDesiredZoom);
+  }
+  if (maxZoomString != null || motZoomValues != null) {
     parameters.set("zoom",String.valueOf(tenDesiredZoom / 10.0));
   }
   if (takingPictureZoomMaxString != null) {
