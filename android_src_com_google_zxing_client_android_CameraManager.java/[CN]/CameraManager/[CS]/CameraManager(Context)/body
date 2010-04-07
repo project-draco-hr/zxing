@@ -1,7 +1,0 @@
-{
-  this.context=context;
-  camera=null;
-  initialized=false;
-  previewing=false;
-  useOneShotPreviewCallback=Integer.parseInt(Build.VERSION.SDK) > Build.VERSION_CODES.CUPCAKE;
-}

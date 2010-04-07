@@ -1,0 +1,27 @@
+{
+  Point cameraResolution=configManager.getCameraResolution();
+  if (framingRect == null) {
+    if (camera == null) {
+      return null;
+    }
+    int width=cameraResolution.x * 3 / 4;
+    if (width < MIN_FRAME_WIDTH) {
+      width=MIN_FRAME_WIDTH;
+    }
+ else     if (width > MAX_FRAME_WIDTH) {
+      width=MAX_FRAME_WIDTH;
+    }
+    int height=cameraResolution.y * 3 / 4;
+    if (height < MIN_FRAME_HEIGHT) {
+      height=MIN_FRAME_HEIGHT;
+    }
+ else     if (height > MAX_FRAME_HEIGHT) {
+      height=MAX_FRAME_HEIGHT;
+    }
+    int leftOffset=(cameraResolution.x - width) / 2;
+    int topOffset=(cameraResolution.y - height) / 2;
+    framingRect=new Rect(leftOffset,topOffset,leftOffset + width,topOffset + height);
+    Log.v(TAG,"Calculated framing rect: " + framingRect);
+  }
+  return framingRect;
+}

@@ -1,0 +1,2 @@
+CameraConfigurationManager configManager
+boolean useOneShotPreviewCallback

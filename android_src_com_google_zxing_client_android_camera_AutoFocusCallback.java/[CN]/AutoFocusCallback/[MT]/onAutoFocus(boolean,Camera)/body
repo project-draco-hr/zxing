@@ -1,0 +1,11 @@
+{
+  if (autoFocusHandler != null) {
+    Message message=autoFocusHandler.obtainMessage(autoFocusMessage,success);
+    autoFocusHandler.sendMessageDelayed(message,AUTOFOCUS_INTERVAL_MS);
+    autoFocusHandler=null;
+    if (!reinitCamera) {
+      reinitCamera=true;
+      configManager.setDesiredCameraParameters(camera);
+    }
+  }
+}

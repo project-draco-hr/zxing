@@ -1,0 +1,11 @@
+{
+  if (camera != null && previewing) {
+    previewCallback.setHandler(handler,message);
+    if (useOneShotPreviewCallback) {
+      camera.setOneShotPreviewCallback(previewCallback);
+    }
+ else {
+      camera.setPreviewCallback(previewCallback);
+    }
+  }
+}

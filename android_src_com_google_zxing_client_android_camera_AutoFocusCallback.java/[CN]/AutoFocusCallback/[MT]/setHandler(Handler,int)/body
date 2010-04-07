@@ -1,0 +1,4 @@
+{
+  this.autoFocusHandler=autoFocusHandler;
+  this.autoFocusMessage=autoFocusMessage;
+}

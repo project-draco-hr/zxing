@@ -1,0 +1,4 @@
+{
+  this.configManager=configManager;
+  this.useOneShotPreviewCallback=useOneShotPreviewCallback;
+}

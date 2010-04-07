@@ -1,0 +1,4 @@
+{
+  this.previewHandler=previewHandler;
+  this.previewMessage=previewMessage;
+}
