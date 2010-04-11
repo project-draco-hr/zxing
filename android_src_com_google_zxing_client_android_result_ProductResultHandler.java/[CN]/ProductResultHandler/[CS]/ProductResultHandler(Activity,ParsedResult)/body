@@ -1,8 +1,4 @@
 {
   super(activity,result);
-  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
-  customProductSearch=prefs.getString(PreferencesActivity.KEY_CUSTOM_PRODUCT_SEARCH,null);
-  if (customProductSearch != null && customProductSearch.length() == 0) {
-    customProductSearch=null;
-  }
+  customProductSearch=parseCustomSearchURL();
 }
