@@ -1,5 +1,6 @@
 {
-  Hashtable<DecodeHintType,Object> hints=new Hashtable<DecodeHintType,Object>(3);
+  this.activity=activity;
+  hints=new Hashtable<DecodeHintType,Object>(3);
   if (decodeFormats == null || decodeFormats.isEmpty()) {
     SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
     boolean decode1D=prefs.getBoolean(PreferencesActivity.KEY_DECODE_1D,true);
@@ -21,5 +22,4 @@
     hints.put(DecodeHintType.CHARACTER_SET,characterSet);
   }
   hints.put(DecodeHintType.NEED_RESULT_POINT_CALLBACK,resultPointCallback);
-  this.handler=new DecodeHandler(activity,hints);
 }

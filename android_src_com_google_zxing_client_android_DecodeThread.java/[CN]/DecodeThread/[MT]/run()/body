@@ -1,4 +1,5 @@
 {
   Looper.prepare();
+  handler=new DecodeHandler(activity,hints);
   Looper.loop();
 }
