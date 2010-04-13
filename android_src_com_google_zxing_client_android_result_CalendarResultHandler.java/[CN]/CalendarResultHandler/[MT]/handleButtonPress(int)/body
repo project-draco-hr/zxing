@@ -1,6 +1,6 @@
 {
   CalendarParsedResult calendarResult=(CalendarParsedResult)getResult();
   if (index == 0) {
-    addCalendarEvent(calendarResult.getSummary(),calendarResult.getStart(),calendarResult.getEnd(),calendarResult.getLocation());
+    addCalendarEvent(calendarResult.getSummary(),calendarResult.getStart(),calendarResult.getEnd(),calendarResult.getLocation(),calendarResult.getDescription());
   }
 }

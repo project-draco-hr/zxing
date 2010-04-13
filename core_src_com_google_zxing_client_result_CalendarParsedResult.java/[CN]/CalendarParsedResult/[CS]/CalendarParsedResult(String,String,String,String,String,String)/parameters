@@ -3,4 +3,4 @@ String start
 String end
 String location
 String attendee
-String title
+String description

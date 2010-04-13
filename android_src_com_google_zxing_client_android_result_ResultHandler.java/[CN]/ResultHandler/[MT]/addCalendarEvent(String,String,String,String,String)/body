@@ -11,5 +11,6 @@
   intent.putExtra("endTime",calculateMilliseconds(end));
   intent.putExtra("title",summary);
   intent.putExtra("eventLocation",location);
+  intent.putExtra("description",description);
   launchIntent(intent);
 }

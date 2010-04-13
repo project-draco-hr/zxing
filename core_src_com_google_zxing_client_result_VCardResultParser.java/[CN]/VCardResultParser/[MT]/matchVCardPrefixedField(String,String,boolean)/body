@@ -20,7 +20,9 @@
     }
     i++;
     int start=i;
-    i=rawText.indexOf((int)'\n',i);
+    while ((i=rawText.indexOf((int)'\n',i)) >= 0 && i < rawText.length() - 1 && (rawText.charAt(i + 1) == ' ' || rawText.charAt(i + 1) == '\t')) {
+      i+=2;
+    }
     if (i < 0) {
       i=max;
     }
@@ -28,10 +30,14 @@
       if (matches == null) {
         matches=new Vector(3);
       }
+      if (rawText.charAt(i - 1) == '\r') {
+        i--;
+      }
       String element=rawText.substring(start,i);
       if (trim) {
         element=element.trim();
       }
+      element=stripContinuationCRLF(element);
       matches.addElement(element);
       i++;
     }

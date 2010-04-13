@@ -3,7 +3,7 @@
   ParsedResult result=ResultParser.parseResult(fakeResult);
   assertSame(ParsedResultType.CALENDAR,result.getType());
   CalendarParsedResult calResult=(CalendarParsedResult)result;
-  assertEquals(title,calResult.getTitle());
+  assertEquals(description,calResult.getDescription());
   assertEquals(summary,calResult.getSummary());
   assertEquals(location,calResult.getLocation());
   assertEquals(start,calResult.getStart());

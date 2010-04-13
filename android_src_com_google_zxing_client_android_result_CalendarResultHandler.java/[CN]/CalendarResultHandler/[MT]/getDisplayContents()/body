@@ -10,6 +10,6 @@
   appendTime(endString,result);
   ParsedResult.maybeAppend(calResult.getLocation(),result);
   ParsedResult.maybeAppend(calResult.getAttendee(),result);
-  ParsedResult.maybeAppend(calResult.getTitle(),result);
+  ParsedResult.maybeAppend(calResult.getDescription(),result);
   return result.toString();
 }

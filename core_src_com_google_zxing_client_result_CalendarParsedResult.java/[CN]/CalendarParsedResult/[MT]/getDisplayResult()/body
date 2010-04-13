@@ -5,6 +5,6 @@
   maybeAppend(end,result);
   maybeAppend(location,result);
   maybeAppend(attendee,result);
-  maybeAppend(title,result);
+  maybeAppend(description,result);
   return result.toString();
 }

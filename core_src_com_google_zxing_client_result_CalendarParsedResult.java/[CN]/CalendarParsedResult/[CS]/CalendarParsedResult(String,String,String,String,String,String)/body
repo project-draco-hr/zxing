@@ -4,11 +4,16 @@
     throw new IllegalArgumentException();
   }
   validateDate(start);
-  validateDate(end);
+  if (end == null) {
+    end=start;
+  }
+ else {
+    validateDate(end);
+  }
   this.summary=summary;
   this.start=start;
   this.end=end;
   this.location=location;
   this.attendee=attendee;
-  this.title=title;
+  this.description=description;
 }
