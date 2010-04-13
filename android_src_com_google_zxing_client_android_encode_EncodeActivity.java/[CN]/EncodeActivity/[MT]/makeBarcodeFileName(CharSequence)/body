@@ -1,0 +1,14 @@
+{
+  int fileNameLength=Math.min(MAX_BARCODE_FILENAME_LENGTH,contents.length());
+  StringBuilder fileName=new StringBuilder(fileNameLength);
+  for (int i=0; i < fileNameLength; i++) {
+    char c=contents.charAt(i);
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) {
+      fileName.append(c);
+    }
+ else {
+      fileName.append('_');
+    }
+  }
+  return fileName;
+}

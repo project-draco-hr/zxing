@@ -3,9 +3,10 @@
     Log.w(TAG,"No existing barcode to send?");
     return true;
   }
+  String contents=qrCodeEncoder.getContents();
   Bitmap bitmap;
   try {
-    bitmap=QRCodeEncoder.encodeAsBitmap(qrCodeEncoder.getContents(),BarcodeFormat.QR_CODE,SHARE_BARCODE_DIMENSION,SHARE_BARCODE_DIMENSION);
+    bitmap=QRCodeEncoder.encodeAsBitmap(contents,BarcodeFormat.QR_CODE,SHARE_BARCODE_DIMENSION,SHARE_BARCODE_DIMENSION);
   }
  catch (  WriterException we) {
     Log.w(TAG,we.toString());
@@ -14,14 +15,29 @@
   File barcodeFile;
   try {
     File bsRoot=new File(Environment.getExternalStorageDirectory(),"BarcodeScanner");
-    bsRoot.mkdir();
-    File barcodesRoot=new File(bsRoot,"barcodes");
-    barcodesRoot.mkdir();
-    barcodeFile=new File(barcodesRoot,"barcode-" + System.currentTimeMillis() + ".png");
+    File barcodesRoot=new File(bsRoot,"Barcodes");
+    if (!barcodesRoot.mkdirs()) {
+      Log.v(TAG,"Couldn't make dir " + barcodesRoot);
+      showErrorMessage(R.string.msg_unmount_usb);
+      return true;
+    }
+    barcodeFile=new File(barcodesRoot,makeBarcodeFileName(contents) + ".png");
     barcodeFile.delete();
-    FileOutputStream fos=new FileOutputStream(barcodeFile);
-    bitmap.compress(Bitmap.CompressFormat.PNG,0,fos);
-    fos.close();
+    FileOutputStream fos=null;
+    try {
+      fos=new FileOutputStream(barcodeFile);
+      bitmap.compress(Bitmap.CompressFormat.PNG,0,fos);
+    }
+ catch (    FileNotFoundException fnfe) {
+      Log.v(TAG,"Couldn't access file " + barcodeFile + " due to "+ fnfe);
+      showErrorMessage(R.string.msg_unmount_usb);
+      return true;
+    }
+ finally {
+      if (fos != null) {
+        fos.close();
+      }
+    }
   }
  catch (  IOException ioe) {
     Log.w(TAG,ioe.toString());
