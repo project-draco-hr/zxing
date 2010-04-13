@@ -1,0 +1,10 @@
+{
+  String locationString=location.getText();
+  if (locationString.length() < 1) {
+    return "";
+  }
+  if (locationString.contains("\n")) {
+    throw new GeneratorException("Location should not contain \\n characters.");
+  }
+  return "LOCATION:" + locationString + "\r\n";
+}

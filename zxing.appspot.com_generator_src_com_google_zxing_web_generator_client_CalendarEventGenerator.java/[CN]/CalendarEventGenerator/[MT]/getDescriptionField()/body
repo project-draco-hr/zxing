@@ -1,0 +1,10 @@
+{
+  String descriptionString=description.getText();
+  if (descriptionString.length() < 1) {
+    return "";
+  }
+  if (descriptionString.contains("\n")) {
+    throw new GeneratorException("Description should not contain \\n characters.");
+  }
+  return "DESCRIPTION:" + descriptionString + "\r\n";
+}

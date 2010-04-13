@@ -4,7 +4,7 @@
   }
   datePicker1.getDatePicker().setSelectedDate(new Date());
   datePicker2.getDatePicker().setSelectedDate(new Date());
-  table=new Grid(8,2);
+  table=new Grid(10,2);
   table.setText(0,0,"All day event");
   table.setWidget(0,1,fullDay);
   table.setText(1,0,"Event title");
@@ -21,6 +21,10 @@
   table.setWidget(6,1,timeZones);
   table.setText(7,0,"Daylight savings");
   table.setWidget(7,1,summerTime);
+  table.setText(8,0,"Location");
+  table.setWidget(8,1,location);
+  table.setText(9,0,"Description");
+  table.setWidget(9,1,description);
   table.getRowFormatter().getElement(3).setId(FULL_DAY_ONLY_IDS[0]);
   table.getRowFormatter().getElement(5).setId(FULL_DAY_ONLY_IDS[1]);
   table.getRowFormatter().getElement(6).setId(FULL_DAY_ONLY_IDS[2]);
