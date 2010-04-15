@@ -1,5 +1,16 @@
 {
-  BufferedImage image=ImageIO.read(is);
+  BufferedImage image;
+  try {
+    image=ImageIO.read(is);
+  }
+ catch (  IOException ioe) {
+    response.sendRedirect("badimage.jspx");
+    return;
+  }
+catch (  CMMException cmme) {
+    response.sendRedirect("badimage.jspx");
+    return;
+  }
   if (image == null) {
     response.sendRedirect("badimage.jspx");
     return;
