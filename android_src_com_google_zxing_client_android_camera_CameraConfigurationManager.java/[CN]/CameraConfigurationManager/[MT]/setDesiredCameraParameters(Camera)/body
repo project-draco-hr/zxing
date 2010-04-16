@@ -1,6 +1,6 @@
 {
   Camera.Parameters parameters=camera.getParameters();
-  Log.v(TAG,"Setting preview size: " + cameraResolution.x + ", "+ cameraResolution.y);
+  Log.v(TAG,"Setting preview size: " + cameraResolution);
   parameters.setPreviewSize(cameraResolution.x,cameraResolution.y);
   setFlash(parameters);
   setZoom(parameters);

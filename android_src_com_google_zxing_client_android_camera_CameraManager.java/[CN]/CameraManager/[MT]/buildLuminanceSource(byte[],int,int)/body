@@ -1,5 +1,5 @@
 {
-  Rect rect=getFramingRect();
+  Rect rect=getFramingRectInPreview();
   int previewFormat=configManager.getPreviewFormat();
   String previewFormatString=configManager.getPreviewFormatString();
 switch (previewFormat) {
