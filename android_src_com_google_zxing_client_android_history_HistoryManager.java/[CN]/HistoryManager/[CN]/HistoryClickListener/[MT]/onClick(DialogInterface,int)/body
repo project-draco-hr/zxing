@@ -1,0 +1,29 @@
+{
+  if (i == dialogItems.length - 1) {
+    clearHistory();
+  }
+ else   if (i == dialogItems.length - 2) {
+    CharSequence history=buildHistory();
+    Uri historyFile=saveHistory(history.toString());
+    if (historyFile == null) {
+      AlertDialog.Builder builder=new AlertDialog.Builder(activity);
+      builder.setMessage(R.string.msg_unmount_usb);
+      builder.setPositiveButton(R.string.button_ok,null);
+      builder.show();
+      return;
+    }
+    Intent intent=new Intent(Intent.ACTION_SEND,Uri.parse("mailto:"));
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+    String subject=activity.getResources().getString(R.string.history_email_title);
+    intent.putExtra(Intent.EXTRA_SUBJECT,subject);
+    intent.putExtra(Intent.EXTRA_TEXT,subject);
+    intent.putExtra(Intent.EXTRA_STREAM,historyFile);
+    intent.setType("text/csv");
+    activity.startActivity(intent);
+  }
+ else {
+    Result result=items.get(i);
+    Message message=Message.obtain(activity.getHandler(),R.id.decode_succeeded,result);
+    message.sendToTarget();
+  }
+}

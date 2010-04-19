@@ -1,34 +1,14 @@
 {
-  final List<Result> items=getHistoryItems();
-  final String[] dialogItems=new String[items.size() + 2];
-  for (int i=0; i < items.size(); i++) {
+  List<Result> items=getHistoryItems();
+  int size=items.size();
+  String[] dialogItems=new String[size + 2];
+  for (int i=0; i < size; i++) {
     dialogItems[i]=items.get(i).getText();
   }
-  final Resources res=activity.getResources();
+  Resources res=activity.getResources();
   dialogItems[dialogItems.length - 2]=res.getString(R.string.history_send);
   dialogItems[dialogItems.length - 1]=res.getString(R.string.history_clear_text);
-  DialogInterface.OnClickListener clickListener=new DialogInterface.OnClickListener(){
-    public void onClick(    DialogInterface dialogInterface,    int i){
-      if (i == dialogItems.length - 1) {
-        clearHistory();
-      }
- else       if (i == dialogItems.length - 2) {
-        CharSequence history=buildHistory();
-        Intent intent=new Intent(Intent.ACTION_SEND,Uri.parse("mailto:"));
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-        intent.putExtra(Intent.EXTRA_SUBJECT,res.getString(R.string.history_email_title));
-        intent.putExtra(Intent.EXTRA_TEXT,history);
-        intent.setType("text/csv");
-        activity.startActivity(intent);
-      }
- else {
-        Result result=items.get(i);
-        Message message=Message.obtain(activity.getHandler(),R.id.decode_succeeded,result);
-        message.sendToTarget();
-      }
-    }
-  }
-;
+  DialogInterface.OnClickListener clickListener=new HistoryClickListener(dialogItems,items);
   AlertDialog.Builder builder=new AlertDialog.Builder(activity);
   builder.setTitle(R.string.history_title);
   builder.setItems(dialogItems,clickListener);
