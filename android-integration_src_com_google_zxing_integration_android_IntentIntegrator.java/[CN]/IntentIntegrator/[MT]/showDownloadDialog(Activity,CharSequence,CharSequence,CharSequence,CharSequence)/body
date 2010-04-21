@@ -15,5 +15,5 @@
     }
   }
 );
-  downloadDialog.show();
+  return downloadDialog.show();
 }

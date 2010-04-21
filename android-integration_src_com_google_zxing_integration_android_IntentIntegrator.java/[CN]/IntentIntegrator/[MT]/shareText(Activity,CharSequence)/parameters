@@ -1,2 +1,2 @@
 Activity activity
-String text
+CharSequence text

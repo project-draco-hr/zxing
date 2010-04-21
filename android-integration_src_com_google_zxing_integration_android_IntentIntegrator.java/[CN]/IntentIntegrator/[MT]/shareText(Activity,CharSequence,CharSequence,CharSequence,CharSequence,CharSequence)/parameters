@@ -1,0 +1,6 @@
+Activity activity
+CharSequence text
+CharSequence stringTitle
+CharSequence stringMessage
+CharSequence stringButtonYes
+CharSequence stringButtonNo

@@ -1,5 +1,5 @@
 Activity activity
-String text
+CharSequence text
 int stringTitle
 int stringMessage
 int stringButtonYes

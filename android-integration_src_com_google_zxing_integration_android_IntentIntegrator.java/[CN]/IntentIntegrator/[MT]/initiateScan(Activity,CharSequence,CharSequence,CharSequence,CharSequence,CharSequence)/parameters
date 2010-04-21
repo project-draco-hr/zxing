@@ -1,0 +1,6 @@
+Activity activity
+CharSequence stringTitle
+CharSequence stringMessage
+CharSequence stringButtonYes
+CharSequence stringButtonNo
+CharSequence stringDesiredBarcodeFormats

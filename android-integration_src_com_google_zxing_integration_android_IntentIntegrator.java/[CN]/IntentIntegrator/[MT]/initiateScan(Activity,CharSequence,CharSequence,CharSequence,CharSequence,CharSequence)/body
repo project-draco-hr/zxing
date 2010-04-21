@@ -6,8 +6,9 @@
   }
   try {
     activity.startActivityForResult(intentScan,REQUEST_CODE);
+    return null;
   }
  catch (  ActivityNotFoundException e) {
-    showDownloadDialog(activity,stringTitle,stringMessage,stringButtonYes,stringButtonNo);
+    return showDownloadDialog(activity,stringTitle,stringMessage,stringButtonYes,stringButtonNo);
   }
 }
