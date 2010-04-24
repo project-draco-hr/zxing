@@ -1,0 +1,32 @@
+{
+  int length=value.length();
+  StringBuffer result=new StringBuffer(length);
+  for (int i=0; i < length; i++) {
+    char c=value.charAt(i);
+switch (c) {
+case '\r':
+case '\n':
+      break;
+case '=':
+    if (i < length - 2) {
+      char nextChar=value.charAt(i + 1);
+      if (nextChar == '\r' || nextChar == '\n') {
+      }
+ else {
+        char nextNextChar=value.charAt(i + 2);
+        try {
+          int encodedChar=16 * toHexValue(nextChar) + toHexValue(nextNextChar);
+          result.append((char)encodedChar);
+        }
+ catch (        IllegalArgumentException iae) {
+        }
+        i+=2;
+      }
+    }
+  break;
+default :
+result.append(c);
+}
+}
+return result.toString();
+}
