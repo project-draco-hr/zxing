@@ -1,3 +1,7 @@
 {
-  return parseDecodeFormats(Arrays.asList(COMMA_PATTERN.split(intent.getStringExtra(Intents.Scan.SCAN_FORMATS))),intent.getStringExtra(Intents.Scan.MODE));
+  String formats=intent.getStringExtra(Intents.Scan.SCAN_FORMATS);
+  if (formats != null) {
+    return parseDecodeFormats(Arrays.asList(COMMA_PATTERN.split(formats)),intent.getStringExtra(Intents.Scan.MODE));
+  }
+  return null;
 }
