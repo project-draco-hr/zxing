@@ -18,7 +18,6 @@ Bitmap barcode=bundle == null ? null : (Bitmap)bundle.getParcelable(DecodeThread
 activity.handleDecode((Result)message.obj,barcode);
 break;
 case R.id.decode_failed:
-Log.v(TAG,"Got decode failed message");
 state=State.PREVIEW;
 CameraManager.get().requestPreviewFrame(decodeThread.getHandler(),R.id.decode);
 break;
