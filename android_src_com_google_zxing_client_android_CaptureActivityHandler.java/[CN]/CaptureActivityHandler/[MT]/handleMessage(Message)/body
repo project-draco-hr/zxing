@@ -1,28 +1,34 @@
 {
 switch (message.what) {
 case R.id.auto_focus:
-    if (state == State.PREVIEW) {
-      CameraManager.get().requestAutoFocus(this,R.id.auto_focus);
-    }
-  break;
+    Log.v(TAG,"Got auto-focus message");
+  if (state == State.PREVIEW) {
+    CameraManager.get().requestAutoFocus(this,R.id.auto_focus);
+  }
+break;
 case R.id.restart_preview:
+Log.v(TAG,"Got restart preview message");
 restartPreviewAndDecode();
 break;
 case R.id.decode_succeeded:
+Log.v(TAG,"Got decode succeeded message");
 state=State.SUCCESS;
 Bundle bundle=message.getData();
 Bitmap barcode=bundle == null ? null : (Bitmap)bundle.getParcelable(DecodeThread.BARCODE_BITMAP);
 activity.handleDecode((Result)message.obj,barcode);
 break;
 case R.id.decode_failed:
+Log.v(TAG,"Got decode failed message");
 state=State.PREVIEW;
 CameraManager.get().requestPreviewFrame(decodeThread.getHandler(),R.id.decode);
 break;
 case R.id.return_scan_result:
+Log.v(TAG,"Got return scan result message");
 activity.setResult(Activity.RESULT_OK,(Intent)message.obj);
 activity.finish();
 break;
 case R.id.launch_product_query:
+Log.v(TAG,"Got product query message");
 String url=(String)message.obj;
 Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse(url));
 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);

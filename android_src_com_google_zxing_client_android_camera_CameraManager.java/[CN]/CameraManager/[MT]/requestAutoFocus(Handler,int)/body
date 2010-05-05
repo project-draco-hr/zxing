@@ -1,6 +1,7 @@
 {
   if (camera != null && previewing) {
     autoFocusCallback.setHandler(handler,message);
+    Log.v(TAG,"Requesting auto-focus callback");
     camera.autoFocus(autoFocusCallback);
   }
 }

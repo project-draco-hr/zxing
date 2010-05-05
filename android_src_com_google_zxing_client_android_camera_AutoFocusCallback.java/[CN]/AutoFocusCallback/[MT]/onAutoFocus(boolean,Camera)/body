@@ -1,11 +1,15 @@
 {
   if (autoFocusHandler != null) {
     Message message=autoFocusHandler.obtainMessage(autoFocusMessage,success);
+    Log.v(TAG,"Got auto-focus callback; requesting another");
     autoFocusHandler.sendMessageDelayed(message,AUTOFOCUS_INTERVAL_MS);
     autoFocusHandler=null;
     if (!reinitCamera) {
       reinitCamera=true;
       configManager.setDesiredCameraParameters(camera);
     }
+  }
+ else {
+    Log.v(TAG,"Got auto-focus callback, but no handler for it");
   }
 }
