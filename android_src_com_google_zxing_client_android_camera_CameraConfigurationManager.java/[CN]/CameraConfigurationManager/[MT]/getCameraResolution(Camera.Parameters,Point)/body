@@ -5,7 +5,7 @@
   }
   Point cameraResolution=null;
   if (previewSizeValueString != null) {
-    Log.v(TAG,"preview-size-values parameter: " + previewSizeValueString);
+    Log.d(TAG,"preview-size-values parameter: " + previewSizeValueString);
     cameraResolution=findBestPreviewSizeValue(previewSizeValueString,screenResolution);
   }
   if (cameraResolution == null) {

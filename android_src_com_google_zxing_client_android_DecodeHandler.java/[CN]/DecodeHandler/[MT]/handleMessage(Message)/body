@@ -1,9 +1,8 @@
 {
 switch (message.what) {
 case R.id.decode:
-    Log.v(TAG,"Got decode message");
-  decode((byte[])message.obj,message.arg1,message.arg2);
-break;
+    decode((byte[])message.obj,message.arg1,message.arg2);
+  break;
 case R.id.quit:
 Looper.myLooper().quit();
 break;

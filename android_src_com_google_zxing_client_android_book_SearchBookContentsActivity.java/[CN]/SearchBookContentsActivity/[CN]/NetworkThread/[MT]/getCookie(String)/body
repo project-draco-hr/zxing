@@ -1,7 +1,7 @@
 {
   String cookie=CookieManager.getInstance().getCookie(url);
   if (cookie == null || cookie.length() == 0) {
-    Log.v(TAG,"Book Search cookie was missing or expired");
+    Log.d(TAG,"Book Search cookie was missing or expired");
     HttpUriRequest head=new HttpHead(url);
     AndroidHttpClient client=AndroidHttpClient.newInstance(USER_AGENT);
     try {
@@ -16,7 +16,7 @@
       }
     }
  catch (    IOException e) {
-      Log.e(TAG,e.toString());
+      Log.w(TAG,"Error setting book search cookie",e);
     }
     client.close();
   }

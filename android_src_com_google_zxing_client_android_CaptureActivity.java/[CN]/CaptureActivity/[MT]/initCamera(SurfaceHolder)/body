@@ -8,7 +8,7 @@
     return;
   }
 catch (  RuntimeException e) {
-    Log.e(TAG,e.toString());
+    Log.w(TAG,"Unexpected error initializating camera",e);
     displayFrameworkBugMessageAndExit();
     return;
   }

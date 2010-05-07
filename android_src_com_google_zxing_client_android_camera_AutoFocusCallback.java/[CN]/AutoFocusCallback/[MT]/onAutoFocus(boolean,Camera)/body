@@ -1,7 +1,6 @@
 {
   if (autoFocusHandler != null) {
     Message message=autoFocusHandler.obtainMessage(autoFocusMessage,success);
-    Log.v(TAG,"Got auto-focus callback; requesting another");
     autoFocusHandler.sendMessageDelayed(message,AUTOFOCUS_INTERVAL_MS);
     autoFocusHandler=null;
     if (!reinitCamera) {
@@ -10,6 +9,6 @@
     }
   }
  else {
-    Log.v(TAG,"Got auto-focus callback, but no handler for it");
+    Log.d(TAG,"Got auto-focus callback, but no handler for it");
   }
 }

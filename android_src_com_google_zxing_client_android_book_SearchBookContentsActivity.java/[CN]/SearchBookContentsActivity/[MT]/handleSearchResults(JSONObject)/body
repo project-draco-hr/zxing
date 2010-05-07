@@ -21,7 +21,7 @@
     }
   }
  catch (  JSONException e) {
-    Log.e(TAG,e.toString());
+    Log.w(TAG,"Bad JSON from book search",e);
     resultListView.setAdapter(null);
     headerView.setText(R.string.msg_sbc_failed);
   }
