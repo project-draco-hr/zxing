@@ -11,7 +11,11 @@ catch (  CMMException cmme) {
     response.sendRedirect("badimage.jspx");
     return;
   }
-  if (image == null) {
+catch (  IllegalArgumentException iae) {
+    response.sendRedirect("badimage.jspx");
+    return;
+  }
+  if (image == null || image.getHeight() <= 1 || image.getWidth() >= 1 || image.getHeight() * image.getWidth() > MAX_PIXELS) {
     response.sendRedirect("badimage.jspx");
     return;
   }

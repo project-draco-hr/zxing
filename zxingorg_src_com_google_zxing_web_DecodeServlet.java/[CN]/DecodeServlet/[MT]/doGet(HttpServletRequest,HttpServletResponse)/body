@@ -4,6 +4,7 @@
     response.sendRedirect("badurl.jspx");
     return;
   }
+  imageURIString=imageURIString.trim();
   if (!(imageURIString.startsWith("http://") || imageURIString.startsWith("https://"))) {
     imageURIString="http://" + imageURIString;
   }
@@ -29,12 +30,7 @@
       response.sendRedirect("badurl.jspx");
       return;
     }
-catch (    SocketException se) {
-      getRequest.abort();
-      response.sendRedirect("badurl.jspx");
-      return;
-    }
-catch (    UnknownHostException uhe) {
+catch (    IOException ioe) {
       getRequest.abort();
       response.sendRedirect("badurl.jspx");
       return;
