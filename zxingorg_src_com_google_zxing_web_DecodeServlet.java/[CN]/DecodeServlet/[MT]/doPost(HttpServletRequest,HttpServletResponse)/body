@@ -1,5 +1,6 @@
 {
   if (!ServletFileUpload.isMultipartContent(request)) {
+    log.fine("File upload was not multipart");
     response.sendRedirect("badimage.jspx");
     return;
   }
@@ -19,6 +20,7 @@
           }
         }
  else {
+          log.fine("Too large");
           response.sendRedirect("badimage.jspx");
         }
         break;
@@ -26,6 +28,7 @@
     }
   }
  catch (  FileUploadException fue) {
+    log.fine(fue.toString());
     response.sendRedirect("badimage.jspx");
   }
 }
