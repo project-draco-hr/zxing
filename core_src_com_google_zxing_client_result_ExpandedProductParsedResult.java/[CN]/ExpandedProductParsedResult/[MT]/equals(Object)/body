@@ -1,0 +1,7 @@
+{
+  if (!(o instanceof ExpandedProductParsedResult)) {
+    return false;
+  }
+  ExpandedProductParsedResult other=(ExpandedProductParsedResult)o;
+  return this.productID.equals(other.productID) && this.sscc.equals(other.sscc) && this.lotNumber.equals(other.lotNumber)&& this.productionDate.equals(other.productionDate)&& this.bestBeforeDate.equals(other.bestBeforeDate)&& this.expirationDate.equals(other.expirationDate)&& this.weight.equals(other.weight)&& this.weightType.equals(other.weightType)&& this.weightIncrement.equals(other.weightIncrement)&& this.price.equals(other.price)&& this.priceIncrement.equals(other.priceIncrement)&& this.priceCurrency.equals(other.priceCurrency)&& this.uncommonAIs.equals(other.uncommonAIs);
+}

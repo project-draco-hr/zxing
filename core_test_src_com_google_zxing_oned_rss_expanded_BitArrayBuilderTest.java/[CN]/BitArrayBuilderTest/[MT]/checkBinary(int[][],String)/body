@@ -1,0 +1,4 @@
+{
+  BitArray binary=buildBitArray(pairValues);
+  assertEquals(expected,binary.toString());
+}

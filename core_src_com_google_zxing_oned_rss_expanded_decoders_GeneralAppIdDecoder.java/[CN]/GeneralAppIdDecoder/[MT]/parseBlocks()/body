@@ -1,0 +1,25 @@
+{
+  boolean isFinished;
+  BlockParsedResult result;
+  do {
+    int initialPosition=current.position;
+    if (current.isAlpha()) {
+      result=parseAlphaBlock();
+      isFinished=result.isFinished();
+    }
+ else     if (current.isIsoIec646()) {
+      result=parseIsoIec646Block();
+      isFinished=result.isFinished();
+    }
+ else {
+      result=parseNumericBlock();
+      isFinished=result.isFinished();
+    }
+    boolean positionChanged=initialPosition != current.position;
+    if (!positionChanged && !isFinished) {
+      break;
+    }
+  }
+ while (!isFinished);
+  return result.getDecodedInformation();
+}

@@ -1,0 +1,5 @@
+{
+  String field=expected.replace("(","").replace(")","");
+  String actual=FieldParser.parseFieldsInGeneralPurpose(field);
+  assertEquals(expected,actual);
+}

@@ -1,0 +1,6 @@
+{
+  if (weight < 10000) {
+    return weight;
+  }
+  return weight - 10000;
+}

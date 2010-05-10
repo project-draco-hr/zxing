@@ -1,0 +1,5 @@
+{
+  super(information);
+  this.dateCode=dateCode;
+  this.firstAIdigits=firstAIdigits;
+}

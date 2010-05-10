@@ -1,0 +1,3 @@
+{
+  return extractNumericValueFromBitArray(this.information,pos,bits);
+}

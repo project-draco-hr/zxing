@@ -1,0 +1,17 @@
+{
+  super(ParsedResultType.PRODUCT);
+  this.productID=productID;
+  this.sscc=sscc;
+  this.lotNumber=lotNumber;
+  this.productionDate=productionDate;
+  this.packagingDate=packagingDate;
+  this.bestBeforeDate=bestBeforeDate;
+  this.expirationDate=expirationDate;
+  this.weight=weight;
+  this.weightType=weightType;
+  this.weightIncrement=weightIncrement;
+  this.price=price;
+  this.priceIncrement=priceIncrement;
+  this.priceCurrency=priceCurrency;
+  this.uncommonAIs=uncommonAIs;
+}

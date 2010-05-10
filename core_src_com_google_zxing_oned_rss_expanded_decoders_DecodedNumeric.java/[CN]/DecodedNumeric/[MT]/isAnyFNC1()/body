@@ -1,0 +1,3 @@
+{
+  return this.firstDigit == FNC1 || this.secondDigit == FNC1;
+}

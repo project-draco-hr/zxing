@@ -1,0 +1,34 @@
+{
+  String text="(01)66546(13)001205(3932)4455(3102)6544(123)544654";
+  String productID="66546";
+  String sscc="-";
+  String lotNumber="-";
+  String productionDate="-";
+  String packagingDate="001205";
+  String bestBeforeDate="-";
+  String expirationDate="-";
+  String weight="6544";
+  String weightType="KG";
+  String weightIncrement="2";
+  String price="5";
+  String priceIncrement="2";
+  String priceCurrency="445";
+  Hashtable uncommonAIs=new Hashtable();
+  uncommonAIs.put("123","544654");
+  Result result=new Result(text,null,null,BarcodeFormat.RSS_EXPANDED);
+  ExpandedProductParsedResult o=ExpandedProductResultParser.parse(result);
+  assertEquals(productID,o.getProductID());
+  assertEquals(sscc,o.getSscc());
+  assertEquals(lotNumber,o.getLotNumber());
+  assertEquals(productionDate,o.getProductionDate());
+  assertEquals(packagingDate,o.getPackagingDate());
+  assertEquals(bestBeforeDate,o.getBestBeforeDate());
+  assertEquals(expirationDate,o.getExpirationDate());
+  assertEquals(weight,o.getWeight());
+  assertEquals(weightType,o.getWeightType());
+  assertEquals(weightIncrement,o.getWeightIncrement());
+  assertEquals(price,o.getPrice());
+  assertEquals(priceIncrement,o.getPriceIncrement());
+  assertEquals(priceCurrency,o.getPriceCurrency());
+  assertEquals(uncommonAIs,o.getUncommonAIs());
+}

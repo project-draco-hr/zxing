@@ -1,0 +1,3 @@
+BitArray row
+Vector previousPairs
+int forcedOffset

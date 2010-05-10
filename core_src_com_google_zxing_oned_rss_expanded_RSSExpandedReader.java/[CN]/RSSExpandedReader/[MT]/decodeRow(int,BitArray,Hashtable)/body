@@ -1,0 +1,5 @@
+{
+  this.reset();
+  decodeRow2pairs(rowNumber,row);
+  return constructResult(this.pairs);
+}

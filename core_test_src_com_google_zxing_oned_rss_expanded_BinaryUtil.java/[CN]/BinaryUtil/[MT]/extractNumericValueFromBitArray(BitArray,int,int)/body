@@ -1,0 +1,13 @@
+{
+  if (bits > 32) {
+    throw new IllegalArgumentException("extractNumberValueFromBitArray can't handle more than 32 bits");
+  }
+  BitArray numeric=new BitArray(bits);
+  for (int i=0; i < bits; ++i) {
+    if (information.get(pos + i)) {
+      numeric.set(i);
+    }
+  }
+  numeric.reverse();
+  return numeric.bits[0];
+}

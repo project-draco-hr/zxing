@@ -1,0 +1,5 @@
+{
+  String data=header + numeric_10 + numeric_1FNC1;
+  String expected="(10)1";
+  assertCorrectBinaryString(data,expected);
+}

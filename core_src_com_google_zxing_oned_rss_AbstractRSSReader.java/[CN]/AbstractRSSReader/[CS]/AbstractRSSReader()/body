@@ -1,0 +1,8 @@
+{
+  decodeFinderCounters=new int[4];
+  dataCharacterCounters=new int[8];
+  oddRoundingErrors=new float[4];
+  evenRoundingErrors=new float[4];
+  oddCounts=new int[dataCharacterCounters.length / 2];
+  evenCounts=new int[dataCharacterCounters.length / 2];
+}

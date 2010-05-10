@@ -1,0 +1,4 @@
+{
+  super(newPosition);
+  this.value=value;
+}

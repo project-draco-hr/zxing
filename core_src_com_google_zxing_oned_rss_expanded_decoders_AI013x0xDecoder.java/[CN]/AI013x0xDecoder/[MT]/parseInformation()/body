@@ -1,0 +1,9 @@
+{
+  if (this.information.size != headerSize + gtinSize + weightSize) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  StringBuffer buf=new StringBuffer();
+  encodeCompressedGtin(buf,headerSize);
+  encodeCompressedWeight(buf,headerSize + gtinSize,weightSize);
+  return buf.toString();
+}

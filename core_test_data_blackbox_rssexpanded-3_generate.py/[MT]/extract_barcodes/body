@@ -1,0 +1,11 @@
+def extract_barcodes():
+    for line in open('generation.config'):
+        content = line.split('#')[0].strip()
+        if (content != ''):
+            if (content[0] == '-'):
+                pos = content[1:].find('-')
+                exceptions = content[1:(pos + 1)].split(',')
+                barcode = content[(pos + 2):]
+                yield (exceptions, barcode)
+            else:
+                yield ((), content)

@@ -11,7 +11,7 @@
     counters[i]=counters[i - 1];
   }
   counters[0]=firstCounter;
-  int value=parseFinderValue(counters);
+  int value=parseFinderValue(counters,FINDER_PATTERNS);
   int start=firstElementStart;
   int end=startEnd[1];
   if (right) {

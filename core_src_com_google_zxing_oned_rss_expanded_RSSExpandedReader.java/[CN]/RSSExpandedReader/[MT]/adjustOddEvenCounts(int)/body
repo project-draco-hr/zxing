@@ -1,0 +1,92 @@
+{
+  int oddSum=count(this.oddCounts);
+  int evenSum=count(this.evenCounts);
+  int mismatch=oddSum + evenSum - numModules;
+  boolean oddParityBad=(oddSum & 0x01) == 1;
+  boolean evenParityBad=(evenSum & 0x01) == 0;
+  boolean incrementOdd=false;
+  boolean decrementOdd=false;
+  if (oddSum > 13) {
+    decrementOdd=true;
+  }
+ else   if (oddSum < 4) {
+    incrementOdd=true;
+  }
+  boolean incrementEven=false;
+  boolean decrementEven=false;
+  if (evenSum > 13) {
+    decrementEven=true;
+  }
+ else   if (evenSum < 4) {
+    incrementEven=true;
+  }
+  if (mismatch == 1) {
+    if (oddParityBad) {
+      if (evenParityBad) {
+        throw NotFoundException.getNotFoundInstance();
+      }
+      decrementOdd=true;
+    }
+ else {
+      if (!evenParityBad) {
+        throw NotFoundException.getNotFoundInstance();
+      }
+      decrementEven=true;
+    }
+  }
+ else   if (mismatch == -1) {
+    if (oddParityBad) {
+      if (evenParityBad) {
+        throw NotFoundException.getNotFoundInstance();
+      }
+      incrementOdd=true;
+    }
+ else {
+      if (!evenParityBad) {
+        throw NotFoundException.getNotFoundInstance();
+      }
+      incrementEven=true;
+    }
+  }
+ else   if (mismatch == 0) {
+    if (oddParityBad) {
+      if (!evenParityBad) {
+        throw NotFoundException.getNotFoundInstance();
+      }
+      if (oddSum < evenSum) {
+        incrementOdd=true;
+        decrementEven=true;
+      }
+ else {
+        decrementOdd=true;
+        incrementEven=true;
+      }
+    }
+ else {
+      if (evenParityBad) {
+        throw NotFoundException.getNotFoundInstance();
+      }
+    }
+  }
+ else {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  if (incrementOdd) {
+    if (decrementOdd) {
+      throw NotFoundException.getNotFoundInstance();
+    }
+    increment(this.oddCounts,this.oddRoundingErrors);
+  }
+  if (decrementOdd) {
+    decrement(this.oddCounts,this.oddRoundingErrors);
+  }
+  if (incrementEven) {
+    if (decrementEven) {
+      throw NotFoundException.getNotFoundInstance();
+    }
+    increment(this.evenCounts,this.oddRoundingErrors);
+  }
+  if (decrementEven) {
+    decrement(this.evenCounts,this.evenRoundingErrors);
+  }
+}

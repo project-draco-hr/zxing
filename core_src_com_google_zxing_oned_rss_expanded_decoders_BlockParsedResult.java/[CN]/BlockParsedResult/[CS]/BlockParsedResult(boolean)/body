@@ -1,0 +1,4 @@
+{
+  this.finished=finished;
+  this.decodedInformation=null;
+}

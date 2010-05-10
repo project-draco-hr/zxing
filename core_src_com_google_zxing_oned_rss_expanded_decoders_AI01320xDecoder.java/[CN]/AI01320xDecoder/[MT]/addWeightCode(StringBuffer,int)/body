@@ -1,0 +1,8 @@
+{
+  if (weight < 10000) {
+    buf.append("(3202)");
+  }
+ else {
+    buf.append("(3203)");
+  }
+}

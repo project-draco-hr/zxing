@@ -1,0 +1,62 @@
+{
+  int fiveBitValue=extractNumericValueFromBitArray(pos,5);
+  if (fiveBitValue == 15) {
+    return new DecodedChar(pos + 5,DecodedChar.FNC1);
+  }
+  if (fiveBitValue >= 5 && fiveBitValue < 15) {
+    return new DecodedChar(pos + 5,(char)('0' + fiveBitValue - 5));
+  }
+  int sevenBitValue=extractNumericValueFromBitArray(pos,7);
+  if (sevenBitValue >= 64 && sevenBitValue < 90) {
+    return new DecodedChar(pos + 7,(char)(sevenBitValue + 1));
+  }
+  if (sevenBitValue >= 90 && sevenBitValue < 116) {
+    return new DecodedChar(pos + 7,(char)(sevenBitValue + 7));
+  }
+  int eightBitValue=extractNumericValueFromBitArray(pos,8);
+switch (eightBitValue) {
+case 232:
+    return new DecodedChar(pos + 8,'!');
+case 233:
+  return new DecodedChar(pos + 8,'"');
+case 234:
+return new DecodedChar(pos + 8,'%');
+case 235:
+return new DecodedChar(pos + 8,'&');
+case 236:
+return new DecodedChar(pos + 8,'\'');
+case 237:
+return new DecodedChar(pos + 8,'(');
+case 238:
+return new DecodedChar(pos + 8,')');
+case 239:
+return new DecodedChar(pos + 8,'*');
+case 240:
+return new DecodedChar(pos + 8,'+');
+case 241:
+return new DecodedChar(pos + 8,',');
+case 242:
+return new DecodedChar(pos + 8,'-');
+case 243:
+return new DecodedChar(pos + 8,'.');
+case 244:
+return new DecodedChar(pos + 8,'/');
+case 245:
+return new DecodedChar(pos + 8,':');
+case 246:
+return new DecodedChar(pos + 8,';');
+case 247:
+return new DecodedChar(pos + 8,'<');
+case 248:
+return new DecodedChar(pos + 8,'=');
+case 249:
+return new DecodedChar(pos + 8,'>');
+case 250:
+return new DecodedChar(pos + 8,'?');
+case 251:
+return new DecodedChar(pos + 8,'_');
+case 252:
+return new DecodedChar(pos + 8,' ');
+}
+throw new RuntimeException("Decoding invalid ISO/IEC 646 value: " + eightBitValue);
+}

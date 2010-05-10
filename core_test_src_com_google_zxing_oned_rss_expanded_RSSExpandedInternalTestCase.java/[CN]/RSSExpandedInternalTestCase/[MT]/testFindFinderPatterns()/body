@@ -1,0 +1,27 @@
+{
+  RSSExpandedReader rssExpandedReader=new RSSExpandedReader();
+  String path="test/data/blackbox/rssexpanded-1/2.jpg";
+  BufferedImage image=ImageIO.read(new File(path));
+  BinaryBitmap binaryMap=new BinaryBitmap(new GlobalHistogramBinarizer(new BufferedImageLuminanceSource(image)));
+  int rowNumber=binaryMap.getHeight() / 2;
+  BitArray row=binaryMap.getBlackRow(rowNumber,null);
+  Vector<ExpandedPair> previousPairs=new Vector<ExpandedPair>();
+  ExpandedPair pair1=rssExpandedReader.retrieveNextPair(row,previousPairs,rowNumber);
+  previousPairs.add(pair1);
+  assertEquals(0,pair1.getFinderPattern().getValue());
+  assertFalse(pair1.mayBeLast());
+  ExpandedPair pair2=rssExpandedReader.retrieveNextPair(row,previousPairs,rowNumber);
+  previousPairs.add(pair2);
+  assertEquals(1,pair2.getFinderPattern().getValue());
+  assertFalse(pair2.mayBeLast());
+  ExpandedPair pair3=rssExpandedReader.retrieveNextPair(row,previousPairs,rowNumber);
+  previousPairs.add(pair3);
+  assertEquals(1,pair3.getFinderPattern().getValue());
+  assertTrue(pair3.mayBeLast());
+  try {
+    rssExpandedReader.retrieveNextPair(row,previousPairs,rowNumber);
+    fail(NotFoundException.class.getName() + " expected");
+  }
+ catch (  NotFoundException nfe) {
+  }
+}

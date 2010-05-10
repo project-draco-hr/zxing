@@ -1,0 +1,3 @@
+FinderPattern pattern
+boolean isOddPattern
+boolean leftChar

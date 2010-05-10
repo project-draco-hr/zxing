@@ -1,0 +1,13 @@
+{
+  String ai=rawInformation.substring(0,aiSize);
+  int maxSize;
+  if (rawInformation.length() < aiSize + variableFieldSize) {
+    maxSize=rawInformation.length();
+  }
+ else {
+    maxSize=aiSize + variableFieldSize;
+  }
+  String field=rawInformation.substring(aiSize,maxSize);
+  String remaining=rawInformation.substring(maxSize);
+  return '(' + ai + ')'+ field+ parseFieldsInGeneralPurpose(remaining);
+}

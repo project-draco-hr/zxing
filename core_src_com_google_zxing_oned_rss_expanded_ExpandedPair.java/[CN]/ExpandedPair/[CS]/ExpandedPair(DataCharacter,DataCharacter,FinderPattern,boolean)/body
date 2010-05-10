@@ -1,0 +1,6 @@
+{
+  this.leftChar=leftChar;
+  this.rightChar=rightChar;
+  this.finderPattern=finderPattern;
+  this.mayBeLast=mayBeLast;
+}

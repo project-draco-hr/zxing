@@ -1,0 +1,4 @@
+DataCharacter leftChar
+DataCharacter rightChar
+FinderPattern finderPattern
+boolean mayBeLast

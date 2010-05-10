@@ -1,0 +1,27 @@
+{
+  while (isStillNumeric(current.position)) {
+    DecodedNumeric numeric=decodeNumeric(current.position);
+    current.position=numeric.getNewPosition();
+    if (numeric.isFirstDigitFNC1()) {
+      DecodedInformation information;
+      if (numeric.isSecondDigitFNC1()) {
+        information=new DecodedInformation(current.position,buffer.toString());
+      }
+ else {
+        information=new DecodedInformation(current.position,buffer.toString(),numeric.getSecondDigit());
+      }
+      return new BlockParsedResult(information,true);
+    }
+    buffer.append(numeric.getFirstDigit());
+    if (numeric.isSecondDigitFNC1()) {
+      DecodedInformation information=new DecodedInformation(current.position,buffer.toString());
+      return new BlockParsedResult(information,true);
+    }
+    buffer.append(numeric.getSecondDigit());
+  }
+  if (isNumericToAlphaNumericLatch(current.position)) {
+    current.setAlpha();
+    current.position+=4;
+  }
+  return new BlockParsedResult(false);
+}

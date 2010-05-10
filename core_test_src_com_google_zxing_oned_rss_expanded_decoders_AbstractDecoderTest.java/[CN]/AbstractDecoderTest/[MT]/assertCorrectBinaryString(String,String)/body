@@ -1,0 +1,6 @@
+{
+  BitArray binary=BinaryUtil.buildBitArrayFromStringWithoutSpaces(binaryString);
+  AbstractExpandedDecoder decoder=AbstractExpandedDecoder.createDecoder(binary);
+  String result=decoder.parseInformation();
+  assertEquals(expectedNumber,result);
+}

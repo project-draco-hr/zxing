@@ -1,0 +1,7 @@
+def generate_image(image_filename, barcode, generator):
+    if (generator == ZINT):
+        generate_image_zint(image_filename, barcode)
+    elif (generator == POSTSCRIPT):
+        generate_image_postscript(image_filename, barcode)
+    else:
+        raise Exception(('Unknown generator: %s' % generator))

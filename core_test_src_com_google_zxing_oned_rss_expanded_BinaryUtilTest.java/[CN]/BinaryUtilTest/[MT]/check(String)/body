@@ -1,0 +1,4 @@
+{
+  BitArray binary=BinaryUtil.buildBitArrayFromString(data);
+  assertEquals(data,binary.toString());
+}

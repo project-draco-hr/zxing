@@ -1,0 +1,7 @@
+{
+  int lastAI=weight / 100000;
+  buf.append('(');
+  buf.append(this.firstAIdigits);
+  buf.append(lastAI);
+  buf.append(')');
+}

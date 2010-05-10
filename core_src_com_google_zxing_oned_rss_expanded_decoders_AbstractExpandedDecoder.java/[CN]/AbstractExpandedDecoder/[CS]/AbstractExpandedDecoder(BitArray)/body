@@ -1,0 +1,4 @@
+{
+  this.information=information;
+  this.generalDecoder=new GeneralAppIdDecoder(information);
+}

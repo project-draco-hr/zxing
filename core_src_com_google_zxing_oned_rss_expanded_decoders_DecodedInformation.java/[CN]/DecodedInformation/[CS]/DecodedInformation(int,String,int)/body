@@ -1,0 +1,6 @@
+{
+  super(newPosition);
+  this.remaining=true;
+  this.remainingValue=remainingValue;
+  this.newString=newString;
+}

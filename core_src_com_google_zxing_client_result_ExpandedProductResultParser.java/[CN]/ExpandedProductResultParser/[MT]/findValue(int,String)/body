@@ -1,0 +1,19 @@
+{
+  StringBuffer buf=new StringBuffer();
+  String rawTextAux=rawText.substring(i);
+  for (int index=0; index < rawTextAux.length(); index++) {
+    char c=rawTextAux.charAt(index);
+    if (c == '(') {
+      if ("ERROR".equals(findAIvalue(index,rawTextAux))) {
+        buf.append(c);
+      }
+ else {
+        break;
+      }
+    }
+ else {
+      buf.append(c);
+    }
+  }
+  return buf.toString();
+}

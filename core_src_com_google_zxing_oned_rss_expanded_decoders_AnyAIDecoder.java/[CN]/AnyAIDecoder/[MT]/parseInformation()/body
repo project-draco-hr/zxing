@@ -1,0 +1,4 @@
+{
+  StringBuffer buf=new StringBuffer();
+  return this.generalDecoder.decodeAllCodes(buf,HEADER_SIZE);
+}

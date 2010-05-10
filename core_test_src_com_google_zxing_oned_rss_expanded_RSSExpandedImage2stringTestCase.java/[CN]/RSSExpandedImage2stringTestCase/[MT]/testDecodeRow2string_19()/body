@@ -1,0 +1,5 @@
+{
+  String expected="(01)90012345678908(3102)001750(15)100312";
+  String path="test/data/blackbox/rssexpanded-1/19.jpg";
+  assertCorrectImage2string(path,expected);
+}

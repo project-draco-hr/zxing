@@ -1,0 +1,3 @@
+{
+  return this.firstDigit * 10 + this.secondDigit;
+}

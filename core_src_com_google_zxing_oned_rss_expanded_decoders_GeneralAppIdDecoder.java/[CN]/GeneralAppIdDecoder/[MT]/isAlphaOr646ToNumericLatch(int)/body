@@ -1,0 +1,11 @@
+{
+  if (pos + 3 > this.information.size) {
+    return false;
+  }
+  for (int i=pos; i < pos + 3; ++i) {
+    if (this.information.get(i)) {
+      return false;
+    }
+  }
+  return true;
+}

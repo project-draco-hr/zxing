@@ -1,0 +1,17 @@
+def generate_image_postscript(image_filename, barcode):
+    hashname = ('cache/%s.png' % hashlib.new('md5', barcode).hexdigest())
+    if os.path.exists(hashname):
+        content = open(hashname).read()
+        open(image_filename, 'w').write(content)
+        return
+    baseurl = 'http://www.terryburton.co.uk/barcodewriter/generator/'
+    encoded = urllib.urlencode({'encoder': 'rssexpanded', 'data': barcode, 'options': '', 'translate_x': '50', 'translate_y': '50', 'scale_x': '2', 'scale_y': '2', 'rotate': '0', 'submit': 'Make Barcode', })
+    web_urlobject = urllib2.urlopen(baseurl, data=encoded)
+    web_content = web_urlobject.read()
+    png_url = web_content.split('">PNG</a>')[0].split('<a href="')[(-1)]
+    if (not png_url.startswith('tmp')):
+        raise Exception(('There was an error processing barcode %s in postscript' % barcode))
+    full_url = (baseurl + png_url)
+    png_content = urllib2.urlopen(full_url).read()
+    open(hashname, 'w').write(png_content)
+    open(image_filename, 'w').write(png_content)

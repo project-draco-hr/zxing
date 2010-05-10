@@ -1,0 +1,32 @@
+{
+  boolean isOddPattern=previousPairs.size() % 2 == 0;
+  FinderPattern pattern;
+  boolean keepFinding=true;
+  int forcedOffset=-1;
+  do {
+    this.findNextPair(row,previousPairs,forcedOffset);
+    pattern=parseFoundFinderPattern(row,rowNumber,isOddPattern);
+    if (pattern == null) {
+      forcedOffset=getNextSecondBar(row,this.startEnd[0]);
+    }
+ else {
+      keepFinding=false;
+    }
+  }
+ while (keepFinding);
+  boolean mayBeLast=checkPairSequence(previousPairs,pattern);
+  DataCharacter leftChar=this.decodeDataCharacter(row,pattern,isOddPattern,true);
+  DataCharacter rightChar;
+  try {
+    rightChar=this.decodeDataCharacter(row,pattern,isOddPattern,false);
+  }
+ catch (  NotFoundException nfe) {
+    if (mayBeLast) {
+      rightChar=null;
+    }
+ else {
+      throw nfe;
+    }
+  }
+  return new ExpandedPair(leftChar,rightChar,pattern,mayBeLast);
+}

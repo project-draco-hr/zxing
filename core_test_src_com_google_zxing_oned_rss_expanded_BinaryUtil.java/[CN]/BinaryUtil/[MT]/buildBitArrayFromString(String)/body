@@ -1,0 +1,19 @@
+{
+  String dotsAndXs=data.replaceAll("1","X").replaceAll("0",".");
+  BitArray binary=new BitArray(dotsAndXs.replaceAll(" ","").length());
+  int counter=0;
+  for (int i=0; i < dotsAndXs.length(); ++i) {
+    if (i % 9 == 0) {
+      if (dotsAndXs.charAt(i) != ' ') {
+        throw new IllegalStateException("space expected");
+      }
+      continue;
+    }
+    char currentChar=dotsAndXs.charAt(i);
+    if (currentChar == 'X' || currentChar == 'x') {
+      binary.set(counter);
+    }
+    counter++;
+  }
+  return binary;
+}
