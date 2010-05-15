@@ -8,7 +8,7 @@
   }
   String encoding;
   if (currentCharacterSetECI == null) {
-    encoding=guessEncoding(readBytes,hints);
+    encoding=StringUtils.guessEncoding(readBytes,hints);
   }
  else {
     encoding=currentCharacterSetECI.getEncodingName();

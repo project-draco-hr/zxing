@@ -16,7 +16,7 @@
     count--;
   }
   try {
-    result.append(new String(buffer,SHIFT_JIS));
+    result.append(new String(buffer,StringUtils.SHIFT_JIS));
   }
  catch (  UnsupportedEncodingException uee) {
     throw FormatException.getFormatInstance();
