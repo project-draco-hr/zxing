@@ -1,5 +1,6 @@
 {
   this.activity=activity;
+  handlerInitLatch=new CountDownLatch(1);
   hints=new Hashtable<DecodeHintType,Object>(3);
   if (decodeFormats == null || decodeFormats.isEmpty()) {
     SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
