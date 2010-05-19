@@ -17,10 +17,10 @@
   }
   int moduleSize=x - leftTopBlack[0];
   int rowEndOfSymbol=width - 1;
-  while (rowEndOfSymbol >= 0 && !image.get(rowEndOfSymbol,y)) {
+  while (rowEndOfSymbol > x && !image.get(rowEndOfSymbol,y)) {
     rowEndOfSymbol--;
   }
-  if (rowEndOfSymbol < 0) {
+  if (rowEndOfSymbol <= x) {
     throw NotFoundException.getNotFoundInstance();
   }
   rowEndOfSymbol++;
