@@ -23,4 +23,8 @@
   backButton.setOnClickListener(backListener);
   Button doneButton=(Button)findViewById(R.id.done_button);
   doneButton.setOnClickListener(doneListener);
+  if (!initialized) {
+    initialized=true;
+    checkBuggyDevice();
+  }
 }
