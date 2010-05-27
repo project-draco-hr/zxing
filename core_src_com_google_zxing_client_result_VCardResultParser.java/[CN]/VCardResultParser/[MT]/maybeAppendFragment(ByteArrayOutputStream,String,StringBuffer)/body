@@ -1,0 +1,19 @@
+{
+  if (fragmentBuffer.size() > 0) {
+    byte[] fragmentBytes=fragmentBuffer.toByteArray();
+    String fragment;
+    if (charset == null) {
+      fragment=new String(fragmentBytes);
+    }
+ else {
+      try {
+        fragment=new String(fragmentBytes,charset);
+      }
+ catch (      UnsupportedEncodingException e) {
+        fragment=new String(fragmentBytes);
+      }
+    }
+    fragmentBuffer.reset();
+    result.append(fragment);
+  }
+}

@@ -1,5 +1,12 @@
 {
-  BitMatrix result=new MultiFormatWriter().encode(contents,format,desiredWidth,desiredHeight);
+  Hashtable hints=null;
+  String encoding=guessAppropriateEncoding(contents);
+  if (encoding != null) {
+    hints=new Hashtable(2);
+    hints.put(EncodeHintType.CHARACTER_SET,encoding);
+  }
+  MultiFormatWriter writer=new MultiFormatWriter();
+  BitMatrix result=writer.encode(contents,format,desiredWidth,desiredHeight,hints);
   int width=result.getWidth();
   int height=result.getHeight();
   int[] pixels=new int[width * height];
