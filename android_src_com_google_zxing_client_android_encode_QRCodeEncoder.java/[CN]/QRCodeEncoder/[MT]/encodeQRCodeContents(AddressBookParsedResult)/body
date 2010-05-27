@@ -9,17 +9,16 @@
   }
   String[] addresses=contact.getAddresses();
   if (addresses != null) {
-    for (int x=0; x < addresses.length; x++) {
-      if (addresses[x] != null && addresses[x].length() > 0) {
-        newContents.append("ADR:").append(addresses[x]).append(';');
-        newDisplayContents.append('\n').append(addresses[x]);
+    for (    String address : addresses) {
+      if (address != null && address.length() > 0) {
+        newContents.append("ADR:").append(address).append(';');
+        newDisplayContents.append('\n').append(address);
       }
     }
   }
   String[] phoneNumbers=contact.getPhoneNumbers();
   if (phoneNumbers != null) {
-    for (int x=0; x < phoneNumbers.length; x++) {
-      String phone=phoneNumbers[x];
+    for (    String phone : phoneNumbers) {
       if (phone != null && phone.length() > 0) {
         newContents.append("TEL:").append(phone).append(';');
         newDisplayContents.append('\n').append(PhoneNumberUtils.formatNumber(phone));
@@ -28,8 +27,7 @@
   }
   String[] emails=contact.getEmails();
   if (emails != null) {
-    for (int x=0; x < emails.length; x++) {
-      String email=emails[x];
+    for (    String email : emails) {
       if (email != null && email.length() > 0) {
         newContents.append("EMAIL:").append(email).append(';');
         newDisplayContents.append('\n').append(email);

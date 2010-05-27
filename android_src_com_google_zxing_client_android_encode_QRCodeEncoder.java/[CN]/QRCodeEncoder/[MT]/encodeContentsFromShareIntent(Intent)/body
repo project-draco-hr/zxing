@@ -5,25 +5,27 @@
     InputStream stream=activity.getContentResolver().openInputStream(uri);
     int length=stream.available();
     byte[] vcard=new byte[length];
-    stream.read(vcard,0,length);
-    String vcardString=new String(vcard,"UTF-8");
-    Log.d(TAG,"Encoding share intent content: " + vcardString);
+    int bytesRead=stream.read(vcard,0,length);
+    String vcardString=new String(vcard,0,bytesRead,"UTF-8");
+    Log.d(TAG,"Encoding share intent content:");
+    Log.d(TAG,vcardString);
     Result result=new Result(vcardString,vcard,null,BarcodeFormat.QR_CODE);
     ParsedResult parsedResult=ResultParser.parseResult(result);
     if (!(parsedResult instanceof AddressBookParsedResult)) {
+      Log.d(TAG,"Result was not an address");
       return false;
     }
     if (!encodeQRCodeContents((AddressBookParsedResult)parsedResult)) {
+      Log.d(TAG,"Unable to encode contents");
       return false;
     }
   }
- catch (  FileNotFoundException e) {
-    return false;
-  }
-catch (  IOException e) {
+ catch (  IOException e) {
+    Log.w(TAG,e);
     return false;
   }
 catch (  NullPointerException e) {
+    Log.w(TAG,e);
     return false;
   }
   return contents != null && contents.length() > 0;
