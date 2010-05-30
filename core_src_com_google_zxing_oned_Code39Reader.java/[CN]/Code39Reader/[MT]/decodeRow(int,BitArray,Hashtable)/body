@@ -41,17 +41,20 @@
     for (int i=0; i < max; i++) {
       total+=ALPHABET_STRING.indexOf(result.charAt(i));
     }
-    if (total % 43 != ALPHABET_STRING.indexOf(result.charAt(max))) {
+    if (result.charAt(max) != ALPHABET[total % 43]) {
       throw ChecksumException.getChecksumInstance();
     }
     result.deleteCharAt(max);
   }
-  String resultString=result.toString();
-  if (extendedMode) {
-    resultString=decodeExtended(resultString);
-  }
-  if (resultString.length() == 0) {
+  if (result.length() == 0) {
     throw NotFoundException.getNotFoundInstance();
+  }
+  String resultString;
+  if (extendedMode) {
+    resultString=decodeExtended(result);
+  }
+ else {
+    resultString=result.toString();
   }
   float left=(float)(start[1] + start[0]) / 2.0f;
   float right=(float)(nextStart + lastStart) / 2.0f;

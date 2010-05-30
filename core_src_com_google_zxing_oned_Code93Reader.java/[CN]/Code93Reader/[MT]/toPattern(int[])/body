@@ -1,0 +1,27 @@
+{
+  int max=counters.length;
+  int sum=0;
+  for (int i=0; i < max; i++) {
+    sum+=counters[i];
+  }
+  int pattern=0;
+  for (int i=0; i < max; i++) {
+    int scaledShifted=(counters[i] << INTEGER_MATH_SHIFT) * 9 / sum;
+    int scaledUnshifted=scaledShifted >> INTEGER_MATH_SHIFT;
+    if ((scaledShifted & 0xFF) > 0x7F) {
+      scaledUnshifted++;
+    }
+    if (scaledUnshifted < 1 || scaledUnshifted > 4) {
+      return -1;
+    }
+    if ((i & 0x01) == 0) {
+      for (int j=0; j < scaledUnshifted; j++) {
+        pattern=(pattern << 1) | 0x01;
+      }
+    }
+ else {
+      pattern<<=scaledUnshifted;
+    }
+  }
+  return pattern;
+}

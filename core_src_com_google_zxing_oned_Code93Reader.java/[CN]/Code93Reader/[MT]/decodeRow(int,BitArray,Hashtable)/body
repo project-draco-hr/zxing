@@ -1,0 +1,42 @@
+{
+  int[] start=findAsteriskPattern(row);
+  int nextStart=start[1];
+  int end=row.getSize();
+  while (nextStart < end && !row.get(nextStart)) {
+    nextStart++;
+  }
+  StringBuffer result=new StringBuffer(20);
+  int[] counters=new int[6];
+  char decodedChar;
+  int lastStart;
+  do {
+    recordPattern(row,nextStart,counters);
+    int pattern=toPattern(counters);
+    if (pattern < 0) {
+      throw NotFoundException.getNotFoundInstance();
+    }
+    decodedChar=patternToChar(pattern);
+    result.append(decodedChar);
+    lastStart=nextStart;
+    for (int i=0; i < counters.length; i++) {
+      nextStart+=counters[i];
+    }
+    while (nextStart < end && !row.get(nextStart)) {
+      nextStart++;
+    }
+  }
+ while (decodedChar != '*');
+  result.deleteCharAt(result.length() - 1);
+  if (nextStart == end || !row.get(nextStart)) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  if (result.length() < 2) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  checkChecksums(result);
+  result.setLength(result.length() - 2);
+  String resultString=decodeExtended(result);
+  float left=(float)(start[1] + start[0]) / 2.0f;
+  float right=(float)(nextStart + lastStart) / 2.0f;
+  return new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODE_93);
+}
