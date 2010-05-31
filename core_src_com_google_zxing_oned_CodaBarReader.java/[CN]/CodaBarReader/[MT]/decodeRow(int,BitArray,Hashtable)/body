@@ -1,0 +1,58 @@
+{
+  int[] start;
+  start=findAsteriskPattern(row);
+  start[1]=0;
+  int nextStart=start[1];
+  int end=row.getSize();
+  while (nextStart < end && !row.get(nextStart)) {
+    nextStart++;
+  }
+  StringBuffer result=new StringBuffer();
+  int[] counters;
+  char decodedChar;
+  int lastStart;
+  do {
+    counters=new int[]{0,0,0,0,0,0,0};
+    recordPattern(row,nextStart,counters);
+    decodedChar=toNarrowWidePattern(counters);
+    if (decodedChar == '!') {
+      throw NotFoundException.getNotFoundInstance();
+    }
+    result.append(decodedChar);
+    lastStart=nextStart;
+    for (int i=0; i < counters.length; i++) {
+      nextStart+=counters[i];
+    }
+    while (nextStart < end && !row.get(nextStart)) {
+      nextStart++;
+    }
+  }
+ while (nextStart < end);
+  for (int k=result.length() - 1; k >= 0; k--) {
+    if (arrayContains(STARTEND_ENCODING,result.charAt(k))) {
+      result.deleteCharAt(k);
+      k=-1;
+    }
+ else {
+      result.deleteCharAt(k);
+    }
+  }
+  if (result.length() > 0) {
+    result.deleteCharAt(0);
+  }
+  int lastPatternSize=0;
+  for (int i=0; i < counters.length; i++) {
+    lastPatternSize+=counters[i];
+  }
+  int whiteSpaceAfterEnd=nextStart - lastStart - lastPatternSize;
+  if ((nextStart) != end && (whiteSpaceAfterEnd / 2 < lastPatternSize)) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  String resultString=result.toString();
+  if (resultString.length() == 0) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  float left=(float)(start[1] + start[0]) / 2.0f;
+  float right=(float)(nextStart + lastStart) / 2.0f;
+  return new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODABAR);
+}
