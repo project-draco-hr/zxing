@@ -1,6 +1,5 @@
 {
-  int[] start;
-  start=findAsteriskPattern(row);
+  int[] start=findAsteriskPattern(row);
   start[1]=0;
   int nextStart=start[1];
   int end=row.getSize();
@@ -9,12 +8,11 @@
   }
   StringBuffer result=new StringBuffer();
   int[] counters;
-  char decodedChar;
   int lastStart;
   do {
     counters=new int[]{0,0,0,0,0,0,0};
     recordPattern(row,nextStart,counters);
-    decodedChar=toNarrowWidePattern(counters);
+    char decodedChar=toNarrowWidePattern(counters);
     if (decodedChar == '!') {
       throw NotFoundException.getNotFoundInstance();
     }

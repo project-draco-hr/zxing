@@ -31,7 +31,6 @@
   if (readers.isEmpty()) {
     readers.addElement(new MultiFormatUPCEANReader(hints));
     readers.addElement(new Code39Reader());
-    readers.addElement(new CodaBarReader());
     readers.addElement(new Code93Reader());
     readers.addElement(new Code128Reader());
     readers.addElement(new ITFReader());

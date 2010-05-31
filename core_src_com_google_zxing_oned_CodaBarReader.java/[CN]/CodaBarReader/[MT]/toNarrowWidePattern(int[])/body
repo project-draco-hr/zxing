@@ -1,7 +1,6 @@
 {
   int numCounters=counters.length;
   int maxNarrowCounter=0;
-  int wideCounters;
   int minCounter=Integer.MAX_VALUE;
   for (int i=0; i < numCounters; i++) {
     if (counters[i] < minCounter) {
@@ -12,15 +11,12 @@
     }
   }
   do {
-    wideCounters=0;
-    int totalWideCountersWidth=0;
+    int wideCounters=0;
     int pattern=0;
     for (int i=0; i < numCounters; i++) {
-      int counter=counters[i];
       if (counters[i] > maxNarrowCounter) {
         pattern|=1 << (numCounters - 1 - i);
         wideCounters++;
-        totalWideCountersWidth+=counter;
       }
     }
     if ((wideCounters == 2) || (wideCounters == 3)) {
