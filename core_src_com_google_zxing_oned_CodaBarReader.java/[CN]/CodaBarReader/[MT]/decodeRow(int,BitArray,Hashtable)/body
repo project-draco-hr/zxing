@@ -26,18 +26,6 @@
     }
   }
  while (nextStart < end);
-  for (int k=result.length() - 1; k >= 0; k--) {
-    if (arrayContains(STARTEND_ENCODING,result.charAt(k))) {
-      result.deleteCharAt(k);
-      k=-1;
-    }
- else {
-      result.deleteCharAt(k);
-    }
-  }
-  if (result.length() > 0) {
-    result.deleteCharAt(0);
-  }
   int lastPatternSize=0;
   for (int i=0; i < counters.length; i++) {
     lastPatternSize+=counters[i];
@@ -46,11 +34,29 @@
   if ((nextStart) != end && (whiteSpaceAfterEnd / 2 < lastPatternSize)) {
     throw NotFoundException.getNotFoundInstance();
   }
-  String resultString=result.toString();
-  if (resultString.length() == 0) {
+  if (result.length() < 2) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  char startchar=result.charAt(0);
+  if (!arrayContains(STARTEND_ENCODING,startchar)) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  for (int k=1; k < result.length(); k++) {
+    if (result.charAt(k) == startchar) {
+      if ((k + 1) != result.length()) {
+        result.delete(k + 1,result.length() - 1);
+        k=result.length();
+      }
+    }
+  }
+  if (result.length() > minCharacterLength) {
+    result.deleteCharAt(result.length() - 1);
+    result.deleteCharAt(0);
+  }
+ else {
     throw NotFoundException.getNotFoundInstance();
   }
   float left=(float)(start[1] + start[0]) / 2.0f;
   float right=(float)(nextStart + lastStart) / 2.0f;
-  return new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODABAR);
+  return new Result(result.toString(),null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODABAR);
 }
