@@ -1,4 +1,5 @@
 {
+  Log.i(TAG,"Showing contact URI as barcode: " + contactUri);
   ContentResolver resolver=getContentResolver();
   Cursor contactCursor=resolver.query(contactUri,null,null,null,null);
   Bundle bundle=new Bundle();
@@ -52,6 +53,7 @@ intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 intent.putExtra(Intents.Encode.TYPE,Contents.Type.CONTACT);
 intent.putExtra(Intents.Encode.DATA,bundle);
 intent.putExtra(Intents.Encode.FORMAT,BarcodeFormat.QR_CODE.toString());
+Log.i(TAG,"Sending bundle for encoding: " + bundle);
 startActivity(intent);
 }
 }
