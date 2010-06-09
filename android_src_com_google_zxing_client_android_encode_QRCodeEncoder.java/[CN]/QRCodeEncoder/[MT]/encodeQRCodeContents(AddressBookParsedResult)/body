@@ -4,13 +4,17 @@
   newContents.append("MECARD:");
   String[] names=contact.getNames();
   if (names != null && names.length > 0) {
-    newContents.append("N:").append(names[0]).append(';');
-    newDisplayContents.append(names[0]);
+    String name=trim(names[0]);
+    if (name != null) {
+      newContents.append("N:").append(name).append(';');
+      newDisplayContents.append(name);
+    }
   }
   String[] addresses=contact.getAddresses();
   if (addresses != null) {
     for (    String address : addresses) {
-      if (address != null && address.length() > 0) {
+      address=trim(address);
+      if (address != null) {
         newContents.append("ADR:").append(address).append(';');
         newDisplayContents.append('\n').append(address);
       }
@@ -19,7 +23,8 @@
   String[] phoneNumbers=contact.getPhoneNumbers();
   if (phoneNumbers != null) {
     for (    String phone : phoneNumbers) {
-      if (phone != null && phone.length() > 0) {
+      phone=trim(phone);
+      if (phone != null) {
         newContents.append("TEL:").append(phone).append(';');
         newDisplayContents.append('\n').append(PhoneNumberUtils.formatNumber(phone));
       }
@@ -28,14 +33,15 @@
   String[] emails=contact.getEmails();
   if (emails != null) {
     for (    String email : emails) {
-      if (email != null && email.length() > 0) {
+      email=trim(email);
+      if (email != null) {
         newContents.append("EMAIL:").append(email).append(';');
         newDisplayContents.append('\n').append(email);
       }
     }
   }
-  String url=contact.getURL();
-  if (url != null && url.length() > 0) {
+  String url=trim(contact.getURL());
+  if (url != null) {
     newContents.append("URL:").append(url).append(';');
     newDisplayContents.append('\n').append(url);
   }

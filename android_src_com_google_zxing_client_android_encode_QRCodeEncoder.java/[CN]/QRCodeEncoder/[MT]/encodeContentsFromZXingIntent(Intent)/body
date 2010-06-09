@@ -17,7 +17,7 @@
   }
  else {
     String data=intent.getStringExtra(Intents.Encode.DATA);
-    if (data != null && data.length() != 0) {
+    if (data != null && data.length() > 0) {
       contents=data;
       displayContents=data;
       title=activity.getString(R.string.contents_text);
