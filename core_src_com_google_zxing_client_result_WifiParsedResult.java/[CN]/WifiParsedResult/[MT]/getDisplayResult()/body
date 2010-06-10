@@ -1,0 +1,7 @@
+{
+  StringBuffer result=new StringBuffer(80);
+  maybeAppend(ssid,result);
+  maybeAppend(networkEncryption,result);
+  maybeAppend(password,result);
+  return result.toString();
+}
