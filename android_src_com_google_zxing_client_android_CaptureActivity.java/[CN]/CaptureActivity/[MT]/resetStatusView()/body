@@ -1,11 +1,5 @@
 {
   resultView.setVisibility(View.GONE);
-  statusView.setVisibility(View.VISIBLE);
-  statusView.setBackgroundColor(getResources().getColor(R.color.status_view));
   viewfinderView.setVisibility(View.VISIBLE);
-  TextView textView=(TextView)findViewById(R.id.status_text_view);
-  textView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-  textView.setTextSize(14.0f);
-  textView.setText(R.string.msg_default_status);
   lastResult=null;
 }

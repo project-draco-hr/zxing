@@ -34,7 +34,7 @@ case ABOUT_ID:
 AlertDialog.Builder builder=new AlertDialog.Builder(this);
 builder.setTitle(getString(R.string.title_about) + versionName);
 builder.setMessage(getString(R.string.msg_about) + "\n\n" + getString(R.string.zxing_url));
-builder.setIcon(R.drawable.zxing_icon);
+builder.setIcon(R.drawable.launcher_icon);
 builder.setPositiveButton(R.string.button_open_browser,aboutListener);
 builder.setNegativeButton(R.string.button_cancel,null);
 builder.show();

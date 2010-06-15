@@ -1,5 +1,4 @@
 {
-  statusView.setVisibility(View.GONE);
   viewfinderView.setVisibility(View.GONE);
   resultView.setVisibility(View.VISIBLE);
   ImageView barcodeImageView=(ImageView)findViewById(R.id.barcode_image_view);
