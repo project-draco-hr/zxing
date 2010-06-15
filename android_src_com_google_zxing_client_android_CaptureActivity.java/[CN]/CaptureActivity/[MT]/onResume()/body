@@ -58,7 +58,4 @@
   vibrate=prefs.getBoolean(PreferencesActivity.KEY_VIBRATE,false);
   copyToClipboard=prefs.getBoolean(PreferencesActivity.KEY_COPY_TO_CLIPBOARD,true);
   initBeepSound();
-  if (!firstLaunch) {
-    Toast.makeText(this,R.string.msg_default_status,Toast.LENGTH_SHORT).show();
-  }
 }

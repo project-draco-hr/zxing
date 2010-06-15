@@ -6,10 +6,11 @@
   CameraManager.init(getApplication());
   viewfinderView=(ViewfinderView)findViewById(R.id.viewfinder_view);
   resultView=findViewById(R.id.result_view);
+  statusView=findViewById(R.id.status_view);
   handler=null;
   lastResult=null;
   hasSurface=false;
   historyManager=new HistoryManager(this);
   historyManager.trimHistory();
-  firstLaunch=showHelpOnFirstLaunch();
+  showHelpOnFirstLaunch();
 }

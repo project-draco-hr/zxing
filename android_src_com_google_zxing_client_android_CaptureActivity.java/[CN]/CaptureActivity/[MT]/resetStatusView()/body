@@ -1,5 +1,6 @@
 {
   resultView.setVisibility(View.GONE);
+  statusView.setVisibility(View.VISIBLE);
   viewfinderView.setVisibility(View.VISIBLE);
   lastResult=null;
 }
