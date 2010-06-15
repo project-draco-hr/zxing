@@ -11,6 +11,5 @@
   hasSurface=false;
   historyManager=new HistoryManager(this);
   historyManager.trimHistory();
-  showHelpOnFirstLaunch();
-  Toast.makeText(this,R.string.msg_default_status,Toast.LENGTH_LONG).show();
+  firstLaunch=showHelpOnFirstLaunch();
 }
