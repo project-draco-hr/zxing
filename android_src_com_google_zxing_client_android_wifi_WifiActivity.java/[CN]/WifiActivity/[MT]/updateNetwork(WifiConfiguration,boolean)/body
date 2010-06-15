@@ -1,20 +1,16 @@
 {
-  WifiConfiguration existing=findNetworkInExistingConfig(config.SSID);
   int networkId;
-  if (existing == null) {
-    statusT.setText("Creating network...");
-    networkId=mWifiManager.addNetwork(config);
+  if (findNetworkInExistingConfig(config.SSID) == null) {
+    statusView.setText("Creating network...");
+    networkId=wifiManager.addNetwork(config);
   }
  else {
-    statusT.setText("Modifying network...");
-    networkId=mWifiManager.updateNetwork(config);
+    statusView.setText("Modifying network...");
+    networkId=wifiManager.updateNetwork(config);
   }
-  if (networkId == -1) {
-    return networkId;
-  }
-  if (!mWifiManager.enableNetwork(networkId,disableOthers)) {
+  if (networkId == -1 || !wifiManager.enableNetwork(networkId,disableOthers)) {
     return -1;
   }
-  mWifiManager.saveConfiguration();
+  wifiManager.saveConfiguration();
   return networkId;
 }

@@ -8,7 +8,7 @@
   String ssid=intent.getStringExtra(Intents.WifiConnect.SSID);
   String password=intent.getStringExtra(Intents.WifiConnect.PASSWORD);
   String networkType=intent.getStringExtra(Intents.WifiConnect.TYPE);
-  NetworkType networkT=null;
+  NetworkType networkT;
   if (networkType.contains("WPA")) {
     networkT=NetworkType.NETWORK_WPA;
   }
@@ -20,14 +20,14 @@
     return;
   }
   setContentView(R.layout.network);
-  statusT=(TextView)findViewById(R.id.networkStatus);
-  mWifiManager=(WifiManager)this.getSystemService(Context.WIFI_SERVICE);
-  rec=new ConnectedReceiver(this);
-  registerReceiver(rec,new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-  if (password == null)   password="";
-  if (debug) {
-    Log.d(tag,"adding new configuration: \nSSID: " + ssid + "\nPassword: \""+ password+ "\"\nType: "+ networkT);
+  statusView=(TextView)findViewById(R.id.networkStatus);
+  wifiManager=(WifiManager)this.getSystemService(WIFI_SERVICE);
+  connectedReceiver=new ConnectedReceiver(this,statusView);
+  registerReceiver(connectedReceiver,new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+  if (password == null) {
+    password="";
   }
+  Log.d(TAG,"Adding new configuration: \nSSID: " + ssid + "Type: "+ networkT);
   NetworkSetting setting=new NetworkSetting(ssid,password,networkT);
   changeNetwork(setting);
 }

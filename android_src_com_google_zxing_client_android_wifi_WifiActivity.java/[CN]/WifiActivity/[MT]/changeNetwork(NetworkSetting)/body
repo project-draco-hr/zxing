@@ -1,5 +1,5 @@
 {
-  if (setting.getPassword() == null || setting.getPassword() == "") {
+  if (setting.getPassword() == null || setting.getPassword().length() == 0) {
     return changeNetworkUnEncrypted(setting);
   }
   if (setting.getNetworkType() == NetworkType.NETWORK_WPA) {
