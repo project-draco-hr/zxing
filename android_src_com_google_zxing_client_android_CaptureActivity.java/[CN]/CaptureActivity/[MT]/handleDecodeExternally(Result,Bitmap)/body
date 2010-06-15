@@ -1,7 +1,7 @@
 {
   viewfinderView.drawResultBitmap(barcode);
   ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
-  Toast.makeText(this,resultHandler.getDisplayTitle(),Toast.LENGTH_SHORT).show();
+  statusView.setText(getString(resultHandler.getDisplayTitle()));
   if (copyToClipboard) {
     ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
     clipboard.setText(resultHandler.getDisplayContents());
