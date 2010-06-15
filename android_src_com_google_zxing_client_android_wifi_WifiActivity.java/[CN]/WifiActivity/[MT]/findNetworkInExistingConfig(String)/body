@@ -1,0 +1,9 @@
+{
+  List<WifiConfiguration> existingConfigs=mWifiManager.getConfiguredNetworks();
+  for (int i=0; i < existingConfigs.size(); i++) {
+    if (existingConfigs.get(i).SSID.compareTo(ssid) == 0) {
+      return existingConfigs.get(i);
+    }
+  }
+  return null;
+}

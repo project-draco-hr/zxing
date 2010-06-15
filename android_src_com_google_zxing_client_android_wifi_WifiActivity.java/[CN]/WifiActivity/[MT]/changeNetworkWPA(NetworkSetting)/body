@@ -1,0 +1,9 @@
+{
+  WifiConfiguration config=changeNetworkCommon(input);
+  config.preSharedKey=NetworkUtil.convertToQuotedString(input.getPassword());
+  config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
+  config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+  config.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
+  config.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
+  return requestNetworkChange(config);
+}

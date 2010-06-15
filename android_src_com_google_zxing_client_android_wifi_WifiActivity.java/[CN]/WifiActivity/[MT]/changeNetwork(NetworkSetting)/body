@@ -1,0 +1,11 @@
+{
+  if (setting.getPassword() == null || setting.getPassword() == "") {
+    return changeNetworkUnEncrypted(setting);
+  }
+  if (setting.getNetworkType() == NetworkType.NETWORK_WPA) {
+    return changeNetworkWPA(setting);
+  }
+ else {
+    return changeNetworkWEP(setting);
+  }
+}

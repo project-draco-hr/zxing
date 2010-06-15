@@ -1,0 +1,5 @@
+{
+  mSsid=ssid;
+  mPassword=password;
+  mNetworkType=networkType;
+}

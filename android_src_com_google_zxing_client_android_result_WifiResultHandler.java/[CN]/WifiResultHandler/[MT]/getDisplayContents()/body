@@ -1,0 +1,7 @@
+{
+  WifiParsedResult wifiResult=(WifiParsedResult)getResult();
+  StringBuffer contents=new StringBuffer();
+  ParsedResult.maybeAppend(wifiResult.getSsid(),contents);
+  ParsedResult.maybeAppend(wifiResult.getNetworkEncryption(),contents);
+  return contents.toString();
+}

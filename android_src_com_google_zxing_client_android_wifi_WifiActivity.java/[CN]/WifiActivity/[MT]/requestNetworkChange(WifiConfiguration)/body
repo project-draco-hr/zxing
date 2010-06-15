@@ -1,0 +1,5 @@
+{
+  boolean disableOthers=false;
+  statusT.setText("Changing Network...");
+  return updateNetwork(config,disableOthers);
+}

@@ -1,0 +1,5 @@
+{
+  super.onDestroy();
+  if (rec != null)   unregisterReceiver(rec);
+  rec=null;
+}

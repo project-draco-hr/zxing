@@ -1,0 +1,10 @@
+{
+  WifiParsedResult wifiResult=(WifiParsedResult)getResult();
+switch (index) {
+case 0:
+    wifiConnect(wifiResult);
+  break;
+default :
+break;
+}
+}

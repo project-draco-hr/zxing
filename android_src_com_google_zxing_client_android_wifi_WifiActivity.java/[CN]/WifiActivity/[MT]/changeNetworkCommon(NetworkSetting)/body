@@ -1,0 +1,15 @@
+{
+  statusT.setText("Creating settings...");
+  if (debug) {
+    Log.d(tag,"adding new configuration: \nSSID: " + input.getSsid() + "\nPassword: \""+ input.getPassword()+ "\"\nType: "+ input.getNetworkType());
+  }
+  WifiConfiguration config=new WifiConfiguration();
+  config.allowedAuthAlgorithms.clear();
+  config.allowedGroupCiphers.clear();
+  config.allowedKeyManagement.clear();
+  config.allowedPairwiseCiphers.clear();
+  config.allowedProtocols.clear();
+  config.SSID=NetworkUtil.convertToQuotedString(input.getSsid());
+  config.hiddenSSID=true;
+  return config;
+}

@@ -1,0 +1,10 @@
+{
+  WifiConfiguration config=changeNetworkCommon(input);
+  if (debug) {
+    Log.d(tag,"Empty password prompting a simple account setting");
+  }
+  config.wepKeys[0]="";
+  config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+  config.wepTxKeyIndex=0;
+  return requestNetworkChange(config);
+}

@@ -1,0 +1,16 @@
+{
+  if (intent.getAction().equals(android.net.ConnectivityManager.CONNECTIVITY_ACTION)) {
+    ConnectivityManager con=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo[] s=con.getAllNetworkInfo();
+    for (    NetworkInfo i : s) {
+      if (i.getTypeName().contentEquals("WIFI")) {
+        NetworkInfo.State state=i.getState();
+        if (state == NetworkInfo.State.CONNECTED) {
+          statusT.setText("Connected!");
+          Killer delay_kill=new Killer(parent);
+          delay_kill.run();
+        }
+      }
+    }
+  }
+}

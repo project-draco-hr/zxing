@@ -1,0 +1,20 @@
+{
+  WifiConfiguration existing=findNetworkInExistingConfig(config.SSID);
+  int networkId;
+  if (existing == null) {
+    statusT.setText("Creating network...");
+    networkId=mWifiManager.addNetwork(config);
+  }
+ else {
+    statusT.setText("Modifying network...");
+    networkId=mWifiManager.updateNetwork(config);
+  }
+  if (networkId == -1) {
+    return networkId;
+  }
+  if (!mWifiManager.enableNetwork(networkId,disableOthers)) {
+    return -1;
+  }
+  mWifiManager.saveConfiguration();
+  return networkId;
+}
