@@ -4,9 +4,9 @@
     if (threeDigitsBits >= 1000) {
       throw FormatException.getFormatInstance();
     }
-    result.append(ALPHANUMERIC_CHARS[threeDigitsBits / 100]);
-    result.append(ALPHANUMERIC_CHARS[(threeDigitsBits / 10) % 10]);
-    result.append(ALPHANUMERIC_CHARS[threeDigitsBits % 10]);
+    result.append(toAlphaNumericChar(threeDigitsBits / 100));
+    result.append(toAlphaNumericChar((threeDigitsBits / 10) % 10));
+    result.append(toAlphaNumericChar(threeDigitsBits % 10));
     count-=3;
   }
   if (count == 2) {
@@ -14,14 +14,14 @@
     if (twoDigitsBits >= 100) {
       throw FormatException.getFormatInstance();
     }
-    result.append(ALPHANUMERIC_CHARS[twoDigitsBits / 10]);
-    result.append(ALPHANUMERIC_CHARS[twoDigitsBits % 10]);
+    result.append(toAlphaNumericChar(twoDigitsBits / 10));
+    result.append(toAlphaNumericChar(twoDigitsBits % 10));
   }
  else   if (count == 1) {
     int digitBits=bits.readBits(4);
     if (digitBits >= 10) {
       throw FormatException.getFormatInstance();
     }
-    result.append(ALPHANUMERIC_CHARS[digitBits]);
+    result.append(toAlphaNumericChar(digitBits));
   }
 }
