@@ -24,12 +24,19 @@
   }
   float left=(float)(startGuardRange[1] + startGuardRange[0]) / 2.0f;
   float right=(float)(endRange[1] + endRange[0]) / 2.0f;
-  Result decodeResult=new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},getBarcodeFormat());
+  BarcodeFormat format=getBarcodeFormat();
+  Result decodeResult=new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},format);
   try {
     Result extensionResult=extensionReader.decodeRow(row,endRange[1]);
     decodeResult.putAllMetadata(extensionResult.getResultMetadata());
   }
  catch (  ReaderException re) {
+  }
+  if (BarcodeFormat.EAN_13.equals(format) || BarcodeFormat.UPC_A.equals(format)) {
+    String countryID=eanManSupport.lookupCountryIdentifier(resultString);
+    if (countryID != null) {
+      decodeResult.putMetadata(ResultMetadataType.POSSIBLE_COUNTRY,countryID);
+    }
   }
   return decodeResult;
 }
