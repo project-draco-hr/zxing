@@ -1,4 +1,5 @@
 BinaryBitmap source
 float rotation
 String expectedText
+Properties expectedMetadata
 boolean tryHarder

@@ -26,5 +26,15 @@
     System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\''+ suffix);
     return false;
   }
+  Hashtable resultMetadata=result.getResultMetadata();
+  for (  Map.Entry<Object,Object> metadatum : expectedMetadata.entrySet()) {
+    ResultMetadataType key=ResultMetadataType.valueOf(metadatum.getKey().toString());
+    Object expectedValue=metadatum.getValue();
+    Object actualValue=resultMetadata == null ? null : resultMetadata.get(key);
+    if (!expectedValue.equals(actualValue)) {
+      System.out.println("Metadata mismatch: for key '" + key + "' expected '"+ expectedValue+ "' but got '"+ actualValue+ '\'');
+      return false;
+    }
+  }
   return true;
 }

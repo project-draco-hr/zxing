@@ -1,0 +1,22 @@
+{
+  ResultMetadataType type;
+  Object value;
+switch (raw.length()) {
+case 2:
+    type=ResultMetadataType.ISSUE_NUMBER;
+  value=parseExtension2String(raw);
+break;
+case 5:
+type=ResultMetadataType.SUGGESTED_PRICE;
+value=parseExtension5String(raw);
+break;
+default :
+return null;
+}
+if (value == null) {
+return null;
+}
+Hashtable result=new Hashtable(1);
+result.put(type,value);
+return result;
+}

@@ -1,0 +1,13 @@
+{
+  int[] extensionStartRange=UPCEANReader.findGuardPattern(row,rowOffset,false,EXTENSION_START_PATTERN);
+  StringBuffer result=decodeRowStringBuffer;
+  result.setLength(0);
+  decodeMiddle(row,extensionStartRange,result);
+  String resultString=result.toString();
+  Hashtable extensionData=parseExtensionString(resultString);
+  Result extensionResult=new Result(resultString,null,null,BarcodeFormat.UPC_EAN_EXTENSION);
+  if (extensionData != null) {
+    extensionResult.putAllMetadata(extensionData);
+  }
+  return extensionResult;
+}

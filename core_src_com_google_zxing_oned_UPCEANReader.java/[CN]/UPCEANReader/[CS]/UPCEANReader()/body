@@ -1,3 +1,4 @@
 {
   decodeRowStringBuffer=new StringBuffer(20);
+  extensionReader=new UPCEANExtensionSupport();
 }

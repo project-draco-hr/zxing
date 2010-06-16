@@ -11,17 +11,33 @@
   }
   barcodeImageView.setVisibility(View.VISIBLE);
   TextView formatTextView=(TextView)findViewById(R.id.format_text_view);
-  formatTextView.setVisibility(View.VISIBLE);
   formatTextView.setText(rawResult.getBarcodeFormat().toString());
   ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
   TextView typeTextView=(TextView)findViewById(R.id.type_text_view);
-  typeTextView.setVisibility(View.VISIBLE);
   typeTextView.setText(resultHandler.getType().toString());
   DateFormat formatter=DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT);
   String formattedTime=formatter.format(new Date(rawResult.getTimestamp()));
   TextView timeTextView=(TextView)findViewById(R.id.time_text_view);
-  timeTextView.setVisibility(View.VISIBLE);
   timeTextView.setText(formattedTime);
+  TextView metaTextView=(TextView)findViewById(R.id.meta_text_view);
+  View metaTextViewLabel=findViewById(R.id.meta_text_view_label);
+  metaTextView.setVisibility(View.GONE);
+  metaTextViewLabel.setVisibility(View.GONE);
+  Map<ResultMetadataType,Object> metadata=(Map<ResultMetadataType,Object>)rawResult.getResultMetadata();
+  if (metadata != null) {
+    StringBuilder metadataText=new StringBuilder(20);
+    for (    Map.Entry<ResultMetadataType,Object> entry : metadata.entrySet()) {
+      if (DISPLAYABLE_METADATA_TYPES.contains(entry.getKey())) {
+        metadataText.append(entry.getValue()).append('\n');
+      }
+    }
+    if (metadataText.length() > 0) {
+      metadataText.setLength(metadataText.length() - 1);
+      metaTextView.setText(metadataText);
+      metaTextView.setVisibility(View.VISIBLE);
+      metaTextViewLabel.setVisibility(View.VISIBLE);
+    }
+  }
   TextView contentsTextView=(TextView)findViewById(R.id.contents_text_view);
   CharSequence displayContents=resultHandler.getDisplayContents();
   contentsTextView.setText(displayContents);

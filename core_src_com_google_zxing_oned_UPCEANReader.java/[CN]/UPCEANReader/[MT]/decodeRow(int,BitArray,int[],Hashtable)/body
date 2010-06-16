@@ -24,5 +24,12 @@
   }
   float left=(float)(startGuardRange[1] + startGuardRange[0]) / 2.0f;
   float right=(float)(endRange[1] + endRange[0]) / 2.0f;
-  return new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},getBarcodeFormat());
+  Result decodeResult=new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},getBarcodeFormat());
+  try {
+    Result extensionResult=extensionReader.decodeRow(row,endRange[1]);
+    decodeResult.putAllMetadata(extensionResult.getResultMetadata());
+  }
+ catch (  ReaderException re) {
+  }
+  return decodeResult;
 }

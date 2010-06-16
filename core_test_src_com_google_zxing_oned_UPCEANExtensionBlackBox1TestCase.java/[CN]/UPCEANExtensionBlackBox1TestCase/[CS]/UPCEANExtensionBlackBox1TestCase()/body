@@ -1,0 +1,4 @@
+{
+  super("test/data/blackbox/upcean-extension-1",new MultiFormatReader(),BarcodeFormat.EAN_13);
+  addTest(2,2,0.0f);
+}

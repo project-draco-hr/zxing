@@ -1,0 +1,24 @@
+{
+  String currency=null;
+switch (raw.charAt(0)) {
+case '0':
+    currency="??";
+  break;
+case '5':
+currency="$";
+break;
+case '9':
+if ("99991".equals(raw)) {
+return "0.00";
+}
+ else if ("99990".equals(raw)) {
+return "Used";
+}
+break;
+default :
+currency="";
+break;
+}
+int rawAmount=Integer.parseInt(raw.substring(1));
+return currency + (rawAmount / 100) + '.'+ (rawAmount % 100);
+}
