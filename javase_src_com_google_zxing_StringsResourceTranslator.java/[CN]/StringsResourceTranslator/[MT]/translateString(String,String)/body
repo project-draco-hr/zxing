@@ -1,0 +1,24 @@
+{
+  System.out.println("  Need translation for " + english);
+  URL translateURL=new URL("http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=" + URLEncoder.encode(english,"UTF-8") + "&langpair=en%7C"+ language);
+  StringBuilder translateResult=new StringBuilder();
+  Reader in=null;
+  try {
+    in=new InputStreamReader(translateURL.openStream(),UTF8);
+    char[] buffer=new char[1024];
+    int charsRead;
+    while ((charsRead=in.read(buffer)) > 0) {
+      translateResult.append(buffer,0,charsRead);
+    }
+  }
+  finally {
+    quietClose(in);
+  }
+  Matcher m=TRANSLATE_RESPONSE_PATTERN.matcher(translateResult);
+  if (!m.find()) {
+    throw new IOException("No translate result");
+  }
+  String translation=m.group(1);
+  System.out.println("  Got translation " + translation);
+  return translation;
+}

@@ -1,0 +1,16 @@
+{
+  File resDir=new File(args[0]);
+  File valueDir=new File(resDir,"values");
+  File stringsFile=new File(valueDir,"strings.xml");
+  Collection<String> forceRetranslation=Arrays.asList(args).subList(1,args.length);
+  File[] translatedValuesDirs=resDir.listFiles(new FileFilter(){
+    public boolean accept(    File file){
+      return file.isDirectory() && file.getName().startsWith("values-");
+    }
+  }
+);
+  for (  File translatedValuesDir : translatedValuesDirs) {
+    File translatedStringsFile=new File(translatedValuesDir,"strings.xml");
+    translate(stringsFile,translatedStringsFile,forceRetranslation);
+  }
+}
