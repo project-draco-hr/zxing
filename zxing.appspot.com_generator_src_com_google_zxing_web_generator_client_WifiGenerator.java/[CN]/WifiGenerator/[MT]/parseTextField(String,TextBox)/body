@@ -6,8 +6,6 @@
   if (input.contains("\n")) {
     throw new GeneratorException(name + " field must not contain \\n characters.");
   }
-  if (input.contains(";")) {
-    throw new GeneratorException(name + " field must not contains ; characters");
-  }
+  input=input.replace(";","\\;");
   return input;
 }
