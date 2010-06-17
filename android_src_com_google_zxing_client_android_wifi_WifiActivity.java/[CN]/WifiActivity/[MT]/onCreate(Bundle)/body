@@ -15,6 +15,9 @@
  else   if (networkType.contains("WEP")) {
     networkT=NetworkType.NETWORK_WEP;
   }
+ else   if (networkType.contains("nopass")) {
+    networkT=NetworkType.NETWORK_NOPASS;
+  }
  else {
     finish();
     return;
