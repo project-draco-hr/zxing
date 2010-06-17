@@ -1,0 +1,4 @@
+{
+  String input=networkType.getValue(networkType.getSelectedIndex());
+  return input;
+}

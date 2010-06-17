@@ -1,0 +1,9 @@
+{
+  StringBuilder output=new StringBuilder();
+  output.append("WIFI:");
+  output.append("S:").append(ssid).append(';');
+  maybeAppend(output,"T:",type);
+  maybeAppend(output,"P:",password);
+  output.append(';');
+  return output.toString();
+}

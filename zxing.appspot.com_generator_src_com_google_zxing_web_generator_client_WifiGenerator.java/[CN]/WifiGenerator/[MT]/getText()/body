@@ -1,0 +1,6 @@
+{
+  String ssid=getSsidField();
+  String password=getPasswordField();
+  String networkType=getNetworkTypeField();
+  return getWifiString(ssid,password,networkType);
+}

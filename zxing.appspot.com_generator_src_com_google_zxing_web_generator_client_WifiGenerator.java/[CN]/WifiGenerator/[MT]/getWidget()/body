@@ -1,0 +1,14 @@
+{
+  if (table != null) {
+    return table;
+  }
+  table=new Grid(8,2);
+  table.setText(0,0,"SSID");
+  table.setWidget(0,1,ssid);
+  table.setText(1,0,"Password");
+  table.setWidget(1,1,password);
+  table.setText(2,0,"Network Type");
+  table.setWidget(2,1,networkType);
+  ssid.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
+  return table;
+}
