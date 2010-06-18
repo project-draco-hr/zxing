@@ -1,0 +1,6 @@
+{
+  this.result=result;
+  this.activity=activity;
+  this.rawResult=rawResult;
+  this.customProductSearch=parseCustomSearchURL();
+}

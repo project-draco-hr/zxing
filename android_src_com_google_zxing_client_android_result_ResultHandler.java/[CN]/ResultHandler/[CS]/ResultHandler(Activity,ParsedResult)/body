@@ -1,4 +1,3 @@
 {
-  this.result=result;
-  this.activity=activity;
+  this(activity,result,null);
 }

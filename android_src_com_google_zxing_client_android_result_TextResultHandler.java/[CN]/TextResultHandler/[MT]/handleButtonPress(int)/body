@@ -11,8 +11,7 @@ case 2:
 shareBySMS(text);
 break;
 case 3:
-String url=customProductSearch.replace("%s",text);
-openURL(url);
+openURL(fillInCustomSearchURL(text));
 break;
 }
 }

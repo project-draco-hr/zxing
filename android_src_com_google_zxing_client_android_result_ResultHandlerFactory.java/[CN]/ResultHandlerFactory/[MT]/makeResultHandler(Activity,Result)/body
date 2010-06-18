@@ -8,7 +8,7 @@
     return new EmailAddressResultHandler(activity,result);
   }
  else   if (type.equals(ParsedResultType.PRODUCT)) {
-    return new ProductResultHandler(activity,result);
+    return new ProductResultHandler(activity,result,rawResult);
   }
  else   if (type.equals(ParsedResultType.URI)) {
     return new URIResultHandler(activity,result);
@@ -32,7 +32,7 @@
     return new CalendarResultHandler(activity,result);
   }
  else   if (type.equals(ParsedResultType.ISBN)) {
-    return new ISBNResultHandler(activity,result);
+    return new ISBNResultHandler(activity,result,rawResult);
   }
  else {
     return new TextResultHandler(activity,result);

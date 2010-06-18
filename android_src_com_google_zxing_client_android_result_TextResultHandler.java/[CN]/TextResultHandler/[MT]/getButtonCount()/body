@@ -1,3 +1,3 @@
 {
-  return customProductSearch != null ? buttons.length : buttons.length - 1;
+  return hasCustomProductSearch() ? buttons.length : buttons.length - 1;
 }

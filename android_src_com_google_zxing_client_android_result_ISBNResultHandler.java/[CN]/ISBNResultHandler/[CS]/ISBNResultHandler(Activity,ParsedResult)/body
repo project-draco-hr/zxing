@@ -1,4 +1,0 @@
-{
-  super(activity,result);
-  customProductSearch=parseCustomSearchURL();
-}

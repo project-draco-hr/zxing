@@ -1,5 +1,5 @@
 {
-  if (index == buttons.length - 1 && customProductSearch != null) {
+  if (index == buttons.length - 1 && hasCustomProductSearch()) {
     return R.string.button_custom_product_search;
   }
   return buttons[index];

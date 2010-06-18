@@ -13,8 +13,7 @@ case 2:
 openGoogleShopper(productResult.getNormalizedProductID());
 break;
 case 3:
-String url=customProductSearch.replace("%s",productResult.getNormalizedProductID());
-openURL(url);
+openURL(fillInCustomSearchURL(productResult.getNormalizedProductID()));
 break;
 }
 }
