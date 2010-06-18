@@ -24,15 +24,10 @@ case NONE:
 SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
 if (prefs.getBoolean(PreferencesActivity.KEY_BULK_MODE,false)) {
 Toast.makeText(this,R.string.msg_bulk_mode_scanned,Toast.LENGTH_SHORT).show();
-try {
-Thread.sleep(BULK_MODE_SCAN_DELAY_MS);
-}
- catch (InterruptedException ie) {
+if (handler != null) {
+handler.sendEmptyMessageDelayed(R.id.restart_preview,BULK_MODE_SCAN_DELAY_MS);
 }
 resetStatusView();
-if (handler != null) {
-handler.sendEmptyMessage(R.id.restart_preview);
-}
 }
  else {
 handleDecodeInternally(rawResult,barcode);

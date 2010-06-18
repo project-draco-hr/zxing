@@ -1,5 +1,6 @@
 {
   super.onResume();
+  resetStatusView();
   SurfaceView surfaceView=(SurfaceView)findViewById(R.id.preview_view);
   SurfaceHolder surfaceHolder=surfaceView.getHolder();
   if (hasSurface) {
@@ -16,13 +17,11 @@
     if (action.equals(Intents.Scan.ACTION)) {
       source=Source.NATIVE_APP_INTENT;
       decodeFormats=parseDecodeFormats(intent);
-      resetStatusView();
     }
  else     if (dataString != null && dataString.contains(PRODUCT_SEARCH_URL_PREFIX) && dataString.contains(PRODUCT_SEARCH_URL_SUFFIX)) {
       source=Source.PRODUCT_SEARCH_LINK;
       sourceUrl=dataString;
       decodeFormats=PRODUCT_FORMATS;
-      resetStatusView();
     }
  else     if (dataString != null && dataString.startsWith(ZXING_URL)) {
       source=Source.ZXING_LINK;
@@ -30,12 +29,10 @@
       Uri inputUri=Uri.parse(sourceUrl);
       returnUrlTemplate=inputUri.getQueryParameter(RETURN_URL_PARAM);
       decodeFormats=parseDecodeFormats(inputUri);
-      resetStatusView();
     }
  else {
       source=Source.NONE;
       decodeFormats=null;
-      resetStatusView();
     }
     characterSet=intent.getStringExtra(Intents.Scan.CHARACTER_SET);
   }
@@ -43,9 +40,6 @@
     source=Source.NONE;
     decodeFormats=null;
     characterSet=null;
-    if (lastResult == null) {
-      resetStatusView();
-    }
   }
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
   playBeep=prefs.getBoolean(PreferencesActivity.KEY_PLAY_BEEP,true);

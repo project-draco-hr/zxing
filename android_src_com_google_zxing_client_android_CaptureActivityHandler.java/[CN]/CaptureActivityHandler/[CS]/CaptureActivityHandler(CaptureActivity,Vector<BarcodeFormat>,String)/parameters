@@ -1,4 +1,3 @@
 CaptureActivity activity
 Vector<BarcodeFormat> decodeFormats
 String characterSet
-boolean beginScanning

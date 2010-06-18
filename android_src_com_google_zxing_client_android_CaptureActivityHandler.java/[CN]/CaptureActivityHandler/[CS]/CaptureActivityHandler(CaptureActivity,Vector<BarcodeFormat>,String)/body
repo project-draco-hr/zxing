@@ -4,7 +4,5 @@
   decodeThread.start();
   state=State.SUCCESS;
   CameraManager.get().startPreview();
-  if (beginScanning) {
-    restartPreviewAndDecode();
-  }
+  restartPreviewAndDecode();
 }
