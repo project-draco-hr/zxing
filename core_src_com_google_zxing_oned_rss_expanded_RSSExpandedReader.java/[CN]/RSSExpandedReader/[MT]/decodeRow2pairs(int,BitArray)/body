@@ -1,7 +1,7 @@
 {
   while (true) {
     ExpandedPair nextPair=retrieveNextPair(row,this.pairs,rowNumber);
-    this.pairs.add(nextPair);
+    this.pairs.addElement(nextPair);
     if (nextPair.mayBeLast()) {
       if (checkChecksum()) {
         return this.pairs;
