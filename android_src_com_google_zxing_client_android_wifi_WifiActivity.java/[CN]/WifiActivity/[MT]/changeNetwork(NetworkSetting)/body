@@ -1,4 +1,10 @@
 {
+  if (setting.getSsid() == null || setting.getSsid().length() == 0) {
+    return doError("SSID name missing");
+  }
+  if (setting.getNetworkType() == NetworkType.NETWORK_INVALID) {
+    return doError("Network type incorrect");
+  }
   if (setting.getPassword() == null || setting.getPassword().length() == 0 || setting.getNetworkType() == null || setting.getNetworkType() == NetworkType.NETWORK_NOPASS) {
     return changeNetworkUnEncrypted(setting);
   }

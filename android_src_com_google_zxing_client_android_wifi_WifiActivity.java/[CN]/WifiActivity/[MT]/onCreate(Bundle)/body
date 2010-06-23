@@ -8,6 +8,8 @@
   String ssid=intent.getStringExtra(Intents.WifiConnect.SSID);
   String password=intent.getStringExtra(Intents.WifiConnect.PASSWORD);
   String networkType=intent.getStringExtra(Intents.WifiConnect.TYPE);
+  setContentView(R.layout.network);
+  statusView=(TextView)findViewById(R.id.networkStatus);
   NetworkType networkT;
   if (networkType.contains("WPA")) {
     networkT=NetworkType.NETWORK_WPA;
@@ -19,11 +21,9 @@
     networkT=NetworkType.NETWORK_NOPASS;
   }
  else {
-    finish();
+    doError("Incorrect Network type: " + networkType);
     return;
   }
-  setContentView(R.layout.network);
-  statusView=(TextView)findViewById(R.id.networkStatus);
   wifiManager=(WifiManager)this.getSystemService(WIFI_SERVICE);
   connectedReceiver=new ConnectedReceiver(this,statusView);
   registerReceiver(connectedReceiver,new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
