@@ -1,8 +1,6 @@
 {
-switch (index) {
-case 0:
+  if (index == 0) {
     return R.string.button_wifi;
-default :
+  }
   throw new ArrayIndexOutOfBoundsException();
-}
 }
