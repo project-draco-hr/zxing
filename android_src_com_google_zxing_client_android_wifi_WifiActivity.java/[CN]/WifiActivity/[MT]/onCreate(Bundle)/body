@@ -11,17 +11,17 @@
   setContentView(R.layout.network);
   statusView=(TextView)findViewById(R.id.networkStatus);
   NetworkType networkT;
-  if (networkType.contains("WPA")) {
+  if (networkType.equals("WPA")) {
     networkT=NetworkType.NETWORK_WPA;
   }
- else   if (networkType.contains("WEP")) {
+ else   if (networkType.equals("WEP")) {
     networkT=NetworkType.NETWORK_WEP;
   }
- else   if (networkType.contains("nopass")) {
+ else   if (networkType.equals("nopass")) {
     networkT=NetworkType.NETWORK_NOPASS;
   }
  else {
-    doError("Incorrect Network type: " + networkType);
+    doError(R.string.wifi_type_incorrect);
     return;
   }
   wifiManager=(WifiManager)this.getSystemService(WIFI_SERVICE);

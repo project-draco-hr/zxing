@@ -1,11 +1,11 @@
 {
   int networkId;
   if (findNetworkInExistingConfig(config.SSID) == null) {
-    statusView.setText("Creating network...");
+    statusView.setText(R.string.wifi_creating_network);
     networkId=wifiManager.addNetwork(config);
   }
  else {
-    statusView.setText("Modifying network...");
+    statusView.setText(R.string.wifi_modifying_network);
     networkId=wifiManager.updateNetwork(config);
   }
   if (networkId == -1 || !wifiManager.enableNetwork(networkId,disableOthers)) {

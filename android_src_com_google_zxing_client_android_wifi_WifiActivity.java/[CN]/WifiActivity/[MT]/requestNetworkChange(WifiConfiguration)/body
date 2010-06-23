@@ -1,4 +1,4 @@
 {
-  statusView.setText("Changing Network...");
+  statusView.setText(R.string.wifi_changing_network);
   return updateNetwork(config,false);
 }

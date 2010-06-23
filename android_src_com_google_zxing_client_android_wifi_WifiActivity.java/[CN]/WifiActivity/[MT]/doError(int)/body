@@ -1,0 +1,4 @@
+{
+  statusView.setText(resource_string);
+  return -1;
+}
