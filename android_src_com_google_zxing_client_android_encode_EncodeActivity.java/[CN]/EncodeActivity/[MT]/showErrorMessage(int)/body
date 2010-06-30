@@ -5,6 +5,7 @@
   }
   AlertDialog.Builder builder=new AlertDialog.Builder(this);
   builder.setMessage(message);
-  builder.setPositiveButton(R.string.button_ok,clickListener);
+  builder.setPositiveButton(R.string.button_ok,new FinishListener(this));
+  builder.setOnCancelListener(new FinishListener(this));
   builder.show();
 }
