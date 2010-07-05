@@ -1,9 +1,19 @@
 {
   WifiConfiguration config=changeNetworkCommon(input);
-  config.preSharedKey=NetworkUtil.convertToQuotedString(input.getPassword());
+  final String pass=input.getPassword();
+  if (pass.matches("[0-9A-Fa-f]{64}")) {
+    Log.d(TAG,"A 64 bit hex password entered.");
+    config.preSharedKey=pass;
+  }
+ else {
+    Log.d(TAG,"A normal password entered: I am quoting it.");
+    config.preSharedKey=NetworkUtil.convertToQuotedString(pass);
+  }
   config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
-  config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
   config.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
+  config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+  config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+  config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
   config.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
   return requestNetworkChange(config);
 }
