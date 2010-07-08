@@ -1,7 +1,7 @@
 {
   if (intent.getAction().equals(android.net.ConnectivityManager.CONNECTIVITY_ACTION)) {
     ConnectivityManager con=(ConnectivityManager)parent.getSystemService(Context.CONNECTIVITY_SERVICE);
-    NetworkInfo[] s=con.getAllNetworkInfo();
+    final NetworkInfo[] s=con.getAllNetworkInfo();
     for (    NetworkInfo i : s) {
       if (i.getTypeName().contentEquals("WIFI")) {
         NetworkInfo.State state=i.getState();

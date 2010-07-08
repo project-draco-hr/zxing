@@ -2,6 +2,6 @@
   if (wepKey == null) {
     return false;
   }
-  int len=wepKey.length();
-  return (len == 10 || len == 26 || len == 58) && isHex(wepKey);
+  final int length=wepKey.length();
+  return (length == 10 || length == 26 || length == 58) && isHex(wepKey);
 }

@@ -1,5 +1,5 @@
 {
-  List<WifiConfiguration> existingConfigs=wifiManager.getConfiguredNetworks();
+  final List<WifiConfiguration> existingConfigs=wifiManager.getConfiguredNetworks();
   for (  WifiConfiguration existingConfig : existingConfigs) {
     if (existingConfig.SSID.equals(ssid)) {
       return existingConfig;
