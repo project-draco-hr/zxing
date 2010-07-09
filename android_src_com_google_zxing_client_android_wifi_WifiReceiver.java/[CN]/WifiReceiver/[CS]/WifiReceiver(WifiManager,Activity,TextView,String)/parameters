@@ -1,0 +1,4 @@
+WifiManager wifiManager
+Activity wifiActivity
+TextView statusView
+String ssid

@@ -1,0 +1,5 @@
+{
+  this.parent=wifiActivity;
+  this.statusView=statusView;
+  this.mWifiManager=wifiManager;
+}

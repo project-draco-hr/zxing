@@ -1,0 +1,6 @@
+{
+  if (hasError || state == SupplicantState.INACTIVE) {
+    Log.d(TAG,"Found an error");
+    ((WifiActivity)parent).gotError();
+  }
+}
