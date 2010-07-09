@@ -1,7 +1,10 @@
 {
-  if (connectedReceiver != null) {
-    unregisterReceiver(connectedReceiver);
-    connectedReceiver=null;
+  if (wifiReceiver != null) {
+    if (receiverRegistered) {
+      unregisterReceiver(wifiReceiver);
+      receiverRegistered=false;
+    }
+    wifiReceiver=null;
   }
   super.onDestroy();
 }

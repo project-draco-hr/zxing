@@ -1,10 +1,11 @@
 {
-  WifiConfiguration config=changeNetworkCommon(input);
-  if (NetworkUtil.isHexWepKey(input.getPassword())) {
-    config.wepKeys[0]=input.getPassword();
+  final WifiConfiguration config=changeNetworkCommon(input);
+  final String pass=input.getPassword();
+  if (NetworkUtil.isHexWepKey(pass)) {
+    config.wepKeys[0]=pass;
   }
  else {
-    config.wepKeys[0]=NetworkUtil.convertToQuotedString(input.getPassword());
+    config.wepKeys[0]=NetworkUtil.convertToQuotedString(pass);
   }
   config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.SHARED);
   config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);

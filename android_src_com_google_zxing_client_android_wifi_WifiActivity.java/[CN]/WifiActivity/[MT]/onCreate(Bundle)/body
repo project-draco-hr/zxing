@@ -25,8 +25,14 @@
     return;
   }
   wifiManager=(WifiManager)this.getSystemService(WIFI_SERVICE);
-  connectedReceiver=new ConnectedReceiver(this,statusView);
-  registerReceiver(connectedReceiver,new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+  wifiManager.setWifiEnabled(true);
+  wifiReceiver=new WifiReceiver(wifiManager,this,statusView,ssid);
+  mWifiStateFilter=new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
+  mWifiStateFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+  mWifiStateFilter.addAction(WifiManager.SUPPLICANT_STATE_CHANGED_ACTION);
+  mWifiStateFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+  registerReceiver(wifiReceiver,mWifiStateFilter);
+  receiverRegistered=true;
   if (password == null) {
     password="";
   }

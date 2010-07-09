@@ -1,5 +1,5 @@
 {
-  WifiParsedResult wifiResult=(WifiParsedResult)getResult();
+  final WifiParsedResult wifiResult=(WifiParsedResult)getResult();
   StringBuffer contents=new StringBuffer();
   final String wifiLabel=parent.getString(R.string.wifi_ssid_label);
   ParsedResult.maybeAppend(wifiLabel + "\n" + wifiResult.getSsid(),contents);

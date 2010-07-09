@@ -1,0 +1,6 @@
+{
+  if (receiverRegistered) {
+    unregisterReceiver(wifiReceiver);
+    receiverRegistered=false;
+  }
+}

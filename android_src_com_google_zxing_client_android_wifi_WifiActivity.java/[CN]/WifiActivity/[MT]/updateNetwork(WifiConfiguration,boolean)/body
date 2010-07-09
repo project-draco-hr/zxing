@@ -1,16 +1,24 @@
 {
-  int networkId;
-  if (findNetworkInExistingConfig(config.SSID) == null) {
+  final int FAILURE=-1;
+  WifiConfiguration found=findNetworkInExistingConfig(config.SSID);
+  wifiManager.disconnect();
+  if (found == null) {
     statusView.setText(R.string.wifi_creating_network);
-    networkId=wifiManager.addNetwork(config);
   }
  else {
     statusView.setText(R.string.wifi_modifying_network);
-    networkId=wifiManager.updateNetwork(config);
+    Log.d(TAG,"Removing network " + found.networkId);
+    wifiManager.removeNetwork(found.networkId);
+    wifiManager.saveConfiguration();
   }
-  if (networkId == -1 || !wifiManager.enableNetwork(networkId,disableOthers)) {
-    return -1;
+  networkId=wifiManager.addNetwork(config);
+  Log.d(TAG,"Inserted/Modified network " + networkId);
+  if (networkId < 0)   return FAILURE;
+  if (!wifiManager.enableNetwork(networkId,disableOthers)) {
+    networkId=-1;
+    return FAILURE;
   }
-  wifiManager.saveConfiguration();
+  errorCount=0;
+  wifiManager.reassociate();
   return networkId;
 }

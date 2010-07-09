@@ -1,4 +1,13 @@
 {
   statusView.setText(resource_string);
+  wifiManager.disconnect();
+  if (networkId > 0) {
+    wifiManager.removeNetwork(networkId);
+    networkId=-1;
+  }
+  if (receiverRegistered) {
+    unregisterReceiver(wifiReceiver);
+    receiverRegistered=false;
+  }
   return -1;
 }

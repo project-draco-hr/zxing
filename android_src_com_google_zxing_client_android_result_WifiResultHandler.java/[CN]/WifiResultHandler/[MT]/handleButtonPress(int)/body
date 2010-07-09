@@ -1,5 +1,5 @@
 {
-  WifiParsedResult wifiResult=(WifiParsedResult)getResult();
+  final WifiParsedResult wifiResult=(WifiParsedResult)getResult();
   if (index == 0) {
     wifiConnect(wifiResult);
   }
