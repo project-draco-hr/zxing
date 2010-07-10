@@ -1,3 +1,2 @@
 SupplicantState state
 boolean hasError
-int error

@@ -1,5 +1,4 @@
 {
-  final int FAILURE=-1;
   WifiConfiguration found=findNetworkInExistingConfig(config.SSID);
   wifiManager.disconnect();
   if (found == null) {
@@ -13,10 +12,12 @@
   }
   networkId=wifiManager.addNetwork(config);
   Log.d(TAG,"Inserted/Modified network " + networkId);
-  if (networkId < 0)   return FAILURE;
+  if (networkId < 0) {
+    return FAILURE_NO_NETWORK_ID;
+  }
   if (!wifiManager.enableNetwork(networkId,disableOthers)) {
-    networkId=-1;
-    return FAILURE;
+    networkId=FAILURE_NO_NETWORK_ID;
+    return FAILURE_NO_NETWORK_ID;
   }
   errorCount=0;
   wifiManager.reassociate();

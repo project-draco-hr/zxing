@@ -1,7 +1,7 @@
 {
   statusView.setText(R.string.wifi_creating_network);
   Log.d(TAG,"Adding new configuration: \nSSID: " + input.getSsid() + "\nType: "+ input.getNetworkType());
-  final WifiConfiguration config=new WifiConfiguration();
+  WifiConfiguration config=new WifiConfiguration();
   config.allowedAuthAlgorithms.clear();
   config.allowedGroupCiphers.clear();
   config.allowedKeyManagement.clear();

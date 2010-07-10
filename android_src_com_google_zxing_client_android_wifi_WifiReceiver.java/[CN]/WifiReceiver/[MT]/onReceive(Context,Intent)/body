@@ -1,26 +1,26 @@
 {
   if (intent.getAction().equals(WifiManager.SUPPLICANT_STATE_CHANGED_ACTION)) {
-    handleChange((SupplicantState)intent.getParcelableExtra(WifiManager.EXTRA_NEW_STATE),intent.hasExtra(WifiManager.EXTRA_SUPPLICANT_ERROR),intent.getIntExtra(WifiManager.EXTRA_SUPPLICANT_ERROR,0));
+    handleChange((SupplicantState)intent.getParcelableExtra(WifiManager.EXTRA_NEW_STATE),intent.hasExtra(WifiManager.EXTRA_SUPPLICANT_ERROR));
   }
  else   if (intent.getAction().equals(WifiManager.NETWORK_STATE_CHANGED_ACTION)) {
     handleNetworkStateChanged((NetworkInfo)intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO));
   }
  else   if (intent.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
-    final ConnectivityManager con=(ConnectivityManager)parent.getSystemService(Context.CONNECTIVITY_SERVICE);
-    final NetworkInfo[] s=con.getAllNetworkInfo();
-    for (    final NetworkInfo i : s) {
+    ConnectivityManager con=(ConnectivityManager)parent.getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo[] s=con.getAllNetworkInfo();
+    for (    NetworkInfo i : s) {
       if (i.getTypeName().contentEquals("WIFI")) {
-        final NetworkInfo.State state=i.getState();
-        final String ssid=mWifiManager.getConnectionInfo().getSSID();
+        NetworkInfo.State state=i.getState();
+        String ssid=mWifiManager.getConnectionInfo().getSSID();
         if (state == NetworkInfo.State.CONNECTED && ssid != null) {
           mWifiManager.saveConfiguration();
-          final String label=parent.getString(R.string.wifi_connected);
-          statusView.setText(label + "\n" + ssid);
+          String label=parent.getString(R.string.wifi_connected);
+          statusView.setText(label + '\n' + ssid);
           Runnable delayKill=new Killer(parent);
           delayKill.run();
         }
         if (state == NetworkInfo.State.DISCONNECTED) {
-          Log.d(TAG,"Got state: " + state.toString() + " for ssid: "+ ssid);
+          Log.d(TAG,"Got state: " + state + " for ssid: "+ ssid);
           ((WifiActivity)parent).gotError();
         }
       }

@@ -1,6 +1,6 @@
 {
-  final WifiConfiguration config=changeNetworkCommon(input);
-  final String pass=input.getPassword();
+  WifiConfiguration config=changeNetworkCommon(input);
+  String pass=input.getPassword();
   if (NetworkUtil.isHexWepKey(pass)) {
     config.wepKeys[0]=pass;
   }

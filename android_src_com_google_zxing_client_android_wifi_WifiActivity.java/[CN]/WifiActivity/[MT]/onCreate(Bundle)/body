@@ -1,13 +1,13 @@
 {
   super.onCreate(savedInstanceState);
-  final Intent intent=getIntent();
+  Intent intent=getIntent();
   if (intent == null || (!intent.getAction().equals(Intents.WifiConnect.ACTION))) {
     finish();
     return;
   }
-  final String ssid=intent.getStringExtra(Intents.WifiConnect.SSID);
+  String ssid=intent.getStringExtra(Intents.WifiConnect.SSID);
   String password=intent.getStringExtra(Intents.WifiConnect.PASSWORD);
-  final String networkType=intent.getStringExtra(Intents.WifiConnect.TYPE);
+  String networkType=intent.getStringExtra(Intents.WifiConnect.TYPE);
   setContentView(R.layout.network);
   statusView=(TextView)findViewById(R.id.networkStatus);
   NetworkType networkT;

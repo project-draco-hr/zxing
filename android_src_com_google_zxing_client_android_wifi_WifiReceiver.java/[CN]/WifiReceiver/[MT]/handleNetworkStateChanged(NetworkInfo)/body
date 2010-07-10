@@ -1,7 +1,7 @@
 {
-  final NetworkInfo.DetailedState state=networkInfo.getDetailedState();
+  NetworkInfo.DetailedState state=networkInfo.getDetailedState();
   if (state == NetworkInfo.DetailedState.FAILED) {
     Log.d(TAG,"Detailed Network state failed");
-    ((WifiActivity)parent).gotError();
+    parent.gotError();
   }
 }

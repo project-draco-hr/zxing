@@ -1,7 +1,7 @@
 {
-  final WifiConfiguration config=changeNetworkCommon(input);
-  final String pass=input.getPassword();
-  if (pass.matches("[0-9A-Fa-f]{64}")) {
+  WifiConfiguration config=changeNetworkCommon(input);
+  String pass=input.getPassword();
+  if (HEX_DIGITS_64.matcher(pass).matches()) {
     Log.d(TAG,"A 64 bit hex password entered.");
     config.preSharedKey=pass;
   }
