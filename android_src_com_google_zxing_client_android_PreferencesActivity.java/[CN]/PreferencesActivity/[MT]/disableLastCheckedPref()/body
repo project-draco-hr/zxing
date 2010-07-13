@@ -1,0 +1,16 @@
+{
+  if (decode1D.isChecked()) {
+    decodeQR.setEnabled(true);
+  }
+ else {
+    decodeQR.setEnabled(false);
+    decodeQR.setChecked(true);
+  }
+  if (decodeQR.isChecked()) {
+    decode1D.setEnabled(true);
+  }
+ else {
+    decode1D.setEnabled(false);
+    decode1D.setChecked(true);
+  }
+}

@@ -5,4 +5,5 @@
   preferences.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
   decode1D=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_1D);
   decodeQR=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_QR);
+  disableLastCheckedPref();
 }
