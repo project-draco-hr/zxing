@@ -31,8 +31,9 @@
     throw NotFoundException.getNotFoundInstance();
   }
   int dimension=1 + ((rowEndOfSymbol - x) / moduleSize);
-  x-=moduleSize >> 1;
-  y-=moduleSize >> 1;
+  int backOffAmount=moduleSize == 1 ? 1 : moduleSize >> 1;
+  x-=backOffAmount;
+  y-=backOffAmount;
   if ((x + (dimension - 1) * moduleSize) >= width || (y + (dimension - 1) * moduleSize) >= height) {
     throw NotFoundException.getNotFoundInstance();
   }
