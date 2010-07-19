@@ -1,4 +1,0 @@
-{
-  this.dialogItems=dialogItems;
-  this.items=items;
-}

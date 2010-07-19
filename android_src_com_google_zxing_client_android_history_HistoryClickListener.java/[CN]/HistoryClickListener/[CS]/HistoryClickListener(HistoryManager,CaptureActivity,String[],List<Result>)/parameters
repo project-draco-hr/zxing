@@ -1,0 +1,4 @@
+HistoryManager historyManager
+CaptureActivity activity
+String[] dialogItems
+List<Result> items

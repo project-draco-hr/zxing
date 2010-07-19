@@ -1,10 +1,10 @@
 {
   if (i == dialogItems.length - 1) {
-    clearHistory();
+    historyManager.clearHistory();
   }
  else   if (i == dialogItems.length - 2) {
-    CharSequence history=buildHistory();
-    Uri historyFile=saveHistory(history.toString());
+    CharSequence history=historyManager.buildHistory();
+    Uri historyFile=HistoryManager.saveHistory(history.toString());
     if (historyFile == null) {
       AlertDialog.Builder builder=new AlertDialog.Builder(activity);
       builder.setMessage(R.string.msg_unmount_usb);

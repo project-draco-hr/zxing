@@ -4,12 +4,8 @@
   }
   SQLiteOpenHelper helper=new DBHelper(activity);
   SQLiteDatabase db=helper.getWritableDatabase();
-  Cursor cursor=null;
   try {
-    cursor=db.query(DBHelper.TABLE_NAME,TEXT_COL_PROJECTION,DBHelper.TEXT_COL + "=?",new String[]{result.getText()},null,null,null,null);
-    if (cursor.moveToNext()) {
-      return;
-    }
+    db.delete(DBHelper.TABLE_NAME,DBHelper.TEXT_COL + "=?",new String[]{result.getText()});
     ContentValues values=new ContentValues();
     values.put(DBHelper.TEXT_COL,result.getText());
     values.put(DBHelper.FORMAT_COL,result.getBarcodeFormat().toString());
@@ -18,9 +14,6 @@
     db.insert(DBHelper.TABLE_NAME,DBHelper.TIMESTAMP_COL,values);
   }
   finally {
-    if (cursor != null) {
-      cursor.close();
-    }
     db.close();
   }
 }

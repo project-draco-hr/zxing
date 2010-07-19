@@ -8,7 +8,7 @@
   Resources res=activity.getResources();
   dialogItems[dialogItems.length - 2]=res.getString(R.string.history_send);
   dialogItems[dialogItems.length - 1]=res.getString(R.string.history_clear_text);
-  DialogInterface.OnClickListener clickListener=new HistoryClickListener(dialogItems,items);
+  DialogInterface.OnClickListener clickListener=new HistoryClickListener(this,activity,dialogItems,items);
   AlertDialog.Builder builder=new AlertDialog.Builder(activity);
   builder.setTitle(R.string.history_title);
   builder.setItems(dialogItems,clickListener);
