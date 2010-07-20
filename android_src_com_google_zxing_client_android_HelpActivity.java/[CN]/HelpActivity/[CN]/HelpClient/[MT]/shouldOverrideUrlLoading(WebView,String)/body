@@ -1,0 +1,9 @@
+{
+  if (url.startsWith("file")) {
+    return false;
+  }
+ else {
+    startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));
+    return true;
+  }
+}

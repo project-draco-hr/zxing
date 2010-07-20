@@ -4,7 +4,7 @@
   webView=(WebView)findViewById(R.id.help_contents);
   webView.setWebViewClient(new HelpClient());
   Intent intent=getIntent();
-  if (icicle != null) {
+  if (icicle != null && icicle.getBoolean(WEBVIEW_STATE_PRESENT,false)) {
     webView.restoreState(icicle);
   }
  else   if (intent != null) {
