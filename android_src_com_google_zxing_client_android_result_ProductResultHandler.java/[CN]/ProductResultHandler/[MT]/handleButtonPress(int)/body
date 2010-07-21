@@ -10,9 +10,6 @@ case 1:
     webSearch(productResult.getNormalizedProductID());
   break;
 case 2:
-openGoogleShopper(productResult.getNormalizedProductID());
-break;
-case 3:
 openURL(fillInCustomSearchURL(productResult.getNormalizedProductID()));
 break;
 }

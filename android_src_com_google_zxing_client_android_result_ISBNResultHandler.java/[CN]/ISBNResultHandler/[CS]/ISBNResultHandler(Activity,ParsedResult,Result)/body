@@ -1,3 +1,10 @@
 {
   super(activity,result,rawResult);
+  showGoogleShopperButton(new View.OnClickListener(){
+    public void onClick(    View view){
+      ISBNParsedResult isbnResult=(ISBNParsedResult)getResult();
+      openGoogleShopper(isbnResult.getISBN());
+    }
+  }
+);
 }
