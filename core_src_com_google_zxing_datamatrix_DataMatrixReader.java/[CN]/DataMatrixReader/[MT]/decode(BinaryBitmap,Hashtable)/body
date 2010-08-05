@@ -11,7 +11,7 @@
     decoderResult=decoder.decode(detectorResult.getBits());
     points=detectorResult.getPoints();
   }
-  Result result=new Result(decoderResult.getText(),decoderResult.getRawBytes(),points,BarcodeFormat.DATAMATRIX);
+  Result result=new Result(decoderResult.getText(),decoderResult.getRawBytes(),points,BarcodeFormat.DATA_MATRIX);
   if (decoderResult.getByteSegments() != null) {
     result.putMetadata(ResultMetadataType.BYTE_SEGMENTS,decoderResult.getByteSegments());
   }

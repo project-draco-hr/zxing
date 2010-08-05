@@ -11,7 +11,7 @@
     if (formats.contains(BarcodeFormat.QR_CODE)) {
       readers.addElement(new QRCodeReader());
     }
-    if (formats.contains(BarcodeFormat.DATAMATRIX)) {
+    if (formats.contains(BarcodeFormat.DATA_MATRIX)) {
       readers.addElement(new DataMatrixReader());
     }
     if (formats.contains(BarcodeFormat.PDF417)) {
