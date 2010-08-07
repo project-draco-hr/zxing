@@ -1,5 +1,5 @@
 {
-  StringBuffer result=new StringBuffer();
+  StringBuffer result=new StringBuffer(20);
   result.append(latitude);
   result.append(", ");
   result.append(longitude);
@@ -7,6 +7,11 @@
     result.append(", ");
     result.append(altitude);
     result.append('m');
+  }
+  if (query != null) {
+    result.append(" (");
+    result.append(query);
+    result.append(')');
   }
   return result.toString();
 }

@@ -8,5 +8,9 @@
     result.append(',');
     result.append(altitude);
   }
+  if (query != null) {
+    result.append('?');
+    result.append(query);
+  }
   return result.toString();
 }
