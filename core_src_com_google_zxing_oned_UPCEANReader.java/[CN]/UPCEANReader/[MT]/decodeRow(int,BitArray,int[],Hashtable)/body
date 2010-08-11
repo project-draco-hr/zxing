@@ -27,8 +27,9 @@
   BarcodeFormat format=getBarcodeFormat();
   Result decodeResult=new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},format);
   try {
-    Result extensionResult=extensionReader.decodeRow(row,endRange[1]);
+    Result extensionResult=extensionReader.decodeRow(rowNumber,row,endRange[1]);
     decodeResult.putAllMetadata(extensionResult.getResultMetadata());
+    decodeResult.addResultPoints(extensionResult.getResultPoints());
   }
  catch (  ReaderException re) {
   }

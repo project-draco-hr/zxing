@@ -1,2 +1,3 @@
+int rowNumber
 BitArray row
 int rowOffset

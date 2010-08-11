@@ -11,7 +11,11 @@
     paint.setColor(getResources().getColor(R.color.result_points));
     if (points.length == 2) {
       paint.setStrokeWidth(4.0f);
-      canvas.drawLine(points[0].getX(),points[0].getY(),points[1].getX(),points[1].getY(),paint);
+      drawLine(canvas,paint,points[0],points[1]);
+    }
+ else     if (points.length == 4 && (rawResult.getBarcodeFormat().equals(BarcodeFormat.UPC_A)) || (rawResult.getBarcodeFormat().equals(BarcodeFormat.EAN_13))) {
+      drawLine(canvas,paint,points[0],points[1]);
+      drawLine(canvas,paint,points[2],points[3]);
     }
  else {
       paint.setStrokeWidth(10.0f);

@@ -16,11 +16,13 @@
     if (bestMatch >= 10) {
       lgPatternFound|=1 << (4 - x);
     }
-    while (rowOffset < end && !row.get(rowOffset)) {
-      rowOffset++;
-    }
-    while (rowOffset < end && row.get(rowOffset)) {
-      rowOffset++;
+    if (x != 4) {
+      while (rowOffset < end && !row.get(rowOffset)) {
+        rowOffset++;
+      }
+      while (rowOffset < end && row.get(rowOffset)) {
+        rowOffset++;
+      }
     }
   }
   if (resultString.length() != 5) {
