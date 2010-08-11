@@ -1,6 +1,5 @@
 {
   if (widget == name)   getNameField();
-  if (widget == company)   getCompanyField();
   if (widget == tel)   getTelField();
   if (widget == email)   getEmailField();
   if (widget == address)   getAddressField();

@@ -1,3 +1,0 @@
-{
-  return parseTextField("Company",company);
-}
