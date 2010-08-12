@@ -30,6 +30,9 @@
     if (state == 3) {
       int diffX=x - fromX;
       int diffY=y - fromY;
+      if (xstep < 0) {
+        diffX++;
+      }
       return (float)Math.sqrt((double)(diffX * diffX + diffY * diffY));
     }
     error+=dy;
