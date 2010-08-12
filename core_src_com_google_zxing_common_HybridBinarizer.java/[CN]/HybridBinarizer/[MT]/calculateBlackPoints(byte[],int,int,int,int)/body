@@ -1,12 +1,20 @@
 {
   int[][] blackPoints=new int[subHeight][subWidth];
   for (int y=0; y < subHeight; y++) {
+    int yoffset=y << 3;
+    if ((yoffset + 8) >= height) {
+      yoffset=height - 8;
+    }
     for (int x=0; x < subWidth; x++) {
+      int xoffset=x << 3;
+      if ((xoffset + 8) >= width) {
+        xoffset=width - 8;
+      }
       int sum=0;
       int min=255;
       int max=0;
       for (int yy=0; yy < 8; yy++) {
-        int offset=((y << 3) + yy) * stride + (x << 3);
+        int offset=(yoffset + yy) * width + xoffset;
         for (int xx=0; xx < 8; xx++) {
           int pixel=luminances[offset + xx] & 0xff;
           sum+=pixel;

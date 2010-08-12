@@ -6,10 +6,16 @@
       int width=source.getWidth();
       int height=source.getHeight();
       int subWidth=width >> 3;
+      if ((width & 0x07) != 0) {
+        subWidth++;
+      }
       int subHeight=height >> 3;
-      int[][] blackPoints=calculateBlackPoints(luminances,subWidth,subHeight,width);
+      if ((height & 0x07) != 0) {
+        subHeight++;
+      }
+      int[][] blackPoints=calculateBlackPoints(luminances,subWidth,subHeight,width,height);
       matrix=new BitMatrix(width,height);
-      calculateThresholdForBlock(luminances,subWidth,subHeight,width,blackPoints,matrix);
+      calculateThresholdForBlock(luminances,subWidth,subHeight,width,height,blackPoints,matrix);
     }
  else {
       matrix=super.getBlackMatrix();

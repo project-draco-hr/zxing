@@ -1,6 +1,7 @@
 byte[] luminances
 int subWidth
 int subHeight
-int stride
+int width
+int height
 int[][] blackPoints
 BitMatrix matrix
