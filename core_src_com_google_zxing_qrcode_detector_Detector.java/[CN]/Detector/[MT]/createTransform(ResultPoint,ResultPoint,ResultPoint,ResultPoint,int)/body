@@ -14,6 +14,5 @@
     bottomRightY=(topRight.getY() - topLeft.getY()) + bottomLeft.getY();
     sourceBottomRightX=sourceBottomRightY=dimMinusThree;
   }
-  PerspectiveTransform transform=PerspectiveTransform.quadrilateralToQuadrilateral(3.5f,3.5f,dimMinusThree,3.5f,sourceBottomRightX,sourceBottomRightY,3.5f,dimMinusThree,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomRightX,bottomRightY,bottomLeft.getX(),bottomLeft.getY());
-  return transform;
+  return PerspectiveTransform.quadrilateralToQuadrilateral(3.5f,3.5f,dimMinusThree,3.5f,sourceBottomRightX,sourceBottomRightY,3.5f,dimMinusThree,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomRightX,bottomRightY,bottomLeft.getX(),bottomLeft.getY());
 }

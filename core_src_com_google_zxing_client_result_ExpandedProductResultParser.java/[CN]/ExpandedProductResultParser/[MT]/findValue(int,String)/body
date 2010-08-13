@@ -5,7 +5,7 @@
     char c=rawTextAux.charAt(index);
     if (c == '(') {
       if ("ERROR".equals(findAIvalue(index,rawTextAux))) {
-        buf.append(c);
+        buf.append('(');
       }
  else {
         break;
