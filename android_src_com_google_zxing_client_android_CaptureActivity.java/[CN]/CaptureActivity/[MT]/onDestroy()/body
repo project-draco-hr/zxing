@@ -1,0 +1,4 @@
+{
+  inactivityTimer.shutdown();
+  super.onDestroy();
+}

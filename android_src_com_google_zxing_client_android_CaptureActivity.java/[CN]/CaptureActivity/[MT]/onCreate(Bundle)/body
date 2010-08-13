@@ -12,5 +12,6 @@
   hasSurface=false;
   historyManager=new HistoryManager(this);
   historyManager.trimHistory();
+  inactivityTimer=new InactivityTimer(this);
   showHelpOnFirstLaunch();
 }

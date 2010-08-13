@@ -1,0 +1,4 @@
+{
+  this.activity=activity;
+  onActivity();
+}

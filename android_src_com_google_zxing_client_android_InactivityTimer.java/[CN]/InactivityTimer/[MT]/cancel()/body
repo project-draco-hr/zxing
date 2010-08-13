@@ -1,0 +1,6 @@
+{
+  if (inactivityFuture != null) {
+    inactivityFuture.cancel(true);
+    inactivityFuture=null;
+  }
+}

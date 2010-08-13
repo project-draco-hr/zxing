@@ -1,4 +1,5 @@
 {
+  inactivityTimer.onActivity();
   lastResult=rawResult;
   historyManager.addHistoryItem(rawResult);
   if (barcode == null) {

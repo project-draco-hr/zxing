@@ -1,0 +1,4 @@
+{
+  cancel();
+  inactivityFuture=inactivityTimer.schedule(new FinishListener(activity),INACTIVITY_DELAY_MINUTES,TimeUnit.MINUTES);
+}
