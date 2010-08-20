@@ -1,0 +1,27 @@
+def scan(self, scanner, node_list):
+    "Scan a list of this Executor's files (targets or sources) for\n        implicit dependencies and update all of the targets with them.\n        This essentially short-circuits an N*M scan of the sources for\n        each individual target, which is a hell of a lot more efficient.\n        "
+    env = self.get_build_env()
+    deps = []
+    if scanner:
+        for node in node_list:
+            node.disambiguate()
+            s = scanner.select(node)
+            if (not s):
+                continue
+            path = self.get_build_scanner_path(s)
+            deps.extend(node.get_implicit_deps(env, s, path))
+    else:
+        kw = self.get_kw()
+        for node in node_list:
+            node.disambiguate()
+            scanner = node.get_env_scanner(env, kw)
+            if (not scanner):
+                continue
+            scanner = scanner.select(node)
+            if (not scanner):
+                continue
+            path = self.get_build_scanner_path(scanner)
+            deps.extend(node.get_implicit_deps(env, scanner, path))
+    deps.extend(self.get_implicit_deps())
+    for tgt in self.get_all_targets():
+        tgt.add_to_implicit(deps)

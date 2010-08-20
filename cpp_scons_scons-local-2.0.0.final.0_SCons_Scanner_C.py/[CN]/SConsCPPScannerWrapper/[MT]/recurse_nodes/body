@@ -1,0 +1,2 @@
+def recurse_nodes(self, nodes):
+    return nodes

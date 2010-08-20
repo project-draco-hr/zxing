@@ -1,0 +1,3 @@
+def DviPdfFunction(target=None, source=None, env=None):
+    result = DviPdfPsFunction(PDFAction, target, source, env)
+    return result

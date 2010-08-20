@@ -1,0 +1,12 @@
+def to_String_for_subst(s, isinstance=isinstance, str=str, to_String=to_String, BaseStringTypes=BaseStringTypes, SequenceTypes=SequenceTypes, UserString=UserString):
+    if isinstance(s, BaseStringTypes):
+        return s
+    elif isinstance(s, SequenceTypes):
+        l = []
+        for e in s:
+            l.append(to_String_for_subst(e))
+        return ' '.join(s)
+    elif isinstance(s, UserString):
+        return s.data
+    else:
+        return str(s)

@@ -1,0 +1,31 @@
+def compile(self, values):
+    ' compiles the tagset and returns a str containing the result\n        '
+
+    def is_international(tag):
+        return (tag[(-1):] == '_')
+
+    def get_country_code(tag):
+        return tag[(-2):]
+
+    def strip_country_code(tag):
+        return tag[:(-2)]
+    replacements = list(self.tagset.items())
+    str = ''
+    domestic = [t for t in replacements if (not is_international(t[0]))]
+    for (key, replacement) in domestic:
+        try:
+            str = (str + (replacement % values[key]))
+        except KeyError as e:
+            if self.mandatory:
+                raise e
+    international = [t for t in replacements if is_international(t[0])]
+    for (key, replacement) in international:
+        try:
+            x = [t for t in values.items() if (strip_country_code(t[0]) == key)]
+            int_values_for_key = [(get_country_code(t[0]), t[1]) for t in x]
+            for v in int_values_for_key:
+                str = (str + (replacement % v))
+        except KeyError as e:
+            if self.mandatory:
+                raise e
+    return str

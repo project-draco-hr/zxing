@@ -1,0 +1,5 @@
+def PathExists(self, key, val, env):
+    'validator to check if Path exists'
+    if (not os.path.exists(val)):
+        m = 'Path for option %s does not exist: %s'
+        raise SCons.Errors.UserError((m % (key, val)))

@@ -1,0 +1,13 @@
+def collectintargz(target, source, env):
+    ' Puts all source files into a tar.gz file. '
+    sources = env.FindSourceFiles()
+    sources = [s for s in sources if (s not in target)]
+    spec_file = (lambda s: (str(s).rfind('.spec') != (-1)))
+    sources.extend(list(filter(spec_file, source)))
+    tarball = (str(target[0]) + '.tar.gz').replace('.rpm', '')
+    try:
+        tarball = env['SOURCE_URL'].split('/')[(-1)]
+    except KeyError as e:
+        raise SCons.Errors.UserError(("Missing PackageTag '%s' for RPM packager" % e.args[0]))
+    tarball = src_targz.package(env, source=sources, target=tarball, PACKAGEROOT=env['PACKAGEROOT'])
+    return (target, tarball)

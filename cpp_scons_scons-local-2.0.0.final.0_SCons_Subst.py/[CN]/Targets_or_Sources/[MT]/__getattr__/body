@@ -1,0 +1,3 @@
+def __getattr__(self, attr):
+    nl = self.nl._create_nodelist()
+    return getattr(nl, attr)

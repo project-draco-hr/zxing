@@ -1,0 +1,2 @@
+def initialize_result(self, fname):
+    self.result = SCons.Util.UniqueList([fname])

@@ -1,0 +1,6 @@
+def get_ninfo(self):
+    try:
+        return self.ninfo
+    except AttributeError:
+        self.ninfo = self.new_ninfo()
+        return self.ninfo

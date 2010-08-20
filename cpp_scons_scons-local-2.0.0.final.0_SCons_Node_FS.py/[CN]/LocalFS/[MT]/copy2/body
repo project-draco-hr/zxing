@@ -1,0 +1,2 @@
+def copy2(self, src, dst):
+    return shutil.copy2(src, dst)

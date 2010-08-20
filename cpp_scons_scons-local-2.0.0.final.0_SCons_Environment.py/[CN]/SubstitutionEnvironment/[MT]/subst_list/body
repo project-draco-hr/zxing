@@ -1,0 +1,8 @@
+def subst_list(self, string, raw=0, target=None, source=None, conv=None, executor=None):
+    'Calls through to SCons.Subst.scons_subst_list().  See\n        the documentation for that function.'
+    gvars = self.gvars()
+    lvars = self.lvars()
+    lvars['__env__'] = self
+    if executor:
+        lvars.update(executor.get_lvars())
+    return SCons.Subst.scons_subst_list(string, self, raw, target, source, gvars, lvars, conv)

@@ -1,0 +1,5 @@
+def LaTeXAuxFunction(target=None, source=None, env=None):
+    result = SCons.Tool.tex.InternalLaTeXAuxAction(SCons.Tool.tex.LaTeXAction, target, source, env)
+    if (result != 0):
+        SCons.Tool.tex.check_file_error_message(env['LATEX'])
+    return result

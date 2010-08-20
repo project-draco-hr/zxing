@@ -1,0 +1,27 @@
+def scan(self, node, env, path=()):
+    if (node.includes != None):
+        mods_and_includes = node.includes
+    else:
+        includes = self.cre_incl.findall(node.get_text_contents())
+        modules = self.cre_use.findall(node.get_text_contents())
+        defmodules = self.cre_def.findall(node.get_text_contents())
+        d = {}
+        for m in defmodules:
+            d[m] = 1
+        modules = [m for m in modules if (m not in d)]
+        suffix = env.subst('$FORTRANMODSUFFIX')
+        modules = [(x.lower() + suffix) for x in modules]
+        mods_and_includes = SCons.Util.unique((includes + modules))
+        node.includes = mods_and_includes
+    nodes = []
+    source_dir = node.get_dir()
+    if callable(path):
+        path = path()
+    for dep in mods_and_includes:
+        (n, i) = self.find_include(dep, source_dir, path)
+        if (n is None):
+            SCons.Warnings.warn(SCons.Warnings.DependencyWarning, ('No dependency generated for file: %s (referenced by: %s) -- file not found' % (i, node)))
+        else:
+            sortkey = self.sort_key(dep)
+            nodes.append((sortkey, n))
+    return [pair[1] for pair in sorted(nodes)]

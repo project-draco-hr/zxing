@@ -1,0 +1,8 @@
+def _converter(val):
+    '\n    '
+    lval = val.lower()
+    if (lval in __enable_strings):
+        return True
+    if (lval in __disable_strings):
+        return False
+    return val

@@ -1,0 +1,2 @@
+def finalize_result(self, fname):
+    return self.result[1:]

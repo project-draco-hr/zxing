@@ -1,0 +1,15 @@
+def __init__(self, files=[], args={}, is_global=1):
+    '\n        files - [optional] List of option configuration files to load\n            (backward compatibility) If a single string is passed it is\n                                     automatically placed in a file list\n        '
+    self.options = []
+    self.args = args
+    if (not SCons.Util.is_List(files)):
+        if files:
+            files = [files]
+        else:
+            files = []
+    self.files = files
+    self.unknown = {}
+    if is_global:
+        self = Variables.instance
+        if (not Variables.instance):
+            Variables.instance = self

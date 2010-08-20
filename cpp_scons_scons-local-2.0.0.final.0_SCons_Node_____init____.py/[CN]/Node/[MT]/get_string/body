@@ -1,0 +1,5 @@
+def get_string(self, for_signature):
+    'This is a convenience function designed primarily to be\n        used in command generators (i.e., CommandGeneratorActions or\n        Environment variables that are callable), which are called\n        with a for_signature argument that is nonzero if the command\n        generator is being called to generate a signature for the\n        command line, which determines if we should rebuild or not.\n\n        Such command generators should use this method in preference\n        to str(Node) when converting a Node to a string, passing\n        in the for_signature parameter, such that we will call\n        Node.for_signature() or str(Node) properly, depending on whether\n        we are calculating a signature or actually constructing a\n        command line.'
+    if for_signature:
+        return self.for_signature()
+    return str(self)

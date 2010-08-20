@@ -1,0 +1,3 @@
+def __lt__(self, other):
+    self.__make_unique()
+    return UserList.__lt__(self, other)

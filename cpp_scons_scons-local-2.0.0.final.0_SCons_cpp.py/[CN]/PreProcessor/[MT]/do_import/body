@@ -1,0 +1,3 @@
+def do_import(self, t):
+    '\n        Default handling of a #import line.\n        '
+    pass

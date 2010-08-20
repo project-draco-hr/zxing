@@ -1,0 +1,13 @@
+def backtick(self, command):
+    import subprocess
+    kw = {'stdin': 'devnull', 'stdout': subprocess.PIPE, 'stderr': subprocess.PIPE, 'universal_newlines': True, }
+    if (not SCons.Util.is_List(command)):
+        kw['shell'] = True
+    p = SCons.Action._subproc(self, command, **kw)
+    (out, err) = p.communicate()
+    status = p.wait()
+    if err:
+        sys.stderr.write(unicode(err))
+    if status:
+        raise OSError(("'%s' exited %d" % (command, status)))
+    return out

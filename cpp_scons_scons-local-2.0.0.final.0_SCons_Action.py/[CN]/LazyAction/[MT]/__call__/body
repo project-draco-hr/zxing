@@ -1,0 +1,3 @@
+def __call__(self, target, source, env, *args, **kw):
+    c = self.get_parent_class(env)
+    return c.__call__(self, target, source, env, *args, **kw)

@@ -1,0 +1,3 @@
+def append(self, item):
+    UserList.append(self, item)
+    self.unique = False

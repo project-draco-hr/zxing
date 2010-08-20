@@ -1,0 +1,3 @@
+def exists(env):
+    import SCons.Tool.mwcc
+    return SCons.Tool.mwcc.set_vars(env)

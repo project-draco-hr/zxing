@@ -1,0 +1,5 @@
+def default(self, argv):
+    '\n        The default behavior for an unknown subcommand.  Prints an\n        error message and exits.\n        '
+    sys.stderr.write(('%s: Unknown subcommand "%s".\n' % (self.name, argv[0])))
+    sys.stderr.write(('Type "%s help" for usage.\n' % self.name))
+    sys.exit(1)

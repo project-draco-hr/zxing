@@ -1,0 +1,12 @@
+def src_suffixes(self, env):
+    '\n        Returns the list of source suffixes for all src_builders of this\n        Builder.\n\n        This is essentially a recursive descent of the src_builder "tree."\n        (This value isn\'t cached because there may be changes in a\n        src_builder many levels deep that we can\'t see.)\n        '
+    sdict = {}
+    suffixes = self.subst_src_suffixes(env)
+    for s in suffixes:
+        sdict[s] = 1
+    for builder in self.get_src_builders(env):
+        for s in builder.src_suffixes(env):
+            if (s not in sdict):
+                sdict[s] = 1
+                suffixes.append(s)
+    return suffixes

@@ -1,0 +1,15 @@
+"SCons.Tool.hpc++\n\nTool-specific initialization for c++ on HP/UX.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/hpc++.py 5023 2010/06/14 22:05:46 scons'
+import os.path
+import SCons.Util
+cplusplus = __import__('c++', globals(), locals(), [])
+acc = None
+try:
+    dirs = os.listdir('/opt')
+except (IOError, OSError):
+    dirs = []
+for dir in dirs:
+    cc = (('/opt/' + dir) + '/bin/aCC')
+    if os.path.exists(cc):
+        acc = cc
+        break

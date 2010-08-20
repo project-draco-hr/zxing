@@ -1,0 +1,2 @@
+def ignore_diskcheck_sccs(node, name):
+    return None

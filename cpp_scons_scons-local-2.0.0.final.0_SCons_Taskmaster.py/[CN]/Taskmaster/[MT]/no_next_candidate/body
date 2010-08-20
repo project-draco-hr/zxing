@@ -1,0 +1,7 @@
+def no_next_candidate(self):
+    '\n        Stops Taskmaster processing by not returning a next candidate.\n\n        Note that we have to clean-up the Taskmaster candidate list\n        because the cycle detection depends on the fact all nodes have\n        been processed somehow.\n        '
+    while self.candidates:
+        candidates = self.candidates
+        self.candidates = []
+        self.will_not_build(candidates)
+    return None

@@ -1,0 +1,13 @@
+def srcdir_duplicate(self, name):
+    for dir in self.srcdir_list():
+        if self.is_under(dir):
+            break
+        if dir.entry_exists_on_disk(name):
+            srcnode = dir.Entry(name).disambiguate()
+            if self.duplicate:
+                node = self.Entry(name).disambiguate()
+                node.do_duplicate(srcnode)
+                return node
+            else:
+                return srcnode
+    return None

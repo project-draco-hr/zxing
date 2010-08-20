@@ -1,0 +1,6 @@
+def __call__(self, node):
+    self.count = (self.count + 1)
+    if ((self.count % self.interval) == 0):
+        if self.overwrite:
+            self.erase_previous()
+        self.func(node)

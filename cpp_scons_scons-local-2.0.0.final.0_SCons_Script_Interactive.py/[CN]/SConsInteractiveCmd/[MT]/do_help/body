@@ -1,0 +1,11 @@
+def do_help(self, argv):
+    "        help [COMMAND]          Prints help for the specified COMMAND.  'h'\n                                and '?' are synonyms.\n        "
+    if argv[1:]:
+        for arg in argv[1:]:
+            if self._do_one_help(arg):
+                break
+    else:
+        doc = self._doc_to_help(self.__class__)
+        if doc:
+            sys.stdout.write((doc + '\n'))
+            sys.stdout.flush()

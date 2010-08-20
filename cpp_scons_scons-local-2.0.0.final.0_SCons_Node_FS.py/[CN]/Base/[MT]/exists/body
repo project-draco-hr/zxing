@@ -1,0 +1,2 @@
+def exists(self):
+    return (self.stat() is not None)

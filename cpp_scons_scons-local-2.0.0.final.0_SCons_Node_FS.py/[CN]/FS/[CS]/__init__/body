@@ -1,0 +1,20 @@
+def __init__(self, path=None):
+    'Initialize the Node.FS subsystem.\n\n        The supplied path is the top of the source tree, where we\n        expect to find the top-level build file.  If no path is\n        supplied, the current directory is the default.\n\n        The path argument must be a valid absolute path.\n        '
+    if __debug__:
+        logInstanceCreation(self, 'Node.FS')
+    self._memo = {}
+    self.Root = {}
+    self.SConstruct_dir = None
+    self.max_drift = default_max_drift
+    self.Top = None
+    if (path is None):
+        self.pathTop = os.getcwd()
+    else:
+        self.pathTop = path
+    self.defaultDrive = _my_normcase(os.path.splitdrive(self.pathTop)[0])
+    self.Top = self.Dir(self.pathTop)
+    self.Top.path = '.'
+    self.Top.tpath = '.'
+    self._cwd = self.Top
+    DirNodeInfo.fs = self
+    FileNodeInfo.fs = self

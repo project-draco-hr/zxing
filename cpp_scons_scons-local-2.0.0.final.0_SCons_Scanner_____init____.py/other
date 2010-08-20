@@ -1,0 +1,6 @@
+'SCons.Scanner\n\nThe Scanner package for the SCons software construction utility.\n\n'
+__revision__ = 'src/engine/SCons/Scanner/__init__.py 5023 2010/06/14 22:05:46 scons'
+import re
+import SCons.Node.FS
+import SCons.Util
+_null = _Null

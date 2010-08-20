@@ -1,0 +1,4 @@
+def env_set(self, env, safe=0):
+    if (safe and self.env):
+        return
+    self.env = env

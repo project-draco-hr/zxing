@@ -1,0 +1,7 @@
+def _morph(self):
+    'Turn a file system node into a File object.'
+    self.scanner_paths = {}
+    if (not hasattr(self, '_local')):
+        self._local = 0
+    if self.has_builder():
+        self.changed_since_last_build = self.decide_target

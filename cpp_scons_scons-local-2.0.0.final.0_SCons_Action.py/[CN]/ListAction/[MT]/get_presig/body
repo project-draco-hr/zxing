@@ -1,0 +1,3 @@
+def get_presig(self, target, source, env):
+    'Return the signature contents of this action list.\n\n        Simple concatenation of the signatures of the elements.\n        '
+    return ''.join([x.get_contents(target, source, env) for x in self.list])

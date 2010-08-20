@@ -1,0 +1,8 @@
+def executor_cleanup(self):
+    'Let the executor clean up any cached information.'
+    try:
+        executor = self.get_executor(create=None)
+    except AttributeError:
+        pass
+    else:
+        executor.cleanup()

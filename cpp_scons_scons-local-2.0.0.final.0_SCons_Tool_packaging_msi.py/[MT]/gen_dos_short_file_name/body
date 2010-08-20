@@ -1,0 +1,19 @@
+def gen_dos_short_file_name(file, filename_set):
+    ' see http://support.microsoft.com/default.aspx?scid=kb;en-us;Q142982\n\n    These are no complete 8.3 dos short names. The ~ char is missing and \n    replaced with one character from the filename. WiX warns about such\n    filenames, since a collision might occur. Google for "CNDL1014" for\n    more information.\n    '
+    if is_dos_short_file_name(file):
+        return file
+    (fname, ext) = os.path.splitext(file)
+    file = file.upper()
+    if is_dos_short_file_name(file):
+        return file
+    forbidden = '."/[]:;=, '
+    fname = [c for c in fname if (c not in forbidden)]
+    (duplicate, num) = ((not None), 1)
+    while duplicate:
+        shortname = ('%s%s' % (fname[:(8 - len(str(num)))].upper(), str(num)))
+        if (len(ext) >= 2):
+            shortname = ('%s%s' % (shortname, ext[:4].upper()))
+        (duplicate, num) = ((shortname in filename_set), (num + 1))
+    assert is_dos_short_file_name(shortname), ('shortname is %s, longname is %s' % (shortname, file))
+    filename_set.append(shortname)
+    return shortname

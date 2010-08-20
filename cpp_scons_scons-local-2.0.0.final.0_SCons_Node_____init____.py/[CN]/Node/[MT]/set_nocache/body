@@ -1,0 +1,3 @@
+def set_nocache(self, nocache=1):
+    "Set the Node's nocache value."
+    self.nocache = ((nocache and 1) or 0)

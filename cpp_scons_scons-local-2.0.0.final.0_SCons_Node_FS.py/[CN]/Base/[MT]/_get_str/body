@@ -1,0 +1,20 @@
+def _get_str(self):
+    global Save_Strings
+    if (self.duplicate or self.is_derived()):
+        return self.get_path()
+    srcnode = self.srcnode()
+    if ((srcnode.stat() is None) and (self.stat() is not None)):
+        result = self.get_path()
+    else:
+        result = srcnode.get_path()
+    if (not Save_Strings):
+        try:
+            del self._memo['stat']
+        except KeyError:
+            pass
+        if (self is not srcnode):
+            try:
+                del srcnode._memo['stat']
+            except KeyError:
+                pass
+    return result

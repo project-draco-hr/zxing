@@ -1,0 +1,23 @@
+def __init__(self, env, custom_tests={}, conf_dir='$CONFIGUREDIR', log_file='$CONFIGURELOG', config_h=None, _depth=0):
+    "Constructor. Pass additional tests in the custom_tests-dictinary,\n        e.g. custom_tests={'CheckPrivate':MyPrivateTest}, where MyPrivateTest\n        defines a custom test.\n        Note also the conf_dir and log_file arguments (you may want to\n        build tests in the VariantDir, not in the SourceDir)\n        "
+    global SConfFS
+    if (not SConfFS):
+        SConfFS = (SCons.Node.FS.default_fs or SCons.Node.FS.FS(env.fs.pathTop))
+    if (sconf_global is not None):
+        raise SCons.Errors.UserError
+    self.env = env
+    if (log_file is not None):
+        log_file = SConfFS.File(env.subst(log_file))
+    self.logfile = log_file
+    self.logstream = None
+    self.lastTarget = None
+    self.depth = _depth
+    self.cached = 0
+    default_tests = {'CheckCC': CheckCC, 'CheckCXX': CheckCXX, 'CheckSHCC': CheckSHCC, 'CheckSHCXX': CheckSHCXX, 'CheckFunc': CheckFunc, 'CheckType': CheckType, 'CheckTypeSize': CheckTypeSize, 'CheckDeclaration': CheckDeclaration, 'CheckHeader': CheckHeader, 'CheckCHeader': CheckCHeader, 'CheckCXXHeader': CheckCXXHeader, 'CheckLib': CheckLib, 'CheckLibWithHeader': CheckLibWithHeader, }
+    self.AddTests(default_tests)
+    self.AddTests(custom_tests)
+    self.confdir = SConfFS.Dir(env.subst(conf_dir))
+    if (config_h is not None):
+        config_h = SConfFS.File(config_h)
+    self.config_h = config_h
+    self._startup()

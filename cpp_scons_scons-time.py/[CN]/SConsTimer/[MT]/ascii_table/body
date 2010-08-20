@@ -1,0 +1,13 @@
+def ascii_table(self, files, columns, line_function, file_function=(lambda x: x), *args, **kw):
+    header_fmt = ' '.join((['%12s'] * len(columns)))
+    line_fmt = (header_fmt + '    %s')
+    print (header_fmt % columns)
+    for file in files:
+        t = line_function(file, *args, **kw)
+        if (t is None):
+            t = []
+        diff = (len(columns) - len(t))
+        if (diff > 0):
+            t += ([''] * diff)
+        t.append(file_function(file))
+        print (line_fmt % tuple(t))

@@ -1,0 +1,9 @@
+def map_timestamp(entry, name):
+    try:
+        timestamp = entry.timestamp
+    except AttributeError:
+        timestamp = None
+    if (Readable and timestamp):
+        return (("'" + time.ctime(timestamp)) + "'")
+    else:
+        return str(timestamp)

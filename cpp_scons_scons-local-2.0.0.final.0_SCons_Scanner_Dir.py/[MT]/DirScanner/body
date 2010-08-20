@@ -1,0 +1,5 @@
+def DirScanner(**kw):
+    'Return a prototype Scanner instance for scanning\n    directories for on-disk files'
+    kw['node_factory'] = SCons.Node.FS.Entry
+    kw['recursive'] = only_dirs
+    return SCons.Scanner.Base(scan_on_disk, 'DirScanner', **kw)

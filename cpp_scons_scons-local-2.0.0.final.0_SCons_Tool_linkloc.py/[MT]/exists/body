@@ -1,0 +1,5 @@
+def exists(env):
+    if msvs_exists():
+        return env.Detect('linkloc')
+    else:
+        return 0

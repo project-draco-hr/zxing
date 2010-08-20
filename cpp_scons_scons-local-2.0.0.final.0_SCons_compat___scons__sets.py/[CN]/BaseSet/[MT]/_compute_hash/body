@@ -1,0 +1,5 @@
+def _compute_hash(self):
+    result = 0
+    for elt in self:
+        result ^= hash(elt)
+    return result

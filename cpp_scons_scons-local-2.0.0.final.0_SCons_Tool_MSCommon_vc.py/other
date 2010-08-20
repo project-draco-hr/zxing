@@ -1,0 +1,16 @@
+__revision__ = 'src/engine/SCons/Tool/MSCommon/vc.py 5023 2010/06/14 22:05:46 scons'
+__doc__ = 'Module for Visual C/C++ detection and configuration.\n'
+import SCons.compat
+import os
+import platform
+from string import digits as string_digits
+import SCons.Warnings
+import common
+debug = common.debug
+import sdk
+get_installed_sdks = sdk.get_installed_sdks
+_ARCH_TO_CANONICAL = {'amd64': 'amd64', 'emt64': 'amd64', 'i386': 'x86', 'i486': 'x86', 'i586': 'x86', 'i686': 'x86', 'ia64': 'ia64', 'itanium': 'ia64', 'x86': 'x86', 'x86_64': 'amd64', }
+_HOST_TARGET_ARCH_TO_BAT_ARCH = {('x86', 'x86'): 'x86', ('x86', 'amd64'): 'x86_amd64', ('amd64', 'amd64'): 'amd64', ('amd64', 'x86'): 'x86', ('x86', 'ia64'): 'x86_ia64', }
+_VCVER = ['10.0', '9.0', '9.0Exp', '8.0', '8.0Exp', '7.1', '7.0', '6.0']
+_VCVER_TO_PRODUCT_DIR = {'10.0': ['Microsoft\\VisualStudio\\10.0\\Setup\\VC\\ProductDir'], '9.0': ['Microsoft\\VisualStudio\\9.0\\Setup\\VC\\ProductDir'], '9.0Exp': ['Microsoft\\VCExpress\\9.0\\Setup\\VC\\ProductDir'], '8.0': ['Microsoft\\VisualStudio\\8.0\\Setup\\VC\\ProductDir'], '8.0Exp': ['Microsoft\\VCExpress\\8.0\\Setup\\VC\\ProductDir'], '7.1': ['Microsoft\\VisualStudio\\7.1\\Setup\\VC\\ProductDir'], '7.0': ['Microsoft\\VisualStudio\\7.0\\Setup\\VC\\ProductDir'], '6.0': ['Microsoft\\VisualStudio\\6.0\\Setup\\Microsoft Visual C++\\ProductDir'], }
+__INSTALLED_VCS_RUN = None

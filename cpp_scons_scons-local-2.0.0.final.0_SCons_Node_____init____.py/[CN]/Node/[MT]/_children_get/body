@@ -1,0 +1,20 @@
+def _children_get(self):
+    try:
+        return self._memo['children_get']
+    except KeyError:
+        pass
+    if self.ignore_set:
+        if (self.implicit is None):
+            iter = chain(self.sources, self.depends)
+        else:
+            iter = chain(self.sources, self.depends, self.implicit)
+        children = []
+        for i in iter:
+            if (i not in self.ignore_set):
+                children.append(i)
+    elif (self.implicit is None):
+        children = (self.sources + self.depends)
+    else:
+        children = ((self.sources + self.depends) + self.implicit)
+    self._memo['children_get'] = children
+    return children

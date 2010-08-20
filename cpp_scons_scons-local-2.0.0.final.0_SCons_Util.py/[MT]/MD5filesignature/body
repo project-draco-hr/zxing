@@ -1,0 +1,5 @@
+def MD5filesignature(fname, chunksize=65536):
+    f = open(fname, 'rb')
+    result = f.read()
+    f.close()
+    return result

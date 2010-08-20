@@ -1,0 +1,2 @@
+def chmod_strfunc(dest, mode):
+    return ('Chmod(%s, 0%o)' % (get_paths_str(dest), mode))

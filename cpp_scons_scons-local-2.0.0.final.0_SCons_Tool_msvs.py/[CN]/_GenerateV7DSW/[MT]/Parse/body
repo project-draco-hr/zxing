@@ -1,0 +1,23 @@
+def Parse(self):
+    try:
+        dswfile = open(self.dswfile, 'r')
+    except IOError:
+        return
+    line = dswfile.readline()
+    while line:
+        if (line[:9] == 'EndGlobal'):
+            break
+        line = dswfile.readline()
+    line = dswfile.readline()
+    datas = line
+    while line:
+        line = dswfile.readline()
+        datas = (datas + line)
+    try:
+        datas = base64.decodestring(datas)
+        data = pickle.loads(datas)
+    except KeyboardInterrupt:
+        raise
+    except:
+        return
+    self.configs.update(data)

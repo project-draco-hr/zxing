@@ -1,0 +1,9 @@
+def find_next_run_number(self, dir, prefix):
+    '\n        Returns the next run number in a directory for the specified prefix.\n\n        Examines the contents the specified directory for files with the\n        specified prefix, extracts the run numbers from each file name,\n        and returns the next run number after the largest it finds.\n        '
+    x = re.compile((re.escape(prefix) + '-([0-9]+).*'))
+    matches = [x.match(e) for e in os.listdir(dir)]
+    matches = [_f for _f in matches if _f]
+    if (not matches):
+        return 0
+    run_numbers = [int(m.group(1)) for m in matches]
+    return (int(max(run_numbers)) + 1)

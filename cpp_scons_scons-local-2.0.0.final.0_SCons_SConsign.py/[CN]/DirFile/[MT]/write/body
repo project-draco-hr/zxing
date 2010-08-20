@@ -1,0 +1,35 @@
+def write(self, sync=1):
+    "\n        Write the .sconsign file to disk.\n\n        Try to write to a temporary file first, and rename it if we\n        succeed.  If we can't write to the temporary file, it's\n        probably because the directory isn't writable (and if so,\n        how did we build anything in this directory, anyway?), so\n        try to write directly to the .sconsign file as a backup.\n        If we can't rename, try to copy the temporary contents back\n        to the .sconsign file.  Either way, always try to remove\n        the temporary file at the end.\n        "
+    if (not self.dirty):
+        return
+    self.merge()
+    temp = os.path.join(self.dir.path, ('.scons%d' % os.getpid()))
+    try:
+        file = open(temp, 'wb')
+        fname = temp
+    except IOError:
+        try:
+            file = open(self.sconsign, 'wb')
+            fname = self.sconsign
+        except IOError:
+            return
+    for (key, entry) in self.entries.items():
+        entry.convert_to_sconsign()
+    pickle.dump(self.entries, file, 1)
+    file.close()
+    if (fname != self.sconsign):
+        try:
+            mode = os.stat(self.sconsign)[0]
+            os.chmod(self.sconsign, 438)
+            os.unlink(self.sconsign)
+        except (IOError, OSError):
+            pass
+        try:
+            os.rename(fname, self.sconsign)
+        except OSError:
+            open(self.sconsign, 'wb').write(open(fname, 'rb').read())
+            os.chmod(self.sconsign, mode)
+    try:
+        os.unlink(temp)
+    except (IOError, OSError):
+        pass

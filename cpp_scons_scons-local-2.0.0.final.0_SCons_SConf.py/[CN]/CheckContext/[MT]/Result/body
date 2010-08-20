@@ -1,0 +1,14 @@
+def Result(self, res):
+    "Inform about the result of the test. res may be an integer or a\n        string. In case of an integer, the written text will be 'yes' or 'no'.\n        The result is only displayed when self.did_show_result is not set.\n        "
+    if isinstance(res, (int, bool)):
+        if res:
+            text = 'yes'
+        else:
+            text = 'no'
+    elif isinstance(res, str):
+        text = res
+    else:
+        raise TypeError(('Expected string, int or bool, got ' + str(type(res))))
+    if (self.did_show_result == 0):
+        self.Display((text + '\n'))
+        self.did_show_result = 1

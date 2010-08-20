@@ -1,0 +1,2 @@
+def is_String(obj, isinstance=isinstance, StringTypes=StringTypes):
+    return isinstance(obj, StringTypes)

@@ -1,0 +1,13 @@
+def generate(env):
+    'Add Builders and construction variables for ipkg to an Environment.'
+    try:
+        bld = env['BUILDERS']['Ipkg']
+    except KeyError:
+        bld = SCons.Builder.Builder(action='$IPKGCOM', suffix='$IPKGSUFFIX', source_scanner=None, target_scanner=None)
+        env['BUILDERS']['Ipkg'] = bld
+    env['IPKG'] = 'ipkg-build'
+    env['IPKGCOM'] = '$IPKG $IPKGFLAGS ${SOURCE}'
+    env['IPKGUSER'] = os.popen('id -un').read().strip()
+    env['IPKGGROUP'] = os.popen('id -gn').read().strip()
+    env['IPKGFLAGS'] = SCons.Util.CLVar('-o $IPKGUSER -g $IPKGGROUP')
+    env['IPKGSUFFIX'] = '.ipk'

@@ -1,0 +1,13 @@
+def __init__(self, env, tools, names):
+    if (not SCons.Util.is_List(tools)):
+        tools = [tools]
+    if (not SCons.Util.is_List(names)):
+        names = [names]
+    self.env = env
+    self.tools = tools
+    self.names = names
+    self.methods = {}
+    for name in names:
+        method = ToolInitializerMethod(name, self)
+        self.methods[name] = method
+        env.AddMethod(method)

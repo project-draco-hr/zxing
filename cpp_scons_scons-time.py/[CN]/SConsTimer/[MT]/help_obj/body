@@ -1,0 +1,4 @@
+def help_obj(self):
+    help = '        Usage: scons-time obj [OPTIONS] OBJECT FILE [...]\n\n          -C DIR, --chdir=DIR           Change to DIR before looking for files\n          -f FILE, --file=FILE          Read configuration from specified FILE\n          --fmt=FORMAT, --format=FORMAT Print data in specified FORMAT\n          -h, --help                    Print this help and exit\n          -p STRING, --prefix=STRING    Use STRING as log file/profile prefix\n          --stage=STAGE                 Plot memory at the specified stage:\n                                          pre-read, post-read, pre-build,\n                                          post-build (default: post-build)\n          -t NUMBER, --tail=NUMBER      Only report the last NUMBER files\n          --title=TITLE                 Specify the output plot TITLE\n        '
+    sys.stdout.write(self.outdent(help))
+    sys.stdout.flush()

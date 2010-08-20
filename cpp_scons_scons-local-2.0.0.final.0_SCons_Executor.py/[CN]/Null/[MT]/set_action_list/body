@@ -1,0 +1,3 @@
+def set_action_list(self, action):
+    self._morph()
+    self.set_action_list(action)

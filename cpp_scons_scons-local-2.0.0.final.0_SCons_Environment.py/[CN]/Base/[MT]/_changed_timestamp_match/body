@@ -1,0 +1,2 @@
+def _changed_timestamp_match(self, dependency, target, prev_ni):
+    return dependency.changed_timestamp_match(target, prev_ni)

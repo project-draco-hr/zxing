@@ -1,0 +1,11 @@
+"SCons.Tool.nasm\n\nTool-specific initialization for nasm, the famous Netwide Assembler.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/nasm.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Defaults
+import SCons.Tool
+import SCons.Util
+ASSuffixes = ['.s', '.asm', '.ASM']
+ASPPSuffixes = ['.spp', '.SPP', '.sx']
+if SCons.Util.case_sensitive_suffixes('.s', '.S'):
+    ASPPSuffixes.extend(['.S'])
+else:
+    ASSuffixes.extend(['.S'])

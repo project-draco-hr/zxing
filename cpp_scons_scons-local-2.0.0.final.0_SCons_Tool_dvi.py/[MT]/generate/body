@@ -1,0 +1,8 @@
+def generate(env):
+    try:
+        env['BUILDERS']['DVI']
+    except KeyError:
+        global DVIBuilder
+        if (DVIBuilder is None):
+            DVIBuilder = SCons.Builder.Builder(action={}, source_scanner=SCons.Tool.LaTeXScanner, suffix='.dvi', emitter={}, source_ext_match=None)
+        env['BUILDERS']['DVI'] = DVIBuilder

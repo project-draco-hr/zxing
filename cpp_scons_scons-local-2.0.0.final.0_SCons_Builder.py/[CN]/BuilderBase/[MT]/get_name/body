@@ -1,0 +1,10 @@
+def get_name(self, env):
+    "Attempts to get the name of the Builder.\n\n        Look at the BUILDERS variable of env, expecting it to be a\n        dictionary containing this Builder, and return the key of the\n        dictionary.  If there's no key, then return a directly-configured\n        name (if there is one) or the name of the class (by default)."
+    try:
+        index = list(env['BUILDERS'].values()).index(self)
+        return list(env['BUILDERS'].keys())[index]
+    except (AttributeError, KeyError, TypeError, ValueError):
+        try:
+            return self.name
+        except AttributeError:
+            return str(self.__class__)

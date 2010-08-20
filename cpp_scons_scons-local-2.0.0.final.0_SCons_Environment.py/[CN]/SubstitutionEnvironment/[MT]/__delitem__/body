@@ -1,0 +1,6 @@
+def __delitem__(self, key):
+    special = self._special_del.get(key)
+    if special:
+        special(self, key)
+    else:
+        del self._dict[key]

@@ -1,0 +1,2 @@
+def __cmp__(self, other):
+    return cmp(self._dict, other._dict)

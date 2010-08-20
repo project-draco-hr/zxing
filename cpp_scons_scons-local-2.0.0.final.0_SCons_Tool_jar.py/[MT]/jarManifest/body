@@ -1,0 +1,7 @@
+def jarManifest(target, source, env, for_signature):
+    'Look in sources for a manifest file, if any.'
+    for src in source:
+        contents = src.get_text_contents()
+        if (contents[:16] == 'Manifest-Version'):
+            return src
+    return ''

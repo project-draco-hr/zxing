@@ -1,0 +1,9 @@
+def __init__(self, name, args, expansion):
+    '\n        Squirrels away the arguments and expansion value of a #define\n        macro function for later evaluation when we must actually expand\n        a value that uses it.\n        '
+    self.name = name
+    self.args = function_arg_separator.split(args)
+    try:
+        expansion = expansion.split('##')
+    except AttributeError:
+        pass
+    self.expansion = expansion

@@ -1,0 +1,9 @@
+def get_min_y(self):
+    try:
+        return self.min_y
+    except AttributeError:
+        try:
+            self.min_y = min(self.get_all_y_values())
+        except ValueError:
+            self.min_y = 0
+        return self.min_y

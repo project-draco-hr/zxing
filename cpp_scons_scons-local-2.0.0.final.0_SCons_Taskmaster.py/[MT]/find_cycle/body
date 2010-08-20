@@ -1,0 +1,12 @@
+def find_cycle(stack, visited):
+    if (stack[(-1)] in visited):
+        return None
+    visited.add(stack[(-1)])
+    for n in stack[(-1)].waiting_parents:
+        stack.append(n)
+        if (stack[0] == stack[(-1)]):
+            return stack
+        if find_cycle(stack, visited):
+            return stack
+        stack.pop()
+    return None

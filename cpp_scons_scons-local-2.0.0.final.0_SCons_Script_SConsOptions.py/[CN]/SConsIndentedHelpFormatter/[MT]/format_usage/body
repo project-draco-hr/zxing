@@ -1,0 +1,2 @@
+def format_usage(self, usage):
+    return ('usage: %s\n' % usage)

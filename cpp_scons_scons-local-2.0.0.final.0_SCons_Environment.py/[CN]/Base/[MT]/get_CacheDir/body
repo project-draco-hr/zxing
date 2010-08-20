@@ -1,0 +1,14 @@
+def get_CacheDir(self):
+    try:
+        path = self._CacheDir_path
+    except AttributeError:
+        path = SCons.Defaults.DefaultEnvironment()._CacheDir_path
+    try:
+        if (path == self._last_CacheDir_path):
+            return self._last_CacheDir
+    except AttributeError:
+        pass
+    cd = SCons.CacheDir.CacheDir(path)
+    self._last_CacheDir_path = path
+    self._last_CacheDir = cd
+    return cd

@@ -1,0 +1,5 @@
+def mssdk_exists(version=None):
+    sdks = get_installed_sdks()
+    if (version is None):
+        return (len(sdks) > 0)
+    return (version in sdks)

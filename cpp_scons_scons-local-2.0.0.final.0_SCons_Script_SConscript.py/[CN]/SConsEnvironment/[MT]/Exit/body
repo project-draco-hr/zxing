@@ -1,0 +1,2 @@
+def Exit(self, value=0):
+    sys.exit(value)

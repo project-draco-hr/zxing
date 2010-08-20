@@ -1,0 +1,4 @@
+def generate(env):
+    'Add Builders and construction variables for as to an Environment.'
+    as_module.generate(env)
+    env['AS'] = (env.Detect(assemblers) or 'as')

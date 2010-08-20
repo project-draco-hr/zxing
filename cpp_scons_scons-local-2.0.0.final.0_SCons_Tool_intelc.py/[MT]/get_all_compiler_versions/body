@@ -1,0 +1,52 @@
+def get_all_compiler_versions():
+    'Returns a sorted list of strings, like "70" or "80" or "9.0"\n    with most recent compiler version first.\n    '
+    versions = []
+    if is_windows:
+        if is_win64:
+            keyname = 'Software\\WoW6432Node\\Intel\\Compilers\\C++'
+        else:
+            keyname = 'Software\\Intel\\Compilers\\C++'
+        try:
+            k = SCons.Util.RegOpenKeyEx(SCons.Util.HKEY_LOCAL_MACHINE, keyname)
+        except WindowsError:
+            return []
+        i = 0
+        versions = []
+        try:
+            while (i < 100):
+                subkey = SCons.Util.RegEnumKey(k, i)
+                ok = False
+                for try_abi in ('IA32', 'IA32e', 'IA64', 'EM64T'):
+                    try:
+                        d = get_intel_registry_value('ProductDir', subkey, try_abi)
+                    except MissingRegistryError:
+                        continue
+                    if os.path.exists(d):
+                        ok = True
+                if ok:
+                    versions.append(subkey)
+                else:
+                    try:
+                        value = get_intel_registry_value('ProductDir', subkey, 'IA32')
+                    except MissingRegistryError as e:
+                        print ('scons: *** Ignoring the registry key for the Intel compiler version %s.\nscons: *** It seems that the compiler was uninstalled and that the registry\nscons: *** was not cleaned up properly.\n' % subkey)
+                    else:
+                        print ('scons: *** Ignoring ' + str(value))
+                i = (i + 1)
+        except EnvironmentError:
+            pass
+    elif is_linux:
+        for d in glob.glob('/opt/intel_cc_*'):
+            m = re.search('cc_(.*)$', d)
+            if m:
+                versions.append(m.group(1))
+        for d in glob.glob('/opt/intel/cc*/*'):
+            m = re.search('([0-9.]+)$', d)
+            if m:
+                versions.append(m.group(1))
+    elif is_mac:
+        for d in glob.glob('/opt/intel/cc*/*'):
+            m = re.search('([0-9.]+)$', d)
+            if m:
+                versions.append(m.group(1))
+    return sorted(uniquify(versions))

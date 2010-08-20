@@ -1,0 +1,71 @@
+def Package(env, target=None, source=None, **kw):
+    ' Entry point for the package tool.\n    '
+    if (not source):
+        source = env.FindInstalledFiles()
+    if (len(source) == 0):
+        raise UserError('No source for Package() given')
+    try:
+        kw['PACKAGETYPE'] = env['PACKAGETYPE']
+    except KeyError:
+        pass
+    if (not kw.get('PACKAGETYPE')):
+        from SCons.Script import GetOption
+        kw['PACKAGETYPE'] = GetOption('package_type')
+    if (kw['PACKAGETYPE'] == None):
+        if ('Tar' in env['BUILDERS']):
+            kw['PACKAGETYPE'] = 'targz'
+        elif ('Zip' in env['BUILDERS']):
+            kw['PACKAGETYPE'] = 'zip'
+        else:
+            raise UserError('No type for Package() given')
+    PACKAGETYPE = kw['PACKAGETYPE']
+    if (not is_List(PACKAGETYPE)):
+        PACKAGETYPE = PACKAGETYPE.split(',')
+
+    def load_packager(type):
+        try:
+            (file, path, desc) = imp.find_module(type, __path__)
+            return imp.load_module(type, file, path, desc)
+        except ImportError as e:
+            raise EnvironmentError(('packager %s not available: %s' % (type, str(e))))
+    packagers = list(map(load_packager, PACKAGETYPE))
+    try:
+        if (not target):
+            target = []
+        size_diff = (len(PACKAGETYPE) - len(target))
+        default_name = '%(NAME)s-%(VERSION)s'
+        if (size_diff > 0):
+            default_target = (default_name % kw)
+            target.extend(([default_target] * size_diff))
+        if ('PACKAGEROOT' not in kw):
+            kw['PACKAGEROOT'] = (default_name % kw)
+    except KeyError as e:
+        raise SCons.Errors.UserError(("Missing Packagetag '%s'" % e.args[0]))
+    source = env.arg2nodes(source, env.fs.Entry)
+    targets = []
+    try:
+        for packager in packagers:
+            t = [target.pop(0)]
+            t = packager.package(env, t, source, **kw)
+            targets.extend(t)
+        assert (len(target) == 0)
+    except KeyError as e:
+        raise SCons.Errors.UserError(("Missing Packagetag '%s' for %s packager" % (e.args[0], packager.__name__)))
+    except TypeError as e:
+        from inspect import getargspec
+        (args, varargs, varkw, defaults) = getargspec(packager.package)
+        if (defaults != None):
+            args = args[:(- len(defaults))]
+        args.remove('env')
+        args.remove('target')
+        args.remove('source')
+        args = [x for x in args if (x not in kw)]
+        if (len(args) == 0):
+            raise
+        elif (len(args) == 1):
+            raise SCons.Errors.UserError(("Missing Packagetag '%s' for %s packager" % (args[0], packager.__name__)))
+        else:
+            raise SCons.Errors.UserError(("Missing Packagetags '%s' for %s packager" % (', '.join(args), packager.__name__)))
+    target = env.arg2nodes(target, env.fs.Entry)
+    targets.extend(env.Alias('package', targets))
+    return targets

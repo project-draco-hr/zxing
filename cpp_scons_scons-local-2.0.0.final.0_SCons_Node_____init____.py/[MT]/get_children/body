@@ -1,0 +1,2 @@
+def get_children(node, parent):
+    return node.children()

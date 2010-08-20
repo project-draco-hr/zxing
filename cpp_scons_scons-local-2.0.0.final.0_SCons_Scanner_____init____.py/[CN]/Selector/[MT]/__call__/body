@@ -1,0 +1,2 @@
+def __call__(self, node, env, path=()):
+    return self.select(node)(node, env, path)

@@ -1,0 +1,3 @@
+def __init__(self, tagset, mandatory=1):
+    self.tagset = tagset
+    self.mandatory = mandatory

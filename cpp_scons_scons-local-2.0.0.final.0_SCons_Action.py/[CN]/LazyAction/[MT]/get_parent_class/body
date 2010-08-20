@@ -1,0 +1,5 @@
+def get_parent_class(self, env):
+    c = env.get(self.var)
+    if (is_String(c) and (not ('\n' in c))):
+        return CommandAction
+    return CommandGeneratorAction

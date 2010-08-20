@@ -1,0 +1,10 @@
+def __call__(self, target, source, env):
+    emitter = self.var
+    while (SCons.Util.is_String(emitter) and (emitter in env)):
+        emitter = env[emitter]
+    if callable(emitter):
+        (target, source) = emitter(target, source, env)
+    elif SCons.Util.is_List(emitter):
+        for e in emitter:
+            (target, source) = e(target, source, env)
+    return (target, source)

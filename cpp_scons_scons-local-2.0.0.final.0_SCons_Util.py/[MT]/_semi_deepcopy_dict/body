@@ -1,0 +1,5 @@
+def _semi_deepcopy_dict(x):
+    copy = {}
+    for (key, val) in x.items():
+        copy[key] = semi_deepcopy(val)
+    return copy

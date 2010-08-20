@@ -1,0 +1,31 @@
+def BuildNodes(self, nodes):
+    '\n        Tries to build the given nodes immediately. Returns 1 on success,\n        0 on error.\n        '
+    if (self.logstream is not None):
+        oldStdout = sys.stdout
+        sys.stdout = self.logstream
+        oldStderr = sys.stderr
+        sys.stderr = self.logstream
+    old_fs_dir = SConfFS.getcwd()
+    old_os_dir = os.getcwd()
+    SConfFS.chdir(SConfFS.Top, change_os_dir=1)
+    for n in nodes:
+        n.store_info = n.do_not_store_info
+    ret = 1
+    try:
+        save_max_drift = SConfFS.get_max_drift()
+        SConfFS.set_max_drift(0)
+        tm = SCons.Taskmaster.Taskmaster(nodes, SConfBuildTask)
+        jobs = SCons.Job.Jobs(1, tm)
+        jobs.run()
+        for n in nodes:
+            state = n.get_state()
+            if ((state != SCons.Node.executed) and (state != SCons.Node.up_to_date)):
+                ret = 0
+    finally:
+        SConfFS.set_max_drift(save_max_drift)
+        os.chdir(old_os_dir)
+        SConfFS.chdir(old_fs_dir, change_os_dir=0)
+        if (self.logstream is not None):
+            sys.stdout = oldStdout
+            sys.stderr = oldStderr
+    return ret

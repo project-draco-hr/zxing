@@ -1,0 +1,24 @@
+def get_next(self):
+    'Return the next node for this walk of the tree.\n\n        This function is intentionally iterative, not recursive,\n        to sidestep any issues of stack size limitations.\n        '
+    while self.stack:
+        if self.stack[(-1)].wkids:
+            node = self.stack[(-1)].wkids.pop(0)
+            if (not self.stack[(-1)].wkids):
+                self.stack[(-1)].wkids = None
+            if (node in self.history):
+                self.cycle_func(node, self.stack)
+            else:
+                node.wkids = copy.copy(self.kids_func(node, self.stack[(-1)]))
+                self.stack.append(node)
+                self.history[node] = None
+        else:
+            node = self.stack.pop()
+            del self.history[node]
+            if node:
+                if self.stack:
+                    parent = self.stack[(-1)]
+                else:
+                    parent = None
+                self.eval_func(node, parent)
+            return node
+    return None

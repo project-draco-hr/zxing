@@ -1,0 +1,13 @@
+def makeHierarchy(sources):
+    'Break a list of files into a hierarchy; for each value, if it is a string,\n       then it is a file.  If it is a dictionary, it is a folder.  The string is\n       the original path of the file.'
+    hierarchy = {}
+    for file in sources:
+        path = splitFully(file)
+        if len(path):
+            dict = hierarchy
+            for part in path[:(-1)]:
+                if (part not in dict):
+                    dict[part] = {}
+                dict = dict[part]
+            dict[path[(-1)]] = file
+    return hierarchy

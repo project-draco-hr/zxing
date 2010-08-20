@@ -1,0 +1,11 @@
+def SConf(*args, **kw):
+    if kw.get(build_type, True):
+        kw['_depth'] = (kw.get('_depth', 0) + 1)
+        for bt in build_types:
+            try:
+                del kw[bt]
+            except KeyError:
+                pass
+        return SConfBase(*args, **kw)
+    else:
+        return SCons.Util.Null()

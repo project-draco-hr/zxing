@@ -1,0 +1,4 @@
+def get_xlf77(env):
+    xlf77 = env.get('F77', 'xlf77')
+    xlf77_r = env.get('SHF77', 'xlf77_r')
+    return (None, xlf77, xlf77_r, None)

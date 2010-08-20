@@ -1,0 +1,6 @@
+def plot_string(self):
+    if self.title:
+        title_string = ('title "%s"' % self.title)
+    else:
+        title_string = 'notitle'
+    return ("'-' %s with lines lt %s" % (title_string, self.type))

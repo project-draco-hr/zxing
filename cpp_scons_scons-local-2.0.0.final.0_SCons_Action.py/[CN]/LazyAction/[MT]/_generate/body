@@ -1,0 +1,2 @@
+def _generate(self, target, source, env, for_signature, executor=None):
+    return self._generate_cache(env)

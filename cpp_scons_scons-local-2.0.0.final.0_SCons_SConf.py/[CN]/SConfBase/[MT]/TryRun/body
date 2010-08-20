@@ -1,0 +1,13 @@
+def TryRun(self, text, extension):
+    "Compiles and runs the program given in text, using extension\n        as file extension (e.g. '.c'). Returns (1, outputStr) on success,\n        (0, '') otherwise. The target (a file containing the program's stdout)\n        is saved in self.lastTarget (for further processing).\n        "
+    ok = self.TryLink(text, extension)
+    if ok:
+        prog = self.lastTarget
+        pname = prog.path
+        output = self.confdir.File((os.path.basename(pname) + '.out'))
+        node = self.env.Command(output, prog, [[pname, '>', '${TARGET}']])
+        ok = self.BuildNodes(node)
+        if ok:
+            outputStr = output.get_contents()
+            return (1, outputStr)
+    return (0, '')

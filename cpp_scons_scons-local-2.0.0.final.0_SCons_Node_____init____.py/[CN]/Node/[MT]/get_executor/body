@@ -1,0 +1,15 @@
+def get_executor(self, create=1):
+    "Fetch the action executor for this node.  Create one if\n        there isn't already one, and requested to do so."
+    try:
+        executor = self.executor
+    except AttributeError:
+        if (not create):
+            raise
+        try:
+            act = self.builder.action
+        except AttributeError:
+            executor = SCons.Executor.Null(targets=[self])
+        else:
+            executor = SCons.Executor.Executor(act, (self.env or self.builder.env), [self.builder.overrides], [self], self.sources)
+        self.executor = executor
+    return executor

@@ -1,0 +1,9 @@
+'SCons.Tool.FortranCommon\n\nStuff for processing Fortran, common to all fortran dialects.\n\n'
+__revision__ = 'src/engine/SCons/Tool/FortranCommon.py 5023 2010/06/14 22:05:46 scons'
+import re
+import os.path
+import SCons.Action
+import SCons.Defaults
+import SCons.Scanner.Fortran
+import SCons.Tool
+import SCons.Util

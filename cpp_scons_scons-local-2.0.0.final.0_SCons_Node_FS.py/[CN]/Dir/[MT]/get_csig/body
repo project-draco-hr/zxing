@@ -1,0 +1,4 @@
+def get_csig(self):
+    'Compute the content signature for Directory nodes. In\n        general, this is not needed and the content signature is not\n        stored in the DirNodeInfo. However, if get_contents on a Dir\n        node is called which has a child directory, the child\n        directory should return the hash of its contents.'
+    contents = self.get_contents()
+    return SCons.Util.MD5signature(contents)

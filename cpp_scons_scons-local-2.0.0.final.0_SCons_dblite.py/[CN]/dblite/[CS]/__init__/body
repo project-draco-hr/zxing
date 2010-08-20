@@ -1,0 +1,45 @@
+def __init__(self, file_base_name, flag, mode):
+    assert (flag in (None, 'r', 'w', 'c', 'n'))
+    if (flag is None):
+        flag = 'r'
+    (base, ext) = os.path.splitext(file_base_name)
+    if (ext == dblite_suffix):
+        self._file_name = file_base_name
+        self._tmp_name = (base + tmp_suffix)
+    else:
+        self._file_name = (file_base_name + dblite_suffix)
+        self._tmp_name = (file_base_name + tmp_suffix)
+    self._flag = flag
+    self._mode = mode
+    self._dict = {}
+    self._needs_sync = 0
+    if ((self._os_chown is not None) and ((os.geteuid() == 0) or (os.getuid() == 0))):
+        try:
+            statinfo = os.stat(self._file_name)
+            self._chown_to = statinfo.st_uid
+            self._chgrp_to = statinfo.st_gid
+        except OSError as e:
+            self._chown_to = int(os.environ.get('SUDO_UID', (-1)))
+            self._chgrp_to = int(os.environ.get('SUDO_GID', (-1)))
+    else:
+        self._chown_to = (-1)
+        self._chgrp_to = (-1)
+    if (self._flag == 'n'):
+        self._open(self._file_name, 'wb', self._mode)
+    else:
+        try:
+            f = self._open(self._file_name, 'rb')
+        except IOError as e:
+            if (self._flag != 'c'):
+                raise e
+            self._open(self._file_name, 'wb', self._mode)
+        else:
+            p = f.read()
+            if (len(p) > 0):
+                try:
+                    self._dict = pickle.loads(p)
+                except (pickle.UnpicklingError, EOFError):
+                    if (ignore_corrupt_dbfiles == 0):
+                        raise
+                    if (ignore_corrupt_dbfiles == 1):
+                        corruption_warning(self._file_name)

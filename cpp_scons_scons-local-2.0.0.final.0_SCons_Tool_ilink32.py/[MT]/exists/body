@@ -1,0 +1,2 @@
+def exists(env):
+    return SCons.Tool.bcc32.findIt('bcc32', env)

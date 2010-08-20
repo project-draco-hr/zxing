@@ -1,0 +1,4 @@
+def _set_future_reserved(env, key, value):
+    env._dict[key] = value
+    msg = "`$%s' will be reserved in a future release and setting it will become ignored"
+    SCons.Warnings.warn(SCons.Warnings.FutureReservedVariableWarning, (msg % key))

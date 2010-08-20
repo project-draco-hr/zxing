@@ -1,0 +1,8 @@
+def read_file(self, file):
+    try:
+        fp = open(str(file.rfile()))
+    except EnvironmentError as e:
+        self.missing.append((file, self.current_file))
+        return ''
+    else:
+        return fp.read()

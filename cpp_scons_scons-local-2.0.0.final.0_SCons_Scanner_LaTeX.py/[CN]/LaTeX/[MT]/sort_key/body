@@ -1,0 +1,2 @@
+def sort_key(self, include):
+    return SCons.Node.FS._my_normcase(str(include))

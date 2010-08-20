@@ -1,0 +1,7 @@
+def raise_exception(exception, target, s):
+    name = exception.__class__.__name__
+    msg = ("%s `%s' trying to evaluate `%s'" % (name, exception, s))
+    if target:
+        raise SCons.Errors.BuildError(target[0], msg)
+    else:
+        raise SCons.Errors.UserError(msg)

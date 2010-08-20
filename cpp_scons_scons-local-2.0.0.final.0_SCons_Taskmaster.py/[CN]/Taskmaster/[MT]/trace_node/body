@@ -1,0 +1,2 @@
+def trace_node(self, node):
+    return ('<%-10s %-3s %s>' % (StateString[node.get_state()], node.ref_count, repr(str(node))))

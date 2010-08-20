@@ -1,0 +1,14 @@
+def get_default_version(env):
+    'Returns the default version string to use for MSVS.\n\n    If no version was requested by the user through the MSVS environment\n    variable, query all the available the visual studios through\n    query_versions, and take the highest one.\n\n    Return\n    ------\n    version: str\n        the default version.\n    '
+    if (('MSVS' not in env) or (not SCons.Util.is_Dict(env['MSVS']))):
+        versions = [vs.version for vs in get_installed_visual_studios()]
+        env['MSVS'] = {'VERSIONS': versions, }
+    else:
+        versions = env['MSVS'].get('VERSIONS', [])
+    if ('MSVS_VERSION' not in env):
+        if versions:
+            env['MSVS_VERSION'] = versions[0]
+        else:
+            env['MSVS_VERSION'] = SupportedVSList[0].version
+    env['MSVS']['VERSION'] = env['MSVS_VERSION']
+    return env['MSVS_VERSION']

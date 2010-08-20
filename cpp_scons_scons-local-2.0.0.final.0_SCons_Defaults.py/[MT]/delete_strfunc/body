@@ -1,0 +1,2 @@
+def delete_strfunc(dest, must_exist=0):
+    return ('Delete(%s)' % get_paths_str(dest))

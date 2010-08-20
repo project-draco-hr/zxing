@@ -1,0 +1,3 @@
+def EnableMemoization():
+    global use_memoizer
+    use_memoizer = 1

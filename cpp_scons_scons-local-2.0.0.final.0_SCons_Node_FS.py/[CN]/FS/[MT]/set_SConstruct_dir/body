@@ -1,0 +1,2 @@
+def set_SConstruct_dir(self, dir):
+    self.SConstruct_dir = dir

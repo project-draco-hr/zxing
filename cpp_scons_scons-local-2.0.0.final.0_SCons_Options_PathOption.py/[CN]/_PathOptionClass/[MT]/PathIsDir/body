@@ -1,0 +1,3 @@
+def PathIsDir(self, *args, **kw):
+    self.warn()
+    return SCons.Variables.PathVariable.PathIsDir(*args, **kw)

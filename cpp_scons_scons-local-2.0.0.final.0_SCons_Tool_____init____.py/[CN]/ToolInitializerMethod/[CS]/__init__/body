@@ -1,0 +1,4 @@
+def __init__(self, name, initializer):
+    '\n        Note:  we store the tool name as __name__ so it can be used by\n        the class that attaches this to a construction environment.\n        '
+    self.__name__ = name
+    self.initializer = initializer

@@ -1,0 +1,2 @@
+def no_batch_key(self, env, target, source):
+    return None

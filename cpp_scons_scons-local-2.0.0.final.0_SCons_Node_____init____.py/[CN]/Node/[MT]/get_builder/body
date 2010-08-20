@@ -1,0 +1,6 @@
+def get_builder(self, default_builder=None):
+    'Return the set builder, or a specified default value'
+    try:
+        return self.builder
+    except AttributeError:
+        return default_builder

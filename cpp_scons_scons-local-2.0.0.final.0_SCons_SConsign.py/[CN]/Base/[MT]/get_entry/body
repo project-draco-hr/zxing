@@ -1,0 +1,3 @@
+def get_entry(self, filename):
+    '\n        Fetch the specified entry attribute.\n        '
+    return self.entries[filename]

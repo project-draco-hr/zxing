@@ -1,0 +1,17 @@
+def generate(env):
+    'Add a Builder factory function and construction variables for\n    CVS to an Environment.'
+
+    def CVSFactory(repos, module='', env=env):
+        ' '
+        import SCons.Warnings as W
+        W.warn(W.DeprecatedSourceCodeWarning, 'The CVS() factory is deprecated and there is no replacement.')
+        if (module != ''):
+            module = (module + '/')
+            env['CVSCOM'] = '$CVS $CVSFLAGS co $CVSCOFLAGS -d ${TARGET.dir} $CVSMODULE${TARGET.posix}'
+        act = SCons.Action.Action('$CVSCOM', '$CVSCOMSTR')
+        return SCons.Builder.Builder(action=act, env=env, CVSREPOSITORY=repos, CVSMODULE=module)
+    env.CVS = CVSFactory
+    env['CVS'] = 'cvs'
+    env['CVSFLAGS'] = SCons.Util.CLVar('-d $CVSREPOSITORY')
+    env['CVSCOFLAGS'] = SCons.Util.CLVar('')
+    env['CVSCOM'] = '$CVS $CVSFLAGS co $CVSCOFLAGS ${TARGET.posix}'

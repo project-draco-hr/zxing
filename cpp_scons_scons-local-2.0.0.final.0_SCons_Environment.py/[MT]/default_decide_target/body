@@ -1,0 +1,3 @@
+def default_decide_target(dependency, target, prev_ni):
+    f = SCons.Defaults.DefaultEnvironment().decide_target
+    return f(dependency, target, prev_ni)

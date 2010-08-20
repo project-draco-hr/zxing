@@ -1,0 +1,12 @@
+def node_conv(obj):
+    '\n    This is the "string conversion" routine that we have our substitutions\n    use to return Nodes, not strings.  This relies on the fact that an\n    EntryProxy object has a get() method that returns the underlying\n    Node that it wraps, which is a bit of architectural dependence\n    that we might need to break or modify in the future in response to\n    additional requirements.\n    '
+    try:
+        get = obj.get
+    except AttributeError:
+        if (isinstance(obj, SCons.Node.Node) or SCons.Util.is_Sequence(obj)):
+            result = obj
+        else:
+            result = str(obj)
+    else:
+        result = get()
+    return result

@@ -1,0 +1,6 @@
+def prep_subversion_run(self, commands, removals):
+    self.svn_tmpdir = make_temp_file(prefix=(self.name + '-svn-'))
+    removals.append((shutil.rmtree, 'rm -rf %%s', self.svn_tmpdir))
+    self.scons = self.scons_path(self.svn_tmpdir)
+    self.scons_lib_dir = self.scons_lib_dir_path(self.svn_tmpdir)
+    commands.extend(['mkdir %(svn_tmpdir)s', '%(svn)s co %(svn_co_flag)s -r %(run_number)s %(subversion_url)s %(svn_tmpdir)s'])

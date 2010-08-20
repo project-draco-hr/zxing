@@ -1,0 +1,46 @@
+def Update(self, env, args=None):
+    '\n        Update an environment with the option variables.\n\n        env - the environment to update.\n        '
+    values = {}
+    for option in self.options:
+        if (not (option.default is None)):
+            values[option.key] = option.default
+    for filename in self.files:
+        if os.path.exists(filename):
+            dir = os.path.split(os.path.abspath(filename))[0]
+            if dir:
+                sys.path.insert(0, dir)
+            try:
+                values['__name__'] = filename
+                exec open(filename, 'rU').read() in {}, values
+            finally:
+                if dir:
+                    del sys.path[0]
+                del values['__name__']
+    if (args is None):
+        args = self.args
+    for (arg, value) in args.items():
+        added = False
+        for option in self.options:
+            if (arg in (list(option.aliases) + [option.key])):
+                values[option.key] = value
+                added = True
+        if (not added):
+            self.unknown[arg] = value
+    for option in self.options:
+        try:
+            env[option.key] = values[option.key]
+        except KeyError:
+            pass
+    for option in self.options:
+        if (option.converter and (option.key in values)):
+            value = env.subst(('${%s}' % option.key))
+            try:
+                try:
+                    env[option.key] = option.converter(value)
+                except TypeError:
+                    env[option.key] = option.converter(value, env)
+            except ValueError as x:
+                raise SCons.Errors.UserError(('Error converting option: %s\n%s' % (option.key, x)))
+    for option in self.options:
+        if (option.validator and (option.key in values)):
+            option.validator(option.key, env.subst(('${%s}' % option.key)), env)

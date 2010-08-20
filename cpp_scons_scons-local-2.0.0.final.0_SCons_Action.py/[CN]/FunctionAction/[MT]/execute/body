@@ -1,0 +1,29 @@
+def execute(self, target, source, env, executor=None):
+    exc_info = (None, None, None)
+    try:
+        if executor:
+            target = executor.get_all_targets()
+            source = executor.get_all_sources()
+        rsources = list(map(rfile, source))
+        try:
+            result = self.execfunction(target=target, source=rsources, env=env)
+        except KeyboardInterrupt as e:
+            raise
+        except SystemExit as e:
+            raise
+        except Exception as e:
+            result = e
+            exc_info = sys.exc_info()
+        if result:
+            result = SCons.Errors.convert_to_BuildError(result, exc_info)
+            result.node = target
+            result.action = self
+            try:
+                result.command = self.strfunction(target, source, env, executor)
+            except TypeError:
+                result.command = self.strfunction(target, source, env)
+            if (exc_info[1] and (not isinstance(exc_info[1], EnvironmentError))):
+                raise result
+        return result
+    finally:
+        del exc_info

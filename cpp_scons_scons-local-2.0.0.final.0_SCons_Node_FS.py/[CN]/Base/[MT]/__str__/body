@@ -1,0 +1,6 @@
+def __str__(self):
+    "A Node.FS.Base object's string representation is its path\n        name."
+    global Save_Strings
+    if Save_Strings:
+        return self._save_str()
+    return self._get_str()

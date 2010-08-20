@@ -1,0 +1,17 @@
+def format(self, field_list=None, names=0):
+    if (field_list is None):
+        try:
+            field_list = self.field_list
+        except AttributeError:
+            field_list = sorted(self.__dict__.keys())
+    fields = []
+    for field in field_list:
+        try:
+            f = getattr(self, field)
+        except AttributeError:
+            f = None
+        f = str(f)
+        if names:
+            f = ((field + ': ') + f)
+        fields.append(f)
+    return fields

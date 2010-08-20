@@ -1,0 +1,4 @@
+def shlib_emitter(target, source, env):
+    for tgt in target:
+        tgt.attributes.shared = 1
+    return (target, source)

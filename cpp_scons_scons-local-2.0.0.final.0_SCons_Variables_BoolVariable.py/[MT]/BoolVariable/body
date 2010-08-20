@@ -1,0 +1,3 @@
+def BoolVariable(key, help, default):
+    "\n    The input parameters describe a boolen option, thus they are\n    returned with the correct converter and validator appended. The\n    'help' text will by appended by '(yes|no) to show the valid\n    valued. The result is usable for input to opts.Add().\n    "
+    return (key, ('%s (yes|no)' % help), default, _validator, _text2bool)

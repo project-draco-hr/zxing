@@ -1,0 +1,7 @@
+def CreateDialectActions(dialect):
+    'Create dialect specific actions.'
+    CompAction = SCons.Action.Action(('$%sCOM ' % dialect), ('$%sCOMSTR' % dialect))
+    CompPPAction = SCons.Action.Action(('$%sPPCOM ' % dialect), ('$%sPPCOMSTR' % dialect))
+    ShCompAction = SCons.Action.Action(('$SH%sCOM ' % dialect), ('$SH%sCOMSTR' % dialect))
+    ShCompPPAction = SCons.Action.Action(('$SH%sPPCOM ' % dialect), ('$SH%sPPCOMSTR' % dialect))
+    return (CompAction, CompPPAction, ShCompAction, ShCompPPAction)

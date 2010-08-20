@@ -1,0 +1,5 @@
+def get_scanner(self, skey):
+    'Find the appropriate scanner given a key (usually a file suffix).\n        '
+    if (skey and (self['PLATFORM'] == 'win32')):
+        skey = skey.lower()
+    return self._gsm().get(skey)

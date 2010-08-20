@@ -1,0 +1,13 @@
+def generate(env):
+    'Add Builders and construction variables for SunPRO C++.'
+    (path, cxx, shcxx, version) = get_cppc(env)
+    if path:
+        cxx = os.path.join(path, cxx)
+        shcxx = os.path.join(path, shcxx)
+    cplusplus.generate(env)
+    env['CXX'] = cxx
+    env['SHCXX'] = shcxx
+    env['CXXVERSION'] = version
+    env['SHCXXFLAGS'] = SCons.Util.CLVar('$CXXFLAGS -KPIC')
+    env['SHOBJPREFIX'] = 'so_'
+    env['SHOBJSUFFIX'] = '.o'

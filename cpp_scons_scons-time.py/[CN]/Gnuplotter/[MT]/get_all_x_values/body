@@ -1,0 +1,5 @@
+def get_all_x_values(self):
+    result = []
+    for line in self.lines:
+        result.extend(line.get_x_values())
+    return [r for r in result if (not (r is None))]

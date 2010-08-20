@@ -1,0 +1,2 @@
+def exists(env):
+    return mssdk_exists()

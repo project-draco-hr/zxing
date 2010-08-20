@@ -1,0 +1,7 @@
+def __getattr__(self, name):
+    if (name == 'env'):
+        return self.object
+    elif (name == 'builder'):
+        return self.method
+    else:
+        raise AttributeError(name)

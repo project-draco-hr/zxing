@@ -1,0 +1,7 @@
+def do_elif(self, t):
+    '\n        Default handling of a #elif line.\n        '
+    d = self.dispatch_table
+    if self.eval_expression(t):
+        self.start_handling_includes()
+        d['elif'] = self.stop_handling_includes
+        d['else'] = self.stop_handling_includes

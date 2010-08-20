@@ -1,0 +1,2 @@
+def rel_path(self, other):
+    return self.dir.rel_path(other)

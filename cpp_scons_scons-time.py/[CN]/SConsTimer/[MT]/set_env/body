@@ -1,0 +1,2 @@
+def set_env(self, key, value):
+    os.environ[key] = value

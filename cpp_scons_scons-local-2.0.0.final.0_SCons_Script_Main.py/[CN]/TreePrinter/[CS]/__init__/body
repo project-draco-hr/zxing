@@ -1,0 +1,4 @@
+def __init__(self, derived=False, prune=False, status=False):
+    self.derived = derived
+    self.prune = prune
+    self.status = status

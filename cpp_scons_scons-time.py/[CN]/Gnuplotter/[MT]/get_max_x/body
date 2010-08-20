@@ -1,0 +1,9 @@
+def get_max_x(self):
+    try:
+        return self.max_x
+    except AttributeError:
+        try:
+            self.max_x = max(self.get_all_x_values())
+        except ValueError:
+            self.max_x = 0
+        return self.max_x

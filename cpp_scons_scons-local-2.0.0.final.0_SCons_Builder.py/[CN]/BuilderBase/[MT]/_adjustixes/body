@@ -1,0 +1,11 @@
+def _adjustixes(self, files, pre, suf, ensure_suffix=False):
+    if (not files):
+        return []
+    result = []
+    if (not SCons.Util.is_List(files)):
+        files = [files]
+    for f in files:
+        if SCons.Util.is_String(f):
+            f = SCons.Util.adjustixes(f, pre, suf, ensure_suffix)
+        result.append(f)
+    return result

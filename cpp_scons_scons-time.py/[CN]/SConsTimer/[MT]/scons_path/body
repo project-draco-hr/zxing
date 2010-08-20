@@ -1,0 +1,2 @@
+def scons_path(self, dir):
+    return os.path.join(dir, 'src', 'script', 'scons.py')

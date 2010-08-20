@@ -1,0 +1,3 @@
+def __init__(self, list, func):
+    self.list = list
+    self.func = func

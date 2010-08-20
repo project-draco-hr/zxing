@@ -1,0 +1,14 @@
+def __init__(self, name, suffixes, path_variable, regex, *args, **kw):
+    self.cre = re.compile(regex, re.M)
+
+    def _scan(node, env, path=(), self=self):
+        node = node.rfile()
+        if (not node.exists()):
+            return []
+        return self.scan(node, path)
+    kw['function'] = _scan
+    kw['path_function'] = FindPathDirs(path_variable)
+    kw['recursive'] = 1
+    kw['skeys'] = suffixes
+    kw['name'] = name
+    Current.__init__(self, *args, **kw)

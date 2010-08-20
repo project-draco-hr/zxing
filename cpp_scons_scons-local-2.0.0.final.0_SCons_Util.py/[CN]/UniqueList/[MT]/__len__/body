@@ -1,0 +1,3 @@
+def __len__(self):
+    self.__make_unique()
+    return UserList.__len__(self)

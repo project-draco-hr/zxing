@@ -1,0 +1,3 @@
+def __getitem__(self, i):
+    nl = self.func()
+    return nl[i]

@@ -1,0 +1,2 @@
+def _find_file_key(self, filename, paths, verbose=None):
+    return (filename, paths)

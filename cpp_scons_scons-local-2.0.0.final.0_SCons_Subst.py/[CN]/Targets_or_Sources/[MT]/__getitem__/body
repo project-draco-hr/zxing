@@ -1,0 +1,3 @@
+def __getitem__(self, i):
+    nl = self.nl._create_nodelist()
+    return nl[i]

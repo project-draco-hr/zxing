@@ -1,0 +1,4 @@
+def set_entry(self, filename, obj):
+    '\n        Set the entry.\n        '
+    self.entries[filename] = obj
+    self.dirty = True

@@ -1,0 +1,3 @@
+def select_scanner(self, scanner):
+    "Selects a scanner for this Node.\n\n        This is a separate method so it can be overridden by Node\n        subclasses (specifically, Node.FS.Dir) that *must* use their\n        own Scanner and don't select one the Scanner.Selector that's\n        configured for the target.\n        "
+    return scanner.select(self)

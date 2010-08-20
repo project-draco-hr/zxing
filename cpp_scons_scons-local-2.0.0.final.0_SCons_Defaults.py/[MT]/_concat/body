@@ -1,0 +1,8 @@
+def _concat(prefix, list, suffix, env, f=(lambda x: x), target=None, source=None):
+    "\n    Creates a new list from 'list' by first interpolating each element\n    in the list using the 'env' dictionary and then calling f on the\n    list, and finally calling _concat_ixes to concatenate 'prefix' and\n    'suffix' onto each element of the list.\n    "
+    if (not list):
+        return list
+    l = f(SCons.PathList.PathList(list).subst_path(env, target, source))
+    if (l is not None):
+        list = l
+    return _concat_ixes(prefix, list, suffix, env)

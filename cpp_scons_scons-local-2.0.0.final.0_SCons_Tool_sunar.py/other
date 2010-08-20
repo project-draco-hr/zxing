@@ -1,0 +1,5 @@
+"engine.SCons.Tool.sunar\n\nTool-specific initialization for Solaris (Forte) ar (library archive). If CC\nexists, static libraries should be built with it, so that template\ninstantians can be resolved.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n"
+__revision__ = 'src/engine/SCons/Tool/sunar.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Defaults
+import SCons.Tool
+import SCons.Util

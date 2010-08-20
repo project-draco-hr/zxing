@@ -1,0 +1,17 @@
+def CheckFunc(context, function_name, header=None, language=None):
+    '\n    Configure check for a function "function_name".\n    "language" should be "C" or "C++" and is used to select the compiler.\n    Default is "C".\n    Optional "header" can be defined to define a function prototype, include a\n    header file or anything else that comes before main().\n    Sets HAVE_function_name in context.havedict according to the result.\n    Note that this uses the current value of compiler and linker flags, make\n    sure $CFLAGS, $CPPFLAGS and $LIBS are set correctly.\n    Returns an empty string for success, an error message for failure.\n    '
+    if context.headerfilename:
+        includetext = ('#include "%s"' % context.headerfilename)
+    else:
+        includetext = ''
+    if (not header):
+        header = ('\n#ifdef __cplusplus\nextern "C"\n#endif\nchar %s();' % function_name)
+    (lang, suffix, msg) = _lang2suffix(language)
+    if msg:
+        context.Display(('Cannot check for %s(): %s\n' % (function_name, msg)))
+        return msg
+    text = ('\n%(include)s\n#include <assert.h>\n%(hdr)s\n\nint main() {\n#if defined (__stub_%(name)s) || defined (__stub___%(name)s)\n  fail fail fail\n#else\n  %(name)s();\n#endif\n\n  return 0;\n}\n' % {'name': function_name, 'include': includetext, 'hdr': header, })
+    context.Display(('Checking for %s function %s()... ' % (lang, function_name)))
+    ret = context.BuildProg(text, suffix)
+    _YesNoResult(context, ret, ('HAVE_' + function_name), text, ("Define to 1 if the system has the function `%s'." % function_name))
+    return ret

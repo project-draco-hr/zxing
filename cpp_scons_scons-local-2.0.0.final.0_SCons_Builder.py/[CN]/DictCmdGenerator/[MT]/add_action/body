@@ -1,0 +1,3 @@
+def add_action(self, suffix, action):
+    'Add a suffix-action pair to the mapping.\n        '
+    self[suffix] = action

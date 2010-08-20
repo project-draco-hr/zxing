@@ -1,0 +1,40 @@
+def _action(target, source, env):
+    linesep = env['LINESEPARATOR']
+    if (linesep is None):
+        linesep = os.linesep
+    elif is_String(linesep):
+        pass
+    elif isinstance(linesep, Value):
+        linesep = linesep.get_text_contents()
+    else:
+        raise SCons.Errors.UserError(('unexpected type/class for LINESEPARATOR: %s' % repr(linesep)), None)
+    if ('SUBST_DICT' not in env):
+        subs = None
+    else:
+        d = env['SUBST_DICT']
+        if is_Dict(d):
+            d = list(d.items())
+        elif is_Sequence(d):
+            pass
+        else:
+            raise SCons.Errors.UserError('SUBST_DICT must be dict or sequence')
+        subs = []
+        for (k, v) in d:
+            if callable(v):
+                v = v()
+            if is_String(v):
+                v = env.subst(v)
+            else:
+                v = str(v)
+            subs.append((k, v))
+    try:
+        fd = open(target[0].get_path(), 'wb')
+    except (OSError, IOError) as e:
+        raise SCons.Errors.UserError(("Can't write target file %s" % target[0]))
+    lsep = None
+    for s in source:
+        if lsep:
+            fd.write(lsep)
+        fd.write(_do_subst(s, subs))
+        lsep = linesep
+    fd.close()

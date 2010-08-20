@@ -1,0 +1,8 @@
+def Split(self, arg):
+    'This function converts a string or list into a list of strings\n        or Nodes.  This makes things easier for users by allowing files to\n        be specified as a white-space separated list to be split.\n        The input rules are:\n            - A single string containing names separated by spaces. These will be\n              split apart at the spaces.\n            - A single Node instance\n            - A list containing either strings or Node instances. Any strings\n              in the list are not split at spaces.\n        In all cases, the function returns a list of Nodes and strings.'
+    if SCons.Util.is_List(arg):
+        return list(map(self.subst, arg))
+    elif SCons.Util.is_String(arg):
+        return self.subst(arg).split()
+    else:
+        return [self.subst(arg)]

@@ -1,0 +1,2 @@
+def TryLink(self, *args, **kw):
+    return self.sconf.TryLink(*args, **kw)

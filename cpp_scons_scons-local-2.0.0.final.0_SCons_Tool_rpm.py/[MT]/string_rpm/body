@@ -1,0 +1,5 @@
+def string_rpm(target, source, env):
+    try:
+        return env['RPMCOMSTR']
+    except KeyError:
+        return get_cmd(source, env)

@@ -1,0 +1,6 @@
+def get_sdk_by_version(mssdk):
+    if (mssdk not in SupportedSDKMap):
+        msg = ('SDK version %s is not supported' % repr(mssdk))
+        raise SCons.Errors.UserError(msg)
+    get_installed_sdks()
+    return InstalledSDKMap.get(mssdk)

@@ -1,0 +1,8 @@
+def subst(self, string, raw=0, target=None, source=None, conv=None, executor=None):
+    'Recursively interpolates construction variables from the\n        Environment into the specified string, returning the expanded\n        result.  Construction variables are specified by a $ prefix\n        in the string and begin with an initial underscore or\n        alphabetic character followed by any number of underscores\n        or alphanumeric characters.  The construction variable names\n        may be surrounded by curly braces to separate the name from\n        trailing characters.\n        '
+    gvars = self.gvars()
+    lvars = self.lvars()
+    lvars['__env__'] = self
+    if executor:
+        lvars.update(executor.get_lvars())
+    return SCons.Subst.scons_subst(string, self, raw, target, source, gvars, lvars, conv)

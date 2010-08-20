@@ -1,0 +1,5 @@
+'SCons.Tool.dvi\n\nCommon DVI Builder definition for various other Tool modules that use it.\n\n'
+__revision__ = 'src/engine/SCons/Tool/dvi.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Builder
+import SCons.Tool
+DVIBuilder = None

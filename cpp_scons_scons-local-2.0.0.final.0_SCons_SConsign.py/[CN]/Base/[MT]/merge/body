@@ -1,0 +1,11 @@
+def merge(self):
+    for (key, node) in self.to_be_merged.items():
+        entry = node.get_stored_info()
+        try:
+            ninfo = entry.ninfo
+        except AttributeError:
+            pass
+        else:
+            ninfo.merge(node.get_ninfo())
+        self.entries[key] = entry
+    self.to_be_merged = {}

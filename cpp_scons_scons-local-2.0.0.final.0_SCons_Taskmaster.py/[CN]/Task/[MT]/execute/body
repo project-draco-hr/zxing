@@ -1,0 +1,28 @@
+def execute(self):
+    '\n        Called to execute the task.\n\n        This method is called from multiple threads in a parallel build,\n        so only do thread safe stuff here.  Do thread unsafe stuff in\n        prepare(), executed() or failed().\n        '
+    T = self.tm.trace
+    if T:
+        T.write(self.trace_message(u'Task.execute()', self.node))
+    try:
+        everything_was_cached = 1
+        for t in self.targets:
+            if t.retrieve_from_cache():
+                t.set_state(NODE_EXECUTED)
+                t.built()
+            else:
+                everything_was_cached = 0
+                break
+        if (not everything_was_cached):
+            self.targets[0].build()
+    except SystemExit:
+        exc_value = sys.exc_info()[1]
+        raise SCons.Errors.ExplicitExit(self.targets[0], exc_value.code)
+    except SCons.Errors.UserError:
+        raise
+    except SCons.Errors.BuildError:
+        raise
+    except Exception as e:
+        buildError = SCons.Errors.convert_to_BuildError(e)
+        buildError.node = self.targets[0]
+        buildError.exc_info = sys.exc_info()
+        raise buildError

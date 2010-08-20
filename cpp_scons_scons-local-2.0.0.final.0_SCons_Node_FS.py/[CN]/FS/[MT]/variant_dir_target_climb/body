@@ -1,0 +1,17 @@
+def variant_dir_target_climb(self, orig, dir, tail):
+    "Create targets in corresponding variant directories\n\n        Climb the directory tree, and look up path names\n        relative to any linked variant directories we find.\n\n        Even though this loops and walks up the tree, we don't memoize\n        the return value because this is really only used to process\n        the command-line targets.\n        "
+    targets = []
+    message = None
+    fmt = 'building associated VariantDir targets: %s'
+    start_dir = dir
+    while dir:
+        for bd in dir.variant_dirs:
+            if start_dir.is_under(bd):
+                return ([orig], (fmt % str(orig)))
+            p = os.path.join(bd.path, *tail)
+            targets.append(self.Entry(p))
+        tail = ([dir.name] + tail)
+        dir = dir.up()
+    if targets:
+        message = (fmt % ' '.join(map(str, targets)))
+    return (targets, message)

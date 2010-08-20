@@ -1,0 +1,21 @@
+def CheckType(context, type_name, fallback=None, header=None, language=None):
+    '\n    Configure check for a C or C++ type "type_name".\n    Optional "header" can be defined to include a header file.\n    "language" should be "C" or "C++" and is used to select the compiler.\n    Default is "C".\n    Sets HAVE_type_name in context.havedict according to the result.\n    Note that this uses the current value of compiler and linker flags, make\n    sure $CFLAGS, $CPPFLAGS and $LIBS are set correctly.\n    Returns an empty string for success, an error message for failure.\n    '
+    if context.headerfilename:
+        includetext = ('#include "%s"' % context.headerfilename)
+    else:
+        includetext = ''
+    if (not header):
+        header = ''
+    (lang, suffix, msg) = _lang2suffix(language)
+    if msg:
+        context.Display(('Cannot check for %s type: %s\n' % (type_name, msg)))
+        return msg
+    text = ('\n%(include)s\n%(header)s\n\nint main() {\n  if ((%(name)s *) 0)\n    return 0;\n  if (sizeof (%(name)s))\n    return 0;\n}\n' % {'include': includetext, 'header': header, 'name': type_name, })
+    context.Display(('Checking for %s type %s... ' % (lang, type_name)))
+    ret = context.BuildProg(text, suffix)
+    _YesNoResult(context, ret, ('HAVE_' + type_name), text, ("Define to 1 if the system has the type `%s'." % type_name))
+    if (ret and fallback and context.headerfilename):
+        f = open(context.headerfilename, 'a')
+        f.write(('typedef %s %s;\n' % (fallback, type_name)))
+        f.close()
+    return ret

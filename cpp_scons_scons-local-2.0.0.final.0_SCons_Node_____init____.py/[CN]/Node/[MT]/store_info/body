@@ -1,0 +1,3 @@
+def store_info(self):
+    'Make the build signature permanent (that is, store it in the\n        .sconsign file or equivalent).'
+    pass

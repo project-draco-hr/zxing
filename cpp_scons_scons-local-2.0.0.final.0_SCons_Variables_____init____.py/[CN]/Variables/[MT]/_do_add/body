@@ -1,0 +1,20 @@
+def _do_add(self, key, help='', default=None, validator=None, converter=None):
+
+
+    class Variable(object):
+        pass
+    option = Variable()
+    if (SCons.Util.is_List(key) or SCons.Util.is_Tuple(key)):
+        option.key = key[0]
+        option.aliases = key[1:]
+    else:
+        option.key = key
+        option.aliases = [key]
+    option.help = help
+    option.default = default
+    option.validator = validator
+    option.converter = converter
+    self.options.append(option)
+    for alias in (list(option.aliases) + [option.key]):
+        if (alias in self.unknown):
+            del self.unknown[alias]

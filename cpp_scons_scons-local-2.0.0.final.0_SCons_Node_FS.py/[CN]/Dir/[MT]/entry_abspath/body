@@ -1,0 +1,2 @@
+def entry_abspath(self, name):
+    return ((self.abspath + os.sep) + name)

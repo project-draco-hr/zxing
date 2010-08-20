@@ -1,0 +1,2 @@
+def corrupt_dblite_warning(filename):
+    SCons.Warnings.warn(SCons.Warnings.CorruptSConsignWarning, ('Ignoring corrupt .sconsign file: %s' % filename))

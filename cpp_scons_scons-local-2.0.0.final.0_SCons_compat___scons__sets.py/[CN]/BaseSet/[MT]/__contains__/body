@@ -1,0 +1,9 @@
+def __contains__(self, element):
+    "Report whether an element is a member of a set.\n\n        (Called in response to the expression `element in self'.)\n        "
+    try:
+        return (element in self._data)
+    except TypeError:
+        transform = getattr(element, '__as_temporarily_immutable__', None)
+        if (transform is None):
+            raise
+        return (transform() in self._data)

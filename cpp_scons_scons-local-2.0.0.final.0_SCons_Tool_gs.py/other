@@ -1,0 +1,13 @@
+"SCons.Tool.gs\n\nTool-specific initialization for Ghostscript.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/gs.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Action
+import SCons.Platform
+import SCons.Util
+platform = SCons.Platform.platform_default()
+if (platform == 'os2'):
+    gs = 'gsos2'
+elif (platform == 'win32'):
+    gs = 'gswin32c'
+else:
+    gs = 'gs'
+GhostscriptAction = None

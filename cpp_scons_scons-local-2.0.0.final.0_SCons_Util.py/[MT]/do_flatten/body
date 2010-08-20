@@ -1,0 +1,6 @@
+def do_flatten(sequence, result, isinstance=isinstance, StringTypes=StringTypes, SequenceTypes=SequenceTypes):
+    for item in sequence:
+        if (isinstance(item, StringTypes) or (not isinstance(item, SequenceTypes))):
+            result.append(item)
+        else:
+            do_flatten(item, result)

@@ -1,0 +1,2 @@
+def get_x_values(self):
+    return [p[0] for p in self.points]

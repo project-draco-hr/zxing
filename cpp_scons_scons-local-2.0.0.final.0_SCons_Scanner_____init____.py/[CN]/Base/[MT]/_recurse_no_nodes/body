@@ -1,0 +1,2 @@
+def _recurse_no_nodes(self, nodes):
+    return []

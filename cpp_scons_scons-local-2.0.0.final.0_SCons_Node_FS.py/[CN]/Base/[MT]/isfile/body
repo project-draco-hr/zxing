@@ -1,0 +1,3 @@
+def isfile(self):
+    st = self.stat()
+    return ((st is not None) and stat.S_ISREG(st[stat.ST_MODE]))

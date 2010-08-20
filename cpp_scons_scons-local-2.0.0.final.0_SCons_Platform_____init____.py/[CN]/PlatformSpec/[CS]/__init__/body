@@ -1,0 +1,3 @@
+def __init__(self, name, generate):
+    self.name = name
+    self.generate = generate

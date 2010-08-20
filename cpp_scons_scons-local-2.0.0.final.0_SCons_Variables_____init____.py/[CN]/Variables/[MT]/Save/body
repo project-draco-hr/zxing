@@ -1,0 +1,30 @@
+def Save(self, filename, env):
+    '\n        Saves all the options in the given file.  This file can\n        then be used to load the options next run.  This can be used\n        to create an option cache file.\n\n        filename - Name of the file to save into\n        env - the environment get the option values from\n        '
+    try:
+        fh = open(filename, 'w')
+        try:
+            for option in self.options:
+                try:
+                    value = env[option.key]
+                    try:
+                        prepare = value.prepare_to_store
+                    except AttributeError:
+                        try:
+                            eval(repr(value))
+                        except KeyboardInterrupt:
+                            raise
+                        except:
+                            value = SCons.Util.to_String(value)
+                    else:
+                        value = prepare()
+                    defaultVal = env.subst(SCons.Util.to_String(option.default))
+                    if option.converter:
+                        defaultVal = option.converter(defaultVal)
+                    if (str(env.subst(('${%s}' % option.key))) != str(defaultVal)):
+                        fh.write(('%s = %s\n' % (option.key, repr(value))))
+                except KeyError:
+                    pass
+        finally:
+            fh.close()
+    except IOError as x:
+        raise SCons.Errors.UserError(('Error writing options to file: %s\n%s' % (filename, x)))

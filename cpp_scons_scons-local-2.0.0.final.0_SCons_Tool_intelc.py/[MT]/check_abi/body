@@ -1,0 +1,16 @@
+def check_abi(abi):
+    'Check for valid ABI (application binary interface) name,\n    and map into canonical one'
+    if (not abi):
+        return None
+    abi = abi.lower()
+    if is_windows:
+        valid_abis = {'ia32': 'ia32', 'x86': 'ia32', 'ia64': 'ia64', 'em64t': 'em64t', 'amd64': 'em64t', }
+    if is_linux:
+        valid_abis = {'ia32': 'ia32', 'x86': 'ia32', 'x86_64': 'x86_64', 'em64t': 'x86_64', 'amd64': 'x86_64', }
+    if is_mac:
+        valid_abis = {'ia32': 'ia32', 'x86': 'ia32', 'x86_64': 'x86_64', 'em64t': 'x86_64', }
+    try:
+        abi = valid_abis[abi]
+    except KeyError:
+        raise SCons.Errors.UserError(('Intel compiler: Invalid ABI %s, valid values are %s' % (abi, list(valid_abis.keys()))))
+    return abi

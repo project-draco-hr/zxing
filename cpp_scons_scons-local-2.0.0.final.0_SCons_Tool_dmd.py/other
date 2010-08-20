@@ -1,0 +1,10 @@
+"SCons.Tool.dmd\n\nTool-specific initialization for the Digital Mars D compiler.\n(http://digitalmars.com/d)\n\nCoded by Andy Friesen (andy@ikagames.com)\n15 November 2003\n\nThere are a number of problems with this script at this point in time.\nThe one that irritates me the most is the Windows linker setup.  The D\nlinker doesn't have a way to add lib paths on the commandline, as far\nas I can see.  You have to specify paths relative to the SConscript or\nuse absolute paths.  To hack around it, add '#/blah'.  This will link\nblah.lib from the directory where SConstruct resides.\n\nCompiler variables:\n    DC - The name of the D compiler to use.  Defaults to dmd or gdmd,\n    whichever is found.\n    DPATH - List of paths to search for import modules.\n    DVERSIONS - List of version tags to enable when compiling.\n    DDEBUG - List of debug tags to enable when compiling.\n\nLinker related variables:\n    LIBS - List of library files to link in.\n    DLINK - Name of the linker to use.  Defaults to dmd or gdmd.\n    DLINKFLAGS - List of linker flags.\n\nLib tool variables:\n    DLIB - Name of the lib tool to use.  Defaults to lib.\n    DLIBFLAGS - List of flags to pass to the lib tool.\n    LIBS - Same as for the linker. (libraries to pull into the .lib)\n"
+__revision__ = 'src/engine/SCons/Tool/dmd.py 5023 2010/06/14 22:05:46 scons'
+import os
+import SCons.Action
+import SCons.Builder
+import SCons.Defaults
+import SCons.Scanner.D
+import SCons.Tool
+smart_link = {}
+smart_lib = {}

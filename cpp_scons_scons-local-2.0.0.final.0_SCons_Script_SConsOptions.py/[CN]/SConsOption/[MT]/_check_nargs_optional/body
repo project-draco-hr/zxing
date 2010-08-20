@@ -1,0 +1,4 @@
+def _check_nargs_optional(self):
+    if ((self.nargs == '?') and self._short_opts):
+        fmt = "option %s: nargs='?' is incompatible with short options"
+        raise SCons.Errors.UserError((fmt % self._short_opts[0]))

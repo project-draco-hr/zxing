@@ -1,0 +1,5 @@
+def copy(self):
+    import copy
+    result = copy.copy(self)
+    result.m = self.m.copy()
+    return result

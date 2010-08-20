@@ -1,0 +1,5 @@
+def msvc_exists(version=None):
+    vcs = cached_get_installed_vcs()
+    if (version is None):
+        return (len(vcs) > 0)
+    return (version in vcs)

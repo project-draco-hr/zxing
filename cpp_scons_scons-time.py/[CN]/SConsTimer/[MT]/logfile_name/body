@@ -1,0 +1,4 @@
+def logfile_name(self, invocation):
+    '\n        Returns the absolute path of a log file for the specificed\n        invocation number.\n        '
+    name = (self.prefix_run + ('-%d.log' % invocation))
+    return os.path.join(self.outdir, name)

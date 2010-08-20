@@ -1,0 +1,43 @@
+'SCons.Action\n\nThis encapsulates information about executing any sort of action that\ncan build one or more target Nodes (typically files) from one or more\nsource Nodes (also typically files) given a specific Environment.\n\nThe base class here is ActionBase.  The base class supplies just a few\nOO utility methods and some generic methods for displaying information\nabout an Action in response to the various commands that control printing.\n\nA second-level base class is _ActionAction.  This extends ActionBase\nby providing the methods that can be used to show and perform an\naction.  True Action objects will subclass _ActionAction; Action\nfactory class objects will subclass ActionBase.\n\nThe heavy lifting is handled by subclasses for the different types of\nactions we might execute:\n\n    CommandAction\n    CommandGeneratorAction\n    FunctionAction\n    ListAction\n\nThe subclasses supply the following public interface methods used by\nother modules:\n\n    __call__()\n        THE public interface, "calling" an Action object executes the\n        command or Python function.  This also takes care of printing\n        a pre-substitution command for debugging purposes.\n\n    get_contents()\n        Fetches the "contents" of an Action for signature calculation\n        plus the varlist.  This is what gets MD5 checksummed to decide\n        if a target needs to be rebuilt because its action changed.\n\n    genstring()\n        Returns a string representation of the Action *without*\n        command substitution, but allows a CommandGeneratorAction to\n        generate the right action based on the specified target,\n        source and env.  This is used by the Signature subsystem\n        (through the Executor) to obtain an (imprecise) representation\n        of the Action operation for informative purposes.\n\n\nSubclasses also supply the following methods for internal use within\nthis module:\n\n    __str__()\n        Returns a string approximation of the Action; no variable\n        substitution is performed.\n\n    execute()\n        The internal method that really, truly, actually handles the\n        execution of a command or Python function.  This is used so\n        that the __call__() methods can take care of displaying any\n        pre-substitution representations, and *then* execute an action\n        without worrying about the specific Actions involved.\n\n    get_presig()\n        Fetches the "contents" of a subclass for signature calculation.\n        The varlist is added to this to produce the Action\'s contents.\n\n    strfunction()\n        Returns a substituted string representation of the Action.\n        This is used by the _ActionAction.show() command to display the\n        command/function that will be executed to generate the target(s).\n\nThere is a related independent ActionCaller class that looks like a\nregular Action, and which serves as a wrapper for arbitrary functions\nthat we want to let the user specify the arguments to now, but actually\nexecute later (when an out-of-date check determines that it\'s needed to\nbe executed, for example).  Objects of this class are returned by an\nActionFactory class that provides a __call__() method as a convenient\nway for wrapping up the functions.\n\n'
+__revision__ = 'src/engine/SCons/Action.py 5023 2010/06/14 22:05:46 scons'
+import SCons.compat
+import dis
+import os
+import pickle
+import re
+import sys
+import subprocess
+from SCons.Debug import logInstanceCreation
+import SCons.Errors
+import SCons.Executor
+import SCons.Util
+import SCons.Subst
+is_String = SCons.Util.is_String
+is_List = SCons.Util.is_List
+print_actions = 1
+execute_actions = 1
+print_actions_presub = 0
+try:
+    SET_LINENO = dis.SET_LINENO
+    HAVE_ARGUMENT = dis.HAVE_ARGUMENT
+except AttributeError:
+    remove_set_lineno_codes = (lambda x: x)
+else:
+
+    def remove_set_lineno_codes(code):
+        result = []
+        n = len(code)
+        i = 0
+        while (i < n):
+            c = code[i]
+            op = ord(c)
+            if (op >= HAVE_ARGUMENT):
+                if (op != SET_LINENO):
+                    result.append(code[i:(i + 3)])
+                i = (i + 3)
+            else:
+                result.append(c)
+                i = (i + 1)
+        return ''.join(result)
+strip_quotes = re.compile('^[\'"](.*)[\'"]$')
+default_ENV = None

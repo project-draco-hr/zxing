@@ -1,0 +1,57 @@
+def explain(self):
+    if (not self.exists()):
+        return ("building `%s' because it doesn't exist\n" % self)
+    if self.always_build:
+        return ("rebuilding `%s' because AlwaysBuild() is specified\n" % self)
+    old = self.get_stored_info()
+    if (old is None):
+        return None
+    old = old.binfo
+    old.prepare_dependencies()
+    try:
+        old_bkids = ((old.bsources + old.bdepends) + old.bimplicit)
+        old_bkidsigs = ((old.bsourcesigs + old.bdependsigs) + old.bimplicitsigs)
+    except AttributeError:
+        return ("Cannot explain why `%s' is being rebuilt: No previous build information found\n" % self)
+    new = self.get_binfo()
+    new_bkids = ((new.bsources + new.bdepends) + new.bimplicit)
+    new_bkidsigs = ((new.bsourcesigs + new.bdependsigs) + new.bimplicitsigs)
+    osig = dict(zip(old_bkids, old_bkidsigs))
+    nsig = dict(zip(new_bkids, new_bkidsigs))
+
+    def stringify(s, E=self.dir.Entry):
+        if hasattr(s, 'dir'):
+            return str(E(s))
+        return str(s)
+    lines = []
+    removed = [x for x in old_bkids if (not (x in new_bkids))]
+    if removed:
+        removed = list(map(stringify, removed))
+        fmt = "`%s' is no longer a dependency\n"
+        lines.extend([(fmt % s) for s in removed])
+    for k in new_bkids:
+        if (not (k in old_bkids)):
+            lines.append(("`%s' is a new dependency\n" % stringify(k)))
+        elif k.changed_since_last_build(self, osig[k]):
+            lines.append(("`%s' changed\n" % stringify(k)))
+    if ((len(lines) == 0) and (old_bkids != new_bkids)):
+        lines.append((('the dependency order changed:\n' + ('%sold: %s\n' % ((' ' * 15), list(map(stringify, old_bkids))))) + ('%snew: %s\n' % ((' ' * 15), list(map(stringify, new_bkids))))))
+    if (len(lines) == 0):
+
+        def fmt_with_title(title, strlines):
+            lines = strlines.split('\n')
+            sep = ('\n' + (' ' * (15 + len(title))))
+            return ((((' ' * 15) + title) + sep.join(lines)) + '\n')
+        if (old.bactsig != new.bactsig):
+            if (old.bact == new.bact):
+                lines.append(('the contents of the build action changed\n' + fmt_with_title('action: ', new.bact)))
+            else:
+                lines.append((('the build action changed:\n' + fmt_with_title('old: ', old.bact)) + fmt_with_title('new: ', new.bact)))
+    if (len(lines) == 0):
+        return ("rebuilding `%s' for unknown reasons\n" % self)
+    preamble = ("rebuilding `%s' because" % self)
+    if (len(lines) == 1):
+        return ('%s %s' % (preamble, lines[0]))
+    else:
+        lines = ([('%s:\n' % preamble)] + lines)
+        return (' ' * 11).join(lines)

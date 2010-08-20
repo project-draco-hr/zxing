@@ -1,0 +1,12 @@
+def _do_if_else_condition(self, condition):
+    '\n        Common logic for evaluating the conditions on #if, #ifdef and\n        #ifndef lines.\n        '
+    self.save()
+    d = self.dispatch_table
+    if condition:
+        self.start_handling_includes()
+        d['elif'] = self.stop_handling_includes
+        d['else'] = self.stop_handling_includes
+    else:
+        self.stop_handling_includes()
+        d['elif'] = self.do_elif
+        d['else'] = self.start_handling_includes

@@ -1,0 +1,3 @@
+def get(self, key, default=None):
+    'Emulates the get() method of dictionaries.'
+    return self._dict.get(key, default)

@@ -1,0 +1,7 @@
+def DviPsStrFunction(target=None, source=None, env=None):
+    'A strfunction for dvipdf that returns the appropriate\n    command string for the no_exec options.'
+    if env.GetOption('no_exec'):
+        result = env.subst('$PSCOM', 0, target, source)
+    else:
+        result = ''
+    return result

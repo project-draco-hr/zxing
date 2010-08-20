@@ -1,0 +1,5 @@
+def __init__(self, subject, overrides={}):
+    if __debug__:
+        logInstanceCreation(self, 'Environment.OverrideEnvironment')
+    self.__dict__['__subject'] = subject
+    self.__dict__['overrides'] = overrides

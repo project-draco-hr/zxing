@@ -1,0 +1,6 @@
+def get_presig(self, target, source, env):
+    'Return the signature contents of this callable action.'
+    try:
+        return self.gc(target, source, env)
+    except AttributeError:
+        return self.funccontents

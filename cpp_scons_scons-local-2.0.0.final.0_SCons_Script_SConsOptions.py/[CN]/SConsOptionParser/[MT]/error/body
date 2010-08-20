@@ -1,0 +1,4 @@
+def error(self, msg):
+    self.print_usage(sys.stderr)
+    sys.stderr.write(('SCons error: %s\n' % msg))
+    sys.exit(2)

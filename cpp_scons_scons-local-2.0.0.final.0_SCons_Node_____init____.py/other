@@ -1,0 +1,22 @@
+'SCons.Node\n\nThe Node package for the SCons software construction utility.\n\nThis is, in many ways, the heart of SCons.\n\nA Node is where we encapsulate all of the dependency information about\nany thing that SCons can build, or about any thing which SCons can use\nto build some other thing.  The canonical "thing," of course, is a file,\nbut a Node can also represent something remote (like a web page) or\nsomething completely abstract (like an Alias).\n\nEach specific type of "thing" is specifically represented by a subclass\nof the Node base class:  Node.FS.File for files, Node.Alias for aliases,\netc.  Dependency information is kept here in the base class, and\ninformation specific to files/aliases/etc. is in the subclass.  The\ngoal, if we\'ve done this correctly, is that any type of "thing" should\nbe able to depend on any other type of "thing."\n\n'
+__revision__ = 'src/engine/SCons/Node/__init__.py 5023 2010/06/14 22:05:46 scons'
+import collections
+import copy
+from itertools import chain
+from SCons.Debug import logInstanceCreation
+import SCons.Executor
+import SCons.Memoize
+import SCons.Util
+from SCons.Debug import Trace
+no_state = 0
+pending = 1
+executing = 2
+up_to_date = 3
+executed = 4
+failed = 5
+StateString = {0: 'no_state', 1: 'pending', 2: 'executing', 3: 'up_to_date', 4: 'executed', 5: 'failed', }
+implicit_cache = 0
+implicit_deps_unchanged = 0
+implicit_deps_changed = 0
+Annotate = do_nothing
+arg2nodes_lookups = []

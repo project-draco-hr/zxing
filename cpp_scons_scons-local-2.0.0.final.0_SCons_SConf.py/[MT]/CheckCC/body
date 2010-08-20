@@ -1,0 +1,4 @@
+def CheckCC(context):
+    res = SCons.Conftest.CheckCC(context)
+    context.did_show_result = 1
+    return (not res)

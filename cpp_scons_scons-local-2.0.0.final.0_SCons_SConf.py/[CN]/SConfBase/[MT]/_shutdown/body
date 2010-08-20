@@ -1,0 +1,17 @@
+def _shutdown(self):
+    'Private method. Reset to non-piped spawn'
+    global sconf_global, _ac_config_hs
+    if (not self.active):
+        raise SCons.Errors.UserError('Finish may be called only once!')
+    if ((self.logstream is not None) and (not dryrun)):
+        self.logstream.write('\n')
+        self.logstream.close()
+        self.logstream = None
+    blds = self.env['BUILDERS']
+    del blds['SConfSourceBuilder']
+    self.env.Replace(BUILDERS=blds)
+    self.active = 0
+    sconf_global = None
+    if (not (self.config_h is None)):
+        _ac_config_hs[self.config_h] = self.config_h_text
+    self.env.fs = self.lastEnvFs

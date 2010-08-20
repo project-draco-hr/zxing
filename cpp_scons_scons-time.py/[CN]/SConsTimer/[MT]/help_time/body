@@ -1,0 +1,4 @@
+def help_time(self):
+    help = '        Usage: scons-time time [OPTIONS] FILE [...]\n\n          -C DIR, --chdir=DIR           Change to DIR before looking for files\n          -f FILE, --file=FILE          Read configuration from specified FILE\n          --fmt=FORMAT, --format=FORMAT Print data in specified FORMAT\n          -h, --help                    Print this help and exit\n          -p STRING, --prefix=STRING    Use STRING as log file/profile prefix\n          -t NUMBER, --tail=NUMBER      Only report the last NUMBER files\n          --which=TIMER                 Plot timings for TIMER:  total,\n                                          SConscripts, SCons, commands.\n        '
+    sys.stdout.write(self.outdent(help))
+    sys.stdout.flush()

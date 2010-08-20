@@ -1,0 +1,6 @@
+def __init__(self, method_name):
+    '\n        '
+    self.method_name = method_name
+    self.hit = 0
+    self.miss = 0
+    CounterList.append(self)

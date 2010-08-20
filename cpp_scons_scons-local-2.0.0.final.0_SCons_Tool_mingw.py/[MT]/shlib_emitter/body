@@ -1,0 +1,12 @@
+def shlib_emitter(target, source, env):
+    dll = env.FindIxes(target, 'SHLIBPREFIX', 'SHLIBSUFFIX')
+    no_import_lib = env.get('no_import_lib', 0)
+    if (not dll):
+        raise SCons.Errors.UserError(('A shared library should have exactly one target with the suffix: %s' % env.subst('$SHLIBSUFFIX')))
+    if ((not no_import_lib) and (not env.FindIxes(target, 'LIBPREFIX', 'LIBSUFFIX'))):
+        target.append(env.ReplaceIxes(dll, 'SHLIBPREFIX', 'SHLIBSUFFIX', 'LIBPREFIX', 'LIBSUFFIX'))
+    def_source = env.FindIxes(source, 'WINDOWSDEFPREFIX', 'WINDOWSDEFSUFFIX')
+    def_target = env.FindIxes(target, 'WINDOWSDEFPREFIX', 'WINDOWSDEFSUFFIX')
+    if ((not def_source) and (not def_target)):
+        target.append(env.ReplaceIxes(dll, 'SHLIBPREFIX', 'SHLIBSUFFIX', 'WINDOWSDEFPREFIX', 'WINDOWSDEFSUFFIX'))
+    return (target, source)

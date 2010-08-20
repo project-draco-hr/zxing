@@ -1,0 +1,8 @@
+def __call__(self, key, help, default, validator=None):
+    "\n        The input parameters describe a 'path list' option, thus they\n        are returned with the correct converter and validator appended. The\n        result is usable for input to opts.Add() .\n\n        The 'default' option specifies the default path to use if the\n        user does not specify an override with this option.\n\n        validator is a validator, see this file for examples\n        "
+    if (validator is None):
+        validator = self.PathExists
+    if (SCons.Util.is_List(key) or SCons.Util.is_Tuple(key)):
+        return (key, ('%s ( /path/to/%s )' % (help, key[0])), default, validator, None)
+    else:
+        return (key, ('%s ( /path/to/%s )' % (help, key)), default, validator, None)

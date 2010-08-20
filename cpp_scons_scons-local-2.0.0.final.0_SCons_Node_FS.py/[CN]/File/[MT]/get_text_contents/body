@@ -1,0 +1,9 @@
+def get_text_contents(self):
+    contents = self.get_contents()
+    if contents.startswith(codecs.BOM_UTF8):
+        return contents[len(codecs.BOM_UTF8):].decode('utf-8')
+    if contents.startswith(codecs.BOM_UTF16_LE):
+        return contents[len(codecs.BOM_UTF16_LE):].decode('utf-16-le')
+    if contents.startswith(codecs.BOM_UTF16_BE):
+        return contents[len(codecs.BOM_UTF16_BE):].decode('utf-16-be')
+    return contents

@@ -1,0 +1,2 @@
+def SetOption(name, value):
+    return OptionsParser.values.set_option(name, value)

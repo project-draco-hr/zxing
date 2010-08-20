@@ -1,0 +1,6 @@
+__doc__ = '\nio compatibility module for older (pre-2.6) Python versions\n\nThis does not not NOT (repeat, *NOT*) provide complete io\nfunctionality.  It only wraps the portions of io functionality used\nby SCons, in an interface that looks enough like io for our purposes.\n'
+__revision__ = 'src/engine/SCons/compat/_scons_io.py 5023 2010/06/14 22:05:46 scons'
+import imp
+_cStringIO = imp.load_module('cStringIO', *imp.find_module('cStringIO'))
+StringIO = _cStringIO.StringIO
+del _cStringIO

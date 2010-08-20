@@ -1,0 +1,12 @@
+def retrieve(self, node):
+    "\n        This method is called from multiple threads in a parallel build,\n        so only do thread safe stuff here. Do thread unsafe stuff in\n        built().\n\n        Note that there's a special trick here with the execute flag\n        (one that's not normally done for other actions).  Basically\n        if the user requested a no_exec (-n) build, then\n        SCons.Action.execute_actions is set to 0 and when any action\n        is called, it does its showing but then just returns zero\n        instead of actually calling the action execution operation.\n        The problem for caching is that if the file does NOT exist in\n        cache then the CacheRetrieveString won't return anything to\n        show for the task, but the Action.__call__ won't call\n        CacheRetrieveFunc; instead it just returns zero, which makes\n        the code below think that the file *was* successfully\n        retrieved from the cache, therefore it doesn't do any\n        subsequent building.  However, the CacheRetrieveString didn't\n        print anything because it didn't actually exist in the cache,\n        and no more build actions will be performed, so the user just\n        sees nothing.  The fix is to tell Action.__call__ to always\n        execute the CacheRetrieveFunc and then have the latter\n        explicitly check SCons.Action.execute_actions itself.\n        "
+    if (not self.is_enabled()):
+        return False
+    env = node.get_build_env()
+    if cache_show:
+        if (CacheRetrieveSilent(node, [], env, execute=1) == 0):
+            node.build(presub=0, execute=0)
+            return True
+    elif (CacheRetrieve(node, [], env, execute=1) == 0):
+        return True
+    return False

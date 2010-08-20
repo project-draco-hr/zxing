@@ -1,0 +1,4 @@
+def __str__(self):
+    entry = self.entry_proxy.get()
+    fmt = '%s instance %s has no attribute %s'
+    return (fmt % (entry.__class__.__name__, repr(entry.name), repr(self.attribute)))

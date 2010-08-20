@@ -1,0 +1,13 @@
+def shlib_generator(target, source, env, for_signature):
+    cmd = ['$SHLINK', '$SHLINKFLAGS', '-shared']
+    no_import_lib = env.get('no_import_lib', 0)
+    if no_import_lib:
+        cmd.extend('-noimplib')
+    dll = env.FindIxes(target, 'SHLIBPREFIX', 'SHLIBSUFFIX')
+    if dll:
+        cmd.extend(['-o', dll])
+    implib = env.FindIxes(target, 'LIBPREFIX', 'LIBSUFFIX')
+    if implib:
+        cmd.extend(['-implib', implib.get_string(for_signature)])
+    cmd.extend(['$SOURCES', '$_LIBDIRFLAGS', '$_LIBFLAGS'])
+    return [cmd]

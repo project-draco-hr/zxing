@@ -1,0 +1,11 @@
+def generate(env):
+    'Add Builders and construction variables for jar to an Environment.'
+    SCons.Tool.CreateJarBuilder(env)
+    env['JAR'] = 'jar'
+    env['JARFLAGS'] = SCons.Util.CLVar('cf')
+    env['_JARFLAGS'] = jarFlags
+    env['_JARMANIFEST'] = jarManifest
+    env['_JARSOURCES'] = jarSources
+    env['_JARCOM'] = '$JAR $_JARFLAGS $TARGET $_JARMANIFEST $_JARSOURCES'
+    env['JARCOM'] = "${TEMPFILE('$_JARCOM')}"
+    env['JARSUFFIX'] = '.jar'

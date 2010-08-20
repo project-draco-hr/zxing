@@ -1,0 +1,8 @@
+def generate(env):
+    'Add Builders and construction variables for m4 to an Environment.'
+    M4Action = SCons.Action.Action('$M4COM', '$M4COMSTR')
+    bld = SCons.Builder.Builder(action=M4Action, src_suffix='.m4')
+    env['BUILDERS']['M4'] = bld
+    env['M4'] = 'm4'
+    env['M4FLAGS'] = SCons.Util.CLVar('-E')
+    env['M4COM'] = 'cd ${SOURCE.rsrcdir} && $M4 $M4FLAGS < ${SOURCE.file} > ${TARGET.abspath}'

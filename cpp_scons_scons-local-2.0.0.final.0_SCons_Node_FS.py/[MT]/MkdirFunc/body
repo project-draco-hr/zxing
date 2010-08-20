@@ -1,0 +1,5 @@
+def MkdirFunc(target, source, env):
+    t = target[0]
+    if (not t.exists()):
+        t.fs.mkdir(t.abspath)
+    return 0

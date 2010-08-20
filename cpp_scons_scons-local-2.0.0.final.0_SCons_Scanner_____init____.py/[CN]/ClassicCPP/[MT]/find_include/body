@@ -1,0 +1,8 @@
+def find_include(self, include, source_dir, path):
+    if (include[0] == '"'):
+        paths = ((source_dir,) + tuple(path))
+    else:
+        paths = (tuple(path) + (source_dir,))
+    n = SCons.Node.FS.find_file(include[1], paths)
+    i = SCons.Util.silent_intern(include[1])
+    return (n, i)

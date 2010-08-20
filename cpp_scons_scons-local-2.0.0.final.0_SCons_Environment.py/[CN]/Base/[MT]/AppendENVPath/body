@@ -1,0 +1,9 @@
+def AppendENVPath(self, name, newpath, envname='ENV', sep=os.pathsep, delete_existing=1):
+    "Append path elements to the path 'name' in the 'ENV'\n        dictionary for this environment.  Will only add any particular\n        path once, and will normpath and normcase all paths to help\n        assure this.  This can also handle the case where the env\n        variable is a list instead of a string.\n\n        If delete_existing is 0, a newpath which is already in the path\n        will not be moved to the end (it will be left where it is).\n        "
+    orig = ''
+    if ((envname in self._dict) and (name in self._dict[envname])):
+        orig = self._dict[envname][name]
+    nv = SCons.Util.AppendPath(orig, newpath, sep, delete_existing, canonicalize=self._canonicalize)
+    if (envname not in self._dict):
+        self._dict[envname] = {}
+    self._dict[envname][name] = nv

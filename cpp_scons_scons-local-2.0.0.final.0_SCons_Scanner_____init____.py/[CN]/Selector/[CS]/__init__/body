@@ -1,0 +1,4 @@
+def __init__(self, dict, *args, **kw):
+    Base.__init__(self, None, *args, **kw)
+    self.dict = dict
+    self.skeys = list(dict.keys())

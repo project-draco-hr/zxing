@@ -1,0 +1,7 @@
+def generate(env):
+    'Add Builders and construction variables for rmic to an Environment.'
+    env['BUILDERS']['RMIC'] = RMICBuilder
+    env['RMIC'] = 'rmic'
+    env['RMICFLAGS'] = SCons.Util.CLVar('')
+    env['RMICCOM'] = '$RMIC $RMICFLAGS -d ${TARGET.attributes.java_lookupdir} -classpath ${SOURCE.attributes.java_classdir} ${SOURCES.attributes.java_classname}'
+    env['JAVACLASSSUFFIX'] = '.class'

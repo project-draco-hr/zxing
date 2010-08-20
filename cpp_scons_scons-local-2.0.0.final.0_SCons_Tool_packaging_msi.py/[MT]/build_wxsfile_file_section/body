@@ -1,0 +1,50 @@
+def build_wxsfile_file_section(root, files, NAME, VERSION, VENDOR, filename_set, id_set):
+    " builds the Component sections of the wxs file with their included files.\n\n    Files need to be specified in 8.3 format and in the long name format, long\n    filenames will be converted automatically.\n\n    Features are specficied with the 'X_MSI_FEATURE' or 'DOC' FileTag.\n    "
+    root = create_default_directory_layout(root, NAME, VERSION, VENDOR, filename_set)
+    components = create_feature_dict(files)
+    factory = Document()
+
+    def get_directory(node, dir):
+        ' returns the node under the given node representing the directory.\n\n        Returns the component node if dir is None or empty.\n        '
+        if ((dir == '') or (not dir)):
+            return node
+        Directory = node
+        dir_parts = dir.split(os.path.sep)
+        upper_dir = ''
+        dir_parts = [d for d in dir_parts if (d != '')]
+        for d in dir_parts[:]:
+            already_created = [c for c in Directory.childNodes if ((c.nodeName == 'Directory') and (c.attributes['LongName'].value == escape(d)))]
+            if (already_created != []):
+                Directory = already_created[0]
+                dir_parts.remove(d)
+                upper_dir += d
+            else:
+                break
+        for d in dir_parts:
+            nDirectory = factory.createElement('Directory')
+            nDirectory.attributes['LongName'] = escape(d)
+            nDirectory.attributes['Name'] = escape(gen_dos_short_file_name(d, filename_set))
+            upper_dir += d
+            nDirectory.attributes['Id'] = convert_to_id(upper_dir, id_set)
+            Directory.childNodes.append(nDirectory)
+            Directory = nDirectory
+        return Directory
+    for file in files:
+        (drive, path) = os.path.splitdrive(file.PACKAGING_INSTALL_LOCATION)
+        filename = os.path.basename(path)
+        dirname = os.path.dirname(path)
+        h = {'PACKAGING_X_MSI_VITAL': 'yes', 'PACKAGING_X_MSI_FILEID': convert_to_id(filename, id_set), 'PACKAGING_X_MSI_LONGNAME': filename, 'PACKAGING_X_MSI_SHORTNAME': gen_dos_short_file_name(filename, filename_set), 'PACKAGING_X_MSI_SOURCE': file.get_path(), }
+        for (k, v) in [(k, v) for (k, v) in h.items() if (not hasattr(file, k))]:
+            setattr(file, k, v)
+        File = factory.createElement('File')
+        File.attributes['LongName'] = escape(file.PACKAGING_X_MSI_LONGNAME)
+        File.attributes['Name'] = escape(file.PACKAGING_X_MSI_SHORTNAME)
+        File.attributes['Source'] = escape(file.PACKAGING_X_MSI_SOURCE)
+        File.attributes['Id'] = escape(file.PACKAGING_X_MSI_FILEID)
+        File.attributes['Vital'] = escape(file.PACKAGING_X_MSI_VITAL)
+        Component = factory.createElement('Component')
+        Component.attributes['DiskId'] = '1'
+        Component.attributes['Id'] = convert_to_id(filename, id_set)
+        Directory = get_directory(root, dirname)
+        Directory.childNodes.append(Component)
+        Component.childNodes.append(File)

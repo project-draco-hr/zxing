@@ -1,0 +1,2 @@
+def get_target_scanner(self):
+    return self.builder.target_scanner

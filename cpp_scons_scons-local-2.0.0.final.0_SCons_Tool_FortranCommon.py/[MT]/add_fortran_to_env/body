@@ -1,0 +1,17 @@
+def add_fortran_to_env(env):
+    'Add Builders and construction variables for Fortran to an Environment.'
+    try:
+        FortranSuffixes = env['FORTRANFILESUFFIXES']
+    except KeyError:
+        FortranSuffixes = ['.f', '.for', '.ftn']
+    try:
+        FortranPPSuffixes = env['FORTRANPPFILESUFFIXES']
+    except KeyError:
+        FortranPPSuffixes = ['.fpp', '.FPP']
+    DialectAddToEnv(env, 'FORTRAN', FortranSuffixes, FortranPPSuffixes, support_module=1)
+    env['FORTRANMODPREFIX'] = ''
+    env['FORTRANMODSUFFIX'] = '.mod'
+    env['FORTRANMODDIR'] = ''
+    env['FORTRANMODDIRPREFIX'] = ''
+    env['FORTRANMODDIRSUFFIX'] = ''
+    env['_FORTRANMODFLAG'] = '$( ${_concat(FORTRANMODDIRPREFIX, FORTRANMODDIR, FORTRANMODDIRSUFFIX, __env__, RDirs, TARGET, SOURCE)} $)'

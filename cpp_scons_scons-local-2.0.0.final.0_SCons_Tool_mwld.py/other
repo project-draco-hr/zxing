@@ -1,0 +1,4 @@
+"SCons.Tool.mwld\n\nTool-specific initialization for the Metrowerks CodeWarrior linker.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n"
+__revision__ = 'src/engine/SCons/Tool/mwld.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Tool
+shlib_action = SCons.Action.Action(shlib_generator, generator=1)

@@ -1,0 +1,3 @@
+def count(self, item):
+    self.__make_unique()
+    return UserList.count(self, item)

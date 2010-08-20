@@ -1,0 +1,27 @@
+def __call__(self, env, target=None, source=None, chdir=_null, **kw):
+    if (chdir is _null):
+        ekw = self.executor_kw
+    else:
+        ekw = self.executor_kw.copy()
+        ekw['chdir'] = chdir
+    if kw:
+        if ('srcdir' in kw):
+
+            def prependDirIfRelative(f, srcdir=kw['srcdir']):
+                import os.path
+                if (SCons.Util.is_String(f) and (not os.path.isabs(f))):
+                    f = os.path.join(srcdir, f)
+                return f
+            if (not SCons.Util.is_List(source)):
+                source = [source]
+            source = list(map(prependDirIfRelative, source))
+            del kw['srcdir']
+        if self.overrides:
+            env_kw = self.overrides.copy()
+            env_kw.update(kw)
+        else:
+            env_kw = kw
+    else:
+        env_kw = self.overrides
+    env = env.Override(env_kw)
+    return self._execute(env, target, source, OverrideWarner(kw), ekw)

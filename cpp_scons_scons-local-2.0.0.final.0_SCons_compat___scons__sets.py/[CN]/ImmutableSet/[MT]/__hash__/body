@@ -1,0 +1,4 @@
+def __hash__(self):
+    if (self._hashcode is None):
+        self._hashcode = self._compute_hash()
+    return self._hashcode

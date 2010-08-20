@@ -1,0 +1,11 @@
+def _remove_list(list):
+    result = []
+    do_append = result.append
+    for l in list:
+        if (l == '$('):
+            do_append = (lambda x: None)
+        elif (l == '$)'):
+            do_append = result.append
+        else:
+            do_append(l)
+    return result

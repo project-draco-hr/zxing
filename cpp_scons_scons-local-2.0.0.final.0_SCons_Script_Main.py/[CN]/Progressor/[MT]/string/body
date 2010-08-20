@@ -1,0 +1,2 @@
+def string(self, node):
+    self.write(self.obj)

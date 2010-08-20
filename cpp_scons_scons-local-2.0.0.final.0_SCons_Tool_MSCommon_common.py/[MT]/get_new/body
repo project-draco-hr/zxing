@@ -1,0 +1,7 @@
+def get_new(l1, l2):
+    'Given two list l1 and l2, return the items in l2 which are not in l1.\n    Order is maintained.'
+    new = []
+    for i in l2:
+        if (i not in l1):
+            new.append(i)
+    return new

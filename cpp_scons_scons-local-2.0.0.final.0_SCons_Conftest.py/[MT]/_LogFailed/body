@@ -1,0 +1,13 @@
+def _LogFailed(context, text, msg):
+    '\n    Write to the log about a failed program.\n    Add line numbers, so that error messages can be understood.\n    '
+    if LogInputFiles:
+        context.Log('Failed program was:\n')
+        lines = text.split('\n')
+        if (len(lines) and (lines[(-1)] == '')):
+            lines = lines[:(-1)]
+        n = 1
+        for line in lines:
+            context.Log(('%d: %s\n' % (n, line)))
+            n = (n + 1)
+    if LogErrorMessages:
+        context.Log(('Error message: %s\n' % msg))

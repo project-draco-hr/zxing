@@ -1,0 +1,12 @@
+def get_presig(self, target, source, env, executor=None):
+    "Return the signature contents of this action's command line.\n\n        This strips $(-$) and everything in between the string,\n        since those parts don't affect signatures.\n        "
+    from SCons.Subst import SUBST_SIG
+    cmd = self.cmd_list
+    if is_List(cmd):
+        cmd = ' '.join(map(str, cmd))
+    else:
+        cmd = str(cmd)
+    if executor:
+        return env.subst_target_source(cmd, SUBST_SIG, executor=executor)
+    else:
+        return env.subst_target_source(cmd, SUBST_SIG, target, source)

@@ -1,0 +1,6 @@
+def builder_set(self, builder):
+    self.builder = builder
+    try:
+        del self.executor
+    except AttributeError:
+        pass

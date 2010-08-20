@@ -1,0 +1,7 @@
+def PDFEmitter(target, source, env):
+    "Strips any .aux or .log files from the input source list.\n    These are created by the TeX Builder that in all likelihood was\n    used to generate the .dvi file we're using as input, and we only\n    care about the .dvi file.\n    "
+
+    def strip_suffixes(n):
+        return (not (SCons.Util.splitext(str(n))[1] in ['.aux', '.log']))
+    source = list(filter(strip_suffixes, source))
+    return (target, source)

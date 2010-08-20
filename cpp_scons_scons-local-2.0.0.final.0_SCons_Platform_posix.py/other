@@ -1,0 +1,11 @@
+"SCons.Platform.posix\n\nPlatform-specific initialization for POSIX (Linux, UNIX, etc.) systems.\n\nThere normally shouldn't be any need to import this module directly.  It\nwill usually be imported through the generic SCons.Platform.Platform()\nselection method.\n"
+__revision__ = 'src/engine/SCons/Platform/posix.py 5023 2010/06/14 22:05:46 scons'
+import errno
+import os
+import os.path
+import subprocess
+import sys
+import select
+import SCons.Util
+from SCons.Platform import TempFileMunge
+exitvalmap = {2: 127, 13: 126, }

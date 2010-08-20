@@ -1,0 +1,7 @@
+def listLoggedInstances(classes, file=sys.stdout):
+    for classname in string_to_classes(classes):
+        file.write(('\n%s:\n' % classname))
+        for ref in tracked_classes[classname]:
+            obj = ref()
+            if (obj is not None):
+                file.write(('    %s\n' % repr(obj)))

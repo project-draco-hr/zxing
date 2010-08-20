@@ -1,0 +1,3 @@
+def Replace(self, **kw):
+    kw = copy_non_reserved_keywords(kw)
+    self.__dict__['overrides'].update(semi_deepcopy(kw))

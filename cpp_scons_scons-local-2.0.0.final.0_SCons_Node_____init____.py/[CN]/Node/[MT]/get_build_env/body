@@ -1,0 +1,9 @@
+def get_build_env(self):
+    'Fetch the appropriate Environment to build this node.\n        '
+    try:
+        return self._memo['get_build_env']
+    except KeyError:
+        pass
+    result = self.get_executor().get_build_env()
+    self._memo['get_build_env'] = result
+    return result

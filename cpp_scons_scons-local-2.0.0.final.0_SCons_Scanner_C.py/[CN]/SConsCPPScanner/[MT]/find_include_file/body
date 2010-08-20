@@ -1,0 +1,6 @@
+def find_include_file(self, t):
+    (keyword, quote, fname) = t
+    result = SCons.Node.FS.find_file(fname, self.searchpath[quote])
+    if (not result):
+        self.missing.append((fname, self.current_file))
+    return result

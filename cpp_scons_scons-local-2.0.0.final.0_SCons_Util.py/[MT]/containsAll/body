@@ -1,0 +1,6 @@
+def containsAll(str, set):
+    'Check whether sequence str contains ALL of the items in set.'
+    for c in set:
+        if (c not in str):
+            return 0
+    return 1

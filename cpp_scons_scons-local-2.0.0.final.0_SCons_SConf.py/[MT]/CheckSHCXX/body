@@ -1,0 +1,4 @@
+def CheckSHCXX(context):
+    res = SCons.Conftest.CheckSHCXX(context)
+    context.did_show_result = 1
+    return (not res)

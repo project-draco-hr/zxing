@@ -1,0 +1,3 @@
+def display(self):
+    fmt = '    %7d hits %7d misses    %s()'
+    print (fmt % (self.hit, self.miss, self.name))

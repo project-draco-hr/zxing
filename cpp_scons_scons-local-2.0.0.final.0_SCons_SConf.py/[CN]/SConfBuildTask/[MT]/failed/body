@@ -1,0 +1,17 @@
+def failed(self):
+    exc_type = self.exc_info()[0]
+    if issubclass(exc_type, SConfError):
+        raise
+    elif issubclass(exc_type, SCons.Errors.BuildError):
+        self.exc_clear()
+    else:
+        self.display(('Caught exception while building "%s":\n' % self.targets[0]))
+        try:
+            excepthook = sys.excepthook
+        except AttributeError:
+
+            def excepthook(type, value, tb):
+                traceback.print_tb(tb)
+                print type, value
+        excepthook(*self.exc_info())
+    return SCons.Taskmaster.Task.failed(self)

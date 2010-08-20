@@ -1,0 +1,22 @@
+def __init__(self, name, fs):
+    if __debug__:
+        logInstanceCreation(self, 'Node.FS.RootDir')
+    self.abspath = ''
+    self.labspath = ''
+    self.path = ''
+    self.tpath = ''
+    self.path_elements = []
+    self.duplicate = 0
+    self.root = self
+    Base.__init__(self, name, self, fs)
+    self.abspath = (name + os.sep)
+    self.labspath = ''
+    self.path = (name + os.sep)
+    self.tpath = (name + os.sep)
+    self._morph()
+    self._lookupDict = {}
+    self._lookupDict[''] = self
+    self._lookupDict['/'] = self
+    self._lookupDict['//'] = self
+    self._lookupDict[os.sep] = self
+    self._lookupDict[(os.sep + os.sep)] = self

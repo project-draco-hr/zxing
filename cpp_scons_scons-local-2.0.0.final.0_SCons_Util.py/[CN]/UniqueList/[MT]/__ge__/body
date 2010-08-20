@@ -1,0 +1,3 @@
+def __ge__(self, other):
+    self.__make_unique()
+    return UserList.__ge__(self, other)

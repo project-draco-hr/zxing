@@ -1,0 +1,15 @@
+def subst_variables(self, command, dictionary):
+    "\n        Substitutes (via the format operator) the values in the specified\n        dictionary into the specified command.\n\n        The command can be an (action, string) tuple.  In all cases, we\n        perform substitution on strings and don't worry if something isn't\n        a string.  (It's probably a Python function to be executed.)\n        "
+    try:
+        (command + '')
+    except TypeError:
+        action = command[0]
+        string = command[1]
+        args = command[2:]
+    else:
+        action = command
+        string = action
+        args = ()
+    action = self.subst(action, dictionary)
+    string = self.subst(string, dictionary)
+    return (action, string, args)

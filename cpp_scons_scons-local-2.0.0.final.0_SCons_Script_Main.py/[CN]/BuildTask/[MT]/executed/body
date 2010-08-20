@@ -1,0 +1,24 @@
+def executed(self):
+    t = self.targets[0]
+    if (self.top and (not t.has_builder()) and (not t.side_effect)):
+        if (not t.exists()):
+            if (t.__class__.__name__ in ('File', 'Dir', 'Entry')):
+                errstr = ("Do not know how to make %s target `%s' (%s)." % (t.__class__.__name__, t, t.abspath))
+            else:
+                errstr = ("Do not know how to make %s target `%s'." % (t.__class__.__name__, t))
+            sys.stderr.write(('scons: *** ' + errstr))
+            if (not self.options.keep_going):
+                sys.stderr.write('  Stop.')
+            sys.stderr.write('\n')
+            try:
+                raise SCons.Errors.BuildError(t, errstr)
+            except KeyboardInterrupt:
+                raise
+            except:
+                self.exception_set()
+            self.do_failed()
+        else:
+            print ("scons: Nothing to be done for `%s'." % t)
+            SCons.Taskmaster.OutOfDateTask.executed(self)
+    else:
+        SCons.Taskmaster.OutOfDateTask.executed(self)

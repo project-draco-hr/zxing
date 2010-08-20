@@ -1,0 +1,9 @@
+def flatten_sequence(sequence, isinstance=isinstance, StringTypes=StringTypes, SequenceTypes=SequenceTypes, do_flatten=do_flatten):
+    'Flatten a sequence to a non-nested list.\n\n    Same as flatten(), but it does not handle the single scalar\n    case. This is slightly more efficient when one knows that\n    the sequence to flatten can not be a scalar.\n    '
+    result = []
+    for item in sequence:
+        if (isinstance(item, StringTypes) or (not isinstance(item, SequenceTypes))):
+            result.append(item)
+        else:
+            do_flatten(item, result)
+    return result

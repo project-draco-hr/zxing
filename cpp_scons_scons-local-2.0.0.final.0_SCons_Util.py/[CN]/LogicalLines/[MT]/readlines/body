@@ -1,0 +1,8 @@
+def readlines(self):
+    result = []
+    while True:
+        line = self.readline()
+        if (not line):
+            break
+        result.append(line)
+    return result

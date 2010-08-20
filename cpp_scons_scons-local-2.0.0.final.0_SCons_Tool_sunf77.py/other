@@ -1,0 +1,5 @@
+"SCons.Tool.sunf77\n\nTool-specific initialization for sunf77, the Sun Studio F77 compiler.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/sunf77.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Util
+from FortranCommon import add_all_to_env
+compilers = ['sunf77', 'f77']

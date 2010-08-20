@@ -1,0 +1,3 @@
+def do_endif(self, t):
+    '\n        Default handling of a #endif line.\n        '
+    self.restore()

@@ -1,0 +1,7 @@
+def make_ready(self):
+    'Make a task ready for execution'
+    SCons.Taskmaster.OutOfDateTask.make_ready(self)
+    if (self.out_of_date and self.options.debug_explain):
+        explanation = self.out_of_date[0].explain()
+        if explanation:
+            sys.stdout.write(('scons: ' + explanation))

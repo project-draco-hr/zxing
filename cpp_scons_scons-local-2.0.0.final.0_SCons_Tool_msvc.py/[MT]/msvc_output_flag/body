@@ -1,0 +1,7 @@
+def msvc_output_flag(target, source, env, for_signature):
+    "\n    Returns the correct /Fo flag for batching.\n\n    If batching is disabled or there's only one source file, then we\n    return an /Fo string that specifies the target explicitly.  Otherwise,\n    we return an /Fo string that just specifies the first target's\n    directory (where the Visual C/C++ compiler will put the .obj files).\n    "
+    b = env.subst('$MSVC_BATCH')
+    if ((b in (None, '', '0')) or (len(source) == 1)):
+        return '/Fo$TARGET'
+    else:
+        return ('/Fo${TARGET.dir}' + os.sep)

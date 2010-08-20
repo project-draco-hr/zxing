@@ -1,0 +1,3 @@
+def generate(*args, **kw):
+    'Add Builders and construction variables for icl to an Environment.'
+    return SCons.Tool.intelc.generate(*args, **kw)

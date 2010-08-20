@@ -1,0 +1,14 @@
+def _morph(self):
+    "Turn a file system Node (either a freshly initialized directory\n        object or a separate Entry object) into a proper directory object.\n\n        Set up this directory's entries and hook it into the file\n        system tree.  Specify that directories (this Node) don't use\n        signatures for calculating whether they're current.\n        "
+    self.repositories = []
+    self.srcdir = None
+    self.entries = {}
+    self.entries['.'] = self
+    self.entries['..'] = self.dir
+    self.cwd = self
+    self.searched = 0
+    self._sconsign = None
+    self.variant_dirs = []
+    self.root = self.dir.root
+    self.builder = get_MkdirBuilder()
+    self.get_executor().set_action_list(self.builder.action)

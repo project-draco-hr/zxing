@@ -1,0 +1,7 @@
+def build(self, **kw):
+    "Actually build the node.\n\n        This is called by the Taskmaster after it's decided that the\n        Node is out-of-date and must be rebuilt, and after the prepare()\n        method has gotten everything, uh, prepared.\n\n        This method is called from multiple threads in a parallel build,\n        so only do thread safe stuff here. Do thread unsafe stuff\n        in built().\n\n        "
+    try:
+        self.get_executor()(self, **kw)
+    except SCons.Errors.BuildError as e:
+        e.node = self
+        raise

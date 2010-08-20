@@ -1,0 +1,19 @@
+def draw(self):
+    if (not self.lines):
+        return
+    if self.title:
+        print ('set title "%s"' % self.title)
+    print ('set key %s' % self.key_location)
+    min_y = self.get_min_y()
+    max_y = self.max_graph_value(self.get_max_y())
+    incr = ((max_y - min_y) / 10.0)
+    start = ((min_y + (max_y / 2.0)) + (2.0 * incr))
+    position = [(start - (i * incr)) for i in range(5)]
+    inx = 1
+    for line in self.lines:
+        line.print_label(inx, (line.points[0][0] - 1), position[((inx - 1) % len(position))])
+        inx += 1
+    plot_strings = [self.plot_string(l) for l in self.lines]
+    print ('plot ' + ', \\\n     '.join(plot_strings))
+    for line in self.lines:
+        line.print_points()

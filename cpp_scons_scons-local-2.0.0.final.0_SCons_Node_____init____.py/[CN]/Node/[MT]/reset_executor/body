@@ -1,0 +1,6 @@
+def reset_executor(self):
+    'Remove cached executor; forces recompute when needed.'
+    try:
+        delattr(self, 'executor')
+    except AttributeError:
+        pass

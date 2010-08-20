@@ -1,0 +1,9 @@
+def set_duplicate(duplicate):
+    link_dict = {'hard': _hardlink_func, 'soft': _softlink_func, 'copy': _copy_func, }
+    if (not (duplicate in Valid_Duplicates)):
+        raise SCons.Errors.InternalError('The argument of set_duplicate should be in Valid_Duplicates')
+    global Link_Funcs
+    Link_Funcs = []
+    for func in duplicate.split('-'):
+        if link_dict[func]:
+            Link_Funcs.append(link_dict[func])

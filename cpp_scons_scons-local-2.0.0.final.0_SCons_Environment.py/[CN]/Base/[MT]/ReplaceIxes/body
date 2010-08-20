@@ -1,0 +1,12 @@
+def ReplaceIxes(self, path, old_prefix, old_suffix, new_prefix, new_suffix):
+    '\n        Replace old_prefix with new_prefix and old_suffix with new_suffix.\n\n        env - Environment used to interpolate variables.\n        path - the path that will be modified.\n        old_prefix - construction variable for the old prefix.\n        old_suffix - construction variable for the old suffix.\n        new_prefix - construction variable for the new prefix.\n        new_suffix - construction variable for the new suffix.\n        '
+    old_prefix = self.subst(('$' + old_prefix))
+    old_suffix = self.subst(('$' + old_suffix))
+    new_prefix = self.subst(('$' + new_prefix))
+    new_suffix = self.subst(('$' + new_suffix))
+    (dir, name) = os.path.split(str(path))
+    if (name[:len(old_prefix)] == old_prefix):
+        name = name[len(old_prefix):]
+    if (name[(- len(old_suffix)):] == old_suffix):
+        name = name[:(- len(old_suffix))]
+    return os.path.join(dir, ((new_prefix + name) + new_suffix))

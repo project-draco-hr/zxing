@@ -1,0 +1,11 @@
+def add_f77_to_env(env):
+    'Add Builders and construction variables for f77 to an Environment.'
+    try:
+        F77Suffixes = env['F77FILESUFFIXES']
+    except KeyError:
+        F77Suffixes = ['.f77']
+    try:
+        F77PPSuffixes = env['F77PPFILESUFFIXES']
+    except KeyError:
+        F77PPSuffixes = []
+    DialectAddToEnv(env, 'F77', F77Suffixes, F77PPSuffixes)

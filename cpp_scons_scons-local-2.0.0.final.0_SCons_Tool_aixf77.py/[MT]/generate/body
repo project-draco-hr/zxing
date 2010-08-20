@@ -1,0 +1,9 @@
+def generate(env):
+    '\n    Add Builders and construction variables for the Visual Age FORTRAN\n    compiler to an Environment.\n    '
+    (path, _f77, _shf77, version) = get_xlf77(env)
+    if path:
+        _f77 = os.path.join(path, _f77)
+        _shf77 = os.path.join(path, _shf77)
+    f77.generate(env)
+    env['F77'] = _f77
+    env['SHF77'] = _shf77

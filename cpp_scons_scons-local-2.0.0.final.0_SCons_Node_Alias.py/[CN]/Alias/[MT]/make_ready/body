@@ -1,0 +1,2 @@
+def make_ready(self):
+    self.get_csig()

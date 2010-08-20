@@ -1,0 +1,15 @@
+def get_cur_sdk_dir_from_reg():
+    'Try to find the platform sdk directory from the registry.\n\n    Return None if failed or the directory does not exist'
+    if (not SCons.Util.can_read_reg):
+        debug('SCons cannot read registry')
+        return None
+    try:
+        val = common.read_reg(_CURINSTALLED_SDK_HKEY_ROOT)
+        debug(('Found current sdk dir in registry: %s' % val))
+    except WindowsError as e:
+        debug('Did not find current sdk in registry')
+        return None
+    if (not os.path.exists(val)):
+        debug(('Current sdk dir %s not on fs' % val))
+        return None
+    return val

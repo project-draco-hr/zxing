@@ -1,0 +1,7 @@
+def get_subst_proxy(self):
+    try:
+        return self._proxy
+    except AttributeError:
+        ret = EntryProxy(self)
+        self._proxy = ret
+        return ret

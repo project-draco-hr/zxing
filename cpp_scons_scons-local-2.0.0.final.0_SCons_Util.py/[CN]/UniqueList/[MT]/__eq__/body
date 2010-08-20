@@ -1,0 +1,3 @@
+def __eq__(self, other):
+    self.__make_unique()
+    return UserList.__eq__(self, other)

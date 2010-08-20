@@ -1,0 +1,38 @@
+def PrintProject(self):
+    self.file.write('\t<Configurations>\n')
+    confkeys = sorted(self.configs.keys())
+    for kind in confkeys:
+        variant = self.configs[kind].variant
+        platform = self.configs[kind].platform
+        outdir = self.configs[kind].outdir
+        buildtarget = self.configs[kind].buildtarget
+        runfile = self.configs[kind].runfile
+        cmdargs = self.configs[kind].cmdargs
+        env_has_buildtarget = ('MSVSBUILDTARGET' in self.env)
+        if (not env_has_buildtarget):
+            self.env['MSVSBUILDTARGET'] = buildtarget
+        starting = 'echo Starting SCons && '
+        if cmdargs:
+            cmdargs = (' ' + cmdargs)
+        else:
+            cmdargs = ''
+        buildcmd = xmlify(((starting + self.env.subst('$MSVSBUILDCOM', 1)) + cmdargs))
+        rebuildcmd = xmlify(((starting + self.env.subst('$MSVSREBUILDCOM', 1)) + cmdargs))
+        cleancmd = xmlify(((starting + self.env.subst('$MSVSCLEANCOM', 1)) + cmdargs))
+        preprocdefs = xmlify(';'.join(processDefines(self.env.get('CPPDEFINES', []))))
+        includepath = xmlify(';'.join(self.env.get('CPPPATH', [])))
+        if (not env_has_buildtarget):
+            del self.env['MSVSBUILDTARGET']
+        self.file.write((self.dspconfiguration % locals()))
+    self.file.write('\t</Configurations>\n')
+    if (self.version_num >= 7.1):
+        self.file.write('\t<References>\n\t</References>\n')
+    self.PrintSourceFiles()
+    self.file.write('</VisualStudioProject>\n')
+    if (self.nokeep == 0):
+        pdata = pickle.dumps(self.configs, 1)
+        pdata = base64.encodestring(pdata)
+        self.file.write((('<!-- SCons Data:\n' + pdata) + '\n'))
+        pdata = pickle.dumps(self.sources, 1)
+        pdata = base64.encodestring(pdata)
+        self.file.write((pdata + '-->\n'))

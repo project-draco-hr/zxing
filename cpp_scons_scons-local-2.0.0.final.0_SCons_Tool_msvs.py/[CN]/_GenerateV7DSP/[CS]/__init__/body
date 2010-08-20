@@ -1,0 +1,16 @@
+def __init__(self, dspfile, source, env):
+    _DSPGenerator.__init__(self, dspfile, source, env)
+    self.version = env['MSVS_VERSION']
+    (self.version_num, self.suite) = msvs_parse_version(self.version)
+    if (self.version_num >= 8.0):
+        self.versionstr = '8.00'
+        self.dspheader = V8DSPHeader
+        self.dspconfiguration = V8DSPConfiguration
+    else:
+        if (self.version_num >= 7.1):
+            self.versionstr = '7.10'
+        else:
+            self.versionstr = '7.00'
+        self.dspheader = V7DSPHeader
+        self.dspconfiguration = V7DSPConfiguration
+    self.file = None

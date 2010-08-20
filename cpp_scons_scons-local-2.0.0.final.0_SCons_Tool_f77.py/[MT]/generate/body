@@ -1,0 +1,8 @@
+def generate(env):
+    add_all_to_env(env)
+    add_f77_to_env(env)
+    fcomp = (env.Detect(compilers) or 'f77')
+    env['F77'] = fcomp
+    env['SHF77'] = fcomp
+    env['FORTRAN'] = fcomp
+    env['SHFORTRAN'] = fcomp

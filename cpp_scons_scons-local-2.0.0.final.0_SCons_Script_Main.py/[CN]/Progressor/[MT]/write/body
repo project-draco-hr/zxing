@@ -1,0 +1,4 @@
+def write(self, s):
+    self.file.write(s)
+    self.file.flush()
+    self.prev = s

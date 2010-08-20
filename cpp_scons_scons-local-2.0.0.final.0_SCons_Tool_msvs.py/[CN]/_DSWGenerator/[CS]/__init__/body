@@ -1,0 +1,17 @@
+def __init__(self, dswfile, source, env):
+    self.dswfile = os.path.normpath(str(dswfile))
+    self.env = env
+    if ('projects' not in env):
+        raise SCons.Errors.UserError("You must specify a 'projects' argument to create an MSVSSolution.")
+    projects = env['projects']
+    if (not SCons.Util.is_List(projects)):
+        raise SCons.Errors.InternalError("The 'projects' argument must be a list of nodes.")
+    projects = SCons.Util.flatten(projects)
+    if (len(projects) < 1):
+        raise SCons.Errors.UserError('You must specify at least one project to create an MSVSSolution.')
+    self.dspfiles = list(map(str, projects))
+    if ('name' in self.env):
+        self.name = self.env['name']
+    else:
+        self.name = os.path.basename(SCons.Util.splitext(self.dswfile)[0])
+    self.name = self.env.subst(self.name)

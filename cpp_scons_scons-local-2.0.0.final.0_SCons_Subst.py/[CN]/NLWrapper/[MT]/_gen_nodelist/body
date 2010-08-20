@@ -1,0 +1,9 @@
+def _gen_nodelist(self):
+    mylist = self.list
+    if (mylist is None):
+        mylist = []
+    elif (not is_Sequence(mylist)):
+        mylist = [mylist]
+    self.nodelist = SCons.Util.NodeList(list(map(self.func, mylist)))
+    self._create_nodelist = self._return_nodelist
+    return self.nodelist

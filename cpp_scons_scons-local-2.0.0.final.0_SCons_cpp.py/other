@@ -1,0 +1,33 @@
+__revision__ = 'src/engine/SCons/cpp.py 5023 2010/06/14 22:05:46 scons'
+__doc__ = '\nSCons C Pre-Processor module\n'
+import SCons.compat
+import os
+import re
+cpp_lines_dict = {('if', 'elif', 'ifdef', 'ifndef'): '\\s+(.+)', ('import', 'include', 'include_next'): '\\s*(.+)', ('else', 'endif'): '', ('define',): '\\s+([_A-Za-z][_A-Za-z0-9_]*)(\\([^)]*\\))?\\s*(.*)', ('undef',): '\\s+([_A-Za-z][A-Za-z0-9_]*)', }
+Table = {}
+for (op_list, expr) in cpp_lines_dict.items():
+    e = re.compile(expr)
+    for op in op_list:
+        Table[op] = e
+del e
+del op
+del op_list
+override = {'if': 'if(?!def)', }
+l = [override.get(x, x) for x in Table.keys()]
+e = (('^\\s*#\\s*(' + '|'.join(l)) + ')(.*)$')
+CPP_Expression = re.compile(e, re.M)
+CPP_to_Python_Ops_Dict = {'!': ' not ', '!=': ' != ', '&&': ' and ', '||': ' or ', '?': ' and ', ':': ' or ', '\r': '', }
+CPP_to_Python_Ops_Sub = (lambda m: CPP_to_Python_Ops_Dict[m.group(0)])
+l = sorted(CPP_to_Python_Ops_Dict.keys(), key=(lambda a: len(a)), reverse=True)
+expr = '|'.join(map(re.escape, l))
+CPP_to_Python_Ops_Expression = re.compile(expr)
+CPP_to_Python_Eval_List = [['defined\\s+(\\w+)', '"\\1" in __dict__'], ['defined\\s*\\((\\w+)\\)', '"\\1" in __dict__'], ['/\\*.*\\*/', ''], ['/\\*.*', ''], ['//.*', ''], ['(0x[0-9A-Fa-f]*)[UL]+', '\\1']]
+for l in CPP_to_Python_Eval_List:
+    l[0] = re.compile(l[0])
+del expr
+del l
+del override
+line_continuations = re.compile('\\\\\r?\n')
+function_name = re.compile('(\\S+)\\(([^)]*)\\)')
+function_arg_separator = re.compile(',\\s*')
+del __revision__

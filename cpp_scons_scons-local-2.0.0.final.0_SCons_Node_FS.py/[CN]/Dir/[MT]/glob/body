@@ -1,0 +1,16 @@
+def glob(self, pathname, ondisk=True, source=False, strings=False):
+    '\n        Returns a list of Nodes (or strings) matching a specified\n        pathname pattern.\n\n        Pathname patterns follow UNIX shell semantics:  * matches\n        any-length strings of any characters, ? matches any character,\n        and [] can enclose lists or ranges of characters.  Matches do\n        not span directory separators.\n\n        The matches take into account Repositories, returning local\n        Nodes if a corresponding entry exists in a Repository (either\n        an in-memory Node or something on disk).\n\n        By defafult, the glob() function matches entries that exist\n        on-disk, in addition to in-memory Nodes.  Setting the "ondisk"\n        argument to False (or some other non-true value) causes the glob()\n        function to only match in-memory Nodes.  The default behavior is\n        to return both the on-disk and in-memory Nodes.\n\n        The "source" argument, when true, specifies that corresponding\n        source Nodes must be returned if you\'re globbing in a build\n        directory (initialized with VariantDir()).  The default behavior\n        is to return Nodes local to the VariantDir().\n\n        The "strings" argument, when true, returns the matches as strings,\n        not Nodes.  The strings are path names relative to this directory.\n\n        The underlying algorithm is adapted from the glob.glob() function\n        in the Python library (but heavily modified), and uses fnmatch()\n        under the covers.\n        '
+    (dirname, basename) = os.path.split(pathname)
+    if (not dirname):
+        return sorted(self._glob1(basename, ondisk, source, strings), key=(lambda t: str(t)))
+    if has_glob_magic(dirname):
+        list = self.glob(dirname, ondisk, source, strings=False)
+    else:
+        list = [self.Dir(dirname, create=True)]
+    result = []
+    for dir in list:
+        r = dir._glob1(basename, ondisk, source, strings)
+        if strings:
+            r = [os.path.join(str(dir), x) for x in r]
+        result.extend(r)
+    return sorted(result, key=(lambda a: str(a)))

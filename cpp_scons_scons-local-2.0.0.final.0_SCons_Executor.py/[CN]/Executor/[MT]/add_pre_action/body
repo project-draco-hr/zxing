@@ -1,0 +1,2 @@
+def add_pre_action(self, action):
+    self.pre_actions.append(action)

@@ -1,0 +1,9 @@
+def iscplusplus(source):
+    if (not source):
+        return 0
+    for s in source:
+        if s.sources:
+            ext = os.path.splitext(str(s.sources[0]))[1]
+            if (ext in CXXSuffixes):
+                return 1
+    return 0

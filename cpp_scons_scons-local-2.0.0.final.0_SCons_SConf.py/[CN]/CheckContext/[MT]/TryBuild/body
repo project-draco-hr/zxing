@@ -1,0 +1,2 @@
+def TryBuild(self, *args, **kw):
+    return self.sconf.TryBuild(*args, **kw)

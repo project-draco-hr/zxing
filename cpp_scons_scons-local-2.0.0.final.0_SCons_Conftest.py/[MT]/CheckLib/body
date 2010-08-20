@@ -1,0 +1,51 @@
+def CheckLib(context, libs, func_name=None, header=None, extra_libs=None, call=None, language=None, autoadd=1, append=True):
+    '\n    Configure check for a C or C++ libraries "libs".  Searches through\n    the list of libraries, until one is found where the test succeeds.\n    Tests if "func_name" or "call" exists in the library.  Note: if it exists\n    in another library the test succeeds anyway!\n    Optional "header" can be defined to include a header file.  If not given a\n    default prototype for "func_name" is added.\n    Optional "extra_libs" is a list of library names to be added after\n    "lib_name" in the build command.  To be used for libraries that "lib_name"\n    depends on.\n    Optional "call" replaces the call to "func_name" in the test code.  It must\n    consist of complete C statements, including a trailing ";".\n    Both "func_name" and "call" arguments are optional, and in that case, just\n    linking against the libs is tested.\n    "language" should be "C" or "C++" and is used to select the compiler.\n    Default is "C".\n    Note that this uses the current value of compiler and linker flags, make\n    sure $CFLAGS, $CPPFLAGS and $LIBS are set correctly.\n    Returns an empty string for success, an error message for failure.\n    '
+    if context.headerfilename:
+        includetext = ('#include "%s"' % context.headerfilename)
+    else:
+        includetext = ''
+    if (not header):
+        header = ''
+    text = ('\n%s\n%s' % (includetext, header))
+    if (func_name and (func_name != 'main')):
+        if (not header):
+            text = (text + ('\n#ifdef __cplusplus\nextern "C"\n#endif\nchar %s();\n' % func_name))
+        if (not call):
+            call = ('%s();' % func_name)
+    text = (text + ('\nint\nmain() {\n  %s\nreturn 0;\n}\n' % (call or '')))
+    if call:
+        i = call.find('\n')
+        if (i > 0):
+            calltext = (call[:i] + '..')
+        elif (call[(-1)] == ';'):
+            calltext = call[:(-1)]
+        else:
+            calltext = call
+    for lib_name in libs:
+        (lang, suffix, msg) = _lang2suffix(language)
+        if msg:
+            context.Display(('Cannot check for library %s: %s\n' % (lib_name, msg)))
+            return msg
+        if call:
+            context.Display(('Checking for %s in %s library %s... ' % (calltext, lang, lib_name)))
+        else:
+            context.Display(('Checking for %s library %s... ' % (lang, lib_name)))
+        if lib_name:
+            l = [lib_name]
+            if extra_libs:
+                l.extend(extra_libs)
+            if append:
+                oldLIBS = context.AppendLIBS(l)
+            else:
+                oldLIBS = context.PrependLIBS(l)
+            sym = ('HAVE_LIB' + lib_name)
+        else:
+            oldLIBS = (-1)
+            sym = None
+        ret = context.BuildProg(text, suffix)
+        _YesNoResult(context, ret, sym, text, ("Define to 1 if you have the `%s' library." % lib_name))
+        if ((oldLIBS != (-1)) and (ret or (not autoadd))):
+            context.SetLIBS(oldLIBS)
+        if (not ret):
+            return ret
+    return ret

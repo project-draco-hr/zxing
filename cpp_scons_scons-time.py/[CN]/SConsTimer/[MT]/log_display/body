@@ -1,0 +1,5 @@
+def log_display(self, command, log):
+    command = self.subst(command, self.__dict__)
+    if log:
+        command = self.redirect(command, log)
+    return command

@@ -1,0 +1,19 @@
+def CheckHeader(context, header_name, header=None, language=None, include_quotes=None):
+    '\n    Configure check for a C or C++ header file "header_name".\n    Optional "header" can be defined to do something before including the\n    header file (unusual, supported for consistency).\n    "language" should be "C" or "C++" and is used to select the compiler.\n    Default is "C".\n    Sets HAVE_header_name in context.havedict according to the result.\n    Note that this uses the current value of compiler and linker flags, make\n    sure $CFLAGS and $CPPFLAGS are set correctly.\n    Returns an empty string for success, an error message for failure.\n    '
+    if context.headerfilename:
+        includetext = ('#include "%s"\n' % context.headerfilename)
+    else:
+        includetext = ''
+    if (not header):
+        header = ''
+    (lang, suffix, msg) = _lang2suffix(language)
+    if msg:
+        context.Display(('Cannot check for header file %s: %s\n' % (header_name, msg)))
+        return msg
+    if (not include_quotes):
+        include_quotes = '<>'
+    text = ('%s%s\n#include %s%s%s\n\n' % (includetext, header, include_quotes[0], header_name, include_quotes[1]))
+    context.Display(('Checking for %s header file %s... ' % (lang, header_name)))
+    ret = context.CompileProg(text, suffix)
+    _YesNoResult(context, ret, ('HAVE_' + header_name), text, ('Define to 1 if you have the <%s> header file.' % header_name))
+    return ret

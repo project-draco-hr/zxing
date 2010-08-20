@@ -1,0 +1,13 @@
+def BuildDefaultGlobals():
+    '\n    Create a dictionary containing all the default globals for\n    SConstruct and SConscript files.\n    '
+    global GlobalDict
+    if (GlobalDict is None):
+        GlobalDict = {}
+        import SCons.Script
+        d = SCons.Script.__dict__
+
+        def not_a_module(m, d=d, mtype=type(SCons.Script)):
+            return (not isinstance(d[m], mtype))
+        for m in filter(not_a_module, dir(SCons.Script)):
+            GlobalDict[m] = d[m]
+    return GlobalDict.copy()

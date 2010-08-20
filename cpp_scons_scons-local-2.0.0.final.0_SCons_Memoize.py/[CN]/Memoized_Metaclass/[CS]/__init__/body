@@ -1,0 +1,8 @@
+def __init__(cls, name, bases, cls_dict):
+    super(Memoized_Metaclass, cls).__init__(name, bases, cls_dict)
+    for counter in cls_dict.get('memoizer_counters', []):
+        method_name = counter.method_name
+        counter.name = ((cls.__name__ + '.') + method_name)
+        counter.underlying_method = cls_dict[method_name]
+        replacement_method = types.MethodType(counter, None, cls)
+        setattr(cls, method_name, replacement_method)

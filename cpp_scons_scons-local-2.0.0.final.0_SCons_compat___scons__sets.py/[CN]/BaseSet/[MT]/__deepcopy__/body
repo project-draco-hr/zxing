@@ -1,0 +1,10 @@
+def __deepcopy__(self, memo):
+    'Return a deep copy of a set; used by copy module.'
+    from copy import deepcopy
+    result = self.__class__()
+    memo[id(self)] = result
+    data = result._data
+    value = True
+    for elt in self:
+        data[deepcopy(elt, memo)] = value
+    return result

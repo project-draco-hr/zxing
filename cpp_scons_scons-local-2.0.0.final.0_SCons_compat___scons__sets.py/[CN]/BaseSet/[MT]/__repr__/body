@@ -1,0 +1,3 @@
+def __repr__(self):
+    "Return string representation of a set.\n\n        This looks like 'Set([<list of elements>])'.\n        "
+    return self._repr()

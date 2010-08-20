@@ -1,0 +1,6 @@
+def remove(self):
+    'Remove this file.'
+    if (self.exists() or self.islink()):
+        self.fs.unlink(self.path)
+        return 1
+    return None

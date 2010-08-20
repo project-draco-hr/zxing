@@ -1,0 +1,28 @@
+def generate(env):
+    'Add Builders and construction variables for swig to an Environment.'
+    (c_file, cxx_file) = SCons.Tool.createCFileBuilders(env)
+    c_file.suffix['.i'] = swigSuffixEmitter
+    cxx_file.suffix['.i'] = swigSuffixEmitter
+    c_file.add_action('.i', SwigAction)
+    c_file.add_emitter('.i', _swigEmitter)
+    cxx_file.add_action('.i', SwigAction)
+    cxx_file.add_emitter('.i', _swigEmitter)
+    java_file = SCons.Tool.CreateJavaFileBuilder(env)
+    java_file.suffix['.i'] = swigSuffixEmitter
+    java_file.add_action('.i', SwigAction)
+    java_file.add_emitter('.i', _swigEmitter)
+    env['SWIG'] = 'swig'
+    env['SWIGVERSION'] = _get_swig_version(env)
+    env['SWIGFLAGS'] = SCons.Util.CLVar('')
+    env['SWIGDIRECTORSUFFIX'] = '_wrap.h'
+    env['SWIGCFILESUFFIX'] = '_wrap$CFILESUFFIX'
+    env['SWIGCXXFILESUFFIX'] = '_wrap$CXXFILESUFFIX'
+    env['_SWIGOUTDIR'] = '${"-outdir \\"%s\\"" % SWIGOUTDIR}'
+    env['SWIGPATH'] = []
+    env['SWIGINCPREFIX'] = '-I'
+    env['SWIGINCSUFFIX'] = ''
+    env['_SWIGINCFLAGS'] = '$( ${_concat(SWIGINCPREFIX, SWIGPATH, SWIGINCSUFFIX, __env__, RDirs, TARGET, SOURCE)} $)'
+    env['SWIGCOM'] = '$SWIG -o $TARGET ${_SWIGOUTDIR} ${_SWIGINCFLAGS} $SWIGFLAGS $SOURCES'
+    expr = '^[ \t]*%[ \t]*(?:include|import|extern)[ \t]*(<|"?)([^>\\s"]+)(?:>|"?)'
+    scanner = SCons.Scanner.ClassicCPP('SWIGScan', '.i', 'SWIGPATH', expr)
+    env.Append(SCANNERS=scanner)

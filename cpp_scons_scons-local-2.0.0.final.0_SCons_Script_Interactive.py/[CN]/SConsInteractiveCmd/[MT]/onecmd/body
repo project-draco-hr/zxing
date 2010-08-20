@@ -1,0 +1,22 @@
+def onecmd(self, line):
+    line = line.strip()
+    if (not line):
+        print self.lastcmd
+        return self.emptyline()
+    self.lastcmd = line
+    if (line[0] == '!'):
+        line = ('shell ' + line[1:])
+    elif (line[0] == '?'):
+        line = ('help ' + line[1:])
+    if (os.sep == '\\'):
+        line = line.replace('\\', '\\\\')
+    argv = shlex.split(line)
+    argv[0] = self.synonyms.get(argv[0], argv[0])
+    if (not argv[0]):
+        return self.default(line)
+    else:
+        try:
+            func = getattr(self, ('do_' + argv[0]))
+        except AttributeError:
+            return self.default(argv)
+        return func(argv)

@@ -1,0 +1,18 @@
+def _do_one_help(self, arg):
+    try:
+        func = getattr(self, ('help_' + arg))
+    except AttributeError:
+        try:
+            func = getattr(self, ('do_' + arg))
+        except AttributeError:
+            doc = None
+        else:
+            doc = self._doc_to_help(func)
+        if doc:
+            sys.stdout.write((doc + '\n'))
+            sys.stdout.flush()
+    else:
+        doc = self.strip_initial_spaces(func())
+        if doc:
+            sys.stdout.write((doc + '\n'))
+            sys.stdout.flush()

@@ -1,0 +1,2 @@
+def do_not_set_entry(self, filename, obj):
+    pass

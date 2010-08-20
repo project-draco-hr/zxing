@@ -1,0 +1,23 @@
+def _concat_ixes(prefix, list, suffix, env):
+    "\n    Creates a new list from 'list' by concatenating the 'prefix' and\n    'suffix' arguments onto each element of the list.  A trailing space\n    on 'prefix' or leading space on 'suffix' will cause them to be put\n    into separate list elements rather than being concatenated.\n    "
+    result = []
+    prefix = str(env.subst(prefix, SCons.Subst.SUBST_RAW))
+    suffix = str(env.subst(suffix, SCons.Subst.SUBST_RAW))
+    for x in list:
+        if isinstance(x, SCons.Node.FS.File):
+            result.append(x)
+            continue
+        x = str(x)
+        if x:
+            if prefix:
+                if (prefix[(-1)] == ' '):
+                    result.append(prefix[:(-1)])
+                elif (x[:len(prefix)] != prefix):
+                    x = (prefix + x)
+            result.append(x)
+            if suffix:
+                if (suffix[0] == ' '):
+                    result.append(suffix[1:])
+                elif (x[(- len(suffix)):] != suffix):
+                    result[(-1)] = (result[(-1)] + suffix)
+    return result

@@ -1,0 +1,3 @@
+def PathAccept(self, key, val, env):
+    'Accepts any path, no checking done.'
+    pass

@@ -1,0 +1,3 @@
+def add_emitter(self, suffix, emitter):
+    'Add a suffix-emitter mapping to this Builder.\n\n        This assumes that emitter has been initialized with an\n        appropriate dictionary type, and will throw a TypeError if\n        not, so the caller is responsible for knowing that this is an\n        appropriate method to call for the Builder in question.\n        '
+    self.emitter[suffix] = emitter

@@ -1,0 +1,3 @@
+def SetOption(self, name, value):
+    name = self.subst(name)
+    SCons.Script.Main.SetOption(name, value)

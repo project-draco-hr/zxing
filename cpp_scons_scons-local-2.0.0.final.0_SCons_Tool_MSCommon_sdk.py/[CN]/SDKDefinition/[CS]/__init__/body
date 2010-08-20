@@ -1,0 +1,3 @@
+def __init__(self, version, **kw):
+    self.version = version
+    self.__dict__.update(kw)

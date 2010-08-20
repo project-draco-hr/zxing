@@ -1,0 +1,3 @@
+def get_function_time(self, file, function):
+    '\n        Returns just the cumulative time for the specified function.\n        '
+    return self.get_function_profile(file, function)[3]

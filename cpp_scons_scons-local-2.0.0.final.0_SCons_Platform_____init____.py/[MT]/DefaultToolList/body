@@ -1,0 +1,3 @@
+def DefaultToolList(platform, env):
+    'Select a default tool list for the specified platform.\n    '
+    return SCons.Tool.tool_list(platform, env)

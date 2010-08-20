@@ -1,0 +1,7 @@
+def _createConfigH(target, source, env):
+    t = open(str(target[0]), 'w')
+    defname = re.sub('[^A-Za-z0-9_]', '_', str(target[0]).upper())
+    t.write(('#ifndef %(DEFNAME)s_SEEN\n#define %(DEFNAME)s_SEEN\n\n' % {'DEFNAME': defname, }))
+    t.write(source[0].get_contents())
+    t.write(('\n#endif /* %(DEFNAME)s_SEEN */\n' % {'DEFNAME': defname, }))
+    t.close()

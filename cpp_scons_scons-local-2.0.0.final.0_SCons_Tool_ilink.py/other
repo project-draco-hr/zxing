@@ -1,0 +1,5 @@
+"SCons.Tool.ilink\n\nTool-specific initialization for the OS/2 ilink linker.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/ilink.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Defaults
+import SCons.Tool
+import SCons.Util

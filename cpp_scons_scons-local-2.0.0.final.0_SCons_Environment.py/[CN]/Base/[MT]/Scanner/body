@@ -1,0 +1,8 @@
+def Scanner(self, *args, **kw):
+    nargs = []
+    for arg in args:
+        if SCons.Util.is_String(arg):
+            arg = self.subst(arg)
+        nargs.append(arg)
+    nkw = self.subst_kw(kw)
+    return SCons.Scanner.Base(*nargs, **nkw)

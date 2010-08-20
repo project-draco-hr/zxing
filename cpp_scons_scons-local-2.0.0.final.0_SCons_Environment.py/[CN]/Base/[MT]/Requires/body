@@ -1,0 +1,7 @@
+def Requires(self, target, prerequisite):
+    "Specify that 'prerequisite' must be built before 'target',\n        (but 'target' does not actually depend on 'prerequisite'\n        and need not be rebuilt if it changes)."
+    tlist = self.arg2nodes(target, self.fs.Entry)
+    plist = self.arg2nodes(prerequisite, self.fs.Entry)
+    for t in tlist:
+        t.add_prerequisite(plist)
+    return tlist

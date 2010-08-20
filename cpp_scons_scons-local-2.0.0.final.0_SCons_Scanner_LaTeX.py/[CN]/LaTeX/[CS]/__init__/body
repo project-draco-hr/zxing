@@ -1,0 +1,44 @@
+def __init__(self, name, suffixes, graphics_extensions, *args, **kw):
+    regex = '^[^%\\n]*\\\\(include|includegraphics(?:\\[[^\\]]+\\])?|lstinputlisting(?:\\[[^\\]]+\\])?|input|bibliography|usepackage){([^}]*)}'
+    self.cre = re.compile(regex, re.M)
+    self.graphics_extensions = graphics_extensions
+
+    def _scan(node, env, path=(), self=self):
+        node = node.rfile()
+        if (not node.exists()):
+            return []
+        return self.scan_recurse(node, path)
+
+
+    class FindMultiPathDirs(object):
+        'The stock FindPathDirs function has the wrong granularity:\n            it is called once per target, while we need the path that depends\n            on what kind of included files is being searched. This wrapper\n            hides multiple instances of FindPathDirs, one per the LaTeX path\n            variable in the environment. When invoked, the function calculates\n            and returns all the required paths as a dictionary (converted into\n            a tuple to become hashable). Then the scan function converts it\n            back and uses a dictionary of tuples rather than a single tuple\n            of paths.\n            '
+
+        def __init__(self, dictionary):
+            self.dictionary = {}
+            for (k, n) in dictionary.items():
+                self.dictionary[k] = (SCons.Scanner.FindPathDirs(n), FindENVPathDirs(n))
+
+        def __call__(self, env, dir=None, target=None, source=None, argument=None):
+            di = {}
+            for (k, (c, cENV)) in self.dictionary.items():
+                di[k] = (c(env, dir=None, target=None, source=None, argument=None), cENV(env, dir=None, target=None, source=None, argument=None))
+            return tuple(di.items())
+
+
+    class LaTeXScanCheck(object):
+        'Skip all but LaTeX source files, i.e., do not scan *.eps,\n            *.pdf, *.jpg, etc.\n            '
+
+        def __init__(self, suffixes):
+            self.suffixes = suffixes
+
+        def __call__(self, node, env):
+            current = ((not node.has_builder()) or node.is_up_to_date())
+            scannable = (node.get_suffix() in env.subst_list(self.suffixes)[0])
+            return (scannable and current)
+    kw['function'] = _scan
+    kw['path_function'] = FindMultiPathDirs(LaTeX.keyword_paths)
+    kw['recursive'] = 0
+    kw['skeys'] = suffixes
+    kw['scan_check'] = LaTeXScanCheck(suffixes)
+    kw['name'] = name
+    SCons.Scanner.Base.__init__(self, *args, **kw)

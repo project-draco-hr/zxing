@@ -1,0 +1,3 @@
+def is_literal(self):
+    'Always pass the string representation of a Node to\n        the command interpreter literally.'
+    return 1

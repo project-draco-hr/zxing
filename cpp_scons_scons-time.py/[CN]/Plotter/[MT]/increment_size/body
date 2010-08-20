@@ -1,0 +1,10 @@
+def increment_size(self, largest):
+    '\n        Return the size of each horizontal increment line for a specified\n        maximum value.  This returns a value that will provide somewhere\n        between 5 and 9 horizontal lines on the graph, on some set of\n        boundaries that are multiples of 10/100/1000/etc.\n        '
+    i = (largest // 5)
+    if (not i):
+        return largest
+    multiplier = 1
+    while (i >= 10):
+        i = (i // 10)
+        multiplier = (multiplier * 10)
+    return (i * multiplier)

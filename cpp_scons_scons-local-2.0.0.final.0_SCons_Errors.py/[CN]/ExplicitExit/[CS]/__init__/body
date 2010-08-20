@@ -1,0 +1,5 @@
+def __init__(self, node=None, status=None, *args):
+    self.node = node
+    self.status = status
+    self.exitstatus = status
+    Exception.__init__(self, *args)

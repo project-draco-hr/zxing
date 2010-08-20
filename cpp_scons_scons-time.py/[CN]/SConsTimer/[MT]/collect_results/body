@@ -1,0 +1,15 @@
+def collect_results(self, files, function, *args, **kw):
+    results = {}
+    for file in files:
+        base = os.path.splitext(file)[0]
+        (run, index) = base.split('-')[(-2):]
+        run = int(run)
+        index = int(index)
+        value = function(file, *args, **kw)
+        try:
+            r = results[index]
+        except KeyError:
+            r = []
+            results[index] = r
+        r.append((run, value))
+    return results

@@ -1,0 +1,7 @@
+def __setitem__(self, key, value):
+    if (key in self._special_set_keys):
+        self._special_set[key](self, key, value)
+    else:
+        if ((key not in self._dict) and (not _is_valid_var.match(key))):
+            raise SCons.Errors.UserError(("Illegal construction variable `%s'" % key))
+        self._dict[key] = value

@@ -1,0 +1,3 @@
+def do_else(self, t):
+    '\n        Default handling of a #else line.\n        '
+    pass

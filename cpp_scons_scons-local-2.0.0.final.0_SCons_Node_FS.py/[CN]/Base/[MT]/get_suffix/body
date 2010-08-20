@@ -1,0 +1,2 @@
+def get_suffix(self):
+    return self.suffix

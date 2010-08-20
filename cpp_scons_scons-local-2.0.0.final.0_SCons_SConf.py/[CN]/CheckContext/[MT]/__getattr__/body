@@ -1,0 +1,7 @@
+def __getattr__(self, attr):
+    if (attr == 'env'):
+        return self.sconf.env
+    elif (attr == 'lastTarget'):
+        return self.sconf.lastTarget
+    else:
+        raise AttributeError(("CheckContext instance has no attribute '%s'" % attr))

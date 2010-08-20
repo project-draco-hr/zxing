@@ -1,0 +1,2 @@
+def merge(self, other):
+    self.__dict__.update(other.__dict__)

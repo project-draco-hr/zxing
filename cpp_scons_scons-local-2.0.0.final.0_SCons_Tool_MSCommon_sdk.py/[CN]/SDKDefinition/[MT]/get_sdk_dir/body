@@ -1,0 +1,8 @@
+def get_sdk_dir(self):
+    'Return the MSSSDK given the version string.'
+    try:
+        return self._sdk_dir
+    except AttributeError:
+        sdk_dir = self.find_sdk_dir()
+        self._sdk_dir = sdk_dir
+        return sdk_dir

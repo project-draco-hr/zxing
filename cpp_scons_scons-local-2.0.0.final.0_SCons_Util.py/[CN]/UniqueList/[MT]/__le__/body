@@ -1,0 +1,3 @@
+def __le__(self, other):
+    self.__make_unique()
+    return UserList.__le__(self, other)

@@ -1,0 +1,7 @@
+def has_src_builder(self):
+    "Return whether this Node has a source builder or not.\n\n        If this Node doesn't have an explicit source code builder, this\n        is where we figure out, on the fly, if there's a transparent\n        source code builder for it.\n\n        Note that if we found a source builder, we also set the\n        self.builder attribute, so that all of the methods that actually\n        *build* this file don't have to do anything different.\n        "
+    try:
+        scb = self.sbuilder
+    except AttributeError:
+        scb = self.sbuilder = self.find_src_builder()
+    return (scb is not None)

@@ -1,0 +1,5 @@
+"SCons.Tool.wix\n\nTool-specific initialization for wix, the Windows Installer XML Tool.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n"
+__revision__ = 'src/engine/SCons/Tool/wix.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Builder
+import SCons.Action
+import os

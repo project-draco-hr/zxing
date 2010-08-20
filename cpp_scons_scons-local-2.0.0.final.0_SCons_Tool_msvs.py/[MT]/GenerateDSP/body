@@ -1,0 +1,11 @@
+def GenerateDSP(dspfile, source, env):
+    'Generates a Project file based on the version of MSVS that is being used'
+    version_num = 6.0
+    if ('MSVS_VERSION' in env):
+        (version_num, suite) = msvs_parse_version(env['MSVS_VERSION'])
+    if (version_num >= 7.0):
+        g = _GenerateV7DSP(dspfile, source, env)
+        g.Build()
+    else:
+        g = _GenerateV6DSP(dspfile, source, env)
+        g.Build()

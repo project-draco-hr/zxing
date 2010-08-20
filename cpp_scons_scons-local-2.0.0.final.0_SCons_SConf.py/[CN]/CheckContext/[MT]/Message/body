@@ -1,0 +1,5 @@
+def Message(self, text):
+    "Inform about what we are doing right now, e.g.\n        'Checking for SOMETHING ... '\n        "
+    self.Display(text)
+    self.sconf.cached = 1
+    self.did_show_result = 0

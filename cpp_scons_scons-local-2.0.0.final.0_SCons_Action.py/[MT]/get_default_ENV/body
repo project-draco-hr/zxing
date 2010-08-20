@@ -1,0 +1,9 @@
+def get_default_ENV(env):
+    global default_ENV
+    try:
+        return env['ENV']
+    except KeyError:
+        if (not default_ENV):
+            import SCons.Environment
+            default_ENV = SCons.Environment.Environment()['ENV']
+        return default_ENV

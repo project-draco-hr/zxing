@@ -1,0 +1,3 @@
+def __init__(self, seq=[]):
+    UserList.__init__(self, seq)
+    self.unique = True

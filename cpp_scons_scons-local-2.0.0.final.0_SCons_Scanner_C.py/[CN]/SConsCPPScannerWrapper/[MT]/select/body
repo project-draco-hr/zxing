@@ -1,0 +1,2 @@
+def select(self, node):
+    return self

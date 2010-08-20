@@ -1,0 +1,5 @@
+def xmlify(s):
+    s = s.replace('&', '&amp;')
+    s = s.replace("'", '&apos;')
+    s = s.replace('"', '&quot;')
+    return s

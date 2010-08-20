@@ -1,0 +1,5 @@
+def select(self, node):
+    try:
+        return self.dict[node.scanner_key()]
+    except KeyError:
+        return None

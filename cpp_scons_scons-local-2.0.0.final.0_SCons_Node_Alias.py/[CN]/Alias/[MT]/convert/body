@@ -1,0 +1,7 @@
+def convert(self):
+    try:
+        del self.builder
+    except AttributeError:
+        pass
+    self.reset_executor()
+    self.build = self.really_build

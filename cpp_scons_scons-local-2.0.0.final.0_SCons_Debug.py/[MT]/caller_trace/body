@@ -1,0 +1,14 @@
+def caller_trace(back=0):
+    import traceback
+    tb = traceback.extract_stack(limit=(3 + back))
+    tb.reverse()
+    callee = tb[1][:3]
+    caller_bases[callee] = (caller_bases.get(callee, 0) + 1)
+    for caller in tb[2:]:
+        caller = (callee + caller[:3])
+        try:
+            entry = caller_dicts[callee]
+        except KeyError:
+            caller_dicts[callee] = entry = {}
+        entry[caller] = (entry.get(caller, 0) + 1)
+        callee = caller

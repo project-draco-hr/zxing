@@ -1,0 +1,13 @@
+"SCons.Tool.rpm\n\nTool-specific initialization for rpm.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\nThe rpm tool calls the rpmbuild command. The first and only argument should a\ntar.gz consisting of the source file and a specfile.\n"
+__revision__ = 'src/engine/SCons/Tool/rpm.py 5023 2010/06/14 22:05:46 scons'
+import os
+import re
+import shutil
+import subprocess
+import SCons.Builder
+import SCons.Node.FS
+import SCons.Util
+import SCons.Action
+import SCons.Defaults
+rpmAction = SCons.Action.Action(build_rpm, string_rpm)
+RpmBuilder = SCons.Builder.Builder(action=SCons.Action.Action('$RPMCOM', '$RPMCOMSTR'), source_scanner=SCons.Defaults.DirScanner, suffix='$RPMSUFFIX')

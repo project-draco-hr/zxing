@@ -1,0 +1,3 @@
+def get_env_scanner(self, env, kw={}):
+    import SCons.Defaults
+    return SCons.Defaults.DirEntryScanner

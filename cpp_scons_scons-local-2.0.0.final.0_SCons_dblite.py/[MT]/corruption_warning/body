@@ -1,0 +1,2 @@
+def corruption_warning(filename):
+    print 'Warning: Discarding corrupt database:', filename

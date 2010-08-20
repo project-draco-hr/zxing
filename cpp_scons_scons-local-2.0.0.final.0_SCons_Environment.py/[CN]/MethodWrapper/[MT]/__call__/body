@@ -1,0 +1,3 @@
+def __call__(self, *args, **kwargs):
+    nargs = ((self.object,) + args)
+    return self.method(*nargs, **kwargs)

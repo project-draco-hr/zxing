@@ -1,0 +1,52 @@
+"SCons.Debug\n\nCode for debugging SCons internal things.  Shouldn't be\nneeded by most users.\n\n"
+__revision__ = 'src/engine/SCons/Debug.py 5023 2010/06/14 22:05:46 scons'
+import os
+import sys
+import time
+import weakref
+tracked_classes = {}
+if (sys.platform[:5] == 'linux'):
+
+    def memory():
+        mstr = open('/proc/self/stat').read()
+        mstr = mstr.split()[22]
+        return int(mstr)
+elif (sys.platform[:6] == 'darwin'):
+
+    def memory():
+        return 0
+else:
+    try:
+        import resource
+    except ImportError:
+        try:
+            import win32process
+            import win32api
+        except ImportError:
+
+            def memory():
+                return 0
+        else:
+
+            def memory():
+                process_handle = win32api.GetCurrentProcess()
+                memory_info = win32process.GetProcessMemoryInfo(process_handle)
+                return memory_info['PeakWorkingSetSize']
+    else:
+
+        def memory():
+            res = resource.getrusage(resource.RUSAGE_SELF)
+            return res[4]
+caller_bases = {}
+caller_dicts = {}
+shorten_list = [('/scons/SCons/', 1), ('/src/engine/SCons/', 1), ('/usr/lib/python', 0)]
+if (os.sep != '/'):
+    shorten_list = [(t[0].replace('/', os.sep), t[1]) for t in shorten_list]
+TraceFP = {}
+if (sys.platform == 'win32'):
+    TraceDefault = 'con'
+else:
+    TraceDefault = '/dev/tty'
+TimeStampDefault = None
+StartTime = time.time()
+PreviousTime = StartTime

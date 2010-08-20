@@ -1,0 +1,23 @@
+def __call__(self, env, source, ext=None):
+    if (ext is None):
+        try:
+            ext = source[0].suffix
+        except IndexError:
+            ext = ''
+    try:
+        return self[ext]
+    except KeyError:
+        s_dict = {}
+        for (k, v) in self.items():
+            if (k is not None):
+                s_k = env.subst(k)
+                if (s_k in s_dict):
+                    raise KeyError(s_dict[s_k][0], k, s_k)
+                s_dict[s_k] = (k, v)
+        try:
+            return s_dict[ext][1]
+        except KeyError:
+            try:
+                return self[None]
+            except KeyError:
+                return None

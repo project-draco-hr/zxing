@@ -1,0 +1,2 @@
+def ignore_diskcheck_match(node, predicate, errorfmt):
+    pass

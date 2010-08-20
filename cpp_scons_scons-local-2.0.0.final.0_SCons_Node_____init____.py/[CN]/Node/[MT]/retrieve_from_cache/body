@@ -1,0 +1,3 @@
+def retrieve_from_cache(self):
+    "Try to retrieve the node's content from a cache\n\n        This method is called from multiple threads in a parallel build,\n        so only do thread safe stuff here. Do thread unsafe stuff in\n        built().\n\n        Returns true iff the node was successfully retrieved.\n        "
+    return 0

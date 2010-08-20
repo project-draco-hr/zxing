@@ -1,0 +1,9 @@
+def __call__(self, *args, **kw):
+    if (not self.sconf.active):
+        raise SCons.Errors.UserError
+    context = CheckContext(self.sconf)
+    ret = self.test(context, *args, **kw)
+    if (self.sconf.config_h is not None):
+        self.sconf.config_h_text = (self.sconf.config_h_text + context.config_h)
+    context.Result('error: no result')
+    return ret

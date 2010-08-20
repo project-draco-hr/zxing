@@ -1,0 +1,4 @@
+def __init__(self, title, key_location):
+    self.lines = []
+    self.title = title
+    self.key_location = key_location

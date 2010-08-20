@@ -1,0 +1,7 @@
+def PackageOption(*args, **kw):
+    global warned
+    if (not warned):
+        msg = 'The PackageOption() function is deprecated; use the PackageVariable() function instead.'
+        SCons.Warnings.warn(SCons.Warnings.DeprecatedOptionsWarning, msg)
+        warned = True
+    return SCons.Variables.PackageVariable(*args, **kw)

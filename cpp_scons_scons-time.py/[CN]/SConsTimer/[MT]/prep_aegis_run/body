@@ -1,0 +1,7 @@
+def prep_aegis_run(self, commands, removals):
+    self.aegis_tmpdir = make_temp_file(prefix=(self.name + '-aegis-'))
+    removals.append((shutil.rmtree, 'rm -rf %%s', self.aegis_tmpdir))
+    self.aegis_parent_project = os.path.splitext(self.aegis_project)[0]
+    self.scons = self.scons_path(self.aegis_tmpdir)
+    self.scons_lib_dir = self.scons_lib_dir_path(self.aegis_tmpdir)
+    commands.extend(['mkdir %(aegis_tmpdir)s', ((lambda : os.chdir(self.aegis_tmpdir)), 'cd %(aegis_tmpdir)s'), '%(aegis)s -cp -ind -p %(aegis_parent_project)s .', '%(aegis)s -cp -ind -p %(aegis_project)s -delta %(run_number)s .'])

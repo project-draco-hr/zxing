@@ -1,0 +1,3 @@
+def do_EOF(self, argv):
+    print 
+    self.do_exit(argv)

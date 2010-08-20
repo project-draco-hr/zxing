@@ -1,0 +1,2 @@
+def Environment(self, **kw):
+    return SCons.Environment.Environment(**self.subst_kw(kw))

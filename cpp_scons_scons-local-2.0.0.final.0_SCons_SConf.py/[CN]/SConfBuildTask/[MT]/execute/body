@@ -1,0 +1,63 @@
+def execute(self):
+    if (not self.targets[0].has_builder()):
+        return
+    sconf = sconf_global
+    (is_up_to_date, cached_error, cachable) = self.collect_node_states()
+    if ((cache_mode == CACHE) and (not cachable)):
+        raise ConfigureCacheError(self.targets[0])
+    elif (cache_mode == FORCE):
+        is_up_to_date = 0
+    if (cached_error and is_up_to_date):
+        self.display(('Building "%s" failed in a previous run and all its sources are up to date.' % str(self.targets[0])))
+        binfo = self.targets[0].get_stored_info().binfo
+        self.display_cached_string(binfo)
+        raise SCons.Errors.BuildError
+    elif is_up_to_date:
+        self.display(('"%s" is up to date.' % str(self.targets[0])))
+        binfo = self.targets[0].get_stored_info().binfo
+        self.display_cached_string(binfo)
+    elif dryrun:
+        raise ConfigureDryRunError(self.targets[0])
+    else:
+        s = sys.stdout = sys.stderr = Streamer(sys.stdout)
+        try:
+            env = self.targets[0].get_build_env()
+            if (cache_mode == FORCE):
+
+                def force_build(dependency, target, prev_ni, env_decider=env.decide_source):
+                    env_decider(dependency, target, prev_ni)
+                    return True
+                if (env.decide_source.func_code is not force_build.func_code):
+                    env.Decider(force_build)
+            env['PSTDOUT'] = env['PSTDERR'] = s
+            try:
+                sconf.cached = 0
+                self.targets[0].build()
+            finally:
+                sys.stdout = sys.stderr = env['PSTDOUT'] = env['PSTDERR'] = sconf.logstream
+        except KeyboardInterrupt:
+            raise
+        except SystemExit:
+            exc_value = sys.exc_info()[1]
+            raise SCons.Errors.ExplicitExit(self.targets[0], exc_value.code)
+        except Exception as e:
+            for t in self.targets:
+                binfo = t.get_binfo()
+                binfo.__class__ = SConfBuildInfo
+                binfo.set_build_result(1, s.getvalue())
+                sconsign_entry = SCons.SConsign.SConsignEntry()
+                sconsign_entry.binfo = binfo
+                sconsign = t.dir.sconsign()
+                sconsign.set_entry(t.name, sconsign_entry)
+                sconsign.merge()
+            raise e
+        else:
+            for t in self.targets:
+                binfo = t.get_binfo()
+                binfo.__class__ = SConfBuildInfo
+                binfo.set_build_result(0, s.getvalue())
+                sconsign_entry = SCons.SConsign.SConsignEntry()
+                sconsign_entry.binfo = binfo
+                sconsign = t.dir.sconsign()
+                sconsign.set_entry(t.name, sconsign_entry)
+                sconsign.merge()

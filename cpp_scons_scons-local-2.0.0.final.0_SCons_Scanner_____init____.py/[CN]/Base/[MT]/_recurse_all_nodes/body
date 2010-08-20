@@ -1,0 +1,2 @@
+def _recurse_all_nodes(self, nodes):
+    return nodes

@@ -1,0 +1,3 @@
+def set_always_build(self, always_build=1):
+    "Set the Node's always_build value."
+    self.always_build = always_build

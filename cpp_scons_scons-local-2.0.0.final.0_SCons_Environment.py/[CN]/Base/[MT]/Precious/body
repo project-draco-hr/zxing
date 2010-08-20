@@ -1,0 +1,7 @@
+def Precious(self, *targets):
+    tlist = []
+    for t in targets:
+        tlist.extend(self.arg2nodes(t, self.fs.Entry))
+    for t in tlist:
+        t.set_precious()
+    return tlist

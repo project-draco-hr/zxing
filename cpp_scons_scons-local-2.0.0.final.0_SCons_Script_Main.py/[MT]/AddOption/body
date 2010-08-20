@@ -1,0 +1,5 @@
+def AddOption(*args, **kw):
+    if ('default' not in kw):
+        kw['default'] = None
+    result = OptionsParser.add_local_option(*args, **kw)
+    return result

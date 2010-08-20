@@ -1,0 +1,2 @@
+def get_implicit_deps(self, target, source, env, executor=None):
+    return self._generate(target, source, env, 1, executor).get_implicit_deps(target, source, env)

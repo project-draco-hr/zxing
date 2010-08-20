@@ -1,0 +1,26 @@
+def __init__(self, dir):
+    Base.__init__(self)
+    self.dir = dir
+    (db, mode) = Get_DataBase(dir)
+    path = normcase(dir.tpath)
+    try:
+        rawentries = db[path]
+    except KeyError:
+        pass
+    else:
+        try:
+            self.entries = pickle.loads(rawentries)
+            if (not isinstance(self.entries, dict)):
+                self.entries = {}
+                raise TypeError
+        except KeyboardInterrupt:
+            raise
+        except Exception as e:
+            SCons.Warnings.warn(SCons.Warnings.CorruptSConsignWarning, ('Ignoring corrupt sconsign entry : %s (%s)\n' % (self.dir.tpath, e)))
+        for (key, entry) in self.entries.items():
+            entry.convert_from_sconsign(dir, key)
+    if (mode == 'r'):
+        self.set_entry = self.do_not_set_entry
+        self.store_info = self.do_not_store_info
+    global sig_files
+    sig_files.append(self)

@@ -1,0 +1,6 @@
+def _morph(self):
+    'Morph this Null executor to a real Executor object.'
+    batches = self.batches
+    self.__class__ = Executor
+    self.__init__([])
+    self.batches = batches

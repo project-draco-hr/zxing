@@ -1,0 +1,5 @@
+def __call__(self, target, source, env):
+    emitter = SCons.Util.Selector.__call__(self, env, source)
+    if emitter:
+        (target, source) = emitter(target, source, env)
+    return (target, source)

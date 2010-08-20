@@ -1,0 +1,6 @@
+def Scanner(function, *args, **kw):
+    '\n    Public interface factory function for creating different types\n    of Scanners based on the different types of "functions" that may\n    be supplied.\n\n    TODO:  Deprecate this some day.  We\'ve moved the functionality\n    inside the Base class and really don\'t need this factory function\n    any more.  It was, however, used by some of our Tool modules, so\n    the call probably ended up in various people\'s custom modules\n    patterned on SCons code.\n    '
+    if SCons.Util.is_Dict(function):
+        return Selector(function, *args, **kw)
+    else:
+        return Base(function, *args, **kw)

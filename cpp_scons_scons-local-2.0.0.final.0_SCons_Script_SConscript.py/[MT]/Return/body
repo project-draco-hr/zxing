@@ -1,0 +1,16 @@
+def Return(*vars, **kw):
+    retval = []
+    try:
+        fvars = SCons.Util.flatten(vars)
+        for var in fvars:
+            for v in var.split():
+                retval.append(call_stack[(-1)].globals[v])
+    except KeyError as x:
+        raise SCons.Errors.UserError(("Return of non-existent variable '%s'" % x))
+    if (len(retval) == 1):
+        call_stack[(-1)].retval = retval[0]
+    else:
+        call_stack[(-1)].retval = tuple(retval)
+    stop = kw.get('stop', True)
+    if stop:
+        raise SConscriptReturn

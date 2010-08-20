@@ -1,0 +1,4 @@
+def Export(self, *vars, **kw):
+    for var in vars:
+        global_exports.update(compute_exports(self.Split(var)))
+    global_exports.update(kw)

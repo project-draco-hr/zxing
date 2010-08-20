@@ -1,0 +1,2 @@
+def link(self, src, dst):
+    return os.link(src, dst)

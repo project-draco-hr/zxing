@@ -1,0 +1,30 @@
+def FindFile(name, suffixes, paths, env, requireExt=False):
+    if requireExt:
+        (name, ext) = SCons.Util.splitext(name)
+        if ext:
+            name = (name + ext)
+    if Verbose:
+        print (" searching for '%s' with extensions: " % name), suffixes
+    for path in paths:
+        testName = os.path.join(path, name)
+        if Verbose:
+            print (" look for '%s'" % testName)
+        if os.path.exists(testName):
+            if Verbose:
+                print (" found '%s'" % testName)
+            return env.fs.File(testName)
+        else:
+            name_ext = SCons.Util.splitext(testName)[1]
+            if name_ext:
+                continue
+            for suffix in suffixes:
+                testNameExt = (testName + suffix)
+                if Verbose:
+                    print (" look for '%s'" % testNameExt)
+                if os.path.exists(testNameExt):
+                    if Verbose:
+                        print (" found '%s'" % testNameExt)
+                    return env.fs.File(testNameExt)
+    if Verbose:
+        print (" did not find '%s'" % name)
+    return None

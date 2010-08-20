@@ -1,0 +1,3 @@
+def __init__(self, defaults):
+    self.__dict__['__defaults__'] = defaults
+    self.__dict__['__SConscript_settings__'] = {}

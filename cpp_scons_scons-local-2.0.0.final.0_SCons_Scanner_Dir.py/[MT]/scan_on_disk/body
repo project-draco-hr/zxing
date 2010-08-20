@@ -1,0 +1,10 @@
+def scan_on_disk(node, env, path=()):
+    '\n    Scans a directory for on-disk files and directories therein.\n\n    Looking up the entries will add these to the in-memory Node tree\n    representation of the file system, so all we have to do is just\n    that and then call the in-memory scanning function.\n    '
+    try:
+        flist = node.fs.listdir(node.abspath)
+    except (IOError, OSError):
+        return []
+    e = node.Entry
+    for f in filter(do_not_scan, flist):
+        e(('./' + f))
+    return scan_in_memory(node, env, path)

@@ -1,0 +1,15 @@
+def generate(env):
+    'Add a Builder factory function and construction variables for\n    Subversion to an Environment.'
+
+    def SubversionFactory(repos, module='', env=env):
+        ' '
+        import SCons.Warnings as W
+        W.warn(W.DeprecatedSourceCodeWarning, 'The Subversion() factory is deprecated and there is no replacement.')
+        if (module != ''):
+            module = os.path.join(module, '')
+        act = SCons.Action.Action('$SVNCOM', '$SVNCOMSTR')
+        return SCons.Builder.Builder(action=act, env=env, SVNREPOSITORY=repos, SVNMODULE=module)
+    env.Subversion = SubversionFactory
+    env['SVN'] = 'svn'
+    env['SVNFLAGS'] = SCons.Util.CLVar('')
+    env['SVNCOM'] = '$SVN $SVNFLAGS cat $SVNREPOSITORY/$SVNMODULE$TARGET > $TARGET'

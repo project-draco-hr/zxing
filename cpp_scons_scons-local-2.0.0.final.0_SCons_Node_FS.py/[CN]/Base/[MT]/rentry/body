@@ -1,0 +1,17 @@
+def rentry(self):
+    try:
+        return self._memo['rentry']
+    except KeyError:
+        pass
+    result = self
+    if (not self.exists()):
+        norm_name = _my_normcase(self.name)
+        for dir in self.dir.get_all_rdirs():
+            try:
+                node = dir.entries[norm_name]
+            except KeyError:
+                if dir.entry_exists_on_disk(self.name):
+                    result = dir.Entry(self.name)
+                    break
+    self._memo['rentry'] = result
+    return result

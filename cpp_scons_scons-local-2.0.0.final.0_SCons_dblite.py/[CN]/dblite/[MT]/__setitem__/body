@@ -1,0 +1,8 @@
+def __setitem__(self, key, value):
+    self._check_writable()
+    if (not is_string(key)):
+        raise TypeError(("key `%s' must be a string but is %s" % (key, type(key))))
+    if (not is_string(value)):
+        raise TypeError(("value `%s' must be a string but is %s" % (value, type(value))))
+    self._dict[key] = value
+    self._needs_sync = 1

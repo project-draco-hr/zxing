@@ -1,0 +1,2 @@
+def makedirs(self, path):
+    return os.makedirs(path)

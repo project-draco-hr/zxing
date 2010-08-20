@@ -1,0 +1,24 @@
+def ScanFiles(theFile, target, paths, file_tests, file_tests_search, env, graphics_extensions, targetdir, aux_files):
+    ' For theFile (a Node) update any file_tests and search for graphics files\n    then find all included files and call ScanFiles recursively for each of them'
+    content = theFile.get_text_contents()
+    if Verbose:
+        print ' scanning ', str(theFile)
+    for i in range(len(file_tests_search)):
+        if (file_tests[i][0] is None):
+            file_tests[i][0] = file_tests_search[i].search(content)
+    incResult = includeOnly_re.search(content)
+    if incResult:
+        aux_files.append(os.path.join(targetdir, incResult.group(1)))
+    if Verbose:
+        print '\\include file names : ', aux_files
+    inc_files = []
+    inc_files.extend(include_re.findall(content))
+    if Verbose:
+        print ("files included by '%s': " % str(theFile)), inc_files
+    for src in inc_files:
+        srcNode = FindFile(src, ['.tex', '.ltx', '.latex'], paths, env, requireExt=False)
+        if (srcNode is not None):
+            file_tests = ScanFiles(srcNode, target, paths, file_tests, file_tests_search, env, graphics_extensions, targetdir, aux_files)
+    if Verbose:
+        print ' done scanning ', str(theFile)
+    return file_tests

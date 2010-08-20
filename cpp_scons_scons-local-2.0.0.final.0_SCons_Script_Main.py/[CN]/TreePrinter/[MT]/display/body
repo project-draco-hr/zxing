@@ -1,0 +1,7 @@
+def display(self, t):
+    if self.derived:
+        func = self.get_derived_children
+    else:
+        func = self.get_all_children
+    s = ((self.status and 2) or 0)
+    SCons.Util.print_tree(t, func, prune=self.prune, showtags=s)

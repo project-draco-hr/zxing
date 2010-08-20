@@ -1,0 +1,9 @@
+def generate(env):
+    'Add Builders and construction variables for lib to an Environment.'
+    SCons.Tool.createStaticLibBuilder(env)
+    msvc_setup_env_once(env)
+    env['AR'] = 'lib'
+    env['ARFLAGS'] = SCons.Util.CLVar('/nologo')
+    env['ARCOM'] = "${TEMPFILE('$AR $ARFLAGS /OUT:$TARGET $SOURCES')}"
+    env['LIBPREFIX'] = ''
+    env['LIBSUFFIX'] = '.lib'

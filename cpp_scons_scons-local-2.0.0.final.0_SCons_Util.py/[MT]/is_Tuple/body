@@ -1,0 +1,2 @@
+def is_Tuple(obj, isinstance=isinstance, tuple=tuple):
+    return isinstance(obj, tuple)

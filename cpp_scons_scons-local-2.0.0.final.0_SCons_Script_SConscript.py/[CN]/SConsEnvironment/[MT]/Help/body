@@ -1,0 +1,3 @@
+def Help(self, text):
+    text = self.subst(text, raw=1)
+    SCons.Script.HelpFunction(text)

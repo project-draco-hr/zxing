@@ -1,0 +1,3 @@
+def __getitem__(self, i):
+    self.__make_unique()
+    return UserList.__getitem__(self, i)

@@ -1,0 +1,4 @@
+def _lookup_rel(self, name, klass, create=1):
+    "\n        Looks up a *normalized* relative path name, relative to this\n        directory.\n\n        This method is intended for use by internal lookups with\n        already-normalized path data.  For general-purpose lookups,\n        use the Entry(), Dir() and File() methods above.\n\n        This method does *no* input checking and will die or give\n        incorrect results if it's passed a non-normalized path name (e.g.,\n        a path containing '..'), an absolute path name, a top-relative\n        ('#foo') path name, or any kind of object.\n        "
+    name = self.entry_labspath(name)
+    return self.root._lookup_abs(name, klass, create)

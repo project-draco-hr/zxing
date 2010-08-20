@@ -1,0 +1,2 @@
+def convert_from_sconsign(self, dir, name):
+    self.binfo.convert_from_sconsign(dir, name)

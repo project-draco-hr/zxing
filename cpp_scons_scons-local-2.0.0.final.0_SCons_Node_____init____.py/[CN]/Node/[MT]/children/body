@@ -1,0 +1,5 @@
+def children(self, scan=1):
+    "Return a list of the node's direct children, minus those\n        that are ignored by this node."
+    if scan:
+        self.scan()
+    return self._children_get()

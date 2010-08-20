@@ -1,0 +1,9 @@
+def Alias(self, name, **kw):
+    if isinstance(name, SCons.Node.Alias.Alias):
+        return name
+    try:
+        a = self[name]
+    except KeyError:
+        a = SCons.Node.Alias.Alias(name, **kw)
+        self[name] = a
+    return a

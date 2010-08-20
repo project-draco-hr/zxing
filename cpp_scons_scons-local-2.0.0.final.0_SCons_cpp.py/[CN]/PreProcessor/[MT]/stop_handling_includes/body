@@ -1,0 +1,6 @@
+def stop_handling_includes(self, t=None):
+    '\n        Causes the PreProcessor object to stop processing #import,\n        #include and #include_next lines.\n\n        This method will be called when a #if, #ifdef, #ifndef or #elif\n        evaluates False, or when we reach the #else in a #if, #ifdef,\n        #ifndef or #elif block where a condition already evaluated True.\n        '
+    d = self.dispatch_table
+    d['import'] = self.do_nothing
+    d['include'] = self.do_nothing
+    d['include_next'] = self.do_nothing

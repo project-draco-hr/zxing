@@ -1,0 +1,37 @@
+"SCons.Tool.msvs\n\nTool-specific initialization for Microsoft Visual Studio project files.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/msvs.py 5023 2010/06/14 22:05:46 scons'
+import SCons.compat
+import base64
+import hashlib
+import ntpath
+import os
+import pickle
+import re
+import sys
+import SCons.Builder
+import SCons.Node.FS
+import SCons.Platform.win32
+import SCons.Script.SConscript
+import SCons.Util
+import SCons.Warnings
+from MSCommon import msvc_exists, msvc_setup_env_once
+from SCons.Defaults import processDefines
+external_makefile_guid = '{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}'
+version_re = re.compile('(\\d+\\.\\d+)(.*)')
+try:
+    python_root = os.environ['PYTHON_ROOT']
+except KeyError:
+    python_executable = sys.executable
+else:
+    python_executable = os.path.join('$$(PYTHON_ROOT)', os.path.split(sys.executable)[1])
+V6DSPHeader = '# Microsoft Developer Studio Project File - Name="%(name)s" - Package Owner=<4>\n# Microsoft Developer Studio Generated Build File, Format Version 6.00\n# ** DO NOT EDIT **\n\n# TARGTYPE "Win32 (x86) External Target" 0x0106\n\nCFG=%(name)s - Win32 %(confkey)s\n!MESSAGE This is not a valid makefile. To build this project using NMAKE,\n!MESSAGE use the Export Makefile command and run\n!MESSAGE \n!MESSAGE NMAKE /f "%(name)s.mak".\n!MESSAGE \n!MESSAGE You can specify a configuration when running NMAKE\n!MESSAGE by defining the macro CFG on the command line. For example:\n!MESSAGE \n!MESSAGE NMAKE /f "%(name)s.mak" CFG="%(name)s - Win32 %(confkey)s"\n!MESSAGE \n!MESSAGE Possible choices for configuration are:\n!MESSAGE \n'
+V7DSPHeader = '<?xml version="1.0" encoding = "%(encoding)s"?>\n<VisualStudioProject\n\tProjectType="Visual C++"\n\tVersion="%(versionstr)s"\n\tName="%(name)s"\n%(scc_attrs)s\n\tKeyword="MakeFileProj">\n'
+V7DSPConfiguration = '\t\t<Configuration\n\t\t\tName="%(variant)s|%(platform)s"\n\t\t\tOutputDirectory="%(outdir)s"\n\t\t\tIntermediateDirectory="%(outdir)s"\n\t\t\tConfigurationType="0"\n\t\t\tUseOfMFC="0"\n\t\t\tATLMinimizesCRunTimeLibraryUsage="FALSE">\n\t\t\t<Tool\n\t\t\t\tName="VCNMakeTool"\n\t\t\t\tBuildCommandLine="%(buildcmd)s"\n\t\t\t\tCleanCommandLine="%(cleancmd)s"\n\t\t\t\tRebuildCommandLine="%(rebuildcmd)s"\n\t\t\t\tOutput="%(runfile)s"/>\n\t\t</Configuration>\n'
+V8DSPHeader = '<?xml version="1.0" encoding="%(encoding)s"?>\n<VisualStudioProject\n\tProjectType="Visual C++"\n\tVersion="%(versionstr)s"\n\tName="%(name)s"\n%(scc_attrs)s\n\tRootNamespace="%(name)s"\n\tKeyword="MakeFileProj">\n'
+V8DSPConfiguration = '\t\t<Configuration\n\t\t\tName="%(variant)s|%(platform)s"\n\t\t\tConfigurationType="0"\n\t\t\tUseOfMFC="0"\n\t\t\tATLMinimizesCRunTimeLibraryUsage="false"\n\t\t\t>\n\t\t\t<Tool\n\t\t\t\tName="VCNMakeTool"\n\t\t\t\tBuildCommandLine="%(buildcmd)s"\n\t\t\t\tReBuildCommandLine="%(rebuildcmd)s"\n\t\t\t\tCleanCommandLine="%(cleancmd)s"\n\t\t\t\tOutput="%(runfile)s"\n\t\t\t\tPreprocessorDefinitions="%(preprocdefs)s"\n\t\t\t\tIncludeSearchPath="%(includepath)s"\n\t\t\t\tForcedIncludes=""\n\t\t\t\tAssemblySearchPath=""\n\t\t\t\tForcedUsingAssemblies=""\n\t\t\t\tCompileAsManaged=""\n\t\t\t/>\n\t\t</Configuration>\n'
+V6DSWHeader = 'Microsoft Developer Studio Workspace File, Format Version 6.00\n# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!\n\n###############################################################################\n\nProject: "%(name)s"="%(dspfile)s" - Package Owner=<4>\n\nPackage=<5>\n{{{\n}}}\n\nPackage=<4>\n{{{\n}}}\n\n###############################################################################\n\nGlobal:\n\nPackage=<5>\n{{{\n}}}\n\nPackage=<3>\n{{{\n}}}\n\n###############################################################################\n'
+projectAction = SCons.Action.Action(GenerateProject, None)
+solutionAction = SCons.Action.Action(GenerateSolution, None)
+projectBuilder = SCons.Builder.Builder(action='$MSVSPROJECTCOM', suffix='$MSVSPROJECTSUFFIX', emitter=projectEmitter)
+solutionBuilder = SCons.Builder.Builder(action='$MSVSSOLUTIONCOM', suffix='$MSVSSOLUTIONSUFFIX', emitter=solutionEmitter)
+default_MSVS_SConscript = None

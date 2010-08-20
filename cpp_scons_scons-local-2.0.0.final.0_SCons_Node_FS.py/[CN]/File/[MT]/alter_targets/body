@@ -1,0 +1,5 @@
+def alter_targets(self):
+    'Return any corresponding targets in a variant directory.\n        '
+    if self.is_derived():
+        return ([], None)
+    return self.fs.variant_dir_target_climb(self, self.dir, [self.name])

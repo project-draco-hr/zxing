@@ -1,0 +1,8 @@
+"SCons.Tool.javah\n\nTool-specific initialization for javah.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/javah.py 5023 2010/06/14 22:05:46 scons'
+import os.path
+import SCons.Action
+import SCons.Builder
+import SCons.Node.FS
+import SCons.Tool.javac
+import SCons.Util

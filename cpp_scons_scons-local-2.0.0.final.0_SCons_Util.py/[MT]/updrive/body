@@ -1,0 +1,6 @@
+def updrive(path):
+    '\n    Make the drive letter (if any) upper case.\n    This is useful because Windows is inconsitent on the case\n    of the drive letter, which can cause inconsistencies when\n    calculating command signatures.\n    '
+    (drive, rest) = os.path.splitdrive(path)
+    if drive:
+        path = (drive.upper() + rest)
+    return path

@@ -1,0 +1,16 @@
+def _delete_duplicates(l, keep_last):
+    'Delete duplicates from a sequence, keeping the first or last.'
+    seen = {}
+    result = []
+    if keep_last:
+        l.reverse()
+    for i in l:
+        try:
+            if (i not in seen):
+                result.append(i)
+                seen[i] = 1
+        except TypeError:
+            result.append(i)
+    if keep_last:
+        result.reverse()
+    return result

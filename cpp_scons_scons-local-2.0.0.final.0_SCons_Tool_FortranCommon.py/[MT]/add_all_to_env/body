@@ -1,0 +1,6 @@
+def add_all_to_env(env):
+    'Add builders and construction variables for all supported fortran\n    dialects.'
+    add_fortran_to_env(env)
+    add_f77_to_env(env)
+    add_f90_to_env(env)
+    add_f95_to_env(env)

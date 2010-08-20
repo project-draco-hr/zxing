@@ -1,0 +1,9 @@
+def __call__(self, text, append_newline=1):
+    if (not self.print_it):
+        return
+    if append_newline:
+        text = (text + '\n')
+    try:
+        sys.stdout.write(unicode(text))
+    except IOError:
+        pass

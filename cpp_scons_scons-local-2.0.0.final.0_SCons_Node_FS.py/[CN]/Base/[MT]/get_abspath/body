@@ -1,0 +1,3 @@
+def get_abspath(self):
+    'Get the absolute path of the file.'
+    return self.abspath

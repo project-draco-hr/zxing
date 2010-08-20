@@ -1,0 +1,6 @@
+'SCons.Scanner.C\n\nThis module implements the depenency scanner for C/C++ code. \n\n'
+__revision__ = 'src/engine/SCons/Scanner/C.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Node.FS
+import SCons.Scanner
+import SCons.Util
+import SCons.cpp

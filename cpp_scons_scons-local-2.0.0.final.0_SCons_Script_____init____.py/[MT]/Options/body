@@ -1,0 +1,2 @@
+def Options(files=[], args=ARGUMENTS):
+    return SCons.Options.Options(files, args)

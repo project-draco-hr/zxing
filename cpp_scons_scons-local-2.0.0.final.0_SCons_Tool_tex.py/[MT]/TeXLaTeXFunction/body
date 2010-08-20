@@ -1,0 +1,13 @@
+def TeXLaTeXFunction(target=None, source=None, env=None):
+    'A builder for TeX and LaTeX that scans the source file to\n    decide the "flavor" of the source and then executes the appropriate\n    program.'
+    basedir = os.path.split(str(source[0]))[0]
+    abspath = os.path.abspath(basedir)
+    if is_LaTeX(source, env, abspath):
+        result = LaTeXAuxAction(target, source, env)
+        if (result != 0):
+            check_file_error_message(env['LATEX'])
+    else:
+        result = TeXAction(target, source, env)
+        if (result != 0):
+            check_file_error_message(env['TEX'])
+    return result

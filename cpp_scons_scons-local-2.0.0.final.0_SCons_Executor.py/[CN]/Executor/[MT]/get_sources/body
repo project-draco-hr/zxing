@@ -1,0 +1,2 @@
+def get_sources(self):
+    return self.batches[0].sources

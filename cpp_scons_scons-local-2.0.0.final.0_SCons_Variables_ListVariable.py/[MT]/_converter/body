@@ -1,0 +1,13 @@
+def _converter(val, allowedElems, mapdict):
+    '\n    '
+    if (val == 'none'):
+        val = []
+    elif (val == 'all'):
+        val = allowedElems
+    else:
+        val = [_f for _f in val.split(',') if _f]
+        val = [mapdict.get(v, v) for v in val]
+        notAllowed = [v for v in val if (not (v in allowedElems))]
+        if notAllowed:
+            raise ValueError(('Invalid value(s) for option: %s' % ','.join(notAllowed)))
+    return _ListVariable(val, allowedElems)

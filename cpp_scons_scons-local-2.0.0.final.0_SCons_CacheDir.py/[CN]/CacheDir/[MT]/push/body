@@ -1,0 +1,4 @@
+def push(self, node):
+    if (not self.is_enabled()):
+        return
+    return CachePush(node, [], node.get_build_env())

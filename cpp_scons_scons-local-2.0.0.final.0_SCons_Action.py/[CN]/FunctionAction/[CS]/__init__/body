@@ -1,0 +1,12 @@
+def __init__(self, execfunction, kw):
+    if __debug__:
+        logInstanceCreation(self, 'Action.FunctionAction')
+    self.execfunction = execfunction
+    try:
+        self.funccontents = _callable_contents(execfunction)
+    except AttributeError:
+        try:
+            self.gc = execfunction.get_contents
+        except AttributeError:
+            self.funccontents = _object_contents(execfunction)
+    _ActionAction.__init__(self, **kw)

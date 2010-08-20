@@ -1,0 +1,2 @@
+def piped_env_spawn(sh, escape, cmd, args, env, stdout, stderr):
+    return exec_popen3([_get_env_command(sh, escape, cmd, args, env)], env, stdout, stderr)

@@ -1,0 +1,19 @@
+def generate(env):
+    'Add Builders and construction variables for pdftex to an Environment.'
+    global PDFTeXAction
+    if (PDFTeXAction is None):
+        PDFTeXAction = SCons.Action.Action('$PDFTEXCOM', '$PDFTEXCOMSTR')
+    global PDFLaTeXAction
+    if (PDFLaTeXAction is None):
+        PDFLaTeXAction = SCons.Action.Action('$PDFLATEXCOM', '$PDFLATEXCOMSTR')
+    global PDFTeXLaTeXAction
+    if (PDFTeXLaTeXAction is None):
+        PDFTeXLaTeXAction = SCons.Action.Action(PDFTeXLaTeXFunction, strfunction=SCons.Tool.tex.TeXLaTeXStrFunction)
+    env.AppendUnique(LATEXSUFFIXES=SCons.Tool.LaTeXSuffixes)
+    import pdf
+    pdf.generate(env)
+    bld = env['BUILDERS']['PDF']
+    bld.add_action('.tex', PDFTeXLaTeXAction)
+    bld.add_emitter('.tex', SCons.Tool.tex.tex_pdf_emitter)
+    pdf.generate2(env)
+    SCons.Tool.tex.generate_common(env)

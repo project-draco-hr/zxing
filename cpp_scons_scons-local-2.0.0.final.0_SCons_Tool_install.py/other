@@ -1,0 +1,13 @@
+"SCons.Tool.install\n\nTool-specific initialization for the install tool.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n"
+__revision__ = 'src/engine/SCons/Tool/install.py 5023 2010/06/14 22:05:46 scons'
+import os
+import shutil
+import stat
+import SCons.Action
+from SCons.Util import make_path_relative
+_INSTALLED_FILES = []
+_UNIQUE_INSTALLED_FILES = None
+install_action = SCons.Action.Action(installFunc, stringFunc)
+installas_action = SCons.Action.Action(installFunc, stringFunc)
+BaseInstallBuilder = None
+added = None

@@ -1,0 +1,6 @@
+def __init__(self, iterable=None):
+    'Construct an immutable set from an optional iterable.'
+    self._hashcode = None
+    self._data = {}
+    if (iterable is not None):
+        self._update(iterable)

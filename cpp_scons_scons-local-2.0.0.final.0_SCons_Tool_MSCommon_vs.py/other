@@ -1,0 +1,13 @@
+__revision__ = 'src/engine/SCons/Tool/MSCommon/vs.py 5023 2010/06/14 22:05:46 scons'
+__doc__ = 'Module to detect Visual Studio and/or Visual C/C++\n'
+import os
+import SCons.Errors
+import SCons.Util
+from common import debug, get_output, is_win64, normalize_env, parse_output, read_reg
+import SCons.Tool.MSCommon.vc
+SupportedVSList = [VisualStudio('9.0', sdk_version='6.1', hkeys=['Microsoft\\VisualStudio\\9.0\\Setup\\VS\\ProductDir'], common_tools_var='VS90COMNTOOLS', executable_path='Common7\\IDE\\devenv.com', batch_file_path='Common7\\Tools\\vsvars32.bat', default_dirname='Microsoft Visual Studio 9', supported_arch=['x86', 'amd64']), VisualStudio('9.0Exp', vc_version='9.0', sdk_version='6.1', hkeys=['Microsoft\\VCExpress\\9.0\\Setup\\VS\\ProductDir'], common_tools_var='VS90COMNTOOLS', executable_path='Common7\\IDE\\VCExpress.exe', batch_file_path='Common7\\Tools\\vsvars32.bat', default_dirname='Microsoft Visual Studio 9', supported_arch=['x86']), VisualStudio('8.0', sdk_version='6.0A', hkeys=['Microsoft\\VisualStudio\\8.0\\Setup\\VS\\ProductDir'], common_tools_var='VS80COMNTOOLS', executable_path='Common7\\IDE\\devenv.com', batch_file_path='Common7\\Tools\\vsvars32.bat', default_dirname='Microsoft Visual Studio 8', supported_arch=['x86', 'amd64']), VisualStudio('8.0Exp', vc_version='8.0Exp', sdk_version='6.0A', hkeys=['Microsoft\\VCExpress\\8.0\\Setup\\VS\\ProductDir'], common_tools_var='VS80COMNTOOLS', executable_path='Common7\\IDE\\VCExpress.exe', batch_file_path='Common7\\Tools\\vsvars32.bat', default_dirname='Microsoft Visual Studio 8', supported_arch=['x86']), VisualStudio('7.1', sdk_version='6.0', hkeys=['Microsoft\\VisualStudio\\7.1\\Setup\\VS\\ProductDir'], common_tools_var='VS71COMNTOOLS', executable_path='Common7\\IDE\\devenv.com', batch_file_path='Common7\\Tools\\vsvars32.bat', default_dirname='Microsoft Visual Studio .NET 2003', supported_arch=['x86']), VisualStudio('7.0', sdk_version='2003R2', hkeys=['Microsoft\\VisualStudio\\7.0\\Setup\\VS\\ProductDir'], common_tools_var='VS70COMNTOOLS', executable_path='IDE\\devenv.com', batch_file_path='Common7\\Tools\\vsvars32.bat', default_dirname='Microsoft Visual Studio .NET', supported_arch=['x86']), VisualStudio('6.0', sdk_version='2003R1', hkeys=['Microsoft\\VisualStudio\\6.0\\Setup\\Microsoft Visual Studio\\ProductDir', 'use_dir'], common_tools_var='VS60COMNTOOLS', executable_path='Common\\MSDev98\\Bin\\MSDEV.COM', batch_file_path='Common7\\Tools\\vsvars32.bat', default_dirname='Microsoft Visual Studio', supported_arch=['x86'])]
+SupportedVSMap = {}
+for vs in SupportedVSList:
+    SupportedVSMap[vs.version] = vs
+InstalledVSList = None
+InstalledVSMap = None

@@ -1,0 +1,3 @@
+def __cmp__(self, other):
+    self.__make_unique()
+    return UserList.__cmp__(self, other)

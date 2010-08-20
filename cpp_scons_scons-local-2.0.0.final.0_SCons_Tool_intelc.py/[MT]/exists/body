@@ -1,0 +1,16 @@
+def exists(env):
+    if (not (is_mac or is_linux or is_windows)):
+        return 0
+    try:
+        versions = get_all_compiler_versions()
+    except (SCons.Util.RegError, IntelCError):
+        versions = None
+    detected = ((versions is not None) and (len(versions) > 0))
+    if (not detected):
+        if is_windows:
+            return env.Detect('icl')
+        elif is_linux:
+            return env.Detect('icc')
+        elif is_mac:
+            return env.Detect('icc')
+    return detected

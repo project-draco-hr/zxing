@@ -1,0 +1,12 @@
+def generate(env):
+    'Add Builders and construction variables for zip to an Environment.'
+    try:
+        bld = env['BUILDERS']['Zip']
+    except KeyError:
+        bld = ZipBuilder
+        env['BUILDERS']['Zip'] = bld
+    env['ZIP'] = 'zip'
+    env['ZIPFLAGS'] = SCons.Util.CLVar('')
+    env['ZIPCOM'] = zipAction
+    env['ZIPCOMPRESSION'] = zipcompression
+    env['ZIPSUFFIX'] = '.zip'

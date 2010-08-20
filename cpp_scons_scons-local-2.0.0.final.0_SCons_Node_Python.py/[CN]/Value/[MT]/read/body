@@ -1,0 +1,6 @@
+def read(self):
+    'Return the value. If necessary, the value is built.'
+    self.build()
+    if (not hasattr(self, 'built_value')):
+        self.built_value = self.value
+    return self.built_value

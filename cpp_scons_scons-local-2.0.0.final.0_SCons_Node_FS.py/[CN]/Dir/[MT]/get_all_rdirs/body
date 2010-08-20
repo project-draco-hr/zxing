@@ -1,0 +1,18 @@
+def get_all_rdirs(self):
+    try:
+        return list(self._memo['get_all_rdirs'])
+    except KeyError:
+        pass
+    result = [self]
+    fname = '.'
+    dir = self
+    while dir:
+        for rep in dir.getRepositories():
+            result.append(rep.Dir(fname))
+        if (fname == '.'):
+            fname = dir.name
+        else:
+            fname = ((dir.name + os.sep) + fname)
+        dir = dir.up()
+    self._memo['get_all_rdirs'] = list(result)
+    return result

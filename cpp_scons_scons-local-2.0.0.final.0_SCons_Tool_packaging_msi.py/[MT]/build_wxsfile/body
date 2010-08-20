@@ -1,0 +1,21 @@
+def build_wxsfile(target, source, env):
+    " compiles a .wxs file from the keywords given in env['msi_spec'] and\n        by analyzing the tree of source nodes and their tags.\n    "
+    file = open(target[0].abspath, 'w')
+    try:
+        doc = Document()
+        root = doc.createElement('Wix')
+        root.attributes['xmlns'] = 'http://schemas.microsoft.com/wix/2003/01/wi'
+        doc.appendChild(root)
+        filename_set = []
+        id_set = {}
+        build_wxsfile_header_section(root, env)
+        build_wxsfile_file_section(root, source, env['NAME'], env['VERSION'], env['VENDOR'], filename_set, id_set)
+        generate_guids(root)
+        build_wxsfile_features_section(root, source, env['NAME'], env['VERSION'], env['SUMMARY'], id_set)
+        build_wxsfile_default_gui(root)
+        build_license_file(target[0].get_dir(), env)
+        file.write(doc.toprettyxml())
+        if ('CHANGE_SPECFILE' in env):
+            env['CHANGE_SPECFILE'](target, source)
+    except KeyError as e:
+        raise SCons.Errors.UserError(('"%s" package field for MSI is missing.' % e.args[0]))

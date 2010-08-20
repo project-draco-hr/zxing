@@ -1,0 +1,14 @@
+def createObjBuilders(env):
+    'This is a utility function that creates the StaticObject\n    and SharedObject Builders in an Environment if they\n    are not there already.\n\n    If they are there already, we return the existing ones.\n\n    This is a separate function because soooo many Tools\n    use this functionality.\n\n    The return is a 2-tuple of (StaticObject, SharedObject)\n    '
+    try:
+        static_obj = env['BUILDERS']['StaticObject']
+    except KeyError:
+        static_obj = SCons.Builder.Builder(action={}, emitter={}, prefix='$OBJPREFIX', suffix='$OBJSUFFIX', src_builder=['CFile', 'CXXFile'], source_scanner=SourceFileScanner, single_source=1)
+        env['BUILDERS']['StaticObject'] = static_obj
+        env['BUILDERS']['Object'] = static_obj
+    try:
+        shared_obj = env['BUILDERS']['SharedObject']
+    except KeyError:
+        shared_obj = SCons.Builder.Builder(action={}, emitter={}, prefix='$SHOBJPREFIX', suffix='$SHOBJSUFFIX', src_builder=['CFile', 'CXXFile'], source_scanner=SourceFileScanner, single_source=1)
+        env['BUILDERS']['SharedObject'] = shared_obj
+    return (static_obj, shared_obj)

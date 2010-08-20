@@ -1,0 +1,5 @@
+def __isub__(self, other):
+    'Remove all elements of another set from this set.'
+    self._binary_sanity_check(other)
+    self.difference_update(other)
+    return self

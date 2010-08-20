@@ -1,0 +1,2 @@
+def open(*args, **kw):
+    raise error()

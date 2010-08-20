@@ -1,0 +1,3 @@
+def do_nothing(self, t):
+    '\n        Null method for when we explicitly want the action for a\n        specific preprocessor directive to do nothing.\n        '
+    pass

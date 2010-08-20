@@ -1,0 +1,2 @@
+def set_max_drift(self, max_drift):
+    self.max_drift = max_drift

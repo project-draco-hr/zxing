@@ -1,0 +1,26 @@
+def convert_to_BuildError(status, exc_info=None):
+    '\n    Convert any return code a BuildError Exception.\n\n    `status\' can either be a return code or an Exception.\n    The buildError.status we set here will normally be\n    used as the exit status of the "scons" process.\n    '
+    if ((not exc_info) and isinstance(status, Exception)):
+        exc_info = (status.__class__, status, None)
+    if isinstance(status, BuildError):
+        buildError = status
+        buildError.exitstatus = 2
+    elif isinstance(status, ExplicitExit):
+        status = status.status
+        errstr = ('Explicit exit, status %s' % status)
+        buildError = BuildError(errstr=errstr, status=status, exitstatus=status, exc_info=exc_info)
+    elif isinstance(status, (StopError, UserError)):
+        buildError = BuildError(errstr=str(status), status=2, exitstatus=2, exc_info=exc_info)
+    elif isinstance(status, exceptions.EnvironmentError):
+        try:
+            filename = status.filename
+        except AttributeError:
+            filename = None
+        buildError = BuildError(errstr=status.strerror, status=status.errno, exitstatus=2, filename=filename, exc_info=exc_info)
+    elif isinstance(status, Exception):
+        buildError = BuildError(errstr=('%s : %s' % (status.__class__.__name__, status)), status=2, exitstatus=2, exc_info=exc_info)
+    elif SCons.Util.is_String(status):
+        buildError = BuildError(errstr=status, status=2, exitstatus=2)
+    else:
+        buildError = BuildError(errstr=('Error %s' % status), status=status, exitstatus=2)
+    return buildError

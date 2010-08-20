@@ -1,0 +1,7 @@
+def apply_tools(self, env):
+    '\n\tSearches the list of associated Tool modules for one that\n\texists, and applies that to the construction environment.\n        '
+    for t in self.tools:
+        tool = SCons.Tool.Tool(t)
+        if tool.exists(env):
+            env.Tool(tool)
+            return

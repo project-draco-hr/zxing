@@ -1,0 +1,7 @@
+def __init__(self, points, type, title, label, comment, fmt='%s %s'):
+    self.points = points
+    self.type = type
+    self.title = title
+    self.label = label
+    self.comment = comment
+    self.fmt = fmt

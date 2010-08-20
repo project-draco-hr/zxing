@@ -1,0 +1,3 @@
+def generate(env):
+    posix.generate(env)
+    env['MAXLINELENGTH'] = 2045000

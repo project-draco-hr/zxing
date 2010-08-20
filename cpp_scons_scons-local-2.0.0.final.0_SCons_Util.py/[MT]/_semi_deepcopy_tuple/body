@@ -1,0 +1,2 @@
+def _semi_deepcopy_tuple(x):
+    return tuple(map(semi_deepcopy, x))

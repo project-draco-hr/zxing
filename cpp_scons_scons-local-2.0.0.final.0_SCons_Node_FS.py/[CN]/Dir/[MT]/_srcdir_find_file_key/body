@@ -1,0 +1,2 @@
+def _srcdir_find_file_key(self, filename):
+    return filename

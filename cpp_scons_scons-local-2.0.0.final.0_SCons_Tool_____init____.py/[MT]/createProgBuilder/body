@@ -1,0 +1,9 @@
+def createProgBuilder(env):
+    'This is a utility function that creates the Program\n    Builder in an Environment if it is not there already.\n\n    If it is already there, we return the existing one.\n    '
+    try:
+        program = env['BUILDERS']['Program']
+    except KeyError:
+        import SCons.Defaults
+        program = SCons.Builder.Builder(action=SCons.Defaults.LinkAction, emitter='$PROGEMITTER', prefix='$PROGPREFIX', suffix='$PROGSUFFIX', src_suffix='$OBJSUFFIX', src_builder='Object', target_scanner=ProgramScanner)
+        env['BUILDERS']['Program'] = program
+    return program

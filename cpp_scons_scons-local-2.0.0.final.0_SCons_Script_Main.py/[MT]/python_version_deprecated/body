@@ -1,0 +1,2 @@
+def python_version_deprecated(version=sys.version_info):
+    return (version < deprecated_python_version)

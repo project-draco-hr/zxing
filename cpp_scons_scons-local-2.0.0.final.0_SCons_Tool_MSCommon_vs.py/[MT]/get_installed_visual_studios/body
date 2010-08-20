@@ -1,0 +1,13 @@
+def get_installed_visual_studios():
+    global InstalledVSList
+    global InstalledVSMap
+    if (InstalledVSList is None):
+        InstalledVSList = []
+        InstalledVSMap = {}
+        for vs in SupportedVSList:
+            debug(('trying to find VS %s' % vs.version))
+            if vs.get_executable():
+                debug(('found VS %s' % vs.version))
+                InstalledVSList.append(vs)
+                InstalledVSMap[vs.version] = vs
+    return InstalledVSList

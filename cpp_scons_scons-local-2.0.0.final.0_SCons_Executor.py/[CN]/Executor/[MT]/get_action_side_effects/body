@@ -1,0 +1,6 @@
+def get_action_side_effects(self):
+    'Returns all side effects for all batches of this\n        Executor used by the underlying Action.\n        '
+    result = SCons.Util.UniqueList([])
+    for target in self.get_action_targets():
+        result.extend(target.side_effects)
+    return result

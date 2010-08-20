@@ -1,0 +1,4 @@
+def add_wkid(self, wkid):
+    'Add a node to the list of kids waiting to be evaluated'
+    if (self.wkids is not None):
+        self.wkids.append(wkid)

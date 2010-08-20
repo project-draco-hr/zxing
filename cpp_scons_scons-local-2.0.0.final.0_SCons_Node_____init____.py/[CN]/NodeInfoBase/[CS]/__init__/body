@@ -1,0 +1,2 @@
+def __init__(self, node=None):
+    self._version_id = self.current_version_id

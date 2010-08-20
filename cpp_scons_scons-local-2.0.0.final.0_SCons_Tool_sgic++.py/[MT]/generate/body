@@ -1,0 +1,8 @@
+def generate(env):
+    'Add Builders and construction variables for SGI MIPS C++ to an Environment.'
+    cplusplus.generate(env)
+    env['CXX'] = 'CC'
+    env['CXXFLAGS'] = SCons.Util.CLVar('-LANG:std')
+    env['SHCXX'] = '$CXX'
+    env['SHOBJSUFFIX'] = '.o'
+    env['STATIC_AND_SHARED_OBJECTS_ARE_THE_SAME'] = 1

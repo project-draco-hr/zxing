@@ -1,0 +1,4 @@
+def do_print(self):
+    fmt = 'Memory %-32s %12d\n'
+    for (label, stats) in zip(self.labels, self.stats):
+        self.outfp.write((fmt % (label, stats)))

@@ -1,0 +1,7 @@
+def erase_previous(self):
+    if self.prev:
+        length = len(self.prev)
+        if (self.prev[(-1)] in ('\n', '\r')):
+            length = (length - 1)
+        self.write(((' ' * length) + '\r'))
+        self.prev = ''

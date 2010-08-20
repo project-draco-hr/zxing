@@ -1,0 +1,68 @@
+def PrintSolution(self):
+    'Writes a solution file'
+    self.file.write(('Microsoft Visual Studio Solution File, Format Version %s\n' % self.versionstr))
+    if (self.version_num >= 8.0):
+        self.file.write('# Visual Studio 2005\n')
+    for p in self.dspfiles:
+        name = os.path.basename(p)
+        (base, suffix) = SCons.Util.splitext(name)
+        if (suffix == '.vcproj'):
+            name = base
+        guid = _generateGUID(p, '')
+        self.file.write(('Project("%s") = "%s", "%s", "%s"\n' % (external_makefile_guid, name, p, guid)))
+        if ((self.version_num >= 7.1) and (self.version_num < 8.0)):
+            self.file.write('\tProjectSection(ProjectDependencies) = postProject\n\tEndProjectSection\n')
+        self.file.write('EndProject\n')
+    self.file.write('Global\n')
+    env = self.env
+    if ('MSVS_SCC_PROVIDER' in env):
+        dspfile_base = os.path.basename(self.dspfile)
+        slnguid = self.slnguid
+        scc_provider = env.get('MSVS_SCC_PROVIDER', '')
+        scc_provider = scc_provider.replace(' ', '\\u0020')
+        scc_project_name = env.get('MSVS_SCC_PROJECT_NAME', '')
+        scc_local_path = env.get('MSVS_SCC_LOCAL_PATH', '')
+        scc_project_base_path = env.get('MSVS_SCC_PROJECT_BASE_PATH', '')
+        self.file.write(('\tGlobalSection(SourceCodeControl) = preSolution\n\t\tSccNumberOfProjects = 2\n\t\tSccProjectUniqueName0 = %(dspfile_base)s\n\t\tSccLocalPath0 = %(scc_local_path)s\n\t\tCanCheckoutShared = true\n\t\tSccProjectFilePathRelativizedFromConnection0 = %(scc_project_base_path)s\n\t\tSccProjectName1 = %(scc_project_name)s\n\t\tSccLocalPath1 = %(scc_local_path)s\n\t\tSccProvider1 = %(scc_provider)s\n\t\tCanCheckoutShared = true\n\t\tSccProjectFilePathRelativizedFromConnection1 = %(scc_project_base_path)s\n\t\tSolutionUniqueID = %(slnguid)s\n\tEndGlobalSection\n' % locals()))
+    if (self.version_num >= 8.0):
+        self.file.write('\tGlobalSection(SolutionConfigurationPlatforms) = preSolution\n')
+    else:
+        self.file.write('\tGlobalSection(SolutionConfiguration) = preSolution\n')
+    confkeys = sorted(self.configs.keys())
+    cnt = 0
+    for name in confkeys:
+        variant = self.configs[name].variant
+        platform = self.configs[name].platform
+        if (self.version_num >= 8.0):
+            self.file.write(('\t\t%s|%s = %s|%s\n' % (variant, platform, variant, platform)))
+        else:
+            self.file.write(('\t\tConfigName.%d = %s\n' % (cnt, variant)))
+        cnt = (cnt + 1)
+    self.file.write('\tEndGlobalSection\n')
+    if (self.version_num < 7.1):
+        self.file.write('\tGlobalSection(ProjectDependencies) = postSolution\n\tEndGlobalSection\n')
+    if (self.version_num >= 8.0):
+        self.file.write('\tGlobalSection(ProjectConfigurationPlatforms) = postSolution\n')
+    else:
+        self.file.write('\tGlobalSection(ProjectConfiguration) = postSolution\n')
+    for name in confkeys:
+        variant = self.configs[name].variant
+        platform = self.configs[name].platform
+        if (self.version_num >= 8.0):
+            for p in self.dspfiles:
+                guid = _generateGUID(p, '')
+                self.file.write(('\t\t%s.%s|%s.ActiveCfg = %s|%s\n\t\t%s.%s|%s.Build.0 = %s|%s\n' % (guid, variant, platform, variant, platform, guid, variant, platform, variant, platform)))
+        else:
+            for p in self.dspfiles:
+                guid = _generateGUID(p, '')
+                self.file.write(('\t\t%s.%s.ActiveCfg = %s|%s\n\t\t%s.%s.Build.0 = %s|%s\n' % (guid, variant, variant, platform, guid, variant, variant, platform)))
+    self.file.write('\tEndGlobalSection\n')
+    if (self.version_num >= 8.0):
+        self.file.write('\tGlobalSection(SolutionProperties) = preSolution\n\t\tHideSolutionNode = FALSE\n\tEndGlobalSection\n')
+    else:
+        self.file.write('\tGlobalSection(ExtensibilityGlobals) = postSolution\n\tEndGlobalSection\n\tGlobalSection(ExtensibilityAddIns) = postSolution\n\tEndGlobalSection\n')
+    self.file.write('EndGlobal\n')
+    if (self.nokeep == 0):
+        pdata = pickle.dumps(self.configs, 1)
+        pdata = base64.encodestring(pdata)
+        self.file.write((pdata + '\n'))

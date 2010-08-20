@@ -1,0 +1,4 @@
+def __rmul__(self, other):
+    result = UserList.__rmul__(self, other)
+    result.unique = False
+    return result

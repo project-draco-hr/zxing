@@ -1,0 +1,26 @@
+def _do_create_action(act, kw):
+    'This is the actual "implementation" for the\n    Action factory method, below.  This handles the\n    fact that passing lists to Action() itself has\n    different semantics than passing lists as elements\n    of lists.\n\n    The former will create a ListAction, the latter\n    will create a CommandAction by converting the inner\n    list elements to strings.'
+    if isinstance(act, ActionBase):
+        return act
+    if is_List(act):
+        return CommandAction(act, **kw)
+    if callable(act):
+        try:
+            gen = kw['generator']
+            del kw['generator']
+        except KeyError:
+            gen = 0
+        if gen:
+            action_type = CommandGeneratorAction
+        else:
+            action_type = FunctionAction
+        return action_type(act, kw)
+    if is_String(act):
+        var = SCons.Util.get_environment_var(act)
+        if var:
+            return LazyAction(var, kw)
+        commands = str(act).split('\n')
+        if (len(commands) == 1):
+            return CommandAction(commands[0], **kw)
+        return _do_create_list_action(commands, kw)
+    return None

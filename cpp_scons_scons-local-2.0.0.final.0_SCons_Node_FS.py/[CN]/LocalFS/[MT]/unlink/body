@@ -1,0 +1,2 @@
+def unlink(self, path):
+    return os.unlink(path)

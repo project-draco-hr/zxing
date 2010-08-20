@@ -1,0 +1,37 @@
+def Parse(self):
+    try:
+        dspfile = open(self.dspabs, 'r')
+    except IOError:
+        return
+    line = dspfile.readline()
+    while line:
+        if (line.find('# End Project') > (-1)):
+            break
+        line = dspfile.readline()
+    line = dspfile.readline()
+    datas = line
+    while (line and (line != '\n')):
+        line = dspfile.readline()
+        datas = (datas + line)
+    try:
+        datas = base64.decodestring(datas)
+        data = pickle.loads(datas)
+    except KeyboardInterrupt:
+        raise
+    except:
+        return
+    self.configs.update(data)
+    data = None
+    line = dspfile.readline()
+    datas = line
+    while (line and (line != '\n')):
+        line = dspfile.readline()
+        datas = (datas + line)
+    try:
+        datas = base64.decodestring(datas)
+        data = pickle.loads(datas)
+    except KeyboardInterrupt:
+        raise
+    except:
+        return
+    self.sources.update(data)

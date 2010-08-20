@@ -1,0 +1,8 @@
+'SCons.Executor\n\nA module for executing actions with specific lists of target and source\nNodes.\n\n'
+__revision__ = 'src/engine/SCons/Executor.py 5023 2010/06/14 22:05:46 scons'
+import collections
+from SCons.Debug import logInstanceCreation
+import SCons.Errors
+import SCons.Memoize
+_batch_executors = {}
+nullenv = None

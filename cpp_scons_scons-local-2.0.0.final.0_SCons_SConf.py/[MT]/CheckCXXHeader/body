@@ -1,0 +1,3 @@
+def CheckCXXHeader(context, header, include_quotes='""'):
+    '\n    A test for a C++ header file.\n    '
+    return CheckHeader(context, header, include_quotes, language='C++')

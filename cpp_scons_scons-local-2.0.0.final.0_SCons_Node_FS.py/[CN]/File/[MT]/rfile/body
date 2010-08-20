@@ -1,0 +1,19 @@
+def rfile(self):
+    try:
+        return self._memo['rfile']
+    except KeyError:
+        pass
+    result = self
+    if (not self.exists()):
+        norm_name = _my_normcase(self.name)
+        for dir in self.dir.get_all_rdirs():
+            try:
+                node = dir.entries[norm_name]
+            except KeyError:
+                node = dir.file_on_disk(self.name)
+            if (node and node.exists() and (isinstance(node, File) or isinstance(node, Entry) or (not node.is_derived()))):
+                result = node
+                result.attributes = self.attributes
+                break
+    self._memo['rfile'] = result
+    return result

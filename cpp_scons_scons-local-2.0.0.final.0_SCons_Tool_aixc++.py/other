@@ -1,0 +1,6 @@
+"SCons.Tool.aixc++\n\nTool-specific initialization for IBM xlC / Visual Age C++ compiler.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/aixc++.py 5023 2010/06/14 22:05:46 scons'
+import os.path
+import SCons.Platform.aix
+cplusplus = __import__('c++', globals(), locals(), [])
+packages = ['vacpp.cmp.core', 'vacpp.cmp.batch', 'vacpp.cmp.C', 'ibmcxx.cmp']

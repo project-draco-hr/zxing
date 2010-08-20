@@ -1,0 +1,3 @@
+def multiple_side_effect_has_builder(self):
+    global MkdirBuilder
+    return ((self.builder is not MkdirBuilder) and self.has_builder())

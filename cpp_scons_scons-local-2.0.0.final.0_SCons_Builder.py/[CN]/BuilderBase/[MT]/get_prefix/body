@@ -1,0 +1,5 @@
+def get_prefix(self, env, sources=[]):
+    prefix = self.prefix
+    if callable(prefix):
+        prefix = prefix(env, sources)
+    return env.subst(prefix)

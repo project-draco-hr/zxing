@@ -1,0 +1,2 @@
+def disambiguate(self, must_exist=None):
+    return self

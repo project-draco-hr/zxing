@@ -1,0 +1,6 @@
+def do_undef(self, t):
+    '\n        Default handling of a #undef line.\n        '
+    try:
+        del self.cpp_namespace[t[1]]
+    except KeyError:
+        pass

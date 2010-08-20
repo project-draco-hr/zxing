@@ -1,0 +1,3 @@
+def LaTeXAuxAction(target=None, source=None, env=None):
+    result = InternalLaTeXAuxAction(LaTeXAction, target, source, env)
+    return result

@@ -1,0 +1,11 @@
+def File(name, dbm_module=None):
+    '\n    Arrange for all signatures to be stored in a global .sconsign.db*\n    file.\n    '
+    global ForDirectory, DB_Name, DB_Module
+    if (name is None):
+        ForDirectory = DirFile
+        DB_Module = None
+    else:
+        ForDirectory = DB
+        DB_Name = name
+        if (not (dbm_module is None)):
+            DB_Module = dbm_module

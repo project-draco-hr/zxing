@@ -1,0 +1,24 @@
+def scan(self):
+    "Scan this node's dependents for implicit dependencies."
+    if (self.implicit is not None):
+        return
+    self.implicit = []
+    self.implicit_set = set()
+    self._children_reset()
+    if (not self.has_builder()):
+        return
+    build_env = self.get_build_env()
+    executor = self.get_executor()
+    if (implicit_cache and (not implicit_deps_changed)):
+        implicit = self.get_stored_implicit()
+        if (implicit is not None):
+            for tgt in executor.get_all_targets():
+                tgt.add_to_implicit(implicit)
+            if (implicit_deps_unchanged or self.is_up_to_date()):
+                return
+            self.implicit = []
+            self.implicit_set = set()
+    executor.scan_sources(self.builder.source_scanner)
+    scanner = self.get_target_scanner()
+    if scanner:
+        executor.scan_targets(scanner)

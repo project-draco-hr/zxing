@@ -1,0 +1,2 @@
+def Decider(self, function):
+    SCons.Util.AddMethod(self, function, 'changed_since_last_build')

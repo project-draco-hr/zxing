@@ -1,0 +1,13 @@
+def Replace(self, **kw):
+    'Replace existing construction variables in an Environment\n        with new construction variables and/or values.\n        '
+    try:
+        kwbd = kw['BUILDERS']
+    except KeyError:
+        pass
+    else:
+        kwbd = semi_deepcopy(kwbd)
+        del kw['BUILDERS']
+        self.__setitem__('BUILDERS', kwbd)
+    kw = copy_non_reserved_keywords(kw)
+    self._update(semi_deepcopy(kw))
+    self.scanner_map_delete(kw)

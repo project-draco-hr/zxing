@@ -1,0 +1,3 @@
+def GetLaunchDir(self):
+    global launch_dir
+    return launch_dir

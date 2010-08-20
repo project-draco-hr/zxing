@@ -1,0 +1,3 @@
+def __len__(self):
+    'Return the number of elements of a set.'
+    return len(self._data)

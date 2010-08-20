@@ -1,0 +1,6 @@
+def discard(self, element):
+    'Remove an element from a set if it is a member.\n\n        If the element is not a member, do nothing.\n        '
+    try:
+        self.remove(element)
+    except KeyError:
+        pass

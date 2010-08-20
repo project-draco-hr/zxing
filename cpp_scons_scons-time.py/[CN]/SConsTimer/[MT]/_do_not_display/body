@@ -1,0 +1,2 @@
+def _do_not_display(self, msg, *args):
+    pass

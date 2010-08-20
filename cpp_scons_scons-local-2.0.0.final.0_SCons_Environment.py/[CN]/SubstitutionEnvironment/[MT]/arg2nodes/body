@@ -1,0 +1,36 @@
+def arg2nodes(self, args, node_factory=_null, lookup_list=_null, **kw):
+    if (node_factory is _null):
+        node_factory = self.fs.File
+    if (lookup_list is _null):
+        lookup_list = self.lookup_list
+    if (not args):
+        return []
+    args = SCons.Util.flatten(args)
+    nodes = []
+    for v in args:
+        if SCons.Util.is_String(v):
+            n = None
+            for l in lookup_list:
+                n = l(v)
+                if (n is not None):
+                    break
+            if (n is not None):
+                if SCons.Util.is_String(n):
+                    kw['raw'] = 1
+                    n = self.subst(n, **kw)
+                    if node_factory:
+                        n = node_factory(n)
+                if SCons.Util.is_List(n):
+                    nodes.extend(n)
+                else:
+                    nodes.append(n)
+            elif node_factory:
+                kw['raw'] = 1
+                v = node_factory(self.subst(v, **kw))
+                if SCons.Util.is_List(v):
+                    nodes.extend(v)
+                else:
+                    nodes.append(v)
+        else:
+            nodes.append(v)
+    return nodes

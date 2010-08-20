@@ -1,0 +1,12 @@
+def do_define(self, t):
+    '\n        Default handling of a #define line.\n        '
+    (_, name, args, expansion) = t
+    try:
+        expansion = int(expansion)
+    except (TypeError, ValueError):
+        pass
+    if args:
+        evaluator = FunctionEvaluator(name, args[1:(-1)], expansion)
+        self.cpp_namespace[name] = evaluator
+    else:
+        self.cpp_namespace[name] = expansion

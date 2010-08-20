@@ -1,0 +1,15 @@
+def remove(self):
+    target = self.targets[0]
+    if ((target.has_builder() or target.side_effect) and (not target.noclean)):
+        for t in self.targets:
+            try:
+                removed = t.remove()
+            except OSError as e:
+                print ("scons: Could not remove '%s':" % str(t)), e.strerror
+            else:
+                if removed:
+                    display(('Removed ' + str(t)))
+    if (target in SCons.Environment.CleanTargets):
+        files = SCons.Environment.CleanTargets[target]
+        for f in files:
+            self.fs_delete(f.abspath, str(f))

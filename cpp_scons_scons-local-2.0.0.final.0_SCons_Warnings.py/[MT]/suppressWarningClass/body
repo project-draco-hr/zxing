@@ -1,0 +1,3 @@
+def suppressWarningClass(clazz):
+    'Suppresses all warnings that are of type clazz or\n    derived from clazz.'
+    _enabled.insert(0, (clazz, 0))

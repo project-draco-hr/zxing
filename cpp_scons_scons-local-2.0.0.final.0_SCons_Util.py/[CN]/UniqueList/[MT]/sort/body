@@ -1,0 +1,3 @@
+def sort(self, *args, **kwds):
+    self.__make_unique()
+    return UserList.sort(self, *args, **kwds)

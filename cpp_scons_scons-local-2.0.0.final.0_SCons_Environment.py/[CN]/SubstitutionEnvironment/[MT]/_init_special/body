@@ -1,0 +1,12 @@
+def _init_special(self):
+    'Initial the dispatch tables for special handling of\n        special construction variables.'
+    self._special_del = {}
+    self._special_del['SCANNERS'] = _del_SCANNERS
+    self._special_set = {}
+    for key in reserved_construction_var_names:
+        self._special_set[key] = _set_reserved
+    for key in future_reserved_construction_var_names:
+        self._special_set[key] = _set_future_reserved
+    self._special_set['BUILDERS'] = _set_BUILDERS
+    self._special_set['SCANNERS'] = _set_SCANNERS
+    self._special_set_keys = list(self._special_set.keys())

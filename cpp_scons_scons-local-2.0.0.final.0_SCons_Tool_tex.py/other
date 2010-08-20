@@ -1,0 +1,51 @@
+"SCons.Tool.tex\n\nTool-specific initialization for TeX.\nGenerates .dvi files from .tex files\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/tex.py 5023 2010/06/14 22:05:46 scons'
+import os.path
+import re
+import shutil
+import sys
+import SCons.Action
+import SCons.Node
+import SCons.Node.FS
+import SCons.Util
+import SCons.Scanner.LaTeX
+Verbose = False
+must_rerun_latex = True
+check_suffixes = ['.toc', '.lof', '.lot', '.out', '.nav', '.snm']
+all_suffixes = (check_suffixes + ['.bbl', '.idx', '.nlo', '.glo', '.acn'])
+openout_aux_re = re.compile('INPUT *(.*\\.aux)')
+warning_rerun_str = '(^LaTeX Warning:.*Rerun)|(^Package \\w+ Warning:.*Rerun)'
+warning_rerun_re = re.compile(warning_rerun_str, re.MULTILINE)
+rerun_citations_str = '^LaTeX Warning:.*\n.*Rerun to get citations correct'
+rerun_citations_re = re.compile(rerun_citations_str, re.MULTILINE)
+undefined_references_str = '(^LaTeX Warning:.*undefined references)|(^Package \\w+ Warning:.*undefined citations)'
+undefined_references_re = re.compile(undefined_references_str, re.MULTILINE)
+auxfile_re = re.compile('.', re.MULTILINE)
+tableofcontents_re = re.compile('^[^%\\n]*\\\\tableofcontents', re.MULTILINE)
+makeindex_re = re.compile('^[^%\\n]*\\\\makeindex', re.MULTILINE)
+bibliography_re = re.compile('^[^%\\n]*\\\\bibliography', re.MULTILINE)
+listoffigures_re = re.compile('^[^%\\n]*\\\\listoffigures', re.MULTILINE)
+listoftables_re = re.compile('^[^%\\n]*\\\\listoftables', re.MULTILINE)
+hyperref_re = re.compile('^[^%\\n]*\\\\usepackage.*\\{hyperref\\}', re.MULTILINE)
+makenomenclature_re = re.compile('^[^%\\n]*\\\\makenomenclature', re.MULTILINE)
+makeglossary_re = re.compile('^[^%\\n]*\\\\makeglossary', re.MULTILINE)
+makeglossaries_re = re.compile('^[^%\\n]*\\\\makeglossaries', re.MULTILINE)
+makeacronyms_re = re.compile('^[^%\\n]*\\\\makeglossaries', re.MULTILINE)
+beamer_re = re.compile('^[^%\\n]*\\\\documentclass\\{beamer\\}', re.MULTILINE)
+include_re = re.compile('^[^%\\n]*\\\\(?:include|input){([^}]*)}', re.MULTILINE)
+includeOnly_re = re.compile('^[^%\\n]*\\\\(?:include){([^}]*)}', re.MULTILINE)
+includegraphics_re = re.compile('^[^%\\n]*\\\\(?:includegraphics(?:\\[[^\\]]+\\])?){([^}]*)}', re.MULTILINE)
+openout_re = re.compile('OUTPUT *(.*)')
+TexGraphics = SCons.Scanner.LaTeX.TexGraphics
+LatexGraphics = SCons.Scanner.LaTeX.LatexGraphics
+TeXAction = None
+LaTeXAction = None
+BibTeXAction = None
+MakeIndexAction = None
+MakeNclAction = None
+MakeGlossaryAction = None
+MakeAcronymsAction = None
+_null = SCons.Scanner.LaTeX._null
+modify_env_var = SCons.Scanner.LaTeX.modify_env_var
+LaTeX_re = re.compile('\\\\document(style|class)')
+TeXLaTeXAction = None

@@ -1,0 +1,6 @@
+def is_dos_short_file_name(file):
+    ' examine if the given file is in the 8.3 form.\n    '
+    (fname, ext) = os.path.splitext(file)
+    proper_ext = ((len(ext) == 0) or (2 <= len(ext) <= 4))
+    proper_fname = (file.isupper() and (len(fname) <= 8))
+    return (proper_ext and proper_fname)

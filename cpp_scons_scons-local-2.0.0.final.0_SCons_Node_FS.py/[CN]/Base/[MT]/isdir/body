@@ -1,0 +1,3 @@
+def isdir(self):
+    st = self.stat()
+    return ((st is not None) and stat.S_ISDIR(st[stat.ST_MODE]))

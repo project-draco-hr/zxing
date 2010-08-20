@@ -1,0 +1,40 @@
+def __init__(self, action=None, prefix='', suffix='', src_suffix='', target_factory=None, source_factory=None, target_scanner=None, source_scanner=None, emitter=None, multi=0, env=None, single_source=0, name=None, chdir=_null, is_explicit=1, src_builder=None, ensure_suffix=False, **overrides):
+    if __debug__:
+        logInstanceCreation(self, 'Builder.BuilderBase')
+    self._memo = {}
+    self.action = action
+    self.multi = multi
+    if SCons.Util.is_Dict(prefix):
+        prefix = CallableSelector(prefix)
+    self.prefix = prefix
+    if SCons.Util.is_Dict(suffix):
+        suffix = CallableSelector(suffix)
+    self.env = env
+    self.single_source = single_source
+    if ('overrides' in overrides):
+        SCons.Warnings.warn(SCons.Warnings.DeprecatedBuilderKeywordsWarning, ('The "overrides" keyword to Builder() creation has been deprecated;\n' + '\tspecify the items as keyword arguments to the Builder() call instead.'))
+        overrides.update(overrides['overrides'])
+        del overrides['overrides']
+    if ('scanner' in overrides):
+        SCons.Warnings.warn(SCons.Warnings.DeprecatedBuilderKeywordsWarning, 'The "scanner" keyword to Builder() creation has been deprecated;\n\tuse: source_scanner or target_scanner as appropriate.')
+        del overrides['scanner']
+    self.overrides = overrides
+    self.set_suffix(suffix)
+    self.set_src_suffix(src_suffix)
+    self.ensure_suffix = ensure_suffix
+    self.target_factory = target_factory
+    self.source_factory = source_factory
+    self.target_scanner = target_scanner
+    self.source_scanner = source_scanner
+    self.emitter = emitter
+    if name:
+        self.name = name
+    self.executor_kw = {}
+    if (not (chdir is _null)):
+        self.executor_kw['chdir'] = chdir
+    self.is_explicit = is_explicit
+    if (src_builder is None):
+        src_builder = []
+    elif (not SCons.Util.is_List(src_builder)):
+        src_builder = [src_builder]
+    self.src_builder = src_builder

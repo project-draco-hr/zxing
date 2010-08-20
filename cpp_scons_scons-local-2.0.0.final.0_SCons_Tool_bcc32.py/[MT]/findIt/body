@@ -1,0 +1,6 @@
+def findIt(program, env):
+    borwin = (env.WhereIs(program) or SCons.Util.WhereIs(program))
+    if borwin:
+        dir = os.path.dirname(borwin)
+        env.PrependENVPath('PATH', dir)
+    return borwin

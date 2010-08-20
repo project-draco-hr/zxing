@@ -1,0 +1,17 @@
+def make_temp_file(**kw):
+    try:
+        result = tempfile.mktemp(**kw)
+        try:
+            result = os.path.realpath(result)
+        except AttributeError:
+            pass
+    except TypeError:
+        try:
+            save_template = tempfile.template
+            prefix = kw['prefix']
+            del kw['prefix']
+            tempfile.template = prefix
+            result = tempfile.mktemp(**kw)
+        finally:
+            tempfile.template = save_template
+    return result

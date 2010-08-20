@@ -1,0 +1,2 @@
+def copy_action_str(target, source, env):
+    return env.subst_target_source(env['COPYSTR'], 0, target, source)

@@ -1,0 +1,2 @@
+def add_local_option(self, *args, **kw):
+    pass

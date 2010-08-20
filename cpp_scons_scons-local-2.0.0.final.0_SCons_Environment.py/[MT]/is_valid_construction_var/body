@@ -1,0 +1,3 @@
+def is_valid_construction_var(varstr):
+    'Return if the specified string is a legitimate construction\n    variable.\n    '
+    return _is_valid_var.match(varstr)

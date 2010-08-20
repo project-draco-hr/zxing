@@ -1,0 +1,3 @@
+def prepare(self):
+    self.progress(self.targets[0])
+    return SCons.Taskmaster.OutOfDateTask.prepare(self)

@@ -1,0 +1,2 @@
+def _glob1(self, pattern, ondisk=True, source=False, strings=False):
+    return []

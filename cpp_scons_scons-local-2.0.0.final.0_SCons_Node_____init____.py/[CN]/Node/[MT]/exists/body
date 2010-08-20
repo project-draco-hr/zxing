@@ -1,0 +1,3 @@
+def exists(self):
+    'Does this node exists?'
+    return 1

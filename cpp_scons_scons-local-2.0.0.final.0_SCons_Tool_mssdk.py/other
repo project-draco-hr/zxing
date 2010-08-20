@@ -1,0 +1,3 @@
+__revision__ = 'src/engine/SCons/Tool/mssdk.py 5023 2010/06/14 22:05:46 scons'
+"engine.SCons.Tool.mssdk\n\nTool-specific initialization for Microsoft SDKs, both Platform\nSDKs and Windows SDKs.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n"
+from MSCommon import mssdk_exists, mssdk_setup_env

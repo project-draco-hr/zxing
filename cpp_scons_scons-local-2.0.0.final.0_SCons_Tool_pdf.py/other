@@ -1,0 +1,6 @@
+'SCons.Tool.pdf\n\nCommon PDF Builder definition for various other Tool modules that use it.\nAdd an explicit action to run epstopdf to convert .eps files to .pdf\n\n'
+__revision__ = 'src/engine/SCons/Tool/pdf.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Builder
+import SCons.Tool
+PDFBuilder = None
+EpsPdfAction = SCons.Action.Action('$EPSTOPDFCOM', '$EPSTOPDFCOMSTR')

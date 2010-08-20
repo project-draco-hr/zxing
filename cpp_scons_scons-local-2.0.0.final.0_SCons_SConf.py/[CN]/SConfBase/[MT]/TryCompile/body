@@ -1,0 +1,3 @@
+def TryCompile(self, text, extension):
+    "Compiles the program given in text to an env.Object, using extension\n        as file extension (e.g. '.c'). Returns 1, if compilation was\n        successful, 0 otherwise. The target is saved in self.lastTarget (for\n        further processing).\n        "
+    return self.TryBuild(self.env.Object, text, extension)

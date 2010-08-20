@@ -1,0 +1,2 @@
+def _semi_deepcopy_list(x):
+    return list(map(semi_deepcopy, x))

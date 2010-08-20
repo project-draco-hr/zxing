@@ -1,0 +1,8 @@
+def uniquer_hashables(seq):
+    seen = {}
+    result = []
+    for item in seq:
+        if (item not in seen):
+            seen[item] = 1
+            result.append(item)
+    return result

@@ -1,0 +1,5 @@
+def must_be_same(self, klass):
+    "\n        This node, which already existed, is being looked up as the\n        specified klass.  Raise an exception if it isn't.\n        "
+    if (isinstance(self, klass) or (klass is Entry)):
+        return
+    raise TypeError(("Tried to lookup %s '%s' as a %s." % (self.__class__.__name__, self.path, klass.__name__)))

@@ -1,0 +1,3 @@
+def __init__(self, set):
+    self._set = set
+    self._data = set._data

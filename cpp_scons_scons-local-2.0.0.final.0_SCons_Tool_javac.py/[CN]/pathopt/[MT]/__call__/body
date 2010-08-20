@@ -1,0 +1,10 @@
+def __call__(self, target, source, env, for_signature):
+    path = env[self.var]
+    if (path and (not SCons.Util.is_List(path))):
+        path = [path]
+    if self.default:
+        path = (path + [env[self.default]])
+    if path:
+        return [self.opt, os.pathsep.join(path)]
+    else:
+        return []

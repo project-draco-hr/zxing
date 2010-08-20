@@ -1,0 +1,23 @@
+def filedir_lookup(self, p, fd=None):
+    "\n        A helper method for find_file() that looks up a directory for\n        a file we're trying to find.  This only creates the Dir Node if\n        it exists on-disk, since if the directory doesn't exist we know\n        we won't find any files in it...  :-)\n\n        It would be more compact to just use this as a nested function\n        with a default keyword argument (see the commented-out version\n        below), but that doesn't work unless you have nested scopes,\n        so we define it here just so this work under Python 1.5.2.\n        "
+    if (fd is None):
+        fd = self.default_filedir
+    (dir, name) = os.path.split(fd)
+    (drive, d) = os.path.splitdrive(dir)
+    if ((not name) and (d[:1] in ('/', os.sep))):
+        return p.fs.get_root(drive)
+    if dir:
+        p = self.filedir_lookup(p, dir)
+        if (not p):
+            return None
+    norm_name = _my_normcase(name)
+    try:
+        node = p.entries[norm_name]
+    except KeyError:
+        return p.dir_on_disk(name)
+    if isinstance(node, Dir):
+        return node
+    if isinstance(node, Entry):
+        node.must_be_same(Dir)
+        return node
+    return None

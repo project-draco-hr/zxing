@@ -1,0 +1,7 @@
+def exists(env):
+    (path, cxx, shcxx, version) = get_cppc(env)
+    if (path and cxx):
+        cppc = os.path.join(path, cxx)
+        if os.path.exists(cppc):
+            return cppc
+    return None

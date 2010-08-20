@@ -1,0 +1,6 @@
+def prepare(self):
+    '\n        Preparatory checks for whether this Executor can go ahead\n        and (try to) build its targets.\n        '
+    for s in self.get_all_sources():
+        if s.missing():
+            msg = "Source `%s' not found, needed by target `%s'."
+            raise SCons.Errors.StopError((msg % (s, self.batches[0].targets[0])))

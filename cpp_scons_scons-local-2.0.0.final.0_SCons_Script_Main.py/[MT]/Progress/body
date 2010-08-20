@@ -1,0 +1,3 @@
+def Progress(*args, **kw):
+    global ProgressObject
+    ProgressObject = Progressor(*args, **kw)

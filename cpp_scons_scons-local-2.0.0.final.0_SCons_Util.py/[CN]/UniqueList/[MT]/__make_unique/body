@@ -1,0 +1,4 @@
+def __make_unique(self):
+    if (not self.unique):
+        self.data = uniquer_hashables(self.data)
+        self.unique = True

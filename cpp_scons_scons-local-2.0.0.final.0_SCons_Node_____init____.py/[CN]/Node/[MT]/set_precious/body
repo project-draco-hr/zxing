@@ -1,0 +1,3 @@
+def set_precious(self, precious=1):
+    "Set the Node's precious value."
+    self.precious = precious

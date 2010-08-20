@@ -1,0 +1,3 @@
+def do_ifndef(self, t):
+    '\n        Default handling of a #ifndef line.\n        '
+    self._do_if_else_condition((t[1] not in self.cpp_namespace))

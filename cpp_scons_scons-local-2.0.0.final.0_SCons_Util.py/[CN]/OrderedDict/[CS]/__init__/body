@@ -1,0 +1,3 @@
+def __init__(self, dict=None):
+    self._keys = []
+    UserDict.__init__(self, dict)

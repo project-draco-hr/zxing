@@ -1,0 +1,3 @@
+def get_stored_implicit(self):
+    'Fetch the stored implicit dependencies'
+    return None

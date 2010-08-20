@@ -1,0 +1,2 @@
+def entry_tpath(self, name):
+    return ((self.tpath + os.sep) + name)

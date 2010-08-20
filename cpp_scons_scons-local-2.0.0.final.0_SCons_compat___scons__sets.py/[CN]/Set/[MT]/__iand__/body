@@ -1,0 +1,5 @@
+def __iand__(self, other):
+    'Update a set with the intersection of itself and another.'
+    self._binary_sanity_check(other)
+    self._data = (self & other)._data
+    return self

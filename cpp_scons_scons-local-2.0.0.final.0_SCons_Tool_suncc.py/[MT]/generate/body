@@ -1,0 +1,7 @@
+def generate(env):
+    '\n    Add Builders and construction variables for Forte C and C++ compilers\n    to an Environment.\n    '
+    cc.generate(env)
+    env['CXX'] = 'CC'
+    env['SHCCFLAGS'] = SCons.Util.CLVar('$CCFLAGS -KPIC')
+    env['SHOBJPREFIX'] = 'so_'
+    env['SHOBJSUFFIX'] = '.o'

@@ -1,0 +1,10 @@
+def createSharedLibBuilder(env):
+    'This is a utility function that creates the SharedLibrary\n    Builder in an Environment if it is not there already.\n\n    If it is already there, we return the existing one.\n    '
+    try:
+        shared_lib = env['BUILDERS']['SharedLibrary']
+    except KeyError:
+        import SCons.Defaults
+        action_list = [SCons.Defaults.SharedCheck, SCons.Defaults.ShLinkAction]
+        shared_lib = SCons.Builder.Builder(action=action_list, emitter='$SHLIBEMITTER', prefix='$SHLIBPREFIX', suffix='$SHLIBSUFFIX', target_scanner=ProgramScanner, src_suffix='$SHOBJSUFFIX', src_builder='SharedObject')
+        env['BUILDERS']['SharedLibrary'] = shared_lib
+    return shared_lib

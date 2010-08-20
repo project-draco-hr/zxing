@@ -1,0 +1,9 @@
+def __getattr__(self, attr):
+    '\n        Fetches an options value, checking first for explicit settings\n        from the command line (which are direct attributes), then the\n        SConscript file settings, then the default values.\n        '
+    try:
+        return self.__dict__[attr]
+    except KeyError:
+        try:
+            return self.__dict__['__SConscript_settings__'][attr]
+        except KeyError:
+            return getattr(self.__dict__['__defaults__'], attr)

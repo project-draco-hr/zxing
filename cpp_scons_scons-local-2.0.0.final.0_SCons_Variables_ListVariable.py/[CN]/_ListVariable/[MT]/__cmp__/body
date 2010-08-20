@@ -1,0 +1,2 @@
+def __cmp__(self, other):
+    raise NotImplementedError

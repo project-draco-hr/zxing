@@ -1,0 +1,9 @@
+def AddPreAction(self, files, action):
+    nodes = self.arg2nodes(files, self.fs.Entry)
+    action = SCons.Action.Action(action)
+    uniq = {}
+    for executor in [n.get_executor() for n in nodes]:
+        uniq[executor] = 1
+    for executor in uniq.keys():
+        executor.add_pre_action(action)
+    return nodes

@@ -1,0 +1,8 @@
+def generate(env):
+    env['LINESEPARATOR'] = os.linesep
+    env['BUILDERS']['Textfile'] = _text_builder
+    env['TEXTFILEPREFIX'] = ''
+    env['TEXTFILESUFFIX'] = '.txt'
+    env['BUILDERS']['Substfile'] = _subst_builder
+    env['SUBSTFILEPREFIX'] = ''
+    env['SUBSTFILESUFFIX'] = ''

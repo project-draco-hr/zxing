@@ -1,0 +1,3 @@
+def failed(self):
+    '\n        Default action when a task fails:  stop the build.\n\n        Note: Although this function is normally invoked on nodes in\n        the executing state, it might also be invoked on up-to-date\n        nodes when using Configure().\n        '
+    self.fail_stop()

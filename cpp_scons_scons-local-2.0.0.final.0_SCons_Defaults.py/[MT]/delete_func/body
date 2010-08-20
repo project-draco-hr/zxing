@@ -1,0 +1,14 @@
+def delete_func(dest, must_exist=0):
+    SCons.Node.FS.invalidate_node_memos(dest)
+    if (not SCons.Util.is_List(dest)):
+        dest = [dest]
+    for entry in dest:
+        entry = str(entry)
+        if ((not must_exist) and (not os.path.exists(entry))):
+            continue
+        if ((not os.path.exists(entry)) or os.path.isfile(entry)):
+            os.unlink(entry)
+            continue
+        else:
+            shutil.rmtree(entry, 1)
+            continue

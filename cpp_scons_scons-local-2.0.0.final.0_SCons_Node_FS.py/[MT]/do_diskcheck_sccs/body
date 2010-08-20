@@ -1,0 +1,12 @@
+def do_diskcheck_sccs(node, name):
+    try:
+        sccs_dir = node.sccs_dir
+    except AttributeError:
+        if node.entry_exists_on_disk('SCCS'):
+            sccs_dir = node.Dir('SCCS')
+        else:
+            sccs_dir = None
+        node.sccs_dir = sccs_dir
+    if sccs_dir:
+        return sccs_dir.entry_exists_on_disk(('s.' + name))
+    return None

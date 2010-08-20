@@ -1,0 +1,15 @@
+def __init__(self, targets=[], tasker=None, order=None, trace=None):
+    self.original_top = targets
+    self.top_targets_left = targets[:]
+    self.top_targets_left.reverse()
+    self.candidates = []
+    if (tasker is None):
+        tasker = OutOfDateTask
+    self.tasker = tasker
+    if (not order):
+        order = (lambda l: l)
+    self.order = order
+    self.message = None
+    self.trace = trace
+    self.next_candidate = self.find_next_candidate
+    self.pending_children = set()

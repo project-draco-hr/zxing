@@ -1,0 +1,71 @@
+def emit_java_classes(target, source, env):
+    'Create and return lists of source java files\n    and their corresponding target class files.\n    '
+    java_suffix = env.get('JAVASUFFIX', '.java')
+    class_suffix = env.get('JAVACLASSSUFFIX', '.class')
+    target[0].must_be_same(SCons.Node.FS.Dir)
+    classdir = target[0]
+    s = source[0].rentry().disambiguate()
+    if isinstance(s, SCons.Node.FS.File):
+        sourcedir = s.dir.rdir()
+    elif isinstance(s, SCons.Node.FS.Dir):
+        sourcedir = s.rdir()
+    else:
+        raise SCons.Errors.UserError(("Java source must be File or Dir, not '%s'" % s.__class__))
+    slist = []
+    js = _my_normcase(java_suffix)
+    for entry in source:
+        entry = entry.rentry().disambiguate()
+        if isinstance(entry, SCons.Node.FS.File):
+            slist.append(entry)
+        elif isinstance(entry, SCons.Node.FS.Dir):
+            result = SCons.Util.OrderedDict()
+            dirnode = entry.rdir()
+
+            def find_java_files(arg, dirpath, filenames):
+                java_files = sorted([n for n in filenames if _my_normcase(n).endswith(js)])
+                mydir = dirnode.Dir(dirpath)
+                java_paths = [mydir.File(f) for f in java_files]
+                for jp in java_paths:
+                    arg[jp] = True
+            for (dirpath, dirnames, filenames) in os.walk(dirnode.get_abspath()):
+                find_java_files(result, dirpath, filenames)
+            entry.walk(find_java_files, result)
+            slist.extend(list(result.keys()))
+        else:
+            raise SCons.Errors.UserError(("Java source must be File or Dir, not '%s'" % entry.__class__))
+    version = env.get('JAVAVERSION', '1.4')
+    full_tlist = []
+    for f in slist:
+        tlist = []
+        source_file_based = True
+        pkg_dir = None
+        if (not f.is_derived()):
+            (pkg_dir, classes) = parse_java_file(f.rfile().get_abspath(), version)
+            if classes:
+                source_file_based = False
+                if pkg_dir:
+                    d = target[0].Dir(pkg_dir)
+                    p = (pkg_dir + os.sep)
+                else:
+                    d = target[0]
+                    p = ''
+                for c in classes:
+                    t = d.File((c + class_suffix))
+                    t.attributes.java_classdir = classdir
+                    t.attributes.java_sourcedir = sourcedir
+                    t.attributes.java_classname = classname((p + c))
+                    tlist.append(t)
+        if source_file_based:
+            base = f.name[:(- len(java_suffix))]
+            if pkg_dir:
+                t = target[0].Dir(pkg_dir).File((base + class_suffix))
+            else:
+                t = target[0].File((base + class_suffix))
+            t.attributes.java_classdir = classdir
+            t.attributes.java_sourcedir = f.dir
+            t.attributes.java_classname = classname(base)
+            tlist.append(t)
+        for t in tlist:
+            t.set_specific_source([f])
+        full_tlist.extend(tlist)
+    return (full_tlist, slist)

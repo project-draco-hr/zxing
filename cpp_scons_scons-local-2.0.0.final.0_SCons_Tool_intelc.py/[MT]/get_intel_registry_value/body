@@ -1,0 +1,15 @@
+def get_intel_registry_value(valuename, version=None, abi=None):
+    '\n    Return a value from the Intel compiler registry tree. (Windows only)\n    '
+    if is_win64:
+        K = ((('Software\\Wow6432Node\\Intel\\Compilers\\C++\\' + version) + '\\') + abi.upper())
+    else:
+        K = ((('Software\\Intel\\Compilers\\C++\\' + version) + '\\') + abi.upper())
+    try:
+        k = SCons.Util.RegOpenKeyEx(SCons.Util.HKEY_LOCAL_MACHINE, K)
+    except SCons.Util.RegError:
+        raise MissingRegistryError(("%s was not found in the registry, for Intel compiler version %s, abi='%s'" % (K, version, abi)))
+    try:
+        v = SCons.Util.RegQueryValueEx(k, valuename)[0]
+        return v
+    except SCons.Util.RegError:
+        raise MissingRegistryError(('%s\\%s was not found in the registry.' % (K, valuename)))

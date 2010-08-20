@@ -1,0 +1,41 @@
+def subst_dict(target, source):
+    'Create a dictionary for substitution of special\n    construction variables.\n\n    This translates the following special arguments:\n\n    target - the target (object or array of objects),\n             used to generate the TARGET and TARGETS\n             construction variables\n\n    source - the source (object or array of objects),\n             used to generate the SOURCES and SOURCE\n             construction variables\n    '
+    dict = {}
+    if target:
+
+        def get_tgt_subst_proxy(thing):
+            try:
+                subst_proxy = thing.get_subst_proxy()
+            except AttributeError:
+                subst_proxy = thing
+            return subst_proxy
+        tnl = NLWrapper(target, get_tgt_subst_proxy)
+        dict['TARGETS'] = Targets_or_Sources(tnl)
+        dict['TARGET'] = Target_or_Source(tnl)
+        dict['CHANGED_TARGETS'] = '$TARGETS'
+        dict['UNCHANGED_TARGETS'] = '$TARGETS'
+    else:
+        dict['TARGETS'] = NullNodesList
+        dict['TARGET'] = NullNodesList
+    if source:
+
+        def get_src_subst_proxy(node):
+            try:
+                rfile = node.rfile
+            except AttributeError:
+                pass
+            else:
+                node = rfile()
+            try:
+                return node.get_subst_proxy()
+            except AttributeError:
+                return node
+        snl = NLWrapper(source, get_src_subst_proxy)
+        dict['SOURCES'] = Targets_or_Sources(snl)
+        dict['SOURCE'] = Target_or_Source(snl)
+        dict['CHANGED_SOURCES'] = '$SOURCES'
+        dict['UNCHANGED_SOURCES'] = '$SOURCES'
+    else:
+        dict['SOURCES'] = NullNodesList
+        dict['SOURCE'] = NullNodesList
+    return dict

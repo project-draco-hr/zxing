@@ -1,0 +1,6 @@
+def __init__(self, target):
+    if (not isinstance(target, SCons.Node.FS.File)):
+        msg = ('Cannot create configure directory "%s" within a dry-run.' % str(target))
+    else:
+        msg = ('Cannot update configure test "%s" within a dry-run.' % str(target))
+    SConfError.__init__(self, msg)

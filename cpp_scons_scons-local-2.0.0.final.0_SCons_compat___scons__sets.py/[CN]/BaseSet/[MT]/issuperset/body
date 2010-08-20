@@ -1,0 +1,8 @@
+def issuperset(self, other):
+    'Report whether this set contains another set.'
+    self._binary_sanity_check(other)
+    if (len(self) < len(other)):
+        return False
+    for elt in filterfalse(self._data.has_key, other):
+        return False
+    return True

@@ -1,0 +1,20 @@
+def create_feature_dict(files):
+    " X_MSI_FEATURE and doc FileTag's can be used to collect files in a\n        hierarchy. This function collects the files into this hierarchy.\n    "
+    dict = {}
+
+    def add_to_dict(feature, file):
+        if (not SCons.Util.is_List(feature)):
+            feature = [feature]
+        for f in feature:
+            if (f not in dict):
+                dict[f] = [file]
+            else:
+                dict[f].append(file)
+    for file in files:
+        if hasattr(file, 'PACKAGING_X_MSI_FEATURE'):
+            add_to_dict(file.PACKAGING_X_MSI_FEATURE, file)
+        elif hasattr(file, 'PACKAGING_DOC'):
+            add_to_dict('PACKAGING_DOC', file)
+        else:
+            add_to_dict('default', file)
+    return dict

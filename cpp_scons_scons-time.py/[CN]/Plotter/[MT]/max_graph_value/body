@@ -1,0 +1,4 @@
+def max_graph_value(self, largest):
+    largest = (int(largest) + 1)
+    increment = self.increment_size(largest)
+    return ((((largest + increment) - 1) // increment) * increment)

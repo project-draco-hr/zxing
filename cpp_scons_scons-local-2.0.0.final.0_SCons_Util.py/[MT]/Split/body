@@ -1,0 +1,7 @@
+def Split(arg):
+    if (is_List(arg) or is_Tuple(arg)):
+        return arg
+    elif is_String(arg):
+        return arg.split()
+    else:
+        return [arg]

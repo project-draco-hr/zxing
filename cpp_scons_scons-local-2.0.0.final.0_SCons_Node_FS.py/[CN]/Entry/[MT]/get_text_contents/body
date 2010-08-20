@@ -1,0 +1,8 @@
+def get_text_contents(self):
+    'Fetch the decoded text contents of a Unicode encoded Entry.\n\n        Since this should return the text contents from the file\n        system, we check to see into what sort of subclass we should\n        morph this Entry.'
+    try:
+        self = self.disambiguate(must_exist=1)
+    except SCons.Errors.UserError:
+        return ''
+    else:
+        return self.get_text_contents()

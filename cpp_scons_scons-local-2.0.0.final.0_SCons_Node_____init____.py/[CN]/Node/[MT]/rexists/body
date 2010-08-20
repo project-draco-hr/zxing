@@ -1,0 +1,3 @@
+def rexists(self):
+    'Does this node exist locally or in a repositiory?'
+    return self.exists()

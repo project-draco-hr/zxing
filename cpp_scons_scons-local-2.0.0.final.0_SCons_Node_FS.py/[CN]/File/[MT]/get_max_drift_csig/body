@@ -1,0 +1,19 @@
+def get_max_drift_csig(self):
+    "\n        Returns the content signature currently stored for this node\n        if it's been unmodified longer than the max_drift value, or the\n        max_drift value is 0.  Returns None otherwise.\n        "
+    old = self.get_stored_info()
+    mtime = self.get_timestamp()
+    max_drift = self.fs.max_drift
+    if (max_drift > 0):
+        if ((time.time() - mtime) > max_drift):
+            try:
+                n = old.ninfo
+                if (n.timestamp and n.csig and (n.timestamp == mtime)):
+                    return n.csig
+            except AttributeError:
+                pass
+    elif (max_drift == 0):
+        try:
+            return old.ninfo.csig
+        except AttributeError:
+            pass
+    return None

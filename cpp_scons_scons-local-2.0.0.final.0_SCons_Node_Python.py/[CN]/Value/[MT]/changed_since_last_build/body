@@ -1,0 +1,6 @@
+def changed_since_last_build(self, target, prev_ni):
+    cur_csig = self.get_csig()
+    try:
+        return (cur_csig != prev_ni.csig)
+    except AttributeError:
+        return 1

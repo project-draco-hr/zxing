@@ -1,0 +1,2 @@
+def default(self, argv):
+    print ('*** Unknown command: %s' % argv[0])

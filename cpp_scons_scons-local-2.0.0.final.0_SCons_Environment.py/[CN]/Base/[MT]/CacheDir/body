@@ -1,0 +1,5 @@
+def CacheDir(self, path):
+    import SCons.CacheDir
+    if (path is not None):
+        path = self.subst(path)
+    self._CacheDir_path = path

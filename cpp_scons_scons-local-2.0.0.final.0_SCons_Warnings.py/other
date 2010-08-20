@@ -1,0 +1,7 @@
+'SCons.Warnings\n\nThis file implements the warnings framework for SCons.\n\n'
+__revision__ = 'src/engine/SCons/Warnings.py 5023 2010/06/14 22:05:46 scons'
+import sys
+import SCons.Errors
+_enabled = []
+_warningAsException = 0
+_warningOut = None

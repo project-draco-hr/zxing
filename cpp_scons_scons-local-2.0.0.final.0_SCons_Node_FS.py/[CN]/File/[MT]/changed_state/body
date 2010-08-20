@@ -1,0 +1,2 @@
+def changed_state(self, target, prev_ni):
+    return (self.state != SCons.Node.up_to_date)

@@ -1,0 +1,19 @@
+def get_debug_times(self, file, time_string=None):
+    '\n        Fetch times from the --debug=time strings in the specified file.\n        '
+    if (time_string is None):
+        search_string = self.time_string_all
+    else:
+        search_string = time_string
+    contents = open(file).read()
+    if (not contents):
+        sys.stderr.write(('file %s has no contents!\n' % repr(file)))
+        return None
+    result = re.findall(('%s: ([\\d\\.]*)' % search_string), contents)[(-4):]
+    result = [float(r) for r in result]
+    if (not (time_string is None)):
+        try:
+            result = result[0]
+        except IndexError:
+            sys.stderr.write(('file %s has no results!\n' % repr(file)))
+            return None
+    return result

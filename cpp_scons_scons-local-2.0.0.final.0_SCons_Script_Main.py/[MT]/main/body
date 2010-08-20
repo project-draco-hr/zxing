@@ -1,0 +1,65 @@
+def main():
+    global OptionsParser
+    global exit_status
+    global first_command_start
+    if python_version_unsupported():
+        msg = 'scons: *** SCons version %s does not run under Python version %s.\n'
+        sys.stderr.write((msg % (SCons.__version__, python_version_string())))
+        sys.exit(1)
+    parts = ['SCons by Steven Knight et al.:\n']
+    try:
+        import __main__
+        parts.append(version_string('script', __main__))
+    except (ImportError, AttributeError):
+        pass
+    parts.append(version_string('engine', SCons))
+    parts.append('Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 The SCons Foundation')
+    version = ''.join(parts)
+    import SConsOptions
+    parser = SConsOptions.Parser(version)
+    values = SConsOptions.SConsValues(parser.get_default_values())
+    OptionsParser = parser
+    try:
+        _exec_main(parser, values)
+    except SystemExit as s:
+        if s:
+            exit_status = s
+    except KeyboardInterrupt:
+        print 'scons: Build interrupted.'
+        sys.exit(2)
+    except SyntaxError as e:
+        _scons_syntax_error(e)
+    except SCons.Errors.InternalError:
+        _scons_internal_error()
+    except SCons.Errors.UserError as e:
+        _scons_user_error(e)
+    except SConsPrintHelpException:
+        parser.print_help()
+        exit_status = 0
+    except SCons.Errors.BuildError as e:
+        exit_status = e.exitstatus
+    except:
+        SCons.Script._SConscript.SConscript_exception()
+        sys.exit(2)
+    memory_stats.print_stats()
+    count_stats.print_stats()
+    if print_objects:
+        SCons.Debug.listLoggedInstances('*')
+    if print_memoizer:
+        SCons.Memoize.Dump('Memoizer (memory cache) hits and misses:')
+    SCons.Debug.dump_caller_counts()
+    SCons.Taskmaster.dump_stats()
+    if print_time:
+        total_time = (time.time() - SCons.Script.start_time)
+        if (num_jobs == 1):
+            ct = cumulative_command_time
+        elif ((last_command_end is None) or (first_command_start is None)):
+            ct = 0.0
+        else:
+            ct = (last_command_end - first_command_start)
+        scons_time = ((total_time - sconscript_time) - ct)
+        print ('Total build time: %f seconds' % total_time)
+        print ('Total SConscript file execution time: %f seconds' % sconscript_time)
+        print ('Total SCons execution time: %f seconds' % scons_time)
+        print ('Total command execution time: %f seconds' % ct)
+    sys.exit(exit_status)

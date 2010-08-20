@@ -1,0 +1,5 @@
+def __str__(self):
+    n = self.func()
+    if n:
+        return str(n)
+    return ''

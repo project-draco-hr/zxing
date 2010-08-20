@@ -1,0 +1,42 @@
+'SCons.Script\n\nThis file implements the main() function used by the scons script.\n\nArchitecturally, this *is* the scons script, and will likely only be\ncalled from the external "scons" wrapper.  Consequently, anything here\nshould not be, or be considered, part of the build engine.  If it\'s\nsomething that we expect other software to want to use, it should go in\nsome other module.  If it\'s specific to the "scons" script invocation,\nit goes here.\n'
+unsupported_python_version = (2, 3, 0)
+deprecated_python_version = (2, 4, 0)
+__revision__ = 'src/engine/SCons/Script/Main.py 5023 2010/06/14 22:05:46 scons'
+import SCons.compat
+import os
+import sys
+import time
+import traceback
+import SCons.CacheDir
+import SCons.Debug
+import SCons.Defaults
+import SCons.Environment
+import SCons.Errors
+import SCons.Job
+import SCons.Node
+import SCons.Node.FS
+import SCons.SConf
+import SCons.Script
+import SCons.Taskmaster
+import SCons.Util
+import SCons.Warnings
+import SCons.Script.Interactive
+display = SCons.Util.display
+progress_display = SCons.Util.DisplayEngine()
+first_command_start = None
+last_command_end = None
+ProgressObject = SCons.Util.Null()
+_BuildFailures = []
+print_objects = 0
+print_memoizer = 0
+print_stacktrace = 0
+print_time = 0
+sconscript_time = 0
+cumulative_command_time = 0
+exit_status = 0
+this_build_status = 0
+num_jobs = None
+delayed_warnings = []
+OptionsParser = FakeOptionParser()
+count_stats = CountStats()
+memory_stats = MemStats()

@@ -1,0 +1,4 @@
+def RunProg(self, text, ext):
+    self.sconf.cached = 1
+    (st, out) = self.TryRun(text, ext)
+    return ((not st), out)

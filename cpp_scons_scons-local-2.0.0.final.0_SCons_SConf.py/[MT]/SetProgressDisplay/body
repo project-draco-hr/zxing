@@ -1,0 +1,4 @@
+def SetProgressDisplay(display):
+    'Set the progress display to use (called from SCons.Script)'
+    global progress_display
+    progress_display = display

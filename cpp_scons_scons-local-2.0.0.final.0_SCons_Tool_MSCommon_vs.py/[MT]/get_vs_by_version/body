@@ -1,0 +1,12 @@
+def get_vs_by_version(msvs):
+    global InstalledVSMap
+    global SupportedVSMap
+    debug('vs.py:get_vs_by_version()')
+    if (msvs not in SupportedVSMap):
+        msg = ('Visual Studio version %s is not supported' % repr(msvs))
+        raise SCons.Errors.UserError(msg)
+    get_installed_visual_studios()
+    vs = InstalledVSMap.get(msvs)
+    debug(('InstalledVSMap:%s' % InstalledVSMap))
+    debug(('vs.py:get_vs_by_version: found vs:%s' % vs))
+    return vs

@@ -1,0 +1,7 @@
+def format_help(self, formatter):
+    '\n        Format an option group\'s help text, outdenting the title so it\'s\n        flush with the "SCons Options" title we print at the top.\n        '
+    formatter.dedent()
+    result = formatter.format_heading(self.title)
+    formatter.indent()
+    result = (result + optparse.OptionContainer.format_help(self, formatter))
+    return result

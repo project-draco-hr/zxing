@@ -1,0 +1,5 @@
+def exec_system(l, env):
+    stat = os.system(' '.join(l))
+    if (stat & 255):
+        return (stat | 128)
+    return (stat >> 8)

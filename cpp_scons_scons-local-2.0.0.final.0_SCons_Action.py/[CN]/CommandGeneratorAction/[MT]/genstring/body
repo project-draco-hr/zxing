@@ -1,0 +1,2 @@
+def genstring(self, target, source, env, executor=None):
+    return self._generate(target, source, env, 1, executor).genstring(target, source, env)

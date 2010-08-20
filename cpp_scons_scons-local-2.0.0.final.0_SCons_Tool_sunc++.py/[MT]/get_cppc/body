@@ -1,0 +1,15 @@
+def get_cppc(env):
+    cxx = env.subst('$CXX')
+    if cxx:
+        cppcPath = os.path.dirname(cxx)
+    else:
+        cppcPath = None
+    cppcVersion = None
+    pkginfo = env.subst('$PKGINFO')
+    pkgchk = env.subst('$PKGCHK')
+    for package in ['SPROcpl']:
+        (path, version) = get_package_info(package, pkginfo, pkgchk)
+        if (path and version):
+            (cppcPath, cppcVersion) = (path, version)
+            break
+    return (cppcPath, 'CC', 'CC', cppcVersion)

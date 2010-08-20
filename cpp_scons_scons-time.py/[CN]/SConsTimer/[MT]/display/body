@@ -1,0 +1,10 @@
+def display(self, msg, *args):
+    '\n        Displays the specified message.\n\n        Each message is prepended with a standard prefix of our name\n        plus the time.\n        '
+    if callable(msg):
+        msg = msg(*args)
+    else:
+        msg = (msg % args)
+    if (msg is None):
+        return
+    fmt = '%s[%s]: %s\n'
+    sys.stdout.write((fmt % (self.name, time.strftime('%H:%M:%S'), msg)))

@@ -1,0 +1,38 @@
+def DialectAddToEnv(env, dialect, suffixes, ppsuffixes, support_module=0):
+    'Add dialect specific construction variables.'
+    ComputeFortranSuffixes(suffixes, ppsuffixes)
+    fscan = SCons.Scanner.Fortran.FortranScan(('%sPATH' % dialect))
+    for suffix in (suffixes + ppsuffixes):
+        SCons.Tool.SourceFileScanner.add_scanner(suffix, fscan)
+    env.AppendUnique(FORTRANSUFFIXES=(suffixes + ppsuffixes))
+    (compaction, compppaction, shcompaction, shcompppaction) = CreateDialectActions(dialect)
+    (static_obj, shared_obj) = SCons.Tool.createObjBuilders(env)
+    for suffix in suffixes:
+        static_obj.add_action(suffix, compaction)
+        shared_obj.add_action(suffix, shcompaction)
+        static_obj.add_emitter(suffix, FortranEmitter)
+        shared_obj.add_emitter(suffix, ShFortranEmitter)
+    for suffix in ppsuffixes:
+        static_obj.add_action(suffix, compppaction)
+        shared_obj.add_action(suffix, shcompppaction)
+        static_obj.add_emitter(suffix, FortranEmitter)
+        shared_obj.add_emitter(suffix, ShFortranEmitter)
+    if (('%sFLAGS' % dialect) not in env):
+        env[('%sFLAGS' % dialect)] = SCons.Util.CLVar('')
+    if (('SH%sFLAGS' % dialect) not in env):
+        env[('SH%sFLAGS' % dialect)] = SCons.Util.CLVar(('$%sFLAGS' % dialect))
+    if (('INC%sPREFIX' % dialect) not in env):
+        env[('INC%sPREFIX' % dialect)] = '$INCPREFIX'
+    if (('INC%sSUFFIX' % dialect) not in env):
+        env[('INC%sSUFFIX' % dialect)] = '$INCSUFFIX'
+    env[('_%sINCFLAGS' % dialect)] = ('$( ${_concat(INC%sPREFIX, %sPATH, INC%sSUFFIX, __env__, RDirs, TARGET, SOURCE)} $)' % (dialect, dialect, dialect))
+    if (support_module == 1):
+        env[('%sCOM' % dialect)] = ('$%s -o $TARGET -c $%sFLAGS $_%sINCFLAGS $_FORTRANMODFLAG $SOURCES' % (dialect, dialect, dialect))
+        env[('%sPPCOM' % dialect)] = ('$%s -o $TARGET -c $%sFLAGS $CPPFLAGS $_CPPDEFFLAGS $_%sINCFLAGS $_FORTRANMODFLAG $SOURCES' % (dialect, dialect, dialect))
+        env[('SH%sCOM' % dialect)] = ('$SH%s -o $TARGET -c $SH%sFLAGS $_%sINCFLAGS $_FORTRANMODFLAG $SOURCES' % (dialect, dialect, dialect))
+        env[('SH%sPPCOM' % dialect)] = ('$SH%s -o $TARGET -c $SH%sFLAGS $CPPFLAGS $_CPPDEFFLAGS $_%sINCFLAGS $_FORTRANMODFLAG $SOURCES' % (dialect, dialect, dialect))
+    else:
+        env[('%sCOM' % dialect)] = ('$%s -o $TARGET -c $%sFLAGS $_%sINCFLAGS $SOURCES' % (dialect, dialect, dialect))
+        env[('%sPPCOM' % dialect)] = ('$%s -o $TARGET -c $%sFLAGS $CPPFLAGS $_CPPDEFFLAGS $_%sINCFLAGS $SOURCES' % (dialect, dialect, dialect))
+        env[('SH%sCOM' % dialect)] = ('$SH%s -o $TARGET -c $SH%sFLAGS $_%sINCFLAGS $SOURCES' % (dialect, dialect, dialect))
+        env[('SH%sPPCOM' % dialect)] = ('$SH%s -o $TARGET -c $SH%sFLAGS $CPPFLAGS $_CPPDEFFLAGS $_%sINCFLAGS $SOURCES' % (dialect, dialect, dialect))

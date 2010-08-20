@@ -1,0 +1,4 @@
+'SCons.Scanner.IDL\n\nThis module implements the depenency scanner for IDL (Interface\nDefinition Language) files.\n\n'
+__revision__ = 'src/engine/SCons/Scanner/IDL.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Node.FS
+import SCons.Scanner

@@ -1,0 +1,10 @@
+def TryAction(self, action, text=None, extension=''):
+    'Tries to execute the given action with optional source file\n        contents <text> and optional source file extension <extension>,\n        Returns the status (0 : failed, 1 : ok) and the contents of the\n        output file.\n        '
+    builder = SCons.Builder.Builder(action=action)
+    self.env.Append(BUILDERS={'SConfActionBuilder': builder, })
+    ok = self.TryBuild(self.env.SConfActionBuilder, text, extension)
+    del self.env['BUILDERS']['SConfActionBuilder']
+    if ok:
+        outputStr = self.lastTarget.get_contents()
+        return (1, outputStr)
+    return (0, '')

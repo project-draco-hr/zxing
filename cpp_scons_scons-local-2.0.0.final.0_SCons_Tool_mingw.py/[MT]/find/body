@@ -1,0 +1,2 @@
+def find(env):
+    return (env.WhereIs(key_program) or SCons.Util.WhereIs(key_program))

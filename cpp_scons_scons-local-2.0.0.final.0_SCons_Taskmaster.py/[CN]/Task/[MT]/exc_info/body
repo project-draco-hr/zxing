@@ -1,0 +1,3 @@
+def exc_info(self):
+    '\n        Returns info about a recorded exception.\n        '
+    return self.exception

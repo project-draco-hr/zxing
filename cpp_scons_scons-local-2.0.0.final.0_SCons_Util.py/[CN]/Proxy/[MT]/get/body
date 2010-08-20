@@ -1,0 +1,3 @@
+def get(self):
+    'Retrieve the entire wrapped object'
+    return self._subject

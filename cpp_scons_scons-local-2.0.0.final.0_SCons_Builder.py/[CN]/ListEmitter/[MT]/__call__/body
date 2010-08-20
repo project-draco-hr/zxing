@@ -1,0 +1,4 @@
+def __call__(self, target, source, env):
+    for e in self.data:
+        (target, source) = e(target, source, env)
+    return (target, source)

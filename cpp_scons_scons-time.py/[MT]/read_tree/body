@@ -1,0 +1,6 @@
+def read_tree(dir):
+    for (dirpath, dirnames, filenames) in os.walk(dir):
+        for fn in filenames:
+            fn = os.path.join(dirpath, fn)
+            if os.path.isfile(fn):
+                open(fn, 'rb').read()

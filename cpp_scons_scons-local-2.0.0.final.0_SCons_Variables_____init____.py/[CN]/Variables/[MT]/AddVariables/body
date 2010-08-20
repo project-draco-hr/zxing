@@ -1,0 +1,4 @@
+def AddVariables(self, *optlist):
+    "\n        Add a list of options.\n\n        Each list element is a tuple/list of arguments to be passed on\n        to the underlying method for adding options.\n\n        Example:\n          opt.AddVariables(\n            ('debug', '', 0),\n            ('CC', 'The C compiler'),\n            ('VALIDATE', 'An option for testing validation', 'notset',\n             validator, None),\n            )\n        "
+    for o in optlist:
+        self._do_add(*o)

@@ -1,0 +1,18 @@
+def _object_contents(obj):
+    'Return the signature contents of any Python object.\n\n    We have to handle the case where object contains a code object\n    since it can be pickled directly.\n    '
+    try:
+        return _function_contents(obj.im_func)
+    except AttributeError:
+        try:
+            return _function_contents(obj.__call__.im_func)
+        except AttributeError:
+            try:
+                return _code_contents(obj)
+            except AttributeError:
+                try:
+                    return _function_contents(obj)
+                except AttributeError:
+                    try:
+                        return pickle.dumps(obj)
+                    except (pickle.PicklingError, TypeError):
+                        return str(obj)

@@ -1,0 +1,3 @@
+def __init__(self, test, sconf):
+    self.test = test
+    self.sconf = sconf

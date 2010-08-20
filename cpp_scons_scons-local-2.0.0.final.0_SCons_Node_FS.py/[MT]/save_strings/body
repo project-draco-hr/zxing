@@ -1,0 +1,3 @@
+def save_strings(val):
+    global Save_Strings
+    Save_Strings = val

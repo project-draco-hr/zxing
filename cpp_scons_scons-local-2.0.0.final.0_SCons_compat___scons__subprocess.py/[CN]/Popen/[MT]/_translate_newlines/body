@@ -1,0 +1,4 @@
+def _translate_newlines(self, data):
+    data = data.replace('\r\n', '\n')
+    data = data.replace('\r', '\n')
+    return data

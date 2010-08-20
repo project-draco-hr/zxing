@@ -1,0 +1,7 @@
+def exists(env):
+    (path, _cxx, _shcxx, version) = get_xlc(env)
+    if (path and _cxx):
+        xlc = os.path.join(path, _cxx)
+        if os.path.exists(xlc):
+            return xlc
+    return None

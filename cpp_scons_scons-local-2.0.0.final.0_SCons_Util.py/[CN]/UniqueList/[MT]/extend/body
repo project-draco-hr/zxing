@@ -1,0 +1,3 @@
+def extend(self, other):
+    UserList.extend(self, other)
+    self.unique = False

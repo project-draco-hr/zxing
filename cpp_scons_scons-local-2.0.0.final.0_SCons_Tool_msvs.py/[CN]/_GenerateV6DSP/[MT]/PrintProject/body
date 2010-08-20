@@ -1,0 +1,48 @@
+def PrintProject(self):
+    name = self.name
+    self.file.write('# Begin Project\n# PROP AllowPerConfigDependencies 0\n# PROP Scc_ProjName ""\n# PROP Scc_LocalPath ""\n\n')
+    first = 1
+    confkeys = sorted(self.configs.keys())
+    for kind in confkeys:
+        outdir = self.configs[kind].outdir
+        buildtarget = self.configs[kind].buildtarget
+        if (first == 1):
+            self.file.write(('!IF  "$(CFG)" == "%s - Win32 %s"\n\n' % (name, kind)))
+            first = 0
+        else:
+            self.file.write(('\n!ELSEIF  "$(CFG)" == "%s - Win32 %s"\n\n' % (name, kind)))
+        env_has_buildtarget = ('MSVSBUILDTARGET' in self.env)
+        if (not env_has_buildtarget):
+            self.env['MSVSBUILDTARGET'] = buildtarget
+        for base in ('BASE ', ''):
+            self.file.write(('# PROP %sUse_MFC 0\n# PROP %sUse_Debug_Libraries ' % (base, base)))
+            if (kind.lower().find('debug') < 0):
+                self.file.write('0\n')
+            else:
+                self.file.write('1\n')
+            self.file.write(('# PROP %sOutput_Dir "%s"\n# PROP %sIntermediate_Dir "%s"\n' % (base, outdir, base, outdir)))
+            cmd = ('echo Starting SCons && ' + self.env.subst('$MSVSBUILDCOM', 1))
+            self.file.write(('# PROP %sCmd_Line "%s"\n# PROP %sRebuild_Opt "-c && %s"\n# PROP %sTarget_File "%s"\n# PROP %sBsc_Name ""\n# PROP %sTarget_Dir ""\n' % (base, cmd, base, cmd, base, buildtarget, base, base)))
+        if (not env_has_buildtarget):
+            del self.env['MSVSBUILDTARGET']
+    self.file.write('\n!ENDIF\n\n# Begin Target\n\n')
+    for kind in confkeys:
+        self.file.write(('# Name "%s - Win32 %s"\n' % (name, kind)))
+    self.file.write('\n')
+    first = 0
+    for kind in confkeys:
+        if (first == 0):
+            self.file.write(('!IF  "$(CFG)" == "%s - Win32 %s"\n\n' % (name, kind)))
+            first = 1
+        else:
+            self.file.write(('!ELSEIF  "$(CFG)" == "%s - Win32 %s"\n\n' % (name, kind)))
+    self.file.write('!ENDIF \n\n')
+    self.PrintSourceFiles()
+    self.file.write('# End Target\n# End Project\n')
+    if (self.nokeep == 0):
+        pdata = pickle.dumps(self.configs, 1)
+        pdata = base64.encodestring(pdata)
+        self.file.write((pdata + '\n'))
+        pdata = pickle.dumps(self.sources, 1)
+        pdata = base64.encodestring(pdata)
+        self.file.write((pdata + '\n'))

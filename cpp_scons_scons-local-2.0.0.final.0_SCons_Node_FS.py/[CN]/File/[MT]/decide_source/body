@@ -1,0 +1,2 @@
+def decide_source(self, target, prev_ni):
+    return target.get_build_env().decide_source(self, target, prev_ni)

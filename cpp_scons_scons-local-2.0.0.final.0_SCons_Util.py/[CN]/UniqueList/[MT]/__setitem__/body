@@ -1,0 +1,3 @@
+def __setitem__(self, i, item):
+    UserList.__setitem__(self, i, item)
+    self.unique = False

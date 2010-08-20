@@ -1,0 +1,6 @@
+def intersection_update(self, other):
+    'Update a set with the intersection of itself and another.'
+    if isinstance(other, BaseSet):
+        self &= other
+    else:
+        self._data = self.intersection(other)._data

@@ -1,0 +1,5 @@
+def get_implicit_deps(self, target, source, env):
+    result = []
+    for act in self.list:
+        result.extend(act.get_implicit_deps(target, source, env))
+    return result

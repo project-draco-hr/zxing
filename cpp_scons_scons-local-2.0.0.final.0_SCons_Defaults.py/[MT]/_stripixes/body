@@ -1,0 +1,31 @@
+def _stripixes(prefix, itms, suffix, stripprefixes, stripsuffixes, env, c=None):
+    "\n    This is a wrapper around _concat()/_concat_ixes() that checks for\n    the existence of prefixes or suffixes on list items and strips them\n    where it finds them.  This is used by tools (like the GNU linker)\n    that need to turn something like 'libfoo.a' into '-lfoo'.\n    "
+    if (not itms):
+        return itms
+    if (not callable(c)):
+        env_c = env['_concat']
+        if ((env_c != _concat) and callable(env_c)):
+            c = env_c
+        else:
+            c = _concat_ixes
+    stripprefixes = list(map(env.subst, SCons.Util.flatten(stripprefixes)))
+    stripsuffixes = list(map(env.subst, SCons.Util.flatten(stripsuffixes)))
+    stripped = []
+    for l in SCons.PathList.PathList(itms).subst_path(env, None, None):
+        if isinstance(l, SCons.Node.FS.File):
+            stripped.append(l)
+            continue
+        if (not SCons.Util.is_String(l)):
+            l = str(l)
+        for stripprefix in stripprefixes:
+            lsp = len(stripprefix)
+            if (l[:lsp] == stripprefix):
+                l = l[lsp:]
+                break
+        for stripsuffix in stripsuffixes:
+            lss = len(stripsuffix)
+            if (l[(- lss):] == stripsuffix):
+                l = l[:(- lss)]
+                break
+        stripped.append(l)
+    return c(prefix, stripped, suffix, env)

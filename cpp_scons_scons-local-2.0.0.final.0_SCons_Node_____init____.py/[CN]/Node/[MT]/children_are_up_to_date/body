@@ -1,0 +1,11 @@
+def children_are_up_to_date(self):
+    'Alternate check for whether the Node is current:  If all of\n        our children were up-to-date, then this Node was up-to-date, too.\n\n        The SCons.Node.Alias and SCons.Node.Python.Value subclasses\n        rebind their current() method to this method.'
+    self.binfo = self.get_binfo()
+    if self.always_build:
+        return None
+    state = 0
+    for kid in self.children(None):
+        s = kid.get_state()
+        if (s and ((not state) or (s > state))):
+            state = s
+    return ((state == 0) or (state == SCons.Node.up_to_date))

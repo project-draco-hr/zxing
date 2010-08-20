@@ -1,0 +1,11 @@
+def rdir(self):
+    if (not self.exists()):
+        norm_name = _my_normcase(self.name)
+        for dir in self.dir.get_all_rdirs():
+            try:
+                node = dir.entries[norm_name]
+            except KeyError:
+                node = dir.dir_on_disk(self.name)
+            if (node and node.exists() and (isinstance(dir, Dir) or isinstance(dir, Entry))):
+                return node
+    return self

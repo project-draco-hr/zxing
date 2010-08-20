@@ -1,0 +1,30 @@
+def build_specfiles(source, target, env):
+    ' filter the targets for the needed files and use the variables in env\n    to create the specfile.\n    '
+    opened_files = {}
+
+    def open_file(needle, haystack):
+        try:
+            return opened_files[needle]
+        except KeyError:
+            file = filter((lambda x: (x.get_path().rfind(needle) != (-1))), haystack)[0]
+            opened_files[needle] = open(file.abspath, 'w')
+            return opened_files[needle]
+    control_file = open_file('control', target)
+    if ('X_IPK_DESCRIPTION' not in env):
+        env['X_IPK_DESCRIPTION'] = ('%s\n %s' % (env['SUMMARY'], env['DESCRIPTION'].replace('\n', '\n ')))
+    content = '\nPackage: $NAME\nVersion: $VERSION\nPriority: $X_IPK_PRIORITY\nSection: $X_IPK_SECTION\nSource: $SOURCE_URL\nArchitecture: $ARCHITECTURE\nMaintainer: $X_IPK_MAINTAINER\nDepends: $X_IPK_DEPENDS\nDescription: $X_IPK_DESCRIPTION\n'
+    control_file.write(env.subst(content))
+    for f in [x for x in source if ('PACKAGING_CONFIG' in dir(x))]:
+        config = open_file('conffiles')
+        config.write(f.PACKAGING_INSTALL_LOCATION)
+        config.write('\n')
+    for str in 'POSTRM PRERM POSTINST PREINST'.split():
+        name = ('PACKAGING_X_IPK_%s' % str)
+        for f in [x for x in source if (name in dir(x))]:
+            file = open_file(name)
+            file.write(env[str])
+    for f in opened_files.values():
+        f.close()
+    if ('CHANGE_SPECFILE' in env):
+        content += env['CHANGE_SPECFILE'](target)
+    return 0

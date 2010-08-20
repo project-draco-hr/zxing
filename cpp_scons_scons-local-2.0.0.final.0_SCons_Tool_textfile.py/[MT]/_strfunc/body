@@ -1,0 +1,2 @@
+def _strfunc(target, source, env):
+    return ("Creating '%s'" % target[0])

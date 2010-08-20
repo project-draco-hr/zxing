@@ -1,0 +1,7 @@
+def find_vs_dir(self):
+    ' Can use registry or location of VC to find vs dir\n        First try to find by registry, and if that fails find via VC dir\n        '
+    if True:
+        vs_dir = self.find_vs_dir_by_reg()
+        return vs_dir
+    else:
+        return self.find_vs_dir_by_vc()

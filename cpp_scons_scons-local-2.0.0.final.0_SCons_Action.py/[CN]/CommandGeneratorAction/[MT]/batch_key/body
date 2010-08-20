@@ -1,0 +1,2 @@
+def batch_key(self, env, target, source):
+    return self._generate(target, source, env, 1).batch_key(env, target, source)

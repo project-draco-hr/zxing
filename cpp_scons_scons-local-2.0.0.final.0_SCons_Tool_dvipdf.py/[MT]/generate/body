@@ -1,0 +1,17 @@
+def generate(env):
+    'Add Builders and construction variables for dvipdf to an Environment.'
+    global PDFAction
+    if (PDFAction is None):
+        PDFAction = SCons.Action.Action('$DVIPDFCOM', '$DVIPDFCOMSTR')
+    global DVIPDFAction
+    if (DVIPDFAction is None):
+        DVIPDFAction = SCons.Action.Action(DviPdfFunction, strfunction=DviPdfStrFunction)
+    import pdf
+    pdf.generate(env)
+    bld = env['BUILDERS']['PDF']
+    bld.add_action('.dvi', DVIPDFAction)
+    bld.add_emitter('.dvi', PDFEmitter)
+    env['DVIPDF'] = 'dvipdf'
+    env['DVIPDFFLAGS'] = SCons.Util.CLVar('')
+    env['DVIPDFCOM'] = 'cd ${TARGET.dir} && $DVIPDF $DVIPDFFLAGS ${SOURCE.file} ${TARGET.file}'
+    env['PDFCOM'] = ['$DVIPDFCOM']

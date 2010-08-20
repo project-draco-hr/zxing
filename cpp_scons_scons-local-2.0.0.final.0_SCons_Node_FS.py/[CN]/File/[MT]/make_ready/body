@@ -1,0 +1,3 @@
+def make_ready(self):
+    self.has_src_builder()
+    self.get_binfo()

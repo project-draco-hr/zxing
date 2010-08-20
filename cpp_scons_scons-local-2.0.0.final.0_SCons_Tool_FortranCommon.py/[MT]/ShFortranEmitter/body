@@ -1,0 +1,3 @@
+def ShFortranEmitter(target, source, env):
+    (target, source) = _fortranEmitter(target, source, env)
+    return SCons.Defaults.SharedObjectEmitter(target, source, env)

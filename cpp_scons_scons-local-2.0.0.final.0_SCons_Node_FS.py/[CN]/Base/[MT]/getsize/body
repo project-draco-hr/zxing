@@ -1,0 +1,6 @@
+def getsize(self):
+    st = self.stat()
+    if st:
+        return st[stat.ST_SIZE]
+    else:
+        return None

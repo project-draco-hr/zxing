@@ -1,0 +1,8 @@
+def _string_from_cmd_list(cmd_list):
+    'Takes a list of command line arguments and returns a pretty\n    representation for printing.'
+    cl = []
+    for arg in map(str, cmd_list):
+        if ((' ' in arg) or ('\t' in arg)):
+            arg = (('"' + arg) + '"')
+        cl.append(arg)
+    return ' '.join(cl)

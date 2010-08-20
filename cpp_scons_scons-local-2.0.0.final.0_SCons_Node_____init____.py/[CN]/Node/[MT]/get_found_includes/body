@@ -1,0 +1,3 @@
+def get_found_includes(self, env, scanner, path):
+    'Return the scanned include lines (implicit dependencies)\n        found in this node.\n\n        The default is no implicit dependencies.  We expect this method\n        to be overridden by any subclass that can be scanned for\n        implicit dependencies.\n        '
+    return []

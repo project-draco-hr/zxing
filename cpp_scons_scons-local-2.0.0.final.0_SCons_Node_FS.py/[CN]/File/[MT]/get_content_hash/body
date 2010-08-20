@@ -1,0 +1,12 @@
+def get_content_hash(self):
+    '\n        Compute and return the MD5 hash for this file.\n        '
+    if (not self.rexists()):
+        return SCons.Util.MD5signature('')
+    fname = self.rfile().abspath
+    try:
+        cs = SCons.Util.MD5filesignature(fname, chunksize=(SCons.Node.FS.File.md5_chunksize * 1024))
+    except EnvironmentError as e:
+        if (not e.filename):
+            e.filename = fname
+        raise
+    return cs

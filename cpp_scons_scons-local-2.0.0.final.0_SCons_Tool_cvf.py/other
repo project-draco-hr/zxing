@@ -1,0 +1,4 @@
+'engine.SCons.Tool.cvf\n\nTool-specific initialization for the Compaq Visual Fortran compiler.\n\n'
+__revision__ = 'src/engine/SCons/Tool/cvf.py 5023 2010/06/14 22:05:46 scons'
+import fortran
+compilers = ['f90']

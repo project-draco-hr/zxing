@@ -1,0 +1,16 @@
+def write(self, sync=1):
+    if (not self.dirty):
+        return
+    self.merge()
+    (db, mode) = Get_DataBase(self.dir)
+    path = normcase(self.dir.path)
+    for (key, entry) in self.entries.items():
+        entry.convert_to_sconsign()
+    db[path] = pickle.dumps(self.entries, 1)
+    if sync:
+        try:
+            syncmethod = db.sync
+        except AttributeError:
+            pass
+        else:
+            syncmethod()

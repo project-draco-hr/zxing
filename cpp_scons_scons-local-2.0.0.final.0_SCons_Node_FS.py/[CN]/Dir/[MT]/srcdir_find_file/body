@@ -1,0 +1,43 @@
+def srcdir_find_file(self, filename):
+    try:
+        memo_dict = self._memo['srcdir_find_file']
+    except KeyError:
+        memo_dict = {}
+        self._memo['srcdir_find_file'] = memo_dict
+    else:
+        try:
+            return memo_dict[filename]
+        except KeyError:
+            pass
+
+    def func(node):
+        if ((isinstance(node, File) or isinstance(node, Entry)) and (node.is_derived() or node.exists())):
+            return node
+        return None
+    norm_name = _my_normcase(filename)
+    for rdir in self.get_all_rdirs():
+        try:
+            node = rdir.entries[norm_name]
+        except KeyError:
+            node = rdir.file_on_disk(filename)
+        else:
+            node = func(node)
+        if node:
+            result = (node, self)
+            memo_dict[filename] = result
+            return result
+    for srcdir in self.srcdir_list():
+        for rdir in srcdir.get_all_rdirs():
+            try:
+                node = rdir.entries[norm_name]
+            except KeyError:
+                node = rdir.file_on_disk(filename)
+            else:
+                node = func(node)
+            if node:
+                result = (File(filename, self, self.fs), srcdir)
+                memo_dict[filename] = result
+                return result
+    result = (None, None)
+    memo_dict[filename] = result
+    return result

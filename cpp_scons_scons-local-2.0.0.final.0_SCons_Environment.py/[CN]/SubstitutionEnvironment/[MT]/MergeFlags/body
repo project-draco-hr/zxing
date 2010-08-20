@@ -1,0 +1,42 @@
+def MergeFlags(self, args, unique=1, dict=None):
+    '\n        Merge the dict in args into the construction variables of this\n        env, or the passed-in dict.  If args is not a dict, it is\n        converted into a dict using ParseFlags.  If unique is not set,\n        the flags are appended rather than merged.\n        '
+    if (dict is None):
+        dict = self
+    if (not SCons.Util.is_Dict(args)):
+        args = self.ParseFlags(args)
+    if (not unique):
+        self.Append(**args)
+        return self
+    for (key, value) in args.items():
+        if (not value):
+            continue
+        try:
+            orig = self[key]
+        except KeyError:
+            orig = value
+        else:
+            if (not orig):
+                orig = value
+            elif value:
+                try:
+                    orig = (orig + value)
+                except (KeyError, TypeError):
+                    try:
+                        add_to_orig = orig.append
+                    except AttributeError:
+                        value.insert(0, orig)
+                        orig = value
+                    else:
+                        add_to_orig(value)
+        t = []
+        if (key[(-4):] == 'PATH'):
+            for v in orig:
+                if (v not in t):
+                    t.append(v)
+        else:
+            orig.reverse()
+            for v in orig:
+                if (v not in t):
+                    t.insert(0, v)
+        self[key] = t
+    return self

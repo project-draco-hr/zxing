@@ -1,0 +1,29 @@
+def __call__(self, target, source, env, for_signature):
+    if for_signature:
+        return self.cmd
+    cmd = env.subst_list(self.cmd, SCons.Subst.SUBST_CMD, target, source)[0]
+    try:
+        maxline = int(env.subst('$MAXLINELENGTH'))
+    except ValueError:
+        maxline = 2048
+    length = 0
+    for c in cmd:
+        length += len(c)
+    if (length <= maxline):
+        return self.cmd
+    (fd, tmp) = tempfile.mkstemp('.lnk', text=True)
+    native_tmp = SCons.Util.get_native_path(os.path.normpath(tmp))
+    if (env['SHELL'] and (env['SHELL'] == 'sh')):
+        native_tmp = native_tmp.replace('\\', '\\\\\\\\')
+        rm = (env.Detect('rm') or 'del')
+    else:
+        rm = 'del'
+    prefix = env.subst('$TEMPFILEPREFIX')
+    if (not prefix):
+        prefix = '@'
+    args = list(map(SCons.Subst.quote_spaces, cmd[1:]))
+    os.write(fd, (' '.join(args) + '\n'))
+    os.close(fd)
+    if SCons.Action.print_actions:
+        print ((((('Using tempfile ' + native_tmp) + ' for command line:\n') + str(cmd[0])) + ' ') + ' '.join(args))
+    return [cmd[0], (((prefix + native_tmp) + '\n') + rm), native_tmp]

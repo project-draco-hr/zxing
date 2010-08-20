@@ -1,0 +1,2 @@
+def get_targets(self, env, executor):
+    return self._generate(None, None, env, 1, executor).get_targets(env, executor)

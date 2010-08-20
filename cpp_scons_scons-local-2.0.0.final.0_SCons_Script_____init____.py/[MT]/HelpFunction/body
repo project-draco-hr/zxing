@@ -1,0 +1,6 @@
+def HelpFunction(text):
+    global help_text
+    if (SCons.Script.help_text is None):
+        SCons.Script.help_text = text
+    else:
+        help_text = (help_text + text)

@@ -1,0 +1,5 @@
+def string_to_classes(s):
+    if (s == '*'):
+        return sorted(tracked_classes.keys())
+    else:
+        return s.split()

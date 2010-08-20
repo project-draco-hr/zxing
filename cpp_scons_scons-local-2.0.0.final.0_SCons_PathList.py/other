@@ -1,0 +1,11 @@
+__revision__ = 'src/engine/SCons/PathList.py 5023 2010/06/14 22:05:46 scons'
+__doc__ = 'SCons.PathList\n\nA module for handling lists of directory paths (the sort of things\nthat get set as CPPPATH, LIBPATH, etc.) with as much caching of data and\nefficiency as we can while still keeping the evaluation delayed so that we\nDo the Right Thing (almost) regardless of how the variable is specified.\n\n'
+import os
+import SCons.Memoize
+import SCons.Node
+import SCons.Util
+TYPE_STRING_NO_SUBST = 0
+TYPE_STRING_SUBST = 1
+TYPE_OBJECT = 2
+PathList = PathListCache().PathList
+del PathListCache

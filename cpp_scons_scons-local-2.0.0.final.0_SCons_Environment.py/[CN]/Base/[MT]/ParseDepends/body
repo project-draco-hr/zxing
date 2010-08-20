@@ -1,0 +1,27 @@
+def ParseDepends(self, filename, must_exist=None, only_one=0):
+    '\n        Parse a mkdep-style file for explicit dependencies.  This is\n        completely abusable, and should be unnecessary in the "normal"\n        case of proper SCons configuration, but it may help make\n        the transition from a Make hierarchy easier for some people\n        to swallow.  It can also be genuinely useful when using a tool\n        that can write a .d file, but for which writing a scanner would\n        be too complicated.\n        '
+    filename = self.subst(filename)
+    try:
+        fp = open(filename, 'r')
+    except IOError:
+        if must_exist:
+            raise
+        return
+    lines = SCons.Util.LogicalLines(fp).readlines()
+    lines = [l for l in lines if (l[0] != '#')]
+    tdlist = []
+    for line in lines:
+        try:
+            (target, depends) = line.split(':', 1)
+        except (AttributeError, ValueError):
+            pass
+        else:
+            tdlist.append((target.split(), depends.split()))
+    if only_one:
+        targets = []
+        for td in tdlist:
+            targets.extend(td[0])
+        if (len(targets) > 1):
+            raise SCons.Errors.UserError(("More than one dependency target found in `%s':  %s" % (filename, targets)))
+    for (target, depends) in tdlist:
+        self.Depends(target, depends)

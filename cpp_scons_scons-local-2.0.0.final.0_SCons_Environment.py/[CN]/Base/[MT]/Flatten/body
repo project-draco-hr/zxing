@@ -1,0 +1,2 @@
+def Flatten(self, sequence):
+    return SCons.Util.flatten(sequence)

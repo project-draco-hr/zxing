@@ -1,0 +1,4 @@
+def _changed_build(self, dependency, target, prev_ni):
+    if dependency.changed_state(target, prev_ni):
+        return 1
+    return self.decide_source(dependency, target, prev_ni)

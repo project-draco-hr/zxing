@@ -1,0 +1,15 @@
+def FindSourceFiles(self, node='.'):
+    ' returns a list of all source files.\n        '
+    node = self.arg2nodes(node, self.fs.Entry)[0]
+    sources = []
+
+    def build_source(ss):
+        for s in ss:
+            if isinstance(s, SCons.Node.FS.Dir):
+                build_source(s.all_children())
+            elif s.has_builder():
+                build_source(s.sources)
+            elif isinstance(s.disambiguate(), SCons.Node.FS.File):
+                sources.append(s)
+    build_source(node.all_children())
+    return list(set(sources))

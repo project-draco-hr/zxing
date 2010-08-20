@@ -1,0 +1,24 @@
+def PrintSourceFiles(self):
+    categories = {'Source Files': 'cpp;c;cxx;l;y;def;odl;idl;hpj;bat', 'Header Files': 'h;hpp;hxx;hm;inl', 'Local Headers': 'h;hpp;hxx;hm;inl', 'Resource Files': 'r;rc;ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe', 'Other Files': '', }
+    self.file.write('\t<Files>\n')
+    cats = sorted([k for k in categories.keys() if self.sources[k]], key=(lambda a: a.lower()))
+    for kind in cats:
+        if (len(cats) > 1):
+            self.file.write(('\t\t<Filter\n\t\t\tName="%s"\n\t\t\tFilter="%s">\n' % (kind, categories[kind])))
+        sources = self.sources[kind]
+        commonprefix = None
+        if (len(sources) > 1):
+            s = list(map(os.path.normpath, sources))
+            cp = os.path.dirname(os.path.commonprefix(s))
+            if (cp and (s[0][len(cp)] == os.sep)):
+                sources = [s[(len(cp) + 1):] for s in sources]
+                commonprefix = cp
+        elif (len(sources) == 1):
+            commonprefix = os.path.dirname(sources[0])
+            sources[0] = os.path.basename(sources[0])
+        hierarchy = makeHierarchy(sources)
+        self.printSources(hierarchy, commonprefix=commonprefix)
+        if (len(cats) > 1):
+            self.file.write('\t\t</Filter>\n')
+    self.file.write(('\t\t<File\n\t\t\tRelativePath="%s">\n\t\t</File>\n' % str(self.sconscript)))
+    self.file.write('\t</Files>\n\t<Globals>\n\t</Globals>\n')

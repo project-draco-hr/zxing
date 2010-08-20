@@ -1,0 +1,3 @@
+def process(self, opt, value, values, parser):
+    value = self.convert_value(opt, value)
+    return self.take_action(self.action, self.dest, opt, value, values, parser)

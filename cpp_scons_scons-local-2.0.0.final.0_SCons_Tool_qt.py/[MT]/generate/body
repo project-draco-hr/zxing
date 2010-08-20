@@ -1,0 +1,24 @@
+def generate(env):
+    'Add Builders and construction variables for qt to an Environment.'
+    CLVar = SCons.Util.CLVar
+    Action = SCons.Action.Action
+    Builder = SCons.Builder.Builder
+    env.SetDefault(QTDIR=_detect(env), QT_BINPATH=os.path.join('$QTDIR', 'bin'), QT_CPPPATH=os.path.join('$QTDIR', 'include'), QT_LIBPATH=os.path.join('$QTDIR', 'lib'), QT_MOC=os.path.join('$QT_BINPATH', 'moc'), QT_UIC=os.path.join('$QT_BINPATH', 'uic'), QT_LIB='qt', QT_AUTOSCAN=1, QT_UICIMPLFLAGS=CLVar(''), QT_UICDECLFLAGS=CLVar(''), QT_MOCFROMHFLAGS=CLVar(''), QT_MOCFROMCXXFLAGS=CLVar('-i'), QT_UICDECLPREFIX='', QT_UICDECLSUFFIX='.h', QT_UICIMPLPREFIX='uic_', QT_UICIMPLSUFFIX='$CXXFILESUFFIX', QT_MOCHPREFIX='moc_', QT_MOCHSUFFIX='$CXXFILESUFFIX', QT_MOCCXXPREFIX='', QT_MOCCXXSUFFIX='.moc', QT_UISUFFIX='.ui', QT_UICCOM=[CLVar('$QT_UIC $QT_UICDECLFLAGS -o ${TARGETS[0]} $SOURCE'), CLVar('$QT_UIC $QT_UICIMPLFLAGS -impl ${TARGETS[0].file} -o ${TARGETS[1]} $SOURCE'), CLVar('$QT_MOC $QT_MOCFROMHFLAGS -o ${TARGETS[2]} ${TARGETS[0]}')], QT_MOCFROMHCOM='$QT_MOC $QT_MOCFROMHFLAGS -o ${TARGETS[0]} $SOURCE', QT_MOCFROMCXXCOM=[CLVar('$QT_MOC $QT_MOCFROMCXXFLAGS -o ${TARGETS[0]} $SOURCE'), Action(checkMocIncluded, None)])
+    uicBld = Builder(action=SCons.Action.Action('$QT_UICCOM', '$QT_UICCOMSTR'), emitter=uicEmitter, src_suffix='$QT_UISUFFIX', suffix='$QT_UICDECLSUFFIX', prefix='$QT_UICDECLPREFIX', source_scanner=uicScanner)
+    mocBld = Builder(action={}, prefix={}, suffix={})
+    for h in header_extensions:
+        act = SCons.Action.Action('$QT_MOCFROMHCOM', '$QT_MOCFROMHCOMSTR')
+        mocBld.add_action(h, act)
+        mocBld.prefix[h] = '$QT_MOCHPREFIX'
+        mocBld.suffix[h] = '$QT_MOCHSUFFIX'
+    for cxx in cxx_suffixes:
+        act = SCons.Action.Action('$QT_MOCFROMCXXCOM', '$QT_MOCFROMCXXCOMSTR')
+        mocBld.add_action(cxx, act)
+        mocBld.prefix[cxx] = '$QT_MOCCXXPREFIX'
+        mocBld.suffix[cxx] = '$QT_MOCCXXSUFFIX'
+    env['BUILDERS']['Uic'] = uicBld
+    env['BUILDERS']['Moc'] = mocBld
+    (static_obj, shared_obj) = SCons.Tool.createObjBuilders(env)
+    static_obj.add_src_builder('Uic')
+    shared_obj.add_src_builder('Uic')
+    env.AppendUnique(PROGEMITTER=[AutomocStatic], SHLIBEMITTER=[AutomocShared], LIBEMITTER=[AutomocStatic], CPPPATH=['$QT_CPPPATH'], LIBPATH=['$QT_LIBPATH'], LIBS=['$QT_LIB'])

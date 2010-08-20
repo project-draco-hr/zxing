@@ -1,0 +1,7 @@
+def map_action(entry, name):
+    try:
+        bact = entry.bact
+        bactsig = entry.bactsig
+    except AttributeError:
+        return None
+    return ('%s [%s]' % (bactsig, bact))

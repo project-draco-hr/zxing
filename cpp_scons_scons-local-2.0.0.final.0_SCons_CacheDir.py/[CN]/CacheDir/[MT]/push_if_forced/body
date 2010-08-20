@@ -1,0 +1,3 @@
+def push_if_forced(self, node):
+    if cache_force:
+        return self.push(node)

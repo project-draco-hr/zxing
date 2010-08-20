@@ -1,0 +1,7 @@
+def exists(env):
+    (path, _f77, _shf77, version) = get_xlf77(env)
+    if (path and _f77):
+        xlf77 = os.path.join(path, _f77)
+        if os.path.exists(xlf77):
+            return xlf77
+    return None

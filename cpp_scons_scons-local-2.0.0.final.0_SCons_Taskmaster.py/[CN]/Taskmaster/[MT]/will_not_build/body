@@ -1,0 +1,24 @@
+def will_not_build(self, nodes, node_func=(lambda n: None)):
+    '\n        Perform clean-up about nodes that will never be built. Invokes\n        a user defined function on all of these nodes (including all\n        of their parents).\n        '
+    T = self.trace
+    pending_children = self.pending_children
+    to_visit = set(nodes)
+    pending_children = (pending_children - to_visit)
+    if T:
+        for n in nodes:
+            T.write(self.trace_message(('       removing node %s from the pending children set\n' % self.trace_node(n))))
+    try:
+        while len(to_visit):
+            node = to_visit.pop()
+            node_func(node)
+            parents = node.waiting_parents
+            node.waiting_parents = set()
+            to_visit = (to_visit | parents)
+            pending_children = (pending_children - parents)
+            for p in parents:
+                p.ref_count = (p.ref_count - 1)
+                if T:
+                    T.write(self.trace_message(('       removing parent %s from the pending children set\n' % self.trace_node(p))))
+    except KeyError:
+        pass
+    self.pending_children = pending_children

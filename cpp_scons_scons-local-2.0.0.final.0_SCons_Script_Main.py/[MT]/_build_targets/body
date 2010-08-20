@@ -1,0 +1,152 @@
+def _build_targets(fs, options, targets, target_top):
+    global this_build_status
+    this_build_status = 0
+    progress_display.set_mode((not (options.no_progress or options.silent)))
+    display.set_mode((not options.silent))
+    SCons.Action.print_actions = (not options.silent)
+    SCons.Action.execute_actions = (not options.no_exec)
+    SCons.Node.FS.do_store_info = (not options.no_exec)
+    SCons.SConf.dryrun = options.no_exec
+    if options.diskcheck:
+        SCons.Node.FS.set_diskcheck(options.diskcheck)
+    SCons.CacheDir.cache_enabled = (not options.cache_disable)
+    SCons.CacheDir.cache_debug = options.cache_debug
+    SCons.CacheDir.cache_force = options.cache_force
+    SCons.CacheDir.cache_show = options.cache_show
+    if options.no_exec:
+        CleanTask.execute = CleanTask.show
+    else:
+        CleanTask.execute = CleanTask.remove
+    lookup_top = None
+    if (targets or (SCons.Script.BUILD_TARGETS != SCons.Script._build_plus_default)):
+        if target_top:
+            lookup_top = fs.Dir(target_top)
+            target_top = None
+        targets = SCons.Script.BUILD_TARGETS
+    else:
+        d = None
+        if target_top:
+            if (options.climb_up == 1):
+                target_top = fs.Dir(target_top)
+                lookup_top = target_top
+            elif (options.climb_up == 2):
+                target_top = None
+                lookup_top = None
+            elif (options.climb_up == 3):
+                target_top = fs.Dir(target_top)
+
+                def check_dir(x, target_top=target_top):
+                    if (hasattr(x, 'cwd') and (not (x.cwd is None))):
+                        cwd = x.cwd.srcnode()
+                        return (cwd == target_top)
+                    else:
+                        return 1
+                d = list(filter(check_dir, SCons.Script.DEFAULT_TARGETS))
+                SCons.Script.DEFAULT_TARGETS[:] = d
+                target_top = None
+                lookup_top = None
+        targets = SCons.Script._Get_Default_Targets(d, fs)
+    if (not targets):
+        sys.stderr.write('scons: *** No targets specified and no Default() targets found.  Stop.\n')
+        return None
+
+    def Entry(x, ltop=lookup_top, ttop=target_top, fs=fs):
+        if isinstance(x, SCons.Node.Node):
+            node = x
+        else:
+            node = None
+            if (ltop is None):
+                ltop = ''
+            curdir = os.path.join(os.getcwd(), str(ltop))
+            for lookup in SCons.Node.arg2nodes_lookups:
+                node = lookup(x, curdir=curdir)
+                if (node is not None):
+                    break
+            if (node is None):
+                node = fs.Entry(x, directory=ltop, create=1)
+        if (ttop and (not node.is_under(ttop))):
+            if (isinstance(node, SCons.Node.FS.Dir) and ttop.is_under(node)):
+                node = ttop
+            else:
+                node = None
+        return node
+    nodes = [_f for _f in map(Entry, targets) if _f]
+    task_class = BuildTask
+    opening_message = 'Building targets ...'
+    closing_message = 'done building targets.'
+    if options.keep_going:
+        failure_message = 'done building targets (errors occurred during build).'
+    else:
+        failure_message = 'building terminated because of errors.'
+    if options.question:
+        task_class = QuestionTask
+    try:
+        if options.clean:
+            task_class = CleanTask
+            opening_message = 'Cleaning targets ...'
+            closing_message = 'done cleaning targets.'
+            if options.keep_going:
+                failure_message = 'done cleaning targets (errors occurred during clean).'
+            else:
+                failure_message = 'cleaning terminated because of errors.'
+    except AttributeError:
+        pass
+    task_class.progress = ProgressObject
+    if options.random:
+
+        def order(dependencies):
+            'Randomize the dependencies.'
+            import random
+            d = dependencies
+            for i in range((len(d) - 1), 0, (-1)):
+                j = int((random.random() * (i + 1)))
+                (d[i], d[j]) = (d[j], d[i])
+            return d
+    else:
+
+        def order(dependencies):
+            'Leave the order of dependencies alone.'
+            return dependencies
+    if (options.taskmastertrace_file == '-'):
+        tmtrace = sys.stdout
+    elif options.taskmastertrace_file:
+        tmtrace = open(options.taskmastertrace_file, 'wb')
+    else:
+        tmtrace = None
+    taskmaster = SCons.Taskmaster.Taskmaster(nodes, task_class, order, tmtrace)
+    BuildTask.options = options
+    global num_jobs
+    num_jobs = options.num_jobs
+    jobs = SCons.Job.Jobs(num_jobs, taskmaster)
+    if (num_jobs > 1):
+        msg = None
+        if (jobs.num_jobs == 1):
+            msg = ('parallel builds are unsupported by this version of Python;\n' + '\tignoring -j or num_jobs option.\n')
+        elif (sys.platform == 'win32'):
+            msg = fetch_win32_parallel_msg()
+        if msg:
+            SCons.Warnings.warn(SCons.Warnings.NoParallelSupportWarning, msg)
+    memory_stats.append('before building targets:')
+    count_stats.append(('pre-', 'build'))
+
+    def jobs_postfunc(jobs=jobs, options=options, closing_message=closing_message, failure_message=failure_message):
+        if jobs.were_interrupted():
+            if ((not options.no_progress) and (not options.silent)):
+                sys.stderr.write('scons: Build interrupted.\n')
+            global exit_status
+            global this_build_status
+            exit_status = 2
+            this_build_status = 2
+        if this_build_status:
+            progress_display(('scons: ' + failure_message))
+        else:
+            progress_display(('scons: ' + closing_message))
+        if (not options.no_exec):
+            if jobs.were_interrupted():
+                progress_display('scons: writing .sconsign file.')
+            SCons.SConsign.write()
+    progress_display(('scons: ' + opening_message))
+    jobs.run(postfunc=jobs_postfunc)
+    memory_stats.append('after building targets:')
+    count_stats.append(('post-', 'build'))
+    return nodes

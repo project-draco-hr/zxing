@@ -1,0 +1,6 @@
+def __init__(self, var, kw):
+    if __debug__:
+        logInstanceCreation(self, 'Action.LazyAction')
+    CommandAction.__init__(self, (('${' + var) + '}'), **kw)
+    self.var = SCons.Util.to_String(var)
+    self.gen_kw = kw

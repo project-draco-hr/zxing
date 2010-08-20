@@ -1,0 +1,3 @@
+def make_ready(self):
+    'Get a Node ready for evaluation.\n\n        This is called before the Taskmaster decides if the Node is\n        up-to-date or not.  Overriding this method allows for a Node\n        subclass to be disambiguated if necessary, or for an implicit\n        source builder to be attached.\n        '
+    pass

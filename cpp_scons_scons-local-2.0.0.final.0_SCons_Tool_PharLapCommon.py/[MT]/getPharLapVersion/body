@@ -1,0 +1,9 @@
+def getPharLapVersion():
+    "Returns the version of the installed ETS Tool Suite as a\n    decimal number.  This version comes from the ETS_VER #define in\n    the embkern.h header.  For example, '#define ETS_VER 1010' (which\n    is what Phar Lap 10.1 defines) would cause this method to return\n    1010. Phar Lap 9.1 does not have such a #define, but this method\n    will return 910 as a default.\n\n    Raises UserError if no installed version of Phar Lap can\n    be found."
+    include_path = os.path.join(getPharLapPath(), os.path.normpath('include/embkern.h'))
+    if (not os.path.exists(include_path)):
+        raise SCons.Errors.UserError('Cannot find embkern.h in ETS include directory.\nIs Phar Lap ETS installed properly?')
+    mo = REGEX_ETS_VER.search(open(include_path, 'r').read())
+    if mo:
+        return int(mo.group(1))
+    return 910

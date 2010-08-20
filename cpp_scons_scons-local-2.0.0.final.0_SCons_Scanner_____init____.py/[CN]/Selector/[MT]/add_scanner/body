@@ -1,0 +1,3 @@
+def add_scanner(self, skey, scanner):
+    self.dict[skey] = scanner
+    self.add_skey(skey)

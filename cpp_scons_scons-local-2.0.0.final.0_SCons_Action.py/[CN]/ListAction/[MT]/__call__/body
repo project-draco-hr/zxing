@@ -1,0 +1,9 @@
+def __call__(self, target, source, env, exitstatfunc=_null, presub=_null, show=_null, execute=_null, chdir=_null, executor=None):
+    if executor:
+        target = executor.get_all_targets()
+        source = executor.get_all_sources()
+    for act in self.list:
+        stat = act(target, source, env, exitstatfunc, presub, show, execute, chdir, executor)
+        if stat:
+            return stat
+    return 0

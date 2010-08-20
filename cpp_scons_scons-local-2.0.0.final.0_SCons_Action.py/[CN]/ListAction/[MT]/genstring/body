@@ -1,0 +1,2 @@
+def genstring(self, target, source, env):
+    return '\n'.join([a.genstring(target, source, env) for a in self.list])

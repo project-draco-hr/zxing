@@ -1,0 +1,6 @@
+def get_lvars(self):
+    try:
+        return self.lvars
+    except AttributeError:
+        self.lvars = {'CHANGED_SOURCES': TSList(self._get_changed_sources), 'CHANGED_TARGETS': TSList(self._get_changed_targets), 'SOURCE': TSObject(self._get_source), 'SOURCES': TSList(self._get_sources), 'TARGET': TSObject(self._get_target), 'TARGETS': TSList(self._get_targets), 'UNCHANGED_SOURCES': TSList(self._get_unchanged_sources), 'UNCHANGED_TARGETS': TSList(self._get_unchanged_targets), }
+        return self.lvars

@@ -1,0 +1,9 @@
+def CreateConfigHBuilder(env):
+    'Called just before the building targets phase begins.'
+    if (len(_ac_config_hs) == 0):
+        return
+    action = SCons.Action.Action(_createConfigH, _stringConfigH)
+    sconfigHBld = SCons.Builder.Builder(action=action)
+    env.Append(BUILDERS={'SConfigHBuilder': sconfigHBld, })
+    for k in _ac_config_hs.keys():
+        env.SConfigHBuilder(k, env.Value(_ac_config_hs[k]))

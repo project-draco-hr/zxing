@@ -1,0 +1,9 @@
+def do_include(self, t):
+    '\n        Default handling of a #include line.\n        '
+    t = self.resolve_include(t)
+    include_file = self.find_include_file(t)
+    if include_file:
+        self.result.append(include_file)
+        contents = self.read_file(include_file)
+        new_tuples = (([('scons_current_file', include_file)] + self.tupleize(contents)) + [('scons_current_file', self.current_file)])
+        self.tuples[:] = (new_tuples + self.tuples)

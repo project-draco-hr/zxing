@@ -1,0 +1,8 @@
+def _demo_windows():
+    print "Looking for 'PROMPT' in set output..."
+    p1 = Popen('set', stdout=PIPE, shell=True)
+    p2 = Popen('find "PROMPT"', stdin=p1.stdout, stdout=PIPE)
+    print repr(p2.communicate()[0])
+    print 'Executing calc...'
+    p = Popen('calc')
+    p.wait()

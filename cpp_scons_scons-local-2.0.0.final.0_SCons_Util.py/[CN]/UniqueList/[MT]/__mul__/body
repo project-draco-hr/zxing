@@ -1,0 +1,4 @@
+def __mul__(self, other):
+    result = UserList.__mul__(self, other)
+    result.unique = False
+    return result

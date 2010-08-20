@@ -1,0 +1,6 @@
+def has_key(self, key):
+    try:
+        self.__dict__['overrides'][key]
+        return 1
+    except KeyError:
+        return (key in self.__dict__['__subject'])

@@ -1,0 +1,7 @@
+def is_host_target_supported(host_target, msvc_version):
+    'Return True if the given (host, target) tuple is supported given the\n    msvc version.\n\n    Parameters\n    ----------\n    host_target: tuple\n        tuple of (canonalized) host-target, e.g. ("x86", "amd64") for cross\n        compilation from 32 bits windows to 64 bits.\n    msvc_version: str\n        msvc version (major.minor, e.g. 10.0)\n\n    Note\n    ----\n    This only check whether a given version *may* support the given (host,\n    target), not that the toolchain is actually present on the machine.\n    '
+    if (host_target[1] != 'x86'):
+        (maj, min) = msvc_version_to_maj_min(msvc_version)
+        if (maj < 8):
+            return False
+    return True

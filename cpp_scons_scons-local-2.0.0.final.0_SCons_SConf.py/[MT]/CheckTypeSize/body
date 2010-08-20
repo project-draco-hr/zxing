@@ -1,0 +1,4 @@
+def CheckTypeSize(context, type_name, includes='', language=None, expect=None):
+    res = SCons.Conftest.CheckTypeSize(context, type_name, header=includes, language=language, expect=expect)
+    context.did_show_result = 1
+    return res

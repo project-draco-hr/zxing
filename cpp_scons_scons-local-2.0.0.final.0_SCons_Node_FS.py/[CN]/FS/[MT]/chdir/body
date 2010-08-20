@@ -1,0 +1,11 @@
+def chdir(self, dir, change_os_dir=0):
+    'Change the current working directory for lookups.\n        If change_os_dir is true, we will also change the "real" cwd\n        to match.\n        '
+    curr = self._cwd
+    try:
+        if (dir is not None):
+            self._cwd = dir
+            if change_os_dir:
+                os.chdir(dir.abspath)
+    except OSError:
+        self._cwd = curr
+        raise

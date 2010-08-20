@@ -1,0 +1,2 @@
+def get_varlist(self, target, source, env, executor=None):
+    return self._generate(target, source, env, 1, executor).get_varlist(target, source, env, executor)

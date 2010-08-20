@@ -1,0 +1,4 @@
+def tex_eps_emitter(target, source, env):
+    'An emitter for TeX and LaTeX sources when\n    executing tex or latex. It will accept .ps and .eps\n    graphics files\n    '
+    (target, source) = tex_emitter_core(target, source, env, TexGraphics)
+    return (target, source)

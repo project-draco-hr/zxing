@@ -1,0 +1,5 @@
+def srcnode(self):
+    'Dir has a special need for srcnode()...if we\n        have a srcdir attribute set, then that *is* our srcnode.'
+    if self.srcdir:
+        return self.srcdir
+    return Base.srcnode(self)

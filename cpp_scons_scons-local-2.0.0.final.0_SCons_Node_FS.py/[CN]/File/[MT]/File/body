@@ -1,0 +1,3 @@
+def File(self, name):
+    "Create a file node named 'name' relative to\n        the directory of this file."
+    return self.dir.File(name)

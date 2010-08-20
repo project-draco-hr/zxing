@@ -1,0 +1,18 @@
+def find_next_candidate(self):
+    '\n        Returns the next candidate Node for (potential) evaluation.\n\n        The candidate list (really a stack) initially consists of all of\n        the top-level (command line) targets provided when the Taskmaster\n        was initialized.  While we walk the DAG, visiting Nodes, all the\n        children that haven\'t finished processing get pushed on to the\n        candidate list.  Each child can then be popped and examined in\n        turn for whether *their* children are all up-to-date, in which\n        case a Task will be created for their actual evaluation and\n        potential building.\n\n        Here is where we also allow candidate Nodes to alter the list of\n        Nodes that should be examined.  This is used, for example, when\n        invoking SCons in a source directory.  A source directory Node can\n        return its corresponding build directory Node, essentially saying,\n        "Hey, you really need to build this thing over here instead."\n        '
+    try:
+        return self.candidates.pop()
+    except IndexError:
+        pass
+    try:
+        node = self.top_targets_left.pop()
+    except IndexError:
+        return None
+    self.current_top = node
+    (alt, message) = node.alter_targets()
+    if alt:
+        self.message = message
+        self.candidates.append(node)
+        self.candidates.extend(self.order(alt))
+        node = self.candidates.pop()
+    return node

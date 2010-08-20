@@ -1,0 +1,14 @@
+def printSources(self, hierarchy, commonprefix):
+    sorteditems = sorted(hierarchy.items(), key=(lambda a: a[0].lower()))
+    for (key, value) in sorteditems:
+        if SCons.Util.is_Dict(value):
+            self.file.write(('\t\t\t<Filter\n\t\t\t\tName="%s"\n\t\t\t\tFilter="">\n' % key))
+            self.printSources(value, commonprefix)
+            self.file.write('\t\t\t</Filter>\n')
+    for (key, value) in sorteditems:
+        if SCons.Util.is_String(value):
+            file = value
+            if commonprefix:
+                file = os.path.join(commonprefix, value)
+            file = os.path.normpath(file)
+            self.file.write(('\t\t\t<File\n\t\t\t\tRelativePath="%s">\n\t\t\t</File>\n' % file))

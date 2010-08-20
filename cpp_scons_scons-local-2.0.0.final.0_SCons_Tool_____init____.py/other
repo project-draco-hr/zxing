@@ -1,0 +1,30 @@
+'SCons.Tool\n\nSCons tool selection.\n\nThis looks for modules that define a callable object that can modify\na construction environment as appropriate for a given tool (or tool\nchain).\n\nNote that because this subsystem just *selects* a callable that can\nmodify a construction environment, it\'s possible for people to define\ntheir own "tool specification" in an arbitrary callable function.  No\none needs to use or tie in to this subsystem in order to roll their own\ntool definition.\n'
+__revision__ = 'src/engine/SCons/Tool/__init__.py 5023 2010/06/14 22:05:46 scons'
+import imp
+import sys
+import SCons.Builder
+import SCons.Errors
+import SCons.Node.FS
+import SCons.Scanner
+import SCons.Scanner.C
+import SCons.Scanner.D
+import SCons.Scanner.LaTeX
+import SCons.Scanner.Prog
+DefaultToolpath = []
+CScanner = SCons.Scanner.C.CScanner()
+DScanner = SCons.Scanner.D.DScanner()
+LaTeXScanner = SCons.Scanner.LaTeX.LaTeXScanner()
+PDFLaTeXScanner = SCons.Scanner.LaTeX.PDFLaTeXScanner()
+ProgramScanner = SCons.Scanner.Prog.ProgramScanner()
+SourceFileScanner = SCons.Scanner.Base({}, name='SourceFileScanner')
+CSuffixes = ['.c', '.C', '.cxx', '.cpp', '.c++', '.cc', '.h', '.H', '.hxx', '.hpp', '.hh', '.F', '.fpp', '.FPP', '.m', '.mm', '.S', '.spp', '.SPP']
+DSuffixes = ['.d']
+IDLSuffixes = ['.idl', '.IDL']
+LaTeXSuffixes = ['.tex', '.ltx', '.latex']
+for suffix in CSuffixes:
+    SourceFileScanner.add_scanner(suffix, CScanner)
+for suffix in DSuffixes:
+    SourceFileScanner.add_scanner(suffix, DScanner)
+for suffix in LaTeXSuffixes:
+    SourceFileScanner.add_scanner(suffix, LaTeXScanner)
+    SourceFileScanner.add_scanner(suffix, PDFLaTeXScanner)

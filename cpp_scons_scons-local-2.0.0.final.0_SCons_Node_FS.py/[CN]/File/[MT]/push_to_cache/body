@@ -1,0 +1,7 @@
+def push_to_cache(self):
+    'Try to push the node into a cache\n        '
+    if self.nocache:
+        return
+    self.clear_memoized_values()
+    if self.exists():
+        self.get_build_env().get_CacheDir().push(self)

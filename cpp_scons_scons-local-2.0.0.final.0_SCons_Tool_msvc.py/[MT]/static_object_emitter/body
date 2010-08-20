@@ -1,0 +1,2 @@
+def static_object_emitter(target, source, env):
+    return object_emitter(target, source, env, SCons.Defaults.StaticObjectEmitter)

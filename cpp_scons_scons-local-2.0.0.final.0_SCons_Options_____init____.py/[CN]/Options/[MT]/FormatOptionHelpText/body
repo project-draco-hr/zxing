@@ -1,0 +1,2 @@
+def FormatOptionHelpText(self, *args, **kw):
+    return SCons.Variables.Variables.FormatVariableHelpText(self, *args, **kw)

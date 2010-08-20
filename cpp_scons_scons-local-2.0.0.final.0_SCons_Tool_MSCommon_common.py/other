@@ -1,0 +1,23 @@
+__revision__ = 'src/engine/SCons/Tool/MSCommon/common.py 5023 2010/06/14 22:05:46 scons'
+__doc__ = '\nCommon helper functions for working with the Microsoft tool chain.\n'
+import copy
+import os
+import subprocess
+import re
+import SCons.Util
+logfile = os.environ.get('SCONS_MSCOMMON_DEBUG')
+if (logfile == '-'):
+
+    def debug(x):
+        print x
+elif logfile:
+    try:
+        import logging
+    except ImportError:
+        debug = (lambda x: open(logfile, 'a').write((x + '\n')))
+    else:
+        logging.basicConfig(filename=logfile, level=logging.DEBUG)
+        debug = logging.debug
+else:
+    debug = (lambda x: None)
+_is_win64 = None

@@ -1,0 +1,4 @@
+def copy(self):
+    dict = OrderedDict()
+    dict.update(self)
+    return dict

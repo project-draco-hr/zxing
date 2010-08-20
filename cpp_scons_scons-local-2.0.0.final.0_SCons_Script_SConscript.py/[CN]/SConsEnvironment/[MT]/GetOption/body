@@ -1,0 +1,3 @@
+def GetOption(self, name):
+    name = self.subst(name)
+    return SCons.Script.Main.GetOption(name)

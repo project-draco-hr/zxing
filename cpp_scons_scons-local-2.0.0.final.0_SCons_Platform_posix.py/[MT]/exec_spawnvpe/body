@@ -1,0 +1,3 @@
+def exec_spawnvpe(l, env):
+    stat = os.spawnvpe(os.P_WAIT, l[0], l, env)
+    return stat

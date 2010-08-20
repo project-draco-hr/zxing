@@ -1,0 +1,2 @@
+def add_to_waiting_s_e(self, node):
+    self.waiting_s_e.add(node)

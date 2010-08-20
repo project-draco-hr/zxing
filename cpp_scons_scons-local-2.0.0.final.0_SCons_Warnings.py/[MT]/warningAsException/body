@@ -1,0 +1,6 @@
+def warningAsException(flag=1):
+    'Turn warnings into exceptions.  Returns the old value of the flag.'
+    global _warningAsException
+    old = _warningAsException
+    _warningAsException = flag
+    return old

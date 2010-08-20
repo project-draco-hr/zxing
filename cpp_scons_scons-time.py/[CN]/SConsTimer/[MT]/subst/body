@@ -1,0 +1,5 @@
+def subst(self, x, dictionary):
+    try:
+        return (x % dictionary)
+    except TypeError:
+        return x

@@ -1,0 +1,11 @@
+def _check_empty_program(context, comp, text, language, use_shared=False):
+    'Return 0 on success, 1 otherwise.'
+    if ((comp not in context.env) or (not context.env[comp])):
+        return 1
+    (lang, suffix, msg) = _lang2suffix(language)
+    if msg:
+        return 1
+    if use_shared:
+        return context.CompileSharedObject(text, suffix)
+    else:
+        return context.CompileProg(text, suffix)

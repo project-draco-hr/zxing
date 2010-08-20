@@ -1,0 +1,27 @@
+def Clone(self, tools=[], toolpath=None, parse_flags=None, **kw):
+    'Return a copy of a construction Environment.  The\n        copy is like a Python "deep copy"--that is, independent\n        copies are made recursively of each objects--except that\n        a reference is copied when an object is not deep-copyable\n        (like a function).  There are no references to any mutable\n        objects in the original Environment.\n        '
+    clone = copy.copy(self)
+    clone._dict = semi_deepcopy(self._dict)
+    try:
+        cbd = clone._dict['BUILDERS']
+    except KeyError:
+        pass
+    else:
+        clone._dict['BUILDERS'] = BuilderDict(cbd, clone)
+    clone.added_methods = []
+    for mw in self.added_methods:
+        if (mw == getattr(self, mw.name)):
+            clone.added_methods.append(mw.clone(clone))
+    clone._memo = {}
+    kw = copy_non_reserved_keywords(kw)
+    new = {}
+    for (key, value) in kw.items():
+        new[key] = SCons.Subst.scons_subst_once(value, self, key)
+    clone.Replace(**new)
+    apply_tools(clone, tools, toolpath)
+    clone.Replace(**new)
+    if parse_flags:
+        clone.MergeFlags(parse_flags)
+    if __debug__:
+        logInstanceCreation(self, 'Environment.EnvironmentClone')
+    return clone

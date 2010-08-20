@@ -1,0 +1,13 @@
+def mkdir_func(dest):
+    SCons.Node.FS.invalidate_node_memos(dest)
+    if (not SCons.Util.is_List(dest)):
+        dest = [dest]
+    for entry in dest:
+        try:
+            os.makedirs(str(entry))
+        except os.error as e:
+            p = str(entry)
+            if (((e.args[0] == errno.EEXIST) or ((sys.platform == 'win32') and (e.args[0] == 183))) and os.path.isdir(str(entry))):
+                pass
+            else:
+                raise

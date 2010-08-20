@@ -1,0 +1,6 @@
+"engine.SCons.Variables.BoolVariable\n\nThis file defines the option type for SCons implementing true/false values.\n\nUsage example:\n\n  opts = Variables()\n  opts.Add(BoolVariable('embedded', 'build for an embedded system', 0))\n  ...\n  if env['embedded'] == 1:\n    ...\n"
+__revision__ = 'src/engine/SCons/Variables/BoolVariable.py 5023 2010/06/14 22:05:46 scons'
+__all__ = ['BoolVariable']
+import SCons.Errors
+__true_strings = ('y', 'yes', 'true', 't', '1', 'on', 'all')
+__false_strings = ('n', 'no', 'false', 'f', '0', 'off', 'none')

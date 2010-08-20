@@ -1,0 +1,3 @@
+def CompileProg(self, text, ext):
+    self.sconf.cached = 1
+    return (not self.TryBuild(self.env.Object, text, ext))

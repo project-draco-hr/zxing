@@ -1,0 +1,2 @@
+def open(file, flag=None, mode=438):
+    return dblite(file, flag, mode)

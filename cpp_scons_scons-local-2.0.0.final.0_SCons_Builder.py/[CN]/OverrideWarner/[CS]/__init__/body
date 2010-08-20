@@ -1,0 +1,5 @@
+def __init__(self, dict):
+    collections.UserDict.__init__(self, dict)
+    if __debug__:
+        logInstanceCreation(self, 'Builder.OverrideWarner')
+    self.already_warned = None

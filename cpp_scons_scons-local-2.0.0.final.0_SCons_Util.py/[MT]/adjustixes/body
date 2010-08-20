@@ -1,0 +1,8 @@
+def adjustixes(fname, pre, suf, ensure_suffix=False):
+    if pre:
+        (path, fn) = os.path.split(os.path.normpath(fname))
+        if (fn[:len(pre)] != pre):
+            fname = os.path.join(path, (pre + fn))
+    if (suf and (fname[(- len(suf)):] != suf) and (ensure_suffix or (not splitext(fname)[1]))):
+        fname = (fname + suf)
+    return fname

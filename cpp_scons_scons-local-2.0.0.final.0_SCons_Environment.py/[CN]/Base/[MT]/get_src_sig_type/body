@@ -1,0 +1,7 @@
+def get_src_sig_type(self):
+    try:
+        return self.src_sig_type
+    except AttributeError:
+        t = SCons.Defaults.DefaultEnvironment().src_sig_type
+        self.src_sig_type = t
+        return t

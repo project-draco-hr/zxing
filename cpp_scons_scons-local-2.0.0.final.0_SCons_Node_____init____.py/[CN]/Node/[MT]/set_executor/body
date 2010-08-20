@@ -1,0 +1,3 @@
+def set_executor(self, executor):
+    'Set the action executor for this node.'
+    self.executor = executor

@@ -1,0 +1,47 @@
+def _get_SConscript_filenames(self, ls, kw):
+    '\n        Convert the parameters passed to SConscript() calls into a list\n        of files and export variables.  If the parameters are invalid,\n        throws SCons.Errors.UserError. Returns a tuple (l, e) where l\n        is a list of SConscript filenames and e is a list of exports.\n        '
+    exports = []
+    if (len(ls) == 0):
+        try:
+            dirs = kw['dirs']
+        except KeyError:
+            raise SCons.Errors.UserError('Invalid SConscript usage - no parameters')
+        if (not SCons.Util.is_List(dirs)):
+            dirs = [dirs]
+        dirs = list(map(str, dirs))
+        name = kw.get('name', 'SConscript')
+        files = [os.path.join(n, name) for n in dirs]
+    elif (len(ls) == 1):
+        files = ls[0]
+    elif (len(ls) == 2):
+        files = ls[0]
+        exports = self.Split(ls[1])
+    else:
+        raise SCons.Errors.UserError('Invalid SConscript() usage - too many arguments')
+    if (not SCons.Util.is_List(files)):
+        files = [files]
+    if kw.get('exports'):
+        exports.extend(self.Split(kw['exports']))
+    variant_dir = (kw.get('variant_dir') or kw.get('build_dir'))
+    if variant_dir:
+        if (len(files) != 1):
+            raise SCons.Errors.UserError('Invalid SConscript() usage - can only specify one SConscript with a variant_dir')
+        duplicate = kw.get('duplicate', 1)
+        src_dir = kw.get('src_dir')
+        if (not src_dir):
+            (src_dir, fname) = os.path.split(str(files[0]))
+            files = [os.path.join(str(variant_dir), fname)]
+        else:
+            if (not isinstance(src_dir, SCons.Node.Node)):
+                src_dir = self.fs.Dir(src_dir)
+            fn = files[0]
+            if (not isinstance(fn, SCons.Node.Node)):
+                fn = self.fs.File(fn)
+            if fn.is_under(src_dir):
+                fname = fn.get_path(src_dir)
+                files = [os.path.join(str(variant_dir), fname)]
+            else:
+                files = [fn.abspath]
+            kw['src_dir'] = variant_dir
+        self.fs.VariantDir(variant_dir, src_dir, duplicate)
+    return (files, exports)

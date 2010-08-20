@@ -1,0 +1,14 @@
+def DefaultEnvironment(*args, **kw):
+    "\n    Initial public entry point for creating the default construction\n    Environment.\n\n    After creating the environment, we overwrite our name\n    (DefaultEnvironment) with the _fetch_DefaultEnvironment() function,\n    which more efficiently returns the initialized default construction\n    environment without checking for its existence.\n\n    (This function still exists with its _default_check because someone\n    else (*cough* Script/__init__.py *cough*) may keep a reference\n    to this function.  So we can't use the fully functional idiom of\n    having the name originally be a something that *only* creates the\n    construction environment and then overwrites the name.)\n    "
+    global _default_env
+    if (not _default_env):
+        import SCons.Util
+        _default_env = SCons.Environment.Environment(*args, **kw)
+        if SCons.Util.md5:
+            _default_env.Decider('MD5')
+        else:
+            _default_env.Decider('timestamp-match')
+        global DefaultEnvironment
+        DefaultEnvironment = _fetch_DefaultEnvironment
+        _default_env._CacheDir_path = None
+    return _default_env

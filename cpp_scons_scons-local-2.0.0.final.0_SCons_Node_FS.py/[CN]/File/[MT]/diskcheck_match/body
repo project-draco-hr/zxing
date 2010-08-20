@@ -1,0 +1,2 @@
+def diskcheck_match(self):
+    diskcheck_match(self, self.isdir, 'Directory %s found where file expected.')

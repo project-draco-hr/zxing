@@ -1,0 +1,3 @@
+def index(self, item):
+    self.__make_unique()
+    return UserList.index(self, item)

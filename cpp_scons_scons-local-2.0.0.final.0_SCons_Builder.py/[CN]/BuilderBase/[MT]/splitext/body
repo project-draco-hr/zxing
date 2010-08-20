@@ -1,0 +1,8 @@
+def splitext(self, path, env=None):
+    if (not env):
+        env = self.env
+    if env:
+        suffixes = self.src_suffixes(env)
+    else:
+        suffixes = []
+    return match_splitext(path, suffixes)

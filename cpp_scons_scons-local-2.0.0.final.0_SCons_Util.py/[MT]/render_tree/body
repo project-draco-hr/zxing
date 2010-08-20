@@ -1,0 +1,21 @@
+def render_tree(root, child_func, prune=0, margin=[0], visited={}):
+    "\n    Render a tree of nodes into an ASCII tree view.\n    root - the root node of the tree\n    child_func - the function called to get the children of a node\n    prune - don't visit the same node twice\n    margin - the format of the left margin to use for children of root.\n       1 results in a pipe, and 0 results in no pipe.\n    visited - a dictionary of visited nodes in the current branch if not prune,\n       or in the whole tree if prune.\n    "
+    rname = str(root)
+    children = child_func(root)
+    retval = ''
+    for pipe in margin[:(-1)]:
+        if pipe:
+            retval = (retval + '| ')
+        else:
+            retval = (retval + '  ')
+    if (rname in visited):
+        return (((retval + '+-[') + rname) + ']\n')
+    retval = (((retval + '+-') + rname) + '\n')
+    if (not prune):
+        visited = copy.copy(visited)
+    visited[rname] = 1
+    for i in range(len(children)):
+        margin.append((i < (len(children) - 1)))
+        retval = (retval + render_tree(children[i], child_func, prune, margin, visited))
+        margin.pop()
+    return retval

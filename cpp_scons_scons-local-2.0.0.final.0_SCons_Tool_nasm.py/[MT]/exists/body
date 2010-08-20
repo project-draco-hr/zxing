@@ -1,0 +1,2 @@
+def exists(env):
+    return env.Detect('nasm')

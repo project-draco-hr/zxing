@@ -1,0 +1,2 @@
+def get_env_scanner(self, env, kw={}):
+    return env.get_scanner(self.scanner_key())

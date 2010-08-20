@@ -1,0 +1,2 @@
+def _get_target(self, *args, **kw):
+    return self.batches[0].targets[0].get_subst_proxy()

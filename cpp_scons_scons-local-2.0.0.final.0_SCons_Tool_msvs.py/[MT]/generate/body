@@ -1,0 +1,44 @@
+def generate(env):
+    'Add Builders and construction variables for Microsoft Visual\n    Studio project files to an Environment.'
+    try:
+        env['BUILDERS']['MSVSProject']
+    except KeyError:
+        env['BUILDERS']['MSVSProject'] = projectBuilder
+    try:
+        env['BUILDERS']['MSVSSolution']
+    except KeyError:
+        env['BUILDERS']['MSVSSolution'] = solutionBuilder
+    env['MSVSPROJECTCOM'] = projectAction
+    env['MSVSSOLUTIONCOM'] = solutionAction
+    if SCons.Script.call_stack:
+        env['MSVSSCONSCRIPT'] = SCons.Script.call_stack[0].sconscript
+    else:
+        global default_MSVS_SConscript
+        if (default_MSVS_SConscript is None):
+            default_MSVS_SConscript = env.File('SConstruct')
+        env['MSVSSCONSCRIPT'] = default_MSVS_SConscript
+    env['MSVSSCONS'] = ('"%s" -c "%s"' % (python_executable, getExecScriptMain(env)))
+    env['MSVSSCONSFLAGS'] = '-C "${MSVSSCONSCRIPT.dir.abspath}" -f ${MSVSSCONSCRIPT.name}'
+    env['MSVSSCONSCOM'] = '$MSVSSCONS $MSVSSCONSFLAGS'
+    env['MSVSBUILDCOM'] = '$MSVSSCONSCOM "$MSVSBUILDTARGET"'
+    env['MSVSREBUILDCOM'] = '$MSVSSCONSCOM "$MSVSBUILDTARGET"'
+    env['MSVSCLEANCOM'] = '$MSVSSCONSCOM -c "$MSVSBUILDTARGET"'
+    env['MSVSENCODING'] = 'Windows-1252'
+    msvc_setup_env_once(env)
+    if ('MSVS_VERSION' in env):
+        (version_num, suite) = msvs_parse_version(env['MSVS_VERSION'])
+    else:
+        (version_num, suite) = (7.0, None)
+    if ('MSVS' not in env):
+        env['MSVS'] = {}
+    if (version_num < 7.0):
+        env['MSVS']['PROJECTSUFFIX'] = '.dsp'
+        env['MSVS']['SOLUTIONSUFFIX'] = '.dsw'
+    else:
+        env['MSVS']['PROJECTSUFFIX'] = '.vcproj'
+        env['MSVS']['SOLUTIONSUFFIX'] = '.sln'
+    env['GET_MSVSPROJECTSUFFIX'] = GetMSVSProjectSuffix
+    env['GET_MSVSSOLUTIONSUFFIX'] = GetMSVSSolutionSuffix
+    env['MSVSPROJECTSUFFIX'] = '${GET_MSVSPROJECTSUFFIX}'
+    env['MSVSSOLUTIONSUFFIX'] = '${GET_MSVSSOLUTIONSUFFIX}'
+    env['SCONS_HOME'] = os.environ.get('SCONS_HOME')

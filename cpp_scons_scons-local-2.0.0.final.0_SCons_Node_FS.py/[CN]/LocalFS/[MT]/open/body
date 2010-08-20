@@ -1,0 +1,2 @@
+def open(self, path):
+    return open(path)

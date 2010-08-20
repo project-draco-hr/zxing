@@ -1,0 +1,8 @@
+def Add(self, key, help='', default=None, validator=None, converter=None, **kw):
+    "\n        Add an option.\n\n        key - the name of the variable, or a list or tuple of arguments\n        help - optional help text for the options\n        default - optional default value\n        validator - optional function that is called to validate the option's value\n                    Called with (key, value, environment)\n        converter - optional function that is called to convert the option's value before\n                    putting it in the environment.\n        "
+    if (SCons.Util.is_List(key) or isinstance(key, tuple)):
+        self._do_add(*key)
+        return
+    if ((not SCons.Util.is_String(key)) or (not SCons.Environment.is_valid_construction_var(key))):
+        raise SCons.Errors.UserError(("Illegal Variables.Add() key `%s'" % str(key)))
+    self._do_add(key, help, default, validator, converter)

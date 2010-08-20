@@ -1,0 +1,3 @@
+def get_text_contents(self):
+    'We already emit things in text, so just return the binary\n        version.'
+    return self.get_contents()

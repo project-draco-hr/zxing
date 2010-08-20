@@ -1,0 +1,10 @@
+self
+node
+errstr
+status
+exitstatus
+filename
+executor
+action
+command
+exc_info

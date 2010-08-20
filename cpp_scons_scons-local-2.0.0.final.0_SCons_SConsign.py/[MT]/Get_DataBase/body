@@ -1,0 +1,29 @@
+def Get_DataBase(dir):
+    global DataBase, DB_Module, DB_Name
+    top = dir.fs.Top
+    if ((not os.path.isabs(DB_Name)) and top.repositories):
+        mode = 'c'
+        for d in ([top] + top.repositories):
+            if dir.is_under(d):
+                try:
+                    return (DataBase[d], mode)
+                except KeyError:
+                    path = d.entry_abspath(DB_Name)
+                    try:
+                        db = DataBase[d] = DB_Module.open(path, mode)
+                    except (IOError, OSError):
+                        pass
+                    else:
+                        if (mode != 'r'):
+                            DB_sync_list.append(db)
+                        return (db, mode)
+            mode = 'r'
+    try:
+        return (DataBase[top], 'c')
+    except KeyError:
+        db = DataBase[top] = DB_Module.open(DB_Name, 'c')
+        DB_sync_list.append(db)
+        return (db, 'c')
+    except TypeError:
+        print 'DataBase =', DataBase
+        raise

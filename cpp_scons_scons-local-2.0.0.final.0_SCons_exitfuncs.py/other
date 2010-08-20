@@ -1,0 +1,12 @@
+'SCons.exitfuncs\n\nRegister functions which are executed when SCons exits for any reason.\n\n'
+__revision__ = 'src/engine/SCons/exitfuncs.py 5023 2010/06/14 22:05:46 scons'
+_exithandlers = []
+import sys
+try:
+    x = sys.exitfunc
+    if (x != _run_exitfuncs):
+        register(x)
+except AttributeError:
+    pass
+sys.exitfunc = _run_exitfuncs
+del sys

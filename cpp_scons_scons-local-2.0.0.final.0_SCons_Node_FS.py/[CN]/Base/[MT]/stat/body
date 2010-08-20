@@ -1,0 +1,11 @@
+def stat(self):
+    try:
+        return self._memo['stat']
+    except KeyError:
+        pass
+    try:
+        result = self.fs.stat(self.abspath)
+    except os.error:
+        result = None
+    self._memo['stat'] = result
+    return result

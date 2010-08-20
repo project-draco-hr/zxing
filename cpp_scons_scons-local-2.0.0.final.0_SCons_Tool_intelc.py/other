@@ -1,0 +1,16 @@
+"SCons.Tool.icl\n\nTool-specific initialization for the Intel C/C++ compiler.\nSupports Linux and Windows compilers, v7 and up.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+from __future__ import division
+__revision__ = 'src/engine/SCons/Tool/intelc.py 5023 2010/06/14 22:05:46 scons'
+import math, sys, os.path, glob, string, re
+is_windows = (sys.platform == 'win32')
+is_win64 = (is_windows and ((os.environ['PROCESSOR_ARCHITECTURE'] == 'AMD64') or (('PROCESSOR_ARCHITEW6432' in os.environ) and (os.environ['PROCESSOR_ARCHITEW6432'] == 'AMD64'))))
+is_linux = (sys.platform == 'linux2')
+is_mac = (sys.platform == 'darwin')
+if is_windows:
+    import SCons.Tool.msvc
+elif is_linux:
+    import SCons.Tool.gcc
+elif is_mac:
+    import SCons.Tool.gcc
+import SCons.Util
+import SCons.Warnings

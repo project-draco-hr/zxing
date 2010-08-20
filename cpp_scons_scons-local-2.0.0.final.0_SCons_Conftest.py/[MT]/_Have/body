@@ -1,0 +1,23 @@
+def _Have(context, key, have, comment=None):
+    '\n    Store result of a test in context.havedict and context.headerfilename.\n    "key" is a "HAVE_abc" name.  It is turned into all CAPITALS and non-\n    alphanumerics are replaced by an underscore.\n    The value of "have" can be:\n    1      - Feature is defined, add "#define key".\n    0      - Feature is not defined, add "/* #undef key */".\n             Adding "undef" is what autoconf does.  Not useful for the\n             compiler, but it shows that the test was done.\n    number - Feature is defined to this number "#define key have".\n             Doesn\'t work for 0 or 1, use a string then.\n    string - Feature is defined to this string "#define key have".\n             Give "have" as is should appear in the header file, include quotes\n             when desired and escape special characters!\n    '
+    key_up = key.upper()
+    key_up = re.sub('[^A-Z0-9_]', '_', key_up)
+    context.havedict[key_up] = have
+    if (have == 1):
+        line = ('#define %s 1\n' % key_up)
+    elif (have == 0):
+        line = ('/* #undef %s */\n' % key_up)
+    elif isinstance(have, IntType):
+        line = ('#define %s %d\n' % (key_up, have))
+    else:
+        line = ('#define %s %s\n' % (key_up, str(have)))
+    if (comment is not None):
+        lines = (('\n/* %s */\n' % comment) + line)
+    else:
+        lines = ('\n' + line)
+    if context.headerfilename:
+        f = open(context.headerfilename, 'a')
+        f.write(lines)
+        f.close()
+    elif hasattr(context, 'config_h'):
+        context.config_h = (context.config_h + lines)

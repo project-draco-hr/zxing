@@ -1,0 +1,6 @@
+__revision__ = 'src/engine/SCons/Scanner/Prog.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Node
+import SCons.Node.FS
+import SCons.Scanner
+import SCons.Util
+print_find_libs = None

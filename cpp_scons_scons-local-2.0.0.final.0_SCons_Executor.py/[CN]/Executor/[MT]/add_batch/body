@@ -1,0 +1,3 @@
+def add_batch(self, targets, sources):
+    'Add pair of associated target and source to this Executor\'s list.\n        This is necessary for "batch" Builders that can be called repeatedly\n        to build up a list of matching target and source files that will be\n        used in order to update multiple target files at once from multiple\n        corresponding source files, for tools like MSVC that support it.'
+    self.batches.append(Batch(targets, sources))

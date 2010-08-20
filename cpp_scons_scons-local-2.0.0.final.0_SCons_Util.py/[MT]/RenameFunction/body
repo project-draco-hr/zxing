@@ -1,0 +1,3 @@
+def RenameFunction(function, name):
+    '\n    Returns a function identical to the specified function, but with\n    the specified name.\n    '
+    return FunctionType(function.func_code, function.func_globals, name, function.func_defaults)

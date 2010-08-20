@@ -1,0 +1,3 @@
+def stop(self):
+    '\n        Stops the current build completely.\n        '
+    self.next_candidate = self.no_next_candidate

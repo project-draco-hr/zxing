@@ -1,0 +1,5 @@
+sequence
+isinstance
+StringTypes
+SequenceTypes
+do_flatten

@@ -1,0 +1,10 @@
+"SCons.Tool.fortran\n\nTool-specific initialization for a generic Posix f77/f90 Fortran compiler.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/fortran.py 5023 2010/06/14 22:05:46 scons'
+import re
+import SCons.Action
+import SCons.Defaults
+import SCons.Scanner.Fortran
+import SCons.Tool
+import SCons.Util
+from SCons.Tool.FortranCommon import add_all_to_env, add_fortran_to_env
+compilers = ['f95', 'f90', 'f77']

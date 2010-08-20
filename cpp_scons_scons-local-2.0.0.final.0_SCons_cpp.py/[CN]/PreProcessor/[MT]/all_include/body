@@ -1,0 +1,3 @@
+def all_include(self, t):
+    '\n        '
+    self.result.append(self.resolve_include(t))

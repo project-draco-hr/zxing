@@ -1,0 +1,3 @@
+def clear(self):
+    UserDict.clear(self)
+    self._keys = []

@@ -1,0 +1,2 @@
+def read_reg(value):
+    return SCons.Util.RegGetValue(SCons.Util.HKEY_LOCAL_MACHINE, value)[0]

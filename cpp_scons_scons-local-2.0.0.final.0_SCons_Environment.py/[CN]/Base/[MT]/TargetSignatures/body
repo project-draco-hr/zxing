@@ -1,0 +1,20 @@
+def TargetSignatures(self, type):
+    global _warn_target_signatures_deprecated
+    if _warn_target_signatures_deprecated:
+        msg = ('The env.TargetSignatures() method is deprecated;\n' + '\tconvert your build to use the env.Decider() method instead.')
+        SCons.Warnings.warn(SCons.Warnings.DeprecatedTargetSignaturesWarning, msg)
+        _warn_target_signatures_deprecated = False
+    type = self.subst(type)
+    self.tgt_sig_type = type
+    if (type in ('MD5', 'content')):
+        if (not SCons.Util.md5):
+            raise UserError('MD5 signatures are not available in this version of Python.')
+        self.decide_target = self._changed_content
+    elif (type == 'timestamp'):
+        self.decide_target = self._changed_timestamp_match
+    elif (type == 'build'):
+        self.decide_target = self._changed_build
+    elif (type == 'source'):
+        self.decide_target = self._changed_source
+    else:
+        raise UserError(("Unknown target signature type '%s'" % type))

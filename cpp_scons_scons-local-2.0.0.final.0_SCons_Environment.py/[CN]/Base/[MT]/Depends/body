@@ -1,0 +1,7 @@
+def Depends(self, target, dependency):
+    "Explicity specify that 'target's depend on 'dependency'."
+    tlist = self.arg2nodes(target, self.fs.Entry)
+    dlist = self.arg2nodes(dependency, self.fs.Entry)
+    for t in tlist:
+        t.add_dependency(dlist)
+    return tlist

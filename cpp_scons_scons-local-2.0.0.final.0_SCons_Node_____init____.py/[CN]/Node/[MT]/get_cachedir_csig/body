@@ -1,0 +1,2 @@
+def get_cachedir_csig(self):
+    return self.get_csig()

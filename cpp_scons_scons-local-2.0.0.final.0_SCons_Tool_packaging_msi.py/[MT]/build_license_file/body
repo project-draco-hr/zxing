@@ -1,0 +1,17 @@
+def build_license_file(directory, spec):
+    ' creates a License.rtf file with the content of "X_MSI_LICENSE_TEXT"\n    in the given directory\n    '
+    (name, text) = ('', '')
+    try:
+        name = spec['LICENSE']
+        text = spec['X_MSI_LICENSE_TEXT']
+    except KeyError:
+        pass
+    if ((name != '') or (text != '')):
+        file = open(os.path.join(directory.get_path(), 'License.rtf'), 'w')
+        file.write('{\\rtf')
+        if (text != ''):
+            file.write(text.replace('\n', '\\par '))
+        else:
+            file.write((name + '\\par\\par'))
+        file.write('}')
+        file.close()

@@ -1,0 +1,4 @@
+def msvs_parse_version(s):
+    '\n    Split a Visual Studio version, which may in fact be something like\n    \'7.0Exp\', into is version number (returned as a float) and trailing\n    "suite" portion.\n    '
+    (num, suite) = version_re.match(s).groups()
+    return (float(num), suite)

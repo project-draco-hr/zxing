@@ -1,0 +1,11 @@
+def SetCacheMode(mode):
+    'Set the Configure cache mode. mode must be one of "auto", "force",\n    or "cache".'
+    global cache_mode
+    if (mode == 'auto'):
+        cache_mode = AUTO
+    elif (mode == 'force'):
+        cache_mode = FORCE
+    elif (mode == 'cache'):
+        cache_mode = CACHE
+    else:
+        raise ValueError(('SCons.SConf.SetCacheMode: Unknown mode ' + mode))

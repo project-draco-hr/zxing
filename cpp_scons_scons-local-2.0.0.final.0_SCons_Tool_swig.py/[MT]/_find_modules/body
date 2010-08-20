@@ -1,0 +1,13 @@
+def _find_modules(src):
+    'Find all modules referenced by %module lines in `src`, a SWIG .i file.\n       Returns a list of all modules, and a flag set if SWIG directors have\n       been requested (SWIG will generate an additional header file in this\n       case.)'
+    directors = 0
+    mnames = []
+    try:
+        matches = _reModule.findall(open(src).read())
+    except IOError:
+        matches = []
+        mnames.append(os.path.splitext(src)[0])
+    for m in matches:
+        mnames.append(m[2])
+        directors = (directors or (m[0].find('directors') >= 0))
+    return (mnames, directors)

@@ -1,0 +1,19 @@
+def find_src_builder(self):
+    if self.rexists():
+        return None
+    scb = self.dir.src_builder()
+    if (scb is _null):
+        if diskcheck_sccs(self.dir, self.name):
+            scb = get_DefaultSCCSBuilder()
+        elif diskcheck_rcs(self.dir, self.name):
+            scb = get_DefaultRCSBuilder()
+        else:
+            scb = None
+    if (scb is not None):
+        try:
+            b = self.builder
+        except AttributeError:
+            b = None
+        if (b is None):
+            self.builder_set(scb)
+    return scb

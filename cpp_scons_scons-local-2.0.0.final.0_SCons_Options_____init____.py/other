@@ -1,0 +1,10 @@
+__revision__ = 'src/engine/SCons/Options/__init__.py 5023 2010/06/14 22:05:46 scons'
+__doc__ = 'Place-holder for the old SCons.Options module hierarchy\n\nThis is for backwards compatibility.  The new equivalent is the Variables/\nclass hierarchy.  These will have deprecation warnings added (some day),\nand will then be removed entirely (some day).\n'
+import SCons.Variables
+import SCons.Warnings
+from BoolOption import BoolOption
+from EnumOption import EnumOption
+from ListOption import ListOption
+from PackageOption import PackageOption
+from PathOption import PathOption
+warned = False

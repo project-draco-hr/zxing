@@ -1,0 +1,8 @@
+def my_import(mname):
+    if ('.' in mname):
+        i = mname.rfind('.')
+        parent = my_import(mname[:i])
+        (fp, pathname, description) = imp.find_module(mname[(i + 1):], parent.__path__)
+    else:
+        (fp, pathname, description) = imp.find_module(mname)
+    return imp.load_module(mname, fp, pathname, description)

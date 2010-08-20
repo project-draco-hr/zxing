@@ -1,0 +1,29 @@
+def is_up_to_date(self):
+    T = 0
+    if T:
+        Trace(('is_up_to_date(%s):' % self))
+    if (not self.exists()):
+        if T:
+            Trace(' not self.exists():')
+        r = self.rfile()
+        if (r != self):
+            if (not self.changed(r)):
+                if T:
+                    Trace((' changed(%s):' % r))
+                if self._local:
+                    e = LocalCopy(self, r, None)
+                    if isinstance(e, SCons.Errors.BuildError):
+                        raise
+                    self.store_info()
+                if T:
+                    Trace(' 1\n')
+                return 1
+        self.changed()
+        if T:
+            Trace(' None\n')
+        return None
+    else:
+        r = self.changed()
+        if T:
+            Trace((' self.exists():  %s\n' % r))
+        return (not r)

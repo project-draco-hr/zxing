@@ -1,0 +1,8 @@
+def msvc_setup_env_once(env):
+    try:
+        has_run = env['MSVC_SETUP_RUN']
+    except KeyError:
+        has_run = False
+    if (not has_run):
+        msvc_setup_env(env)
+        env['MSVC_SETUP_RUN'] = True

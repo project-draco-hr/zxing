@@ -1,0 +1,9 @@
+def add(self, element):
+    'Add an element to a set.\n\n        This has no effect if the element is already present.\n        '
+    try:
+        self._data[element] = True
+    except TypeError:
+        transform = getattr(element, '__as_immutable__', None)
+        if (transform is None):
+            raise
+        self._data[transform()] = True

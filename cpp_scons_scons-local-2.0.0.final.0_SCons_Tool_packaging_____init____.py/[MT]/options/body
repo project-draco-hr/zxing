@@ -1,0 +1,2 @@
+def options(opts):
+    opts.AddVariables(EnumVariable('PACKAGETYPE', 'the type of package to create.', None, allowed_values=list(map(str, __all__)), ignorecase=2))

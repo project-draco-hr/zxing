@@ -1,0 +1,34 @@
+def _swigEmitter(target, source, env):
+    swigflags = env.subst('$SWIGFLAGS', target=target, source=source)
+    flags = SCons.Util.CLVar(swigflags)
+    for src in source:
+        src = str(src.rfile())
+        mnames = None
+        if (('-python' in flags) and ('-noproxy' not in flags)):
+            if (mnames is None):
+                (mnames, directors) = _find_modules(src)
+            if directors:
+                _add_director_header_targets(target, env)
+            python_files = [(m + '.py') for m in mnames]
+            outdir = env.subst('$SWIGOUTDIR', target=target, source=source)
+            if outdir:
+                python_files = [env.fs.File(os.path.join(outdir, j)) for j in python_files]
+            else:
+                python_files = [target[0].dir.File(m) for m in python_files]
+            target.extend(python_files)
+        if ('-java' in flags):
+            if (mnames is None):
+                (mnames, directors) = _find_modules(src)
+            if directors:
+                _add_director_header_targets(target, env)
+            java_files = [[(m + '.java'), (m + 'JNI.java')] for m in mnames]
+            java_files = SCons.Util.flatten(java_files)
+            outdir = env.subst('$SWIGOUTDIR', target=target, source=source)
+            if outdir:
+                java_files = [os.path.join(outdir, j) for j in java_files]
+            java_files = list(map(env.fs.File, java_files))
+            for jf in java_files:
+                t_from_s = (lambda t, p, s, x: t.dir)
+                SCons.Util.AddMethod(jf, t_from_s, 'target_from_source')
+            target.extend(java_files)
+    return (target, source)

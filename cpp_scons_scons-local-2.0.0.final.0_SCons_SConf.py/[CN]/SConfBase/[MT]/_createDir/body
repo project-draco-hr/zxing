@@ -1,0 +1,8 @@
+def _createDir(self, node):
+    dirName = str(node)
+    if dryrun:
+        if (not os.path.isdir(dirName)):
+            raise ConfigureDryRunError(dirName)
+    elif (not os.path.isdir(dirName)):
+        os.makedirs(dirName)
+        node._exists = 1

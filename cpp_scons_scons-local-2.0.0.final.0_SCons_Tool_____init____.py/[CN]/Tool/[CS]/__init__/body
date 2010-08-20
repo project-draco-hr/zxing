@@ -1,0 +1,9 @@
+def __init__(self, name, toolpath=[], **kw):
+    self.name = name
+    self.toolpath = (toolpath + DefaultToolpath)
+    self.init_kw = kw
+    module = self._tool_module()
+    self.generate = module.generate
+    self.exists = module.exists
+    if hasattr(module, 'options'):
+        self.options = module.options

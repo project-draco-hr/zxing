@@ -1,0 +1,27 @@
+def generate(env):
+    'Add Builders and construction variables for ifort to an Environment.'
+    fscan = FortranScan('FORTRANPATH')
+    SCons.Tool.SourceFileScanner.add_scanner('.i', fscan)
+    SCons.Tool.SourceFileScanner.add_scanner('.i90', fscan)
+    if ('FORTRANFILESUFFIXES' not in env):
+        env['FORTRANFILESUFFIXES'] = ['.i']
+    else:
+        env['FORTRANFILESUFFIXES'].append('.i')
+    if ('F90FILESUFFIXES' not in env):
+        env['F90FILESUFFIXES'] = ['.i90']
+    else:
+        env['F90FILESUFFIXES'].append('.i90')
+    add_all_to_env(env)
+    fc = 'ifort'
+    for dialect in ['F77', 'F90', 'FORTRAN', 'F95']:
+        env[('%s' % dialect)] = fc
+        env[('SH%s' % dialect)] = ('$%s' % dialect)
+        if (env['PLATFORM'] == 'posix'):
+            env[('SH%sFLAGS' % dialect)] = SCons.Util.CLVar(('$%sFLAGS -fPIC' % dialect))
+    if (env['PLATFORM'] == 'win32'):
+        for dialect in ['F77', 'F90', 'FORTRAN', 'F95']:
+            for var in [('%sCOM' % dialect), ('%sPPCOM' % dialect), ('SH%sCOM' % dialect), ('SH%sPPCOM' % dialect)]:
+                env[var] = env[var].replace('-o $TARGET', '-object:$TARGET')
+        env['FORTRANMODDIRPREFIX'] = '/module:'
+    else:
+        env['FORTRANMODDIRPREFIX'] = '-module '

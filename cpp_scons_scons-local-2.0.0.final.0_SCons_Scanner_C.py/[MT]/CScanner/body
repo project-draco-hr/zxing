@@ -1,0 +1,4 @@
+def CScanner():
+    'Return a prototype Scanner instance for scanning source files\n    that use the C pre-processor'
+    cs = SCons.Scanner.ClassicCPP('CScanner', '$CPPSUFFIXES', 'CPPPATH', '^[ \t]*#[ \t]*(?:include|import)[ \t]*(<|")([^>"]+)(>|")')
+    return cs

@@ -1,0 +1,2 @@
+def _stringSource(target, source, env):
+    return ((str(target[0]) + ' <-\n  |') + source[0].get_contents().replace('\n', '\n  |'))

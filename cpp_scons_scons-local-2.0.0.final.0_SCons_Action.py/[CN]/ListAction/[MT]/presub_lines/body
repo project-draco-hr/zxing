@@ -1,0 +1,2 @@
+def presub_lines(self, env):
+    return SCons.Util.flatten_sequence([a.presub_lines(env) for a in self.list])

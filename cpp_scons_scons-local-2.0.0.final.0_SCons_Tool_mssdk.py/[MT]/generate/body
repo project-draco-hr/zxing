@@ -1,0 +1,3 @@
+def generate(env):
+    'Add construction variables for an MS SDK to an Environment.'
+    mssdk_setup_env(env)

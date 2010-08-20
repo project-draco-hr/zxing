@@ -1,0 +1,13 @@
+def createStaticLibBuilder(env):
+    'This is a utility function that creates the StaticLibrary\n    Builder in an Environment if it is not there already.\n\n    If it is already there, we return the existing one.\n    '
+    try:
+        static_lib = env['BUILDERS']['StaticLibrary']
+    except KeyError:
+        action_list = [SCons.Action.Action('$ARCOM', '$ARCOMSTR')]
+        if env.Detect('ranlib'):
+            ranlib_action = SCons.Action.Action('$RANLIBCOM', '$RANLIBCOMSTR')
+            action_list.append(ranlib_action)
+        static_lib = SCons.Builder.Builder(action=action_list, emitter='$LIBEMITTER', prefix='$LIBPREFIX', suffix='$LIBSUFFIX', src_suffix='$OBJSUFFIX', src_builder='StaticObject')
+        env['BUILDERS']['StaticLibrary'] = static_lib
+        env['BUILDERS']['Library'] = static_lib
+    return static_lib

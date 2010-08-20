@@ -1,0 +1,8 @@
+def find_deepest_user_frame(tb):
+    '\n    Find the deepest stack frame that is not part of SCons.\n\n    Input is a "pre-processed" stack trace in the form\n    returned by traceback.extract_tb() or traceback.extract_stack()\n    '
+    tb.reverse()
+    for frame in tb:
+        filename = frame[0]
+        if (filename.find(((os.sep + 'SCons') + os.sep)) == (-1)):
+            return frame
+    return tb[0]

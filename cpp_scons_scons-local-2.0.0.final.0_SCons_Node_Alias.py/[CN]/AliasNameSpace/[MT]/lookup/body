@@ -1,0 +1,5 @@
+def lookup(self, name, **kw):
+    try:
+        return self[name]
+    except KeyError:
+        return None

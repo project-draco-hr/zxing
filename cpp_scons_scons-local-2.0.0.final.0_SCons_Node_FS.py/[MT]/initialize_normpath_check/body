@@ -1,0 +1,8 @@
+def initialize_normpath_check():
+    '\n    Initialize the normpath_check regular expression.\n\n    This function is used by the unit tests to re-initialize the pattern\n    when testing for behavior with different values of os.sep.\n    '
+    global needs_normpath_check
+    if (os.sep == '/'):
+        pattern = '.*/|\\.$|\\.\\.$'
+    else:
+        pattern = ('.*[/%s]|\\.$|\\.\\.$' % re.escape(os.sep))
+    needs_normpath_check = re.compile(pattern)

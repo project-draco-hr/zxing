@@ -1,0 +1,21 @@
+def find_sdk_dir(self):
+    'Try to find the MS SDK from the registry.\n\n        Return None if failed or the directory does not exist.\n        '
+    if (not SCons.Util.can_read_reg):
+        debug('find_sdk_dir(): can not read registry')
+        return None
+    hkey = (self.HKEY_FMT % self.hkey_data)
+    debug(('find_sdk_dir(): checking registry:%s' % hkey))
+    try:
+        sdk_dir = common.read_reg(hkey)
+    except WindowsError as e:
+        debug(('find_sdk_dir(): no SDK registry key %s' % repr(hkey)))
+        return None
+    debug(('find_sdk_dir(): Trying SDK Dir: %s' % sdk_dir))
+    if (not os.path.exists(sdk_dir)):
+        debug(('find_sdk_dir():  %s not on file system' % sdk_dir))
+        return None
+    ftc = os.path.join(sdk_dir, self.sanity_check_file)
+    if (not os.path.exists(ftc)):
+        debug(('find_sdk_dir(): sanity check %s not found' % ftc))
+        return None
+    return sdk_dir

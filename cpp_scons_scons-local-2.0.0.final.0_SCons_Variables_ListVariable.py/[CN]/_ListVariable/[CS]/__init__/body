@@ -1,0 +1,3 @@
+def __init__(self, initlist=[], allowedElems=[]):
+    collections.UserList.__init__(self, [_f for _f in initlist if _f])
+    self.allowedElems = sorted(allowedElems)

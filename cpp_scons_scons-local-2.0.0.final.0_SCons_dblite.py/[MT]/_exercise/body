@@ -1,0 +1,69 @@
+def _exercise():
+    db = open('tmp', 'n')
+    assert (len(db) == 0)
+    db['foo'] = 'bar'
+    assert (db['foo'] == 'bar')
+    db[unicode('ufoo')] = unicode('ubar')
+    assert (db[unicode('ufoo')] == unicode('ubar'))
+    db.sync()
+    db = open('tmp', 'c')
+    assert (len(db) == 2), len(db)
+    assert (db['foo'] == 'bar')
+    db['bar'] = 'foo'
+    assert (db['bar'] == 'foo')
+    db[unicode('ubar')] = unicode('ufoo')
+    assert (db[unicode('ubar')] == unicode('ufoo'))
+    db.sync()
+    db = open('tmp', 'r')
+    assert (len(db) == 4), len(db)
+    assert (db['foo'] == 'bar')
+    assert (db['bar'] == 'foo')
+    assert (db[unicode('ufoo')] == unicode('ubar'))
+    assert (db[unicode('ubar')] == unicode('ufoo'))
+    try:
+        db.sync()
+    except IOError as e:
+        assert (str(e) == 'Read-only database: tmp.dblite')
+    else:
+        raise RuntimeError('IOError expected.')
+    db = open('tmp', 'w')
+    assert (len(db) == 4)
+    db['ping'] = 'pong'
+    db.sync()
+    try:
+        db[(1, 2)] = 'tuple'
+    except TypeError as e:
+        assert (str(e) == "key `(1, 2)' must be a string but is <type 'tuple'>"), str(e)
+    else:
+        raise RuntimeError('TypeError exception expected')
+    try:
+        db['list'] = [1, 2]
+    except TypeError as e:
+        assert (str(e) == "value `[1, 2]' must be a string but is <type 'list'>"), str(e)
+    else:
+        raise RuntimeError('TypeError exception expected')
+    db = open('tmp', 'r')
+    assert (len(db) == 5)
+    db = open('tmp', 'n')
+    assert (len(db) == 0)
+    dblite._open('tmp.dblite', 'w')
+    db = open('tmp', 'r')
+    dblite._open('tmp.dblite', 'w').write('x')
+    try:
+        db = open('tmp', 'r')
+    except pickle.UnpicklingError:
+        pass
+    else:
+        raise RuntimeError('pickle exception expected.')
+    global ignore_corrupt_dbfiles
+    ignore_corrupt_dbfiles = 2
+    db = open('tmp', 'r')
+    assert (len(db) == 0)
+    os.unlink('tmp.dblite')
+    try:
+        db = open('tmp', 'w')
+    except IOError as e:
+        assert (str(e) == "[Errno 2] No such file or directory: 'tmp.dblite'"), str(e)
+    else:
+        raise RuntimeError('IOError expected.')
+    print 'OK'

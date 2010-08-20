@@ -1,0 +1,2 @@
+def rexists(self):
+    return self.rfile().exists()

@@ -1,0 +1,3 @@
+def __resetDuplicate(self, node):
+    if (node != self):
+        node.duplicate = node.get_dir().duplicate

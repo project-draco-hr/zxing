@@ -1,0 +1,3 @@
+def default_copy_from_cache(src, dst):
+    f = SCons.Defaults.DefaultEnvironment().copy_from_cache
+    return f(src, dst)

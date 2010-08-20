@@ -1,0 +1,11 @@
+def Local(self, *targets):
+    ret = []
+    for targ in targets:
+        if isinstance(targ, SCons.Node.Node):
+            targ.set_local()
+            ret.append(targ)
+        else:
+            for t in self.arg2nodes(targ, self.fs.Entry):
+                t.set_local()
+                ret.append(t)
+    return ret

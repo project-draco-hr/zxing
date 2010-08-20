@@ -1,0 +1,3 @@
+def Repository(self, *dirs, **kw):
+    dirs = self.arg2nodes(list(dirs), self.fs.Dir)
+    self.fs.Repository(*dirs, **kw)

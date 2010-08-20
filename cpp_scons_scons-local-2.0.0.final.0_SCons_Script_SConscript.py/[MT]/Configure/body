@@ -1,0 +1,5 @@
+def Configure(*args, **kw):
+    if (not SCons.Script.sconscript_reading):
+        raise SCons.Errors.UserError('Calling Configure from Builders is not supported.')
+    kw['_depth'] = 1
+    return SCons.SConf.SConf(*args, **kw)

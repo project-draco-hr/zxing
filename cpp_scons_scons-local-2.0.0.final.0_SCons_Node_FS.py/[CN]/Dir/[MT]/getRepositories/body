@@ -1,0 +1,5 @@
+def getRepositories(self):
+    'Returns a list of repositories for this directory.\n        '
+    if (self.srcdir and (not self.duplicate)):
+        return (self.srcdir.get_all_rdirs() + self.repositories)
+    return self.repositories

@@ -1,0 +1,15 @@
+def scan(self, node):
+    noopt_cre = re.compile('\\[.*$')
+    if (node.includes != None):
+        includes = node.includes
+    else:
+        includes = self.cre.findall(node.get_text_contents())
+        split_includes = []
+        for include in includes:
+            inc_type = noopt_cre.sub('', include[0])
+            inc_list = include[1].split(',')
+            for j in range(len(inc_list)):
+                split_includes.append((inc_type, inc_list[j]))
+        includes = split_includes
+        node.includes = includes
+    return includes

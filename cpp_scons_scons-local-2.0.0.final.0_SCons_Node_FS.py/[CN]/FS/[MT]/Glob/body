@@ -1,0 +1,5 @@
+def Glob(self, pathname, ondisk=True, source=True, strings=False, cwd=None):
+    '\n        Globs\n\n        This is mainly a shim layer \n        '
+    if (cwd is None):
+        cwd = self.getcwd()
+    return cwd.glob(pathname, ondisk, source, strings)

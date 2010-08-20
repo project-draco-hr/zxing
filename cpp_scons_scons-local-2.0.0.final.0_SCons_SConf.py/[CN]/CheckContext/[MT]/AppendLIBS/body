@@ -1,0 +1,4 @@
+def AppendLIBS(self, lib_name_list):
+    oldLIBS = self.env.get('LIBS', [])
+    self.env.Append(LIBS=lib_name_list)
+    return oldLIBS

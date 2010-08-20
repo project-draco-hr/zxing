@@ -1,0 +1,5 @@
+def build(self, **kw):
+    'A null "builder" for directories.'
+    global MkdirBuilder
+    if (self.builder is not MkdirBuilder):
+        SCons.Node.Node.build(self, **kw)

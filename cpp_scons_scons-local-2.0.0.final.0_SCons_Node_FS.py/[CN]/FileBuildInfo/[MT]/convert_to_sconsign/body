@@ -1,0 +1,21 @@
+def convert_to_sconsign(self):
+    "\n        Converts this FileBuildInfo object for writing to a .sconsign file\n\n        This replaces each Node in our various dependency lists with its\n        usual string representation: relative to the top-level SConstruct\n        directory, or an absolute path if it's outside.\n        "
+    if (os.sep == '/'):
+        node_to_str = str
+    else:
+
+        def node_to_str(n):
+            try:
+                s = n.path
+            except AttributeError:
+                s = str(n)
+            else:
+                s = s.replace(os.sep, '/')
+            return s
+    for attr in ['bsources', 'bdepends', 'bimplicit']:
+        try:
+            val = getattr(self, attr)
+        except AttributeError:
+            pass
+        else:
+            setattr(self, attr, list(map(node_to_str, val)))

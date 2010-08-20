@@ -1,0 +1,2 @@
+def get_all_children(self):
+    return self.get_all_sources()

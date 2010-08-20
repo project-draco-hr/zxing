@@ -1,0 +1,11 @@
+def escape_list(mylist, escape_func):
+    'Escape a list of arguments by running the specified escape_func\n    on every object in the list that has an escape() method.'
+
+    def escape(obj, escape_func=escape_func):
+        try:
+            e = obj.escape
+        except AttributeError:
+            return obj
+        else:
+            return e(escape_func)
+    return list(map(escape, mylist))

@@ -1,0 +1,3 @@
+def get_subst_proxy(self):
+    '\n        This method is expected to return an object that will function\n        exactly like this Node, except that it implements any additional\n        special features that we would like to be in effect for\n        Environment variable substitution.  The principle use is that\n        some Nodes would like to implement a __getattr__() method,\n        but putting that in the Node type itself has a tendency to kill\n        performance.  We instead put it in a proxy and return it from\n        this method.  It is legal for this method to return self\n        if no new functionality is needed for Environment substitution.\n        '
+    return self

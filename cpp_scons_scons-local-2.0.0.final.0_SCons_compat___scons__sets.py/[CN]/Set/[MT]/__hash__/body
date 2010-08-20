@@ -1,0 +1,3 @@
+def __hash__(self):
+    'A Set cannot be hashed.'
+    raise TypeError("Can't hash a Set, only an ImmutableSet.")

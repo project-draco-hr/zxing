@@ -1,0 +1,7 @@
+def FortranScan(path_variable='FORTRANPATH'):
+    'Return a prototype Scanner instance for scanning source files\n    for Fortran USE & INCLUDE statements'
+    use_regex = '(?i)(?:^|;)\\s*USE(?:\\s+|(?:(?:\\s*,\\s*(?:NON_)?INTRINSIC)?\\s*::))\\s*(\\w+)'
+    include_regex = '(?i)(?:^|[\'">]\\s*;)\\s*INCLUDE\\s+(?:\\w+_)?[<"\'](.+?)(?=["\'>])'
+    def_regex = '(?i)^\\s*MODULE\\s+(?!PROCEDURE)(\\w+)'
+    scanner = F90Scanner('FortranScan', '$FORTRANSUFFIXES', path_variable, use_regex, include_regex, def_regex)
+    return scanner

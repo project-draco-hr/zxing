@@ -1,0 +1,6 @@
+def get_found_includes(self, env, scanner, path):
+    "Return this directory's implicit dependencies.\n\n        We don't bother caching the results because the scan typically\n        shouldn't be requested more than once (as opposed to scanning\n        .h file contents, which can be requested as many times as the\n        files is #included by other files).\n        "
+    if (not scanner):
+        return []
+    self.clear()
+    return scanner(self, env, path)

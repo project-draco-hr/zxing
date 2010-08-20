@@ -1,0 +1,10 @@
+def unzip(fname):
+    import zipfile
+    zf = zipfile.ZipFile(fname, 'r')
+    for name in zf.namelist():
+        dir = os.path.dirname(name)
+        try:
+            os.makedirs(dir)
+        except:
+            pass
+        open(name, 'w').write(zf.read(name))

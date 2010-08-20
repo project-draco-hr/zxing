@@ -1,0 +1,7 @@
+def ListVariable(key, help, default, names, map={}):
+    "\n    The input parameters describe a 'package list' option, thus they\n    are returned with the correct converter and validater appended. The\n    result is usable for input to opts.Add() .\n\n    A 'package list' option may either be 'all', 'none' or a list of\n    package names (separated by space).\n    "
+    names_str = ('allowed names: %s' % ' '.join(names))
+    if SCons.Util.is_List(default):
+        default = ','.join(default)
+    help = '\n    '.join((help, '(all|none|comma-separated list of names)', names_str))
+    return (key, help, default, None, (lambda val: _converter(val, names, map)))

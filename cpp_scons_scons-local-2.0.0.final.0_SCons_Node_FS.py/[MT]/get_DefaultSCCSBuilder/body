@@ -1,0 +1,7 @@
+def get_DefaultSCCSBuilder():
+    global DefaultSCCSBuilder
+    if (DefaultSCCSBuilder is None):
+        import SCons.Builder
+        act = SCons.Action.Action('$SCCSCOM', '$SCCSCOMSTR')
+        DefaultSCCSBuilder = SCons.Builder.Builder(action=act, env=None, name='DefaultSCCSBuilder')
+    return DefaultSCCSBuilder

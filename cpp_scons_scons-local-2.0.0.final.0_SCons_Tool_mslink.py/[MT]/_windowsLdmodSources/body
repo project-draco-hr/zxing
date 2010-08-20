@@ -1,0 +1,3 @@
+def _windowsLdmodSources(target, source, env, for_signature):
+    'Get sources for loadable modules.'
+    return _dllSources(target, source, env, for_signature, 'LDMODULE')

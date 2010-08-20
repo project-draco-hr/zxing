@@ -1,0 +1,23 @@
+def create_default_directory_layout(root, NAME, VERSION, VENDOR, filename_set):
+    " Create the wix default target directory layout and return the innermost\n    directory.\n\n    We assume that the XML tree delivered in the root argument already contains\n    the Product tag.\n\n    Everything is put under the PFiles directory property defined by WiX.\n    After that a directory  with the 'VENDOR' tag is placed and then a\n    directory with the name of the project and its VERSION. This leads to the\n    following TARGET Directory Layout:\n    C:\\<PFiles>\\<Vendor>\\<Projectname-Version>    Example: C:\\Programme\\Company\\Product-1.2    "
+    doc = Document()
+    d1 = doc.createElement('Directory')
+    d1.attributes['Id'] = 'TARGETDIR'
+    d1.attributes['Name'] = 'SourceDir'
+    d2 = doc.createElement('Directory')
+    d2.attributes['Id'] = 'ProgramFilesFolder'
+    d2.attributes['Name'] = 'PFiles'
+    d3 = doc.createElement('Directory')
+    d3.attributes['Id'] = 'VENDOR_folder'
+    d3.attributes['Name'] = escape(gen_dos_short_file_name(VENDOR, filename_set))
+    d3.attributes['LongName'] = escape(VENDOR)
+    d4 = doc.createElement('Directory')
+    project_folder = ('%s-%s' % (NAME, VERSION))
+    d4.attributes['Id'] = 'MY_DEFAULT_FOLDER'
+    d4.attributes['Name'] = escape(gen_dos_short_file_name(project_folder, filename_set))
+    d4.attributes['LongName'] = escape(project_folder)
+    d1.childNodes.append(d2)
+    d2.childNodes.append(d3)
+    d3.childNodes.append(d4)
+    root.getElementsByTagName('Product')[0].childNodes.append(d1)
+    return d4

@@ -1,0 +1,4 @@
+env
+msvc_version
+host_arch
+target_arch

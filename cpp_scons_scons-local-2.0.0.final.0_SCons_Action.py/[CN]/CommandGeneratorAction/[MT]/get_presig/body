@@ -1,0 +1,3 @@
+def get_presig(self, target, source, env, executor=None):
+    "Return the signature contents of this action's command line.\n\n        This strips $(-$) and everything in between the string,\n        since those parts don't affect signatures.\n        "
+    return self._generate(target, source, env, 1, executor).get_presig(target, source, env)

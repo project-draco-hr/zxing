@@ -1,0 +1,2 @@
+def rename(self, old, new):
+    return os.rename(old, new)

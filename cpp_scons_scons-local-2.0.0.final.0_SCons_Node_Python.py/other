@@ -1,0 +1,3 @@
+'scons.Node.Python\n\nPython nodes.\n\n'
+__revision__ = 'src/engine/SCons/Node/Python.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Node

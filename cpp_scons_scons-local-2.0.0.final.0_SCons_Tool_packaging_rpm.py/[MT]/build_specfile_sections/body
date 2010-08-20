@@ -1,0 +1,16 @@
+def build_specfile_sections(spec):
+    ' Builds the sections of a rpm specfile.\n    '
+    str = ''
+    mandatory_sections = {'DESCRIPTION': '\n%%description\n%s\n\n', }
+    str = (str + SimpleTagCompiler(mandatory_sections).compile(spec))
+    optional_sections = {'DESCRIPTION_': '%%description -l %s\n%s\n\n', 'CHANGELOG': '%%changelog\n%s\n\n', 'X_RPM_PREINSTALL': '%%pre\n%s\n\n', 'X_RPM_POSTINSTALL': '%%post\n%s\n\n', 'X_RPM_PREUNINSTALL': '%%preun\n%s\n\n', 'X_RPM_POSTUNINSTALL': '%%postun\n%s\n\n', 'X_RPM_VERIFY': '%%verify\n%s\n\n', 'X_RPM_PREP': '%%prep\n%s\n\n', 'X_RPM_BUILD': '%%build\n%s\n\n', 'X_RPM_INSTALL': '%%install\n%s\n\n', 'X_RPM_CLEAN': '%%clean\n%s\n\n', }
+    if ('X_RPM_PREP' not in spec):
+        spec['X_RPM_PREP'] = ('[ -n "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != / ] && rm -rf "$RPM_BUILD_ROOT"' + '\n%setup -q')
+    if ('X_RPM_BUILD' not in spec):
+        spec['X_RPM_BUILD'] = 'mkdir "$RPM_BUILD_ROOT"'
+    if ('X_RPM_INSTALL' not in spec):
+        spec['X_RPM_INSTALL'] = 'scons --install-sandbox="$RPM_BUILD_ROOT" "$RPM_BUILD_ROOT"'
+    if ('X_RPM_CLEAN' not in spec):
+        spec['X_RPM_CLEAN'] = '[ -n "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != / ] && rm -rf "$RPM_BUILD_ROOT"'
+    str = (str + SimpleTagCompiler(optional_sections, mandatory=0).compile(spec))
+    return str

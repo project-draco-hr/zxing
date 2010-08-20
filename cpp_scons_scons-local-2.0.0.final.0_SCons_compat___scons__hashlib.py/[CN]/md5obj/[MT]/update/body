@@ -1,0 +1,2 @@
+def update(self, arg):
+    return self.m.update(arg)

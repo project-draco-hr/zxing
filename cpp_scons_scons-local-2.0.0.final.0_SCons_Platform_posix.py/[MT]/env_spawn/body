@@ -1,0 +1,2 @@
+def env_spawn(sh, escape, cmd, args, env):
+    return exec_system([_get_env_command(sh, escape, cmd, args, env)], env)

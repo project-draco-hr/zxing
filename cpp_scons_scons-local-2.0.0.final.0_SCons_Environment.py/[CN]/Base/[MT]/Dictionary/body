@@ -1,0 +1,7 @@
+def Dictionary(self, *args):
+    if (not args):
+        return self._dict
+    dlist = [self._dict[x] for x in args]
+    if (len(dlist) == 1):
+        dlist = dlist[0]
+    return dlist

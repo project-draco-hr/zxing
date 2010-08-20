@@ -1,0 +1,11 @@
+def find_include_file(self, t):
+    '\n        Finds the #include file for a given preprocessor tuple.\n        '
+    fname = t[2]
+    for d in self.searchpath[t[1]]:
+        if (d == os.curdir):
+            f = fname
+        else:
+            f = os.path.join(d, fname)
+        if os.path.isfile(f):
+            return f
+    return None

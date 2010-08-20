@@ -1,0 +1,7 @@
+def to_String(s, isinstance=isinstance, str=str, UserString=UserString, BaseStringTypes=BaseStringTypes):
+    if isinstance(s, BaseStringTypes):
+        return s
+    elif isinstance(s, UserString):
+        return s.data
+    else:
+        return str(s)

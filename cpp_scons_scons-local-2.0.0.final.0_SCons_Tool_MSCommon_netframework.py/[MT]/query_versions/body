@@ -1,0 +1,17 @@
+def query_versions():
+    froot = find_framework_root()
+    if froot:
+        contents = os.listdir(froot)
+        l = re.compile('v[0-9]+.*')
+        versions = [e for e in contents if l.match(e)]
+
+        def versrt(a, b):
+            aa = a[1:]
+            bb = b[1:]
+            aal = aa.split('.')
+            bbl = bb.split('.')
+            return cmp(bbl, aal)
+        versions.sort(versrt)
+    else:
+        versions = []
+    return versions

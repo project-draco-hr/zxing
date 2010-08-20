@@ -1,0 +1,30 @@
+def generate(env):
+    'Add Builders and construction variables for the mwcc to an Environment.'
+    import SCons.Defaults
+    import SCons.Tool
+    set_vars(env)
+    (static_obj, shared_obj) = SCons.Tool.createObjBuilders(env)
+    for suffix in CSuffixes:
+        static_obj.add_action(suffix, SCons.Defaults.CAction)
+        shared_obj.add_action(suffix, SCons.Defaults.ShCAction)
+    for suffix in CXXSuffixes:
+        static_obj.add_action(suffix, SCons.Defaults.CXXAction)
+        shared_obj.add_action(suffix, SCons.Defaults.ShCXXAction)
+    env['CCCOMFLAGS'] = '$CPPFLAGS $_CPPDEFFLAGS $_CPPINCFLAGS -nolink -o $TARGET $SOURCES'
+    env['CC'] = 'mwcc'
+    env['CCCOM'] = '$CC $CFLAGS $CCFLAGS $CCCOMFLAGS'
+    env['CXX'] = 'mwcc'
+    env['CXXCOM'] = '$CXX $CXXFLAGS $CCCOMFLAGS'
+    env['SHCC'] = '$CC'
+    env['SHCCFLAGS'] = '$CCFLAGS'
+    env['SHCFLAGS'] = '$CFLAGS'
+    env['SHCCCOM'] = '$SHCC $SHCFLAGS $SHCCFLAGS $CCCOMFLAGS'
+    env['SHCXX'] = '$CXX'
+    env['SHCXXFLAGS'] = '$CXXFLAGS'
+    env['SHCXXCOM'] = '$SHCXX $SHCXXFLAGS $CCCOMFLAGS'
+    env['CFILESUFFIX'] = '.c'
+    env['CXXFILESUFFIX'] = '.cpp'
+    env['CPPDEFPREFIX'] = '-D'
+    env['CPPDEFSUFFIX'] = ''
+    env['INCPREFIX'] = '-I'
+    env['INCSUFFIX'] = ''

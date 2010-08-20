@@ -1,0 +1,32 @@
+def postprocess(self):
+    "\n        Post-processes a task after it's been executed.\n\n        This examines all the targets just built (or not, we don't care\n        if the build was successful, or even if there was no build\n        because everything was up-to-date) to see if they have any\n        waiting parent Nodes, or Nodes waiting on a common side effect,\n        that can be put back on the candidates list.\n        "
+    T = self.tm.trace
+    if T:
+        T.write(self.trace_message(u'Task.postprocess()', self.node))
+    targets = set(self.targets)
+    pending_children = self.tm.pending_children
+    parents = {}
+    for t in targets:
+        if t.waiting_parents:
+            if T:
+                T.write(self.trace_message(u'Task.postprocess()', t, 'removing'))
+            pending_children.discard(t)
+        for p in t.waiting_parents:
+            parents[p] = (parents.get(p, 0) + 1)
+    for t in targets:
+        for s in t.side_effects:
+            if (s.get_state() == NODE_EXECUTING):
+                s.set_state(NODE_NO_STATE)
+                for p in s.waiting_parents:
+                    parents[p] = (parents.get(p, 0) + 1)
+            for p in s.waiting_s_e:
+                if (p.ref_count == 0):
+                    self.tm.candidates.append(p)
+    for (p, subtract) in parents.items():
+        p.ref_count = (p.ref_count - subtract)
+        if T:
+            T.write(self.trace_message(u'Task.postprocess()', p, 'adjusted parent ref count'))
+        if (p.ref_count == 0):
+            self.tm.candidates.append(p)
+    for t in targets:
+        t.postprocess()

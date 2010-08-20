@@ -1,0 +1,15 @@
+def do_execute(self, target, kw):
+    'Actually execute the action list.'
+    env = self.get_build_env()
+    kw = self.get_kw(kw)
+    status = 0
+    for act in self.get_action_list():
+        args = ([], [], env)
+        status = act(*args, **kw)
+        if isinstance(status, SCons.Errors.BuildError):
+            status.executor = self
+            raise status
+        elif status:
+            msg = ('Error %s' % status)
+            raise SCons.Errors.BuildError(errstr=msg, node=self.batches[0].targets, executor=self, action=act)
+    return status

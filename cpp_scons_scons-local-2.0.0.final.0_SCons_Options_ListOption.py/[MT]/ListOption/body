@@ -1,0 +1,7 @@
+def ListOption(*args, **kw):
+    global warned
+    if (not warned):
+        msg = 'The ListOption() function is deprecated; use the ListVariable() function instead.'
+        SCons.Warnings.warn(SCons.Warnings.DeprecatedOptionsWarning, msg)
+        warned = True
+    return SCons.Variables.ListVariable(*args, **kw)

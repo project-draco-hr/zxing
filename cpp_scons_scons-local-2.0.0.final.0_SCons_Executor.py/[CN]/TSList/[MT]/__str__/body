@@ -1,0 +1,3 @@
+def __str__(self):
+    nl = self.func()
+    return str(nl)

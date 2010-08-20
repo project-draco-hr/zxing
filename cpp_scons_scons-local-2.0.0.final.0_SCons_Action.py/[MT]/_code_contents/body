@@ -1,0 +1,12 @@
+def _code_contents(code):
+    'Return the signature contents of a code object.\n\n    By providing direct access to the code object of the\n    function, Python makes this extremely easy.  Hooray!\n\n    Unfortunately, older versions of Python include line\n    number indications in the compiled byte code.  Boo!\n    So we remove the line number byte codes to prevent\n    recompilations from moving a Python function.\n    '
+    contents = []
+    contents.append(('%s,%s' % (code.co_argcount, len(code.co_varnames))))
+    try:
+        contents.append((',%s,%s' % (len(code.co_cellvars), len(code.co_freevars))))
+    except AttributeError:
+        contents.append(',0,0')
+    contents.append(((',(' + ','.join(map(_object_contents, code.co_consts[1:]))) + ')'))
+    contents.append(((',(' + ','.join(map(_object_contents, code.co_names))) + ')'))
+    contents.append(((',(' + str(remove_set_lineno_codes(code.co_code))) + ')'))
+    return ''.join(contents)

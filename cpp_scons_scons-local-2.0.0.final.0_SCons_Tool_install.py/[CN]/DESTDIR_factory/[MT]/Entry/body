@@ -1,0 +1,3 @@
+def Entry(self, name):
+    name = make_path_relative(name)
+    return self.dir.Entry(name)

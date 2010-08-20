@@ -1,0 +1,2 @@
+def str_to_node(self, s):
+    return default_ans.Alias(s)

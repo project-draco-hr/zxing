@@ -1,0 +1,19 @@
+def processDefines(defs):
+    'process defines, resolving strings, lists, dictionaries, into a list of\n    strings\n    '
+    if SCons.Util.is_List(defs):
+        l = []
+        for d in defs:
+            if (SCons.Util.is_List(d) or isinstance(d, tuple)):
+                l.append(((str(d[0]) + '=') + str(d[1])))
+            else:
+                l.append(str(d))
+    elif SCons.Util.is_Dict(defs):
+        l = []
+        for (k, v) in sorted(defs.items()):
+            if (v is None):
+                l.append(str(k))
+            else:
+                l.append(((str(k) + '=') + str(v)))
+    else:
+        l = [str(defs)]
+    return l

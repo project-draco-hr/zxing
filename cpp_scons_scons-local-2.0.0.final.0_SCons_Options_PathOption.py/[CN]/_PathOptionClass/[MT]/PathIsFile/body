@@ -1,0 +1,3 @@
+def PathIsFile(self, *args, **kw):
+    self.warn()
+    return SCons.Variables.PathVariable.PathIsFile(*args, **kw)

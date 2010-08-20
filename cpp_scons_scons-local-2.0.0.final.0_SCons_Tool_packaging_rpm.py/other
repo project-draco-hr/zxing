@@ -1,0 +1,7 @@
+'SCons.Tool.Packaging.rpm\n\nThe rpm packager.\n'
+__revision__ = 'src/engine/SCons/Tool/packaging/rpm.py 5023 2010/06/14 22:05:46 scons'
+import os
+import SCons.Builder
+from SCons.Environment import OverrideEnvironment
+from SCons.Tool.packaging import stripinstallbuilder, src_targz
+from SCons.Errors import UserError

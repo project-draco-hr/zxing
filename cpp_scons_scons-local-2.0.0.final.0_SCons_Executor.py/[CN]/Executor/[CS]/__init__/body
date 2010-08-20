@@ -1,0 +1,14 @@
+def __init__(self, action, env=None, overridelist=[{}], targets=[], sources=[], builder_kw={}):
+    if __debug__:
+        logInstanceCreation(self, 'Executor.Executor')
+    self.set_action_list(action)
+    self.pre_actions = []
+    self.post_actions = []
+    self.env = env
+    self.overridelist = overridelist
+    if (targets or sources):
+        self.batches = [Batch(targets[:], sources[:])]
+    else:
+        self.batches = []
+    self.builder_kw = builder_kw
+    self._memo = {}

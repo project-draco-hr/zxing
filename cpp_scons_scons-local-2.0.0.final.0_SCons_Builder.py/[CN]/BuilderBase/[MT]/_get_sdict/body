@@ -1,0 +1,7 @@
+def _get_sdict(self, env):
+    '\n        Returns a dictionary mapping all of the source suffixes of all\n        src_builders of this Builder to the underlying Builder that\n        should be called first.\n\n        This dictionary is used for each target specified, so we save a\n        lot of extra computation by memoizing it for each construction\n        environment.\n\n        Note that this is re-computed each time, not cached, because there\n        might be changes to one of our source Builders (or one of their\n        source Builders, and so on, and so on...) that we can\'t "see."\n\n        The underlying methods we call cache their computed values,\n        though, so we hope repeatedly aggregating them into a dictionary\n        like this won\'t be too big a hit.  We may need to look for a\n        better way to do this if performance data show this has turned\n        into a significant bottleneck.\n        '
+    sdict = {}
+    for bld in self.get_src_builders(env):
+        for suf in bld.src_suffixes(env):
+            sdict[suf] = bld
+    return sdict

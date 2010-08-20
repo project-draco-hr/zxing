@@ -1,0 +1,8 @@
+"SCons.Tool.sunc++\n\nTool-specific initialization for C++ on SunOS / Solaris.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/sunc++.py 5023 2010/06/14 22:05:46 scons'
+import SCons
+import os
+import re
+import subprocess
+cplusplus = __import__('c++', globals(), locals(), [])
+package_info = {}

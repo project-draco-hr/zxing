@@ -1,0 +1,15 @@
+self
+args
+bufsize
+executable
+stdin
+stdout
+stderr
+preexec_fn
+close_fds
+shell
+cwd
+env
+universal_newlines
+startupinfo
+creationflags

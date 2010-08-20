@@ -1,0 +1,6 @@
+def __init__(self, builder, cmdgen):
+    if __debug__:
+        logInstanceCreation(self, 'Builder.CompositeBuilder')
+    SCons.Util.Proxy.__init__(self, builder)
+    self.cmdgen = cmdgen
+    self.builder = builder

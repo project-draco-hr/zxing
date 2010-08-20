@@ -1,0 +1,8 @@
+def get_contents(self):
+    'Fetch the contents of the entry.  Returns the exact binary\n        contents of the file.'
+    try:
+        self = self.disambiguate(must_exist=1)
+    except SCons.Errors.UserError:
+        return ''
+    else:
+        return self.get_contents()

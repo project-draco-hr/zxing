@@ -1,0 +1,3 @@
+def target_from_source(self, prefix, suffix, splitext=SCons.Util.splitext):
+    '\n\n        Generates a target entry that corresponds to this entry (usually\n        a source file) with the specified prefix and suffix.\n\n        Note that this method can be overridden dynamically for generated\n        files that need different behavior.  See Tool/swig.py for\n        an example.\n        '
+    return self.dir.Entry(((prefix + splitext(self.name)[0]) + suffix))

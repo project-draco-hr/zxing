@@ -1,0 +1,3 @@
+def __setslice__(self, i, j, other):
+    UserList.__setslice__(self, i, j, other)
+    self.unique = False

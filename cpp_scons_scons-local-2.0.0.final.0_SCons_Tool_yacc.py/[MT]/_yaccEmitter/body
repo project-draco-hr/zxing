@@ -1,0 +1,19 @@
+def _yaccEmitter(target, source, env, ysuf, hsuf):
+    yaccflags = env.subst('$YACCFLAGS', target=target, source=source)
+    flags = SCons.Util.CLVar(yaccflags)
+    (targetBase, targetExt) = os.path.splitext(SCons.Util.to_String(target[0]))
+    if ('.ym' in ysuf):
+        target = [(targetBase + '.m')]
+    if ('-d' in flags):
+        target.append((targetBase + env.subst(hsuf, target=target, source=source)))
+    if ('-g' in flags):
+        (base, ext) = os.path.splitext(SCons.Util.to_String(source[0]))
+        target.append((base + env.subst('$YACCVCGFILESUFFIX')))
+    fileGenOptions = ['--defines=', '--graph=']
+    for option in flags:
+        for fileGenOption in fileGenOptions:
+            l = len(fileGenOption)
+            if (option[:l] == fileGenOption):
+                fileName = option[l:].strip()
+                target.append(fileName)
+    return (target, source)

@@ -1,0 +1,2 @@
+def convert_to_sconsign(self):
+    self.binfo.convert_to_sconsign()

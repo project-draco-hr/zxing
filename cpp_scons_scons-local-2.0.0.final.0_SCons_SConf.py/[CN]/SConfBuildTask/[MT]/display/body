@@ -1,0 +1,3 @@
+def display(self, message):
+    if sconf_global.logstream:
+        sconf_global.logstream.write((('scons: Configure: ' + message) + '\n'))

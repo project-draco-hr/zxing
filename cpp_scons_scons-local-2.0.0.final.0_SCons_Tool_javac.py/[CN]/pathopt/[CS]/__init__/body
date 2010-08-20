@@ -1,0 +1,4 @@
+def __init__(self, opt, var, default=None):
+    self.opt = opt
+    self.var = var
+    self.default = default

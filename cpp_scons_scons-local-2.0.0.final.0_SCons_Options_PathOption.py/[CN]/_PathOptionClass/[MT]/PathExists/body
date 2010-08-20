@@ -1,0 +1,3 @@
+def PathExists(self, *args, **kw):
+    self.warn()
+    return SCons.Variables.PathVariable.PathExists(*args, **kw)

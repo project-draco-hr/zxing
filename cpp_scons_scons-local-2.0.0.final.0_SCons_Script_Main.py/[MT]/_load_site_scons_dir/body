@@ -1,0 +1,47 @@
+def _load_site_scons_dir(topdir, site_dir_name=None):
+    'Load the site_scons dir under topdir.\n    Adds site_scons to sys.path, imports site_scons/site_init.py,\n    and adds site_scons/site_tools to default toolpath.'
+    if site_dir_name:
+        err_if_not_found = True
+    else:
+        site_dir_name = 'site_scons'
+        err_if_not_found = False
+    site_dir = os.path.join(topdir.path, site_dir_name)
+    if (not os.path.exists(site_dir)):
+        if err_if_not_found:
+            raise SCons.Errors.UserError(('site dir %s not found.' % site_dir))
+        return
+    site_init_filename = 'site_init.py'
+    site_init_modname = 'site_init'
+    site_tools_dirname = 'site_tools'
+    sys.path = ([os.path.abspath(site_dir)] + sys.path)
+    site_init_file = os.path.join(site_dir, site_init_filename)
+    site_tools_dir = os.path.join(site_dir, site_tools_dirname)
+    if os.path.exists(site_init_file):
+        import imp
+        try:
+            try:
+                (fp, pathname, description) = imp.find_module(site_init_modname, [site_dir])
+                try:
+                    m = sys.modules['SCons.Script']
+                except Exception as e:
+                    fmt = 'cannot import site_init.py: missing SCons.Script module %s'
+                    raise SCons.Errors.InternalError((fmt % repr(e)))
+                try:
+                    exec fp in m.__dict__
+                except KeyboardInterrupt:
+                    raise
+                except Exception as e:
+                    fmt = '*** Error loading site_init file %s:\n'
+                    sys.stderr.write((fmt % repr(site_init_file)))
+                    raise
+            except KeyboardInterrupt:
+                raise
+            except ImportError as e:
+                fmt = '*** cannot import site init file %s:\n'
+                sys.stderr.write((fmt % repr(site_init_file)))
+                raise
+        finally:
+            if fp:
+                fp.close()
+    if os.path.exists(site_tools_dir):
+        SCons.Tool.DefaultToolpath.append(os.path.abspath(site_tools_dir))

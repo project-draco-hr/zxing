@@ -1,0 +1,3 @@
+def classname(path):
+    'Turn a string (path name) into a Java class name.'
+    return os.path.normpath(path).replace(os.sep, '.')

@@ -1,0 +1,17 @@
+def generate(env):
+    'Add Builders and construction variables for yacc to an Environment.'
+    (c_file, cxx_file) = SCons.Tool.createCFileBuilders(env)
+    c_file.add_action('.y', YaccAction)
+    c_file.add_emitter('.y', yEmitter)
+    c_file.add_action('.yacc', YaccAction)
+    c_file.add_emitter('.yacc', yEmitter)
+    c_file.add_action('.ym', YaccAction)
+    c_file.add_emitter('.ym', ymEmitter)
+    cxx_file.add_action('.yy', YaccAction)
+    cxx_file.add_emitter('.yy', yyEmitter)
+    env['YACC'] = (env.Detect('bison') or 'yacc')
+    env['YACCFLAGS'] = SCons.Util.CLVar('')
+    env['YACCCOM'] = '$YACC $YACCFLAGS -o $TARGET $SOURCES'
+    env['YACCHFILESUFFIX'] = '.h'
+    env['YACCHXXFILESUFFIX'] = '.hpp'
+    env['YACCVCGFILESUFFIX'] = '.vcg'

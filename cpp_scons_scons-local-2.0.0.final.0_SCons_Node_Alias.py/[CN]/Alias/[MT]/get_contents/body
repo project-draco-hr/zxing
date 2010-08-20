@@ -1,0 +1,4 @@
+def get_contents(self):
+    'The contents of an alias is the concatenation\n        of the content signatures of all its sources.'
+    childsigs = [n.get_csig() for n in self.children()]
+    return ''.join(childsigs)

@@ -1,0 +1,5 @@
+def exists(env):
+    if ('PS2PDF' in env):
+        return env.Detect(env['PS2PDF'])
+    else:
+        return (env.Detect(gs) or SCons.Util.WhereIs(gs))

@@ -1,0 +1,9 @@
+def __setitem__(self, item, val):
+    try:
+        method = getattr(self.env, item).method
+    except AttributeError:
+        pass
+    else:
+        self.env.RemoveMethod(method)
+    UserDict.__setitem__(self, item, val)
+    BuilderWrapper(self.env, val, item)

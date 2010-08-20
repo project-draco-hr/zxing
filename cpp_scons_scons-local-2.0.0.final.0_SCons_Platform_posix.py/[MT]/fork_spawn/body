@@ -1,0 +1,2 @@
+def fork_spawn(sh, escape, cmd, args, env):
+    return exec_fork([sh, '-c', ' '.join(args)], env)

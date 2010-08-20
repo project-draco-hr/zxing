@@ -1,0 +1,2 @@
+def _changed_content(self, dependency, target, prev_ni):
+    return dependency.changed_content(target, prev_ni)

@@ -1,0 +1,12 @@
+def __init__(self, current=os.curdir, cpppath=(), dict={}, all=0):
+    global Table
+    cpppath = tuple(cpppath)
+    self.searchpath = {'"': ((current,) + cpppath), '<': (cpppath + (current,)), }
+    self.cpp_namespace = dict.copy()
+    self.cpp_namespace['__dict__'] = self.cpp_namespace
+    if all:
+        self.do_include = self.all_include
+    d = {'scons_current_file': self.scons_current_file, }
+    for op in Table.keys():
+        d[op] = getattr(self, ('do_' + op))
+    self.default_table = d

@@ -1,0 +1,11 @@
+def subst(self, s, target, source, env):
+    if is_List(s):
+        result = []
+        for elem in s:
+            result.append(self.subst(elem, target, source, env))
+        return self.parent.convert(result)
+    if (s == '$__env__'):
+        return env
+    elif is_String(s):
+        return env.subst(s, 1, target, source)
+    return self.parent.convert(s)

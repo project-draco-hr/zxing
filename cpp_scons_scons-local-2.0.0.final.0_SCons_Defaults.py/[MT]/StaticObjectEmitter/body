@@ -1,0 +1,4 @@
+def StaticObjectEmitter(target, source, env):
+    for tgt in target:
+        tgt.attributes.shared = None
+    return (target, source)

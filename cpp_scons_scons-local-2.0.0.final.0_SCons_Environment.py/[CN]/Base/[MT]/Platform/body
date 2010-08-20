@@ -1,0 +1,3 @@
+def Platform(self, platform):
+    platform = self.subst(platform)
+    return SCons.Platform.Platform(platform)(self)

@@ -1,0 +1,3 @@
+def __init__(self, dict=None, source_ext_match=1):
+    SCons.Util.Selector.__init__(self, dict)
+    self.source_ext_match = source_ext_match

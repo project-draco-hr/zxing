@@ -1,0 +1,10 @@
+def my_whichdb(filename):
+    if (filename[(-7):] == '.dblite'):
+        return 'SCons.dblite'
+    try:
+        f = open((filename + '.dblite'), 'rb')
+        f.close()
+        return 'SCons.dblite'
+    except IOError:
+        pass
+    return _orig_whichdb(filename)

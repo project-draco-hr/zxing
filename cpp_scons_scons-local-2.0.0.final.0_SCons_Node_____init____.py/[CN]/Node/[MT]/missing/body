@@ -1,0 +1,2 @@
+def missing(self):
+    return ((not self.is_derived()) and (not self.linked) and (not self.rexists()))

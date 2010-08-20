@@ -1,0 +1,4 @@
+def __init__(self, entry_proxy, attribute):
+    AttributeError.__init__(self)
+    self.entry_proxy = entry_proxy
+    self.attribute = attribute

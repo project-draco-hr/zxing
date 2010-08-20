@@ -1,0 +1,22 @@
+def do_help(self, argv):
+    '\n        '
+    if argv[1:]:
+        for arg in argv[1:]:
+            try:
+                func = getattr(self, ('do_' + arg))
+            except AttributeError:
+                sys.stderr.write(('%s: No help for "%s"\n' % (self.name, arg)))
+            else:
+                try:
+                    help = getattr(self, ('help_' + arg))
+                except AttributeError:
+                    sys.stdout.write(self.doc_to_help(func))
+                    sys.stdout.flush()
+                else:
+                    help()
+    else:
+        doc = self.doc_to_help(self.__class__)
+        if doc:
+            sys.stdout.write(doc)
+        sys.stdout.flush()
+        return None

@@ -1,0 +1,2 @@
+def GetMSVSProjectSuffix(target, source, env, for_signature):
+    return env['MSVS']['PROJECTSUFFIX']

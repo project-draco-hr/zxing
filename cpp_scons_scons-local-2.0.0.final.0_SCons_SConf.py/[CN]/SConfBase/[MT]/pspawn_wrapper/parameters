@@ -1,0 +1,6 @@
+self
+sh
+escape
+cmd
+args
+env

@@ -1,0 +1,12 @@
+def get_memory(self, file, memory_string=None):
+    '\n        Returns a list of integers of the amount of memory used.  The\n        default behavior is to return all the stages.\n        '
+    if (memory_string is None):
+        search_string = self.memory_string_all
+    else:
+        search_string = memory_string
+    lines = open(file).readlines()
+    lines = [l for l in lines if l.startswith(search_string)][(-4):]
+    result = [int(l.split()[(-1)]) for l in lines[(-4):]]
+    if (len(result) == 1):
+        result = result[0]
+    return result

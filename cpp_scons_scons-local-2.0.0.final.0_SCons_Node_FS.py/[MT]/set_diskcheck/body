@@ -1,0 +1,3 @@
+def set_diskcheck(list):
+    for dc in diskcheckers:
+        dc.set(list)

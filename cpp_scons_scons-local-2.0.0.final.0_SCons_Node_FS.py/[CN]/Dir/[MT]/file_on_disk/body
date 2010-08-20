@@ -1,0 +1,10 @@
+def file_on_disk(self, name):
+    if (self.entry_exists_on_disk(name) or diskcheck_rcs(self, name) or diskcheck_sccs(self, name)):
+        try:
+            return self.File(name)
+        except TypeError:
+            pass
+    node = self.srcdir_duplicate(name)
+    if isinstance(node, Dir):
+        return None
+    return node

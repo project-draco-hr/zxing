@@ -1,0 +1,6 @@
+def Action(act, *args, **kw):
+    'A factory for action objects.'
+    _do_create_keywords(args, kw)
+    if is_List(act):
+        return _do_create_list_action(act, kw)
+    return _do_create_action(act, kw)

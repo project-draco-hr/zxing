@@ -1,0 +1,8 @@
+def shlib_emitter(target, source, env):
+    dll = env.FindIxes(target, 'SHLIBPREFIX', 'SHLIBSUFFIX')
+    no_import_lib = env.get('no_import_lib', 0)
+    if (not dll):
+        raise SCons.Errors.UserError(('A shared library should have exactly one target with the suffix: %s' % env.subst('$SHLIBSUFFIX')))
+    if ((not no_import_lib) and (not env.FindIxes(target, 'LIBPREFIX', 'LIBSUFFIX'))):
+        target.append(env.ReplaceIxes(dll, 'SHLIBPREFIX', 'SHLIBSUFFIX', 'LIBPREFIX', 'LIBSUFFIX'))
+    return (target, source)

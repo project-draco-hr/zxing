@@ -1,0 +1,2 @@
+def lstat(self, path):
+    return os.lstat(path)

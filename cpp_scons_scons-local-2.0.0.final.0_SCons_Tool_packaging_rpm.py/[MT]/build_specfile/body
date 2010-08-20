@@ -1,0 +1,13 @@
+def build_specfile(target, source, env):
+    ' Builds a RPM specfile from a dictionary with string metadata and\n    by analyzing a tree of nodes.\n    '
+    file = open(target[0].abspath, 'w')
+    str = ''
+    try:
+        file.write(build_specfile_header(env))
+        file.write(build_specfile_sections(env))
+        file.write(build_specfile_filesection(env, source))
+        file.close()
+        if ('CHANGE_SPECFILE' in env):
+            env['CHANGE_SPECFILE'](target, source)
+    except KeyError as e:
+        raise SCons.Errors.UserError(('"%s" package field for RPM is missing.' % e.args[0]))

@@ -1,0 +1,7 @@
+def has_explicit_builder(self):
+    'Return whether this Node has an explicit builder\n\n        This allows an internal Builder created by SCons to be marked\n        non-explicit, so that it can be overridden by an explicit\n        builder that the user supplies (the canonical example being\n        directories).'
+    try:
+        return self.is_explicit
+    except AttributeError:
+        self.is_explicit = None
+        return self.is_explicit

@@ -1,0 +1,24 @@
+def find_vc_pdir(msvc_version):
+    'Try to find the product directory for the given\n    version.\n\n    Note\n    ----\n    If for some reason the requested version could not be found, an\n    exception which inherits from VisualCException will be raised.'
+    root = 'Software\\'
+    if common.is_win64():
+        root = (root + 'Wow6432Node\\')
+    try:
+        hkeys = _VCVER_TO_PRODUCT_DIR[msvc_version]
+    except KeyError:
+        debug(('Unknown version of MSVC: %s' % msvc_version))
+        raise UnsupportedVersion(('Unknown version %s' % msvc_version))
+    for key in hkeys:
+        key = (root + key)
+        try:
+            comps = common.read_reg(key)
+        except WindowsError as e:
+            debug(('find_vc_dir(): no VC registry key %s' % repr(key)))
+        else:
+            debug(('find_vc_dir(): found VC in registry: %s' % comps))
+            if os.path.exists(comps):
+                return comps
+            else:
+                debug(('find_vc_dir(): reg says dir is %s, but it does not exist. (ignoring)' % comps))
+                raise MissingConfiguration(('registry dir %s not found on the filesystem' % comps))
+    return None

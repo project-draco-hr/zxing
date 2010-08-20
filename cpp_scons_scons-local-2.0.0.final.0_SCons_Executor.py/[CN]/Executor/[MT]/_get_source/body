@@ -1,0 +1,2 @@
+def _get_source(self, *args, **kw):
+    return rfile(self.batches[0].sources[0]).get_subst_proxy()

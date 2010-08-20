@@ -1,0 +1,38 @@
+def print_tree(root, child_func, prune=0, showtags=0, margin=[0], visited={}):
+    "\n    Print a tree of nodes.  This is like render_tree, except it prints\n    lines directly instead of creating a string representation in memory,\n    so that huge trees can be printed.\n\n    root - the root node of the tree\n    child_func - the function called to get the children of a node\n    prune - don't visit the same node twice\n    showtags - print status information to the left of each node line\n    margin - the format of the left margin to use for children of root.\n       1 results in a pipe, and 0 results in no pipe.\n    visited - a dictionary of visited nodes in the current branch if not prune,\n       or in the whole tree if prune.\n    "
+    rname = str(root)
+    if showtags:
+        if (showtags == 2):
+            legend = ((((((((((' E         = exists\n' + '  R        = exists in repository only\n') + '   b       = implicit builder\n') + '   B       = explicit builder\n') + '    S      = side effect\n') + '     P     = precious\n') + '      A    = always build\n') + '       C   = current\n') + '        N  = no clean\n') + '         H = no cache\n') + '\n')
+            sys.stdout.write(unicode(legend))
+        tags = ['[']
+        tags.append(' E'[IDX(root.exists())])
+        tags.append(' R'[IDX((root.rexists() and (not root.exists())))])
+        tags.append(' BbB'[([0, 1][IDX(root.has_explicit_builder())] + [0, 2][IDX(root.has_builder())])])
+        tags.append(' S'[IDX(root.side_effect)])
+        tags.append(' P'[IDX(root.precious)])
+        tags.append(' A'[IDX(root.always_build)])
+        tags.append(' C'[IDX(root.is_up_to_date())])
+        tags.append(' N'[IDX(root.noclean)])
+        tags.append(' H'[IDX(root.nocache)])
+        tags.append(']')
+    else:
+        tags = []
+
+    def MMM(m):
+        return ['  ', '| '][m]
+    margins = list(map(MMM, margin[:(-1)]))
+    children = child_func(root)
+    if (prune and (rname in visited) and children):
+        sys.stdout.write((''.join(((tags + margins) + ['+-[', rname, ']'])) + u'\n'))
+        return
+    sys.stdout.write((''.join(((tags + margins) + ['+-', rname])) + u'\n'))
+    visited[rname] = 1
+    if children:
+        margin.append(1)
+        idx = IDX(showtags)
+        for C in children[:(-1)]:
+            print_tree(C, child_func, prune, idx, margin, visited)
+        margin[(-1)] = 0
+        print_tree(children[(-1)], child_func, prune, idx, margin, visited)
+        margin.pop()

@@ -1,0 +1,7 @@
+def format_heading(self, heading):
+    '\n        This translates any heading of "options" or "Options" into\n        "SCons Options."  Unfortunately, we have to do this here,\n        because those titles are hard-coded in the optparse calls.\n        '
+    if (heading == 'options'):
+        heading = 'Options'
+    if (heading == 'Options'):
+        heading = 'SCons Options'
+    return optparse.IndentedHelpFormatter.format_heading(self, heading)

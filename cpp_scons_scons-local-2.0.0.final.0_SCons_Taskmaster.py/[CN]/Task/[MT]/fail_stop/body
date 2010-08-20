@@ -1,0 +1,9 @@
+def fail_stop(self):
+    '\n        Explicit stop-the-build failure.\n\n        This sets failure status on the target nodes and all of\n        their dependent parent nodes.\n\n        Note: Although this function is normally invoked on nodes in\n        the executing state, it might also be invoked on up-to-date\n        nodes when using Configure().\n        '
+    T = self.tm.trace
+    if T:
+        T.write(self.trace_message('Task.failed_stop()', self.node))
+    self.tm.will_not_build(self.targets, (lambda n: n.set_state(NODE_FAILED)))
+    self.tm.stop()
+    self.targets = [self.tm.current_top]
+    self.top = 1

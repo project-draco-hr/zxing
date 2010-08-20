@@ -1,0 +1,2 @@
+def windowsShlinkTargets(target, source, env, for_signature):
+    return _dllTargets(target, source, env, for_signature, 'SHLIB')

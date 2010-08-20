@@ -1,0 +1,19 @@
+def get_system_root():
+    global _system_root
+    if (_system_root is not None):
+        return _system_root
+    val = os.environ.get('SystemRoot', 'C:\\WINDOWS')
+    if SCons.Util.can_read_reg:
+        try:
+            k = SCons.Util.RegOpenKeyEx(SCons.Util.hkey_mod.HKEY_LOCAL_MACHINE, 'Software\\Microsoft\\Windows NT\\CurrentVersion')
+            (val, tok) = SCons.Util.RegQueryValueEx(k, 'SystemRoot')
+        except SCons.Util.RegError:
+            try:
+                k = SCons.Util.RegOpenKeyEx(SCons.Util.hkey_mod.HKEY_LOCAL_MACHINE, 'Software\\Microsoft\\Windows\\CurrentVersion')
+                (val, tok) = SCons.Util.RegQueryValueEx(k, 'SystemRoot')
+            except KeyboardInterrupt:
+                raise
+            except:
+                pass
+    _system_root = val
+    return val

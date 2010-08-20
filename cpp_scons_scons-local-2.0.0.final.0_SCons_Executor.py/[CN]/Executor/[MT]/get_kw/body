@@ -1,0 +1,5 @@
+def get_kw(self, kw={}):
+    result = self.builder_kw.copy()
+    result.update(kw)
+    result['executor'] = self
+    return result

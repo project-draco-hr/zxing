@@ -1,0 +1,8 @@
+'SCons.Tool.PharLapCommon\n\nThis module contains common code used by all Tools for the\nPhar Lap ETS tool chain.  Right now, this is linkloc and\n386asm.\n\n'
+__revision__ = 'src/engine/SCons/Tool/PharLapCommon.py 5023 2010/06/14 22:05:46 scons'
+import os
+import os.path
+import SCons.Errors
+import SCons.Util
+import re
+REGEX_ETS_VER = re.compile('#define\\s+ETS_VER\\s+([0-9]+)')

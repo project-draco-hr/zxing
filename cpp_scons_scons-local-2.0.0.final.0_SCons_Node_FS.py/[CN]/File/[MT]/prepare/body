@@ -1,0 +1,13 @@
+def prepare(self):
+    'Prepare for this file to be created.'
+    SCons.Node.Node.prepare(self)
+    if (self.get_state() != SCons.Node.up_to_date):
+        if self.exists():
+            if (self.is_derived() and (not self.precious)):
+                self._rmv_existing()
+        else:
+            try:
+                self._createDir()
+            except SCons.Errors.StopError as drive:
+                desc = ("No drive `%s' for target `%s'." % (drive, self))
+                raise SCons.Errors.StopError(desc)

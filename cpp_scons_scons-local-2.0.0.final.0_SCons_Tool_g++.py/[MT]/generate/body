@@ -1,0 +1,21 @@
+def generate(env):
+    'Add Builders and construction variables for g++ to an Environment.'
+    (static_obj, shared_obj) = SCons.Tool.createObjBuilders(env)
+    cplusplus.generate(env)
+    env['CXX'] = env.Detect(compilers)
+    if (env['PLATFORM'] == 'aix'):
+        env['SHCXXFLAGS'] = SCons.Util.CLVar('$CXXFLAGS -mminimal-toc')
+        env['STATIC_AND_SHARED_OBJECTS_ARE_THE_SAME'] = 1
+        env['SHOBJSUFFIX'] = '$OBJSUFFIX'
+    elif (env['PLATFORM'] == 'hpux'):
+        env['SHOBJSUFFIX'] = '.pic.o'
+    elif (env['PLATFORM'] == 'sunos'):
+        env['SHOBJSUFFIX'] = '.pic.o'
+    if env['CXX']:
+        pipe = SCons.Action._subproc(env, [env['CXX'], '--version'], stdin='devnull', stderr='devnull', stdout=subprocess.PIPE)
+        if (pipe.wait() != 0):
+            return
+        line = pipe.stdout.readline()
+        match = re.search('[0-9]+(\\.[0-9]+)+', line)
+        if match:
+            env['CXXVERSION'] = match.group(0)

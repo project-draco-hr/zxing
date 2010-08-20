@@ -1,0 +1,12 @@
+def difference(self, other):
+    'Return the difference of two sets as a new Set.\n\n        (I.e. all elements that are in this set and not in the other.)\n        '
+    result = self.__class__()
+    data = result._data
+    try:
+        otherdata = other._data
+    except AttributeError:
+        otherdata = Set(other)._data
+    value = True
+    for elt in filterfalse(otherdata.has_key, self):
+        data[elt] = value
+    return result

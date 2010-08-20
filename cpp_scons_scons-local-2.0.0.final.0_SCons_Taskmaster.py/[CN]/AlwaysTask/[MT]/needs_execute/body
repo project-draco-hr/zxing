@@ -1,0 +1,3 @@
+def needs_execute(self):
+    '\n        Always returns True (indicating this Task should always\n        be executed).\n\n        Subclasses that need this behavior (as opposed to the default\n        of only executing Nodes that are out of date w.r.t. their\n        dependencies) can use this as follows:\n\n            class MyTaskSubclass(SCons.Taskmaster.Task):\n                needs_execute = SCons.Taskmaster.Task.execute_always\n        '
+    return True

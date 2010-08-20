@@ -1,0 +1,5 @@
+"engine.SCons.Tool.aixf77\n\nTool-specific initialization for IBM Visual Age f77 Fortran compiler.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n"
+__revision__ = 'src/engine/SCons/Tool/aixf77.py 5023 2010/06/14 22:05:46 scons'
+import os.path
+import f77
+packages = []

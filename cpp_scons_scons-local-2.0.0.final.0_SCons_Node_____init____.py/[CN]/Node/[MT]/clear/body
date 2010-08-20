@@ -1,0 +1,11 @@
+def clear(self):
+    'Completely clear a Node of all its cached state (so that it\n        can be re-evaluated by interfaces that do continuous integration\n        builds).\n        '
+    self.del_binfo()
+    self.clear_memoized_values()
+    self.ninfo = self.new_ninfo()
+    self.executor_cleanup()
+    try:
+        delattr(self, '_calculated_sig')
+    except AttributeError:
+        pass
+    self.includes = None

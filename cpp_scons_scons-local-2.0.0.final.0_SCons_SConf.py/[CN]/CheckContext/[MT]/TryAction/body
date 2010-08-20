@@ -1,0 +1,2 @@
+def TryAction(self, *args, **kw):
+    return self.sconf.TryAction(*args, **kw)

@@ -1,0 +1,12 @@
+def get_cachedir_csig(self):
+    '\n        Fetch a Node\'s content signature for purposes of computing\n        another Node\'s cachesig.\n\n        This is a wrapper around the normal get_csig() method that handles\n        the somewhat obscure case of using CacheDir with the -n option.\n        Any files that don\'t exist would normally be "built" by fetching\n        them from the cache, but the normal get_csig() method will try\n        to open up the local file, which doesn\'t exist because the -n\n        option meant we didn\'t actually pull the file from cachedir.\n        But since the file *does* actually exist in the cachedir, we\n        can use its contents for the csig.\n        '
+    try:
+        return self.cachedir_csig
+    except AttributeError:
+        pass
+    (cachedir, cachefile) = self.get_build_env().get_CacheDir().cachepath(self)
+    if ((not self.exists()) and cachefile and os.path.exists(cachefile)):
+        self.cachedir_csig = SCons.Util.MD5filesignature(cachefile, (SCons.Node.FS.File.md5_chunksize * 1024))
+    else:
+        self.cachedir_csig = self.get_csig()
+    return self.cachedir_csig

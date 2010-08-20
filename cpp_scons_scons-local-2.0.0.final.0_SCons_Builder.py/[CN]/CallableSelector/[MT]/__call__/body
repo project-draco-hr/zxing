@@ -1,0 +1,5 @@
+def __call__(self, env, source):
+    value = SCons.Util.Selector.__call__(self, env, source)
+    if callable(value):
+        value = value(env, source)
+    return value

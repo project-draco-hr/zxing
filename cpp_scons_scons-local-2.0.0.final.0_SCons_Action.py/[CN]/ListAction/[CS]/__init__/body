@@ -1,0 +1,11 @@
+def __init__(self, actionlist):
+    if __debug__:
+        logInstanceCreation(self, 'Action.ListAction')
+
+    def list_of_actions(x):
+        if isinstance(x, ActionBase):
+            return x
+        return Action(x)
+    self.list = list(map(list_of_actions, actionlist))
+    self.varlist = ()
+    self.targets = '$TARGETS'

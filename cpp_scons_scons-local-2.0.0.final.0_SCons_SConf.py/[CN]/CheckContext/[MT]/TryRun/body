@@ -1,0 +1,2 @@
+def TryRun(self, *args, **kw):
+    return self.sconf.TryRun(*args, **kw)

@@ -1,0 +1,7 @@
+def PathIsDirCreate(self, key, val, env):
+    'Validator to check if Path is a directory,\n           creating it if it does not exist.'
+    if os.path.isfile(val):
+        m = 'Path for option %s is a file, not a directory: %s'
+        raise SCons.Errors.UserError((m % (key, val)))
+    if (not os.path.isdir(val)):
+        os.makedirs(val)

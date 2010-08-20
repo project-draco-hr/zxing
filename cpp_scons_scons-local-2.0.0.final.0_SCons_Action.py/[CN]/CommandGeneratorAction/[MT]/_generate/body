@@ -1,0 +1,11 @@
+def _generate(self, target, source, env, for_signature, executor=None):
+    if (not is_List(target)):
+        target = [target]
+    if executor:
+        target = executor.get_all_targets()
+        source = executor.get_all_sources()
+    ret = self.generator(target=target, source=source, env=env, for_signature=for_signature)
+    gen_cmd = Action(ret, **self.gen_kw)
+    if (not gen_cmd):
+        raise SCons.Errors.UserError(('Object returned from command generator: %s cannot be used to create an Action.' % repr(ret)))
+    return gen_cmd

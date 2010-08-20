@@ -1,0 +1,2 @@
+def stat(self, path):
+    return os.stat(path)

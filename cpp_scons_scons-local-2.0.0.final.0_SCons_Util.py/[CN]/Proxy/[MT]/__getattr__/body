@@ -1,0 +1,3 @@
+def __getattr__(self, name):
+    "Retrieve an attribute from the wrapped object.  If the named\n           attribute doesn't exist, AttributeError is raised"
+    return getattr(self._subject, name)

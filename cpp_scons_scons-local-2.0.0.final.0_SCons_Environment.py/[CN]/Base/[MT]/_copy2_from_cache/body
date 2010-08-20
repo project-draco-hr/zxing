@@ -1,0 +1,2 @@
+def _copy2_from_cache(self, src, dst):
+    return self.fs.copy2(src, dst)

@@ -1,0 +1,5 @@
+def store_info(self, filename, node):
+    entry = node.get_stored_info()
+    entry.binfo.merge(node.get_binfo())
+    self.to_be_merged[filename] = node
+    self.dirty = True

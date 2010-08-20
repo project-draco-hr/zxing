@@ -1,0 +1,34 @@
+def src_builder_sources(self, env, source, overwarn={}):
+    sdict = self._get_sdict(env)
+    src_suffixes = self.src_suffixes(env)
+    lengths = list(set(map(len, src_suffixes)))
+
+    def match_src_suffix(name, src_suffixes=src_suffixes, lengths=lengths):
+        node_suffixes = [name[(- l):] for l in lengths]
+        for suf in src_suffixes:
+            if (suf in node_suffixes):
+                return suf
+        return None
+    result = []
+    for s in SCons.Util.flatten(source):
+        if SCons.Util.is_String(s):
+            match_suffix = match_src_suffix(env.subst(s))
+            if ((not match_suffix) and (not ('.' in s))):
+                src_suf = self.get_src_suffix(env)
+                s = self._adjustixes(s, None, src_suf)[0]
+        else:
+            match_suffix = match_src_suffix(s.name)
+        if match_suffix:
+            try:
+                bld = sdict[match_suffix]
+            except KeyError:
+                result.append(s)
+            else:
+                tlist = bld._execute(env, None, [s], overwarn)
+                if (len(tlist) > 1):
+                    tlist = [t for t in tlist if match_src_suffix(t.name)]
+                result.extend(tlist)
+        else:
+            result.append(s)
+    source_factory = env.get_factory(self.source_factory)
+    return env.arg2nodes(result, source_factory)

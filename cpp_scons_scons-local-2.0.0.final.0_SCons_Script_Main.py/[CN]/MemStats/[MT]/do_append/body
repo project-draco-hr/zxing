@@ -1,0 +1,3 @@
+def do_append(self, label):
+    self.labels.append(label)
+    self.stats.append(SCons.Debug.memory())

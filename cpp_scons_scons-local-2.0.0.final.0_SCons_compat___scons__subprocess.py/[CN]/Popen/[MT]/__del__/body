@@ -1,0 +1,6 @@
+def __del__(self):
+    if (not self._child_created):
+        return
+    self.poll(_deadstate=sys.maxsize)
+    if ((self.returncode is None) and (_active is not None)):
+        _active.append(self)

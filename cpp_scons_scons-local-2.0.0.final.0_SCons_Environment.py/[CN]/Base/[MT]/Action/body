@@ -1,0 +1,9 @@
+def Action(self, *args, **kw):
+
+    def subst_string(a, self=self):
+        if SCons.Util.is_String(a):
+            a = self.subst(a)
+        return a
+    nargs = list(map(subst_string, args))
+    nkw = self.subst_kw(kw)
+    return SCons.Action.Action(*nargs, **nkw)

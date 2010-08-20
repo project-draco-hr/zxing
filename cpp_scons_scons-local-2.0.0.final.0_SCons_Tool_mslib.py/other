@@ -1,0 +1,8 @@
+"SCons.Tool.mslib\n\nTool-specific initialization for lib (MicroSoft library archiver).\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
+__revision__ = 'src/engine/SCons/Tool/mslib.py 5023 2010/06/14 22:05:46 scons'
+import SCons.Defaults
+import SCons.Tool
+import SCons.Tool.msvs
+import SCons.Tool.msvc
+import SCons.Util
+from MSCommon import msvc_exists, msvc_setup_env_once

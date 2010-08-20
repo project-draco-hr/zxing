@@ -1,0 +1,11 @@
+def installFunc(target, source, env):
+    'Install a source file into a target using the function specified\n    as the INSTALL construction variable.'
+    try:
+        install = env['INSTALL']
+    except KeyError:
+        raise SCons.Errors.UserError('Missing INSTALL construction variable.')
+    assert (len(target) == len(source)), ('Installing source %s into target %s: target and source lists must have same length.' % (list(map(str, source)), list(map(str, target))))
+    for (t, s) in zip(target, source):
+        if install(t.get_path(), s.get_path(), env):
+            return 1
+    return 0

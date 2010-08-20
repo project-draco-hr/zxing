@@ -1,0 +1,12 @@
+def generate(env):
+    'Add Builders and construction variables for TeX to an Environment.'
+    global TeXLaTeXAction
+    if (TeXLaTeXAction is None):
+        TeXLaTeXAction = SCons.Action.Action(TeXLaTeXFunction, strfunction=TeXLaTeXStrFunction)
+    env.AppendUnique(LATEXSUFFIXES=SCons.Tool.LaTeXSuffixes)
+    generate_common(env)
+    import dvi
+    dvi.generate(env)
+    bld = env['BUILDERS']['DVI']
+    bld.add_action('.tex', TeXLaTeXAction)
+    bld.add_emitter('.tex', tex_eps_emitter)

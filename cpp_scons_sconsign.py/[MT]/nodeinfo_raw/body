@@ -1,0 +1,12 @@
+def nodeinfo_raw(name, ninfo, prefix=''):
+    d = ninfo.__dict__
+    try:
+        keys = (ninfo.field_list + ['_version_id'])
+    except AttributeError:
+        keys = sorted(d.keys())
+    l = []
+    for k in keys:
+        l.append(('%s: %s' % (repr(k), repr(d.get(k)))))
+    if ('\n' in name):
+        name = repr(name)
+    return (((name + ': {') + ', '.join(l)) + '}')
