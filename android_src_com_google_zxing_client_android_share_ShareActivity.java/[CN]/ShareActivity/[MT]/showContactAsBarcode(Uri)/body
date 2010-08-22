@@ -1,5 +1,8 @@
 {
   Log.i(TAG,"Showing contact URI as barcode: " + contactUri);
+  if (contactUri == null) {
+    return;
+  }
   ContentResolver resolver=getContentResolver();
   Cursor contactCursor=resolver.query(contactUri,null,null,null,null);
   Bundle bundle=new Bundle();
