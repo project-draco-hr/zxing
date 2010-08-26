@@ -12,7 +12,7 @@
   image.getRGB(left,top + y,width,1,rgbData,0,width);
   for (int x=0; x < width; x++) {
     int pixel=rgbData[x];
-    int luminance=(306 * ((pixel >> 16) & 0xFF) + 601 * ((pixel >> 8) & 0xFF) + 117 * (pixel & 0xFF)) >> 10;
+    int luminance=(306 * ((pixel >> 16) & 0xFF) + 601 * ((pixel >> 8) & 0xFF) + 117 * (pixel & 0xFF) + (0x200)) >> 10;
     row[x]=(byte)luminance;
   }
   return row;
