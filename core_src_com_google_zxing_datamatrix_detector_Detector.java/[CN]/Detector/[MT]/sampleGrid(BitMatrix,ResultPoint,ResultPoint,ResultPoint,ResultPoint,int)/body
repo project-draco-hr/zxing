@@ -1,0 +1,4 @@
+{
+  GridSampler sampler=GridSampler.getInstance();
+  return sampler.sampleGrid(image,dimension,0.5f,0.5f,dimension - 0.5f,0.5f,dimension - 0.5f,dimension - 0.5f,0.5f,dimension - 0.5f,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomRight.getX(),bottomRight.getY(),bottomLeft.getX(),bottomLeft.getY());
+}

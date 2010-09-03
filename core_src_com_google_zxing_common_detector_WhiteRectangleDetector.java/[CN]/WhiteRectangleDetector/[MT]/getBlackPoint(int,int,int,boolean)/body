@@ -1,0 +1,36 @@
+{
+  ResultPoint last=null;
+  if (horizontal) {
+    for (int x=a; x < b; x++) {
+      if (image.get(x,fixed)) {
+        if (x < width / 2) {
+          return new ResultPoint(x,fixed);
+        }
+ else {
+          while (x < width && image.get(x,fixed)) {
+            x++;
+          }
+          x--;
+          last=new ResultPoint(x,fixed);
+        }
+      }
+    }
+  }
+ else {
+    for (int y=a; y < b; y++) {
+      if (image.get(fixed,y)) {
+        if (y < height / 2) {
+          return new ResultPoint(fixed,y);
+        }
+ else {
+          while (y < height && image.get(fixed,y)) {
+            y++;
+          }
+          y--;
+          last=new ResultPoint(fixed,y);
+        }
+      }
+    }
+  }
+  return last;
+}

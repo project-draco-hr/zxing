@@ -1,0 +1,5 @@
+{
+  this.image=image;
+  height=image.getHeight();
+  width=image.getWidth();
+}

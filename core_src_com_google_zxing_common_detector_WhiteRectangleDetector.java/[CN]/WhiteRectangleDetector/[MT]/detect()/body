@@ -1,0 +1,66 @@
+{
+  int left=(width - INIT_SIZE) / 2;
+  int right=(width + INIT_SIZE) / 2;
+  int up=(height - INIT_SIZE) / 2;
+  int down=(height + INIT_SIZE) / 2;
+  boolean sizeExceeded=false;
+  boolean aBlackPointFoundOnBorder=true;
+  boolean atLeastOneBlackPointFoundOnBorder=false;
+  while (aBlackPointFoundOnBorder) {
+    aBlackPointFoundOnBorder=false;
+    boolean rightBorderNotWhite=true;
+    while (rightBorderNotWhite && right < width) {
+      rightBorderNotWhite=containsBlackPoint(up,down,right,false);
+      if (rightBorderNotWhite) {
+        right++;
+        aBlackPointFoundOnBorder=true;
+      }
+    }
+    boolean bottomBorderNotWhite=true;
+    while (bottomBorderNotWhite && down < height) {
+      bottomBorderNotWhite=containsBlackPoint(left,right,down,true);
+      if (bottomBorderNotWhite) {
+        down++;
+        aBlackPointFoundOnBorder=true;
+      }
+    }
+    boolean leftBorderNotWhite=true;
+    while (leftBorderNotWhite && left >= 0) {
+      leftBorderNotWhite=containsBlackPoint(up,down,left,false);
+      if (leftBorderNotWhite) {
+        left--;
+        aBlackPointFoundOnBorder=true;
+      }
+    }
+    boolean topBorderNotWhite=true;
+    while (topBorderNotWhite && up >= 0) {
+      topBorderNotWhite=containsBlackPoint(left,right,up,true);
+      if (topBorderNotWhite) {
+        up--;
+        aBlackPointFoundOnBorder=true;
+      }
+    }
+    if (right >= width || down >= height || up < 0 || left < 0) {
+      sizeExceeded=true;
+      break;
+    }
+    if (aBlackPointFoundOnBorder) {
+      atLeastOneBlackPointFoundOnBorder=true;
+    }
+  }
+  if (!sizeExceeded && atLeastOneBlackPointFoundOnBorder) {
+    ResultPoint x=getBlackPoint(up,down,right - 1,false);
+    ResultPoint y=getBlackPoint(left,right,down - 1,true);
+    ResultPoint z=getBlackPoint(up,down,left + 1,false);
+    ResultPoint t=getBlackPoint(left,right,up + 1,true);
+    if (distance(z,t) < MIN_SIZE) {
+      ResultPoint u=getBlackPointInverted(up,down,right - 1,false);
+      t=x;
+      x=u;
+    }
+    return centerEdges(y,z,x,t);
+  }
+ else {
+    throw NotFoundException.getNotFoundInstance();
+  }
+}

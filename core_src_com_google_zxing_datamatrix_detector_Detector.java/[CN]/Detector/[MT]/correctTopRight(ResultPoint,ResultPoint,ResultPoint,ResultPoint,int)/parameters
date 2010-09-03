@@ -1,5 +1,5 @@
-BitMatrix image
-ResultPoint topLeft
 ResultPoint bottomLeft
 ResultPoint bottomRight
+ResultPoint topLeft
+ResultPoint topRight
 int dimension

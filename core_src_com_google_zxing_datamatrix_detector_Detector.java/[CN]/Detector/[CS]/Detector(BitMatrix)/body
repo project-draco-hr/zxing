@@ -1,4 +1,4 @@
 {
   this.image=image;
-  rectangleDetector=new MonochromeRectangleDetector(image);
+  rectangleDetector=new WhiteRectangleDetector(image);
 }

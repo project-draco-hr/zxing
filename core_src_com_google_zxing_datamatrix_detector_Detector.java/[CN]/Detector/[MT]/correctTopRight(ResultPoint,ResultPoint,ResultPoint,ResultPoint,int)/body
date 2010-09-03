@@ -1,0 +1,49 @@
+{
+  float corr=distance(bottomLeft,bottomRight) / (float)dimension;
+  float corrx=0.0f;
+  float corry=0.0f;
+  int norm=distance(topLeft,topRight);
+  float cos=(topRight.getX() - topLeft.getX()) / norm;
+  float sin=-(topRight.getY() - topLeft.getY()) / norm;
+  if (cos > 0.0f && sin > 0.0f) {
+    if (cos > sin) {
+      corrx=corr * cos;
+      corry=-corr * sin;
+    }
+ else {
+      corrx=-corr * sin;
+      corry=-corr * cos;
+    }
+  }
+ else   if (cos > 0.0f && sin < 0.0f) {
+    if (cos > -sin) {
+      corrx=-corr * sin;
+      corry=-corr * cos;
+    }
+ else {
+      corrx=corr * cos;
+      corry=-corr * sin;
+    }
+  }
+ else   if (cos < 0.0f && sin < 0.0f) {
+    if (-cos > -sin) {
+      corrx=corr * cos;
+      corry=-corr * sin;
+    }
+ else {
+      corrx=-corr * sin;
+      corry=-corr * cos;
+    }
+  }
+ else   if (cos < 0.0f && sin > 0.0f) {
+    if (-cos > sin) {
+      corrx=-corr * sin;
+      corry=-corr * cos;
+    }
+ else {
+      corrx=corr * cos;
+      corry=-corr * sin;
+    }
+  }
+  return new ResultPoint(topRight.getX() + corrx,topRight.getY() + corry);
+}
