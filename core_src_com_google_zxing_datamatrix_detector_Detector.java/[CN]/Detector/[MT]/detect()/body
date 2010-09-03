@@ -12,9 +12,6 @@
   Collections.insertionSort(transitions,new ResultPointsAndTransitionsComparator());
   ResultPointsAndTransitions lSideOne=(ResultPointsAndTransitions)transitions.elementAt(0);
   ResultPointsAndTransitions lSideTwo=(ResultPointsAndTransitions)transitions.elementAt(1);
-  if (lSideOne.transitions > MIN_GIVEUP_THRESHOLD || lSideTwo.transitions > MIN_GIVEUP_THRESHOLD) {
-    throw NotFoundException.getNotFoundInstance();
-  }
   Hashtable pointCount=new Hashtable();
   increment(pointCount,lSideOne.getFrom());
   increment(pointCount,lSideOne.getTo());
@@ -60,13 +57,13 @@
  else {
     topRight=pointD;
   }
-  int dimension=Math.max(transitionsBetween(topLeft,topRight).getTransitions(),transitionsBetween(bottomRight,topRight).getTransitions());
+  int dimension=Math.min(transitionsBetween(topLeft,topRight).getTransitions(),transitionsBetween(bottomRight,topRight).getTransitions());
   if ((dimension & 0x01) == 1) {
     dimension++;
   }
   dimension+=2;
   ResultPoint correctedTopRight=correctTopRight(bottomLeft,bottomRight,topLeft,topRight,dimension);
-  int dimension2=Math.min(transitionsBetween(topLeft,correctedTopRight).getTransitions(),transitionsBetween(bottomRight,correctedTopRight).getTransitions());
+  int dimension2=Math.max(transitionsBetween(topLeft,correctedTopRight).getTransitions(),transitionsBetween(bottomRight,correctedTopRight).getTransitions());
   dimension2++;
   if ((dimension2 & 0x01) == 1) {
     dimension2++;

@@ -1,0 +1,11 @@
+{
+  int dist=distanceL2(a,b);
+  float xStep=(b.getX() - a.getX()) / dist;
+  float yStep=(b.getY() - a.getY()) / dist;
+  for (int i=0; i < dist; i++) {
+    if (image.get(Math.round(a.getX() + i * xStep),Math.round(a.getY() + i * yStep))) {
+      return new ResultPoint(Math.round(a.getX() + i * xStep),Math.round(a.getY() + i * yStep));
+    }
+  }
+  return null;
+}

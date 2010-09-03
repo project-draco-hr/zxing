@@ -49,14 +49,51 @@
     }
   }
   if (!sizeExceeded && atLeastOneBlackPointFoundOnBorder) {
-    ResultPoint x=getBlackPoint(up,down,right - 1,false);
-    ResultPoint y=getBlackPoint(left,right,down - 1,true);
-    ResultPoint z=getBlackPoint(up,down,left + 1,false);
-    ResultPoint t=getBlackPoint(left,right,up + 1,true);
-    if (distance(z,t) < MIN_SIZE) {
-      ResultPoint u=getBlackPointInverted(up,down,right - 1,false);
-      t=x;
-      x=u;
+    ResultPoint x=null, y=null, z=null, t=null;
+    final int max_size=right - left;
+    for (int i=1; i < max_size; i++) {
+      ResultPoint a=new ResultPoint(left,down - i);
+      ResultPoint b=new ResultPoint(left + i,down);
+      z=getBlackPointOnSegment(a,b);
+      if (z != null) {
+        break;
+      }
+    }
+    if (z == null) {
+      throw NotFoundException.getNotFoundInstance();
+    }
+    for (int i=1; i < max_size; i++) {
+      ResultPoint a=new ResultPoint(left,up + i);
+      ResultPoint b=new ResultPoint(left + i,up);
+      t=getBlackPointOnSegment(a,b);
+      if (t != null) {
+        break;
+      }
+    }
+    if (t == null) {
+      throw NotFoundException.getNotFoundInstance();
+    }
+    for (int i=1; i < max_size; i++) {
+      ResultPoint a=new ResultPoint(right,up + i);
+      ResultPoint b=new ResultPoint(right - i,up);
+      x=getBlackPointOnSegment(a,b);
+      if (x != null) {
+        break;
+      }
+    }
+    if (x == null) {
+      throw NotFoundException.getNotFoundInstance();
+    }
+    for (int i=1; i < max_size; i++) {
+      ResultPoint a=new ResultPoint(right,down - i);
+      ResultPoint b=new ResultPoint(right - i,down);
+      y=getBlackPointOnSegment(a,b);
+      if (y != null) {
+        break;
+      }
+    }
+    if (y == null) {
+      throw NotFoundException.getNotFoundInstance();
     }
     return centerEdges(y,z,x,t);
   }
