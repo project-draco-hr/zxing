@@ -16,6 +16,10 @@
         aBlackPointFoundOnBorder=true;
       }
     }
+    if (right >= width) {
+      sizeExceeded=true;
+      break;
+    }
     boolean bottomBorderNotWhite=true;
     while (bottomBorderNotWhite && down < height) {
       bottomBorderNotWhite=containsBlackPoint(left,right,down,true);
@@ -23,6 +27,10 @@
         down++;
         aBlackPointFoundOnBorder=true;
       }
+    }
+    if (down >= height) {
+      sizeExceeded=true;
+      break;
     }
     boolean leftBorderNotWhite=true;
     while (leftBorderNotWhite && left >= 0) {
@@ -32,6 +40,10 @@
         aBlackPointFoundOnBorder=true;
       }
     }
+    if (left < 0) {
+      sizeExceeded=true;
+      break;
+    }
     boolean topBorderNotWhite=true;
     while (topBorderNotWhite && up >= 0) {
       topBorderNotWhite=containsBlackPoint(left,right,up,true);
@@ -40,7 +52,7 @@
         aBlackPointFoundOnBorder=true;
       }
     }
-    if (right >= width || down >= height || up < 0 || left < 0) {
+    if (up < 0) {
       sizeExceeded=true;
       break;
     }

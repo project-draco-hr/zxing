@@ -63,6 +63,9 @@
   }
   dimension+=2;
   ResultPoint correctedTopRight=correctTopRight(bottomLeft,bottomRight,topLeft,topRight,dimension);
+  if (correctedTopRight == null) {
+    correctedTopRight=topRight;
+  }
   int dimension2=Math.max(transitionsBetween(topLeft,correctedTopRight).getTransitions(),transitionsBetween(bottomRight,correctedTopRight).getTransitions());
   dimension2++;
   if ((dimension2 & 0x01) == 1) {
