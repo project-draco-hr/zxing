@@ -64,9 +64,7 @@
     ResultPoint x=null, y=null, z=null, t=null;
     final int max_size=right - left;
     for (int i=1; i < max_size; i++) {
-      ResultPoint a=new ResultPoint(left,down - i);
-      ResultPoint b=new ResultPoint(left + i,down);
-      z=getBlackPointOnSegment(a,b);
+      z=getBlackPointOnSegment(left,down - i,left + i,down);
       if (z != null) {
         break;
       }
@@ -75,9 +73,7 @@
       throw NotFoundException.getNotFoundInstance();
     }
     for (int i=1; i < max_size; i++) {
-      ResultPoint a=new ResultPoint(left,up + i);
-      ResultPoint b=new ResultPoint(left + i,up);
-      t=getBlackPointOnSegment(a,b);
+      t=getBlackPointOnSegment(left,up + i,left + i,up);
       if (t != null) {
         break;
       }
@@ -86,9 +82,7 @@
       throw NotFoundException.getNotFoundInstance();
     }
     for (int i=1; i < max_size; i++) {
-      ResultPoint a=new ResultPoint(right,up + i);
-      ResultPoint b=new ResultPoint(right - i,up);
-      x=getBlackPointOnSegment(a,b);
+      x=getBlackPointOnSegment(right,up + i,right - i,up);
       if (x != null) {
         break;
       }
@@ -97,9 +91,7 @@
       throw NotFoundException.getNotFoundInstance();
     }
     for (int i=1; i < max_size; i++) {
-      ResultPoint a=new ResultPoint(right,down - i);
-      ResultPoint b=new ResultPoint(right - i,down);
-      y=getBlackPointOnSegment(a,b);
+      y=getBlackPointOnSegment(right,down - i,right - i,down);
       if (y != null) {
         break;
       }

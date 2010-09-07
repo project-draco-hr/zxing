@@ -1,5 +1,12 @@
 {
-  float yi=y.getX(), yj=y.getY(), zi=z.getX(), zj=z.getY(), xi=x.getX(), xj=x.getY(), ti=t.getX(), tj=t.getY();
+  float yi=y.getX();
+  float yj=y.getY();
+  float zi=z.getX();
+  float zj=z.getY();
+  float xi=x.getX();
+  float xj=x.getY();
+  float ti=t.getX();
+  float tj=t.getY();
   final int corr=1;
   if (yi < width / 2) {
     return new ResultPoint[]{new ResultPoint(ti - corr,tj + corr),new ResultPoint(zi + corr,zj + corr),new ResultPoint(xi - corr,xj - corr),new ResultPoint(yi + corr,yj - corr)};
