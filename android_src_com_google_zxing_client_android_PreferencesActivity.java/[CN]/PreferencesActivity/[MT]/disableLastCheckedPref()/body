@@ -1,16 +1,16 @@
 {
+  Collection<CheckBoxPreference> checked=new ArrayList<CheckBoxPreference>(3);
   if (decode1D.isChecked()) {
-    decodeQR.setEnabled(true);
-  }
- else {
-    decodeQR.setEnabled(false);
-    decodeQR.setChecked(true);
+    checked.add(decode1D);
   }
   if (decodeQR.isChecked()) {
-    decode1D.setEnabled(true);
+    checked.add(decodeQR);
   }
- else {
-    decode1D.setEnabled(false);
-    decode1D.setChecked(true);
+  if (decodeDataMatrix.isChecked()) {
+    checked.add(decodeDataMatrix);
+  }
+  boolean disable=checked.size() < 2;
+  for (  CheckBoxPreference pref : new CheckBoxPreference[]{decode1D,decodeQR,decodeDataMatrix}) {
+    pref.setEnabled(!(disable && checked.contains(pref)));
   }
 }

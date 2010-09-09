@@ -26,6 +26,7 @@
       readers.addElement(new MultiFormatOneDReader(hints));
     }
     readers.addElement(new QRCodeReader());
+    readers.addElement(new DataMatrixReader());
     if (tryHarder) {
       readers.addElement(new MultiFormatOneDReader(hints));
     }
