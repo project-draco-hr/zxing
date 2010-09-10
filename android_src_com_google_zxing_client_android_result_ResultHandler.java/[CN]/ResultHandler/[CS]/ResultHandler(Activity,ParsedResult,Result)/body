@@ -3,4 +3,6 @@
   this.activity=activity;
   this.rawResult=rawResult;
   this.customProductSearch=parseCustomSearchURL();
+  Button shopperButton=(Button)activity.findViewById(R.id.shopper_button);
+  shopperButton.setVisibility(View.GONE);
 }
