@@ -1,8 +1,8 @@
 {
-  int left=(width - INIT_SIZE) / 2;
-  int right=(width + INIT_SIZE) / 2;
-  int up=(height - INIT_SIZE) / 2;
-  int down=(height + INIT_SIZE) / 2;
+  int left=(width - INIT_SIZE) >> 1;
+  int right=(width + INIT_SIZE) >> 1;
+  int up=(height - INIT_SIZE) >> 1;
+  int down=(height + INIT_SIZE) >> 1;
   boolean sizeExceeded=false;
   boolean aBlackPointFoundOnBorder=true;
   boolean atLeastOneBlackPointFoundOnBorder=false;
@@ -61,9 +61,9 @@
     }
   }
   if (!sizeExceeded && atLeastOneBlackPointFoundOnBorder) {
-    ResultPoint x=null, y=null, z=null, t=null;
-    final int max_size=right - left;
-    for (int i=1; i < max_size; i++) {
+    int maxSize=right - left;
+    ResultPoint z=null;
+    for (int i=1; i < maxSize; i++) {
       z=getBlackPointOnSegment(left,down - i,left + i,down);
       if (z != null) {
         break;
@@ -72,7 +72,8 @@
     if (z == null) {
       throw NotFoundException.getNotFoundInstance();
     }
-    for (int i=1; i < max_size; i++) {
+    ResultPoint t=null;
+    for (int i=1; i < maxSize; i++) {
       t=getBlackPointOnSegment(left,up + i,left + i,up);
       if (t != null) {
         break;
@@ -81,7 +82,8 @@
     if (t == null) {
       throw NotFoundException.getNotFoundInstance();
     }
-    for (int i=1; i < max_size; i++) {
+    ResultPoint x=null;
+    for (int i=1; i < maxSize; i++) {
       x=getBlackPointOnSegment(right,up + i,right - i,up);
       if (x != null) {
         break;
@@ -90,7 +92,8 @@
     if (x == null) {
       throw NotFoundException.getNotFoundInstance();
     }
-    for (int i=1; i < max_size; i++) {
+    ResultPoint y=null;
+    for (int i=1; i < maxSize; i++) {
       y=getBlackPointOnSegment(right,down - i,right - i,down);
       if (y != null) {
         break;
