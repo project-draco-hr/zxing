@@ -1,6 +1,6 @@
 {
-  StringBuilder newContents=new StringBuilder();
-  StringBuilder newDisplayContents=new StringBuilder();
+  StringBuilder newContents=new StringBuilder(100);
+  StringBuilder newDisplayContents=new StringBuilder(100);
   newContents.append("MECARD:");
   String[] names=contact.getNames();
   if (names != null && names.length > 0) {

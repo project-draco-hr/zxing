@@ -1,5 +1,5 @@
 {
-  Button shopperButton=(Button)activity.findViewById(R.id.shopper_button);
+  View shopperButton=activity.findViewById(R.id.shopper_button);
   shopperButton.setVisibility(View.VISIBLE);
   shopperButton.setOnClickListener(listener);
 }

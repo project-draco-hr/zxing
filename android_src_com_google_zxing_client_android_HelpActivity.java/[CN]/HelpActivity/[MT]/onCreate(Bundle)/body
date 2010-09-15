@@ -21,7 +21,7 @@
   }
   backButton=(Button)findViewById(R.id.back_button);
   backButton.setOnClickListener(backListener);
-  Button doneButton=(Button)findViewById(R.id.done_button);
+  View doneButton=findViewById(R.id.done_button);
   doneButton.setOnClickListener(doneListener);
   if (!initialized) {
     initialized=true;

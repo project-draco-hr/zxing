@@ -34,8 +34,8 @@
  else   if (type.equals(Contents.Type.CONTACT)) {
     Bundle bundle=intent.getBundleExtra(Intents.Encode.DATA);
     if (bundle != null) {
-      StringBuilder newContents=new StringBuilder();
-      StringBuilder newDisplayContents=new StringBuilder();
+      StringBuilder newContents=new StringBuilder(100);
+      StringBuilder newDisplayContents=new StringBuilder(100);
       newContents.append("MECARD:");
       String name=trim(bundle.getString(Contacts.Intents.Insert.NAME));
       if (name != null) {
