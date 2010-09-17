@@ -6,7 +6,7 @@
   if (names != null && names.length > 0) {
     String name=trim(names[0]);
     if (name != null) {
-      newContents.append("N:").append(name).append(';');
+      newContents.append("N:").append(escapeMECARD(name)).append(';');
       newDisplayContents.append(name);
     }
   }
@@ -15,7 +15,7 @@
     for (    String address : addresses) {
       address=trim(address);
       if (address != null) {
-        newContents.append("ADR:").append(address).append(';');
+        newContents.append("ADR:").append(escapeMECARD(address)).append(';');
         newDisplayContents.append('\n').append(address);
       }
     }
@@ -25,7 +25,7 @@
     for (    String phone : phoneNumbers) {
       phone=trim(phone);
       if (phone != null) {
-        newContents.append("TEL:").append(phone).append(';');
+        newContents.append("TEL:").append(escapeMECARD(phone)).append(';');
         newDisplayContents.append('\n').append(PhoneNumberUtils.formatNumber(phone));
       }
     }
@@ -35,14 +35,14 @@
     for (    String email : emails) {
       email=trim(email);
       if (email != null) {
-        newContents.append("EMAIL:").append(email).append(';');
+        newContents.append("EMAIL:").append(escapeMECARD(email)).append(';');
         newDisplayContents.append('\n').append(email);
       }
     }
   }
   String url=trim(contact.getURL());
   if (url != null) {
-    newContents.append("URL:").append(url).append(';');
+    newContents.append("URL:").append(escapeMECARD(url)).append(';');
     newDisplayContents.append('\n').append(url);
   }
   if (newDisplayContents.length() > 0) {
