@@ -1,7 +1,7 @@
 {
   this.context=context;
   this.configManager=new CameraConfigurationManager(context);
-  useOneShotPreviewCallback=SDK_INT > Build.VERSION_CODES.CUPCAKE;
+  useOneShotPreviewCallback=Integer.parseInt(Build.VERSION.SDK) > 3;
   previewCallback=new PreviewCallback(configManager,useOneShotPreviewCallback);
   autoFocusCallback=new AutoFocusCallback();
 }

@@ -3,10 +3,5 @@
   camera=null;
   initialized=false;
   previewing=false;
-  if (Integer.parseInt(Build.VERSION.SDK) <= Build.VERSION_CODES.CUPCAKE) {
-    useOneShotPreviewCallback=false;
-  }
- else {
-    useOneShotPreviewCallback=true;
-  }
+  useOneShotPreviewCallback=Integer.parseInt(Build.VERSION.SDK) > 3;
 }
