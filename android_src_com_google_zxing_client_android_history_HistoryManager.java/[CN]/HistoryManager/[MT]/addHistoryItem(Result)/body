@@ -2,10 +2,14 @@
   if (!activity.getIntent().getBooleanExtra(Intents.Scan.SAVE_HISTORY,true)) {
     return;
   }
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
+  boolean rememberDuplicates=prefs.getBoolean(PreferencesActivity.KEY_REMEMBER_DUPLICATES,false);
+  if (!rememberDuplicates) {
+    deletePrevious(result.getText());
+  }
   SQLiteOpenHelper helper=new DBHelper(activity);
   SQLiteDatabase db=helper.getWritableDatabase();
   try {
-    db.delete(DBHelper.TABLE_NAME,DBHelper.TEXT_COL + "=?",new String[]{result.getText()});
     ContentValues values=new ContentValues();
     values.put(DBHelper.TEXT_COL,result.getText());
     values.put(DBHelper.FORMAT_COL,result.getBarcodeFormat().toString());
