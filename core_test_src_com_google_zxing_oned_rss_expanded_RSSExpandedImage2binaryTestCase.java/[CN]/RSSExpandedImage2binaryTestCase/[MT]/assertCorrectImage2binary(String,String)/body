@@ -4,7 +4,7 @@
   BinaryBitmap binaryMap=new BinaryBitmap(new GlobalHistogramBinarizer(new BufferedImageLuminanceSource(image)));
   int rowNumber=binaryMap.getHeight() / 2;
   BitArray row=binaryMap.getBlackRow(rowNumber,null);
-  Vector pairs=rssExpandedReader.decodeRow2pairs(rowNumber,row);
+  Vector<ExpandedPair> pairs=rssExpandedReader.decodeRow2pairs(rowNumber,row);
   BitArray binary=BitArrayBuilder.buildBitArray(pairs);
   assertEquals(expected,binary.toString());
 }

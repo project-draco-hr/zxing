@@ -1,9 +1,9 @@
 {
-  assertEquals(Mode.TERMINATOR,Mode.forBits(0x00));
-  assertEquals(Mode.NUMERIC,Mode.forBits(0x01));
-  assertEquals(Mode.ALPHANUMERIC,Mode.forBits(0x02));
-  assertEquals(Mode.BYTE,Mode.forBits(0x04));
-  assertEquals(Mode.KANJI,Mode.forBits(0x08));
+  assertSame(Mode.TERMINATOR,Mode.forBits(0x00));
+  assertSame(Mode.NUMERIC,Mode.forBits(0x01));
+  assertSame(Mode.ALPHANUMERIC,Mode.forBits(0x02));
+  assertSame(Mode.BYTE,Mode.forBits(0x04));
+  assertSame(Mode.KANJI,Mode.forBits(0x08));
   try {
     Mode.forBits(0x10);
     fail("Should have thrown an exception");

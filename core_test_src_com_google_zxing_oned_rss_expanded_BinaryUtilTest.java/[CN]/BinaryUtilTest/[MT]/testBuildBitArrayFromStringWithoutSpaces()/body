@@ -1,6 +1,5 @@
 {
-  String data;
-  data=" ..X..X.. ..XXX... XXXXXXXX ........";
+  String data=" ..X..X.. ..XXX... XXXXXXXX ........";
   checkWithoutSpaces(data);
   data=" XXX..X..";
   checkWithoutSpaces(data);

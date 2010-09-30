@@ -5,6 +5,6 @@
   int rowNumber=binaryMap.getHeight() / 2;
   BitArray row=binaryMap.getBlackRow(rowNumber,null);
   Result result=rssExpandedReader.decodeRow(rowNumber,row,new Hashtable());
-  assertEquals(BarcodeFormat.RSS_EXPANDED,result.getBarcodeFormat());
+  assertSame(BarcodeFormat.RSS_EXPANDED,result.getBarcodeFormat());
   assertEquals(expected,result.getText());
 }

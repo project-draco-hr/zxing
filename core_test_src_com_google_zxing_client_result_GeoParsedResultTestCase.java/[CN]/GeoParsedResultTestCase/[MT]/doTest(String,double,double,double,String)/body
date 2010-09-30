@@ -3,7 +3,8 @@
   ParsedResult result=ResultParser.parseResult(fakeResult);
   assertSame(ParsedResultType.GEO,result.getType());
   GeoParsedResult geoResult=(GeoParsedResult)result;
-  assertEquals(latitude,geoResult.getLatitude());
-  assertEquals(longitude,geoResult.getLongitude());
-  assertEquals(altitude,geoResult.getAltitude());
+  assertEquals(latitude,geoResult.getLatitude(),EPSILON);
+  assertEquals(longitude,geoResult.getLongitude(),EPSILON);
+  assertEquals(altitude,geoResult.getAltitude(),EPSILON);
+  assertEquals(query,geoResult.getQuery());
 }

@@ -10,8 +10,8 @@
   qrCode.setNumDataBytes(66);
   qrCode.setNumECBytes(130);
   qrCode.setNumRSBlocks(5);
-  assertEquals(Mode.BYTE,qrCode.getMode());
-  assertEquals(ErrorCorrectionLevel.H,qrCode.getECLevel());
+  assertSame(Mode.BYTE,qrCode.getMode());
+  assertSame(ErrorCorrectionLevel.H,qrCode.getECLevel());
   assertEquals(7,qrCode.getVersion());
   assertEquals(45,qrCode.getMatrixWidth());
   assertEquals(3,qrCode.getMaskPattern());

@@ -1,8 +1,8 @@
 {
   long now=System.currentTimeMillis();
   AbstractBlackBoxTestCase.SummaryResults results=new AbstractBlackBoxTestCase.SummaryResults();
-  for (int x=0; x < TESTS.length; x++) {
-    results.add(TESTS[x].testBlackBoxCountingResults(false));
+  for (  AbstractBlackBoxTestCase test : TESTS) {
+    results.add(test.testBlackBoxCountingResults(false));
   }
   now=System.currentTimeMillis() - now;
   System.out.println(results.toString() + "\n  Total time: " + now+ " ms");
