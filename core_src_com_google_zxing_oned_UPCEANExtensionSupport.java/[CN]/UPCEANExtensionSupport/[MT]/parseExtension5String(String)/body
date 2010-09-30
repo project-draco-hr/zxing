@@ -1,5 +1,5 @@
 {
-  String currency=null;
+  String currency;
 switch (raw.charAt(0)) {
 case '0':
     currency="??";
@@ -8,17 +8,24 @@ case '5':
 currency="$";
 break;
 case '9':
-if ("99991".equals(raw)) {
+if ("90000".equals(raw)) {
+return null;
+}
+ else if ("99991".equals(raw)) {
 return "0.00";
 }
  else if ("99990".equals(raw)) {
 return "Used";
 }
+currency="";
 break;
 default :
 currency="";
 break;
 }
 int rawAmount=Integer.parseInt(raw.substring(1));
-return currency + (rawAmount / 100) + '.'+ (rawAmount % 100);
+String unitsString=String.valueOf(rawAmount / 100);
+int hundredths=rawAmount % 100;
+String hundredthsString=hundredths < 10 ? "0" + hundredths : String.valueOf(hundredths);
+return currency + unitsString + '.'+ hundredthsString;
 }
