@@ -4,7 +4,7 @@
   int row=4;
   int column=0;
   int numRows=mappingBitMatrix.getHeight();
-  int numColumns=numRows;
+  int numColumns=mappingBitMatrix.getWidth();
   boolean corner1Read=false;
   boolean corner2Read=false;
   boolean corner3Read=false;

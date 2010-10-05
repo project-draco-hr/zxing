@@ -1,0 +1,6 @@
+ResultPoint bottomLeft
+ResultPoint bottomRight
+ResultPoint topLeft
+ResultPoint topRight
+int dimensionTop
+int dimensionRight

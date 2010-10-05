@@ -3,4 +3,5 @@ ResultPoint topLeft
 ResultPoint bottomLeft
 ResultPoint bottomRight
 ResultPoint topRight
-int dimension
+int dimensionX
+int dimensionY

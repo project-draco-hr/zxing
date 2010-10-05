@@ -3,6 +3,6 @@
     return version;
   }
   int numRows=bitMatrix.getHeight();
-  int numColumns=numRows;
+  int numColumns=bitMatrix.getWidth();
   return Version.getVersionForDimensions(numRows,numColumns);
 }

@@ -1,3 +1,4 @@
 BitMatrix image
-int dimension
+int dimensionX
+int dimensionY
 PerspectiveTransform transform

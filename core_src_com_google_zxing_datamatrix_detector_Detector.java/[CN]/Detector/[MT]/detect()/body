@@ -57,20 +57,45 @@
  else {
     topRight=pointD;
   }
-  int dimension=Math.min(transitionsBetween(topLeft,topRight).getTransitions(),transitionsBetween(bottomRight,topRight).getTransitions());
-  if ((dimension & 0x01) == 1) {
-    dimension++;
+  int dimensionTop=transitionsBetween(topLeft,topRight).getTransitions();
+  int dimensionRight=transitionsBetween(bottomRight,topRight).getTransitions();
+  if ((dimensionTop & 0x01) == 1) {
+    dimensionTop++;
   }
-  dimension+=2;
-  ResultPoint correctedTopRight=correctTopRight(bottomLeft,bottomRight,topLeft,topRight,dimension);
-  if (correctedTopRight == null) {
-    correctedTopRight=topRight;
+  dimensionTop+=2;
+  if ((dimensionRight & 0x01) == 1) {
+    dimensionRight++;
   }
-  int dimension2=Math.max(transitionsBetween(topLeft,correctedTopRight).getTransitions(),transitionsBetween(bottomRight,correctedTopRight).getTransitions());
-  dimension2++;
-  if ((dimension2 & 0x01) == 1) {
-    dimension2++;
+  dimensionRight+=2;
+  BitMatrix bits=null;
+  ResultPoint correctedTopRight=null;
+  if (dimensionTop >= dimensionRight * 2 || dimensionRight >= dimensionTop * 2) {
+    correctedTopRight=correctTopRightRectangular(bottomLeft,bottomRight,topLeft,topRight,dimensionTop,dimensionRight);
+    if (correctedTopRight == null) {
+      correctedTopRight=topRight;
+    }
+    dimensionTop=transitionsBetween(topLeft,correctedTopRight).getTransitions();
+    dimensionRight=transitionsBetween(bottomRight,correctedTopRight).getTransitions();
+    if ((dimensionTop & 0x01) == 1) {
+      dimensionTop++;
+    }
+    if ((dimensionRight & 0x01) == 1) {
+      dimensionRight++;
+    }
+    bits=sampleGrid(image,topLeft,bottomLeft,bottomRight,correctedTopRight,dimensionTop,dimensionRight);
   }
-  BitMatrix bits=sampleGrid(image,topLeft,bottomLeft,bottomRight,correctedTopRight,dimension2);
+ else {
+    int dimension=Math.min(dimensionRight,dimensionTop);
+    correctedTopRight=correctTopRight(bottomLeft,bottomRight,topLeft,topRight,dimension);
+    if (correctedTopRight == null) {
+      correctedTopRight=topRight;
+    }
+    int dimensionCorrected=Math.max(transitionsBetween(topLeft,correctedTopRight).getTransitions(),transitionsBetween(bottomRight,correctedTopRight).getTransitions());
+    dimensionCorrected++;
+    if ((dimensionCorrected & 0x01) == 1) {
+      dimensionCorrected++;
+    }
+    bits=sampleGrid(image,topLeft,bottomLeft,bottomRight,correctedTopRight,dimensionCorrected,dimensionCorrected);
+  }
   return new DetectorResult(bits,new ResultPoint[]{topLeft,bottomLeft,bottomRight,correctedTopRight});
 }

@@ -9,7 +9,8 @@
   int numDataRegionsRow=symbolSizeRows / dataRegionSizeRows;
   int numDataRegionsColumn=symbolSizeColumns / dataRegionSizeColumns;
   int sizeDataRegionRow=numDataRegionsRow * dataRegionSizeRows;
-  BitMatrix bitMatrixWithoutAlignment=new BitMatrix(sizeDataRegionRow);
+  int sizeDataRegionColumn=numDataRegionsColumn * dataRegionSizeColumns;
+  BitMatrix bitMatrixWithoutAlignment=new BitMatrix(sizeDataRegionColumn,sizeDataRegionRow);
   for (int dataRegionRow=0; dataRegionRow < numDataRegionsRow; ++dataRegionRow) {
     int dataRegionRowOffset=dataRegionRow * dataRegionSizeRows;
     for (int dataRegionColumn=0; dataRegionColumn < numDataRegionsColumn; ++dataRegionColumn) {
