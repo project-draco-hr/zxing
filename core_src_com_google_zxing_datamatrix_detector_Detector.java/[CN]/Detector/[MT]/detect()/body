@@ -67,8 +67,8 @@
     dimensionRight++;
   }
   dimensionRight+=2;
-  BitMatrix bits=null;
-  ResultPoint correctedTopRight=null;
+  BitMatrix bits;
+  ResultPoint correctedTopRight;
   if (dimensionTop >= dimensionRight * 2 || dimensionRight >= dimensionTop * 2) {
     correctedTopRight=correctTopRightRectangular(bottomLeft,bottomRight,topLeft,topRight,dimensionTop,dimensionRight);
     if (correctedTopRight == null) {
