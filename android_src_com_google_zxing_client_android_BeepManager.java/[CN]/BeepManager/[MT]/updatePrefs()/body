@@ -1,0 +1,9 @@
+{
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
+  playBeep=shouldBeep(prefs,activity);
+  vibrate=prefs.getBoolean(PreferencesActivity.KEY_VIBRATE,false);
+  if (playBeep && mediaPlayer == null) {
+    activity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+    mediaPlayer=buildMediaPlayer(activity);
+  }
+}

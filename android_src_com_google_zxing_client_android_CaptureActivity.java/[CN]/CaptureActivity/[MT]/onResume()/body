@@ -42,14 +42,6 @@
     characterSet=null;
   }
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
-  playBeep=prefs.getBoolean(PreferencesActivity.KEY_PLAY_BEEP,true);
-  if (playBeep) {
-    AudioManager audioService=(AudioManager)getSystemService(AUDIO_SERVICE);
-    if (audioService.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
-      playBeep=false;
-    }
-  }
-  vibrate=prefs.getBoolean(PreferencesActivity.KEY_VIBRATE,false);
   copyToClipboard=prefs.getBoolean(PreferencesActivity.KEY_COPY_TO_CLIPBOARD,true);
-  initBeepSound();
+  beepManager.updatePrefs();
 }

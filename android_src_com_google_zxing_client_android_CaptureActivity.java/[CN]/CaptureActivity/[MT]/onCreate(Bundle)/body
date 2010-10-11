@@ -13,5 +13,6 @@
   historyManager=new HistoryManager(this);
   historyManager.trimHistory();
   inactivityTimer=new InactivityTimer(this);
+  beepManager=new BeepManager(this);
   showHelpOnFirstLaunch();
 }

@@ -6,7 +6,7 @@
     handleDecodeInternally(rawResult,null);
   }
  else {
-    playBeepSoundAndVibrate();
+    beepManager.playBeepSoundAndVibrate();
     drawResultPoints(barcode,rawResult);
 switch (source) {
 case NATIVE_APP_INTENT:

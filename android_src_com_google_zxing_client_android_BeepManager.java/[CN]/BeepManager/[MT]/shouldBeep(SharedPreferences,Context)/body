@@ -1,0 +1,10 @@
+{
+  boolean shouldPlayBeep=prefs.getBoolean(PreferencesActivity.KEY_PLAY_BEEP,true);
+  if (shouldPlayBeep) {
+    AudioManager audioService=(AudioManager)activity.getSystemService(Context.AUDIO_SERVICE);
+    if (audioService.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
+      shouldPlayBeep=false;
+    }
+  }
+  return shouldPlayBeep;
+}
