@@ -32,21 +32,30 @@
         }
       }
  else {
-        int count=bits.readBits(mode.getCharacterCountBits(version));
-        if (mode.equals(Mode.NUMERIC)) {
-          decodeNumericSegment(bits,result,count);
-        }
- else         if (mode.equals(Mode.ALPHANUMERIC)) {
-          decodeAlphanumericSegment(bits,result,count,fc1InEffect);
-        }
- else         if (mode.equals(Mode.BYTE)) {
-          decodeByteSegment(bits,result,count,currentCharacterSetECI,byteSegments,hints);
-        }
- else         if (mode.equals(Mode.KANJI)) {
-          decodeKanjiSegment(bits,result,count);
+        if (mode.equals(Mode.HANZI)) {
+          int subset=bits.readBits(4);
+          int countHanzi=bits.readBits(mode.getCharacterCountBits(version));
+          if (subset == GB2312_SUBSET) {
+            decodeHanziSegment(bits,result,countHanzi);
+          }
         }
  else {
-          throw FormatException.getFormatInstance();
+          int count=bits.readBits(mode.getCharacterCountBits(version));
+          if (mode.equals(Mode.NUMERIC)) {
+            decodeNumericSegment(bits,result,count);
+          }
+ else           if (mode.equals(Mode.ALPHANUMERIC)) {
+            decodeAlphanumericSegment(bits,result,count,fc1InEffect);
+          }
+ else           if (mode.equals(Mode.BYTE)) {
+            decodeByteSegment(bits,result,count,currentCharacterSetECI,byteSegments,hints);
+          }
+ else           if (mode.equals(Mode.KANJI)) {
+            decodeKanjiSegment(bits,result,count);
+          }
+ else {
+            throw FormatException.getFormatInstance();
+          }
         }
       }
     }

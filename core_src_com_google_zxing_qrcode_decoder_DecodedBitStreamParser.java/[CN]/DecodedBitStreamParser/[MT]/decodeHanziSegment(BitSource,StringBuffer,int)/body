@@ -1,0 +1,24 @@
+{
+  byte[] buffer=new byte[2 * count];
+  int offset=0;
+  while (count > 0) {
+    int twoBytes=bits.readBits(13);
+    int assembledTwoBytes=((twoBytes / 0x060) << 8) | (twoBytes % 0x060);
+    if (assembledTwoBytes < 0x003BF) {
+      assembledTwoBytes+=0x0A1A1;
+    }
+ else {
+      assembledTwoBytes+=0x0A6A1;
+    }
+    buffer[offset]=(byte)((assembledTwoBytes >> 8) & 0xFF);
+    buffer[offset + 1]=(byte)((assembledTwoBytes) & 0xFF);
+    offset+=2;
+    count--;
+  }
+  try {
+    result.append(new String(buffer,StringUtils.GB2312));
+  }
+ catch (  UnsupportedEncodingException uee) {
+    throw FormatException.getFormatInstance();
+  }
+}
