@@ -42,6 +42,12 @@
   contentsTextView.setText(displayContents);
   int scaledSize=Math.max(22,32 - displayContents.length() / 4);
   contentsTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,scaledSize);
+  TextView supplementTextView=(TextView)findViewById(R.id.contents_supplement_text_view);
+  supplementTextView.setText("");
+  supplementTextView.setOnClickListener(null);
+  if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(PreferencesActivity.KEY_SUPPLEMENTAL,true)) {
+    SupplementalInfoRetriever.maybeInvokeRetrieval(supplementTextView,resultHandler.getResult(),handler,this);
+  }
   int buttonCount=resultHandler.getButtonCount();
   ViewGroup buttonView=(ViewGroup)findViewById(R.id.result_button_view);
   buttonView.requestFocus();

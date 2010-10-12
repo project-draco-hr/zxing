@@ -1,0 +1,14 @@
+{
+  SupplementalInfoRetriever retriever=null;
+  if (result instanceof URIParsedResult) {
+    retriever=new URIResultInfoRetriever(textView,(URIParsedResult)result,handler,context);
+  }
+ else   if (result instanceof ProductParsedResult) {
+    retriever=new ProductResultInfoRetriever(textView,(ProductParsedResult)result,handler,context);
+  }
+  if (retriever != null) {
+    ExecutorService executor=getExecutorService();
+    Future<?> future=executor.submit(retriever);
+    executor.submit(new KillerCallable(future,10,TimeUnit.SECONDS));
+  }
+}

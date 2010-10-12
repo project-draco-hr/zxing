@@ -1,0 +1,4 @@
+TextView textView
+URIParsedResult result
+Handler handler
+Context context

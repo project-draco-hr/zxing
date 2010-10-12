@@ -1,0 +1,13 @@
+{
+  final TextView textView=textViewRef.get();
+  if (textView == null) {
+    throw new InterruptedException();
+  }
+  handler.post(new Runnable(){
+    public void run(){
+      Spanned html=Html.fromHtml(newText + '\n');
+      textView.append(html);
+    }
+  }
+);
+}

@@ -1,0 +1,4 @@
+TextView textView
+ProductParsedResult result
+Handler handler
+Context context

@@ -1,0 +1,8 @@
+{
+  for (  String redirectorHost : REDIRECTOR_HOSTS) {
+    if (uri.startsWith(redirectorHost)) {
+      return true;
+    }
+  }
+  return false;
+}
