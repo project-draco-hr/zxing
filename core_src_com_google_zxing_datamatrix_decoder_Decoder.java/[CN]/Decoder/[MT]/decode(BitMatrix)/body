@@ -1,6 +1,6 @@
 {
   BitMatrixParser parser=new BitMatrixParser(bits);
-  Version version=parser.readVersion(bits);
+  Version version=parser.getVersion();
   byte[] codewords=parser.readCodewords();
   DataBlock[] dataBlocks=DataBlock.getDataBlocks(codewords,version);
   int totalBytes=0;
