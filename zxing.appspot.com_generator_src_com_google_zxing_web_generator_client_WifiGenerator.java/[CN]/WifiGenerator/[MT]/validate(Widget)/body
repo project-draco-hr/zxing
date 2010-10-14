@@ -1,5 +1,11 @@
 {
-  if (widget == ssid)   getSsidField();
-  if (widget == password)   getPasswordField();
-  if (widget == networkType)   getNetworkTypeField();
+  if (widget == ssid) {
+    getSsidField();
+  }
+  if (widget == password) {
+    getPasswordField();
+  }
+  if (widget == networkType) {
+    getNetworkTypeField();
+  }
 }

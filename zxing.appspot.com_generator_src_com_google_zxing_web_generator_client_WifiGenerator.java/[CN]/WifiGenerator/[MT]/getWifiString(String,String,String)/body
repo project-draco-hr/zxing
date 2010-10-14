@@ -1,5 +1,5 @@
 {
-  StringBuilder output=new StringBuilder();
+  StringBuilder output=new StringBuilder(100);
   output.append("WIFI:");
   output.append("S:").append(ssid).append(';');
   maybeAppend(output,"T:",type);
