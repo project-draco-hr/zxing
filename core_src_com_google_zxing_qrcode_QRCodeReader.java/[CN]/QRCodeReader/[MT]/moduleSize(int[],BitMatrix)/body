@@ -1,0 +1,18 @@
+{
+  int height=image.getHeight();
+  int width=image.getWidth();
+  int x=leftTopBlack[0];
+  int y=leftTopBlack[1];
+  while (x < width && y < height && image.get(x,y)) {
+    x++;
+    y++;
+  }
+  if (x == width || y == height) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  int moduleSize=x - leftTopBlack[0];
+  if (moduleSize == 0) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  return moduleSize;
+}

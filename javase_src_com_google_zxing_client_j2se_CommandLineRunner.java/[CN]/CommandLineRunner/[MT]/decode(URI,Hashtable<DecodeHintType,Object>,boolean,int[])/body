@@ -36,6 +36,4 @@
     System.out.println(uri.toString() + ": No barcode found");
     return null;
   }
- finally {
-  }
 }

@@ -7,8 +7,8 @@
   int moduleSize=moduleSize(leftTopBlack,image);
   int top=leftTopBlack[1];
   int bottom=rightBottomBlack[1];
-  int left=leftTopBlack[0];
-  int right=rightBottomBlack[0];
+  int left=findPatternStart(leftTopBlack[0],top,image);
+  int right=findPatternEnd(leftTopBlack[0],top,image);
   int matrixWidth=(right - left + 1) / moduleSize;
   int matrixHeight=(bottom - top + 1) / moduleSize;
   if (matrixWidth == 0 || matrixHeight == 0) {

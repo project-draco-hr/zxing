@@ -1,6 +1,6 @@
 {
   int width=bitMatrix.getWidth();
-  int height=width;
+  int height=bitMatrix.getHeight();
   erasures=new int[MAX_CW_CAPACITY];
   float moduleWidth=1.0f;
   int[] rowCounters=new int[width];

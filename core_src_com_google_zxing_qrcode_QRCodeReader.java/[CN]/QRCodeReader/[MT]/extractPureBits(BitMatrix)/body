@@ -1,48 +1,28 @@
 {
-  int height=image.getHeight();
-  int width=image.getWidth();
-  int minDimension=Math.min(height,width);
   int[] leftTopBlack=image.getTopLeftOnBit();
-  if (leftTopBlack == null) {
+  int[] rightBottomBlack=image.getBottomRightOnBit();
+  if (leftTopBlack == null || rightBottomBlack == null) {
     throw NotFoundException.getNotFoundInstance();
   }
-  int x=leftTopBlack[0];
-  int y=leftTopBlack[1];
-  while (x < minDimension && y < minDimension && image.get(x,y)) {
-    x++;
-    y++;
-  }
-  if (x == minDimension || y == minDimension) {
+  int moduleSize=moduleSize(leftTopBlack,image);
+  int top=leftTopBlack[1];
+  int bottom=rightBottomBlack[1];
+  int left=leftTopBlack[0];
+  int right=rightBottomBlack[0];
+  int matrixWidth=(right - left + 1) / moduleSize;
+  int matrixHeight=(bottom - top + 1) / moduleSize;
+  if (matrixWidth == 0 || matrixHeight == 0) {
     throw NotFoundException.getNotFoundInstance();
   }
-  int moduleSize=x - leftTopBlack[0];
-  if (moduleSize == 0) {
-    throw NotFoundException.getNotFoundInstance();
-  }
-  int rowEndOfSymbol=width - 1;
-  while (rowEndOfSymbol > x && !image.get(rowEndOfSymbol,y)) {
-    rowEndOfSymbol--;
-  }
-  if (rowEndOfSymbol <= x) {
-    throw NotFoundException.getNotFoundInstance();
-  }
-  rowEndOfSymbol++;
-  if ((rowEndOfSymbol - x) % moduleSize != 0) {
-    throw NotFoundException.getNotFoundInstance();
-  }
-  int dimension=1 + ((rowEndOfSymbol - x) / moduleSize);
-  int backOffAmount=moduleSize == 1 ? 1 : moduleSize >> 1;
-  x-=backOffAmount;
-  y-=backOffAmount;
-  if ((x + (dimension - 1) * moduleSize) >= width || (y + (dimension - 1) * moduleSize) >= height) {
-    throw NotFoundException.getNotFoundInstance();
-  }
-  BitMatrix bits=new BitMatrix(dimension);
-  for (int i=0; i < dimension; i++) {
-    int iOffset=y + i * moduleSize;
-    for (int j=0; j < dimension; j++) {
-      if (image.get(x + j * moduleSize,iOffset)) {
-        bits.set(j,i);
+  int nudge=moduleSize >> 1;
+  top+=nudge;
+  left+=nudge;
+  BitMatrix bits=new BitMatrix(matrixWidth,matrixHeight);
+  for (int y=0; y < matrixHeight; y++) {
+    int iOffset=top + y * moduleSize;
+    for (int x=0; x < matrixWidth; x++) {
+      if (image.get(left + x * moduleSize,iOffset)) {
+        bits.set(x,y);
       }
     }
   }

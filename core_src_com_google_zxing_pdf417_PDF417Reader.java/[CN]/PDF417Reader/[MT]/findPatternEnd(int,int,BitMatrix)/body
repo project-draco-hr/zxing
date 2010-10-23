@@ -1,0 +1,21 @@
+{
+  int width=image.getWidth();
+  int end=width - 1;
+  while (end > x && !image.get(end,y)) {
+    end--;
+  }
+  int transitions=0;
+  boolean black=true;
+  while (end > x && transitions < 9) {
+    end--;
+    boolean newBlack=image.get(end,y);
+    if (black != newBlack) {
+      transitions++;
+    }
+    black=newBlack;
+  }
+  if (end == x) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  return end;
+}
