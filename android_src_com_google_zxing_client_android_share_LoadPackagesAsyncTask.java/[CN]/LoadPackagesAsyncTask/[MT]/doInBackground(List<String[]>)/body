@@ -1,6 +1,6 @@
 {
   List<String[]> labelsPackages=objects[0];
-  PackageManager packageManager=appPickerActivity.getPackageManager();
+  PackageManager packageManager=activity.getPackageManager();
   List<ApplicationInfo> appInfos=packageManager.getInstalledApplications(0);
   for (  ApplicationInfo appInfo : appInfos) {
     CharSequence label=appInfo.loadLabel(packageManager);

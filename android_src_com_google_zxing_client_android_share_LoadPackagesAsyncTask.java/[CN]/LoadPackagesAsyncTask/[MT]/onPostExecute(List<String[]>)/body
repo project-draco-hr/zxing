@@ -3,7 +3,10 @@
   for (  String[] result : results) {
     labels.add(result[0]);
   }
-  ListAdapter listAdapter=new ArrayAdapter<String>(appPickerActivity,android.R.layout.simple_list_item_1,labels);
-  appPickerActivity.setListAdapter(listAdapter);
-  appPickerActivity.getProgressDialog().dismiss();
+  ListAdapter listAdapter=new ArrayAdapter<String>(activity,android.R.layout.simple_list_item_1,labels);
+  activity.setListAdapter(listAdapter);
+  if (dialog != null) {
+    dialog.dismiss();
+    dialog=null;
+  }
 }
