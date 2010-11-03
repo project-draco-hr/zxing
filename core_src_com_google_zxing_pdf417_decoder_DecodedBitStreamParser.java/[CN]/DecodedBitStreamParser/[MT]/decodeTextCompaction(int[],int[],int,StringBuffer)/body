@@ -63,7 +63,8 @@ if (subModeCh == PL) {
  else if (subModeCh == 26) {
   ch=' ';
 }
- else if (subModeCh == AS) {
+ else if (subModeCh == LL) {
+  subMode=LOWER;
 }
  else if (subModeCh == AL) {
   subMode=ALPHA;

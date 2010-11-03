@@ -33,6 +33,7 @@ case NUMERIC_COMPACTION_MODE_LATCH:
 case MODE_SHIFT_TO_BYTE_COMPACTION_MODE:
 {
     textCompactionData[index]=MODE_SHIFT_TO_BYTE_COMPACTION_MODE;
+    code=codewords[codeIndex++];
     byteCompactionData[index]=code;
     index++;
     break;
