@@ -1,3 +1,0 @@
-{
-  dialog=ProgressDialog.show(activity,"",activity.getString(R.string.msg_loading_apps),true,true);
-}

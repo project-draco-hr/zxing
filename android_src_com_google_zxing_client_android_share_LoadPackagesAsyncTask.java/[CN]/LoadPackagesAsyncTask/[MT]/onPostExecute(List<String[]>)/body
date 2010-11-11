@@ -5,8 +5,4 @@
   }
   ListAdapter listAdapter=new ArrayAdapter<String>(activity,android.R.layout.simple_list_item_1,labels);
   activity.setListAdapter(listAdapter);
-  if (dialog != null) {
-    dialog.dismiss();
-    dialog=null;
-  }
 }

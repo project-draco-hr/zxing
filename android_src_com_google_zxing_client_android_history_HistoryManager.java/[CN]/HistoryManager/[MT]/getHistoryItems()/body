@@ -1,7 +1,14 @@
 {
   SQLiteOpenHelper helper=new DBHelper(activity);
   List<Result> items=new ArrayList<Result>();
-  SQLiteDatabase db=helper.getReadableDatabase();
+  SQLiteDatabase db;
+  try {
+    db=helper.getWritableDatabase();
+  }
+ catch (  SQLiteException sqle) {
+    Log.w(TAG,"Error while opening database",sqle);
+    return Collections.emptyList();
+  }
   Cursor cursor=null;
   try {
     cursor=db.query(DBHelper.TABLE_NAME,GET_ITEM_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");

@@ -8,7 +8,14 @@
     deletePrevious(result.getText());
   }
   SQLiteOpenHelper helper=new DBHelper(activity);
-  SQLiteDatabase db=helper.getWritableDatabase();
+  SQLiteDatabase db;
+  try {
+    db=helper.getWritableDatabase();
+  }
+ catch (  SQLiteException sqle) {
+    Log.w(TAG,"Error while opening database",sqle);
+    return;
+  }
   try {
     ContentValues values=new ContentValues();
     values.put(DBHelper.TEXT_COL,result.getText());

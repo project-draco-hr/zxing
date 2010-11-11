@@ -1,6 +1,13 @@
 {
   SQLiteOpenHelper helper=new DBHelper(activity);
-  SQLiteDatabase db=helper.getWritableDatabase();
+  SQLiteDatabase db;
+  try {
+    db=helper.getWritableDatabase();
+  }
+ catch (  SQLiteException sqle) {
+    Log.w(TAG,"Error while opening database",sqle);
+    return;
+  }
   Cursor cursor=null;
   try {
     cursor=db.query(DBHelper.TABLE_NAME,ID_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
