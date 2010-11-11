@@ -1,3 +1,5 @@
 {
-  possibleResultPoints.add(point);
+synchronized (possibleResultPoints) {
+    possibleResultPoints.add(point);
+  }
 }
