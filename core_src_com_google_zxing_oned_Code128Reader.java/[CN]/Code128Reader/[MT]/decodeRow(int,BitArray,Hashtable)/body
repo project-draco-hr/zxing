@@ -98,7 +98,7 @@ case CODE_FNC_4_B:
 break;
 case CODE_SHIFT:
 isNextShifted=true;
-codeSet=CODE_CODE_C;
+codeSet=CODE_CODE_A;
 break;
 case CODE_CODE_A:
 codeSet=CODE_CODE_A;
@@ -140,17 +140,7 @@ break;
 break;
 }
 if (unshift) {
-switch (codeSet) {
-case CODE_CODE_A:
-codeSet=CODE_CODE_C;
-break;
-case CODE_CODE_B:
-codeSet=CODE_CODE_A;
-break;
-case CODE_CODE_C:
-codeSet=CODE_CODE_B;
-break;
-}
+codeSet=codeSet == CODE_CODE_A ? CODE_CODE_B : CODE_CODE_A;
 }
 }
 int width=row.getSize();
