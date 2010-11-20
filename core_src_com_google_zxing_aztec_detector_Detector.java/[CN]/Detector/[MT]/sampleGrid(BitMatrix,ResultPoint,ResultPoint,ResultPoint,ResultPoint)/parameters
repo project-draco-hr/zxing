@@ -1,0 +1,5 @@
+BitMatrix image
+ResultPoint topLeft
+ResultPoint bottomLeft
+ResultPoint bottomRight
+ResultPoint topRight

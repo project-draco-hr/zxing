@@ -1,0 +1,23 @@
+{
+  int nbDashed=1 + 2 * ((matrix.width - 1) / 2 / 16);
+  BitMatrix newMatrix=new BitMatrix(matrix.width - nbDashed,matrix.height - nbDashed);
+  int nx=0;
+  int ny=0;
+  for (int x=0; x < matrix.width; x++) {
+    ny=0;
+    if ((matrix.width / 2 - x) % 16 == 0) {
+      continue;
+    }
+    for (int y=0; y < matrix.height; y++) {
+      if ((matrix.width / 2 - y) % 16 == 0) {
+        continue;
+      }
+      if (matrix.get(x,y)) {
+        newMatrix.set(nx,ny);
+      }
+      ny++;
+    }
+    nx++;
+  }
+  return newMatrix;
+}

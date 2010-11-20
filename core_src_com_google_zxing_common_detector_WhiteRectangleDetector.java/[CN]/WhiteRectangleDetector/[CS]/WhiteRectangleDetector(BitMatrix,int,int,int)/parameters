@@ -1,0 +1,4 @@
+BitMatrix image
+int INIT_SIZE
+int x
+int y

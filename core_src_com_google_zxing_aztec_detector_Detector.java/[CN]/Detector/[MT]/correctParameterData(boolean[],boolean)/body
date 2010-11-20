@@ -1,0 +1,38 @@
+{
+  int numCodewords;
+  int numDataCodewords;
+  int codewordSize=4;
+  if (compact) {
+    numCodewords=7;
+    numDataCodewords=2;
+  }
+ else {
+    numCodewords=10;
+    numDataCodewords=4;
+  }
+  int numECCodewords=numCodewords - numDataCodewords;
+  int[] parameterWords=new int[numCodewords];
+  for (int i=0; i < numCodewords; i++) {
+    int flag=1;
+    for (int j=1; j <= codewordSize; j++) {
+      if (parameterData[codewordSize * i + codewordSize - j]) {
+        parameterWords[i]+=flag;
+      }
+      flag<<=1;
+    }
+  }
+  try {
+    ReedSolomonDecoder rsDecoder=new ReedSolomonDecoder(GenericGF.AZTEC_PARAM);
+    rsDecoder.decode(parameterWords,numECCodewords);
+  }
+ catch (  ReedSolomonException rse) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  for (int i=0; i < numDataCodewords; i++) {
+    int flag=1;
+    for (int j=1; j <= codewordSize; j++) {
+      parameterData[i * codewordSize + codewordSize - j]=(parameterWords[i] & flag) == flag;
+      flag<<=1;
+    }
+  }
+}

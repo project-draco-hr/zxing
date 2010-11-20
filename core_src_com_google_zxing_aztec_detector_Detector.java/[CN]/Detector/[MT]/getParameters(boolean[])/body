@@ -1,0 +1,26 @@
+{
+  int nbBitsForNbLayers=0;
+  int nbBitsForNbDatablocks=0;
+  if (compact) {
+    nbBitsForNbLayers=2;
+    nbBitsForNbDatablocks=6;
+  }
+ else {
+    nbBitsForNbLayers=5;
+    nbBitsForNbDatablocks=11;
+  }
+  for (int i=0; i < nbBitsForNbLayers; i++) {
+    nbLayers=nbLayers << 1;
+    if (parameterData[i]) {
+      nbLayers+=1;
+    }
+  }
+  for (int i=nbBitsForNbLayers; i < nbBitsForNbLayers + nbBitsForNbDatablocks; i++) {
+    nbDataBlocks=nbDataBlocks << 1;
+    if (parameterData[i]) {
+      nbDataBlocks+=1;
+    }
+  }
+  nbLayers++;
+  nbDataBlocks++;
+}

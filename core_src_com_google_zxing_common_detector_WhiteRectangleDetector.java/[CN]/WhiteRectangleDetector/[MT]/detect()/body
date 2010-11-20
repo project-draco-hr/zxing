@@ -1,8 +1,8 @@
 {
-  int left=(width - INIT_SIZE) >> 1;
-  int right=(width + INIT_SIZE) >> 1;
-  int up=(height - INIT_SIZE) >> 1;
-  int down=(height + INIT_SIZE) >> 1;
+  int left=left_init;
+  int right=right_init;
+  int up=up_init;
+  int down=down_init;
   boolean sizeExceeded=false;
   boolean aBlackPointFoundOnBorder=true;
   boolean atLeastOneBlackPointFoundOnBorder=false;

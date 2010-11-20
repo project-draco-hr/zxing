@@ -1,0 +1,5 @@
+BitMatrix bits
+ResultPoint[] points
+boolean compact
+int nbDatablocks
+int nbLayers

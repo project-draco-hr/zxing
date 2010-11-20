@@ -14,6 +14,9 @@
     if (formats.contains(BarcodeFormat.DATA_MATRIX)) {
       readers.addElement(new DataMatrixReader());
     }
+    if (formats.contains(BarcodeFormat.AZTEC)) {
+      readers.addElement(new AztecReader());
+    }
     if (formats.contains(BarcodeFormat.PDF417)) {
       readers.addElement(new PDF417Reader());
     }

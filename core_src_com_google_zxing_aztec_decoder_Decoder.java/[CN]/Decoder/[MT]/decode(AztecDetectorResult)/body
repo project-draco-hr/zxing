@@ -1,0 +1,11 @@
+{
+  ddata=detectorResult;
+  BitMatrix matrix=detectorResult.getBits();
+  if (!ddata.isCompact()) {
+    matrix=removeDashedLines(ddata.getBits());
+  }
+  boolean[] rawbits=extractBits(matrix);
+  boolean[] correctedBits=correctBits(rawbits);
+  String result=getEncodedData(correctedBits);
+  return new DecoderResult(null,result,null,null);
+}

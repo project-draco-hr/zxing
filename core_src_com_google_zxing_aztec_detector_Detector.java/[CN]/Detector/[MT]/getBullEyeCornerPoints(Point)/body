@@ -1,0 +1,53 @@
+{
+  Point pina=pCenter;
+  Point pinb=pCenter;
+  Point pinc=pCenter;
+  Point pind=pCenter;
+  Point pouta;
+  Point poutb;
+  Point poutc;
+  Point poutd;
+  boolean color=true;
+  for (nbCenterLayers=1; nbCenterLayers < 9; nbCenterLayers++) {
+    pouta=getFirstDifferent(pina,color,1,-1);
+    poutb=getFirstDifferent(pinb,color,1,1);
+    poutc=getFirstDifferent(pinc,color,-1,1);
+    poutd=getFirstDifferent(pind,color,-1,-1);
+    if (nbCenterLayers > 2) {
+      float q=(float)distance(poutd,pouta) * nbCenterLayers / (distance(pind,pina) * (nbCenterLayers + 2));
+      if (q < 0.75 || q > 1.25 || !isWhiteOrBlackRectangle(pouta,poutb,poutc,poutd)) {
+        break;
+      }
+    }
+    pina=pouta;
+    pinb=poutb;
+    pinc=poutc;
+    pind=poutd;
+    color=!color;
+  }
+  if (nbCenterLayers != 5 && nbCenterLayers != 7) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  compact=nbCenterLayers == 5;
+  float ratio=0.75f * 2 / (2 * nbCenterLayers - 3);
+  int dx=pina.x - pinc.x;
+  int dy=pina.y - pinc.y;
+  int targetcx=round(pinc.x - ratio * dx);
+  int targetcy=round(pinc.y - ratio * dy);
+  int targetax=round(pina.x + ratio * dx);
+  int targetay=round(pina.y + ratio * dy);
+  dx=pinb.x - pind.x;
+  dy=pinb.y - pind.y;
+  int targetdx=round(pind.x - ratio * dx);
+  int targetdy=round(pind.y - ratio * dy);
+  int targetbx=round(pinb.x + ratio * dx);
+  int targetby=round(pinb.y + ratio * dy);
+  if (!isValid(targetax,targetay) || !isValid(targetbx,targetby) || !isValid(targetcx,targetcy)|| !isValid(targetdx,targetdy)) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  Point pa=new Point(targetax,targetay);
+  Point pb=new Point(targetbx,targetby);
+  Point pc=new Point(targetcx,targetcy);
+  Point pd=new Point(targetdx,targetdy);
+  return new Point[]{pa,pb,pc,pd};
+}

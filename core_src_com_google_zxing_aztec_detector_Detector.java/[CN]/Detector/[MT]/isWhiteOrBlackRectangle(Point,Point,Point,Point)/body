@@ -1,0 +1,24 @@
+{
+  int corr=3;
+  p1=new Point(p1.x - corr,p1.y + corr);
+  p2=new Point(p2.x - corr,p2.y - corr);
+  p3=new Point(p3.x + corr,p3.y - corr);
+  p4=new Point(p4.x + corr,p4.y + corr);
+  int cInit=getColor(p4,p1);
+  if (cInit == 0) {
+    return false;
+  }
+  int c=getColor(p1,p2);
+  if (c != cInit || c == 0) {
+    return false;
+  }
+  c=getColor(p2,p3);
+  if (c != cInit || c == 0) {
+    return false;
+  }
+  c=getColor(p3,p4);
+  if (c != cInit || c == 0) {
+    return false;
+  }
+  return true;
+}

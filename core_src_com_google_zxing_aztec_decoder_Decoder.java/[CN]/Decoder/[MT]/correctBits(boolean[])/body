@@ -1,0 +1,82 @@
+{
+  GenericGF gf;
+  if (ddata.getNbLayers() <= 2) {
+    codewordSize=6;
+    gf=GenericGF.AZTEC_DATA_6;
+  }
+ else   if (ddata.getNbLayers() <= 8) {
+    codewordSize=8;
+    gf=GenericGF.AZTEC_DATA_8;
+  }
+ else   if (ddata.getNbLayers() <= 22) {
+    codewordSize=10;
+    gf=GenericGF.AZTEC_DATA_10;
+  }
+ else {
+    codewordSize=12;
+    gf=GenericGF.AZTEC_DATA_12;
+  }
+  int numDataCodewords=ddata.getNbDatablocks();
+  int numECCodewords=0;
+  int offset=0;
+  if (ddata.isCompact()) {
+    offset=NbBitsCompact[ddata.getNbLayers()] - numCodewords * codewordSize;
+    numECCodewords=NbDatablockCompact[ddata.getNbLayers()] - numDataCodewords;
+  }
+ else {
+    offset=NbBits[ddata.getNbLayers()] - numCodewords * codewordSize;
+    numECCodewords=NbDatablock[ddata.getNbLayers()] - numDataCodewords;
+  }
+  int[] dataWords=new int[numCodewords];
+  for (int i=0; i < numCodewords; i++) {
+    int flag=1;
+    for (int j=1; j <= codewordSize; j++) {
+      if (rawbits[codewordSize * i + codewordSize - j + offset]) {
+        dataWords[i]+=flag;
+      }
+      flag<<=1;
+    }
+    if (dataWords[i] >= flag) {
+      flag++;
+    }
+  }
+  rawbits=null;
+  try {
+    ReedSolomonDecoder rsDecoder=new ReedSolomonDecoder(gf);
+    rsDecoder.decode(dataWords,numECCodewords);
+  }
+ catch (  ReedSolomonException rse) {
+    System.out.println("END: invalid RS");
+    throw FormatException.getFormatInstance();
+  }
+  offset=0;
+  boolean[] correctedBits=new boolean[numDataCodewords * codewordSize];
+  for (int i=0; i < numDataCodewords; i++) {
+    boolean seriesColor=false;
+    int seriesCount=0;
+    int flag=1 << (codewordSize - 1);
+    for (int j=0; j < codewordSize; j++) {
+      boolean color=(dataWords[i] & flag) == flag;
+      if (seriesCount != codewordSize - 1) {
+        if (seriesColor == color) {
+          seriesCount++;
+        }
+ else {
+          seriesCount=1;
+          seriesColor=color;
+        }
+        correctedBits[i * codewordSize + j - offset]=color;
+      }
+ else {
+        if (color == seriesColor) {
+          throw FormatException.getFormatInstance();
+        }
+        seriesColor=false;
+        seriesCount=0;
+        offset++;
+      }
+      flag>>>=1;
+    }
+  }
+  return correctedBits;
+}

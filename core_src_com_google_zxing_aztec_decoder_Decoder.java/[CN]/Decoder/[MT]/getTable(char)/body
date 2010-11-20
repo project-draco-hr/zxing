@@ -1,0 +1,24 @@
+{
+  int table=UPPER;
+switch (t) {
+case 'U':
+    table=UPPER;
+  break;
+case 'L':
+table=LOWER;
+break;
+case 'P':
+table=PUNCT;
+break;
+case 'M':
+table=MIXED;
+break;
+case 'D':
+table=DIGIT;
+break;
+case 'B':
+table=BINARY;
+break;
+}
+return table;
+}

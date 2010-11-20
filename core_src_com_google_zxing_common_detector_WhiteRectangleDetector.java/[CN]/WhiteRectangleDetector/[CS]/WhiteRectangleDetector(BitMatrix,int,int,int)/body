@@ -1,0 +1,10 @@
+{
+  this.image=image;
+  height=image.getHeight();
+  width=image.getWidth();
+  int halfsize=INIT_SIZE >> 1;
+  left_init=x - halfsize;
+  right_init=x + halfsize;
+  up_init=y - halfsize;
+  down_init=y + halfsize;
+}

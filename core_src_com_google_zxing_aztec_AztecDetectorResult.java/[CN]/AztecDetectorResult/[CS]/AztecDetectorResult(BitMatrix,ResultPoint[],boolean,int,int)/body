@@ -1,0 +1,6 @@
+{
+  super(bits,points);
+  this.compact=compact;
+  this.nbDatablocks=nbDatablocks;
+  this.nbLayers=nbLayers;
+}

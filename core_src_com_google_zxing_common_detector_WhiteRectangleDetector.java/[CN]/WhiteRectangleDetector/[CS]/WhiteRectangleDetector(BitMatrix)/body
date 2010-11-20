@@ -2,4 +2,8 @@
   this.image=image;
   height=image.getHeight();
   width=image.getWidth();
+  left_init=(width - INIT_SIZE) >> 1;
+  right_init=(width + INIT_SIZE) >> 1;
+  up_init=(height - INIT_SIZE) >> 1;
+  down_init=(height + INIT_SIZE) >> 1;
 }

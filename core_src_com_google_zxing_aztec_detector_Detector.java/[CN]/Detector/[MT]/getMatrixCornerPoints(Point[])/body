@@ -1,0 +1,23 @@
+{
+  float ratio=(2 * nbLayers + (nbLayers > 4 ? 1 : 0) + (nbLayers - 4) / 8) / (2.0f * nbCenterLayers);
+  int dx=bullEyeCornerPoints[0].x - bullEyeCornerPoints[2].x;
+  dx+=dx > 0 ? 1 : -1;
+  int dy=bullEyeCornerPoints[0].y - bullEyeCornerPoints[2].y;
+  dy+=dy > 0 ? 1 : -1;
+  int targetcx=round(bullEyeCornerPoints[2].x - ratio * dx);
+  int targetcy=round(bullEyeCornerPoints[2].y - ratio * dy);
+  int targetax=round(bullEyeCornerPoints[0].x + ratio * dx);
+  int targetay=round(bullEyeCornerPoints[0].y + ratio * dy);
+  dx=bullEyeCornerPoints[1].x - bullEyeCornerPoints[3].x;
+  dx+=dx > 0 ? 1 : -1;
+  dy=bullEyeCornerPoints[1].y - bullEyeCornerPoints[3].y;
+  dy+=dy > 0 ? 1 : -1;
+  int targetdx=round(bullEyeCornerPoints[3].x - ratio * dx);
+  int targetdy=round(bullEyeCornerPoints[3].y - ratio * dy);
+  int targetbx=round(bullEyeCornerPoints[1].x + ratio * dx);
+  int targetby=round(bullEyeCornerPoints[1].y + ratio * dy);
+  if (!isValid(targetax,targetay) || !isValid(targetbx,targetby) || !isValid(targetcx,targetcy)|| !isValid(targetdx,targetdy)) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  return new ResultPoint[]{new ResultPoint(targetax,targetay),new ResultPoint(targetbx,targetby),new ResultPoint(targetcx,targetcy),new ResultPoint(targetdx,targetdy)};
+}

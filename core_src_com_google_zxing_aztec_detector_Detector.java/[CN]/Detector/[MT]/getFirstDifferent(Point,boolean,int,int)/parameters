@@ -1,0 +1,4 @@
+Point init
+boolean color
+int dx
+int dy

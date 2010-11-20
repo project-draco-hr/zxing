@@ -1,0 +1,3 @@
+boolean[] rawbits
+int startIndex
+int length
