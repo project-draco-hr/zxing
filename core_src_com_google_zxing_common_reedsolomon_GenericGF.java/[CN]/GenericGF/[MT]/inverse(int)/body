@@ -1,0 +1,7 @@
+{
+  checkInit();
+  if (a == 0) {
+    throw new ArithmeticException();
+  }
+  return expTable[size - logTable[a] - 1];
+}

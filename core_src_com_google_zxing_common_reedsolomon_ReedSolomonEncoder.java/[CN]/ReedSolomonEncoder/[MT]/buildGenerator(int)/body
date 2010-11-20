@@ -1,11 +1,11 @@
 {
   if (degree >= cachedGenerators.size()) {
-    GF256Poly lastGenerator=(GF256Poly)cachedGenerators.elementAt(cachedGenerators.size() - 1);
+    GenericGFPoly lastGenerator=(GenericGFPoly)cachedGenerators.elementAt(cachedGenerators.size() - 1);
     for (int d=cachedGenerators.size(); d <= degree; d++) {
-      GF256Poly nextGenerator=lastGenerator.multiply(new GF256Poly(field,new int[]{1,field.exp(d - 1)}));
+      GenericGFPoly nextGenerator=lastGenerator.multiply(new GenericGFPoly(field,new int[]{1,field.exp(d - 1)}));
       cachedGenerators.addElement(nextGenerator);
       lastGenerator=nextGenerator;
     }
   }
-  return (GF256Poly)cachedGenerators.elementAt(degree);
+  return (GenericGFPoly)cachedGenerators.elementAt(degree);
 }

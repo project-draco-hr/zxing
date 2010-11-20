@@ -1,0 +1,44 @@
+{
+  if (a.getDegree() < b.getDegree()) {
+    GenericGFPoly temp=a;
+    a=b;
+    b=temp;
+  }
+  GenericGFPoly rLast=a;
+  GenericGFPoly r=b;
+  GenericGFPoly sLast=field.getOne();
+  GenericGFPoly s=field.getZero();
+  GenericGFPoly tLast=field.getZero();
+  GenericGFPoly t=field.getOne();
+  while (r.getDegree() >= R / 2) {
+    GenericGFPoly rLastLast=rLast;
+    GenericGFPoly sLastLast=sLast;
+    GenericGFPoly tLastLast=tLast;
+    rLast=r;
+    sLast=s;
+    tLast=t;
+    if (rLast.isZero()) {
+      throw new ReedSolomonException("r_{i-1} was zero");
+    }
+    r=rLastLast;
+    GenericGFPoly q=field.getZero();
+    int denominatorLeadingTerm=rLast.getCoefficient(rLast.getDegree());
+    int dltInverse=field.inverse(denominatorLeadingTerm);
+    while (r.getDegree() >= rLast.getDegree() && !r.isZero()) {
+      int degreeDiff=r.getDegree() - rLast.getDegree();
+      int scale=field.multiply(r.getCoefficient(r.getDegree()),dltInverse);
+      q=q.addOrSubtract(field.buildMonomial(degreeDiff,scale));
+      r=r.addOrSubtract(rLast.multiplyByMonomial(degreeDiff,scale));
+    }
+    s=q.multiply(sLast).addOrSubtract(sLastLast);
+    t=q.multiply(tLast).addOrSubtract(tLastLast);
+  }
+  int sigmaTildeAtZero=t.getCoefficient(0);
+  if (sigmaTildeAtZero == 0) {
+    throw new ReedSolomonException("sigmaTilde(0) was zero");
+  }
+  int inverse=field.inverse(sigmaTildeAtZero);
+  GenericGFPoly sigma=t.multiply(inverse);
+  GenericGFPoly omega=r.multiply(inverse);
+  return new GenericGFPoly[]{sigma,omega};
+}

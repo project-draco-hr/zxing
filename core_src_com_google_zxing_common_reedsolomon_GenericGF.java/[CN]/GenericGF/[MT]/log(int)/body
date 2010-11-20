@@ -1,0 +1,7 @@
+{
+  checkInit();
+  if (a == 0) {
+    throw new IllegalArgumentException();
+  }
+  return logTable[a];
+}

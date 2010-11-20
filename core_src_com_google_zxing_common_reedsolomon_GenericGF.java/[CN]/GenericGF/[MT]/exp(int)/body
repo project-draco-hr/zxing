@@ -1,0 +1,4 @@
+{
+  checkInit();
+  return expTable[a];
+}

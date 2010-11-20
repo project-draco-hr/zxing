@@ -1,0 +1,8 @@
+{
+  if (!GenericGF.QR_CODE_FIELD_256.equals(field)) {
+    throw new IllegalArgumentException("Only QR Code is supported at this time");
+  }
+  this.field=field;
+  this.cachedGenerators=new Vector();
+  cachedGenerators.addElement(new GenericGFPoly(field,new int[]{1}));
+}

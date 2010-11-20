@@ -1,8 +1,0 @@
-{
-  if (!GF256.QR_CODE_FIELD.equals(field)) {
-    throw new IllegalArgumentException("Only QR Code is supported at this time");
-  }
-  this.field=field;
-  this.cachedGenerators=new Vector();
-  cachedGenerators.addElement(new GF256Poly(field,new int[]{1}));
-}

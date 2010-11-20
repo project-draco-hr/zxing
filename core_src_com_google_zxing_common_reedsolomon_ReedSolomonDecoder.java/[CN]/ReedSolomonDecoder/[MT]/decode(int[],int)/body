@@ -1,7 +1,7 @@
 {
-  GF256Poly poly=new GF256Poly(field,received);
+  GenericGFPoly poly=new GenericGFPoly(field,received);
   int[] syndromeCoefficients=new int[twoS];
-  boolean dataMatrix=field.equals(GF256.DATA_MATRIX_FIELD);
+  boolean dataMatrix=field.equals(GenericGF.DATA_MATRIX_FIELD_256);
   boolean noError=true;
   for (int i=0; i < twoS; i++) {
     int eval=poly.evaluateAt(field.exp(dataMatrix ? i + 1 : i));
@@ -13,10 +13,10 @@
   if (noError) {
     return;
   }
-  GF256Poly syndrome=new GF256Poly(field,syndromeCoefficients);
-  GF256Poly[] sigmaOmega=runEuclideanAlgorithm(field.buildMonomial(twoS,1),syndrome,twoS);
-  GF256Poly sigma=sigmaOmega[0];
-  GF256Poly omega=sigmaOmega[1];
+  GenericGFPoly syndrome=new GenericGFPoly(field,syndromeCoefficients);
+  GenericGFPoly[] sigmaOmega=runEuclideanAlgorithm(field.buildMonomial(twoS,1),syndrome,twoS);
+  GenericGFPoly sigma=sigmaOmega[0];
+  GenericGFPoly omega=sigmaOmega[1];
   int[] errorLocations=findErrorLocations(sigma);
   int[] errorMagnitudes=findErrorMagnitudes(omega,errorLocations,dataMatrix);
   for (int i=0; i < errorLocations.length; i++) {
@@ -24,6 +24,6 @@
     if (position < 0) {
       throw new ReedSolomonException("Bad error location");
     }
-    received[position]=GF256.addOrSubtract(received[position],errorMagnitudes[i]);
+    received[position]=GenericGF.addOrSubtract(received[position],errorMagnitudes[i]);
   }
 }
