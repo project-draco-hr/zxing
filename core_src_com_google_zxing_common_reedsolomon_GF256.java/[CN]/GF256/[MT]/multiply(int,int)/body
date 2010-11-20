@@ -1,7 +1,0 @@
-{
-  if (a == 0 || b == 0) {
-    return 0;
-  }
-  int logSum=logTable[a] + logTable[b];
-  return expTable[(logSum & 0xFF) + (logSum >>> 8)];
-}

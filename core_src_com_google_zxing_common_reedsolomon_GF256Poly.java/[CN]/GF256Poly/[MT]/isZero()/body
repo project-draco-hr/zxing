@@ -1,3 +1,0 @@
-{
-  return coefficients[0] == 0;
-}
