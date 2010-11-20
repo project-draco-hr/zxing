@@ -1,5 +1,7 @@
 {
-synchronized (possibleResultPoints) {
-    possibleResultPoints.add(point);
+  List<ResultPoint> points=possibleResultPoints.get();
+  points.add(point);
+  if (points.size() > MAX_RESULT_POINTS) {
+    points.subList(0,points.size() - MAX_RESULT_POINTS / 2).clear();
   }
 }

@@ -11,7 +11,7 @@
   canvas.drawRect(frame.right + 1,frame.top,width,frame.bottom + 1,paint);
   canvas.drawRect(0,frame.bottom + 1,width,height,paint);
   if (resultBitmap != null) {
-    paint.setAlpha(OPAQUE);
+    paint.setAlpha(CURRENT_POINT_OPACITY);
     canvas.drawBitmap(resultBitmap,null,frame,paint);
   }
  else {
@@ -28,29 +28,25 @@
     Rect previewFrame=CameraManager.get().getFramingRectInPreview();
     float scaleX=frame.width() / (float)previewFrame.width();
     float scaleY=frame.height() / (float)previewFrame.height();
-    Collection<ResultPoint> currentPossible=possibleResultPoints;
-    Collection<ResultPoint> currentLast=lastPossibleResultPoints;
+    List<ResultPoint> currentPossible=possibleResultPoints.get();
+    List<ResultPoint> currentLast=lastPossibleResultPoints.get();
     if (currentPossible.isEmpty()) {
-      lastPossibleResultPoints=null;
+      lastPossibleResultPoints.set(null);
     }
  else {
-      possibleResultPoints=new HashSet<ResultPoint>(5);
-      lastPossibleResultPoints=currentPossible;
-      paint.setAlpha(OPAQUE);
+      possibleResultPoints.set(new ArrayList<ResultPoint>(5));
+      lastPossibleResultPoints.set(currentPossible);
+      paint.setAlpha(CURRENT_POINT_OPACITY);
       paint.setColor(resultPointColor);
-synchronized (currentPossible) {
-        for (        ResultPoint point : currentPossible) {
-          canvas.drawCircle(frame.left + (int)(point.getX() * scaleX),frame.top + (int)(point.getY() * scaleY),6.0f,paint);
-        }
+      for (      ResultPoint point : currentPossible) {
+        canvas.drawCircle(frame.left + (int)(point.getX() * scaleX),frame.top + (int)(point.getY() * scaleY),6.0f,paint);
       }
     }
     if (currentLast != null) {
-      paint.setAlpha(OPAQUE / 2);
+      paint.setAlpha(CURRENT_POINT_OPACITY / 2);
       paint.setColor(resultPointColor);
-synchronized (currentLast) {
-        for (        ResultPoint point : currentLast) {
-          canvas.drawCircle(frame.left + (int)(point.getX() * scaleX),frame.top + (int)(point.getY() * scaleY),3.0f,paint);
-        }
+      for (      ResultPoint point : currentLast) {
+        canvas.drawCircle(frame.left + (int)(point.getX() * scaleX),frame.top + (int)(point.getY() * scaleY),3.0f,paint);
       }
     }
     postInvalidateDelayed(ANIMATION_DELAY,frame.left,frame.top,frame.right,frame.bottom);
