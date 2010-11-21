@@ -3,18 +3,14 @@
   Point pinb=pCenter;
   Point pinc=pCenter;
   Point pind=pCenter;
-  Point pouta;
-  Point poutb;
-  Point poutc;
-  Point poutd;
   boolean color=true;
   for (nbCenterLayers=1; nbCenterLayers < 9; nbCenterLayers++) {
-    pouta=getFirstDifferent(pina,color,1,-1);
-    poutb=getFirstDifferent(pinb,color,1,1);
-    poutc=getFirstDifferent(pinc,color,-1,1);
-    poutd=getFirstDifferent(pind,color,-1,-1);
+    Point pouta=getFirstDifferent(pina,color,1,-1);
+    Point poutb=getFirstDifferent(pinb,color,1,1);
+    Point poutc=getFirstDifferent(pinc,color,-1,1);
+    Point poutd=getFirstDifferent(pind,color,-1,-1);
     if (nbCenterLayers > 2) {
-      float q=(float)distance(poutd,pouta) * nbCenterLayers / (distance(pind,pina) * (nbCenterLayers + 2));
+      float q=distance(poutd,pouta) * nbCenterLayers / (distance(pind,pina) * (nbCenterLayers + 2));
       if (q < 0.75 || q > 1.25 || !isWhiteOrBlackRectangle(pouta,poutb,poutc,poutd)) {
         break;
       }

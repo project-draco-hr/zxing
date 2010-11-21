@@ -1,7 +1,7 @@
 {
   int res=0;
   for (int i=startIndex; i < startIndex + length; i++) {
-    res=res << 1;
+    res<<=1;
     if (rawbits[i]) {
       res++;
     }

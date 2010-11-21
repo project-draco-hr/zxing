@@ -6,8 +6,7 @@
   int lastTable=UPPER;
   int table=UPPER;
   int startIndex=0;
-  int code;
-  StringBuilder result=new StringBuilder();
+  StringBuilder result=new StringBuilder(20);
   boolean end=false;
   boolean shift=false;
   boolean switchShift=false;
@@ -18,6 +17,7 @@
  else {
       lastTable=table;
     }
+    int code;
 switch (table) {
 case BINARY:
       if (endIndex - startIndex < 8) {
@@ -40,14 +40,14 @@ break;
 code=readCode(correctedBits,startIndex,size);
 startIndex+=size;
 String str=getCharacter(table,code);
-if (!str.startsWith("CTRL_")) {
-result.append(str);
-}
- else {
+if (str.startsWith("CTRL_")) {
 table=getTable(str.charAt(5));
 if (str.charAt(6) == 'S') {
 shift=true;
 }
+}
+ else {
+result.append(str);
 }
 break;
 }

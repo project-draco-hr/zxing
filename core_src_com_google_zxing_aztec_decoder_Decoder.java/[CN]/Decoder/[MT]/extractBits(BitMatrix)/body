@@ -1,26 +1,25 @@
 {
   boolean[] rawbits;
   if (ddata.isCompact()) {
-    if (ddata.getNbLayers() > NbBitsCompact.length) {
+    if (ddata.getNbLayers() > NB_BITS_COMPACT.length) {
       throw FormatException.getFormatInstance();
     }
-    rawbits=new boolean[NbBitsCompact[ddata.getNbLayers()]];
-    numCodewords=NbDatablockCompact[ddata.getNbLayers()];
+    rawbits=new boolean[NB_BITS_COMPACT[ddata.getNbLayers()]];
+    numCodewords=NB_DATABLOCK_COMPACT[ddata.getNbLayers()];
   }
  else {
-    if (ddata.getNbLayers() > NbBits.length) {
+    if (ddata.getNbLayers() > NB_BITS.length) {
       throw FormatException.getFormatInstance();
     }
-    rawbits=new boolean[NbBits[ddata.getNbLayers()]];
-    numCodewords=NbDatablock[ddata.getNbLayers()];
+    rawbits=new boolean[NB_BITS[ddata.getNbLayers()]];
+    numCodewords=NB_DATABLOCK[ddata.getNbLayers()];
   }
-  int flip;
   int layer=ddata.getNbLayers();
   int size=matrix.height;
   int rawbitsOffset=0;
   int matrixOffset=0;
   while (layer != 0) {
-    flip=0;
+    int flip=0;
     for (int i=0; i < 2 * size - 4; i++) {
       rawbits[rawbitsOffset + i]=matrix.get(matrixOffset + flip,matrixOffset + i / 2);
       rawbits[rawbitsOffset + 2 * size - 4 + i]=matrix.get(matrixOffset + i / 2,matrixOffset + size - 1 - flip);

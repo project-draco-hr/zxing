@@ -1,3 +1,5 @@
 {
-  if (!initialized)   initialize();
+  if (!initialized) {
+    initialize();
+  }
 }

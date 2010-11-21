@@ -17,8 +17,5 @@
     return false;
   }
   c=getColor(p3,p4);
-  if (c != cInit || c == 0) {
-    return false;
-  }
-  return true;
+  return c == cInit && c != 0;
 }

@@ -1,8 +1,6 @@
 {
-  DecoderResult decoderResult;
-  ResultPoint[] points;
   AztecDetectorResult detectorResult=new Detector(image.getBlackMatrix()).detect();
-  points=detectorResult.getPoints();
+  ResultPoint[] points=detectorResult.getPoints();
   if (hints != null && detectorResult.getPoints() != null) {
     ResultPointCallback rpcb=(ResultPointCallback)hints.get(DecodeHintType.NEED_RESULT_POINT_CALLBACK);
     if (rpcb != null) {
@@ -11,7 +9,7 @@
       }
     }
   }
-  decoderResult=new Decoder().decode(detectorResult);
+  DecoderResult decoderResult=new Decoder().decode(detectorResult);
   Result result=new Result(decoderResult.getText(),decoderResult.getRawBytes(),points,BarcodeFormat.AZTEC);
   if (decoderResult.getByteSegments() != null) {
     result.putMetadata(ResultMetadataType.BYTE_SEGMENTS,decoderResult.getByteSegments());

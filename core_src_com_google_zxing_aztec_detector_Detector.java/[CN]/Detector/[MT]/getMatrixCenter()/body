@@ -35,6 +35,5 @@
   }
   cx=round((pointA.getX() + pointD.getX() + pointB.getX()+ pointC.getX()) / 4);
   cy=round((pointA.getY() + pointD.getY() + pointB.getY()+ pointC.getY()) / 4);
-  Point pCenter=new Point(cx,cy);
-  return pCenter;
+  return new Point(cx,cy);
 }

@@ -1,8 +1,8 @@
 {
-  int left=left_init;
-  int right=right_init;
-  int up=up_init;
-  int down=down_init;
+  int left=leftInit;
+  int right=rightInit;
+  int up=upInit;
+  int down=downInit;
   boolean sizeExceeded=false;
   boolean aBlackPointFoundOnBorder=true;
   boolean atLeastOneBlackPointFoundOnBorder=false;

@@ -2,8 +2,8 @@
   boolean[] res=new boolean[size];
   float d=distance(p1,p2);
   float moduleSize=d / (size - 1);
-  float dx=moduleSize * (p2.x - p1.x) / (float)d;
-  float dy=moduleSize * (p2.y - p1.y) / (float)d;
+  float dx=moduleSize * (p2.x - p1.x) / d;
+  float dy=moduleSize * (p2.y - p1.y) / d;
   float px=p1.x;
   float py=p1.y;
   for (int i=0; i < size; i++) {
