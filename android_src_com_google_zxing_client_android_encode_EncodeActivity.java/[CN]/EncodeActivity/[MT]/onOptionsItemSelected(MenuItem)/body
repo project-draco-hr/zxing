@@ -6,7 +6,7 @@
   String contents=qrCodeEncoder.getContents();
   Bitmap bitmap;
   try {
-    bitmap=QRCodeEncoder.encodeAsBitmap(contents,BarcodeFormat.QR_CODE,SHARE_BARCODE_DIMENSION,SHARE_BARCODE_DIMENSION);
+    bitmap=qrCodeEncoder.encodeAsBitmap();
   }
  catch (  WriterException we) {
     Log.w(TAG,we);
