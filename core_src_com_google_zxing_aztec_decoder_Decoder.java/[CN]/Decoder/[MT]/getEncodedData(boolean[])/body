@@ -1,5 +1,5 @@
 {
-  int endIndex=codewordSize * ddata.getNbDatablocks();
+  int endIndex=codewordSize * ddata.getNbDatablocks() - invertedBitCount;
   if (endIndex > correctedBits.length) {
     throw FormatException.getFormatInstance();
   }
