@@ -2,13 +2,18 @@
   Intent intent=new Intent(Intent.ACTION_EDIT);
   intent.setType("vnd.android.cursor.item/event");
   intent.putExtra("beginTime",calculateMilliseconds(start));
-  if (start.length() == 8) {
+  boolean allDay=start.length() == 8;
+  if (allDay) {
     intent.putExtra("allDay",true);
   }
   if (end == null) {
     end=start;
   }
-  intent.putExtra("endTime",calculateMilliseconds(end));
+  long endMilliseconds=calculateMilliseconds(end);
+  if (allDay) {
+    endMilliseconds=lastSecondOfDay(endMilliseconds);
+  }
+  intent.putExtra("endTime",endMilliseconds);
   intent.putExtra("title",summary);
   intent.putExtra("eventLocation",location);
   intent.putExtra("description",description);
