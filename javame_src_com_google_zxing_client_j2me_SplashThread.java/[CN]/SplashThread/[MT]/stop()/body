@@ -1,5 +1,3 @@
 {
-synchronized (this) {
-    notifyAll();
-  }
+  notifyAll();
 }

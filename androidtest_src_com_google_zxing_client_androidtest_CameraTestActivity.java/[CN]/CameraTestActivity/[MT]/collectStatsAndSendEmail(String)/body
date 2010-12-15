@@ -1,5 +1,5 @@
 {
-  StringBuffer result=new StringBuffer();
+  StringBuilder result=new StringBuilder();
   result.append("Device info:");
   result.append("\n  Board: ");
   result.append(Build.BOARD);
@@ -33,15 +33,13 @@
   result.append(Build.VERSION.SDK);
   result.append("\n\n");
   result.append(parameters);
-  File file=new File("/sdcard/CameraParameters.txt");
   try {
+    File file=new File("/sdcard/CameraParameters.txt");
     FileOutputStream stream=new FileOutputStream(file);
     stream.write(result.toString().getBytes());
     stream.close();
   }
- catch (  FileNotFoundException e) {
-  }
-catch (  IOException e) {
+ catch (  IOException e) {
   }
   Intent intent=new Intent(Intent.ACTION_SEND);
   intent.putExtra(Intent.EXTRA_EMAIL,EMAIL_ADDRESS);

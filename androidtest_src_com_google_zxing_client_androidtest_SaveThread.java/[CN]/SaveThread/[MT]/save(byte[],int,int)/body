@@ -1,5 +1,5 @@
 {
-  final Rect framingRect=CameraManager.get().getFramingRect();
+  Rect framingRect=CameraManager.get().getFramingRect();
   int framingWidth=framingRect.width();
   int framingHeight=framingRect.height();
   if (framingWidth > width || framingHeight > height) {

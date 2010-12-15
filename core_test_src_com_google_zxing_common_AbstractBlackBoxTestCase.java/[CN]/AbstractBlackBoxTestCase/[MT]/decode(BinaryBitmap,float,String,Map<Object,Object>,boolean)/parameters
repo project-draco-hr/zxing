@@ -1,5 +1,5 @@
 BinaryBitmap source
 float rotation
 String expectedText
-Properties expectedMetadata
+Map<Object,Object> expectedMetadata
 boolean tryHarder

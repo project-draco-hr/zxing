@@ -1,5 +1,5 @@
 {
-  List<BenchmarkItem> items=(List<BenchmarkItem>)message.obj;
+  Iterable<BenchmarkItem> items=(Iterable<BenchmarkItem>)message.obj;
   int count=0;
   int time=0;
   for (  BenchmarkItem item : items) {

@@ -1,7 +1,7 @@
 {
   Camera.Parameters parameters=camera.getParameters();
   String[] params=parameters.flatten().split(";");
-  StringBuffer result=new StringBuffer();
+  StringBuilder result=new StringBuilder();
   result.append("Default camera parameters:");
   for (  String param : params) {
     result.append("\n  ");

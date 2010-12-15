@@ -26,7 +26,7 @@
     System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\''+ suffix);
     return false;
   }
-  Hashtable resultMetadata=result.getResultMetadata();
+  Hashtable<Object,Object> resultMetadata=result.getResultMetadata();
   for (  Map.Entry<Object,Object> metadatum : expectedMetadata.entrySet()) {
     ResultMetadataType key=ResultMetadataType.valueOf(metadatum.getKey().toString());
     Object expectedValue=metadatum.getValue();
