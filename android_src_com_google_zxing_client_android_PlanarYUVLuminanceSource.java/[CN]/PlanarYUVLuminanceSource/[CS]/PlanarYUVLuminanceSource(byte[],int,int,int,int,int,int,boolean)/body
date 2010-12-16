@@ -8,4 +8,7 @@
   this.dataHeight=dataHeight;
   this.left=left;
   this.top=top;
+  if (reverseHorizontal) {
+    reverseHorizontal(width,height);
+  }
 }

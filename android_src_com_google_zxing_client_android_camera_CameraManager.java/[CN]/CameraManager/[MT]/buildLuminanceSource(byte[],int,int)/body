@@ -2,13 +2,15 @@
   Rect rect=getFramingRectInPreview();
   int previewFormat=configManager.getPreviewFormat();
   String previewFormatString=configManager.getPreviewFormatString();
+  SharedPreferences sharedPrefs=PreferenceManager.getDefaultSharedPreferences(context);
+  boolean reverseHorizontal=sharedPrefs.getBoolean(PreferencesActivity.KEY_REVERSE_IMAGE,false);
 switch (previewFormat) {
 case PixelFormat.YCbCr_420_SP:
 case PixelFormat.YCbCr_422_SP:
-    return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
+    return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height(),reverseHorizontal);
 default :
   if ("yuv420p".equals(previewFormatString)) {
-    return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height());
+    return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height(),reverseHorizontal);
   }
 }
 throw new IllegalArgumentException("Unsupported picture format: " + previewFormat + '/'+ previewFormatString);

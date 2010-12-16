@@ -1,0 +1,11 @@
+{
+  byte[] yuvData=this.yuvData;
+  for (int y=0, rowStart=top * dataWidth + left; y < height; y++, rowStart+=dataWidth) {
+    int middle=rowStart + width / 2;
+    for (int x1=rowStart, x2=rowStart + width - 1; x1 < middle; x1++, x2--) {
+      byte temp=yuvData[x1];
+      yuvData[x1]=yuvData[x2];
+      yuvData[x2]=temp;
+    }
+  }
+}
