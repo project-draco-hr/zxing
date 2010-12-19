@@ -17,7 +17,7 @@
     return new WifiResultHandler(activity,result);
   }
  else   if (type.equals(ParsedResultType.TEXT)) {
-    return new TextResultHandler(activity,result);
+    return new TextResultHandler(activity,result,rawResult);
   }
  else   if (type.equals(ParsedResultType.GEO)) {
     return new GeoResultHandler(activity,result);
@@ -35,6 +35,6 @@
     return new ISBNResultHandler(activity,result,rawResult);
   }
  else {
-    return new TextResultHandler(activity,result);
+    return new TextResultHandler(activity,result,rawResult);
   }
 }
