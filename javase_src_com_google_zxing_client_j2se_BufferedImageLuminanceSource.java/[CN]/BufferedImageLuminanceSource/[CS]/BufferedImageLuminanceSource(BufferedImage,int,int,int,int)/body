@@ -5,7 +5,8 @@
   if (left + width > sourceWidth || top + height > sourceHeight) {
     throw new IllegalArgumentException("Crop rectangle does not fit within image data.");
   }
-  this.image=image;
+  this.image=new BufferedImage(sourceWidth,sourceHeight,BufferedImage.TYPE_BYTE_GRAY);
+  this.image.getGraphics().drawImage(image,0,0,null);
   this.left=left;
   this.top=top;
 }

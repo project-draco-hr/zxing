@@ -6,14 +6,6 @@
   if (row == null || row.length < width) {
     row=new byte[width];
   }
-  if (rgbData == null || rgbData.length < width) {
-    rgbData=new int[width];
-  }
-  image.getRGB(left,top + y,width,1,rgbData,0,width);
-  for (int x=0; x < width; x++) {
-    int pixel=rgbData[x];
-    int luminance=(306 * ((pixel >> 16) & 0xFF) + 601 * ((pixel >> 8) & 0xFF) + 117 * (pixel & 0xFF) + (0x200)) >> 10;
-    row[x]=(byte)luminance;
-  }
+  image.getRaster().getDataElements(left,top + y,width,1,row);
   return row;
 }
