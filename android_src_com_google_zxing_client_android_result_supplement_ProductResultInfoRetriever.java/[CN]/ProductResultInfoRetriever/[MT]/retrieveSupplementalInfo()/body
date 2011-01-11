@@ -1,5 +1,4 @@
 {
-  String productID=result.getProductID();
   String encodedProductID=URLEncoder.encode(productID,"UTF-8");
   String uri=BASE_PRODUCT_URI + encodedProductID;
   HttpUriRequest head=new HttpGet(uri);

@@ -1,4 +1,4 @@
 TextView textView
-ProductParsedResult result
+String productID
 Handler handler
 Context context
