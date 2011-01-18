@@ -1,6 +1,7 @@
 {
   Intent intent=new Intent();
-  intent.setAction("com.google.zxing.client.android.ENCODE");
+  intent.setAction(PACKAGE + ".ENCODE");
+  intent.setPackage(PACKAGE);
   intent.putExtra("ENCODE_TYPE","TEXT_TYPE");
   intent.putExtra("ENCODE_DATA",text);
   try {
