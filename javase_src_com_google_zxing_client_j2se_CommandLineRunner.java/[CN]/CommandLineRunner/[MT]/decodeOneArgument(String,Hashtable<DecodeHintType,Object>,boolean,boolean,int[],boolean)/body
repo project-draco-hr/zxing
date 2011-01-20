@@ -1,0 +1,55 @@
+{
+  File inputFile=new File(argument);
+  if (inputFile.exists()) {
+    if (inputFile.isDirectory()) {
+      int successful=0;
+      int total=0;
+      for (      File input : inputFile.listFiles()) {
+        String filename=input.getName().toLowerCase();
+        if (filename.startsWith(".") || filename.endsWith(".txt")) {
+          continue;
+        }
+        if (filename.contains(".mono.png")) {
+          continue;
+        }
+        if (multi) {
+          Result[] results=decodeMulti(input.toURI(),hints,dumpBlackPoint,crop);
+          if (results != null) {
+            successful++;
+            if (dumpResults) {
+              dumpResultMulti(input,results);
+            }
+          }
+        }
+ else {
+          Result result=decode(input.toURI(),hints,dumpBlackPoint,crop);
+          if (result != null) {
+            successful++;
+            if (dumpResults) {
+              dumpResult(input,result);
+            }
+          }
+        }
+        total++;
+      }
+      System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)\n");
+    }
+ else {
+      if (multi) {
+        Result[] results=decodeMulti(inputFile.toURI(),hints,dumpBlackPoint,crop);
+        if (dumpResults) {
+          dumpResultMulti(inputFile,results);
+        }
+      }
+ else {
+        Result result=decode(inputFile.toURI(),hints,dumpBlackPoint,crop);
+        if (dumpResults) {
+          dumpResult(inputFile,result);
+        }
+      }
+    }
+  }
+ else {
+    decode(new URI(argument),hints,dumpBlackPoint,crop);
+  }
+}

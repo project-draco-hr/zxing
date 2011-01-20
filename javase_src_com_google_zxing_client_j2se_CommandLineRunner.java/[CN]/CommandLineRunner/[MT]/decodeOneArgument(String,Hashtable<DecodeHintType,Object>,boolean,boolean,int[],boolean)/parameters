@@ -3,3 +3,4 @@ Hashtable<DecodeHintType,Object> hints
 boolean dumpResults
 boolean dumpBlackPoint
 int[] crop
+boolean multi

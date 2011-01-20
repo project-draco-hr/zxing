@@ -7,4 +7,5 @@
   System.err.println("  --dump_results: Write the decoded contents to input.txt");
   System.err.println("  --dump_black_point: Compare black point algorithms as input.mono.png");
   System.err.println("  --crop=left,top,width,height: Only examine cropped region of input image(s)");
+  System.err.println("  --multi: Scans image for multiple barcodes");
 }

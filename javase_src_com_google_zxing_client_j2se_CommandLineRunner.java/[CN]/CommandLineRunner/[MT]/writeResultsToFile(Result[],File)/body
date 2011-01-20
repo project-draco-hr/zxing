@@ -1,0 +1,13 @@
+{
+  String newline=System.getProperty("line.separator");
+  Writer out=new OutputStreamWriter(new FileOutputStream(file),Charset.forName("UTF8"));
+  try {
+    for (    Result result : results) {
+      out.write(result.getText());
+      out.write(newline);
+    }
+  }
+  finally {
+    out.close();
+  }
+}
