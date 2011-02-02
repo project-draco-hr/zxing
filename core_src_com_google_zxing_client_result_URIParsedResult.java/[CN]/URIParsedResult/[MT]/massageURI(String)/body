@@ -1,4 +1,5 @@
 {
+  uri=uri.trim();
   int protocolEnd=uri.indexOf(':');
   if (protocolEnd < 0) {
     uri="http://" + uri;
