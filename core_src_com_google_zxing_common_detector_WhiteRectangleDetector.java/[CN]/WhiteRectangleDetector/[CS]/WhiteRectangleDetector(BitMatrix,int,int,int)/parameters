@@ -1,4 +1,4 @@
 BitMatrix image
-int INIT_SIZE
+int initSize
 int x
 int y

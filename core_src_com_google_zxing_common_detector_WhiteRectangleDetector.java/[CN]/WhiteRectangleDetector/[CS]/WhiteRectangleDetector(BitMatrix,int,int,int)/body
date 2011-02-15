@@ -2,9 +2,12 @@
   this.image=image;
   height=image.getHeight();
   width=image.getWidth();
-  int halfsize=INIT_SIZE >> 1;
+  int halfsize=initSize >> 1;
   leftInit=x - halfsize;
   rightInit=x + halfsize;
   upInit=y - halfsize;
   downInit=y + halfsize;
+  if (upInit < 0 || leftInit < 0 || downInit >= height || rightInit >= width) {
+    throw NotFoundException.getNotFoundInstance();
+  }
 }
