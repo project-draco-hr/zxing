@@ -14,6 +14,9 @@
   if (matrixWidth == 0 || matrixHeight == 0) {
     throw NotFoundException.getNotFoundInstance();
   }
+  if (matrixHeight != matrixWidth) {
+    throw NotFoundException.getNotFoundInstance();
+  }
   int nudge=moduleSize >> 1;
   top+=nudge;
   left+=nudge;
