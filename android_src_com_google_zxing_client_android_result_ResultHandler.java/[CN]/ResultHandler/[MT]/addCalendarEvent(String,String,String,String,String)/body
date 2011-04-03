@@ -6,14 +6,13 @@
   if (allDay) {
     intent.putExtra("allDay",true);
   }
-  if (end == null) {
-    end=start;
+ else {
+    if (end == null) {
+      end=start;
+    }
+    long endMilliseconds=calculateMilliseconds(end);
+    intent.putExtra("endTime",endMilliseconds);
   }
-  long endMilliseconds=calculateMilliseconds(end);
-  if (allDay) {
-    endMilliseconds=lastSecondOfDay(endMilliseconds);
-  }
-  intent.putExtra("endTime",endMilliseconds);
   intent.putExtra("title",summary);
   intent.putExtra("eventLocation",location);
   intent.putExtra("description",description);
