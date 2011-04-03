@@ -44,4 +44,5 @@
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
   copyToClipboard=prefs.getBoolean(PreferencesActivity.KEY_COPY_TO_CLIPBOARD,true);
   beepManager.updatePrefs();
+  inactivityTimer.onResume();
 }

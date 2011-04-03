@@ -4,5 +4,6 @@
     handler.quitSynchronously();
     handler=null;
   }
+  inactivityTimer.onPause();
   CameraManager.get().closeDriver();
 }

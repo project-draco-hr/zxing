@@ -1,0 +1,10 @@
+{
+  if (Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) {
+    if (intent.getIntExtra("plugged",-1) == 0) {
+      InactivityTimer.this.onActivity();
+    }
+ else {
+      InactivityTimer.this.cancel();
+    }
+  }
+}

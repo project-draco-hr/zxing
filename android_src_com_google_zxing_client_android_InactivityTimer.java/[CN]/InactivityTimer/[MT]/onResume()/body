@@ -1,0 +1,3 @@
+{
+  activity.registerReceiver(powerStatusReceiver,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+}
