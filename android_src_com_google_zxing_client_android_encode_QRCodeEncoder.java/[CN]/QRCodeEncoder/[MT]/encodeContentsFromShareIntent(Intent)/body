@@ -1,40 +1,6 @@
 {
-  format=BarcodeFormat.QR_CODE;
-  try {
-    Uri uri=(Uri)intent.getExtras().getParcelable(Intent.EXTRA_STREAM);
-    InputStream stream=activity.getContentResolver().openInputStream(uri);
-    int length=stream.available();
-    if (length <= 0) {
-      Log.w(TAG,"Content stream is empty");
-      return false;
-    }
-    byte[] vcard=new byte[length];
-    int bytesRead=stream.read(vcard,0,length);
-    if (bytesRead < length) {
-      Log.w(TAG,"Unable to fully read available bytes from content stream");
-      return false;
-    }
-    String vcardString=new String(vcard,0,bytesRead,"UTF-8");
-    Log.d(TAG,"Encoding share intent content:");
-    Log.d(TAG,vcardString);
-    Result result=new Result(vcardString,vcard,null,BarcodeFormat.QR_CODE);
-    ParsedResult parsedResult=ResultParser.parseResult(result);
-    if (!(parsedResult instanceof AddressBookParsedResult)) {
-      Log.d(TAG,"Result was not an address");
-      return false;
-    }
-    if (!encodeQRCodeContents((AddressBookParsedResult)parsedResult)) {
-      Log.d(TAG,"Unable to encode contents");
-      return false;
-    }
+  if (intent.hasExtra(Intent.EXTRA_TEXT)) {
+    return encodeContentsFromShareIntentPlainText(intent);
   }
- catch (  IOException e) {
-    Log.w(TAG,e);
-    return false;
-  }
-catch (  NullPointerException e) {
-    Log.w(TAG,e);
-    return false;
-  }
-  return contents != null && contents.length() > 0;
+  return encodeContentsFromShareIntentDefault(intent);
 }

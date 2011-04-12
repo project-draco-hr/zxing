@@ -1,0 +1,14 @@
+{
+  contents=intent.getStringExtra(Intent.EXTRA_TEXT);
+  if (contents == null) {
+    return false;
+  }
+  contents=contents.trim();
+  if (contents.length() == 0) {
+    return false;
+  }
+  format=BarcodeFormat.QR_CODE;
+  displayContents=contents;
+  title=activity.getString(R.string.contents_text);
+  return true;
+}
