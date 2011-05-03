@@ -1,0 +1,6 @@
+int stride
+int height
+int[] pixels
+URI uri
+String inputName
+String suffix

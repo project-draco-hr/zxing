@@ -12,20 +12,20 @@
         if (filename.contains(".mono.png")) {
           continue;
         }
-        if (multi) {
-          Result[] results=decodeMulti(input.toURI(),hints,dumpBlackPoint,crop);
+        if (config.multi) {
+          Result[] results=decodeMulti(input.toURI(),hints);
           if (results != null) {
             successful++;
-            if (dumpResults) {
+            if (config.dumpResults) {
               dumpResultMulti(input,results);
             }
           }
         }
  else {
-          Result result=decode(input.toURI(),hints,dumpBlackPoint,crop);
+          Result result=decode(input.toURI(),hints);
           if (result != null) {
             successful++;
-            if (dumpResults) {
+            if (config.dumpResults) {
               dumpResult(input,result);
             }
           }
@@ -35,21 +35,21 @@
       System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)\n");
     }
  else {
-      if (multi) {
-        Result[] results=decodeMulti(inputFile.toURI(),hints,dumpBlackPoint,crop);
-        if (dumpResults) {
+      if (config.multi) {
+        Result[] results=decodeMulti(inputFile.toURI(),hints);
+        if (config.dumpResults) {
           dumpResultMulti(inputFile,results);
         }
       }
  else {
-        Result result=decode(inputFile.toURI(),hints,dumpBlackPoint,crop);
-        if (dumpResults) {
+        Result result=decode(inputFile.toURI(),hints);
+        if (config.dumpResults) {
           dumpResult(inputFile,result);
         }
       }
     }
   }
  else {
-    decode(new URI(argument),hints,dumpBlackPoint,crop);
+    decode(new URI(argument),hints);
   }
 }

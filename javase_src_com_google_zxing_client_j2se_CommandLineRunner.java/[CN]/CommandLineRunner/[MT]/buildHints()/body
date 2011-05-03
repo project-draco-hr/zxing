@@ -6,7 +6,7 @@
   vector.addElement(BarcodeFormat.EAN_13);
   vector.addElement(BarcodeFormat.EAN_8);
   vector.addElement(BarcodeFormat.RSS14);
-  if (!productsOnly) {
+  if (!config.productsOnly) {
     vector.addElement(BarcodeFormat.CODE_39);
     vector.addElement(BarcodeFormat.CODE_93);
     vector.addElement(BarcodeFormat.CODE_128);
@@ -18,10 +18,10 @@
     vector.addElement(BarcodeFormat.CODABAR);
   }
   hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
-  if (tryHarder) {
+  if (config.tryHarder) {
     hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
   }
-  if (pureBarcode) {
+  if (config.pureBarcode) {
     hints.put(DecodeHintType.PURE_BARCODE,Boolean.TRUE);
   }
   return hints;

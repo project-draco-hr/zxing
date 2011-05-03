@@ -12,14 +12,14 @@
   }
   try {
     LuminanceSource source;
-    if (crop == null) {
+    if (config.crop == null) {
       source=new BufferedImageLuminanceSource(image);
     }
  else {
-      source=new BufferedImageLuminanceSource(image,crop[0],crop[1],crop[2],crop[3]);
+      source=new BufferedImageLuminanceSource(image,config.crop[0],config.crop[1],config.crop[2],config.crop[3]);
     }
     BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
-    if (dumpBlackPoint) {
+    if (config.dumpBlackPoint) {
       dumpBlackPoint(uri,image,bitmap);
     }
     Result result=new MultiFormatReader().decode(bitmap,hints);
