@@ -22,11 +22,20 @@
  else     if ("--multi".equals(arg)) {
       config.multi=true;
     }
+ else     if ("--brief".equals(arg)) {
+      config.brief=true;
+    }
  else     if (arg.startsWith("--crop")) {
       config.crop=new int[4];
       String[] tokens=arg.substring(7).split(",");
       for (int i=0; i < config.crop.length; i++) {
         config.crop[i]=Integer.parseInt(tokens[i]);
+      }
+    }
+ else     if (arg.startsWith("--threads") && arg.length() >= 10) {
+      int threads=Integer.parseInt(arg.substring(10));
+      if (threads > 1) {
+        config.threads=threads;
       }
     }
  else     if (arg.startsWith("-")) {
@@ -35,10 +44,25 @@
       return;
     }
   }
-  Hashtable<DecodeHintType,Object> hints=buildHints();
+  config.hints=buildHints();
   for (  String arg : args) {
     if (!arg.startsWith("--")) {
-      decodeOneArgument(arg,hints);
+      addArgumentToInputs(arg);
     }
+  }
+  ArrayList<DecodeThread> threads=new ArrayList<DecodeThread>(config.threads);
+  for (int x=0; x < config.threads; x++) {
+    DecodeThread thread=new DecodeThread();
+    threads.add(thread);
+    thread.start();
+  }
+  int successful=0;
+  for (int x=0; x < config.threads; x++) {
+    threads.get(x).join();
+    successful+=threads.get(x).getSuccessful();
+  }
+  int total=inputs.getInputCount();
+  if (total > 1) {
+    System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)\n");
   }
 }

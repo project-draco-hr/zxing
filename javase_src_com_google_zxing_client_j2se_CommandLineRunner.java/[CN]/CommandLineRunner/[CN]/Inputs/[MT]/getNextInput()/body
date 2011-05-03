@@ -1,0 +1,10 @@
+{
+  if (position < inputs.size()) {
+    String result=inputs.get(position);
+    position++;
+    return result;
+  }
+ else {
+    return null;
+  }
+}
