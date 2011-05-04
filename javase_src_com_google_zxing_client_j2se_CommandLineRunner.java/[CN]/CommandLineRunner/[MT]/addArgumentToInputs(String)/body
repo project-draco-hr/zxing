@@ -3,15 +3,17 @@
   if (inputFile.exists()) {
     if (inputFile.isDirectory()) {
       for (      File singleFile : inputFile.listFiles()) {
-        if (singleFile.isDirectory()) {
-          addArgumentToInputs(singleFile.getAbsolutePath());
-          continue;
-        }
         String filename=singleFile.getName().toLowerCase();
-        if (filename.startsWith(".") || filename.endsWith(".txt")) {
+        if (filename.startsWith(".")) {
           continue;
         }
-        if (filename.contains(".mono.png")) {
+        if (singleFile.isDirectory()) {
+          if (config.recursive) {
+            addArgumentToInputs(singleFile.getAbsolutePath());
+          }
+          continue;
+        }
+        if (filename.endsWith(".txt") || filename.contains(".mono.png")) {
           continue;
         }
         inputs.addInput(singleFile.getAbsolutePath());

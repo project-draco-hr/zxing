@@ -25,6 +25,9 @@
  else     if ("--brief".equals(arg)) {
       config.brief=true;
     }
+ else     if ("--recursive".equals(arg)) {
+      config.recursive=true;
+    }
  else     if (arg.startsWith("--crop")) {
       config.crop=new int[4];
       String[] tokens=arg.substring(7).split(",");
