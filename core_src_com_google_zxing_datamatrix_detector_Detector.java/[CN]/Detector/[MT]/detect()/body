@@ -69,7 +69,7 @@
   dimensionRight+=2;
   BitMatrix bits;
   ResultPoint correctedTopRight;
-  if (dimensionTop >= dimensionRight * 2 || dimensionRight >= dimensionTop * 2) {
+  if (4 * dimensionTop >= 7 * dimensionRight || 4 * dimensionRight >= 7 * dimensionTop) {
     correctedTopRight=correctTopRightRectangular(bottomLeft,bottomRight,topLeft,topRight,dimensionTop,dimensionRight);
     if (correctedTopRight == null) {
       correctedTopRight=topRight;
