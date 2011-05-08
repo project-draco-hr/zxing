@@ -1,0 +1,45 @@
+{
+  BufferedImage image;
+  try {
+    image=ImageIO.read(uri.toURL());
+  }
+ catch (  IllegalArgumentException iae) {
+    throw new FileNotFoundException("Resource not found: " + uri);
+  }
+  if (image == null) {
+    System.err.println(uri.toString() + ": Could not load image");
+    return null;
+  }
+  try {
+    LuminanceSource source;
+    if (config.getCrop() == null) {
+      source=new BufferedImageLuminanceSource(image);
+    }
+ else {
+      int[] crop=config.getCrop();
+      source=new BufferedImageLuminanceSource(image,crop[0],crop[1],crop[2],crop[3]);
+    }
+    BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
+    if (config.isDumpBlackPoint()) {
+      dumpBlackPoint(uri,image,bitmap);
+    }
+    Result result=new MultiFormatReader().decode(bitmap,hints);
+    if (config.isBrief()) {
+      System.out.println(uri.toString() + ": Success");
+    }
+ else {
+      ParsedResult parsedResult=ResultParser.parseResult(result);
+      System.out.println(uri.toString() + " (format: " + result.getBarcodeFormat()+ ", type: "+ parsedResult.getType()+ "):\nRaw result:\n"+ result.getText()+ "\nParsed result:\n"+ parsedResult.getDisplayResult());
+      System.out.println("Found " + result.getResultPoints().length + " result points.");
+      for (int i=0; i < result.getResultPoints().length; i++) {
+        ResultPoint rp=result.getResultPoints()[i];
+        System.out.println("  Point " + i + ": ("+ rp.getX()+ ','+ rp.getY()+ ')');
+      }
+    }
+    return result;
+  }
+ catch (  NotFoundException nfe) {
+    System.out.println(uri.toString() + ": No barcode found");
+    return null;
+  }
+}

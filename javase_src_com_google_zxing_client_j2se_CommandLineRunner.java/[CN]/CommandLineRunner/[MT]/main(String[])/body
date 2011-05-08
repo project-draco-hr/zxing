@@ -3,42 +3,45 @@
     printUsage();
     return;
   }
+  Config config=new Config();
+  Inputs inputs=new Inputs();
   for (  String arg : args) {
     if ("--try_harder".equals(arg)) {
-      config.tryHarder=true;
+      config.setTryHarder(true);
     }
  else     if ("--pure_barcode".equals(arg)) {
-      config.pureBarcode=true;
+      config.setPureBarcode(true);
     }
  else     if ("--products_only".equals(arg)) {
-      config.productsOnly=true;
+      config.setProductsOnly(true);
     }
  else     if ("--dump_results".equals(arg)) {
-      config.dumpResults=true;
+      config.setDumpResults(true);
     }
  else     if ("--dump_black_point".equals(arg)) {
-      config.dumpBlackPoint=true;
+      config.setDumpBlackPoint(true);
     }
  else     if ("--multi".equals(arg)) {
-      config.multi=true;
+      config.setMulti(true);
     }
  else     if ("--brief".equals(arg)) {
-      config.brief=true;
+      config.setBrief(true);
     }
  else     if ("--recursive".equals(arg)) {
-      config.recursive=true;
+      config.setRecursive(true);
     }
  else     if (arg.startsWith("--crop")) {
-      config.crop=new int[4];
+      int[] crop=new int[4];
       String[] tokens=arg.substring(7).split(",");
-      for (int i=0; i < config.crop.length; i++) {
-        config.crop[i]=Integer.parseInt(tokens[i]);
+      for (int i=0; i < config.getCrop().length; i++) {
+        crop[i]=Integer.parseInt(tokens[i]);
       }
+      config.setCrop(crop);
     }
  else     if (arg.startsWith("--threads") && arg.length() >= 10) {
       int threads=Integer.parseInt(arg.substring(10));
       if (threads > 1) {
-        config.threads=threads;
+        config.setThreads(threads);
       }
     }
  else     if (arg.startsWith("-")) {
@@ -47,20 +50,20 @@
       return;
     }
   }
-  config.hints=buildHints();
+  config.setHints(buildHints(config));
   for (  String arg : args) {
     if (!arg.startsWith("--")) {
-      addArgumentToInputs(arg);
+      addArgumentToInputs(arg,config,inputs);
     }
   }
-  ArrayList<DecodeThread> threads=new ArrayList<DecodeThread>(config.threads);
-  for (int x=0; x < config.threads; x++) {
-    DecodeThread thread=new DecodeThread();
+  List<DecodeThread> threads=new ArrayList<DecodeThread>(config.getThreads());
+  for (int x=0; x < config.getThreads(); x++) {
+    DecodeThread thread=new DecodeThread(config,inputs);
     threads.add(thread);
     thread.start();
   }
   int successful=0;
-  for (int x=0; x < config.threads; x++) {
+  for (int x=0; x < config.getThreads(); x++) {
     threads.get(x).join();
     successful+=threads.get(x).getSuccessful();
   }

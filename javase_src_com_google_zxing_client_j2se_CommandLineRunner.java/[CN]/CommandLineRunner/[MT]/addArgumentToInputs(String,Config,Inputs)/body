@@ -1,0 +1,29 @@
+{
+  File inputFile=new File(argument);
+  if (inputFile.exists()) {
+    if (inputFile.isDirectory()) {
+      for (      File singleFile : inputFile.listFiles()) {
+        String filename=singleFile.getName().toLowerCase(Locale.ENGLISH);
+        if (filename.startsWith(".")) {
+          continue;
+        }
+        if (singleFile.isDirectory()) {
+          if (config.isRecursive()) {
+            addArgumentToInputs(singleFile.getAbsolutePath(),config,inputs);
+          }
+          continue;
+        }
+        if (filename.endsWith(".txt") || filename.contains(".mono.png")) {
+          continue;
+        }
+        inputs.addInput(singleFile.getAbsolutePath());
+      }
+    }
+ else {
+      inputs.addInput(inputFile.getAbsolutePath());
+    }
+  }
+ else {
+    inputs.addInput(argument);
+  }
+}

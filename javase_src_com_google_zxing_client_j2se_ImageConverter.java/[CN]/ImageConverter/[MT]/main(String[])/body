@@ -18,7 +18,7 @@
     if (inputFile.exists()) {
       if (inputFile.isDirectory()) {
         for (        File input : inputFile.listFiles()) {
-          String filename=input.getName().toLowerCase();
+          String filename=input.getName().toLowerCase(Locale.ENGLISH);
           if (filename.startsWith(".") || filename.endsWith(".txt")) {
             continue;
           }
