@@ -6,7 +6,7 @@
       throw FormatException.getFormatInstance();
     }
  else     if (oneByte <= 128) {
-      oneByte=upperShift ? (oneByte + 128) : oneByte;
+      oneByte=upperShift ? oneByte + 128 : oneByte;
       upperShift=false;
       result.append((char)(oneByte - 1));
       return ASCII_ENCODE;
@@ -27,11 +27,7 @@
  else     if (oneByte == 231) {
       return BASE256_ENCODE;
     }
- else     if (oneByte == 232) {
-    }
- else     if (oneByte == 233) {
-    }
- else     if (oneByte == 234) {
+ else     if (oneByte == 232 || oneByte == 233 || oneByte == 234) {
     }
  else     if (oneByte == 235) {
       upperShift=true;

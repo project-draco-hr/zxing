@@ -18,14 +18,18 @@ case 0:
         if (cValue < 3) {
           shift=cValue + 1;
         }
- else {
+ else         if (cValue < TEXT_BASIC_SET_CHARS.length) {
+          char textChar=TEXT_BASIC_SET_CHARS[cValue];
           if (upperShift) {
-            result.append((char)(TEXT_BASIC_SET_CHARS[cValue] + 128));
+            result.append((char)(textChar + 128));
             upperShift=false;
           }
  else {
-            result.append(TEXT_BASIC_SET_CHARS[cValue]);
+            result.append(textChar);
           }
+        }
+ else {
+          throw FormatException.getFormatInstance();
         }
       break;
 case 1:
@@ -39,13 +43,14 @@ case 1:
   shift=0;
 break;
 case 2:
-if (cValue < 27) {
+if (cValue < C40_SHIFT2_SET_CHARS.length) {
+char c40char=C40_SHIFT2_SET_CHARS[cValue];
 if (upperShift) {
-  result.append((char)(C40_SHIFT2_SET_CHARS[cValue] + 128));
+  result.append((char)(c40char + 128));
   upperShift=false;
 }
  else {
-  result.append(C40_SHIFT2_SET_CHARS[cValue]);
+  result.append(c40char);
 }
 }
  else if (cValue == 27) {
@@ -60,14 +65,20 @@ throw FormatException.getFormatInstance();
 shift=0;
 break;
 case 3:
+if (cValue < TEXT_SHIFT3_SET_CHARS.length) {
+char textChar=TEXT_SHIFT3_SET_CHARS[cValue];
 if (upperShift) {
-result.append((char)(TEXT_SHIFT3_SET_CHARS[cValue] + 128));
+result.append((char)(textChar + 128));
 upperShift=false;
 }
  else {
-result.append(TEXT_SHIFT3_SET_CHARS[cValue]);
+result.append(textChar);
 }
 shift=0;
+}
+ else {
+throw FormatException.getFormatInstance();
+}
 break;
 default :
 throw FormatException.getFormatInstance();

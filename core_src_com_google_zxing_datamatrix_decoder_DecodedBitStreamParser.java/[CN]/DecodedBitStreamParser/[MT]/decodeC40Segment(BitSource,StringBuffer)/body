@@ -18,14 +18,18 @@ case 0:
         if (cValue < 3) {
           shift=cValue + 1;
         }
- else {
+ else         if (cValue < C40_BASIC_SET_CHARS.length) {
+          char c40char=C40_BASIC_SET_CHARS[cValue];
           if (upperShift) {
-            result.append((char)(C40_BASIC_SET_CHARS[cValue] + 128));
+            result.append((char)(c40char + 128));
             upperShift=false;
           }
  else {
-            result.append(C40_BASIC_SET_CHARS[cValue]);
+            result.append(c40char);
           }
+        }
+ else {
+          throw FormatException.getFormatInstance();
         }
       break;
 case 1:
@@ -39,13 +43,14 @@ case 1:
   shift=0;
 break;
 case 2:
-if (cValue < 27) {
+if (cValue < C40_SHIFT2_SET_CHARS.length) {
+char c40char=C40_SHIFT2_SET_CHARS[cValue];
 if (upperShift) {
-  result.append((char)(C40_SHIFT2_SET_CHARS[cValue] + 128));
+  result.append((char)(c40char + 128));
   upperShift=false;
 }
  else {
-  result.append(C40_SHIFT2_SET_CHARS[cValue]);
+  result.append(c40char);
 }
 }
  else if (cValue == 27) {
