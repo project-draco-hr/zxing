@@ -5,36 +5,24 @@
   while (codeIndex < codewords[0]) {
 switch (code) {
 case TEXT_COMPACTION_MODE_LATCH:
-{
-        codeIndex=textCompaction(codewords,codeIndex,result);
-        break;
-      }
-case BYTE_COMPACTION_MODE_LATCH:
-{
-      codeIndex=byteCompaction(code,codewords,codeIndex,result);
-      break;
-    }
-case NUMERIC_COMPACTION_MODE_LATCH:
-{
-    codeIndex=numericCompaction(codewords,codeIndex,result);
+      codeIndex=textCompaction(codewords,codeIndex,result);
     break;
-  }
-case MODE_SHIFT_TO_BYTE_COMPACTION_MODE:
-{
+case BYTE_COMPACTION_MODE_LATCH:
   codeIndex=byteCompaction(code,codewords,codeIndex,result);
-  break;
-}
-case BYTE_COMPACTION_MODE_LATCH_6:
-{
+break;
+case NUMERIC_COMPACTION_MODE_LATCH:
+codeIndex=numericCompaction(codewords,codeIndex,result);
+break;
+case MODE_SHIFT_TO_BYTE_COMPACTION_MODE:
 codeIndex=byteCompaction(code,codewords,codeIndex,result);
 break;
-}
+case BYTE_COMPACTION_MODE_LATCH_6:
+codeIndex=byteCompaction(code,codewords,codeIndex,result);
+break;
 default :
-{
 codeIndex--;
 codeIndex=textCompaction(codewords,codeIndex,result);
 break;
-}
 }
 if (codeIndex < codewords.length) {
 code=codewords[codeIndex++];

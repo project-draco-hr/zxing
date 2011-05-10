@@ -38,7 +38,8 @@ case LOWER:
       ch=' ';
     }
  else     if (subModeCh == AS) {
-      subMode=ALPHA;
+      priorToShiftMode=subMode;
+      subMode=ALPHA_SHIFT;
     }
  else     if (subModeCh == ML) {
       subMode=MIXED;
@@ -79,7 +80,7 @@ if (subModeCh == PL) {
 }
 break;
 case PUNCT:
-if (subModeCh < PS) {
+if (subModeCh < PAL) {
 ch=PUNCT_CHARS[subModeCh];
 }
  else {
@@ -91,9 +92,22 @@ result.append((char)byteCompactionData[i]);
 }
 }
 break;
+case ALPHA_SHIFT:
+subMode=priorToShiftMode;
+if (subModeCh < 26) {
+ch=(char)('A' + subModeCh);
+}
+ else {
+if (subModeCh == 26) {
+ch=' ';
+}
+ else {
+}
+}
+break;
 case PUNCT_SHIFT:
 subMode=priorToShiftMode;
-if (subModeCh < PS) {
+if (subModeCh < PAL) {
 ch=PUNCT_CHARS[subModeCh];
 }
  else {

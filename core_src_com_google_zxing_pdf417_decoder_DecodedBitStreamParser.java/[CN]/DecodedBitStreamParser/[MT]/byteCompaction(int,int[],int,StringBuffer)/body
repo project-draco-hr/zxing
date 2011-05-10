@@ -27,7 +27,7 @@
         count=0;
       }
     }
-    for (int i=((count / 5) * 5); i < count; i++) {
+    for (int i=(count / 5) * 5; i < count; i++) {
       result.append((char)byteCompactedCodewords[i]);
     }
   }
