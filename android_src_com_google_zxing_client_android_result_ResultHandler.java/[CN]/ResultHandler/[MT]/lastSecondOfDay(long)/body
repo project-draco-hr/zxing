@@ -1,8 +1,0 @@
-{
-  Calendar timeInDay=Calendar.getInstance();
-  timeInDay.setTimeInMillis(time);
-  timeInDay.set(Calendar.HOUR_OF_DAY,timeInDay.getActualMaximum(Calendar.HOUR_OF_DAY));
-  timeInDay.set(Calendar.MINUTE,timeInDay.getActualMaximum(Calendar.MINUTE));
-  timeInDay.set(Calendar.SECOND,timeInDay.getActualMaximum(Calendar.SECOND));
-  return timeInDay.getTimeInMillis();
-}
