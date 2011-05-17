@@ -18,5 +18,5 @@
   buffer.append(checkDigit);
   ResultPoint[] leftPoints=leftPair.getFinderPattern().getResultPoints();
   ResultPoint[] rightPoints=rightPair.getFinderPattern().getResultPoints();
-  return new Result(String.valueOf(buffer.toString()),null,new ResultPoint[]{leftPoints[0],leftPoints[1],rightPoints[0],rightPoints[1]},BarcodeFormat.RSS14);
+  return new Result(String.valueOf(buffer.toString()),null,new ResultPoint[]{leftPoints[0],leftPoints[1],rightPoints[0],rightPoints[1]},BarcodeFormat.RSS_14);
 }
