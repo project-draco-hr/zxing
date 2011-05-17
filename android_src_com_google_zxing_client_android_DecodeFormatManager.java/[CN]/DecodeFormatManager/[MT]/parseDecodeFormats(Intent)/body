@@ -1,6 +1,6 @@
 {
   List<String> scanFormats=null;
-  String scanFormatsString=intent.getStringExtra(Intents.Scan.SCAN_FORMATS);
+  String scanFormatsString=intent.getStringExtra(Intents.Scan.FORMATS);
   if (scanFormatsString != null) {
     scanFormats=Arrays.asList(COMMA_PATTERN.split(scanFormatsString));
   }

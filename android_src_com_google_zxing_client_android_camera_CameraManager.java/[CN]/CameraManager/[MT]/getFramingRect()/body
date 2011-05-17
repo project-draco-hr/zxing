@@ -1,9 +1,9 @@
 {
-  Point screenResolution=configManager.getScreenResolution();
   if (framingRect == null) {
     if (camera == null) {
       return null;
     }
+    Point screenResolution=configManager.getScreenResolution();
     int width=screenResolution.x * 3 / 4;
     if (width < MIN_FRAME_WIDTH) {
       width=MIN_FRAME_WIDTH;

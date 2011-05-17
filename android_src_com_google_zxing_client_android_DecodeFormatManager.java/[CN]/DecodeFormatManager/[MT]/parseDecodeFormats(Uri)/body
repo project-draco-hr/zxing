@@ -1,5 +1,5 @@
 {
-  List<String> formats=inputUri.getQueryParameters(Intents.Scan.SCAN_FORMATS);
+  List<String> formats=inputUri.getQueryParameters(Intents.Scan.FORMATS);
   if (formats != null && formats.size() == 1 && formats.get(0) != null) {
     formats=Arrays.asList(COMMA_PATTERN.split(formats.get(0)));
   }
