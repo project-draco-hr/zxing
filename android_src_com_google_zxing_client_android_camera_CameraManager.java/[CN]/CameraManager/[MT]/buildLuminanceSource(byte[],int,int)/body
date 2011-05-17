@@ -2,8 +2,6 @@
   Rect rect=getFramingRectInPreview();
   int previewFormat=configManager.getPreviewFormat();
   String previewFormatString=configManager.getPreviewFormatString();
-  SharedPreferences sharedPrefs=PreferenceManager.getDefaultSharedPreferences(context);
-  boolean reverseImage=sharedPrefs.getBoolean(PreferencesActivity.KEY_REVERSE_IMAGE,false);
 switch (previewFormat) {
 case PixelFormat.YCbCr_420_SP:
 case PixelFormat.YCbCr_422_SP:

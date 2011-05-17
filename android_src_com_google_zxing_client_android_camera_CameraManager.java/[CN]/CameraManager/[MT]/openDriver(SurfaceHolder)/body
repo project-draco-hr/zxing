@@ -12,6 +12,7 @@
   }
   configManager.setDesiredCameraParameters(camera);
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
+  reverseImage=prefs.getBoolean(PreferencesActivity.KEY_REVERSE_IMAGE,false);
   if (prefs.getBoolean(PreferencesActivity.KEY_FRONT_LIGHT,false)) {
     FlashlightManager.enableFlashlight();
   }
