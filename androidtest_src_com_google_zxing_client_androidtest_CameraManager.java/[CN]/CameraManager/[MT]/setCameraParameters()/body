@@ -10,7 +10,6 @@
   cameraResolution.y=(screenResolution.y >> 3) << 3;
   Log.v(TAG,"Setting preview size: " + cameraResolution.x + ", "+ cameraResolution.y);
   parameters.setPreviewSize(cameraResolution.x,cameraResolution.y);
-  parameters.set("flash-value",2);
   parameters.set("flash-mode","off");
   camera.setParameters(parameters);
 }

@@ -8,7 +8,15 @@
     return false;
   }
   format=BarcodeFormat.QR_CODE;
-  displayContents=contents;
+  if (intent.hasExtra(Intent.EXTRA_SUBJECT)) {
+    displayContents=intent.getStringExtra(Intent.EXTRA_SUBJECT);
+  }
+ else   if (intent.hasExtra(Intent.EXTRA_TITLE)) {
+    displayContents=intent.getStringExtra(Intent.EXTRA_TITLE);
+  }
+ else {
+    displayContents=contents;
+  }
   title=activity.getString(R.string.contents_text);
   return true;
 }
