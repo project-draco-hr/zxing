@@ -2,6 +2,5 @@
   super.onCreate(icicle);
   cursor=getContentResolver().query(Browser.BOOKMARKS_URI,BOOKMARK_PROJECTION,BOOKMARK_SELECTION,null,null);
   startManagingCursor(cursor);
-  ListAdapter adapter=new SimpleCursorAdapter(this,R.layout.bookmark_picker_list_item,cursor,BOOKMARK_PROJECTION,TWO_LINE_VIEW_IDS);
-  setListAdapter(adapter);
+  setListAdapter(new BookmarkAdapter(this,cursor));
 }
