@@ -1,0 +1,8 @@
+String summary
+String start
+String end
+String location
+String attendee
+String description
+double latitude
+double longitude

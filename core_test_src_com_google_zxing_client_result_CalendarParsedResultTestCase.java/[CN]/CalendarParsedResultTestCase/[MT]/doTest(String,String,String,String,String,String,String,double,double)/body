@@ -9,4 +9,6 @@
   assertEquals(start,calResult.getStart());
   assertEquals(end,calResult.getEnd());
   assertEquals(attendee,calResult.getAttendee());
+  assertEqualOrNaN(latitude,calResult.getLatitude());
+  assertEqualOrNaN(longitude,calResult.getLongitude());
 }

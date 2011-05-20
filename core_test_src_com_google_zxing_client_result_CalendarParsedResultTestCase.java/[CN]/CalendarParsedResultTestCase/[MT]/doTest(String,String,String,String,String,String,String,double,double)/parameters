@@ -5,3 +5,5 @@ String location
 String start
 String end
 String attendee
+double latitude
+double longitude
