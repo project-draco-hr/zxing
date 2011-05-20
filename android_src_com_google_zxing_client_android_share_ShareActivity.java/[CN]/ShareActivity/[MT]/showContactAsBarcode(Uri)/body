@@ -4,7 +4,13 @@
     return;
   }
   ContentResolver resolver=getContentResolver();
-  Cursor contactCursor=resolver.query(contactUri,null,null,null,null);
+  Cursor contactCursor;
+  try {
+    contactCursor=resolver.query(contactUri,null,null,null,null);
+  }
+ catch (  IllegalArgumentException e) {
+    return;
+  }
   Bundle bundle=new Bundle();
   if (contactCursor != null && contactCursor.moveToFirst()) {
     int nameColumn=contactCursor.getColumnIndex(Contacts.PeopleColumns.NAME);
