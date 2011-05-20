@@ -1,18 +1,16 @@
 {
   try {
     CameraManager.get().openDriver(surfaceHolder);
+    if (handler == null) {
+      handler=new CaptureActivityHandler(this,decodeFormats,characterSet);
+    }
   }
  catch (  IOException ioe) {
     Log.w(TAG,ioe);
     displayFrameworkBugMessageAndExit();
-    return;
   }
 catch (  RuntimeException e) {
     Log.w(TAG,"Unexpected error initializating camera",e);
     displayFrameworkBugMessageAndExit();
-    return;
-  }
-  if (handler == null) {
-    handler=new CaptureActivityHandler(this,decodeFormats,characterSet);
   }
 }
