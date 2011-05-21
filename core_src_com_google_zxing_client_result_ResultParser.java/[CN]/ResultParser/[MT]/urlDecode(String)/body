@@ -12,27 +12,29 @@
   unescaped.append(escapedArray,0,first);
   for (int i=first; i < max; i++) {
     char c=escapedArray[i];
-    if (c == '+') {
+switch (c) {
+case '+':
       unescaped.append(' ');
-    }
- else     if (c == '%') {
-      if (i >= max - 2) {
-        unescaped.append('%');
-      }
- else {
-        int firstDigitValue=parseHexDigit(escapedArray[++i]);
-        int secondDigitValue=parseHexDigit(escapedArray[++i]);
-        if (firstDigitValue < 0 || secondDigitValue < 0) {
-          unescaped.append('%');
-          unescaped.append(escapedArray[i - 1]);
-          unescaped.append(escapedArray[i]);
-        }
-        unescaped.append((char)((firstDigitValue << 4) + secondDigitValue));
-      }
-    }
- else {
-      unescaped.append(c);
-    }
+    break;
+case '%':
+  if (i >= max - 2) {
+    unescaped.append('%');
   }
-  return unescaped.toString();
+ else {
+    int firstDigitValue=parseHexDigit(escapedArray[++i]);
+    int secondDigitValue=parseHexDigit(escapedArray[++i]);
+    if (firstDigitValue < 0 || secondDigitValue < 0) {
+      unescaped.append('%');
+      unescaped.append(escapedArray[i - 1]);
+      unescaped.append(escapedArray[i]);
+    }
+    unescaped.append((char)((firstDigitValue << 4) + secondDigitValue));
+  }
+break;
+default :
+unescaped.append(c);
+break;
+}
+}
+return unescaped.toString();
 }

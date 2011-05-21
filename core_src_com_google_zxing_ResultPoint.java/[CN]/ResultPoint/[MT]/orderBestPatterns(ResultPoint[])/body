@@ -2,7 +2,9 @@
   float zeroOneDistance=distance(patterns[0],patterns[1]);
   float oneTwoDistance=distance(patterns[1],patterns[2]);
   float zeroTwoDistance=distance(patterns[0],patterns[2]);
-  ResultPoint pointA, pointB, pointC;
+  ResultPoint pointA;
+  ResultPoint pointB;
+  ResultPoint pointC;
   if (oneTwoDistance >= zeroOneDistance && oneTwoDistance >= zeroTwoDistance) {
     pointB=patterns[0];
     pointA=patterns[1];

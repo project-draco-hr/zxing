@@ -31,7 +31,7 @@
     lastPatternSize+=counters[i];
   }
   int whiteSpaceAfterEnd=nextStart - lastStart - lastPatternSize;
-  if ((nextStart) != end && (whiteSpaceAfterEnd / 2 < lastPatternSize)) {
+  if (nextStart != end && (whiteSpaceAfterEnd / 2 < lastPatternSize)) {
     throw NotFoundException.getNotFoundInstance();
   }
   if (result.length() < 2) {

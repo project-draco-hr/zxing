@@ -32,7 +32,7 @@
   int max=result[0].codewords.length;
   for (int i=longerBlocksNumDataCodewords; i < max; i++) {
     for (int j=0; j < numResultBlocks; j++) {
-      int iOffset=(specialVersion && j > 7) ? i - 1 : i;
+      int iOffset=specialVersion && j > 7 ? i - 1 : i;
       result[j].codewords[iOffset]=rawCodewords[rawCodewordsOffset++];
     }
   }

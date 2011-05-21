@@ -1,6 +1,6 @@
 {
   for (int i=0; i < 9; i++) {
     int temp=a & (1 << i);
-    toReturn[i]=(temp == 0) ? 1 : 2;
+    toReturn[i]=temp == 0 ? 1 : 2;
   }
 }

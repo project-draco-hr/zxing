@@ -7,4 +7,5 @@
   }
   ByteMatrix matrix=new ByteMatrix(21,21);
   MatrixUtil.buildMatrix(bits,ErrorCorrectionLevel.H,1,3,matrix);
+  assertEquals(expected,matrix.toString());
 }

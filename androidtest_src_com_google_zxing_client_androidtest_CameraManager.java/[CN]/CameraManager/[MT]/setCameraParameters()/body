@@ -2,8 +2,8 @@
   Camera.Parameters parameters=camera.getParameters();
   Camera.Size size=parameters.getPreviewSize();
   Log.v(TAG,"Default preview size: " + size.width + ", "+ size.height);
-  previewFormat=parameters.getPreviewFormat();
-  previewFormatString=parameters.get("preview-format");
+  int previewFormat=parameters.getPreviewFormat();
+  String previewFormatString=parameters.get("preview-format");
   Log.v(TAG,"Default preview format: " + previewFormat + '/'+ previewFormatString);
   cameraResolution=new Point();
   cameraResolution.x=(screenResolution.x >> 3) << 3;

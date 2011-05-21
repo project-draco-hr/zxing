@@ -14,7 +14,9 @@
     imageURI=new URI(imageURIString);
   }
  catch (  URISyntaxException urise) {
-    log.fine("URI was not valid: " + imageURIString);
+    if (log.isLoggable(Level.FINE)) {
+      log.fine("URI was not valid: " + imageURIString);
+    }
     response.sendRedirect("badurl.jspx");
     return;
   }
@@ -28,19 +30,25 @@
       getResponse=client.execute(getRequest);
     }
  catch (    IllegalArgumentException iae) {
-      log.fine(iae.toString());
+      if (log.isLoggable(Level.FINE)) {
+        log.fine(iae.toString());
+      }
       getRequest.abort();
       response.sendRedirect("badurl.jspx");
       return;
     }
 catch (    IOException ioe) {
-      log.fine(ioe.toString());
+      if (log.isLoggable(Level.FINE)) {
+        log.fine(ioe.toString());
+      }
       getRequest.abort();
       response.sendRedirect("badurl.jspx");
       return;
     }
     if (getResponse.getStatusLine().getStatusCode() != HttpServletResponse.SC_OK) {
-      log.fine("Unsuccessful return code: " + getResponse.getStatusLine().getStatusCode());
+      if (log.isLoggable(Level.FINE)) {
+        log.fine("Unsuccessful return code: " + getResponse.getStatusLine().getStatusCode());
+      }
       response.sendRedirect("badurl.jspx");
       return;
     }

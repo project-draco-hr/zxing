@@ -7,7 +7,7 @@
     for (int j=0; j < s; j++) {
       if (i != j) {
         int term=field.multiply(errorLocations[j],xiInverse);
-        int termPlus1=((term & 0x1) == 0) ? (term | 1) : (term & ~1);
+        int termPlus1=(term & 0x1) == 0 ? term | 1 : term & ~1;
         denominator=field.multiply(denominator,termPlus1);
       }
     }

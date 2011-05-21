@@ -19,7 +19,7 @@
       if (p2 == null) {
         continue;
       }
-      float vModSize12=(p1.getEstimatedModuleSize() - p2.getEstimatedModuleSize()) / (Math.min(p1.getEstimatedModuleSize(),p2.getEstimatedModuleSize()));
+      float vModSize12=(p1.getEstimatedModuleSize() - p2.getEstimatedModuleSize()) / Math.min(p1.getEstimatedModuleSize(),p2.getEstimatedModuleSize());
       float vModSize12A=Math.abs(p1.getEstimatedModuleSize() - p2.getEstimatedModuleSize());
       if (vModSize12A > DIFF_MODSIZE_CUTOFF && vModSize12 >= DIFF_MODSIZE_CUTOFF_PERCENT) {
         break;
@@ -29,7 +29,7 @@
         if (p3 == null) {
           continue;
         }
-        float vModSize23=(p2.getEstimatedModuleSize() - p3.getEstimatedModuleSize()) / (Math.min(p2.getEstimatedModuleSize(),p3.getEstimatedModuleSize()));
+        float vModSize23=(p2.getEstimatedModuleSize() - p3.getEstimatedModuleSize()) / Math.min(p2.getEstimatedModuleSize(),p3.getEstimatedModuleSize());
         float vModSize23A=Math.abs(p2.getEstimatedModuleSize() - p3.getEstimatedModuleSize());
         if (vModSize23A > DIFF_MODSIZE_CUTOFF && vModSize23 >= DIFF_MODSIZE_CUTOFF_PERCENT) {
           break;
@@ -40,16 +40,16 @@
         float dA=ResultPoint.distance(info.getTopLeft(),info.getBottomLeft());
         float dC=ResultPoint.distance(info.getTopRight(),info.getBottomLeft());
         float dB=ResultPoint.distance(info.getTopLeft(),info.getTopRight());
-        float estimatedModuleCount=((dA + dB) / p1.getEstimatedModuleSize()) / 2;
+        float estimatedModuleCount=(dA + dB) / (p1.getEstimatedModuleSize() * 2.0f);
         if (estimatedModuleCount > MAX_MODULE_COUNT_PER_EDGE || estimatedModuleCount < MIN_MODULE_COUNT_PER_EDGE) {
           continue;
         }
-        float vABBC=Math.abs(((dA - dB) / Math.min(dA,dB)));
+        float vABBC=Math.abs((dA - dB) / Math.min(dA,dB));
         if (vABBC >= 0.1f) {
           continue;
         }
         float dCpy=(float)Math.sqrt(dA * dA + dB * dB);
-        float vPyC=Math.abs(((dC - dCpy) / Math.min(dC,dCpy)));
+        float vPyC=Math.abs((dC - dCpy) / Math.min(dC,dCpy));
         if (vPyC >= 0.1f) {
           continue;
         }

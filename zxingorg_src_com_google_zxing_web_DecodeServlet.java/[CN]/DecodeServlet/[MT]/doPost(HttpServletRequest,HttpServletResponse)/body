@@ -28,7 +28,9 @@
     }
   }
  catch (  FileUploadException fue) {
-    log.fine(fue.toString());
+    if (log.isLoggable(Level.FINE)) {
+      log.fine(fue.toString());
+    }
     response.sendRedirect("badimage.jspx");
   }
 }
