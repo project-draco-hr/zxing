@@ -30,6 +30,8 @@
     }
     readers.addElement(new QRCodeReader());
     readers.addElement(new DataMatrixReader());
+    readers.addElement(new AztecReader());
+    readers.addElement(new PDF417Reader());
     if (tryHarder) {
       readers.addElement(new MultiFormatOneDReader(hints));
     }
