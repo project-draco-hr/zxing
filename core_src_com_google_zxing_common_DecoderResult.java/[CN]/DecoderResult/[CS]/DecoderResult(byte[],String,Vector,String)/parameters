@@ -1,4 +1,4 @@
 byte[] rawBytes
 String text
 Vector byteSegments
-ErrorCorrectionLevel ecLevel
+String ecLevel
