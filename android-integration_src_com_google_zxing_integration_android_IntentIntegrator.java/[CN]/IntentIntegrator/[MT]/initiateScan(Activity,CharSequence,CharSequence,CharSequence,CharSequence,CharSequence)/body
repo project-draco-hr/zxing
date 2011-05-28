@@ -1,6 +1,6 @@
 {
   Intent intentScan=new Intent(PACKAGE + ".SCAN");
-  intentScan.setPackage(PACKAGE);
+  setPackage(intentScan);
   intentScan.addCategory(Intent.CATEGORY_DEFAULT);
   if (stringDesiredBarcodeFormats != null) {
     intentScan.putExtra("SCAN_FORMATS",stringDesiredBarcodeFormats);

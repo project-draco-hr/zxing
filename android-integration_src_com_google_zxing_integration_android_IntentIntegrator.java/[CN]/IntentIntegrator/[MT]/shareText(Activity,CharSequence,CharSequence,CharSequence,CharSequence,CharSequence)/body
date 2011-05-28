@@ -1,7 +1,7 @@
 {
   Intent intent=new Intent();
   intent.setAction(PACKAGE + ".ENCODE");
-  intent.setPackage(PACKAGE);
+  setPackage(intent);
   intent.putExtra("ENCODE_TYPE","TEXT_TYPE");
   intent.putExtra("ENCODE_DATA",text);
   try {
