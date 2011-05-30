@@ -1,57 +1,76 @@
 {
   int length=contents.length();
-  if (length > 80) {
-    throw new IllegalArgumentException("Requested contents should be less than 80 digits long, but got " + length);
+  if (length < 1 || length > 80) {
+    throw new IllegalArgumentException("Contents length should be between 1 and 80 characters, but got " + length);
   }
-  boolean useCodeC=true;
   for (int i=0; i < length; i++) {
     char c=contents.charAt(i);
-    if (c < '0' || c > '9') {
-      useCodeC=false;
-      break;
+    if (c < ' ' || c > '~') {
+      throw new IllegalArgumentException("Contents should only contain characters between ' ' and '~'");
     }
   }
-  int codeWidth=11 + 11 + 13;
-  byte[] result;
-  int pos;
-  int check;
-  if (useCodeC) {
-    if (length % 2 != 0) {
-      contents='0' + contents;
-      length++;
+  Vector patterns=new Vector();
+  int checkSum=0;
+  int checkWeight=1;
+  int codeSet=0;
+  int position=0;
+  while (position < length) {
+    int requiredDigitCount=codeSet == CODE_CODE_C ? 2 : 4;
+    int newCodeSet;
+    if (length - position >= requiredDigitCount && isDigits(contents,position,requiredDigitCount)) {
+      newCodeSet=CODE_CODE_C;
     }
-    for (int i=0; i < length; i+=2) {
-      int[] patterns=Code128Reader.CODE_PATTERNS[Integer.parseInt(contents.substring(i,i + 2))];
-      for (int j=0; j < patterns.length; j++) {
-        codeWidth+=patterns[j];
-      }
-    }
-    result=new byte[codeWidth];
-    pos=appendPattern(result,0,Code128Reader.CODE_PATTERNS[105],1);
-    check=105;
-    for (int i=0; i < length; i+=2) {
-      int pair=Integer.parseInt(contents.substring(i,i + 2));
-      check+=pair * (i / 2 + 1);
-      pos+=appendPattern(result,pos,Code128Reader.CODE_PATTERNS[pair],1);
-    }
-  }
  else {
-    for (int i=0; i < length; i++) {
-      int[] patterns=Code128Reader.CODE_PATTERNS[contents.charAt(i) - ' '];
-      for (int j=0; j < patterns.length; j++) {
-        codeWidth+=patterns[j];
+      newCodeSet=CODE_CODE_B;
+    }
+    int patternIndex;
+    if (newCodeSet == codeSet) {
+      if (codeSet == CODE_CODE_B) {
+        patternIndex=contents.charAt(position) - ' ';
+        position+=1;
+      }
+ else {
+        patternIndex=Integer.parseInt(contents.substring(position,position + 2));
+        position+=2;
       }
     }
-    result=new byte[codeWidth];
-    pos=appendPattern(result,0,Code128Reader.CODE_PATTERNS[104],1);
-    check=104;
-    for (int i=0; i < length; i++) {
-      check+=(contents.charAt(i) - ' ') * (i + 1);
-      pos+=appendPattern(result,pos,Code128Reader.CODE_PATTERNS[contents.charAt(i) - ' '],1);
+ else {
+      if (codeSet == 0) {
+        if (newCodeSet == CODE_CODE_B) {
+          patternIndex=CODE_START_B;
+        }
+ else {
+          patternIndex=CODE_START_C;
+        }
+      }
+ else {
+        patternIndex=newCodeSet;
+      }
+      codeSet=newCodeSet;
+    }
+    patterns.addElement(Code128Reader.CODE_PATTERNS[patternIndex]);
+    checkSum+=patternIndex * checkWeight;
+    if (position != 0) {
+      checkWeight++;
     }
   }
-  check%=103;
-  pos+=appendPattern(result,pos,Code128Reader.CODE_PATTERNS[check],1);
-  pos+=appendPattern(result,pos,Code128Reader.CODE_PATTERNS[106],1);
+  checkSum%=103;
+  patterns.addElement(Code128Reader.CODE_PATTERNS[checkSum]);
+  patterns.addElement(Code128Reader.CODE_PATTERNS[CODE_STOP]);
+  int codeWidth=0;
+  Enumeration patternEnumeration=patterns.elements();
+  while (patternEnumeration.hasMoreElements()) {
+    int[] pattern=(int[])patternEnumeration.nextElement();
+    for (int i=0; i < pattern.length; i++) {
+      codeWidth+=pattern[i];
+    }
+  }
+  byte[] result=new byte[codeWidth];
+  patternEnumeration=patterns.elements();
+  int pos=0;
+  while (patternEnumeration.hasMoreElements()) {
+    int[] pattern=(int[])patternEnumeration.nextElement();
+    pos+=appendPattern(result,pos,pattern,1);
+  }
   return result;
 }

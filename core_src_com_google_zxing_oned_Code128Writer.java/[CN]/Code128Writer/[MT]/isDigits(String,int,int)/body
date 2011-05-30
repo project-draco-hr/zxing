@@ -1,0 +1,10 @@
+{
+  int end=start + length;
+  for (int i=start; i < end; i++) {
+    char c=value.charAt(i);
+    if (c < '0' || c > '9') {
+      return false;
+    }
+  }
+  return true;
+}
