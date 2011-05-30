@@ -21,8 +21,7 @@
     networkT=NetworkType.NETWORK_NOPASS;
   }
  else {
-    doError(R.string.wifi_type_incorrect);
-    return;
+    networkT=NetworkType.NETWORK_INVALID;
   }
   wifiManager=(WifiManager)this.getSystemService(WIFI_SERVICE);
   wifiManager.setWifiEnabled(true);
