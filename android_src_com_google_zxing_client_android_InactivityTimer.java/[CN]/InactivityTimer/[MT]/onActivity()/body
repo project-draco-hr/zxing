@@ -1,4 +1,10 @@
 {
   cancel();
-  inactivityFuture=inactivityTimer.schedule(new FinishListener(activity),INACTIVITY_DELAY_SECONDS,TimeUnit.SECONDS);
+  if (!inactivityTimer.isShutdown()) {
+    try {
+      inactivityFuture=inactivityTimer.schedule(new FinishListener(activity),INACTIVITY_DELAY_SECONDS,TimeUnit.SECONDS);
+    }
+ catch (    RejectedExecutionException ree) {
+    }
+  }
 }
