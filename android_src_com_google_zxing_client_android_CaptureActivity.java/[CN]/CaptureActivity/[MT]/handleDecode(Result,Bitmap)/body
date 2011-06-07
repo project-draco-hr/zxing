@@ -1,9 +1,10 @@
 {
   inactivityTimer.onActivity();
   lastResult=rawResult;
-  historyManager.addHistoryItem(rawResult);
+  ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
+  historyManager.addHistoryItem(rawResult,resultHandler);
   if (barcode == null) {
-    handleDecodeInternally(rawResult,null);
+    handleDecodeInternally(rawResult,resultHandler,null);
   }
  else {
     beepManager.playBeepSoundAndVibrate();
@@ -11,14 +12,14 @@
 switch (source) {
 case NATIVE_APP_INTENT:
 case PRODUCT_SEARCH_LINK:
-      handleDecodeExternally(rawResult,barcode);
+      handleDecodeExternally(rawResult,resultHandler,barcode);
     break;
 case ZXING_LINK:
   if (returnUrlTemplate == null) {
-    handleDecodeInternally(rawResult,barcode);
+    handleDecodeInternally(rawResult,resultHandler,barcode);
   }
  else {
-    handleDecodeExternally(rawResult,barcode);
+    handleDecodeExternally(rawResult,resultHandler,barcode);
   }
 break;
 case NONE:
@@ -31,7 +32,7 @@ handler.sendEmptyMessageDelayed(R.id.restart_preview,BULK_MODE_SCAN_DELAY_MS);
 resetStatusView();
 }
  else {
-handleDecodeInternally(rawResult,barcode);
+handleDecodeInternally(rawResult,resultHandler,barcode);
 }
 break;
 }

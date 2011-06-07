@@ -1,8 +1,5 @@
 {
-  if (i == dialogItems.length - 1) {
-    historyManager.clearHistory();
-  }
- else   if (i == dialogItems.length - 2) {
+  if (i == items.size()) {
     CharSequence history=historyManager.buildHistory();
     Uri historyFile=HistoryManager.saveHistory(history.toString());
     if (historyFile == null) {
@@ -20,6 +17,9 @@
     intent.putExtra(Intent.EXTRA_STREAM,historyFile);
     intent.setType("text/csv");
     activity.startActivity(intent);
+  }
+ else   if (i == items.size() + 1) {
+    historyManager.clearHistory();
   }
  else {
     Result result=items.get(i);

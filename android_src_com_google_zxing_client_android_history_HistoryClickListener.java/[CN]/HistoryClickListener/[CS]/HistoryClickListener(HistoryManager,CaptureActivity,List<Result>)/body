@@ -1,6 +1,5 @@
 {
   this.historyManager=historyManager;
   this.activity=activity;
-  this.dialogItems=dialogItems;
   this.items=items;
 }

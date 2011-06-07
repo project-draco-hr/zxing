@@ -11,7 +11,6 @@
   }
   TextView formatTextView=(TextView)findViewById(R.id.format_text_view);
   formatTextView.setText(rawResult.getBarcodeFormat().toString());
-  ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
   TextView typeTextView=(TextView)findViewById(R.id.type_text_view);
   typeTextView.setText(resultHandler.getType().toString());
   DateFormat formatter=DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT);
@@ -62,7 +61,7 @@
       button.setVisibility(View.GONE);
     }
   }
-  if (copyToClipboard) {
+  if (copyToClipboard && !resultHandler.areContentsSecure()) {
     ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
     clipboard.setText(displayContents);
   }

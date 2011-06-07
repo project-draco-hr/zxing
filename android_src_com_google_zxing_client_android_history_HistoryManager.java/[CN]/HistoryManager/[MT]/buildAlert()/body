@@ -1,16 +1,39 @@
 {
-  List<Result> items=getHistoryItems();
-  int size=items.size();
-  String[] dialogItems=new String[size + 2];
-  for (int i=0; i < size; i++) {
-    dialogItems[i]=items.get(i).getText();
+  SQLiteOpenHelper helper=new DBHelper(activity);
+  List<Result> items=new ArrayList<Result>();
+  List<String> dialogItems=new ArrayList<String>();
+  SQLiteDatabase db=null;
+  Cursor cursor=null;
+  try {
+    db=helper.getWritableDatabase();
+    cursor=db.query(DBHelper.TABLE_NAME,GET_ITEM_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
+    while (cursor.moveToNext()) {
+      Result result=new Result(cursor.getString(0),null,null,BarcodeFormat.valueOf(cursor.getString(2)),cursor.getLong(3));
+      items.add(result);
+      String display=cursor.getString(1);
+      if (display == null || display.length() == 0) {
+        display=result.getText();
+      }
+      dialogItems.add(display);
+    }
+  }
+ catch (  SQLiteException sqle) {
+    Log.w(TAG,"Error while opening database",sqle);
+  }
+ finally {
+    if (cursor != null) {
+      cursor.close();
+    }
+    if (db != null) {
+      db.close();
+    }
   }
   Resources res=activity.getResources();
-  dialogItems[dialogItems.length - 2]=res.getString(R.string.history_send);
-  dialogItems[dialogItems.length - 1]=res.getString(R.string.history_clear_text);
-  DialogInterface.OnClickListener clickListener=new HistoryClickListener(this,activity,dialogItems,items);
+  dialogItems.add(res.getString(R.string.history_send));
+  dialogItems.add(res.getString(R.string.history_clear_text));
+  DialogInterface.OnClickListener clickListener=new HistoryClickListener(this,activity,items);
   AlertDialog.Builder builder=new AlertDialog.Builder(activity);
   builder.setTitle(R.string.history_title);
-  builder.setItems(dialogItems,clickListener);
+  builder.setItems(dialogItems.toArray(new String[dialogItems.size()]),clickListener);
   return builder.create();
 }
