@@ -1,4 +1,7 @@
 {
+  if (count * 13 > bits.available()) {
+    throw FormatException.getFormatInstance();
+  }
   byte[] buffer=new byte[2 * count];
   int offset=0;
   while (count > 0) {

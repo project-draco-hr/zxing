@@ -11,6 +11,9 @@
  else {
     count=250 * (d1 - 249) + unrandomize255State(bits.readBits(8),codewordPosition++);
   }
+  if (count < 0) {
+    throw FormatException.getFormatInstance();
+  }
   byte[] bytes=new byte[count];
   for (int i=0; i < count; i++) {
     if (bits.available() < 8) {

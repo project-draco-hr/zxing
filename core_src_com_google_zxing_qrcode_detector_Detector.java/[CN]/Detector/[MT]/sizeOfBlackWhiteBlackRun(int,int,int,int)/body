@@ -11,8 +11,8 @@
   int dx=Math.abs(toX - fromX);
   int dy=Math.abs(toY - fromY);
   int error=-dx >> 1;
-  int ystep=fromY < toY ? 1 : -1;
   int xstep=fromX < toX ? 1 : -1;
+  int ystep=fromY < toY ? 1 : -1;
   int state=0;
   for (int x=fromX, y=fromY; x != toX; x+=xstep) {
     int realX=steep ? y : x;

@@ -1,8 +1,8 @@
 {
-  byte[] readBytes=new byte[count];
   if (count << 3 > bits.available()) {
     throw FormatException.getFormatInstance();
   }
+  byte[] readBytes=new byte[count];
   for (int i=0; i < count; i++) {
     readBytes[i]=(byte)bits.readBits(8);
   }
