@@ -8,7 +8,7 @@
     return;
   }
   isbn=intent.getStringExtra(Intents.SearchBookContents.ISBN);
-  if (isbn.startsWith("http://google.com/books?id=")) {
+  if (LocaleManager.isBookSearchUrl(isbn)) {
     setTitle(getString(R.string.sbc_name));
   }
  else {

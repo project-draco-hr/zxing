@@ -1,3 +1,0 @@
-{
-  return ((URIParsedResult)getResult()).getURI().startsWith("http://google.com/books?id=");
-}

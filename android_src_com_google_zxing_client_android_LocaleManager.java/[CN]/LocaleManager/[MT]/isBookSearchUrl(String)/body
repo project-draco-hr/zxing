@@ -1,0 +1,3 @@
+{
+  return url.startsWith("http://google.com/books") || url.startsWith("http://books.google.");
+}

@@ -1,3 +1,6 @@
 {
-  return isGoogleBooksURI() ? buttons.length : buttons.length - 1;
+  if (LocaleManager.isBookSearchUrl(((URIParsedResult)getResult()).getURI())) {
+    return buttons.length;
+  }
+  return buttons.length - 1;
 }
