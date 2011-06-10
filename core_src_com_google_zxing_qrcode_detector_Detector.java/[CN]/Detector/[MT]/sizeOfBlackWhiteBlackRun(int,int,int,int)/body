@@ -14,26 +14,17 @@
   int xstep=fromX < toX ? 1 : -1;
   int ystep=fromY < toY ? 1 : -1;
   int state=0;
-  for (int x=fromX, y=fromY; x != toX; x+=xstep) {
+  int xLimit=toX + xstep;
+  for (int x=fromX, y=fromY; x != xLimit; x+=xstep) {
     int realX=steep ? y : x;
     int realY=steep ? x : y;
-    if (state == 1) {
-      if (image.get(realX,realY)) {
-        state++;
+    if (!(state == 1 ^ image.get(realX,realY))) {
+      if (state == 2) {
+        int diffX=x - fromX;
+        int diffY=y - fromY;
+        return (float)Math.sqrt((double)(diffX * diffX + diffY * diffY));
       }
-    }
- else {
-      if (!image.get(realX,realY)) {
-        state++;
-      }
-    }
-    if (state == 3) {
-      int diffX=x - fromX;
-      int diffY=y - fromY;
-      if (xstep < 0) {
-        diffX++;
-      }
-      return (float)Math.sqrt((double)(diffX * diffX + diffY * diffY));
+      state++;
     }
     error+=dy;
     if (error > 0) {
@@ -44,7 +35,10 @@
       error-=dx;
     }
   }
-  int diffX=toX - fromX;
-  int diffY=toY - fromY;
-  return (float)Math.sqrt((double)(diffX * diffX + diffY * diffY));
+  if (state == 2) {
+    int diffX=toX + xstep - fromX;
+    int diffY=toY - fromY;
+    return (float)Math.sqrt((double)(diffX * diffX + diffY * diffY));
+  }
+  return Float.NaN;
 }
