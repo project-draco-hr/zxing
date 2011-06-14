@@ -18,6 +18,7 @@ throw FormatException.getFormatInstance();
 boolean done=false;
 boolean isNextShifted=false;
 StringBuffer result=new StringBuffer(20);
+Vector rawCodes=new Vector(20);
 int lastStart=startPatternInfo[0];
 int nextStart=startPatternInfo[1];
 int[] counters=new int[6];
@@ -31,6 +32,7 @@ boolean unshift=isNextShifted;
 isNextShifted=false;
 lastCode=code;
 code=decodeCode(row,counters,nextStart);
+rawCodes.addElement(new Byte((byte)code));
 if (code != CODE_STOP) {
 lastCharacterWasPrintable=true;
 }
@@ -169,5 +171,10 @@ throw FormatException.getFormatInstance();
 }
 float left=(float)(startPatternInfo[1] + startPatternInfo[0]) / 2.0f;
 float right=(float)(nextStart + lastStart) / 2.0f;
-return new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODE_128);
+int rawCodesSize=rawCodes.size();
+byte[] rawBytes=new byte[rawCodesSize];
+for (int i=0; i < rawCodesSize; i++) {
+rawBytes[i]=((Byte)rawCodes.elementAt(i)).byteValue();
+}
+return new Result(resultString,rawBytes,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODE_128);
 }

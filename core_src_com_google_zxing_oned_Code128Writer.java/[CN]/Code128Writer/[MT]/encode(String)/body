@@ -6,71 +6,99 @@
   for (int i=0; i < length; i++) {
     char c=contents.charAt(i);
     if (c < ' ' || c > '~') {
-      throw new IllegalArgumentException("Contents should only contain characters between ' ' and '~'");
-    }
+switch (c) {
+case ESCAPE_FNC_1:
+case ESCAPE_FNC_2:
+case ESCAPE_FNC_3:
+case ESCAPE_FNC_4:
+        break;
+default :
+      throw new IllegalArgumentException("Bad character in input: " + c);
   }
-  Vector patterns=new Vector();
-  int checkSum=0;
-  int checkWeight=1;
-  int codeSet=0;
-  int position=0;
-  while (position < length) {
-    int requiredDigitCount=codeSet == CODE_CODE_C ? 2 : 4;
-    int newCodeSet;
-    if (length - position >= requiredDigitCount && isDigits(contents,position,requiredDigitCount)) {
-      newCodeSet=CODE_CODE_C;
-    }
+}
+}
+Vector patterns=new Vector();
+int checkSum=0;
+int checkWeight=1;
+int codeSet=0;
+int position=0;
+while (position < length) {
+int requiredDigitCount=codeSet == CODE_CODE_C ? 2 : 4;
+int newCodeSet;
+if (isDigits(contents,position,requiredDigitCount)) {
+  newCodeSet=CODE_CODE_C;
+}
  else {
-      newCodeSet=CODE_CODE_B;
-    }
-    int patternIndex;
-    if (newCodeSet == codeSet) {
-      if (codeSet == CODE_CODE_B) {
-        patternIndex=contents.charAt(position) - ' ';
-        position+=1;
-      }
- else {
-        patternIndex=Integer.parseInt(contents.substring(position,position + 2));
-        position+=2;
-      }
-    }
- else {
-      if (codeSet == 0) {
-        if (newCodeSet == CODE_CODE_B) {
-          patternIndex=CODE_START_B;
-        }
- else {
-          patternIndex=CODE_START_C;
-        }
-      }
- else {
-        patternIndex=newCodeSet;
-      }
-      codeSet=newCodeSet;
-    }
-    patterns.addElement(Code128Reader.CODE_PATTERNS[patternIndex]);
-    checkSum+=patternIndex * checkWeight;
-    if (position != 0) {
-      checkWeight++;
-    }
+  newCodeSet=CODE_CODE_B;
+}
+int patternIndex;
+if (newCodeSet == codeSet) {
+  if (codeSet == CODE_CODE_B) {
+    patternIndex=contents.charAt(position) - ' ';
+    position+=1;
   }
-  checkSum%=103;
-  patterns.addElement(Code128Reader.CODE_PATTERNS[checkSum]);
-  patterns.addElement(Code128Reader.CODE_PATTERNS[CODE_STOP]);
-  int codeWidth=0;
-  Enumeration patternEnumeration=patterns.elements();
-  while (patternEnumeration.hasMoreElements()) {
-    int[] pattern=(int[])patternEnumeration.nextElement();
-    for (int i=0; i < pattern.length; i++) {
-      codeWidth+=pattern[i];
-    }
-  }
-  byte[] result=new byte[codeWidth];
-  patternEnumeration=patterns.elements();
-  int pos=0;
-  while (patternEnumeration.hasMoreElements()) {
-    int[] pattern=(int[])patternEnumeration.nextElement();
-    pos+=appendPattern(result,pos,pattern,1);
-  }
-  return result;
+ else {
+switch (contents.charAt(position)) {
+case ESCAPE_FNC_1:
+      patternIndex=CODE_FNC_1;
+    position++;
+  break;
+case ESCAPE_FNC_2:
+patternIndex=CODE_FNC_2;
+position++;
+break;
+case ESCAPE_FNC_3:
+patternIndex=CODE_FNC_3;
+position++;
+break;
+case ESCAPE_FNC_4:
+patternIndex=CODE_FNC_4_B;
+position++;
+break;
+default :
+patternIndex=Integer.parseInt(contents.substring(position,position + 2));
+position+=2;
+break;
+}
+}
+}
+ else {
+if (codeSet == 0) {
+if (newCodeSet == CODE_CODE_B) {
+patternIndex=CODE_START_B;
+}
+ else {
+patternIndex=CODE_START_C;
+}
+}
+ else {
+patternIndex=newCodeSet;
+}
+codeSet=newCodeSet;
+}
+patterns.addElement(Code128Reader.CODE_PATTERNS[patternIndex]);
+checkSum+=patternIndex * checkWeight;
+if (position != 0) {
+checkWeight++;
+}
+}
+checkSum%=103;
+patterns.addElement(Code128Reader.CODE_PATTERNS[checkSum]);
+patterns.addElement(Code128Reader.CODE_PATTERNS[CODE_STOP]);
+int codeWidth=0;
+Enumeration patternEnumeration=patterns.elements();
+while (patternEnumeration.hasMoreElements()) {
+int[] pattern=(int[])patternEnumeration.nextElement();
+for (int i=0; i < pattern.length; i++) {
+codeWidth+=pattern[i];
+}
+}
+byte[] result=new byte[codeWidth];
+patternEnumeration=patterns.elements();
+int pos=0;
+while (patternEnumeration.hasMoreElements()) {
+int[] pattern=(int[])patternEnumeration.nextElement();
+pos+=appendPattern(result,pos,pattern,1);
+}
+return result;
 }
