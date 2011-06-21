@@ -20,13 +20,18 @@
     out.write("<resources>\n");
     for (    Map.Entry<String,String> englishEntry : english.entrySet()) {
       String key=englishEntry.getKey();
+      String value=englishEntry.getValue();
       out.write("  <string name=\"");
       out.write(key);
-      out.write("\">");
+      out.write('"');
+      if (value.contains("%s") || value.contains("%f")) {
+        out.write(" formatted=\"false\"");
+      }
+      out.write('>');
       String translatedString=translated.get(key);
       if (translatedString == null || forceRetranslation.contains(key)) {
         anyChange=true;
-        translatedString=translateString(englishEntry.getValue(),language);
+        translatedString=translateString(value,language);
       }
       out.write(translatedString);
       out.write("</string>\n");
