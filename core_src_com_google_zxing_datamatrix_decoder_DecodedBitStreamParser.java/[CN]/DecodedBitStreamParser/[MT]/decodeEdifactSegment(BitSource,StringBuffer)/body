@@ -10,10 +10,10 @@
         unlatch=true;
       }
       if (!unlatch) {
-        if ((edifactValue & 32) == 0) {
-          edifactValue|=64;
+        if ((edifactValue & 0x20) == 0) {
+          edifactValue|=0x40;
         }
-        result.append(edifactValue);
+        result.append((char)edifactValue);
       }
     }
   }
