@@ -38,7 +38,7 @@ case 1:
       upperShift=false;
     }
  else {
-      result.append(cValue);
+      result.append((char)cValue);
     }
   shift=0;
 break;

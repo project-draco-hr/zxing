@@ -38,7 +38,7 @@ case 1:
       upperShift=false;
     }
  else {
-      result.append(cValue);
+      result.append((char)cValue);
     }
   shift=0;
 break;
@@ -54,7 +54,6 @@ if (upperShift) {
 }
 }
  else if (cValue == 27) {
-throw FormatException.getFormatInstance();
 }
  else if (cValue == 30) {
 upperShift=true;
