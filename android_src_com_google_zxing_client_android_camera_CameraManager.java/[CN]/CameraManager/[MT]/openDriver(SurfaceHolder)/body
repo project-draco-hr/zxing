@@ -9,6 +9,11 @@
   if (!initialized) {
     initialized=true;
     configManager.initFromCameraParameters(camera);
+    if (requestedFramingRectWidth > 0 && requestedFramingRectHeight > 0) {
+      setManualFramingRect(requestedFramingRectWidth,requestedFramingRectHeight);
+      requestedFramingRectWidth=0;
+      requestedFramingRectHeight=0;
+    }
   }
   configManager.setDesiredCameraParameters(camera);
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
