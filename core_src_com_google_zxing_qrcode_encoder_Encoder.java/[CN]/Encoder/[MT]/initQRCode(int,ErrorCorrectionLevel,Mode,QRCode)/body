@@ -8,7 +8,7 @@
     int numEcBytes=ecBlocks.getTotalECCodewords();
     int numRSBlocks=ecBlocks.getNumBlocks();
     int numDataBytes=numBytes - numEcBytes;
-    if (numDataBytes >= numInputBytes + 3) {
+    if (numDataBytes >= getTotalInputBytes(numInputBits,version,mode)) {
       qrCode.setVersion(versionNum);
       qrCode.setNumTotalBytes(numBytes);
       qrCode.setNumDataBytes(numDataBytes);
