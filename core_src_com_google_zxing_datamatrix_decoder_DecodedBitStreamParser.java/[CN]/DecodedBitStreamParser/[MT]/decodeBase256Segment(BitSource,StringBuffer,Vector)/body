@@ -1,5 +1,5 @@
 {
-  int codewordPosition=2;
+  int codewordPosition=1 + bits.getByteOffset();
   int d1=unrandomize255State(bits.readBits(8),codewordPosition++);
   int count;
   if (d1 == 0) {

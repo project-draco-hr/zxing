@@ -54,7 +54,6 @@ if (upperShift) {
 }
 }
  else if (cValue == 27) {
-throw FormatException.getFormatInstance();
 }
  else if (cValue == 30) {
 upperShift=true;
