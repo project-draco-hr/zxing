@@ -54,6 +54,7 @@ if (upperShift) {
 }
 }
  else if (cValue == 27) {
+result.append((char)29);
 }
  else if (cValue == 30) {
 upperShift=true;

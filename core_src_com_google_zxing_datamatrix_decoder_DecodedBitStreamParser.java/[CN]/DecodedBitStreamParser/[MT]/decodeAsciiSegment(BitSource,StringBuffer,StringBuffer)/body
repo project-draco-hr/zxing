@@ -27,7 +27,10 @@
  else     if (oneByte == 231) {
       return BASE256_ENCODE;
     }
- else     if (oneByte == 232 || oneByte == 233 || oneByte == 234) {
+ else     if (oneByte == 232) {
+      result.append((char)29);
+    }
+ else     if (oneByte == 233 || oneByte == 234) {
     }
  else     if (oneByte == 235) {
       upperShift=true;
