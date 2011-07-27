@@ -1,0 +1,10 @@
+{
+  if (values == null || values.length == 0) {
+    return Collections.emptySet();
+  }
+  Collection<String> uniqueValues=new HashSet<String>(values.length);
+  for (  String value : values) {
+    uniqueValues.add(trim(value));
+  }
+  return uniqueValues;
+}
