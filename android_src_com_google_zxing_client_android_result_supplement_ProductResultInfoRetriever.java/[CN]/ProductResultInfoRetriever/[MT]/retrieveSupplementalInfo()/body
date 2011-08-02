@@ -11,8 +11,8 @@
   String content=consume(response.getEntity());
   Matcher matcher=PRODUCT_NAME_PRICE_PATTERN.matcher(content);
   if (matcher.find()) {
-    append(matcher.group(1));
-    append(matcher.group(2));
+    String details=matcher.group(1) + ' ' + matcher.group(2);
+    append(productID,details);
   }
   setLink(uri);
 }

@@ -1,4 +1,5 @@
 TextView textView
-URIParsedResult result
+String productID
 Handler handler
+HistoryManager historyManager
 Context context

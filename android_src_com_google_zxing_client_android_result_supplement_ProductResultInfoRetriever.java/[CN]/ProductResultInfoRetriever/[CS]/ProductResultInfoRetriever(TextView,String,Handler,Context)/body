@@ -1,4 +1,0 @@
-{
-  super(textView,handler,context);
-  this.productID=productID;
-}

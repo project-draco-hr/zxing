@@ -5,16 +5,25 @@
   SQLiteDatabase db=null;
   Cursor cursor=null;
   try {
-    db=helper.getWritableDatabase();
-    cursor=db.query(DBHelper.TABLE_NAME,GET_ITEM_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
+    db=helper.getReadableDatabase();
+    cursor=db.query(DBHelper.TABLE_NAME,COLUMNS,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
     while (cursor.moveToNext()) {
-      Result result=new Result(cursor.getString(0),null,null,BarcodeFormat.valueOf(cursor.getString(2)),cursor.getLong(3));
+      String text=cursor.getString(0);
+      String format=cursor.getString(2);
+      long timestamp=cursor.getLong(3);
+      Result result=new Result(text,null,null,BarcodeFormat.valueOf(format),timestamp);
       items.add(result);
+      StringBuilder displayResult=new StringBuilder();
       String display=cursor.getString(1);
       if (display == null || display.length() == 0) {
         display=result.getText();
       }
-      dialogItems.add(display);
+      displayResult.append(display);
+      String details=cursor.getString(4);
+      if (details != null && details.length() > 0) {
+        displayResult.append(" : ").append(details);
+      }
+      dialogItems.add(displayResult.toString());
     }
   }
  catch (  SQLiteException sqle) {

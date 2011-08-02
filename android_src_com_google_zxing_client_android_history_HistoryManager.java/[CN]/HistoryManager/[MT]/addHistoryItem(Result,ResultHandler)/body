@@ -6,6 +6,11 @@
   if (!prefs.getBoolean(PreferencesActivity.KEY_REMEMBER_DUPLICATES,false)) {
     deletePrevious(result.getText());
   }
+  ContentValues values=new ContentValues();
+  values.put(DBHelper.TEXT_COL,result.getText());
+  values.put(DBHelper.FORMAT_COL,result.getBarcodeFormat().toString());
+  values.put(DBHelper.DISPLAY_COL,handler.getDisplayContents().toString());
+  values.put(DBHelper.TIMESTAMP_COL,System.currentTimeMillis());
   SQLiteOpenHelper helper=new DBHelper(activity);
   SQLiteDatabase db;
   try {
@@ -16,11 +21,6 @@
     return;
   }
   try {
-    ContentValues values=new ContentValues();
-    values.put(DBHelper.TEXT_COL,result.getText());
-    values.put(DBHelper.FORMAT_COL,result.getBarcodeFormat().toString());
-    values.put(DBHelper.DISPLAY_COL,handler.getDisplayContents().toString());
-    values.put(DBHelper.TIMESTAMP_COL,System.currentTimeMillis());
     db.insert(DBHelper.TABLE_NAME,DBHelper.TIMESTAMP_COL,values);
   }
   finally {

@@ -5,9 +5,9 @@
   }
   handler.post(new Runnable(){
     public void run(){
-      Spanned html=Html.fromHtml(newText + '\n');
-      textView.append(html);
+      textView.append(Html.fromHtml(newText + '\n'));
     }
   }
 );
+  historyManager.addHistoryItemDetails(itemID,newText);
 }

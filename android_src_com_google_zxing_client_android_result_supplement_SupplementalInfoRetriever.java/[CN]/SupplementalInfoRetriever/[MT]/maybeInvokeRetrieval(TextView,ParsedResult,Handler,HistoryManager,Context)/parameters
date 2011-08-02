@@ -1,4 +1,5 @@
 TextView textView
 ParsedResult result
 Handler handler
+HistoryManager historyManager
 Context context

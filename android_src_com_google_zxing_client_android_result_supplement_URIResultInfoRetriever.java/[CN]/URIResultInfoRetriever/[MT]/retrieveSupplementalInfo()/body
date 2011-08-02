@@ -3,7 +3,7 @@
   String newURI=unredirect(oldURI);
   int count=0;
   while (count < 3 && !oldURI.equals(newURI)) {
-    append(redirectString + ": " + newURI);
+    append(result.getDisplayResult(),redirectString + " : " + newURI);
     count++;
     oldURI=newURI;
     newURI=unredirect(newURI);

@@ -1,0 +1,19 @@
+{
+  ContentValues values=new ContentValues();
+  values.put(DBHelper.DETAILS_COL,itemDetails);
+  SQLiteOpenHelper helper=new DBHelper(activity);
+  SQLiteDatabase db;
+  try {
+    db=helper.getWritableDatabase();
+  }
+ catch (  SQLiteException sqle) {
+    Log.w(TAG,"Error while opening database",sqle);
+    return;
+  }
+  try {
+    db.update(DBHelper.TABLE_NAME,values,DBHelper.TEXT_COL + "=?",new String[]{itemID});
+  }
+  finally {
+    db.close();
+  }
+}

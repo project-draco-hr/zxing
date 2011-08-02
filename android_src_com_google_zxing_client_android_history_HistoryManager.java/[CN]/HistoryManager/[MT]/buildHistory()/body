@@ -11,12 +11,12 @@
   }
   Cursor cursor=null;
   try {
-    cursor=db.query(DBHelper.TABLE_NAME,EXPORT_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
+    cursor=db.query(DBHelper.TABLE_NAME,COLUMNS,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
     while (cursor.moveToNext()) {
-      for (int col=0; col < EXPORT_COL_PROJECTION.length; col++) {
+      for (int col=0; col < COLUMNS.length; col++) {
         historyText.append('"').append(massageHistoryField(cursor.getString(col))).append("\",");
       }
-      long timestamp=cursor.getLong(EXPORT_COL_PROJECTION.length - 1);
+      long timestamp=cursor.getLong(3);
       historyText.append('"').append(massageHistoryField(EXPORT_DATE_TIME_FORMAT.format(new Date(timestamp)))).append("\"\r\n");
     }
   }

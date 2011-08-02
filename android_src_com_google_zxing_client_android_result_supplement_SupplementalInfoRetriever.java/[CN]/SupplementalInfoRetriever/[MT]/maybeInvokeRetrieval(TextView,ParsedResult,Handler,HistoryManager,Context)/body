@@ -1,13 +1,13 @@
 {
   SupplementalInfoRetriever retriever=null;
   if (result instanceof URIParsedResult) {
-    retriever=new URIResultInfoRetriever(textView,(URIParsedResult)result,handler,context);
+    retriever=new URIResultInfoRetriever(textView,(URIParsedResult)result,handler,historyManager,context);
   }
  else   if (result instanceof ProductParsedResult) {
-    retriever=new ProductResultInfoRetriever(textView,((ProductParsedResult)result).getProductID(),handler,context);
+    retriever=new ProductResultInfoRetriever(textView,((ProductParsedResult)result).getProductID(),handler,historyManager,context);
   }
  else   if (result instanceof ISBNParsedResult) {
-    retriever=new ProductResultInfoRetriever(textView,((ISBNParsedResult)result).getISBN(),handler,context);
+    retriever=new ProductResultInfoRetriever(textView,((ISBNParsedResult)result).getISBN(),handler,historyManager,context);
   }
   if (retriever != null) {
     ExecutorService executor=getExecutorService();
