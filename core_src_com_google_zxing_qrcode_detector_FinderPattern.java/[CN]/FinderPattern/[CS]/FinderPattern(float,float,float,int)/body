@@ -1,0 +1,5 @@
+{
+  super(posX,posY);
+  this.estimatedModuleSize=estimatedModuleSize;
+  this.count=count;
+}

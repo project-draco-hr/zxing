@@ -8,7 +8,7 @@
     for (int index=0; index < max; index++) {
       AlignmentPattern center=(AlignmentPattern)possibleCenters.elementAt(index);
       if (center.aboutEquals(estimatedModuleSize,centerI,centerJ)) {
-        return new AlignmentPattern(centerJ,centerI,estimatedModuleSize);
+        return center.combineEstimate(centerI,centerJ,estimatedModuleSize);
       }
     }
     ResultPoint point=new AlignmentPattern(centerJ,centerI,estimatedModuleSize);

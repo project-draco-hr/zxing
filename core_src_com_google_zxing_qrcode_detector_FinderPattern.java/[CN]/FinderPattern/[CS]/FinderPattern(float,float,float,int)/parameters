@@ -1,0 +1,4 @@
+float posX
+float posY
+float estimatedModuleSize
+int count
