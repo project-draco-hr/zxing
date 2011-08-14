@@ -30,7 +30,7 @@
   if (nextStart == end || !row.get(nextStart)) {
     throw NotFoundException.getNotFoundInstance();
   }
-  if (result.length() < 2) {
+  if (result.length() < 4) {
     throw NotFoundException.getNotFoundInstance();
   }
   checkChecksums(result);

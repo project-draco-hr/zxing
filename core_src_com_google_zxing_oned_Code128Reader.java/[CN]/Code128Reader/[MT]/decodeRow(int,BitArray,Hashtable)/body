@@ -166,7 +166,7 @@ result.delete(resultLength - 1,resultLength);
 }
 }
 String resultString=result.toString();
-if (resultString.length() == 0) {
+if (resultString.length() < 2) {
 throw FormatException.getFormatInstance();
 }
 float left=(float)(startPatternInfo[1] + startPatternInfo[0]) / 2.0f;
