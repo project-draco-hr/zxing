@@ -1,6 +1,4 @@
 {
-  ContentValues values=new ContentValues();
-  values.put(DBHelper.DETAILS_COL,itemDetails);
   SQLiteOpenHelper helper=new DBHelper(activity);
   SQLiteDatabase db;
   try {
@@ -11,7 +9,25 @@
     return;
   }
   try {
-    db.update(DBHelper.TABLE_NAME,values,DBHelper.TEXT_COL + "=?",new String[]{itemID});
+    Cursor cursor=null;
+    String oldID=null;
+    String oldDetails=null;
+    try {
+      cursor=db.query(DBHelper.TABLE_NAME,ID_DETAIL_COL_PROJECTION,DBHelper.TEXT_COL + "=?",new String[]{itemID},null,null,DBHelper.TIMESTAMP_COL + " DESC");
+      if (cursor.moveToNext()) {
+        oldID=cursor.getString(0);
+        oldDetails=cursor.getString(1);
+      }
+    }
+  finally {
+      if (cursor != null) {
+        cursor.close();
+      }
+    }
+    String newDetails=oldDetails == null ? itemDetails : oldDetails + " : " + itemDetails;
+    ContentValues values=new ContentValues();
+    values.put(DBHelper.DETAILS_COL,newDetails);
+    db.update(DBHelper.TABLE_NAME,values,DBHelper.ID_COL + "=?",new String[]{oldID});
   }
   finally {
     db.close();
