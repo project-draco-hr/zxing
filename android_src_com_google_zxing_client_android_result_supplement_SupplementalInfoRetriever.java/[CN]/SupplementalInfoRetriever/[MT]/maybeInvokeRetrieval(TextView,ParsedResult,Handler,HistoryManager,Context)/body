@@ -1,15 +1,18 @@
 {
-  SupplementalInfoRetriever retriever=null;
+  Collection<SupplementalInfoRetriever> retrievers=new ArrayList<SupplementalInfoRetriever>(1);
   if (result instanceof URIParsedResult) {
-    retriever=new URIResultInfoRetriever(textView,(URIParsedResult)result,handler,historyManager,context);
+    retrievers.add(new URIResultInfoRetriever(textView,(URIParsedResult)result,handler,historyManager,context));
   }
  else   if (result instanceof ProductParsedResult) {
-    retriever=new ProductResultInfoRetriever(textView,((ProductParsedResult)result).getProductID(),handler,historyManager,context);
+    String productID=((ProductParsedResult)result).getProductID();
+    retrievers.add(new ProductResultInfoRetriever(textView,productID,handler,historyManager,context));
   }
  else   if (result instanceof ISBNParsedResult) {
-    retriever=new ProductResultInfoRetriever(textView,((ISBNParsedResult)result).getISBN(),handler,historyManager,context);
+    String isbn=((ISBNParsedResult)result).getISBN();
+    retrievers.add(new ProductResultInfoRetriever(textView,isbn,handler,historyManager,context));
+    retrievers.add(new BookResultInfoRetriever(textView,isbn,handler,historyManager,context));
   }
-  if (retriever != null) {
+  for (  SupplementalInfoRetriever retriever : retrievers) {
     ExecutorService executor=getExecutorService();
     Future<?> future=executor.submit(retriever);
     executor.submit(new KillerCallable(future,10,TimeUnit.SECONDS));

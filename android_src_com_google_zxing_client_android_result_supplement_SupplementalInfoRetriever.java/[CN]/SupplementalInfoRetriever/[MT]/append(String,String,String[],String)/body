@@ -1,0 +1,38 @@
+{
+  final TextView textView=textViewRef.get();
+  if (textView == null) {
+    throw new InterruptedException();
+  }
+  StringBuilder newTextCombined=new StringBuilder();
+  if (source != null) {
+    newTextCombined.append(source).append('\n');
+  }
+  int spanStart=newTextCombined.length();
+  boolean first=true;
+  for (  String newText : newTexts) {
+    if (first) {
+      newTextCombined.append(newText);
+      first=false;
+    }
+ else {
+      newTextCombined.append(" [");
+      newTextCombined.append(newText);
+      newTextCombined.append(']');
+    }
+  }
+  int spanEnd=newTextCombined.length();
+  newTextCombined.append("\n\n");
+  String newText=newTextCombined.toString();
+  final Spannable content=new SpannableString(newText);
+  if (linkURL != null) {
+    content.setSpan(new URLSpan(linkURL),spanStart,spanEnd,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+  }
+  handler.post(new Runnable(){
+    public void run(){
+      textView.append(content);
+      textView.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+  }
+);
+  historyManager.addHistoryItemDetails(itemID,newText);
+}

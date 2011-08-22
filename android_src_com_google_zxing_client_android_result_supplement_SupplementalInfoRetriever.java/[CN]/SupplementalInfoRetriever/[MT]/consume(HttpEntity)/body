@@ -1,5 +1,4 @@
 {
-  Log.d(TAG,"Consuming entity");
   ByteArrayOutputStream out=new ByteArrayOutputStream();
   InputStream in=null;
   try {
@@ -10,10 +9,7 @@
       out.write(buffer,0,bytesRead);
     }
   }
- catch (  IOException ioe) {
-    Log.w(TAG,ioe);
-  }
- finally {
+  finally {
     if (in != null) {
       try {
         in.close();

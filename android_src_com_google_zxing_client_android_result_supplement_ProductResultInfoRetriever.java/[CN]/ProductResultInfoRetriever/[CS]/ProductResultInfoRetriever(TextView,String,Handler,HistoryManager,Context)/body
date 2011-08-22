@@ -1,4 +1,5 @@
 {
-  super(textView,handler,historyManager,context);
+  super(textView,handler,historyManager);
   this.productID=productID;
+  this.source=context.getString(R.string.msg_google_product);
 }

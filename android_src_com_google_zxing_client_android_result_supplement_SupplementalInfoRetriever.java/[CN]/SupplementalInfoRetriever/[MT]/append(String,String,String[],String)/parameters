@@ -1,0 +1,4 @@
+String itemID
+String source
+String[] newTexts
+String linkURL

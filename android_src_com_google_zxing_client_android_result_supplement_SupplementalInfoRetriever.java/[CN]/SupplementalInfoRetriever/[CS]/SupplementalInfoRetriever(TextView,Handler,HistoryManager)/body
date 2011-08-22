@@ -1,6 +1,5 @@
 {
   this.textViewRef=new WeakReference<TextView>(textView);
   this.handler=handler;
-  this.context=context;
   this.historyManager=historyManager;
 }

@@ -1,4 +1,3 @@
 TextView textView
 Handler handler
 HistoryManager historyManager
-Context context

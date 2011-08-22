@@ -1,18 +1,9 @@
 {
   String encodedProductID=URLEncoder.encode(productID,"UTF-8");
   String uri=BASE_PRODUCT_URI + encodedProductID;
-  HttpUriRequest head=new HttpGet(uri);
-  AndroidHttpClient client=AndroidHttpClient.newInstance(null);
-  HttpResponse response=client.execute(head);
-  int status=response.getStatusLine().getStatusCode();
-  if (status != 200) {
-    return;
-  }
-  String content=consume(response.getEntity());
+  String content=downloadViaHttp(uri);
   Matcher matcher=PRODUCT_NAME_PRICE_PATTERN.matcher(content);
   if (matcher.find()) {
-    String details=matcher.group(1) + ' ' + matcher.group(2);
-    append(productID,details);
+    append(productID,source,new String[]{matcher.group(1),matcher.group(2)},uri);
   }
-  setLink(uri);
 }
