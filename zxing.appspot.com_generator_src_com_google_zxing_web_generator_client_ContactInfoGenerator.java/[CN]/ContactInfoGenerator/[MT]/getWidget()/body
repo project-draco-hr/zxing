@@ -2,7 +2,7 @@
   if (table != null) {
     return table;
   }
-  table=new Grid(7,2);
+  table=new Grid(8,2);
   table.setText(0,0,"Name");
   table.setWidget(0,1,name);
   table.setText(1,0,"Company");
