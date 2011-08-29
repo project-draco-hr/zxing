@@ -1,0 +1,5 @@
+{
+  int k=PDF417ErrorCorrection.getErrorCorrectionCodewordCount(errorCorrectionLevel);
+  int r=getNumberOfRows(m,k,c);
+  return c * r - k;
+}

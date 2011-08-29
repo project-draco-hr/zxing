@@ -1,0 +1,10 @@
+{
+  int r=calculateNumberOfRows(m,k,c);
+  if (r > 90) {
+    throw new WriterException("The message doesn't fit in the configured symbol size." + " The resultant number of rows for this barcode exceeds 90." + " Please increase the number of columns or decrease the error correction"+ " level to reduce the number of rows.");
+  }
+  if (r < 2) {
+    throw new WriterException("The message is too short for the configured symbol size." + " The resultant number of rows is less than 3." + " Please decrease the number of columns or increase the error correction"+ " level to increase the number of rows.");
+  }
+  return r;
+}

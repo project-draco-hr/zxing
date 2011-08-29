@@ -21,6 +21,9 @@
  else   if (format == BarcodeFormat.ITF) {
     writer=new ITFWriter();
   }
+ else   if (format == BarcodeFormat.PDF_417) {
+    writer=new PDF417Writer();
+  }
  else {
     throw new IllegalArgumentException("No encoder available for format " + format);
   }

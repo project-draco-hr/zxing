@@ -1,0 +1,7 @@
+{
+  byte[] output=new byte[row.length * scale];
+  for (int ii=0; ii < row.length * scale; ii++) {
+    output[ii]=row[ii / scale];
+  }
+  return output;
+}

@@ -1,0 +1,22 @@
+{
+  float ratio=0.0f;
+  int[] dimension=null;
+  int errorCorrectionCodeWords=PDF417ErrorCorrection.getErrorCorrectionCodewordCount(errorCorrectionLevel);
+  for (int cols=MIN_COLS; cols <= MAX_COLS; cols++) {
+    int rows=calculateNumberOfRows(sourceCodeWords,errorCorrectionCodeWords,cols);
+    if (rows < MIN_ROWS) {
+      break;
+    }
+    if (rows > MAX_ROWS) {
+      continue;
+    }
+    float newRatio=((17 * cols + 69) * DEFAULT_MODULE_WIDTH) / (rows * HEIGHT);
+    float preferredRatio=3.0f;
+    if (dimension != null && Math.abs(newRatio - preferredRatio) > Math.abs(ratio - preferredRatio)) {
+      continue;
+    }
+    ratio=newRatio;
+    dimension=new int[]{cols,rows};
+  }
+  return dimension;
+}

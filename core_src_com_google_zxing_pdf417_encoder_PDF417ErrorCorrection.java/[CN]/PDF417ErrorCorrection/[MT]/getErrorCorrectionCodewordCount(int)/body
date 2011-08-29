@@ -1,0 +1,6 @@
+{
+  if (errorCorrectionLevel < 0 || errorCorrectionLevel > 8) {
+    throw new IllegalArgumentException("Error correction level must be between 0 and 8!");
+  }
+  return 1 << (errorCorrectionLevel + 1);
+}

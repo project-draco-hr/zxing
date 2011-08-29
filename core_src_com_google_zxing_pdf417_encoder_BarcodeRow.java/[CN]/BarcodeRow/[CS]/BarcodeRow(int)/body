@@ -1,0 +1,4 @@
+{
+  this.row=new byte[width];
+  currentLocation=0;
+}

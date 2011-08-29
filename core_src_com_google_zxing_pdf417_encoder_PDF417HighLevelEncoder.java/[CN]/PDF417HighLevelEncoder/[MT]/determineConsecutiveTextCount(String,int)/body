@@ -1,0 +1,27 @@
+{
+  int len=msg.length();
+  int idx=startpos;
+  while (idx < len) {
+    char ch=msg.charAt(idx);
+    int numericCount=0;
+    while (numericCount < 13 && isDigit(ch) && idx < len) {
+      numericCount++;
+      idx++;
+      if (idx < len) {
+        ch=msg.charAt(idx);
+      }
+    }
+    if (numericCount >= 13) {
+      return idx - startpos - numericCount;
+    }
+    if (numericCount > 0) {
+      continue;
+    }
+    ch=msg.charAt(idx);
+    if (!isText(ch)) {
+      break;
+    }
+    idx++;
+  }
+  return idx - startpos;
+}

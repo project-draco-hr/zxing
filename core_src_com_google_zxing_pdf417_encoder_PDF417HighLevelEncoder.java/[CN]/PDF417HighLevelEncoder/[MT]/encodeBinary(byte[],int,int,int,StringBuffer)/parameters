@@ -1,0 +1,5 @@
+byte[] bytes
+int startpos
+int count
+int startmode
+StringBuffer sb

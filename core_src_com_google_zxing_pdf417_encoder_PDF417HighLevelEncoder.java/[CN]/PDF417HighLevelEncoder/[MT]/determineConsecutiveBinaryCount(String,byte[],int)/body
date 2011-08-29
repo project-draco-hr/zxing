@@ -1,0 +1,37 @@
+{
+  int len=msg.length();
+  int idx=startpos;
+  while (idx < len) {
+    char ch=msg.charAt(idx);
+    int numericCount=0;
+    while (numericCount < 13 && isDigit(ch)) {
+      numericCount++;
+      int i=idx + numericCount;
+      if (i >= len) {
+        break;
+      }
+      ch=msg.charAt(i);
+    }
+    if (numericCount >= 13) {
+      return idx - startpos;
+    }
+    int textCount=0;
+    while (textCount < 5 && isText(ch)) {
+      textCount++;
+      int i=idx + textCount;
+      if (i >= len) {
+        break;
+      }
+      ch=msg.charAt(i);
+    }
+    if (textCount >= 5) {
+      return idx - startpos;
+    }
+    ch=msg.charAt(idx);
+    if (bytes[idx] == 63 && ch != '?') {
+      throw new WriterException("Non-encodable character detected: " + ch + " (Unicode: "+ (int)ch+ ')');
+    }
+    idx++;
+  }
+  return idx - startpos;
+}

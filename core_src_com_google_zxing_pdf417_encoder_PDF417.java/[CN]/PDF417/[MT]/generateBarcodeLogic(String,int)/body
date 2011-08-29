@@ -1,0 +1,27 @@
+{
+  int errorCorrectionCodeWords=PDF417ErrorCorrection.getErrorCorrectionCodewordCount(errorCorrectionLevel);
+  String highLevel=PDF417HighLevelEncoder.encodeHighLevel(msg);
+  int sourceCodeWords=highLevel.length();
+  int[] dimension=determineDimensions(sourceCodeWords);
+  if (dimension == null) {
+    throw new WriterException("Unable to fit message in columns");
+  }
+  int cols=dimension[0];
+  int rows=dimension[1];
+  int pad=getNumberOfPadCodewords(sourceCodeWords,errorCorrectionCodeWords,cols,rows);
+  int n=getNumberOfDataCodewords(sourceCodeWords,errorCorrectionLevel,cols);
+  if (n > 929) {
+    throw new WriterException("Encoded message contains to many code words, message to big (" + msg.length() + " bytes)");
+  }
+  StringBuffer sb=new StringBuffer(n);
+  sb.append((char)n);
+  sb.append(highLevel);
+  for (int i=0; i < pad; i++) {
+    sb.append((char)900);
+  }
+  String dataCodewords=sb.toString();
+  String ec=PDF417ErrorCorrection.generateErrorCorrection(dataCodewords,errorCorrectionLevel);
+  String fullCodewords=dataCodewords + ec;
+  barcodeMatrix=new BarcodeMatrix(rows,cols);
+  encodeLowLevel(fullCodewords,cols,rows,errorCorrectionLevel,barcodeMatrix);
+}

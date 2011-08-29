@@ -1,0 +1,5 @@
+{
+  for (int ii=0; ii < width; ii++) {
+    set(currentLocation++,black);
+  }
+}

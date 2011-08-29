@@ -1,0 +1,3 @@
+{
+  return MIXED[ch] != -1;
+}

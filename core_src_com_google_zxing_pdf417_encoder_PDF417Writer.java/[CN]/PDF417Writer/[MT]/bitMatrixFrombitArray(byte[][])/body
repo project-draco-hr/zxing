@@ -1,0 +1,13 @@
+{
+  int whiteSpace=30;
+  BitMatrix output=new BitMatrix(input.length + 2 * whiteSpace,input[0].length + 2 * whiteSpace);
+  output.clear();
+  for (int ii=0; ii < input.length; ii++) {
+    for (int jj=0; jj < input[0].length; jj++) {
+      if (input[ii][jj] == 1) {
+        output.set(ii + whiteSpace,jj + whiteSpace);
+      }
+    }
+  }
+  return output;
+}

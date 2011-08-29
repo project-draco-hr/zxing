@@ -1,0 +1,4 @@
+{
+  int n=c * r - k;
+  return n > m + 1 ? n - m - 1 : 0;
+}
