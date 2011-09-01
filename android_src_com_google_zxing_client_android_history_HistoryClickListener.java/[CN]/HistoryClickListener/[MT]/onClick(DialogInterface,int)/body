@@ -19,7 +19,17 @@
     activity.startActivity(intent);
   }
  else   if (i == items.size() + 1) {
-    historyManager.clearHistory();
+    AlertDialog.Builder builder=new AlertDialog.Builder(activity);
+    builder.setMessage(R.string.msg_sure);
+    builder.setCancelable(true);
+    builder.setPositiveButton(R.string.button_ok,new DialogInterface.OnClickListener(){
+      public void onClick(      DialogInterface dialogInterface2,      int i2){
+        historyManager.clearHistory();
+      }
+    }
+);
+    builder.setNegativeButton(R.string.button_cancel,null);
+    builder.show();
   }
  else {
     Result result=items.get(i);
