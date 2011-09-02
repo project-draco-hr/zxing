@@ -2,7 +2,7 @@
   AndroidHttpClient client=null;
   try {
     URI uri;
-    if (isbn.startsWith("http://google.com/books?id=")) {
+    if (LocaleManager.isBookSearchUrl(isbn)) {
       int equals=isbn.indexOf('=');
       String volumeId=isbn.substring(equals + 1);
       uri=new URI("http",null,"www.google.com",-1,"/books","id=" + volumeId + "&jscmd=SearchWithinVolume2&q="+ query,null);
