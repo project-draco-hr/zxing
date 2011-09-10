@@ -1,6 +1,6 @@
 {
   super(context,attrs);
-  paint=new Paint();
+  paint=new Paint(Paint.ANTI_ALIAS_FLAG);
   Resources resources=getResources();
   maskColor=resources.getColor(R.color.viewfinder_mask);
   resultColor=resources.getColor(R.color.result_view);
