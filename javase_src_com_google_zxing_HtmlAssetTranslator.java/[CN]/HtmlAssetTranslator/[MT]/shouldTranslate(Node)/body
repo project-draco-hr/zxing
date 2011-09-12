@@ -1,0 +1,8 @@
+{
+  NamedNodeMap attributes=node.getAttributes();
+  if (attributes == null) {
+    return true;
+  }
+  Node classAttribute=attributes.getNamedItem("class");
+  return classAttribute == null || !"notranslate".equals(classAttribute.getTextContent());
+}
