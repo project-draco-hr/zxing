@@ -3,7 +3,7 @@
     throw new IllegalArgumentException("Found empty contents");
   }
   if (width < 0 || height < 0) {
-    throw new IllegalArgumentException("Requested dimensions are too small: " + width + 'x'+ height);
+    throw new IllegalArgumentException("Negative size is not allowed. Input: " + width + 'x'+ height);
   }
   byte[] code=encode(contents);
   return renderResult(code,width,height);
