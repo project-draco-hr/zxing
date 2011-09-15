@@ -1,14 +1,12 @@
 {
-  int resultLength;
-  int position=0;
   if (!CodaBarReader.arrayContains(new char[]{'A','B','C','D'},Character.toUpperCase(contents.charAt(0)))) {
     throw new IllegalArgumentException("Codabar should start with one of the following: 'A', 'B', 'C' or 'D'");
   }
   if (!CodaBarReader.arrayContains(new char[]{'T','N','*','E'},Character.toUpperCase(contents.charAt(contents.length() - 1)))) {
     throw new IllegalArgumentException("Codabar should end with one of the following: 'T', 'N', '*' or 'E'");
   }
-  resultLength=20;
-  char[] charsWhichAreTenLengthEachAfterDecoded=new char[]{'/',':','+','.'};
+  int resultLength=20;
+  char[] charsWhichAreTenLengthEachAfterDecoded={'/',':','+','.'};
   for (int i=1; i < contents.length() - 1; i++) {
     if (Character.isDigit(contents.charAt(i)) || contents.charAt(i) == '-' || contents.charAt(i) == '$') {
       resultLength+=9;
@@ -17,14 +15,14 @@
       resultLength+=10;
     }
  else {
-      throw new IllegalArgumentException("Cannot encode : '" + contents.charAt(i) + "'");
+      throw new IllegalArgumentException("Cannot encode : '" + contents.charAt(i) + '\'');
     }
   }
   resultLength+=contents.length() - 1;
   byte[] result=new byte[resultLength];
+  int position=0;
   for (int index=0; index < contents.length(); index++) {
     char c=Character.toUpperCase(contents.charAt(index));
-    int code=0;
     if (index == contents.length() - 1) {
       if (c == '*') {
         c='C';
@@ -33,13 +31,13 @@
         c='D';
       }
     }
+    int code=0;
     for (int i=0; i < CodaBarReader.ALPHABET.length; i++) {
       if (c == CodaBarReader.ALPHABET[i]) {
         code=CodaBarReader.CHARACTER_ENCODINGS[i];
         break;
       }
     }
-    boolean isBlack=true;
     byte color=1;
     int counter=0;
     int bit=0;
