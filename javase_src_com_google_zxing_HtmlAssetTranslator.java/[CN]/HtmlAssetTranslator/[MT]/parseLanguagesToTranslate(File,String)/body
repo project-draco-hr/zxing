@@ -1,0 +1,18 @@
+{
+  Collection<String> languages=new ArrayList<String>();
+  if ("all".equals(languageArg)) {
+    FileFilter fileFilter=new FileFilter(){
+      public boolean accept(      File file){
+        return file.isDirectory() && file.getName().startsWith("html-") && !"html-en".equals(file.getName());
+      }
+    }
+;
+    for (    File languageDir : assetsDir.listFiles(fileFilter)) {
+      languages.add(languageDir.getName().substring(5));
+    }
+  }
+ else {
+    languages.add(languageArg);
+  }
+  return languages;
+}

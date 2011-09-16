@@ -2,6 +2,10 @@
   if ("en".equals(language)) {
     return english;
   }
+  String massagedLanguage=LANGUAGE_CODE_MASSAGINGS.get(language);
+  if (massagedLanguage != null) {
+    language=massagedLanguage;
+  }
   System.out.println("  Need translation for " + english);
   long now=System.currentTimeMillis();
   if (now < nextAllowedAPICallTime) {

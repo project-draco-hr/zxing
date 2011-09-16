@@ -1,0 +1,56 @@
+{
+  File destFile=new File(targetHtmlDir,sourceFile.getName());
+  DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+  Document document;
+  try {
+    DocumentBuilder builder=factory.newDocumentBuilder();
+    document=builder.parse(sourceFile);
+  }
+ catch (  ParserConfigurationException pce) {
+    throw new IllegalStateException(pce);
+  }
+catch (  SAXException sae) {
+    throw new IOException(sae.toString());
+  }
+  Element rootElement=document.getDocumentElement();
+  rootElement.normalize();
+  Queue<Node> nodes=new LinkedList<Node>();
+  nodes.add(rootElement);
+  while (!nodes.isEmpty()) {
+    Node node=nodes.poll();
+    if (shouldTranslate(node)) {
+      NodeList children=node.getChildNodes();
+      for (int i=0; i < children.getLength(); i++) {
+        nodes.add(children.item(i));
+      }
+    }
+    if (node.getNodeType() == Node.TEXT_NODE) {
+      String text=node.getTextContent();
+      if (text.trim().length() > 0) {
+        text=StringsResourceTranslator.translateString(text,language);
+        node.setTextContent(' ' + text + ' ');
+      }
+    }
+  }
+  Node translateText=document.createTextNode(translationTextTranslated);
+  Node paragraph=document.createElement("p");
+  paragraph.appendChild(translateText);
+  Node body=rootElement.getElementsByTagName("body").item(0);
+  body.appendChild(paragraph);
+  DOMImplementationRegistry registry;
+  try {
+    registry=DOMImplementationRegistry.newInstance();
+  }
+ catch (  ClassNotFoundException cnfe) {
+    throw new IllegalStateException(cnfe);
+  }
+catch (  InstantiationException ie) {
+    throw new IllegalStateException(ie);
+  }
+catch (  IllegalAccessException iae) {
+    throw new IllegalStateException(iae);
+  }
+  DOMImplementationLS impl=(DOMImplementationLS)registry.getDOMImplementation("LS");
+  LSSerializer writer=impl.createLSSerializer();
+  writer.writeToURI(document,destFile.toURI().toString());
+}
