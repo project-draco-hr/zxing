@@ -1,33 +1,4 @@
 {
-  if (format != BarcodeFormat.PDF_417) {
-    throw new IllegalArgumentException("Can only encode PDF_417, but got " + format);
-  }
-  PDF417 encoder=new PDF417();
-  int errorCorrectionLevel=3;
-  encoder.generateBarcodeLogic(contents,errorCorrectionLevel);
-  int lineThickness=3;
-  int aspectRatio=8;
-  byte[][] originalScale=encoder.getBarcodeMatrix().getScaledMatrix(lineThickness,aspectRatio * lineThickness);
-  boolean rotated=false;
-  if ((height > width) ^ (originalScale[0].length < originalScale.length)) {
-    originalScale=rotateArray(originalScale);
-    rotated=true;
-  }
-  int scaleX=width / originalScale[0].length;
-  int scaleY=height / originalScale.length;
-  int scale;
-  if (scaleX < scaleY) {
-    scale=scaleX;
-  }
- else {
-    scale=scaleY;
-  }
-  if (scale > 1) {
-    byte[][] scaledMatrix=encoder.getBarcodeMatrix().getScaledMatrix(scale * lineThickness,scale * aspectRatio * lineThickness);
-    if (rotated) {
-      scaledMatrix=rotateArray(scaledMatrix);
-    }
-    return bitMatrixFrombitArray(scaledMatrix);
-  }
-  return bitMatrixFrombitArray(originalScale);
+  PDF417 encoder=initializeEncoder(format,false);
+  return bitMatrixFromEncoder(encoder,contents,width,height);
 }

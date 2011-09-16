@@ -1,0 +1,7 @@
+{
+  this.compact=compact;
+  minCols=2;
+  maxCols=30;
+  maxRows=30;
+  minRows=2;
+}

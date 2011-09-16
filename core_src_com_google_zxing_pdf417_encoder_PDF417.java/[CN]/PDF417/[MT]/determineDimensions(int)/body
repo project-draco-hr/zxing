@@ -2,12 +2,12 @@
   float ratio=0.0f;
   int[] dimension=null;
   int errorCorrectionCodeWords=PDF417ErrorCorrection.getErrorCorrectionCodewordCount(errorCorrectionLevel);
-  for (int cols=MIN_COLS; cols <= MAX_COLS; cols++) {
+  for (int cols=minCols; cols <= maxCols; cols++) {
     int rows=calculateNumberOfRows(sourceCodeWords,errorCorrectionCodeWords,cols);
-    if (rows < MIN_ROWS) {
+    if (rows < minRows) {
       break;
     }
-    if (rows > MAX_ROWS) {
+    if (rows > maxRows) {
       continue;
     }
     float newRatio=((17 * cols + 69) * DEFAULT_MODULE_WIDTH) / (rows * HEIGHT);

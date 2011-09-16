@@ -1,0 +1,6 @@
+{
+  PDF417 encoder=initializeEncoder(format,compact);
+  encoder.setDimensions(maxCols,minCols,maxRows,minRows);
+  encoder.setByteCompaction(byteCompaction);
+  return bitMatrixFromEncoder(encoder,contents,width,height);
+}

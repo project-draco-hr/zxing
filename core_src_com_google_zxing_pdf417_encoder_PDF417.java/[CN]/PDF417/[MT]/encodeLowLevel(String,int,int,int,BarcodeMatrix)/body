@@ -26,8 +26,13 @@
       encodeChar(pattern,17,logic.getCurrentRow());
       idx++;
     }
-    pattern=CODEWORD_TABLE[cluster][right];
-    encodeChar(pattern,17,logic.getCurrentRow());
-    encodeChar(STOP_PATTERN,18,logic.getCurrentRow());
+    if (compact) {
+      encodeChar(STOP_PATTERN,1,logic.getCurrentRow());
+    }
+ else {
+      pattern=CODEWORD_TABLE[cluster][right];
+      encodeChar(pattern,17,logic.getCurrentRow());
+      encodeChar(STOP_PATTERN,18,logic.getCurrentRow());
+    }
   }
 }

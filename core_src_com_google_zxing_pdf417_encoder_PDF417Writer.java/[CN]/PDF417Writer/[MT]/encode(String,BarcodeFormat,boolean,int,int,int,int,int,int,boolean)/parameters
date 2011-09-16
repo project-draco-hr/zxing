@@ -1,0 +1,10 @@
+String contents
+BarcodeFormat format
+boolean compact
+int width
+int height
+int minCols
+int maxCols
+int minRows
+int maxRows
+boolean byteCompaction

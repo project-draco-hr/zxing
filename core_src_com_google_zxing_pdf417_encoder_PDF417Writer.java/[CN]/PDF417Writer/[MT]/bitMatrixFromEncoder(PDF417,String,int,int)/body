@@ -1,0 +1,29 @@
+{
+  int errorCorrectionLevel=2;
+  encoder.generateBarcodeLogic(contents,errorCorrectionLevel);
+  int lineThickness=2;
+  int aspectRatio=4;
+  byte[][] originalScale=encoder.getBarcodeMatrix().getScaledMatrix(lineThickness,aspectRatio * lineThickness);
+  boolean rotated=false;
+  if ((height > width) ^ (originalScale[0].length < originalScale.length)) {
+    originalScale=rotateArray(originalScale);
+    rotated=true;
+  }
+  int scaleX=width / originalScale[0].length;
+  int scaleY=height / originalScale.length;
+  int scale;
+  if (scaleX < scaleY) {
+    scale=scaleX;
+  }
+ else {
+    scale=scaleY;
+  }
+  if (scale > 1) {
+    byte[][] scaledMatrix=encoder.getBarcodeMatrix().getScaledMatrix(scale * lineThickness,scale * aspectRatio * lineThickness);
+    if (rotated) {
+      scaledMatrix=rotateArray(scaledMatrix);
+    }
+    return bitMatrixFrombitArray(scaledMatrix);
+  }
+  return bitMatrixFrombitArray(originalScale);
+}
