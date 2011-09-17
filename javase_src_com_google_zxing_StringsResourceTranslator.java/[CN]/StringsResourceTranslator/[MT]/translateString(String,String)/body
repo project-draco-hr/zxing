@@ -39,5 +39,6 @@
   System.out.println("  Got translation " + translation);
   translation=translation.replaceAll("\\\\u0026quot;","\"");
   translation=translation.replaceAll("\\\\u0026#39;","'");
+  translation=translation.replaceAll("\\\\u200b","");
   return translation;
 }
