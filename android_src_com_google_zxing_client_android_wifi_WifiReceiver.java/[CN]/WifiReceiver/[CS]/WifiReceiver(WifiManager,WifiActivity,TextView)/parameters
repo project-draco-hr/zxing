@@ -1,4 +1,3 @@
 WifiManager wifiManager
 WifiActivity wifiActivity
 TextView statusView
-String ssid
