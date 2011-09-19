@@ -8,5 +8,7 @@
   }
   String field=rawInformation.substring(aiSize,aiSize + fieldSize);
   String remaining=rawInformation.substring(aiSize + fieldSize);
-  return '(' + ai + ')'+ field+ parseFieldsInGeneralPurpose(remaining);
+  String result='(' + ai + ')'+ field;
+  String parsedAI=parseFieldsInGeneralPurpose(remaining);
+  return parsedAI == null ? result : result + parsedAI;
 }

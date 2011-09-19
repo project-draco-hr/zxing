@@ -7,24 +7,24 @@
   if (rawText == null) {
     return null;
   }
-  String productID="-";
-  String sscc="-";
-  String lotNumber="-";
-  String productionDate="-";
-  String packagingDate="-";
-  String bestBeforeDate="-";
-  String expirationDate="-";
-  String weight="-";
-  String weightType="-";
-  String weightIncrement="-";
-  String price="-";
-  String priceIncrement="-";
-  String priceCurrency="-";
+  String productID=null;
+  String sscc=null;
+  String lotNumber=null;
+  String productionDate=null;
+  String packagingDate=null;
+  String bestBeforeDate=null;
+  String expirationDate=null;
+  String weight=null;
+  String weightType=null;
+  String weightIncrement=null;
+  String price=null;
+  String priceIncrement=null;
+  String priceCurrency=null;
   Hashtable uncommonAIs=new Hashtable();
   int i=0;
   while (i < rawText.length()) {
     String ai=findAIvalue(i,rawText);
-    if ("ERROR".equals(ai)) {
+    if (ai == null) {
       return null;
     }
     i+=ai.length() + 2;

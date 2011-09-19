@@ -2,29 +2,20 @@
   StringBuffer buf=new StringBuffer();
   char c=rawText.charAt(i);
   if (c != '(') {
-    return "ERROR";
+    return null;
   }
   String rawTextAux=rawText.substring(i + 1);
   for (int index=0; index < rawTextAux.length(); index++) {
     char currentChar=rawTextAux.charAt(index);
-switch (currentChar) {
-case '0':
-case '1':
-case '2':
-case '3':
-case '4':
-case '5':
-case '6':
-case '7':
-case '8':
-case '9':
+    if (currentChar == ')') {
+      return buf.toString();
+    }
+ else     if (currentChar >= '0' && currentChar <= '9') {
       buf.append(currentChar);
-    break;
-case ')':
+    }
+ else {
+      return null;
+    }
+  }
   return buf.toString();
-default :
-return "ERROR";
-}
-}
-return buf.toString();
 }

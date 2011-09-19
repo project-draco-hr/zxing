@@ -1,6 +1,5 @@
 {
-  long sym=symbol;
-  sym&=0x3ffff;
+  long sym=symbol & 0x3FFFF;
   int i=findCodewordIndex(sym);
   if (i == -1) {
     return -1;

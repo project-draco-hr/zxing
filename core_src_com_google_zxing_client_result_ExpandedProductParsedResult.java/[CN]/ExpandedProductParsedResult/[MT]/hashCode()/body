@@ -1,16 +1,17 @@
 {
-  int hash1=this.productID.hashCode();
-  hash1=31 * hash1 + this.sscc.hashCode();
-  hash1=31 * hash1 + this.lotNumber.hashCode();
-  hash1=31 * hash1 + this.productionDate.hashCode();
-  hash1=31 * hash1 + this.bestBeforeDate.hashCode();
-  hash1=31 * hash1 + this.expirationDate.hashCode();
-  hash1=31 * hash1 + this.weight.hashCode();
-  int hash2=this.weightType.hashCode();
-  hash2=31 * hash2 + this.weightIncrement.hashCode();
-  hash2=31 * hash2 + this.price.hashCode();
-  hash2=31 * hash2 + this.priceIncrement.hashCode();
-  hash2=31 * hash2 + this.priceCurrency.hashCode();
-  hash2=31 * hash2 + this.uncommonAIs.hashCode();
-  return hash1 ^ hash2;
+  int hash=0;
+  hash^=hashNotNull(productID);
+  hash^=hashNotNull(sscc);
+  hash^=hashNotNull(lotNumber);
+  hash^=hashNotNull(productionDate);
+  hash^=hashNotNull(bestBeforeDate);
+  hash^=hashNotNull(expirationDate);
+  hash^=hashNotNull(weight);
+  hash^=hashNotNull(weightType);
+  hash^=hashNotNull(weightIncrement);
+  hash^=hashNotNull(price);
+  hash^=hashNotNull(priceIncrement);
+  hash^=hashNotNull(priceCurrency);
+  hash^=hashNotNull(uncommonAIs);
+  return hash;
 }

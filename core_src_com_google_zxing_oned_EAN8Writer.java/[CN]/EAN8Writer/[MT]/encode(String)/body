@@ -2,7 +2,7 @@
   if (contents.length() != 8) {
     throw new IllegalArgumentException("Requested contents should be 8 digits long, but got " + contents.length());
   }
-  byte[] result=new byte[codeWidth];
+  byte[] result=new byte[CODE_WIDTH];
   int pos=0;
   pos+=appendPattern(result,pos,UPCEANReader.START_END_PATTERN,1);
   for (int i=0; i <= 3; i++) {

@@ -1,6 +1,6 @@
 {
   if (rawInformation.length() == 0) {
-    return "";
+    return null;
   }
   if (rawInformation.length() < 2) {
     throw NotFoundException.getNotFoundInstance();

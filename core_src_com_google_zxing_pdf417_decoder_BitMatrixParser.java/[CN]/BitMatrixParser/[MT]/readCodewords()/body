@@ -12,7 +12,7 @@
   int rowHeight=0;
   for (int i=1; i < height; i++) {
     if (rowNumber >= MAX_ROWS) {
-      return null;
+      throw FormatException.getFormatInstance();
     }
     int rowDifference=0;
     for (int j=0; j < width; j++) {
@@ -35,7 +35,7 @@
       if (rowInProgress) {
         next=processRow(rowCounters,rowNumber,rowHeight,codewords,next);
         if (next == -1) {
-          return null;
+          throw FormatException.getFormatInstance();
         }
         for (int j=0; j < rowCounters.length; j++) {
           rowCounters[j]=0;
@@ -50,7 +50,7 @@
   }
   if (rowInProgress) {
     if (rowNumber >= MAX_ROWS) {
-      return null;
+      throw FormatException.getFormatInstance();
     }
     next=processRow(rowCounters,rowNumber,rowHeight,codewords,next);
     rowNumber++;

@@ -1,5 +1,5 @@
 {
-  int numericDate=this.generalDecoder.extractNumericValueFromBitArray(currentPos,dateSize);
+  int numericDate=this.generalDecoder.extractNumericValueFromBitArray(currentPos,DATE_SIZE);
   if (numericDate == 38400) {
     return;
   }

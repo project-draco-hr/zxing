@@ -1,13 +1,8 @@
 {
-  try {
-    File file=new File(BASE_IMAGE_PATH + fileName);
-    if (!file.exists()) {
-      file=new File("core/" + BASE_IMAGE_PATH + fileName);
-    }
-    assertTrue("Please run from the 'core' directory",file.exists());
-    return ImageIO.read(file);
+  File file=new File(BASE_IMAGE_PATH + fileName);
+  if (!file.exists()) {
+    file=new File("core/" + BASE_IMAGE_PATH + fileName);
   }
- catch (  IOException e) {
-    return null;
-  }
+  assertTrue("Please run from the 'core' directory",file.exists());
+  return ImageIO.read(file);
 }
