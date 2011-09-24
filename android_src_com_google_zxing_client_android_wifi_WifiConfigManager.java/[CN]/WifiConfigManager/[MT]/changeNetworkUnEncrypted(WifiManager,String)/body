@@ -1,0 +1,7 @@
+{
+  WifiConfiguration config=changeNetworkCommon(ssid);
+  config.wepKeys[0]="";
+  config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+  config.wepTxKeyIndex=0;
+  updateNetwork(wifiManager,config);
+}

@@ -1,8 +1,0 @@
-{
-  errorCount++;
-  Log.d(TAG,"Encountered another error.  Errorcount = " + errorCount);
-  if (errorCount > MAX_ERROR_COUNT) {
-    errorCount=0;
-    doError(R.string.wifi_connect_failed);
-  }
-}

@@ -1,0 +1,10 @@
+{
+  WifiConfiguration config=new WifiConfiguration();
+  config.allowedAuthAlgorithms.clear();
+  config.allowedGroupCiphers.clear();
+  config.allowedKeyManagement.clear();
+  config.allowedPairwiseCiphers.clear();
+  config.allowedProtocols.clear();
+  config.SSID=convertToQuotedString(ssid);
+  return config;
+}

@@ -1,8 +1,0 @@
-{
-  Intent intent=new Intent(Intents.WifiConnect.ACTION);
-  intent.setClassName(activity,WifiActivity.class.getName());
-  putExtra(intent,Intents.WifiConnect.SSID,wifiResult.getSsid());
-  putExtra(intent,Intents.WifiConnect.TYPE,wifiResult.getNetworkEncryption());
-  putExtra(intent,Intents.WifiConnect.PASSWORD,wifiResult.getPassword());
-  launchIntent(intent);
-}

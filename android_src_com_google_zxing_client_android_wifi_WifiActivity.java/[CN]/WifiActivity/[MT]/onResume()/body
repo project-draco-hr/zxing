@@ -1,7 +1,0 @@
-{
-  super.onResume();
-  if (wifiReceiver != null && mWifiStateFilter != null && !receiverRegistered) {
-    registerReceiver(wifiReceiver,mWifiStateFilter);
-    receiverRegistered=true;
-  }
-}

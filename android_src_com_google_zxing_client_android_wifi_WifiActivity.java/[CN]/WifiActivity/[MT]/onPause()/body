@@ -1,7 +1,0 @@
-{
-  super.onPause();
-  if (receiverRegistered) {
-    unregisterReceiver(wifiReceiver);
-    receiverRegistered=false;
-  }
-}

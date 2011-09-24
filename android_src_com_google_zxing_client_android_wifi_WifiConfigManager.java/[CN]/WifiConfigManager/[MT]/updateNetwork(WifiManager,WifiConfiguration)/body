@@ -1,0 +1,13 @@
+{
+  Integer foundNetworkID=findNetworkInExistingConfig(wifiManager,config.SSID);
+  if (foundNetworkID != null) {
+    wifiManager.removeNetwork(foundNetworkID);
+    wifiManager.saveConfiguration();
+  }
+  int networkId=wifiManager.addNetwork(config);
+  if (networkId >= 0) {
+    if (wifiManager.enableNetwork(networkId,true)) {
+      wifiManager.reassociate();
+    }
+  }
+}

@@ -1,7 +1,0 @@
-{
-  NetworkInfo.DetailedState state=networkInfo.getDetailedState();
-  if (state == NetworkInfo.DetailedState.FAILED) {
-    Log.d(TAG,"Detailed Network state failed");
-    parent.gotError();
-  }
-}
