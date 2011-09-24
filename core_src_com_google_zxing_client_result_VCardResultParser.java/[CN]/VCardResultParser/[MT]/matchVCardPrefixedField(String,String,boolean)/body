@@ -19,17 +19,22 @@
     while (rawText.charAt(i) != ':') {
       i++;
     }
+    Vector metadata=null;
     boolean quotedPrintable=false;
     String quotedPrintableCharset=null;
     if (i > metadataStart) {
-      int j=metadataStart + 1;
-      while (j <= i) {
-        if (rawText.charAt(j) == ';' || rawText.charAt(j) == ':') {
-          String metadata=rawText.substring(metadataStart + 1,j);
-          int equals=metadata.indexOf('=');
+      for (int j=metadataStart + 1; j <= i; j++) {
+        char c=rawText.charAt(j);
+        if (c == ';' || c == ':') {
+          String metadatum=rawText.substring(metadataStart + 1,j);
+          if (metadata == null) {
+            metadata=new Vector(1);
+          }
+          metadata.addElement(metadatum);
+          int equals=metadatum.indexOf('=');
           if (equals >= 0) {
-            String key=metadata.substring(0,equals);
-            String value=metadata.substring(equals + 1);
+            String key=metadatum.substring(0,equals);
+            String value=metadatum.substring(equals + 1);
             if ("ENCODING".equalsIgnoreCase(key)) {
               if ("QUOTED-PRINTABLE".equalsIgnoreCase(value)) {
                 quotedPrintable=true;
@@ -41,7 +46,6 @@
           }
           metadataStart=j;
         }
-        j++;
       }
     }
     i++;
@@ -77,7 +81,15 @@
  else {
         element=stripContinuationCRLF(element);
       }
-      matches.addElement(element);
+      if (metadata == null) {
+        Vector match=new Vector(1);
+        match.addElement(element);
+        matches.addElement(match);
+      }
+ else {
+        metadata.insertElementAt(element,0);
+        matches.addElement(metadata);
+      }
       i++;
     }
  else {
@@ -87,5 +99,5 @@
   if (matches == null || matches.isEmpty()) {
     return null;
   }
-  return toStringArray(matches);
+  return matches;
 }

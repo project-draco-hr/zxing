@@ -7,6 +7,7 @@
   maybeAppend(addresses,result);
   maybeAppend(phoneNumbers,result);
   maybeAppend(emails,result);
+  maybeAppend(instantMessenger,result);
   maybeAppend(url,result);
   maybeAppend(birthday,result);
   maybeAppend(note,result);

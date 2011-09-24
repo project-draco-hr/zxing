@@ -7,12 +7,12 @@
   if (vEventStart < 0) {
     return null;
   }
-  String summary=VCardResultParser.matchSingleVCardPrefixedField("SUMMARY",rawText,true);
-  String start=VCardResultParser.matchSingleVCardPrefixedField("DTSTART",rawText,true);
-  String end=VCardResultParser.matchSingleVCardPrefixedField("DTEND",rawText,true);
-  String location=VCardResultParser.matchSingleVCardPrefixedField("LOCATION",rawText,true);
-  String description=VCardResultParser.matchSingleVCardPrefixedField("DESCRIPTION",rawText,true);
-  String geoString=VCardResultParser.matchSingleVCardPrefixedField("GEO",rawText,true);
+  String summary=matchSingleVCardPrefixedField("SUMMARY",rawText,true);
+  String start=matchSingleVCardPrefixedField("DTSTART",rawText,true);
+  String end=matchSingleVCardPrefixedField("DTEND",rawText,true);
+  String location=matchSingleVCardPrefixedField("LOCATION",rawText,true);
+  String description=matchSingleVCardPrefixedField("DESCRIPTION",rawText,true);
+  String geoString=matchSingleVCardPrefixedField("GEO",rawText,true);
   double latitude;
   double longitude;
   if (geoString == null) {

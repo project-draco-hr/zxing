@@ -3,9 +3,13 @@
   this.names=names;
   this.pronunciation=pronunciation;
   this.phoneNumbers=phoneNumbers;
+  this.phoneTypes=phoneTypes;
   this.emails=emails;
+  this.emailTypes=emailTypes;
+  this.instantMessenger=instantMessenger;
   this.note=note;
   this.addresses=addresses;
+  this.addressTypes=addressTypes;
   this.org=org;
   this.birthday=birthday;
   this.title=title;

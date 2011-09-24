@@ -2,16 +2,36 @@
   Intent intent=new Intent(Intent.ACTION_INSERT_OR_EDIT,Contacts.CONTENT_URI);
   intent.setType(Contacts.People.CONTENT_ITEM_TYPE);
   putExtra(intent,Contacts.Intents.Insert.NAME,names != null ? names[0] : null);
+  putExtra(intent,Contacts.Intents.Insert.PHONETIC_NAME,pronunciation);
   int phoneCount=Math.min(phoneNumbers != null ? phoneNumbers.length : 0,Contents.PHONE_KEYS.length);
   for (int x=0; x < phoneCount; x++) {
     putExtra(intent,Contents.PHONE_KEYS[x],phoneNumbers[x]);
+    if (phoneTypes != null && x < phoneTypes.length) {
+      int type=toPhoneContractType(phoneTypes[x]);
+      if (type >= 0) {
+        intent.putExtra(Contents.PHONE_TYPE_KEYS[x],type);
+      }
+    }
   }
   int emailCount=Math.min(emails != null ? emails.length : 0,Contents.EMAIL_KEYS.length);
   for (int x=0; x < emailCount; x++) {
     putExtra(intent,Contents.EMAIL_KEYS[x],emails[x]);
+    if (emailTypes != null && x < emailTypes.length) {
+      int type=toEmailContractType(emailTypes[x]);
+      if (type >= 0) {
+        intent.putExtra(Contents.EMAIL_TYPE_KEYS[x],type);
+      }
+    }
   }
   putExtra(intent,Contacts.Intents.Insert.NOTES,note);
+  putExtra(intent,Contacts.Intents.Insert.IM_HANDLE,instantMessenger);
   putExtra(intent,Contacts.Intents.Insert.POSTAL,address);
+  if (addressType != null) {
+    int type=toAddressContractType(addressType);
+    if (type >= 0) {
+      intent.putExtra(Contacts.Intents.Insert.POSTAL_TYPE,type);
+    }
+  }
   putExtra(intent,Contacts.Intents.Insert.COMPANY,org);
   putExtra(intent,Contacts.Intents.Insert.JOB_TITLE,title);
   launchIntent(intent);

@@ -3,26 +3,28 @@
   if (rawText == null || !rawText.startsWith("BEGIN:VCARD")) {
     return null;
   }
-  String[] names=matchVCardPrefixedField("FN",rawText,true);
+  Vector names=matchVCardPrefixedField("FN",rawText,true);
   if (names == null) {
     names=matchVCardPrefixedField("N",rawText,true);
     formatNames(names);
   }
-  String[] phoneNumbers=matchVCardPrefixedField("TEL",rawText,true);
-  String[] emails=matchVCardPrefixedField("EMAIL",rawText,true);
-  String note=matchSingleVCardPrefixedField("NOTE",rawText,false);
-  String[] addresses=matchVCardPrefixedField("ADR",rawText,true);
+  Vector phoneNumbers=matchVCardPrefixedField("TEL",rawText,true);
+  Vector emails=matchVCardPrefixedField("EMAIL",rawText,true);
+  Vector note=matchSingleVCardPrefixedField("NOTE",rawText,false);
+  Vector addresses=matchVCardPrefixedField("ADR",rawText,true);
   if (addresses != null) {
-    for (int i=0; i < addresses.length; i++) {
-      addresses[i]=formatAddress(addresses[i]);
+    for (int i=0; i < addresses.size(); i++) {
+      Vector list=(Vector)addresses.elementAt(i);
+      list.setElementAt(formatAddress((String)list.elementAt(0)),0);
     }
   }
-  String org=matchSingleVCardPrefixedField("ORG",rawText,true);
-  String birthday=matchSingleVCardPrefixedField("BDAY",rawText,true);
-  if (!isLikeVCardDate(birthday)) {
+  Vector org=matchSingleVCardPrefixedField("ORG",rawText,true);
+  Vector birthday=matchSingleVCardPrefixedField("BDAY",rawText,true);
+  if (birthday != null && !isLikeVCardDate((String)birthday.elementAt(0))) {
     birthday=null;
   }
-  String title=matchSingleVCardPrefixedField("TITLE",rawText,true);
-  String url=matchSingleVCardPrefixedField("URL",rawText,true);
-  return new AddressBookParsedResult(names,null,phoneNumbers,emails,note,addresses,org,birthday,title,url);
+  Vector title=matchSingleVCardPrefixedField("TITLE",rawText,true);
+  Vector url=matchSingleVCardPrefixedField("URL",rawText,true);
+  Vector instantMessenger=matchSingleVCardPrefixedField("IMPP",rawText,true);
+  return new AddressBookParsedResult(toPrimaryValues(names),null,toPrimaryValues(phoneNumbers),toTypes(phoneNumbers),toPrimaryValues(emails),toTypes(emails),toPrimaryValue(instantMessenger),toPrimaryValue(note),toPrimaryValues(addresses),toTypes(addresses),toPrimaryValue(org),toPrimaryValue(birthday),toPrimaryValue(title),toPrimaryValue(url));
 }

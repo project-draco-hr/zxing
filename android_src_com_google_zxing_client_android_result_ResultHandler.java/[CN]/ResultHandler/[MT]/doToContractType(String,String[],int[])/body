@@ -1,0 +1,12 @@
+{
+  if (typeString == null) {
+    return NO_TYPE;
+  }
+  for (int i=0; i < types.length; i++) {
+    String type=types[i];
+    if (typeString.startsWith(type) || typeString.startsWith(type.toUpperCase())) {
+      return values[i];
+    }
+  }
+  return NO_TYPE;
+}

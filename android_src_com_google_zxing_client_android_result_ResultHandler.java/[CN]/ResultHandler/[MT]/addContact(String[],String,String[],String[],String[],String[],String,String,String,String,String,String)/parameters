@@ -1,10 +1,12 @@
 String[] names
 String pronunciation
 String[] phoneNumbers
+String[] phoneTypes
 String[] emails
+String[] emailTypes
 String note
-String[] addresses
+String instantMessenger
+String address
+String addressType
 String org
-String birthday
 String title
-String url

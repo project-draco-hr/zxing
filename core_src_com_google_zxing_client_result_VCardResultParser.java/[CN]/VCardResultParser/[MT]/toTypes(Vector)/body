@@ -1,0 +1,24 @@
+{
+  if (lists == null || lists.isEmpty()) {
+    return null;
+  }
+  Vector result=new Vector(lists.size());
+  for (int j=0; j < lists.size(); j++) {
+    Vector list=(Vector)lists.elementAt(j);
+    String type=null;
+    for (int i=1; i < list.size(); i++) {
+      String metadatum=(String)list.elementAt(i);
+      int equals=metadatum.indexOf('=');
+      if (equals < 0) {
+        type=metadatum;
+        break;
+      }
+      if ("TYPE".equalsIgnoreCase(metadatum.substring(0,equals))) {
+        type=metadatum.substring(equals + 1);
+        break;
+      }
+    }
+    result.addElement(type);
+  }
+  return toStringArray(result);
+}

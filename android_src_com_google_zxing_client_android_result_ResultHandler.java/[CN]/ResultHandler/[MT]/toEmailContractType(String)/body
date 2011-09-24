@@ -1,0 +1,3 @@
+{
+  return doToContractType(typeString,EMAIL_TYPE_STRINGS,EMAIL_TYPE_VALUES);
+}

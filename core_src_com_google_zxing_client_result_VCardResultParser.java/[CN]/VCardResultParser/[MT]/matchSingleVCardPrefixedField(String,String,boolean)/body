@@ -1,4 +1,4 @@
 {
-  String[] values=matchVCardPrefixedField(prefix,rawText,trim);
-  return values == null ? null : values[0];
+  Vector values=matchVCardPrefixedField(prefix,rawText,trim);
+  return values == null || values.isEmpty() ? null : (Vector)values.elementAt(0);
 }

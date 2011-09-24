@@ -1,7 +1,8 @@
 {
   if (names != null) {
-    for (int i=0; i < names.length; i++) {
-      String name=names[i];
+    for (int i=0; i < names.size(); i++) {
+      Vector list=(Vector)names.elementAt(i);
+      String name=(String)list.elementAt(0);
       String[] components=new String[5];
       int start=0;
       int end;
@@ -18,7 +19,7 @@
       maybeAppendComponent(components,2,newName);
       maybeAppendComponent(components,0,newName);
       maybeAppendComponent(components,4,newName);
-      names[i]=newName.toString().trim();
+      list.setElementAt(newName.toString().trim(),0);
     }
   }
 }

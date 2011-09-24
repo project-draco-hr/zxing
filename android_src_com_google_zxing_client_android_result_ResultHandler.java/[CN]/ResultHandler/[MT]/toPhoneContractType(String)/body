@@ -1,0 +1,3 @@
+{
+  return doToContractType(typeString,PHONE_TYPE_STRINGS,PHONE_TYPE_VALUES);
+}
