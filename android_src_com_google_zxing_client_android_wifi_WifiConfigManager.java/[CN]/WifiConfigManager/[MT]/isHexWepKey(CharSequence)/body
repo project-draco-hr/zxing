@@ -1,7 +1,0 @@
-{
-  if (wepKey == null) {
-    return false;
-  }
-  int length=wepKey.length();
-  return (length == 10 || length == 26 || length == 58) && HEX_DIGITS.matcher(wepKey).matches();
-}

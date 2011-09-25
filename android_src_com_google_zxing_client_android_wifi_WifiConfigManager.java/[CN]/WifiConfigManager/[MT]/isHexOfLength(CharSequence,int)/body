@@ -1,0 +1,14 @@
+{
+  if (value == null || !HEX_DIGITS.matcher(value).matches()) {
+    return false;
+  }
+  if (allowedLengths.length == 0) {
+    return true;
+  }
+  for (  int length : allowedLengths) {
+    if (value.length() == length) {
+      return true;
+    }
+  }
+  return false;
+}

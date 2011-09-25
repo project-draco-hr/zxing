@@ -5,6 +5,6 @@
   config.allowedKeyManagement.clear();
   config.allowedPairwiseCiphers.clear();
   config.allowedProtocols.clear();
-  config.SSID=convertToQuotedString(ssid);
+  config.SSID=quoteNonHex(ssid);
   return config;
 }

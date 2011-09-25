@@ -1,0 +1,3 @@
+{
+  return isHexOfLength(value,allowedLengths) ? value : convertToQuotedString(value);
+}
