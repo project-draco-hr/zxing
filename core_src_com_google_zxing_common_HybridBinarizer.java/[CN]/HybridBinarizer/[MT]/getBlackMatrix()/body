@@ -1,4 +1,27 @@
 {
-  binarizeEntireImage();
+  if (matrix != null) {
+    return matrix;
+  }
+  LuminanceSource source=getLuminanceSource();
+  if (source.getWidth() >= MINIMUM_DIMENSION && source.getHeight() >= MINIMUM_DIMENSION) {
+    byte[] luminances=source.getMatrix();
+    int width=source.getWidth();
+    int height=source.getHeight();
+    int subWidth=width >> 3;
+    if ((width & 0x07) != 0) {
+      subWidth++;
+    }
+    int subHeight=height >> 3;
+    if ((height & 0x07) != 0) {
+      subHeight++;
+    }
+    int[][] blackPoints=calculateBlackPoints(luminances,subWidth,subHeight,width,height);
+    BitMatrix newMatrix=new BitMatrix(width,height);
+    calculateThresholdForBlock(luminances,subWidth,subHeight,width,height,blackPoints,newMatrix);
+    matrix=newMatrix;
+  }
+ else {
+    matrix=super.getBlackMatrix();
+  }
   return matrix;
 }

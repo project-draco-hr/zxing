@@ -1,7 +1,7 @@
 {
   BitMatrixParser parser=new BitMatrixParser(bits);
   int[] codewords=parser.readCodewords();
-  if (codewords == null || codewords.length == 0) {
+  if (codewords.length == 0) {
     throw FormatException.getFormatInstance();
   }
   int ecLevel=parser.getECLevel();

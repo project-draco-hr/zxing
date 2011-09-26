@@ -2,6 +2,6 @@
   if (s == null) {
     return null;
   }
-  s=s.trim();
-  return s.length() == 0 ? null : s;
+  String result=s.trim();
+  return result.length() == 0 ? null : result;
 }

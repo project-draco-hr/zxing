@@ -18,5 +18,5 @@
  catch (  ReaderException re) {
     return re.toString();
   }
-  return result.getText();
+  return String.valueOf(result.getText());
 }

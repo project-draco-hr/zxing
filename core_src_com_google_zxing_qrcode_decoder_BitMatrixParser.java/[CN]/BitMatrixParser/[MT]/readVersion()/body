@@ -14,9 +14,10 @@
       versionBits=copyBit(i,j,versionBits);
     }
   }
-  parsedVersion=Version.decodeVersionInformation(versionBits);
-  if (parsedVersion != null && parsedVersion.getDimensionForVersion() == dimension) {
-    return parsedVersion;
+  Version theParsedVersion=Version.decodeVersionInformation(versionBits);
+  if (theParsedVersion != null && theParsedVersion.getDimensionForVersion() == dimension) {
+    parsedVersion=theParsedVersion;
+    return theParsedVersion;
   }
   versionBits=0;
   for (int i=5; i >= 0; i--) {
@@ -24,9 +25,10 @@
       versionBits=copyBit(i,j,versionBits);
     }
   }
-  parsedVersion=Version.decodeVersionInformation(versionBits);
-  if (parsedVersion != null && parsedVersion.getDimensionForVersion() == dimension) {
-    return parsedVersion;
+  theParsedVersion=Version.decodeVersionInformation(versionBits);
+  if (theParsedVersion != null && theParsedVersion.getDimensionForVersion() == dimension) {
+    parsedVersion=theParsedVersion;
+    return theParsedVersion;
   }
   throw FormatException.getFormatInstance();
 }

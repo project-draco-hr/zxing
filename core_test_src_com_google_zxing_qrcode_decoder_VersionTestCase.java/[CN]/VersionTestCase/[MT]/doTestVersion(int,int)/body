@@ -1,0 +1,5 @@
+{
+  Version version=Version.decodeVersionInformation(mask);
+  assertNotNull(version);
+  assertEquals(expectedVersion,version.getVersionNumber());
+}

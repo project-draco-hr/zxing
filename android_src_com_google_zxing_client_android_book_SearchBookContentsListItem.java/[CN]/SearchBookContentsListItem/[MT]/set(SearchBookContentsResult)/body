@@ -3,8 +3,8 @@
   String snippet=result.getSnippet();
   if (snippet.length() > 0) {
     if (result.getValidSnippet()) {
-      String lowerQuery=SearchBookContentsResult.getQuery().toLowerCase();
-      String lowerSnippet=snippet.toLowerCase();
+      String lowerQuery=SearchBookContentsResult.getQuery().toLowerCase(Locale.getDefault());
+      String lowerSnippet=snippet.toLowerCase(Locale.getDefault());
       Spannable styledSnippet=new SpannableString(snippet);
       StyleSpan boldSpan=new StyleSpan(Typeface.BOLD);
       int queryLength=lowerQuery.length();

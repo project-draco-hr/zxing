@@ -45,8 +45,10 @@
         if (attempt == 1) {
           result.putMetadata(ResultMetadataType.ORIENTATION,new Integer(180));
           ResultPoint[] points=result.getResultPoints();
-          points[0]=new ResultPoint(width - points[0].getX() - 1,points[0].getY());
-          points[1]=new ResultPoint(width - points[1].getX() - 1,points[1].getY());
+          if (points != null) {
+            points[0]=new ResultPoint(width - points[0].getX() - 1,points[0].getY());
+            points[1]=new ResultPoint(width - points[1].getX() - 1,points[1].getY());
+          }
         }
         return result;
       }

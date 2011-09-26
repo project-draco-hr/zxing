@@ -11,12 +11,14 @@
       continue;
     }
     float newRatio=((17 * cols + 69) * DEFAULT_MODULE_WIDTH) / (rows * HEIGHT);
-    float preferredRatio=3.0f;
-    if (dimension != null && Math.abs(newRatio - preferredRatio) > Math.abs(ratio - preferredRatio)) {
+    if (dimension != null && Math.abs(newRatio - PREFERRED_RATIO) > Math.abs(ratio - PREFERRED_RATIO)) {
       continue;
     }
     ratio=newRatio;
     dimension=new int[]{cols,rows};
+  }
+  if (dimension == null) {
+    throw new WriterException("Unable to fit message in columns");
   }
   return dimension;
 }

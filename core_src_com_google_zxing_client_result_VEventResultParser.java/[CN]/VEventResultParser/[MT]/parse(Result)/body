@@ -9,6 +9,9 @@
   }
   String summary=matchSingleVCardPrefixedField("SUMMARY",rawText,true);
   String start=matchSingleVCardPrefixedField("DTSTART",rawText,true);
+  if (start == null) {
+    return null;
+  }
   String end=matchSingleVCardPrefixedField("DTEND",rawText,true);
   String location=matchSingleVCardPrefixedField("LOCATION",rawText,true);
   String description=matchSingleVCardPrefixedField("DESCRIPTION",rawText,true);

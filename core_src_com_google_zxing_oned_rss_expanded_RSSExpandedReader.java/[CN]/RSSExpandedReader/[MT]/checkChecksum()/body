@@ -8,8 +8,9 @@
     ExpandedPair currentPair=(ExpandedPair)this.pairs.elementAt(i);
     checksum+=currentPair.getLeftChar().getChecksumPortion();
     S++;
-    if (currentPair.getRightChar() != null) {
-      checksum+=currentPair.getRightChar().getChecksumPortion();
+    DataCharacter currentRightChar=currentPair.getRightChar();
+    if (currentRightChar != null) {
+      checksum+=currentRightChar.getChecksumPortion();
       S++;
     }
   }

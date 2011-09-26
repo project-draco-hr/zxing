@@ -1,5 +1,8 @@
 {
   Rect rect=getFramingRectInPreview();
+  if (rect == null) {
+    throw new IllegalStateException();
+  }
   int previewFormat=configManager.getPreviewFormat();
   String previewFormatString=configManager.getPreviewFormatString();
 switch (previewFormat) {

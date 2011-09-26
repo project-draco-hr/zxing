@@ -1,11 +1,12 @@
 {
-  if (resultPoints == null) {
+  ResultPoint[] oldResultPoints=resultPoints;
+  if (oldResultPoints == null) {
     resultPoints=newPoints;
   }
  else   if (newPoints != null && newPoints.length > 0) {
-    ResultPoint[] allPoints=new ResultPoint[resultPoints.length + newPoints.length];
-    System.arraycopy(resultPoints,0,allPoints,0,resultPoints.length);
-    System.arraycopy(newPoints,0,allPoints,resultPoints.length,newPoints.length);
+    ResultPoint[] allPoints=new ResultPoint[oldResultPoints.length + newPoints.length];
+    System.arraycopy(oldResultPoints,0,allPoints,0,oldResultPoints.length);
+    System.arraycopy(newPoints,0,allPoints,oldResultPoints.length,newPoints.length);
     resultPoints=allPoints;
   }
 }

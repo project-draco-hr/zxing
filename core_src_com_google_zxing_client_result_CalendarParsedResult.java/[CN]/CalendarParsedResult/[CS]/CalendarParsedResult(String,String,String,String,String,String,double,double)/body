@@ -1,8 +1,5 @@
 {
   super(ParsedResultType.CALENDAR);
-  if (start == null) {
-    throw new IllegalArgumentException();
-  }
   validateDate(start);
   if (end == null) {
     end=start;

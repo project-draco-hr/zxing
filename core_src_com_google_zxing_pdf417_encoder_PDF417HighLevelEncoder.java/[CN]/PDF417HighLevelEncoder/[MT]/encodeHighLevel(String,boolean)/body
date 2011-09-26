@@ -15,13 +15,11 @@
       if (b == 0) {
         b=1;
       }
-      if (b == 1 && encodingMode == TEXT_COMPACTION) {
+      if (b == 1) {
         encodeBinary(bytes,p,1,TEXT_COMPACTION,sb);
       }
  else {
         encodeBinary(bytes,p,b,encodingMode,sb);
-        encodingMode=BYTE_COMPACTION;
-        textSubMode=SUBMODE_ALPHA;
       }
       p+=b;
     }

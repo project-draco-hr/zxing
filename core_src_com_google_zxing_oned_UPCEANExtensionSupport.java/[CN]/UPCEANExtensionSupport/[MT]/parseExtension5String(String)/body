@@ -11,10 +11,10 @@ case '9':
 if ("90000".equals(raw)) {
 return null;
 }
- else if ("99991".equals(raw)) {
+if ("99991".equals(raw)) {
 return "0.00";
 }
- else if ("99990".equals(raw)) {
+if ("99990".equals(raw)) {
 return "Used";
 }
 currency="";

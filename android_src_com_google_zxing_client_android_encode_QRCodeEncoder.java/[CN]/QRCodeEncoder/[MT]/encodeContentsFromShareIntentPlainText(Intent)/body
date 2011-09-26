@@ -1,12 +1,13 @@
 {
-  contents=intent.getStringExtra(Intent.EXTRA_TEXT);
-  if (contents == null) {
+  String theContents=intent.getStringExtra(Intent.EXTRA_TEXT);
+  if (theContents == null) {
     return false;
   }
-  contents=contents.trim();
-  if (contents.length() == 0) {
+  theContents=theContents.trim();
+  if (theContents.length() == 0) {
     return false;
   }
+  contents=theContents;
   format=BarcodeFormat.QR_CODE;
   if (intent.hasExtra(Intent.EXTRA_SUBJECT)) {
     displayContents=intent.getStringExtra(Intent.EXTRA_SUBJECT);

@@ -1,23 +1,21 @@
 {
-  if (escaped != null) {
-    int backslash=escaped.indexOf((int)'\\');
-    if (backslash >= 0) {
-      int max=escaped.length();
-      StringBuffer unescaped=new StringBuffer(max - 1);
-      unescaped.append(escaped.toCharArray(),0,backslash);
-      boolean nextIsEscaped=false;
-      for (int i=backslash; i < max; i++) {
-        char c=escaped.charAt(i);
-        if (nextIsEscaped || c != '\\') {
-          unescaped.append(c);
-          nextIsEscaped=false;
-        }
+  int backslash=escaped.indexOf((int)'\\');
+  if (backslash < 0) {
+    return escaped;
+  }
+  int max=escaped.length();
+  StringBuffer unescaped=new StringBuffer(max - 1);
+  unescaped.append(escaped.toCharArray(),0,backslash);
+  boolean nextIsEscaped=false;
+  for (int i=backslash; i < max; i++) {
+    char c=escaped.charAt(i);
+    if (nextIsEscaped || c != '\\') {
+      unescaped.append(c);
+      nextIsEscaped=false;
+    }
  else {
-          nextIsEscaped=true;
-        }
-      }
-      return unescaped.toString();
+      nextIsEscaped=true;
     }
   }
-  return escaped;
+  return unescaped.toString();
 }

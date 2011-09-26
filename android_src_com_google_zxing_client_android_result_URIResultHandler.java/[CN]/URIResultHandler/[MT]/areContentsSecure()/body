@@ -1,6 +1,6 @@
 {
   URIParsedResult uriResult=(URIParsedResult)getResult();
-  String uri=uriResult.getURI().toLowerCase();
+  String uri=uriResult.getURI().toLowerCase(Locale.ENGLISH);
   for (  String secure : SECURE_PROTOCOLS) {
     if (uri.startsWith(secure)) {
       return true;

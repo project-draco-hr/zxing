@@ -19,7 +19,7 @@
   if (hasAlphanumeric) {
     return Mode.ALPHANUMERIC;
   }
- else   if (hasNumeric) {
+  if (hasNumeric) {
     return Mode.NUMERIC;
   }
   return Mode.BYTE;

@@ -2,12 +2,7 @@
   if (luminances == null || luminances.length < luminanceSize) {
     luminances=new byte[luminanceSize];
   }
-  if (buckets == null) {
-    buckets=new int[LUMINANCE_BUCKETS];
-  }
- else {
-    for (int x=0; x < LUMINANCE_BUCKETS; x++) {
-      buckets[x]=0;
-    }
+  for (int x=0; x < LUMINANCE_BUCKETS; x++) {
+    buckets[x]=0;
   }
 }

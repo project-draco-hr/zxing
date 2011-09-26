@@ -4,9 +4,6 @@
     return null;
   }
   String rawText=result.getText();
-  if (rawText == null) {
-    return null;
-  }
   int length=rawText.length();
   for (int x=0; x < length; x++) {
     char c=rawText.charAt(x);

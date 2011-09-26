@@ -1,4 +1,7 @@
 {
+  if (customProductSearch == null) {
+    return text;
+  }
   String url=customProductSearch.replace("%s",text);
   if (rawResult != null) {
     url=url.replace("%f",rawResult.getBarcodeFormat().toString());

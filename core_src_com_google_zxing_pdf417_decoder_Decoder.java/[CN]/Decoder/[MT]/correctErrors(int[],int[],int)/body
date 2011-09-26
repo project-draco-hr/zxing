@@ -1,16 +1,14 @@
 {
-  if ((erasures != null && erasures.length > numECCodewords / 2 + MAX_ERRORS) || numECCodewords < 0 || numECCodewords > MAX_EC_CODEWORDS) {
+  if (erasures.length > numECCodewords / 2 + MAX_ERRORS || numECCodewords < 0 || numECCodewords > MAX_EC_CODEWORDS) {
     throw FormatException.getFormatInstance();
   }
   int result=0;
-  if (erasures != null) {
-    int numErasures=erasures.length;
-    if (result > 0) {
-      numErasures-=result;
-    }
-    if (numErasures > MAX_ERRORS) {
-      throw FormatException.getFormatInstance();
-    }
+  int numErasures=erasures.length;
+  if (result > 0) {
+    numErasures-=result;
+  }
+  if (numErasures > MAX_ERRORS) {
+    throw FormatException.getFormatInstance();
   }
   return result;
 }

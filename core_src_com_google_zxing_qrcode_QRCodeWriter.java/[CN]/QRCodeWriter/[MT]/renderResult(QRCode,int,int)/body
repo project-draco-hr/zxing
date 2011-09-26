@@ -1,5 +1,8 @@
 {
   ByteMatrix input=code.getMatrix();
+  if (input == null) {
+    throw new IllegalStateException();
+  }
   int inputWidth=input.getWidth();
   int inputHeight=input.getHeight();
   int qrWidth=inputWidth + (QUIET_ZONE_SIZE << 1);

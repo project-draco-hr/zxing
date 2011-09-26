@@ -1,8 +1,5 @@
 {
   this.activity=activity;
-  if (intent == null) {
-    throw new IllegalArgumentException("No valid data to encode.");
-  }
   String action=intent.getAction();
   if (action.equals(Intents.Encode.ACTION)) {
     if (!encodeContentsFromZXingIntent(intent)) {

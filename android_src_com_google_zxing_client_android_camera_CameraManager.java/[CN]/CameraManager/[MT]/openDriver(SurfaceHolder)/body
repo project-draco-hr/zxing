@@ -1,21 +1,23 @@
 {
-  if (camera == null) {
-    camera=Camera.open();
-    if (camera == null) {
+  Camera theCamera=camera;
+  if (theCamera == null) {
+    theCamera=Camera.open();
+    if (theCamera == null) {
       throw new IOException();
     }
+    camera=theCamera;
   }
-  camera.setPreviewDisplay(holder);
+  theCamera.setPreviewDisplay(holder);
   if (!initialized) {
     initialized=true;
-    configManager.initFromCameraParameters(camera);
+    configManager.initFromCameraParameters(theCamera);
     if (requestedFramingRectWidth > 0 && requestedFramingRectHeight > 0) {
       setManualFramingRect(requestedFramingRectWidth,requestedFramingRectHeight);
       requestedFramingRectWidth=0;
       requestedFramingRectHeight=0;
     }
   }
-  configManager.setDesiredCameraParameters(camera);
+  configManager.setDesiredCameraParameters(theCamera);
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
   reverseImage=prefs.getBoolean(PreferencesActivity.KEY_REVERSE_IMAGE,false);
   if (prefs.getBoolean(PreferencesActivity.KEY_FRONT_LIGHT,false)) {

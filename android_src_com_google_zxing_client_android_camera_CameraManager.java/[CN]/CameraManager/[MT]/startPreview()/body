@@ -1,6 +1,7 @@
 {
-  if (camera != null && !previewing) {
-    camera.startPreview();
+  Camera theCamera=camera;
+  if (theCamera != null && !previewing) {
+    theCamera.startPreview();
     previewing=true;
   }
 }

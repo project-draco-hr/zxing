@@ -9,13 +9,13 @@
     return false;
   }
   int c=getColor(p1,p2);
-  if (c != cInit || c == 0) {
+  if (c != cInit) {
     return false;
   }
   c=getColor(p2,p3);
-  if (c != cInit || c == 0) {
+  if (c != cInit) {
     return false;
   }
   c=getColor(p3,p4);
-  return c == cInit && c != 0;
+  return c == cInit;
 }

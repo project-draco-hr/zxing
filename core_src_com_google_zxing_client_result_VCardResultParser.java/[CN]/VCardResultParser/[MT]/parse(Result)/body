@@ -1,6 +1,6 @@
 {
   String rawText=result.getText();
-  if (rawText == null || !rawText.startsWith("BEGIN:VCARD")) {
+  if (!rawText.startsWith("BEGIN:VCARD")) {
     return null;
   }
   Vector names=matchVCardPrefixedField("FN",rawText,true);

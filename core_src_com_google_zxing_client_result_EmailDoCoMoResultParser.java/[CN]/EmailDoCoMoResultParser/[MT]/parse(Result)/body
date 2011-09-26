@@ -1,6 +1,6 @@
 {
   String rawText=result.getText();
-  if (rawText == null || !rawText.startsWith("MATMSG:")) {
+  if (!rawText.startsWith("MATMSG:")) {
     return null;
   }
   String[] rawTo=matchDoCoMoPrefixedField("TO:",rawText,true);

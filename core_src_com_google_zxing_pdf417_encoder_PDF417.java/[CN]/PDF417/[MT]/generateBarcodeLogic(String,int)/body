@@ -3,9 +3,6 @@
   String highLevel=PDF417HighLevelEncoder.encodeHighLevel(msg,byteCompaction);
   int sourceCodeWords=highLevel.length();
   int[] dimension=determineDimensions(sourceCodeWords);
-  if (dimension == null) {
-    throw new WriterException("Unable to fit message in columns");
-  }
   int cols=dimension[0];
   int rows=dimension[1];
   int pad=getNumberOfPadCodewords(sourceCodeWords,errorCorrectionCodeWords,cols,rows);
