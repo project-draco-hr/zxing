@@ -42,7 +42,7 @@
       paint.setColor(resultPointColor);
 synchronized (currentPossible) {
         for (        ResultPoint point : currentPossible) {
-          canvas.drawCircle(frameLeft + (int)(point.getX() * scaleX),frameTop + (int)(point.getY() * scaleY),6.0f,paint);
+          canvas.drawCircle(frameLeft + (int)(point.getX() * scaleX),frameTop + (int)(point.getY() * scaleY),POINT_SIZE,paint);
         }
       }
     }
@@ -51,10 +51,10 @@ synchronized (currentPossible) {
       paint.setColor(resultPointColor);
 synchronized (currentLast) {
         for (        ResultPoint point : currentLast) {
-          canvas.drawCircle(frameLeft + (int)(point.getX() * scaleX),frameTop + (int)(point.getY() * scaleY),3.0f,paint);
+          canvas.drawCircle(frameLeft + (int)(point.getX() * scaleX),frameTop + (int)(point.getY() * scaleY),POINT_SIZE / 2,paint);
         }
       }
     }
-    postInvalidateDelayed(ANIMATION_DELAY,frame.left,frame.top,frame.right,frame.bottom);
+    postInvalidateDelayed(ANIMATION_DELAY,frame.left - POINT_SIZE,frame.top - POINT_SIZE,frame.right + POINT_SIZE,frame.bottom + POINT_SIZE);
   }
 }

@@ -7,7 +7,6 @@
     }
  else     if (oneByte <= 128) {
       oneByte=upperShift ? oneByte + 128 : oneByte;
-      upperShift=false;
       result.append((char)(oneByte - 1));
       return ASCII_ENCODE;
     }
