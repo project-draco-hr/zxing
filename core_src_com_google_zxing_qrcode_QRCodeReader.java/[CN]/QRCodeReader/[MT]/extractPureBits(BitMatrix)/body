@@ -9,6 +9,9 @@
   int bottom=rightBottomBlack[1];
   int left=leftTopBlack[0];
   int right=rightBottomBlack[0];
+  if (bottom - top != right - left) {
+    right=left + (bottom - top);
+  }
   int matrixWidth=(right - left + 1) / moduleSize;
   int matrixHeight=(bottom - top + 1) / moduleSize;
   if (matrixWidth <= 0 || matrixHeight <= 0) {
