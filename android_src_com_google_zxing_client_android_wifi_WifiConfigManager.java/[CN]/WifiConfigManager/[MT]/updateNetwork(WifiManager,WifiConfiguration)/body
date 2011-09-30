@@ -1,13 +1,20 @@
 {
   Integer foundNetworkID=findNetworkInExistingConfig(wifiManager,config.SSID);
   if (foundNetworkID != null) {
+    Log.i(TAG,"Removing old configuration for network " + config.SSID);
     wifiManager.removeNetwork(foundNetworkID);
     wifiManager.saveConfiguration();
   }
   int networkId=wifiManager.addNetwork(config);
   if (networkId >= 0) {
     if (wifiManager.enableNetwork(networkId,true)) {
-      wifiManager.reassociate();
+      Log.i(TAG,"Associating to network " + config.SSID);
     }
+ else {
+      Log.w(TAG,"Failed to enable network " + config.SSID);
+    }
+  }
+ else {
+    Log.w(TAG,"Unable to add network " + config.SSID);
   }
 }
