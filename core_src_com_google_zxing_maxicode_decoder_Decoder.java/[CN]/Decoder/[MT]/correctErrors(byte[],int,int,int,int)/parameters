@@ -1,0 +1,5 @@
+byte[] codewordBytes
+int start
+int dataCodewords
+int ecCodewords
+int mode

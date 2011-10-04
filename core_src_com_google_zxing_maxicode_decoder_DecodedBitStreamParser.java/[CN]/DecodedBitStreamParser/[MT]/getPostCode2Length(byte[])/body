@@ -1,0 +1,3 @@
+{
+  return getInt(bytes,new byte[]{39,40,41,42,31,32});
+}

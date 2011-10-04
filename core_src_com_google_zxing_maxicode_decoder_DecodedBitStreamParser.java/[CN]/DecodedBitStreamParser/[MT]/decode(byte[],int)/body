@@ -1,0 +1,33 @@
+{
+  StringBuffer result=new StringBuffer(144);
+switch (mode) {
+case 2:
+case 3:
+    String postcode;
+  if (mode == 2) {
+    int pc=getPostCode2(bytes);
+    DecimalFormat df=new DecimalFormat("0000000000".substring(0,getPostCode2Length(bytes)));
+    postcode=df.format(pc);
+  }
+ else {
+    postcode=getPostCode3(bytes);
+  }
+String country=THREE_DIGITS.format(getCountry(bytes));
+String service=THREE_DIGITS.format(getServiceClass(bytes));
+result.append(getMessage(bytes,10,84));
+if (result.toString().startsWith("[)>" + RS + "01"+ GS)) {
+result.insert(9,postcode + GS + country+ GS+ service+ GS);
+}
+ else {
+result.insert(0,postcode + GS + country+ GS+ service+ GS);
+}
+break;
+case 4:
+result.append(getMessage(bytes,1,93));
+break;
+case 5:
+result.append(getMessage(bytes,1,77));
+break;
+}
+return new DecoderResult(bytes,result.toString(),null,String.valueOf(mode));
+}

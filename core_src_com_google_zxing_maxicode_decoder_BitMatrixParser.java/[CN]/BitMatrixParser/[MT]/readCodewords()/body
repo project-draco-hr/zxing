@@ -1,0 +1,15 @@
+{
+  byte[] result=new byte[144];
+  int height=bitMatrix.getHeight();
+  int width=bitMatrix.getWidth();
+  for (int y=0; y < height; y++) {
+    int[] bitnrRow=BITNR[y];
+    for (int x=0; x < width; x++) {
+      int bit=bitnrRow[x];
+      if (bit >= 0 && bitMatrix.get(x,y)) {
+        result[bit / 6]|=(byte)(1 << (5 - (bit % 6)));
+      }
+    }
+  }
+  return result;
+}

@@ -1,0 +1,21 @@
+{
+  int codewords=dataCodewords + ecCodewords;
+  int divisor=mode == ALL ? 1 : 2;
+  int[] codewordsInts=new int[codewords / divisor];
+  for (int i=0; i < codewords; i++) {
+    if ((mode == ALL) || (i % 2 == (mode - 1))) {
+      codewordsInts[i / divisor]=codewordBytes[i + start] & 0xFF;
+    }
+  }
+  try {
+    rsDecoder.decode(codewordsInts,ecCodewords / divisor);
+  }
+ catch (  ReedSolomonException rse) {
+    throw ChecksumException.getChecksumInstance();
+  }
+  for (int i=0; i < dataCodewords; i++) {
+    if ((mode == ALL) || (i % 2 == (mode - 1))) {
+      codewordBytes[i + start]=(byte)codewordsInts[i / divisor];
+    }
+  }
+}

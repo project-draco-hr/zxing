@@ -1,0 +1,30 @@
+{
+  BitMatrixParser parser=new BitMatrixParser(bits);
+  byte[] codewords=parser.readCodewords();
+  correctErrors(codewords,0,10,10,ALL);
+  int mode=codewords[0] & 0x0F;
+  byte[] datawords;
+switch (mode) {
+case 2:
+case 3:
+case 4:
+    correctErrors(codewords,20,84,40,EVEN);
+  correctErrors(codewords,20,84,40,ODD);
+datawords=new byte[94];
+break;
+case 5:
+correctErrors(codewords,20,68,56,EVEN);
+correctErrors(codewords,20,68,56,ODD);
+datawords=new byte[78];
+break;
+default :
+throw FormatException.getFormatInstance();
+}
+for (int i=0; i < 10; i++) {
+datawords[i]=codewords[i];
+}
+for (int i=20; i < datawords.length + 10; i++) {
+datawords[i - 10]=codewords[i];
+}
+return DecodedBitStreamParser.decode(datawords,mode);
+}

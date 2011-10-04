@@ -1,0 +1,3 @@
+{
+  rsDecoder=new ReedSolomonDecoder(GenericGF.MAXICODE_FIELD_64);
+}

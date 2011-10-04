@@ -20,6 +20,9 @@
     if (formats.contains(BarcodeFormat.PDF_417)) {
       readers.addElement(new PDF417Reader());
     }
+    if (formats.contains(BarcodeFormat.MAXICODE)) {
+      readers.addElement(new MaxiCodeReader());
+    }
     if (addOneDReader && tryHarder) {
       readers.addElement(new MultiFormatOneDReader(hints));
     }
@@ -32,6 +35,7 @@
     readers.addElement(new DataMatrixReader());
     readers.addElement(new AztecReader());
     readers.addElement(new PDF417Reader());
+    readers.addElement(new MaxiCodeReader());
     if (tryHarder) {
       readers.addElement(new MultiFormatOneDReader(hints));
     }
