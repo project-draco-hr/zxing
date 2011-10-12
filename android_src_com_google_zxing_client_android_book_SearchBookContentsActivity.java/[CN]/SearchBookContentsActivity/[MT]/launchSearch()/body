@@ -2,7 +2,7 @@
   if (networkThread == null) {
     String query=queryTextView.getText().toString();
     if (query != null && query.length() > 0) {
-      networkThread=new NetworkThread(isbn,query,handler);
+      networkThread=new Thread(new NetworkWorker(isbn,query,handler));
       networkThread.start();
       headerView.setText(R.string.msg_sbc_searching_book);
       resultListView.setAdapter(null);

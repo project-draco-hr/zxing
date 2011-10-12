@@ -1,7 +1,7 @@
 {
   String encodedProductID=URLEncoder.encode(productID,"UTF-8");
   String uri=BASE_PRODUCT_URI + encodedProductID;
-  String content=downloadViaHttp(uri);
+  String content=HttpHelper.downloadViaHttp(uri,HttpHelper.ContentType.HTML);
   Matcher matcher=PRODUCT_NAME_PRICE_PATTERN.matcher(content);
   if (matcher.find()) {
     append(productID,source,new String[]{unescapeHTML(matcher.group(1)),unescapeHTML(matcher.group(2))},uri);

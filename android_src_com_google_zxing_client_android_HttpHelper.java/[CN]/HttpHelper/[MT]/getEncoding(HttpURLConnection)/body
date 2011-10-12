@@ -1,0 +1,10 @@
+{
+  String contentTypeHeader=connection.getHeaderField("Content-Type");
+  if (contentTypeHeader != null) {
+    int charsetStart=contentTypeHeader.indexOf("charset=");
+    if (charsetStart >= 0) {
+      return contentTypeHeader.substring(charsetStart + "charset=".length());
+    }
+  }
+  return "UTF-8";
+}

@@ -1,0 +1,15 @@
+{
+  String contentTypes;
+switch (type) {
+case HTML:
+    contentTypes="application/xhtml+xml,text/html,text/*,*/*";
+  break;
+case JSON:
+contentTypes="application/json,text/*,*/*";
+break;
+case TEXT:
+default :
+contentTypes="text/*,*/*";
+}
+return downloadViaHttp(uri,contentTypes);
+}

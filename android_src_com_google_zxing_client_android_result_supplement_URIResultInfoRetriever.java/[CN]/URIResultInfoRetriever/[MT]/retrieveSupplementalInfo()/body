@@ -1,11 +1,16 @@
 {
-  String oldURI=result.getURI();
-  String newURI=unredirect(oldURI);
+  URI oldURI;
+  try {
+    oldURI=new URI(result.getURI());
+  }
+ catch (  URISyntaxException e) {
+    return;
+  }
+  URI newURI=HttpHelper.unredirect(oldURI);
   int count=0;
-  while (count < 3 && !oldURI.equals(newURI)) {
-    append(result.getDisplayResult(),null,new String[]{redirectString + " : " + newURI},newURI);
-    count++;
+  while (count++ < MAX_REDIRECTS && !oldURI.equals(newURI)) {
+    append(result.getDisplayResult(),null,new String[]{redirectString + " : " + newURI},newURI.toString());
     oldURI=newURI;
-    newURI=unredirect(newURI);
+    newURI=HttpHelper.unredirect(newURI);
   }
 }

@@ -1,7 +1,0 @@
-{
-  HttpContext context=new BasicHttpContext();
-  context.setAttribute(ClientContext.AUTHSCHEME_REGISTRY,getAuthSchemes());
-  context.setAttribute(ClientContext.COOKIESPEC_REGISTRY,getCookieSpecs());
-  context.setAttribute(ClientContext.CREDS_PROVIDER,getCredentialsProvider());
-  return context;
-}
