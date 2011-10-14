@@ -25,8 +25,10 @@
     handler.sendMessageDelayed(message,INTENT_RESULT_DURATION);
   }
  else   if (source == Source.ZXING_LINK) {
-    Message message=Message.obtain(handler,R.id.launch_product_query);
-    message.obj=returnUrlTemplate.replace(RETURN_CODE_PLACEHOLDER,resultHandler.getDisplayContents().toString());
-    handler.sendMessageDelayed(message,INTENT_RESULT_DURATION);
+    if (returnUrlTemplate != null) {
+      Message message=Message.obtain(handler,R.id.launch_product_query);
+      message.obj=returnUrlTemplate.replace(RETURN_CODE_PLACEHOLDER,String.valueOf(resultHandler.getDisplayContents()));
+      handler.sendMessageDelayed(message,INTENT_RESULT_DURATION);
+    }
   }
 }
