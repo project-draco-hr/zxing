@@ -7,12 +7,12 @@
     byte[] luminances=source.getMatrix();
     int width=source.getWidth();
     int height=source.getHeight();
-    int subWidth=width >> 3;
-    if ((width & 0x07) != 0) {
+    int subWidth=width >> BLOCK_SIZE_POWER;
+    if ((width & BLOCK_SIZE_MASK) != 0) {
       subWidth++;
     }
-    int subHeight=height >> 3;
-    if ((height & 0x07) != 0) {
+    int subHeight=height >> BLOCK_SIZE_POWER;
+    if ((height & BLOCK_SIZE_MASK) != 0) {
       subHeight++;
     }
     int[][] blackPoints=calculateBlackPoints(luminances,subWidth,subHeight,width,height);
