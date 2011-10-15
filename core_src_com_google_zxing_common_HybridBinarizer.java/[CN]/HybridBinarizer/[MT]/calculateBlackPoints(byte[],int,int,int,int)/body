@@ -25,12 +25,15 @@
           }
         }
       }
-      int average;
-      if (max - min > 24) {
-        average=sum >> 6;
-      }
- else {
-        average=max == 0 ? 1 : min >> 1;
+      int average=sum >> 6;
+      if (max - min <= 24) {
+        average=min >> 1;
+        if (y > 0 && x > 0) {
+          int bp=getBlackPointFromNeighbors(blackPoints,x,y);
+          if (min < bp) {
+            average=bp;
+          }
+        }
       }
       blackPoints[y][x]=average;
     }

@@ -1,7 +1,7 @@
 {
   for (int y=0, offset=yoffset * stride + xoffset; y < BLOCK_SIZE; y++, offset+=stride) {
     for (int x=0; x < BLOCK_SIZE; x++) {
-      if ((luminances[offset + x] & 0xFF) < threshold) {
+      if ((luminances[offset + x] & 0xFF) <= threshold) {
         matrix.set(xoffset + x,yoffset + y);
       }
     }
