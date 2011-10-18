@@ -1,5 +1,6 @@
 {
   super.onResume();
+  CameraManager.init(getApplication());
   resetStatusView();
   SurfaceView surfaceView=(SurfaceView)findViewById(R.id.preview_view);
   SurfaceHolder surfaceHolder=surfaceView.getHolder();

@@ -3,7 +3,6 @@
   Window window=getWindow();
   window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
   setContentView(R.layout.capture);
-  CameraManager.init(getApplication());
   viewfinderView=(ViewfinderView)findViewById(R.id.viewfinder_view);
   resultView=findViewById(R.id.result_view);
   statusView=(TextView)findViewById(R.id.status_view);
