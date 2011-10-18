@@ -29,9 +29,9 @@
       if (max - min <= 24) {
         average=min >> 1;
         if (y > 0 && x > 0) {
-          int bp=getBlackPointFromNeighbors(blackPoints,x,y);
-          if (min < bp) {
-            average=bp;
+          int averageNeighborBlackPoint=(blackPoints[y - 1][x] + (2 * blackPoints[y][x - 1]) + blackPoints[y - 1][x - 1]) >> 2;
+          if (min < averageNeighborBlackPoint) {
+            average=averageNeighborBlackPoint;
           }
         }
       }

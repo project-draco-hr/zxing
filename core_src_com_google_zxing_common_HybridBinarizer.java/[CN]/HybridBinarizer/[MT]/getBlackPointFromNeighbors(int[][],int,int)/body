@@ -1,3 +1,0 @@
-{
-  return (blackPoints[y - 1][x] + 2 * blackPoints[y][x - 1] + blackPoints[y - 1][x - 1]) >> 2;
-}
