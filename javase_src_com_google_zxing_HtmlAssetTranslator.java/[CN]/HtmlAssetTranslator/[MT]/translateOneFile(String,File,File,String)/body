@@ -10,7 +10,7 @@
     throw new IllegalStateException(pce);
   }
 catch (  SAXException sae) {
-    throw new IOException(sae.toString());
+    throw new IOException(sae);
   }
   Element rootElement=document.getDocumentElement();
   rootElement.normalize();

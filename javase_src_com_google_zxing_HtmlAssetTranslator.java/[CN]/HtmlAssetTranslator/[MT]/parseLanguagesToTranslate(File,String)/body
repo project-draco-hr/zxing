@@ -2,7 +2,7 @@
   Collection<String> languages=new ArrayList<String>();
   if ("all".equals(languageArg)) {
     FileFilter fileFilter=new FileFilter(){
-      public boolean accept(      File file){
+      @Override public boolean accept(      File file){
         return file.isDirectory() && file.getName().startsWith("html-") && !"html-en".equals(file.getName());
       }
     }
@@ -12,7 +12,7 @@
     }
   }
  else {
-    languages.add(languageArg);
+    languages.addAll(Arrays.asList(COMMA.split(languageArg)));
   }
   return languages;
 }
