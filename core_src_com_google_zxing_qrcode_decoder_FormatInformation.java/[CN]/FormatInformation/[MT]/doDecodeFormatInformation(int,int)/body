@@ -1,8 +1,7 @@
 {
   int bestDifference=Integer.MAX_VALUE;
   int bestFormatInfo=0;
-  for (int i=0; i < FORMAT_INFO_DECODE_LOOKUP.length; i++) {
-    int[] decodeInfo=FORMAT_INFO_DECODE_LOOKUP[i];
+  for (  int[] decodeInfo : FORMAT_INFO_DECODE_LOOKUP) {
     int targetInfo=decodeInfo[0];
     if (targetInfo == maskedFormatInfo1 || targetInfo == maskedFormatInfo2) {
       return new FormatInformation(decodeInfo[1]);

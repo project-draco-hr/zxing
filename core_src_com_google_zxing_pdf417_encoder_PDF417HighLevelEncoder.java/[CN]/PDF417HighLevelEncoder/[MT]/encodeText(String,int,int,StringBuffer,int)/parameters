@@ -1,5 +1,0 @@
-String msg
-int startpos
-int count
-StringBuffer sb
-int initialSubmode

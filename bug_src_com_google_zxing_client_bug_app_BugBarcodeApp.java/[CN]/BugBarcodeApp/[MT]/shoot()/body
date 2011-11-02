@@ -1,8 +1,0 @@
-{
-  cameraControl.setLEDFlash(true);
-  image=Toolkit.getDefaultToolkit().createImage(camera.getImage()).getScaledInstance(400,300,Image.SCALE_FAST);
-  cameraControl.setLEDFlash(false);
-  if (Toolkit.getDefaultToolkit().prepareImage(image,-1,-1,this)) {
-    drawAndScan();
-  }
-}

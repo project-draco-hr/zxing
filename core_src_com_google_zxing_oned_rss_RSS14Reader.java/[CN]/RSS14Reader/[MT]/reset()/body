@@ -1,4 +1,4 @@
 {
-  possibleLeftPairs.setSize(0);
-  possibleRightPairs.setSize(0);
+  possibleLeftPairs.clear();
+  possibleRightPairs.clear();
 }

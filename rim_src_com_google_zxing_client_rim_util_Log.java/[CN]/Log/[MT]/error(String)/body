@@ -1,4 +1,0 @@
-{
-  EventLogger.logEvent(LOG_ID_LONG,message.getBytes(),EventLogger.ERROR);
-  logToSystemOut(message);
-}

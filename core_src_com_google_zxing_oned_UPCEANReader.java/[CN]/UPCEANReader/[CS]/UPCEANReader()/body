@@ -1,5 +1,5 @@
 {
-  decodeRowStringBuffer=new StringBuffer(20);
+  decodeRowStringBuffer=new StringBuilder(20);
   extensionReader=new UPCEANExtensionSupport();
   eanManSupport=new EANManufacturerOrgSupport();
 }

@@ -1,5 +1,0 @@
-{
-  String dataWithoutSpaces=data.replaceAll(" ","");
-  BitArray binary=BinaryUtil.buildBitArrayFromStringWithoutSpaces(dataWithoutSpaces);
-  assertEquals(data,binary.toString());
-}

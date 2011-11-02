@@ -6,44 +6,44 @@
     throw NotFoundException.getNotFoundInstance();
   }
   String firstTwoDigits=rawInformation.substring(0,2);
-  for (int i=0; i < TWO_DIGIT_DATA_LENGTH.length; ++i) {
-    if (TWO_DIGIT_DATA_LENGTH[i][0].equals(firstTwoDigits)) {
-      if (TWO_DIGIT_DATA_LENGTH[i][1] == VARIABLE_LENGTH) {
-        return processVariableAI(2,((Integer)TWO_DIGIT_DATA_LENGTH[i][2]).intValue(),rawInformation);
+  for (  Object[] dataLength : TWO_DIGIT_DATA_LENGTH) {
+    if (dataLength[0].equals(firstTwoDigits)) {
+      if (dataLength[1] == VARIABLE_LENGTH) {
+        return processVariableAI(2,(Integer)dataLength[2],rawInformation);
       }
-      return processFixedAI(2,((Integer)TWO_DIGIT_DATA_LENGTH[i][1]).intValue(),rawInformation);
+      return processFixedAI(2,(Integer)dataLength[1],rawInformation);
     }
   }
   if (rawInformation.length() < 3) {
     throw NotFoundException.getNotFoundInstance();
   }
   String firstThreeDigits=rawInformation.substring(0,3);
-  for (int i=0; i < THREE_DIGIT_DATA_LENGTH.length; ++i) {
-    if (THREE_DIGIT_DATA_LENGTH[i][0].equals(firstThreeDigits)) {
-      if (THREE_DIGIT_DATA_LENGTH[i][1] == VARIABLE_LENGTH) {
-        return processVariableAI(3,((Integer)THREE_DIGIT_DATA_LENGTH[i][2]).intValue(),rawInformation);
+  for (  Object[] dataLength : THREE_DIGIT_DATA_LENGTH) {
+    if (dataLength[0].equals(firstThreeDigits)) {
+      if (dataLength[1] == VARIABLE_LENGTH) {
+        return processVariableAI(3,(Integer)dataLength[2],rawInformation);
       }
-      return processFixedAI(3,((Integer)THREE_DIGIT_DATA_LENGTH[i][1]).intValue(),rawInformation);
+      return processFixedAI(3,(Integer)dataLength[1],rawInformation);
     }
   }
-  for (int i=0; i < THREE_DIGIT_PLUS_DIGIT_DATA_LENGTH.length; ++i) {
-    if (THREE_DIGIT_PLUS_DIGIT_DATA_LENGTH[i][0].equals(firstThreeDigits)) {
-      if (THREE_DIGIT_PLUS_DIGIT_DATA_LENGTH[i][1] == VARIABLE_LENGTH) {
-        return processVariableAI(4,((Integer)THREE_DIGIT_PLUS_DIGIT_DATA_LENGTH[i][2]).intValue(),rawInformation);
+  for (  Object[] dataLength : THREE_DIGIT_PLUS_DIGIT_DATA_LENGTH) {
+    if (dataLength[0].equals(firstThreeDigits)) {
+      if (dataLength[1] == VARIABLE_LENGTH) {
+        return processVariableAI(4,(Integer)dataLength[2],rawInformation);
       }
-      return processFixedAI(4,((Integer)THREE_DIGIT_PLUS_DIGIT_DATA_LENGTH[i][1]).intValue(),rawInformation);
+      return processFixedAI(4,(Integer)dataLength[1],rawInformation);
     }
   }
   if (rawInformation.length() < 4) {
     throw NotFoundException.getNotFoundInstance();
   }
   String firstFourDigits=rawInformation.substring(0,4);
-  for (int i=0; i < FOUR_DIGIT_DATA_LENGTH.length; ++i) {
-    if (FOUR_DIGIT_DATA_LENGTH[i][0].equals(firstFourDigits)) {
-      if (FOUR_DIGIT_DATA_LENGTH[i][1] == VARIABLE_LENGTH) {
-        return processVariableAI(4,((Integer)FOUR_DIGIT_DATA_LENGTH[i][2]).intValue(),rawInformation);
+  for (  Object[] dataLength : FOUR_DIGIT_DATA_LENGTH) {
+    if (dataLength[0].equals(firstFourDigits)) {
+      if (dataLength[1] == VARIABLE_LENGTH) {
+        return processVariableAI(4,(Integer)dataLength[2],rawInformation);
       }
-      return processFixedAI(4,((Integer)FOUR_DIGIT_DATA_LENGTH[i][1]).intValue(),rawInformation);
+      return processFixedAI(4,(Integer)dataLength[1],rawInformation);
     }
   }
   throw NotFoundException.getNotFoundInstance();

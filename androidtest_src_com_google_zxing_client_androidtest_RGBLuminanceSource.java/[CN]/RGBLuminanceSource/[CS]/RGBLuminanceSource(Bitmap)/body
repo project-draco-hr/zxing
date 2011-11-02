@@ -12,7 +12,12 @@
       int r=(pixel >> 16) & 0xff;
       int g=(pixel >> 8) & 0xff;
       int b=pixel & 0xff;
-      luminances[offset + x]=(byte)((r + g + g+ b) >> 2);
+      if (r == g && g == b) {
+        luminances[offset + x]=(byte)r;
+      }
+ else {
+        luminances[offset + x]=(byte)((r + g + g+ b) >> 2);
+      }
     }
   }
 }

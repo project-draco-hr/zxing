@@ -1,5 +1,0 @@
-{
-  while (size() != 0) {
-    delete(0);
-  }
-}

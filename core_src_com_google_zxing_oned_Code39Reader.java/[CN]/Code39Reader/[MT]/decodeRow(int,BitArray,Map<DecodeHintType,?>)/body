@@ -1,0 +1,62 @@
+{
+  int[] start=findAsteriskPattern(row);
+  int nextStart=start[1];
+  int end=row.getSize();
+  while (nextStart < end && !row.get(nextStart)) {
+    nextStart++;
+  }
+  StringBuilder result=new StringBuilder(20);
+  int[] counters=new int[9];
+  char decodedChar;
+  int lastStart;
+  do {
+    recordPattern(row,nextStart,counters);
+    int pattern=toNarrowWidePattern(counters);
+    if (pattern < 0) {
+      throw NotFoundException.getNotFoundInstance();
+    }
+    decodedChar=patternToChar(pattern);
+    result.append(decodedChar);
+    lastStart=nextStart;
+    for (    int counter : counters) {
+      nextStart+=counter;
+    }
+    while (nextStart < end && !row.get(nextStart)) {
+      nextStart++;
+    }
+  }
+ while (decodedChar != '*');
+  result.deleteCharAt(result.length() - 1);
+  int lastPatternSize=0;
+  for (  int counter : counters) {
+    lastPatternSize+=counter;
+  }
+  int whiteSpaceAfterEnd=nextStart - lastStart - lastPatternSize;
+  if (nextStart != end && whiteSpaceAfterEnd / 2 < lastPatternSize) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  if (usingCheckDigit) {
+    int max=result.length() - 1;
+    int total=0;
+    for (int i=0; i < max; i++) {
+      total+=ALPHABET_STRING.indexOf(result.charAt(i));
+    }
+    if (result.charAt(max) != ALPHABET[total % 43]) {
+      throw ChecksumException.getChecksumInstance();
+    }
+    result.deleteCharAt(max);
+  }
+  if (result.length() < 4) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  String resultString;
+  if (extendedMode) {
+    resultString=decodeExtended(result);
+  }
+ else {
+    resultString=result.toString();
+  }
+  float left=(float)(start[1] + start[0]) / 2.0f;
+  float right=(float)(nextStart + lastStart) / 2.0f;
+  return new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODE_39);
+}

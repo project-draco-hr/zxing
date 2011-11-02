@@ -1,0 +1,5 @@
+CharSequence fullCodewords
+int c
+int r
+int errorCorrectionLevel
+BarcodeMatrix logic

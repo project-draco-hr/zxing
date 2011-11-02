@@ -1,6 +1,6 @@
 {
   String rawText=result.getText();
-  if (rawText.indexOf("MEMORY") < 0 || rawText.indexOf("\r\n") < 0) {
+  if (!rawText.contains("MEMORY") || !rawText.contains("\r\n")) {
     return null;
   }
   String name=matchSinglePrefixedField("NAME1:",rawText,'\r',true);

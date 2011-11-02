@@ -1,5 +1,5 @@
 {
-  float xDiff=pattern1.getX() - pattern2.getX();
-  float yDiff=pattern1.getY() - pattern2.getY();
+  float xDiff=pattern1.x - pattern2.x;
+  float yDiff=pattern1.y - pattern2.y;
   return (float)Math.sqrt((double)(xDiff * xDiff + yDiff * yDiff));
 }

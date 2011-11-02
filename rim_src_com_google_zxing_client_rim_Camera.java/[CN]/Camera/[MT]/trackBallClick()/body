@@ -1,4 +1,0 @@
-{
-  EventInjector.invokeEvent(new EventInjector.NavigationEvent(EventInjector.NavigationEvent.NAVIGATION_CLICK,0,0,1));
-  EventInjector.invokeEvent(new EventInjector.NavigationEvent(EventInjector.NavigationEvent.NAVIGATION_UNCLICK,0,0,1));
-}

@@ -1,0 +1,4 @@
+String content
+ErrorCorrectionLevel ecLevel
+Map<EncodeHintType,?> hints
+QRCode qrCode

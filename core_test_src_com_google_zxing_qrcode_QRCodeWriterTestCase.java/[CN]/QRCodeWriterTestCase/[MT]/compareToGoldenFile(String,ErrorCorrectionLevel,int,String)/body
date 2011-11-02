@@ -4,7 +4,7 @@
   BitMatrix goldenResult=createMatrixFromImage(image);
   assertNotNull(goldenResult);
   QRCodeWriter writer=new QRCodeWriter();
-  Hashtable<EncodeHintType,Object> hints=new Hashtable<EncodeHintType,Object>();
+  Map<EncodeHintType,Object> hints=new EnumMap<EncodeHintType,Object>(EncodeHintType.class);
   hints.put(EncodeHintType.ERROR_CORRECTION,ecLevel);
   BitMatrix generatedResult=writer.encode(contents,BarcodeFormat.QR_CODE,resolution,resolution,hints);
   assertEquals(resolution,generatedResult.getWidth());

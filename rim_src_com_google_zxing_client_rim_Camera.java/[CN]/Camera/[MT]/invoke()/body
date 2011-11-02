@@ -1,7 +1,0 @@
-{
-  Invoke.invokeApplication(Invoke.APP_TYPE_CAMERA,new CameraArguments());
-  if (setResolution) {
-    sleep(INITIALIZATION_TIME_MS);
-    setMinResolution();
-  }
-}

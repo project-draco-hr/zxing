@@ -1,6 +1,6 @@
 {
   long now=System.currentTimeMillis();
-  AbstractBlackBoxTestCase.SummaryResults results=new AbstractBlackBoxTestCase.SummaryResults();
+  SummaryResults results=new SummaryResults();
   for (  AbstractBlackBoxTestCase test : TESTS) {
     results.add(test.testBlackBoxCountingResults(false));
   }

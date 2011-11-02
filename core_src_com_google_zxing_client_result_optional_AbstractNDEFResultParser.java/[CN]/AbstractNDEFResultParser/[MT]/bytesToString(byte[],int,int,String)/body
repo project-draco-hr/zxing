@@ -1,8 +1,0 @@
-{
-  try {
-    return new String(bytes,offset,length,encoding);
-  }
- catch (  UnsupportedEncodingException uee) {
-    throw new RuntimeException("Platform does not support required encoding: " + uee);
-  }
-}

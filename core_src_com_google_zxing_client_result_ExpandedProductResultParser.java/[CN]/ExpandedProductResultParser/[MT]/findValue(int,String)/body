@@ -1,5 +1,5 @@
 {
-  StringBuffer buf=new StringBuffer();
+  StringBuilder buf=new StringBuilder();
   String rawTextAux=rawText.substring(i);
   for (int index=0; index < rawTextAux.length(); index++) {
     char c=rawTextAux.charAt(index);

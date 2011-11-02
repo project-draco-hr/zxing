@@ -3,5 +3,4 @@
   camera=null;
   initialized=false;
   previewing=false;
-  useOneShotPreviewCallback=Integer.parseInt(Build.VERSION.SDK) > 3;
 }

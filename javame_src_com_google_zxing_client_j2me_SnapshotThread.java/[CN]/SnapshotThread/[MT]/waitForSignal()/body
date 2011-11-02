@@ -1,9 +1,0 @@
-{
-synchronized (waitLock) {
-    try {
-      waitLock.wait();
-    }
- catch (    InterruptedException ie) {
-    }
-  }
-}

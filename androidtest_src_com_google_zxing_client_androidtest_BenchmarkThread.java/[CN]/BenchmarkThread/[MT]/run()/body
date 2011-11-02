@@ -1,10 +1,10 @@
 {
-  mMultiFormatReader=new MultiFormatReader();
-  mMultiFormatReader.setHints(null);
+  multiFormatReader=new MultiFormatReader();
+  multiFormatReader.setHints(null);
   System.gc();
   List<BenchmarkItem> items=new ArrayList<BenchmarkItem>();
-  walkTree(mPath,items);
-  Message message=Message.obtain(mActivity.mHandler,R.id.benchmark_done);
+  walkTree(path,items);
+  Message message=Message.obtain(activity.handler,R.id.benchmark_done);
   message.obj=items;
   message.sendToTarget();
 }

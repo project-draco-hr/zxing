@@ -9,8 +9,5 @@
     return null;
   }
   String uri=rawUri[0];
-  if (!URIResultParser.isBasicallyValidURI(uri)) {
-    return null;
-  }
-  return new URIParsedResult(uri,title);
+  return URIResultParser.isBasicallyValidURI(uri) ? new URIParsedResult(uri,title) : null;
 }

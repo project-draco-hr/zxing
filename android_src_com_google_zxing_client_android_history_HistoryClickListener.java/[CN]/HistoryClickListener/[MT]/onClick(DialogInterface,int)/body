@@ -23,7 +23,7 @@
     builder.setMessage(R.string.msg_sure);
     builder.setCancelable(true);
     builder.setPositiveButton(R.string.button_ok,new DialogInterface.OnClickListener(){
-      public void onClick(      DialogInterface dialogInterface2,      int i2){
+      @Override public void onClick(      DialogInterface dialogInterface2,      int i2){
         historyManager.clearHistory();
       }
     }

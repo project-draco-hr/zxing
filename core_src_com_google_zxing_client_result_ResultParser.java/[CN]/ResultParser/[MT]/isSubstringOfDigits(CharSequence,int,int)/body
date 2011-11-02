@@ -1,0 +1,7 @@
+{
+  if (value == null) {
+    return false;
+  }
+  int max=offset + length;
+  return value.length() >= max && DIGITS.matcher(value.subSequence(offset,max)).matches();
+}

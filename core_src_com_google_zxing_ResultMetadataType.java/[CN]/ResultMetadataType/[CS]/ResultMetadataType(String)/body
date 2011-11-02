@@ -1,4 +1,0 @@
-{
-  this.name=name;
-  VALUES.put(name,this);
-}

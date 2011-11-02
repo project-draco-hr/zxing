@@ -1,6 +1,6 @@
 {
-  if (pos + 7 > this.information.size) {
-    return pos + 4 <= this.information.size;
+  if (pos + 7 > this.information.getSize()) {
+    return pos + 4 <= this.information.getSize();
   }
   for (int i=pos; i < pos + 3; ++i) {
     if (this.information.get(i)) {

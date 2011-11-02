@@ -1,6 +1,0 @@
-{
-  if (bits < 0 || bits >= FOR_BITS.length) {
-    throw new IllegalArgumentException();
-  }
-  return FOR_BITS[bits];
-}

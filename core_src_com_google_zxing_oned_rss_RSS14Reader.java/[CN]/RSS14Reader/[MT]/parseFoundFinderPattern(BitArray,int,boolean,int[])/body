@@ -6,10 +6,8 @@
   }
   firstElementStart++;
   int firstCounter=startEnd[0] - firstElementStart;
-  int[] counters=decodeFinderCounters;
-  for (int i=counters.length - 1; i > 0; i--) {
-    counters[i]=counters[i - 1];
-  }
+  int[] counters=getDecodeFinderCounters();
+  System.arraycopy(counters,0,counters,1,counters.length - 1);
   counters[0]=firstCounter;
   int value=parseFinderValue(counters,FINDER_PATTERNS);
   int start=firstElementStart;

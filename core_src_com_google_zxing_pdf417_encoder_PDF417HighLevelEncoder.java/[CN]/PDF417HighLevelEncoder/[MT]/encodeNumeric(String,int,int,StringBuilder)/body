@@ -1,0 +1,22 @@
+{
+  int idx=0;
+  StringBuilder tmp=new StringBuilder(count / 3 + 1);
+  BigInteger num900=BigInteger.valueOf(900);
+  BigInteger num0=BigInteger.valueOf(0);
+  while (idx < count - 1) {
+    tmp.setLength(0);
+    int len=Math.min(44,count - idx);
+    String part='1' + msg.substring(startpos + idx,startpos + idx + len);
+    BigInteger bigint=new BigInteger(part);
+    do {
+      BigInteger c=bigint.mod(num900);
+      tmp.append((char)c.intValue());
+      bigint=bigint.divide(num900);
+    }
+ while (!bigint.equals(num0));
+    for (int i=tmp.length() - 1; i >= 0; i--) {
+      sb.append(tmp.charAt(i));
+    }
+    idx+=len;
+  }
+}

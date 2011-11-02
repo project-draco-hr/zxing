@@ -1,0 +1,23 @@
+{
+  if (count << 3 > bits.available()) {
+    throw FormatException.getFormatInstance();
+  }
+  byte[] readBytes=new byte[count];
+  for (int i=0; i < count; i++) {
+    readBytes[i]=(byte)bits.readBits(8);
+  }
+  String encoding;
+  if (currentCharacterSetECI == null) {
+    encoding=StringUtils.guessEncoding(readBytes,hints);
+  }
+ else {
+    encoding=currentCharacterSetECI.name();
+  }
+  try {
+    result.append(new String(readBytes,encoding));
+  }
+ catch (  UnsupportedEncodingException uce) {
+    throw FormatException.getFormatInstance();
+  }
+  byteSegments.add(readBytes);
+}

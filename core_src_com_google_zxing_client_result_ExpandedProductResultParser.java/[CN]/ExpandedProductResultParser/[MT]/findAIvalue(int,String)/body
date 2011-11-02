@@ -1,5 +1,5 @@
 {
-  StringBuffer buf=new StringBuffer();
+  StringBuilder buf=new StringBuilder();
   char c=rawText.charAt(i);
   if (c != '(') {
     return null;

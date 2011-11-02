@@ -3,10 +3,10 @@
   if (remaining != null) {
     this.buffer.append(remaining);
   }
-  this.current.position=pos;
+  this.current.setPosition(pos);
   DecodedInformation lastDecoded=parseBlocks();
   if (lastDecoded != null && lastDecoded.isRemaining()) {
-    return new DecodedInformation(this.current.position,this.buffer.toString(),lastDecoded.getRemainingValue());
+    return new DecodedInformation(this.current.getPosition(),this.buffer.toString(),lastDecoded.getRemainingValue());
   }
-  return new DecodedInformation(this.current.position,this.buffer.toString());
+  return new DecodedInformation(this.current.getPosition(),this.buffer.toString());
 }

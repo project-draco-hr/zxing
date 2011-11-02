@@ -1,0 +1,4 @@
+int[] textCompactionData
+int[] byteCompactionData
+int length
+StringBuilder result

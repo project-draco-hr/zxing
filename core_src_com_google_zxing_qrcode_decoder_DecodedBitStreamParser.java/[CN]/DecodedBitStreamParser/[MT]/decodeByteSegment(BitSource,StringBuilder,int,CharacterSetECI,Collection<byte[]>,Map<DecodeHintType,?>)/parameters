@@ -1,0 +1,6 @@
+BitSource bits
+StringBuilder result
+int count
+CharacterSetECI currentCharacterSetECI
+Collection<byte[]> byteSegments
+Map<DecodeHintType,?> hints

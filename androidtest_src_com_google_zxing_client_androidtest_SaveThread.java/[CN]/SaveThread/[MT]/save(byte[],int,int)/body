@@ -22,7 +22,7 @@
     bitmap.compress(Bitmap.CompressFormat.PNG,100,outStream);
     try {
       outStream.close();
-      Message message=Message.obtain(mActivity.mHandler,R.id.save_succeeded);
+      Message message=Message.obtain(mActivity.handler,R.id.save_succeeded);
       message.sendToTarget();
       return;
     }
@@ -30,6 +30,6 @@
       Log.e(TAG,"Exception closing stream: " + e.toString());
     }
   }
-  Message message=Message.obtain(mActivity.mHandler,R.id.save_failed);
+  Message message=Message.obtain(mActivity.handler,R.id.save_failed);
   message.sendToTarget();
 }

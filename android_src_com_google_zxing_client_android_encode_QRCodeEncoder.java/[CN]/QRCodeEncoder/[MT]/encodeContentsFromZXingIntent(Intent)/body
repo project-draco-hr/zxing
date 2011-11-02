@@ -6,7 +6,7 @@
  catch (  IllegalArgumentException iae) {
     format=null;
   }
-  if (format == null || BarcodeFormat.QR_CODE.equals(format)) {
+  if (format == null || format == BarcodeFormat.QR_CODE) {
     String type=intent.getStringExtra(Intents.Encode.TYPE);
     if (type == null || type.length() == 0) {
       return false;

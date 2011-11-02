@@ -14,49 +14,73 @@
     return new DecodedChar(pos + 7,(char)(sevenBitValue + 7));
   }
   int eightBitValue=extractNumericValueFromBitArray(pos,8);
+  char c;
 switch (eightBitValue) {
 case 232:
-    return new DecodedChar(pos + 8,'!');
+    c='!';
+  break;
 case 233:
-  return new DecodedChar(pos + 8,'"');
+c='"';
+break;
 case 234:
-return new DecodedChar(pos + 8,'%');
+c='%';
+break;
 case 235:
-return new DecodedChar(pos + 8,'&');
+c='&';
+break;
 case 236:
-return new DecodedChar(pos + 8,'\'');
+c='\'';
+break;
 case 237:
-return new DecodedChar(pos + 8,'(');
+c='(';
+break;
 case 238:
-return new DecodedChar(pos + 8,')');
+c=')';
+break;
 case 239:
-return new DecodedChar(pos + 8,'*');
+c='*';
+break;
 case 240:
-return new DecodedChar(pos + 8,'+');
+c='+';
+break;
 case 241:
-return new DecodedChar(pos + 8,',');
+c=',';
+break;
 case 242:
-return new DecodedChar(pos + 8,'-');
+c='-';
+break;
 case 243:
-return new DecodedChar(pos + 8,'.');
+c='.';
+break;
 case 244:
-return new DecodedChar(pos + 8,'/');
+c='/';
+break;
 case 245:
-return new DecodedChar(pos + 8,':');
+c=':';
+break;
 case 246:
-return new DecodedChar(pos + 8,';');
+c=';';
+break;
 case 247:
-return new DecodedChar(pos + 8,'<');
+c='<';
+break;
 case 248:
-return new DecodedChar(pos + 8,'=');
+c='=';
+break;
 case 249:
-return new DecodedChar(pos + 8,'>');
+c='>';
+break;
 case 250:
-return new DecodedChar(pos + 8,'?');
+c='?';
+break;
 case 251:
-return new DecodedChar(pos + 8,'_');
+c='_';
+break;
 case 252:
-return new DecodedChar(pos + 8,' ');
+c=' ';
+break;
+default :
+throw new IllegalArgumentException("Decoding invalid ISO/IEC 646 value: " + eightBitValue);
 }
-throw new RuntimeException("Decoding invalid ISO/IEC 646 value: " + eightBitValue);
+return new DecodedChar(pos + 8,c);
 }

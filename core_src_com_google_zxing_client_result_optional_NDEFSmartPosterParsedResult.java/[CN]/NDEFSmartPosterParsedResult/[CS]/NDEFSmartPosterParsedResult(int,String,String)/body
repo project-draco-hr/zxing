@@ -1,6 +1,0 @@
-{
-  super(ParsedResultType.NDEF_SMART_POSTER);
-  this.action=action;
-  this.uri=uri;
-  this.title=title;
-}

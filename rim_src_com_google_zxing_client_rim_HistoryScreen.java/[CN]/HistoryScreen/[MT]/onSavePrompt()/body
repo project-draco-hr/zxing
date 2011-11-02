@@ -1,4 +1,0 @@
-{
-  setDirty(false);
-  return true;
-}

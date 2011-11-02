@@ -7,18 +7,17 @@
     if (!Float.isNaN(centerJ)) {
       float estimatedModuleSize=(float)stateCountTotal / 7.0f;
       boolean found=false;
-      int max=possibleCenters.size();
-      for (int index=0; index < max; index++) {
-        FinderPattern center=(FinderPattern)possibleCenters.elementAt(index);
+      for (int index=0; index < possibleCenters.size(); index++) {
+        FinderPattern center=possibleCenters.get(index);
         if (center.aboutEquals(estimatedModuleSize,centerI,centerJ)) {
-          possibleCenters.setElementAt(center.combineEstimate(centerI,centerJ,estimatedModuleSize),index);
+          possibleCenters.set(index,center.combineEstimate(centerI,centerJ,estimatedModuleSize));
           found=true;
           break;
         }
       }
       if (!found) {
-        ResultPoint point=new FinderPattern(centerJ,centerI,estimatedModuleSize);
-        possibleCenters.addElement(point);
+        FinderPattern point=new FinderPattern(centerJ,centerI,estimatedModuleSize);
+        possibleCenters.add(point);
         if (resultPointCallback != null) {
           resultPointCallback.foundPossibleResultPoint(point);
         }

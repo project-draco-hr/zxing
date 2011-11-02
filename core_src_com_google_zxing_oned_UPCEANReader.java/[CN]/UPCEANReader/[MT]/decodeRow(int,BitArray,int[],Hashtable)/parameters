@@ -1,4 +1,0 @@
-int rowNumber
-BitArray row
-int[] startGuardRange
-Hashtable hints

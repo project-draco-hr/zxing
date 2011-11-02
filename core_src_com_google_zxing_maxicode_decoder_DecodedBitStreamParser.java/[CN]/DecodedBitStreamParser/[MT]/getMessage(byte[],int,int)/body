@@ -1,5 +1,5 @@
 {
-  StringBuffer sb=new StringBuffer();
+  StringBuilder sb=new StringBuilder();
   int shift=-1;
   int set=0;
   int lastset=0;

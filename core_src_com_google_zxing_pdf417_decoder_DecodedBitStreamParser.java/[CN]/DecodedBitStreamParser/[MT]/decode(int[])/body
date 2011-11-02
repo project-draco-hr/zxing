@@ -1,5 +1,5 @@
 {
-  StringBuffer result=new StringBuffer(100);
+  StringBuilder result=new StringBuilder(100);
   int codeIndex=1;
   int code=codewords[codeIndex++];
   while (codeIndex < codewords[0]) {

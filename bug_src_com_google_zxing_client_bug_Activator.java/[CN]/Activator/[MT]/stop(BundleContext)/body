@@ -1,4 +1,0 @@
-{
-  barcodeServiceTracker.stop();
-  serviceTracker.close();
-}

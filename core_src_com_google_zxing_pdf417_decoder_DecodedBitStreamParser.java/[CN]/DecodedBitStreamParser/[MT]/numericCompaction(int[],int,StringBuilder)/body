@@ -1,0 +1,27 @@
+{
+  int count=0;
+  boolean end=false;
+  int[] numericCodewords=new int[MAX_NUMERIC_CODEWORDS];
+  while (codeIndex < codewords[0] && !end) {
+    int code=codewords[codeIndex++];
+    if (codeIndex == codewords[0]) {
+      end=true;
+    }
+    if (code < TEXT_COMPACTION_MODE_LATCH) {
+      numericCodewords[count]=code;
+      count++;
+    }
+ else {
+      if (code == TEXT_COMPACTION_MODE_LATCH || code == BYTE_COMPACTION_MODE_LATCH || code == BYTE_COMPACTION_MODE_LATCH_6 || code == BEGIN_MACRO_PDF417_CONTROL_BLOCK || code == BEGIN_MACRO_PDF417_OPTIONAL_FIELD || code == MACRO_PDF417_TERMINATOR) {
+        codeIndex--;
+        end=true;
+      }
+    }
+    if (count % MAX_NUMERIC_CODEWORDS == 0 || code == NUMERIC_COMPACTION_MODE_LATCH || end) {
+      BigInteger s=decodeBase900toBase10(numericCodewords,count);
+      result.append(s);
+      count=0;
+    }
+  }
+  return codeIndex;
+}

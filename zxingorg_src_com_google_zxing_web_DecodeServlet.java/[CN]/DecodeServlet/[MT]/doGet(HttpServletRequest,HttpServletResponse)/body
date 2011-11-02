@@ -20,7 +20,7 @@
     response.sendRedirect("badurl.jspx");
     return;
   }
-  ClientConnectionManager connectionManager=new SingleClientConnManager(params,registry);
+  ClientConnectionManager connectionManager=new SingleClientConnManager(registry);
   HttpClient client=new DefaultHttpClient(connectionManager,params);
   HttpUriRequest getRequest=new HttpGet(imageURI);
   getRequest.addHeader("Connection","close");
@@ -64,7 +64,7 @@ catch (    IOException ioe) {
       processStream(is,request,response);
     }
   finally {
-      entity.consumeContent();
+      EntityUtils.consume(entity);
       is.close();
     }
   }

@@ -1,8 +1,0 @@
-{
-  this.zXingMIDlet=zXingMIDlet;
-  addCommand(exit);
-  addCommand(history);
-  setCommandListener(this);
-  snapshotThread=new SnapshotThread(zXingMIDlet);
-  new Thread(snapshotThread).start();
-}

@@ -1,4 +1,0 @@
-{
-  destroyApp(false);
-  notifyDestroyed();
-}

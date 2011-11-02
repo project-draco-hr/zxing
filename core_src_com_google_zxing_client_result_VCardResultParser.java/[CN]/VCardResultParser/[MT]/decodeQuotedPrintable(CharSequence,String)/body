@@ -1,0 +1,34 @@
+{
+  int length=value.length();
+  StringBuilder result=new StringBuilder(length);
+  ByteArrayOutputStream fragmentBuffer=new ByteArrayOutputStream();
+  for (int i=0; i < length; i++) {
+    char c=value.charAt(i);
+switch (c) {
+case '\r':
+case '\n':
+      break;
+case '=':
+    if (i < length - 2) {
+      char nextChar=value.charAt(i + 1);
+      if (nextChar == '\r' || nextChar == '\n') {
+      }
+ else {
+        char nextNextChar=value.charAt(i + 2);
+        int firstDigit=parseHexDigit(nextChar);
+        int secondDigit=parseHexDigit(nextNextChar);
+        if (firstDigit >= 0 && secondDigit >= 0) {
+          fragmentBuffer.write((firstDigit << 4) + secondDigit);
+        }
+        i+=2;
+      }
+    }
+  break;
+default :
+maybeAppendFragment(fragmentBuffer,charset,result);
+result.append(c);
+}
+}
+maybeAppendFragment(fragmentBuffer,charset,result);
+return result.toString();
+}

@@ -1,9 +1,0 @@
-{
-  if (event.getButton() == ButtonEvent.BUTTON_HOTKEY_1 && event.getAction() == 0) {
-    try {
-      shoot();
-    }
- catch (    IOException ioe) {
-    }
-  }
-}

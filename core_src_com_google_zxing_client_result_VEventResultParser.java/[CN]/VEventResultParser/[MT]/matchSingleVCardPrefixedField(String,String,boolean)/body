@@ -1,4 +1,0 @@
-{
-  Vector values=VCardResultParser.matchSingleVCardPrefixedField(prefix,rawText,trim);
-  return values == null || values.isEmpty() ? null : (String)values.elementAt(0);
-}

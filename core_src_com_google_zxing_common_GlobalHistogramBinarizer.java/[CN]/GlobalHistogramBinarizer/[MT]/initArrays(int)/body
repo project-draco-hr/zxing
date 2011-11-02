@@ -1,5 +1,5 @@
 {
-  if (luminances == null || luminances.length < luminanceSize) {
+  if (luminances.length < luminanceSize) {
     luminances=new byte[luminanceSize];
   }
   for (int x=0; x < LUMINANCE_BUCKETS; x++) {

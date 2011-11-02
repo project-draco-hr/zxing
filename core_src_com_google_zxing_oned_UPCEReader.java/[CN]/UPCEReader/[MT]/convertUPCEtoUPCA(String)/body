@@ -1,7 +1,7 @@
 {
   char[] upceChars=new char[6];
   upce.getChars(1,7,upceChars,0);
-  StringBuffer result=new StringBuffer(12);
+  StringBuilder result=new StringBuilder(12);
   result.append(upce.charAt(0));
   char lastChar=upceChars[5];
 switch (lastChar) {

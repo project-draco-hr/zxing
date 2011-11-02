@@ -1,0 +1,23 @@
+{
+  Collection<BarcodeFormat> possibleFormats=hints == null ? null : (Collection<BarcodeFormat>)hints.get(DecodeHintType.POSSIBLE_FORMATS);
+  readers=new ArrayList<UPCEANReader>();
+  if (possibleFormats != null) {
+    if (possibleFormats.contains(BarcodeFormat.EAN_13)) {
+      readers.add(new EAN13Reader());
+    }
+ else     if (possibleFormats.contains(BarcodeFormat.UPC_A)) {
+      readers.add(new UPCAReader());
+    }
+    if (possibleFormats.contains(BarcodeFormat.EAN_8)) {
+      readers.add(new EAN8Reader());
+    }
+    if (possibleFormats.contains(BarcodeFormat.UPC_E)) {
+      readers.add(new UPCEReader());
+    }
+  }
+  if (readers.isEmpty()) {
+    readers.add(new EAN13Reader());
+    readers.add(new EAN8Reader());
+    readers.add(new UPCEReader());
+  }
+}

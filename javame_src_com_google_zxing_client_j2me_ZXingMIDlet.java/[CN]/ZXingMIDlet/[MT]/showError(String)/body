@@ -1,6 +1,0 @@
-{
-  alert.setTitle("Error");
-  alert.setString(message);
-  alert.setType(AlertType.ERROR);
-  showAlert(alert);
-}

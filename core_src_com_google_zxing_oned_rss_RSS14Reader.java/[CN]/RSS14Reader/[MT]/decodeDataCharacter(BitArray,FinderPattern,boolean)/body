@@ -1,5 +1,5 @@
 {
-  int[] counters=dataCharacterCounters;
+  int[] counters=getDataCharacterCounters();
   counters[0]=0;
   counters[1]=0;
   counters[2]=0;
@@ -21,10 +21,10 @@
   }
   int numModules=outsideChar ? 16 : 15;
   float elementWidth=(float)count(counters) / (float)numModules;
-  int[] oddCounts=this.oddCounts;
-  int[] evenCounts=this.evenCounts;
-  float[] oddRoundingErrors=this.oddRoundingErrors;
-  float[] evenRoundingErrors=this.evenRoundingErrors;
+  int[] oddCounts=this.getOddCounts();
+  int[] evenCounts=this.getEvenCounts();
+  float[] oddRoundingErrors=this.getOddRoundingErrors();
+  float[] evenRoundingErrors=this.getEvenRoundingErrors();
   for (int i=0; i < counters.length; i++) {
     float value=(float)counters[i] / elementWidth;
     int count=(int)(value + 0.5f);

@@ -1,0 +1,26 @@
+{
+  int[] startRange=decodeStart(row);
+  int[] endRange=decodeEnd(row);
+  StringBuilder result=new StringBuilder(20);
+  decodeMiddle(row,startRange[1],endRange[0],result);
+  String resultString=result.toString();
+  int[] allowedLengths=null;
+  if (hints != null) {
+    allowedLengths=(int[])hints.get(DecodeHintType.ALLOWED_LENGTHS);
+  }
+  if (allowedLengths == null) {
+    allowedLengths=DEFAULT_ALLOWED_LENGTHS;
+  }
+  int length=resultString.length();
+  boolean lengthOK=false;
+  for (  int allowedLength : allowedLengths) {
+    if (length == allowedLength) {
+      lengthOK=true;
+      break;
+    }
+  }
+  if (!lengthOK) {
+    throw FormatException.getFormatInstance();
+  }
+  return new Result(resultString,null,new ResultPoint[]{new ResultPoint(startRange[1],(float)rowNumber),new ResultPoint(endRange[0],(float)rowNumber)},BarcodeFormat.ITF);
+}

@@ -1,6 +1,6 @@
 {
   AddressBookParsedResult result=(AddressBookParsedResult)getResult();
-  StringBuffer contents=new StringBuffer(100);
+  StringBuilder contents=new StringBuilder(100);
   ParsedResult.maybeAppend(result.getNames(),contents);
   int namesLength=contents.length();
   String pronunciation=result.getPronunciation();

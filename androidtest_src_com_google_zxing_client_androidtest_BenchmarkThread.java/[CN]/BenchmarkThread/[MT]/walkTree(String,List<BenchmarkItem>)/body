@@ -1,14 +1,14 @@
 {
-  File file=new File(path);
+  File file=new File(currentPath);
   if (file.isDirectory()) {
     String[] files=file.list();
     Arrays.sort(files);
-    for (    String f : files) {
-      walkTree(file.getAbsolutePath() + '/' + f,items);
+    for (    String fileName : files) {
+      walkTree(file.getAbsolutePath() + '/' + fileName,items);
     }
   }
  else {
-    BenchmarkItem item=decode(path);
+    BenchmarkItem item=decode(currentPath);
     if (item != null) {
       items.add(item);
     }

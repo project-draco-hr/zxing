@@ -1,0 +1,3 @@
+{
+  return value != null && length == value.length() && DIGITS.matcher(value).matches();
+}

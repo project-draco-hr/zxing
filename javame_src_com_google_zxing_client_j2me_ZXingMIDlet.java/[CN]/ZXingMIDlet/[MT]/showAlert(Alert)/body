@@ -1,4 +1,0 @@
-{
-  Display display=Display.getDisplay(this);
-  display.setCurrent(alert,canvas);
-}

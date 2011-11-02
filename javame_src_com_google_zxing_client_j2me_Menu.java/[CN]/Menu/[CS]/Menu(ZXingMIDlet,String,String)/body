@@ -1,9 +1,0 @@
-{
-  super(title,IMPLICIT);
-  zXingMIDlet=parent;
-  cancelCommand=new Command("Cancel",Command.CANCEL,0);
-  barcodeCommand=new Command(item,Command.ITEM,0);
-  addCommand(cancelCommand);
-  addCommand(barcodeCommand);
-  setCommandListener(this);
-}

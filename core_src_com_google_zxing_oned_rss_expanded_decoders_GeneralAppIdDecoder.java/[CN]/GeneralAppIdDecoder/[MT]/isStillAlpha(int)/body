@@ -1,12 +1,12 @@
 {
-  if (pos + 5 > this.information.size) {
+  if (pos + 5 > this.information.getSize()) {
     return false;
   }
   int fiveBitValue=extractNumericValueFromBitArray(pos,5);
   if (fiveBitValue >= 5 && fiveBitValue < 16) {
     return true;
   }
-  if (pos + 6 > this.information.size) {
+  if (pos + 6 > this.information.getSize()) {
     return false;
   }
   int sixBitValue=extractNumericValueFromBitArray(pos,6);

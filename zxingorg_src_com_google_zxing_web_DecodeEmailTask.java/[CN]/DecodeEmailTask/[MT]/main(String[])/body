@@ -1,6 +1,0 @@
-{
-  String emailAddress=args[0];
-  String emailPassword=args[1];
-  Authenticator emailAuthenticator=new EmailAuthenticator(emailAddress,emailPassword);
-  new DecodeEmailTask(emailAddress,emailAuthenticator).run();
-}

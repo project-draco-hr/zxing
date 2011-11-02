@@ -1,6 +1,6 @@
 {
-  int oddSum=count(oddCounts);
-  int evenSum=count(evenCounts);
+  int oddSum=count(getOddCounts());
+  int evenSum=count(getEvenCounts());
   int mismatch=oddSum + evenSum - numModules;
   boolean oddParityBad=(oddSum & 0x01) == (outsideChar ? 1 : 0);
   boolean evenParityBad=(evenSum & 0x01) == 1;
@@ -91,18 +91,18 @@
     if (decrementOdd) {
       throw NotFoundException.getNotFoundInstance();
     }
-    increment(oddCounts,oddRoundingErrors);
+    increment(getOddCounts(),getOddRoundingErrors());
   }
   if (decrementOdd) {
-    decrement(oddCounts,oddRoundingErrors);
+    decrement(getOddCounts(),getOddRoundingErrors());
   }
   if (incrementEven) {
     if (decrementEven) {
       throw NotFoundException.getNotFoundInstance();
     }
-    increment(evenCounts,oddRoundingErrors);
+    increment(getEvenCounts(),getOddRoundingErrors());
   }
   if (decrementEven) {
-    decrement(evenCounts,evenRoundingErrors);
+    decrement(getEvenCounts(),getEvenRoundingErrors());
   }
 }

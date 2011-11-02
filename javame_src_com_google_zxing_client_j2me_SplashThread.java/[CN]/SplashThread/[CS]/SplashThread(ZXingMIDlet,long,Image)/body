@@ -1,7 +1,0 @@
-{
-  zXingMIDlet=parent;
-  tout=timeOut;
-  image=splashImage;
-  setFullScreenMode(true);
-  new Thread(this).start();
-}

@@ -1,6 +1,0 @@
-{
-  this.zXingMIDlet=zXingMIDlet;
-  waitLock=new Object();
-  done=false;
-  multimediaManager=ZXingMIDlet.buildMultimediaManager();
-}

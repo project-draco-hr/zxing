@@ -1,4 +1,0 @@
-{
-  this.emailUsername=emailUsername;
-  this.emailPassword=emailPassword;
-}

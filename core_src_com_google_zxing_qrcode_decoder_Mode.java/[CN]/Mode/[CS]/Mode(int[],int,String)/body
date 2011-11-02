@@ -1,5 +1,0 @@
-{
-  this.characterCountBitsForVersions=characterCountBitsForVersions;
-  this.bits=bits;
-  this.name=name;
-}

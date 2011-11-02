@@ -16,11 +16,11 @@
         if (filename.endsWith(".txt") || filename.contains(".mono.png")) {
           continue;
         }
-        inputs.addInput(singleFile.getAbsolutePath());
+        inputs.addInput(singleFile.getCanonicalPath());
       }
     }
  else {
-      inputs.addInput(inputFile.getAbsolutePath());
+      inputs.addInput(inputFile.getCanonicalPath());
     }
   }
  else {

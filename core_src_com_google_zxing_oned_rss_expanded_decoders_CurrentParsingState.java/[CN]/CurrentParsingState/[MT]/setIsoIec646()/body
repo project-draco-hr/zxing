@@ -1,3 +1,3 @@
 {
-  this.encoding=ISO_IEC_646;
+  this.encoding=State.ISO_IEC_646;
 }

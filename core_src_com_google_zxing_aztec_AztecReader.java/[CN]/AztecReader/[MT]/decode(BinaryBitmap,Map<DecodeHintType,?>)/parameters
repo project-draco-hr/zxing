@@ -1,0 +1,2 @@
+BinaryBitmap image
+Map<DecodeHintType,?> hints

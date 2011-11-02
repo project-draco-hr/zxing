@@ -1,5 +1,5 @@
 {
-  int[] counters=decodeFinderCounters;
+  int[] counters=getDecodeFinderCounters();
   counters[0]=0;
   counters[1]=0;
   counters[2]=0;

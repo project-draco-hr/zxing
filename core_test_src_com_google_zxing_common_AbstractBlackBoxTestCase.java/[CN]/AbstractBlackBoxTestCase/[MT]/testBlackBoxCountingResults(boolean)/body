@@ -14,7 +14,13 @@
     File expectedMetadataFile=new File(testBase,fileBaseName + ".metadata.txt");
     Properties expectedMetadata=new Properties();
     if (expectedMetadataFile.exists()) {
-      expectedMetadata.load(new FileInputStream(expectedMetadataFile));
+      InputStream expectedStream=new FileInputStream(expectedMetadataFile);
+      try {
+        expectedMetadata.load(expectedStream);
+      }
+  finally {
+        expectedStream.close();
+      }
     }
     for (int x=0; x < testCount; x++) {
       float rotation=testResults.get(x).getRotation();

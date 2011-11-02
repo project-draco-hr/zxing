@@ -1,18 +1,12 @@
 {
-  if (c >= 'a') {
-    if (c <= 'f') {
-      return 10 + (c - 'a');
-    }
+  if (c >= '0' && c <= '9') {
+    return c - '0';
   }
- else   if (c >= 'A') {
-    if (c <= 'F') {
-      return 10 + (c - 'A');
-    }
+  if (c >= 'a' && c <= 'f') {
+    return 10 + (c - 'a');
   }
- else   if (c >= '0') {
-    if (c <= '9') {
-      return c - '0';
-    }
+  if (c >= 'A' && c <= 'F') {
+    return 10 + (c - 'A');
   }
   return -1;
 }

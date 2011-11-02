@@ -1,0 +1,35 @@
+{
+  String suffix=" (" + (tryHarder ? "try harder, " : "") + "rotation: "+ rotation+ ')';
+  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+  if (tryHarder) {
+    hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
+  }
+  Result result;
+  try {
+    result=barcodeReader.decode(source,hints);
+  }
+ catch (  ReaderException re) {
+    System.out.println(re + suffix);
+    return false;
+  }
+  if (expectedFormat != result.getBarcodeFormat()) {
+    System.out.println("Format mismatch: expected '" + expectedFormat + "' but got '"+ result.getBarcodeFormat()+ '\''+ suffix);
+    return false;
+  }
+  String resultText=result.getText();
+  if (!expectedText.equals(resultText)) {
+    System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\''+ suffix);
+    return false;
+  }
+  Map<ResultMetadataType,?> resultMetadata=result.getResultMetadata();
+  for (  Map.Entry<?,?> metadatum : expectedMetadata.entrySet()) {
+    ResultMetadataType key=ResultMetadataType.valueOf(metadatum.getKey().toString());
+    Object expectedValue=metadatum.getValue();
+    Object actualValue=resultMetadata == null ? null : resultMetadata.get(key);
+    if (!expectedValue.equals(actualValue)) {
+      System.out.println("Metadata mismatch: for key '" + key + "' expected '"+ expectedValue+ "' but got '"+ actualValue+ '\'');
+      return false;
+    }
+  }
+  return true;
+}

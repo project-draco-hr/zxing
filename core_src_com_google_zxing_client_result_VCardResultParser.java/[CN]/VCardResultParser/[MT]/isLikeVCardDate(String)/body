@@ -1,9 +1,0 @@
-{
-  if (value == null) {
-    return true;
-  }
-  if (isStringOfDigits(value,8)) {
-    return true;
-  }
-  return value.length() == 10 && value.charAt(4) == '-' && value.charAt(7) == '-' && isSubstringOfDigits(value,0,4) && isSubstringOfDigits(value,5,2) && isSubstringOfDigits(value,8,2);
-}

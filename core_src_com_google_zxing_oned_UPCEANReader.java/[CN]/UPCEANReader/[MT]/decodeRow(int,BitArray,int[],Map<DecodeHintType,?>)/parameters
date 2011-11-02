@@ -1,0 +1,4 @@
+int rowNumber
+BitArray row
+int[] startGuardRange
+Map<DecodeHintType,?> hints

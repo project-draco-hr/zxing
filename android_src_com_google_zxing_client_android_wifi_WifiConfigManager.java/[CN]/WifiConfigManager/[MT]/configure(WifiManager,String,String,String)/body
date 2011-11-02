@@ -1,6 +1,6 @@
 {
   Runnable configureRunnable=new Runnable(){
-    public void run(){
+    @Override public void run(){
       if (!wifiManager.isWifiEnabled()) {
         Log.i(TAG,"Enabling wi-fi...");
         if (wifiManager.setWifiEnabled(true)) {

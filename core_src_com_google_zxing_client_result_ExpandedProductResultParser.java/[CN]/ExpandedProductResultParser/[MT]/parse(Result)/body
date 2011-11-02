@@ -1,6 +1,6 @@
 {
   BarcodeFormat format=result.getBarcodeFormat();
-  if (!BarcodeFormat.RSS_EXPANDED.equals(format)) {
+  if (format != BarcodeFormat.RSS_EXPANDED) {
     return null;
   }
   String rawText=result.getText();
@@ -20,7 +20,7 @@
   String price=null;
   String priceIncrement=null;
   String priceCurrency=null;
-  Hashtable uncommonAIs=new Hashtable();
+  Map<String,String> uncommonAIs=new HashMap<String,String>();
   int i=0;
   while (i < rawText.length()) {
     String ai=findAIvalue(i,rawText);

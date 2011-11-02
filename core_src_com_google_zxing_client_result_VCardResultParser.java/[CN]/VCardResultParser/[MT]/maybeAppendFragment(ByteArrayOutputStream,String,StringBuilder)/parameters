@@ -1,0 +1,3 @@
+ByteArrayOutputStream fragmentBuffer
+String charset
+StringBuilder result

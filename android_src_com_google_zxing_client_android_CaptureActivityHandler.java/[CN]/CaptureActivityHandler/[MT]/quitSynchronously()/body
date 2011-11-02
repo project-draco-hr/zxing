@@ -4,7 +4,7 @@
   Message quit=Message.obtain(decodeThread.getHandler(),R.id.quit);
   quit.sendToTarget();
   try {
-    decodeThread.join();
+    decodeThread.join(500L);
   }
  catch (  InterruptedException e) {
   }

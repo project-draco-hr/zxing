@@ -20,5 +20,7 @@
   translation=translation.replaceAll("\\\\u0026quot;","\"");
   translation=translation.replaceAll("\\\\u0026#39;","'");
   translation=translation.replaceAll("\\\\u200b","");
+  translation=translation.replaceAll("&amp;quot;","\"");
+  translation=translation.replaceAll("&amp;#39;","'");
   return translation;
 }

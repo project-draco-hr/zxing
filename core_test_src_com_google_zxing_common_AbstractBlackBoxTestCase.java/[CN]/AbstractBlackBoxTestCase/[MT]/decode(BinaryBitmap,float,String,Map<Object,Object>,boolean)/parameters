@@ -1,5 +1,0 @@
-BinaryBitmap source
-float rotation
-String expectedText
-Map<Object,Object> expectedMetadata
-boolean tryHarder

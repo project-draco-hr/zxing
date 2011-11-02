@@ -2,9 +2,9 @@
   if (runs <= 0) {
     throw new IllegalArgumentException();
   }
-  mPath=path;
-  mTimes=new int[runs];
-  mPosition=0;
-  mDecoded=false;
-  mFormat=null;
+  this.path=path;
+  times=new int[runs];
+  position=0;
+  decoded=false;
+  format=null;
 }

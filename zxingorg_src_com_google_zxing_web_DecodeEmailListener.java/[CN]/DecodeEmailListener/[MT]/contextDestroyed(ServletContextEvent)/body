@@ -1,3 +1,0 @@
-{
-  emailTimer.cancel();
-}

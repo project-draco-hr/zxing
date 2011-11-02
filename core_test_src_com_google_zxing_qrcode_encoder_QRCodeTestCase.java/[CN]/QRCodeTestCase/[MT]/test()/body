@@ -27,7 +27,7 @@
     }
   }
   qrCode.setMatrix(matrix);
-  assertEquals(matrix,qrCode.getMatrix());
+  assertSame(matrix,qrCode.getMatrix());
   assertTrue(qrCode.isValid());
   for (int y=0; y < 45; ++y) {
     for (int x=0; x < 45; ++x) {

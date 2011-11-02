@@ -4,8 +4,7 @@
     return 0;
   }
   FinderPattern firstConfirmedCenter=null;
-  for (int i=0; i < max; i++) {
-    FinderPattern center=(FinderPattern)possibleCenters.elementAt(i);
+  for (  FinderPattern center : possibleCenters) {
     if (center.getCount() >= CENTER_QUORUM) {
       if (firstConfirmedCenter == null) {
         firstConfirmedCenter=center;

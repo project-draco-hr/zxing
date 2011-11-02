@@ -1,0 +1,3 @@
+{
+  return value == null || VCARD_LIKE_DATE.matcher(value).matches();
+}

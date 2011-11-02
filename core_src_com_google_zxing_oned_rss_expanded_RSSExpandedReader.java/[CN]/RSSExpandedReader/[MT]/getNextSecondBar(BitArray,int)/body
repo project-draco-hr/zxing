@@ -1,11 +1,11 @@
 {
   int currentPos=initialPos;
   boolean current=row.get(currentPos);
-  while (currentPos < row.size && row.get(currentPos) == current) {
+  while (currentPos < row.getSize() && row.get(currentPos) == current) {
     currentPos++;
   }
   current=!current;
-  while (currentPos < row.size && row.get(currentPos) == current) {
+  while (currentPos < row.getSize() && row.get(currentPos) == current) {
     currentPos++;
   }
   return currentPos;

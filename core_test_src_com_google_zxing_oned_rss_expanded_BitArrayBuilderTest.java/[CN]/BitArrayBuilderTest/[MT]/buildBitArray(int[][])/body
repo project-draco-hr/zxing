@@ -1,5 +1,5 @@
 {
-  Vector<ExpandedPair> pairs=new Vector<ExpandedPair>();
+  List<ExpandedPair> pairs=new ArrayList<ExpandedPair>();
   for (int i=0; i < pairValues.length; ++i) {
     int[] pair=pairValues[i];
     DataCharacter leftChar;

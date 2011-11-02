@@ -1,0 +1,22 @@
+{
+  BitMatrix image=getImage();
+  MultiFinderPatternFinder finder=new MultiFinderPatternFinder(image);
+  FinderPatternInfo[] infos=finder.findMulti(hints);
+  if (infos.length == 0) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  List<DetectorResult> result=new ArrayList<DetectorResult>();
+  for (  FinderPatternInfo info : infos) {
+    try {
+      result.add(processFinderPatternInfo(info));
+    }
+ catch (    ReaderException e) {
+    }
+  }
+  if (result.isEmpty()) {
+    return EMPTY_DETECTOR_RESULTS;
+  }
+ else {
+    return result.toArray(new DetectorResult[result.size()]);
+  }
+}

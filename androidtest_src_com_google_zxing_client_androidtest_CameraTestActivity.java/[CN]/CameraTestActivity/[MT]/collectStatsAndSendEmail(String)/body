@@ -1,5 +1,5 @@
 {
-  StringBuilder result=new StringBuilder();
+  StringBuilder result=new StringBuilder(1000);
   result.append("Device info:");
   result.append("\n  Board: ");
   result.append(Build.BOARD);
@@ -33,13 +33,23 @@
   result.append(Build.VERSION.SDK);
   result.append("\n\n");
   result.append(parameters);
+  FileOutputStream stream=null;
   try {
-    File file=new File("/sdcard/CameraParameters.txt");
-    FileOutputStream stream=new FileOutputStream(file);
+    stream=new FileOutputStream(new File("/sdcard/CameraParameters.txt"));
     stream.write(result.toString().getBytes());
-    stream.close();
   }
  catch (  IOException e) {
+    Log.e(TAG,"Cannot write parameters file ",e);
+  }
+ finally {
+    if (stream != null) {
+      try {
+        stream.close();
+      }
+ catch (      IOException e) {
+        Log.w(TAG,e);
+      }
+    }
   }
   Intent intent=new Intent(Intent.ACTION_SEND);
   intent.putExtra(Intent.EXTRA_EMAIL,EMAIL_ADDRESS);

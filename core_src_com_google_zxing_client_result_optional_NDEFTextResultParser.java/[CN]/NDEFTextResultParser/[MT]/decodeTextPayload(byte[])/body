@@ -1,9 +1,0 @@
-{
-  byte statusByte=payload[0];
-  boolean isUTF16=(statusByte & 0x80) != 0;
-  int languageLength=statusByte & 0x1F;
-  String language=bytesToString(payload,1,languageLength,"US-ASCII");
-  String encoding=isUTF16 ? "UTF-16" : "UTF8";
-  String text=bytesToString(payload,1 + languageLength,payload.length - languageLength - 1,encoding);
-  return new String[]{language,text};
-}

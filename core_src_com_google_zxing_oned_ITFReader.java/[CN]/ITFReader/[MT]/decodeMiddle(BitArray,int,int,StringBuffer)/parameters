@@ -1,4 +1,0 @@
-BitArray row
-int payloadStart
-int payloadEnd
-StringBuffer resultString

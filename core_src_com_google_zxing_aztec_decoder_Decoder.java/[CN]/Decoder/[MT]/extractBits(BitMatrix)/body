@@ -15,7 +15,7 @@
     numCodewords=NB_DATABLOCK[ddata.getNbLayers()];
   }
   int layer=ddata.getNbLayers();
-  int size=matrix.height;
+  int size=matrix.getHeight();
   int rawbitsOffset=0;
   int matrixOffset=0;
   while (layer != 0) {

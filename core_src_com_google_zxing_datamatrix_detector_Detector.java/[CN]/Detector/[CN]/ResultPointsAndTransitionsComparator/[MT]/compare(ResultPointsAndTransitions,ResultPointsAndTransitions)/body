@@ -1,0 +1,3 @@
+{
+  return o1.getTransitions() - o2.getTransitions();
+}

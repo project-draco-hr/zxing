@@ -1,12 +1,12 @@
 {
   try {
-    String parameters=CameraManager.get().openDriver(holder,mGetCameraParameters);
+    String parameters=CameraManager.get().openDriver(holder,getCameraParameters);
     CameraManager.get().startPreview();
-    if (mGetCameraParameters) {
+    if (getCameraParameters) {
       collectStatsAndSendEmail(parameters);
     }
   }
  catch (  IOException e) {
-    throw new RuntimeException(e);
+    throw new IllegalStateException(e);
   }
 }

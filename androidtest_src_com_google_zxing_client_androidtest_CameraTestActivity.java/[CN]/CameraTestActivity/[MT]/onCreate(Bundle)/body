@@ -4,8 +4,8 @@
   Window window=getWindow();
   window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
   window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-  mGetCameraParameters=getIntent().getBooleanExtra(GET_CAMERA_PARAMETERS,false);
-  if (mGetCameraParameters) {
+  getCameraParameters=getIntent().getBooleanExtra(GET_CAMERA_PARAMETERS,false);
+  if (getCameraParameters) {
     setContentView(R.layout.camera_parameters);
   }
  else {

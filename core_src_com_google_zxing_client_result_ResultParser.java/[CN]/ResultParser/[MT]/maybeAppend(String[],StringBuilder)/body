@@ -1,0 +1,8 @@
+{
+  if (value != null) {
+    for (    String s : value) {
+      result.append('\n');
+      result.append(s);
+    }
+  }
+}

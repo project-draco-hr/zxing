@@ -10,8 +10,10 @@
   }
  catch (  ReaderException re) {
   }
+  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+  hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
   try {
-    result=getReader().decode(bitmap,TRY_HARDER_HINT);
+    result=getReader().decode(bitmap,hints);
     System.out.println("Try harder found false positive: '" + result.getText() + "' with format '"+ result.getBarcodeFormat()+ "' (rotation: "+ rotationInDegrees+ ')');
     return false;
   }

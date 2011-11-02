@@ -4,15 +4,15 @@
   ResultPoint pointB=cornerPoints[1];
   ResultPoint pointC=cornerPoints[2];
   ResultPoint pointD=cornerPoints[3];
-  Vector transitions=new Vector(4);
-  transitions.addElement(transitionsBetween(pointA,pointB));
-  transitions.addElement(transitionsBetween(pointA,pointC));
-  transitions.addElement(transitionsBetween(pointB,pointD));
-  transitions.addElement(transitionsBetween(pointC,pointD));
-  Collections.insertionSort(transitions,new ResultPointsAndTransitionsComparator());
-  ResultPointsAndTransitions lSideOne=(ResultPointsAndTransitions)transitions.elementAt(0);
-  ResultPointsAndTransitions lSideTwo=(ResultPointsAndTransitions)transitions.elementAt(1);
-  Hashtable pointCount=new Hashtable();
+  List<ResultPointsAndTransitions> transitions=new ArrayList<ResultPointsAndTransitions>(4);
+  transitions.add(transitionsBetween(pointA,pointB));
+  transitions.add(transitionsBetween(pointA,pointC));
+  transitions.add(transitionsBetween(pointB,pointD));
+  transitions.add(transitionsBetween(pointC,pointD));
+  Collections.sort(transitions,new ResultPointsAndTransitionsComparator());
+  ResultPointsAndTransitions lSideOne=transitions.get(0);
+  ResultPointsAndTransitions lSideTwo=transitions.get(1);
+  Map<ResultPoint,Integer> pointCount=new HashMap<ResultPoint,Integer>();
   increment(pointCount,lSideOne.getFrom());
   increment(pointCount,lSideOne.getTo());
   increment(pointCount,lSideTwo.getFrom());
@@ -20,11 +20,10 @@
   ResultPoint maybeTopLeft=null;
   ResultPoint bottomLeft=null;
   ResultPoint maybeBottomRight=null;
-  Enumeration points=pointCount.keys();
-  while (points.hasMoreElements()) {
-    ResultPoint point=(ResultPoint)points.nextElement();
-    Integer value=(Integer)pointCount.get(point);
-    if (value.intValue() == 2) {
+  for (  Map.Entry<ResultPoint,Integer> entry : pointCount.entrySet()) {
+    ResultPoint point=entry.getKey();
+    Integer value=entry.getValue();
+    if (value == 2) {
       bottomLeft=point;
     }
  else {

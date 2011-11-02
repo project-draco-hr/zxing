@@ -3,13 +3,13 @@
   if (!(rawText.startsWith("sms:") || rawText.startsWith("SMS:") || rawText.startsWith("mms:")|| rawText.startsWith("MMS:"))) {
     return null;
   }
-  Hashtable nameValuePairs=parseNameValuePairs(rawText);
+  Map<String,String> nameValuePairs=parseNameValuePairs(rawText);
   String subject=null;
   String body=null;
   boolean querySyntax=false;
   if (nameValuePairs != null && !nameValuePairs.isEmpty()) {
-    subject=(String)nameValuePairs.get("subject");
-    body=(String)nameValuePairs.get("body");
+    subject=nameValuePairs.get("subject");
+    body=nameValuePairs.get("body");
     querySyntax=true;
   }
   int queryStart=rawText.indexOf('?',4);
@@ -22,13 +22,13 @@
   }
   int lastComma=-1;
   int comma;
-  Vector numbers=new Vector(1);
-  Vector vias=new Vector(1);
+  List<String> numbers=new ArrayList<String>(1);
+  List<String> vias=new ArrayList<String>(1);
   while ((comma=smsURIWithoutQuery.indexOf(',',lastComma + 1)) > lastComma) {
     String numberPart=smsURIWithoutQuery.substring(lastComma + 1,comma);
     addNumberVia(numbers,vias,numberPart);
     lastComma=comma;
   }
   addNumberVia(numbers,vias,smsURIWithoutQuery.substring(lastComma + 1));
-  return new SMSParsedResult(toStringArray(numbers),toStringArray(vias),subject,body);
+  return new SMSParsedResult(numbers.toArray(new String[numbers.size()]),vias.toArray(new String[vias.size()]),subject,body);
 }

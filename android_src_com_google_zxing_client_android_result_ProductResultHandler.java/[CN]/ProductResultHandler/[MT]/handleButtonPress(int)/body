@@ -1,6 +1,6 @@
 {
   showNotOurResults(index,new AlertDialog.OnClickListener(){
-    public void onClick(    DialogInterface dialogInterface,    int i){
+    @Override public void onClick(    DialogInterface dialogInterface,    int i){
       ProductParsedResult productResult=(ProductParsedResult)getResult();
 switch (index) {
 case 0:

@@ -1,6 +1,6 @@
 {
   byte[] bytes=null;
-  StringBuffer sb=new StringBuffer(msg.length());
+  StringBuilder sb=new StringBuilder(msg.length());
   int len=msg.length();
   int p=0;
   int encodingMode=TEXT_COMPACTION;

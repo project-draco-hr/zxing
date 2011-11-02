@@ -1,0 +1,3 @@
+BitArray row
+List<ExpandedPair> previousPairs
+int forcedOffset

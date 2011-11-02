@@ -53,7 +53,7 @@
     }
   }
   if (!possibleCenters.isEmpty()) {
-    return (AlignmentPattern)possibleCenters.elementAt(0);
+    return possibleCenters.get(0);
   }
   throw NotFoundException.getNotFoundInstance();
 }

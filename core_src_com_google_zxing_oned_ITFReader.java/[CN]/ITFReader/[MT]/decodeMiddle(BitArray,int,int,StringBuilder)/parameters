@@ -1,0 +1,4 @@
+BitArray row
+int payloadStart
+int payloadEnd
+StringBuilder resultString

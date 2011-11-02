@@ -1,6 +1,6 @@
 {
   if (scanFormats != null) {
-    Vector<BarcodeFormat> formats=new Vector<BarcodeFormat>();
+    Collection<BarcodeFormat> formats=EnumSet.noneOf(BarcodeFormat.class);
     try {
       for (      String format : scanFormats) {
         formats.add(BarcodeFormat.valueOf(format));

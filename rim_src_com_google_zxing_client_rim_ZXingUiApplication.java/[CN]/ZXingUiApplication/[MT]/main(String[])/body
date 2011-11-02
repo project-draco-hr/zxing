@@ -1,6 +1,0 @@
-{
-  AppPermissionsManager.setPermissions();
-  DecodeHistory.getInstance();
-  AppSettings.getInstance();
-  new ZXingUiApplication().enterEventDispatcher();
-}

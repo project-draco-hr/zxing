@@ -1,0 +1,3 @@
+CaptureActivity activity
+Collection<BarcodeFormat> decodeFormats
+String characterSet

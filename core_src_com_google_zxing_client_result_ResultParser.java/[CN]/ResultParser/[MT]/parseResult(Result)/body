@@ -1,61 +1,9 @@
 {
-  ParsedResult result;
-  if ((result=BookmarkDoCoMoResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=AddressBookDoCoMoResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=EmailDoCoMoResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=AddressBookAUResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=VCardResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=BizcardResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=VEventResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=EmailAddressResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=SMTPResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=TelResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=SMSMMSResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=SMSTOMMSTOResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=GeoResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=WifiResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=URLTOResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=URIResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=ISBNResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=ProductResultParser.parse(theResult)) != null) {
-    return result;
-  }
- else   if ((result=ExpandedProductResultParser.parse(theResult)) != null) {
-    return result;
+  for (  ResultParser parser : PARSERS) {
+    ParsedResult result=parser.parse(theResult);
+    if (result != null) {
+      return result;
+    }
   }
   return new TextParsedResult(theResult.getText(),null);
 }

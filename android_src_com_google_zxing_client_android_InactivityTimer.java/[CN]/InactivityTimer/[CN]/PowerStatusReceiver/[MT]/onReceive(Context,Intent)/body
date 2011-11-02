@@ -1,9 +1,7 @@
 {
   if (Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) {
-    if (intent.getIntExtra("plugged",-1) == 0) {
-      InactivityTimer.this.onActivity();
-    }
- else {
+    int batteryPlugged=intent.getIntExtra("plugged",-1);
+    if (batteryPlugged > 0) {
       InactivityTimer.this.cancel();
     }
   }

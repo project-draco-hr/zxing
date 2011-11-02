@@ -6,7 +6,7 @@
  catch (  UnsupportedEncodingException uee) {
     throw new WriterException(uee.toString());
   }
-  for (int i=0; i < bytes.length; ++i) {
-    bits.appendBits(bytes[i],8);
+  for (  byte b : bytes) {
+    bits.appendBits(b,8);
   }
 }

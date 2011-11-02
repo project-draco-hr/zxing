@@ -1,0 +1,10 @@
+{
+  if (lists == null || lists.isEmpty()) {
+    return null;
+  }
+  List<String> result=new ArrayList<String>(lists.size());
+  for (  List<String> list : lists) {
+    result.add(list.get(0));
+  }
+  return result.toArray(new String[lists.size()]);
+}

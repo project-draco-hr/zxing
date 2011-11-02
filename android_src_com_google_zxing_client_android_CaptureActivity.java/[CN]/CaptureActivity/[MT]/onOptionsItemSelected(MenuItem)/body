@@ -1,35 +1,23 @@
 {
-switch (item.getItemId()) {
-case SHARE_ID:
-{
-      Intent intent=new Intent(Intent.ACTION_VIEW);
-      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-      intent.setClassName(this,ShareActivity.class.getName());
-      startActivity(intent);
-      break;
-    }
-case HISTORY_ID:
-{
-    AlertDialog historyAlert=historyManager.buildAlert();
-    historyAlert.show();
-    break;
-  }
-case SETTINGS_ID:
-{
   Intent intent=new Intent(Intent.ACTION_VIEW);
   intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-  intent.setClassName(this,PreferencesActivity.class.getName());
+switch (item.getItemId()) {
+case SHARE_ID:
+    intent.setClassName(this,ShareActivity.class.getName());
   startActivity(intent);
-  break;
-}
+break;
+case HISTORY_ID:
+AlertDialog historyAlert=historyManager.buildAlert();
+historyAlert.show();
+break;
+case SETTINGS_ID:
+intent.setClassName(this,PreferencesActivity.class.getName());
+startActivity(intent);
+break;
 case HELP_ID:
-{
-Intent intent=new Intent(Intent.ACTION_VIEW);
-intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 intent.setClassName(this,HelpActivity.class.getName());
 startActivity(intent);
 break;
-}
 case ABOUT_ID:
 AlertDialog.Builder builder=new AlertDialog.Builder(this);
 builder.setTitle(getString(R.string.title_about) + versionName);

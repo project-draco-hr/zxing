@@ -1,6 +1,0 @@
-{
-synchronized (store) {
-    store.setContents(settingsItems);
-    store.commit();
-  }
-}

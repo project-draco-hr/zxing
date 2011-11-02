@@ -1,4 +1,0 @@
-CaptureActivity activity
-Vector<BarcodeFormat> decodeFormats
-String characterSet
-ResultPointCallback resultPointCallback

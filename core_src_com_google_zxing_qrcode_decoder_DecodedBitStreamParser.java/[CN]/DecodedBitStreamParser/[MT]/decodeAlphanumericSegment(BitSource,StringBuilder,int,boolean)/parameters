@@ -1,0 +1,4 @@
+BitSource bits
+StringBuilder result
+int count
+boolean fc1InEffect

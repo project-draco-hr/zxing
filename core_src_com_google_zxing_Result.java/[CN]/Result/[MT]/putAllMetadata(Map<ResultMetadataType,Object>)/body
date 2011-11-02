@@ -1,0 +1,10 @@
+{
+  if (metadata != null) {
+    if (resultMetadata == null) {
+      resultMetadata=metadata;
+    }
+ else {
+      resultMetadata.putAll(metadata);
+    }
+  }
+}

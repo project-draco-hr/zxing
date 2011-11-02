@@ -1,3 +1,0 @@
-{
-  return (DecodeHistoryItem)historyItems.elementAt(index);
-}

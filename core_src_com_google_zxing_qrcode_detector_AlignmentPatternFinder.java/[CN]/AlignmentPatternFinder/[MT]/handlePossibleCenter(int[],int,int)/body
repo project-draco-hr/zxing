@@ -4,15 +4,13 @@
   float centerI=crossCheckVertical(i,(int)centerJ,2 * stateCount[1],stateCountTotal);
   if (!Float.isNaN(centerI)) {
     float estimatedModuleSize=(float)(stateCount[0] + stateCount[1] + stateCount[2]) / 3.0f;
-    int max=possibleCenters.size();
-    for (int index=0; index < max; index++) {
-      AlignmentPattern center=(AlignmentPattern)possibleCenters.elementAt(index);
+    for (    AlignmentPattern center : possibleCenters) {
       if (center.aboutEquals(estimatedModuleSize,centerI,centerJ)) {
         return center.combineEstimate(centerI,centerJ,estimatedModuleSize);
       }
     }
-    ResultPoint point=new AlignmentPattern(centerJ,centerI,estimatedModuleSize);
-    possibleCenters.addElement(point);
+    AlignmentPattern point=new AlignmentPattern(centerJ,centerI,estimatedModuleSize);
+    possibleCenters.add(point);
     if (resultPointCallback != null) {
       resultPointCallback.foundPossibleResultPoint(point);
     }

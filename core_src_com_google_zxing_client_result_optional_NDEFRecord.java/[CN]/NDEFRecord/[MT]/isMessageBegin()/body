@@ -1,3 +1,0 @@
-{
-  return (header & 0x80) != 0;
-}

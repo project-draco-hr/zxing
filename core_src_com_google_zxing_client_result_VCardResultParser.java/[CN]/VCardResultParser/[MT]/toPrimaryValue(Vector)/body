@@ -1,3 +1,0 @@
-{
-  return list == null || list.isEmpty() ? null : (String)list.elementAt(0);
-}

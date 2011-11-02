@@ -3,10 +3,10 @@
   if (endIndex > correctedBits.length) {
     throw FormatException.getFormatInstance();
   }
-  int lastTable=UPPER;
-  int table=UPPER;
+  Table lastTable=Table.UPPER;
+  Table table=Table.UPPER;
   int startIndex=0;
-  StringBuffer result=new StringBuffer(20);
+  StringBuilder result=new StringBuilder(20);
   boolean end=false;
   boolean shift=false;
   boolean switchShift=false;
@@ -30,7 +30,7 @@ result.append((char)code);
 break;
 default :
 int size=5;
-if (table == DIGIT) {
+if (table == Table.DIGIT) {
 size=4;
 }
 if (endIndex - startIndex < size) {

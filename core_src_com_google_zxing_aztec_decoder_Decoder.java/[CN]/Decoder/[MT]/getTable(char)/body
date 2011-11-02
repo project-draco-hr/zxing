@@ -1,24 +1,17 @@
 {
-  int table=UPPER;
 switch (t) {
-case 'U':
-    table=UPPER;
-  break;
 case 'L':
-table=LOWER;
-break;
+    return Table.LOWER;
 case 'P':
-table=PUNCT;
-break;
+  return Table.PUNCT;
 case 'M':
-table=MIXED;
-break;
+return Table.MIXED;
 case 'D':
-table=DIGIT;
-break;
+return Table.DIGIT;
 case 'B':
-table=BINARY;
-break;
+return Table.BINARY;
+case 'U':
+default :
+return Table.UPPER;
 }
-return table;
 }

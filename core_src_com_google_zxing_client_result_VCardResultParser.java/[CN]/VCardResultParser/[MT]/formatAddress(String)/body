@@ -1,17 +1,3 @@
 {
-  if (address == null) {
-    return null;
-  }
-  int length=address.length();
-  StringBuffer newAddress=new StringBuffer(length);
-  for (int j=0; j < length; j++) {
-    char c=address.charAt(j);
-    if (c == ';') {
-      newAddress.append(' ');
-    }
- else {
-      newAddress.append(c);
-    }
-  }
-  return newAddress.toString().trim();
+  return address == null ? null : address.replace(';',' ').trim();
 }

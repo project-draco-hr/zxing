@@ -1,6 +1,6 @@
 {
   this.image=image;
-  this.possibleCenters=new Vector();
+  this.possibleCenters=new ArrayList<FinderPattern>();
   this.crossCheckStateCount=new int[5];
   this.resultPointCallback=resultPointCallback;
 }

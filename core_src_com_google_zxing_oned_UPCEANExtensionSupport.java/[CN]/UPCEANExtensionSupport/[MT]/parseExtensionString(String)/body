@@ -16,7 +16,7 @@ return null;
 if (value == null) {
 return null;
 }
-Hashtable result=new Hashtable(1);
+Map<ResultMetadataType,Object> result=new EnumMap<ResultMetadataType,Object>(ResultMetadataType.class);
 result.put(type,value);
 return result;
 }

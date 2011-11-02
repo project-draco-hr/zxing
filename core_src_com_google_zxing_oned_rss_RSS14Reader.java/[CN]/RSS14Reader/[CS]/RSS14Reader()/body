@@ -1,4 +1,4 @@
 {
-  possibleLeftPairs=new Vector();
-  possibleRightPairs=new Vector();
+  possibleLeftPairs=new ArrayList<Pair>();
+  possibleRightPairs=new ArrayList<Pair>();
 }

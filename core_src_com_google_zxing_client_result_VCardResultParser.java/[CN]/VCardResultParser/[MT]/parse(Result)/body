@@ -1,30 +1,30 @@
 {
   String rawText=result.getText();
-  if (!rawText.startsWith("BEGIN:VCARD")) {
+  Matcher m=BEGIN_VCARD.matcher(rawText);
+  if (!m.find() || m.start() != 0) {
     return null;
   }
-  Vector names=matchVCardPrefixedField("FN",rawText,true);
+  List<List<String>> names=matchVCardPrefixedField("FN",rawText,true);
   if (names == null) {
     names=matchVCardPrefixedField("N",rawText,true);
     formatNames(names);
   }
-  Vector phoneNumbers=matchVCardPrefixedField("TEL",rawText,true);
-  Vector emails=matchVCardPrefixedField("EMAIL",rawText,true);
-  Vector note=matchSingleVCardPrefixedField("NOTE",rawText,false);
-  Vector addresses=matchVCardPrefixedField("ADR",rawText,true);
+  List<List<String>> phoneNumbers=matchVCardPrefixedField("TEL",rawText,true);
+  List<List<String>> emails=matchVCardPrefixedField("EMAIL",rawText,true);
+  List<String> note=matchSingleVCardPrefixedField("NOTE",rawText,false);
+  List<List<String>> addresses=matchVCardPrefixedField("ADR",rawText,true);
   if (addresses != null) {
-    for (int i=0; i < addresses.size(); i++) {
-      Vector list=(Vector)addresses.elementAt(i);
-      list.setElementAt(formatAddress((String)list.elementAt(0)),0);
+    for (    List<String> list : addresses) {
+      list.set(0,formatAddress(list.get(0)));
     }
   }
-  Vector org=matchSingleVCardPrefixedField("ORG",rawText,true);
-  Vector birthday=matchSingleVCardPrefixedField("BDAY",rawText,true);
-  if (birthday != null && !isLikeVCardDate((String)birthday.elementAt(0))) {
+  List<String> org=matchSingleVCardPrefixedField("ORG",rawText,true);
+  List<String> birthday=matchSingleVCardPrefixedField("BDAY",rawText,true);
+  if (birthday != null && !isLikeVCardDate(birthday.get(0))) {
     birthday=null;
   }
-  Vector title=matchSingleVCardPrefixedField("TITLE",rawText,true);
-  Vector url=matchSingleVCardPrefixedField("URL",rawText,true);
-  Vector instantMessenger=matchSingleVCardPrefixedField("IMPP",rawText,true);
+  List<String> title=matchSingleVCardPrefixedField("TITLE",rawText,true);
+  List<String> url=matchSingleVCardPrefixedField("URL",rawText,true);
+  List<String> instantMessenger=matchSingleVCardPrefixedField("IMPP",rawText,true);
   return new AddressBookParsedResult(toPrimaryValues(names),null,toPrimaryValues(phoneNumbers),toTypes(phoneNumbers),toPrimaryValues(emails),toTypes(emails),toPrimaryValue(instantMessenger),toPrimaryValue(note),toPrimaryValues(addresses),toTypes(addresses),toPrimaryValue(org),toPrimaryValue(birthday),toPrimaryValue(title),toPrimaryValue(url));
 }

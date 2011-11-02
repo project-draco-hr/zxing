@@ -1,11 +1,11 @@
 {
   BitSource bits=new BitSource(bytes);
-  StringBuffer result=new StringBuffer(100);
-  StringBuffer resultTrailer=new StringBuffer(0);
-  Vector byteSegments=new Vector(1);
-  int mode=ASCII_ENCODE;
+  StringBuilder result=new StringBuilder(100);
+  StringBuilder resultTrailer=new StringBuilder(0);
+  List<byte[]> byteSegments=new ArrayList<byte[]>(1);
+  Mode mode=Mode.ASCII_ENCODE;
   do {
-    if (mode == ASCII_ENCODE) {
+    if (mode == Mode.ASCII_ENCODE) {
       mode=decodeAsciiSegment(bits,result,resultTrailer);
     }
  else {
@@ -28,10 +28,10 @@ break;
 default :
 throw FormatException.getFormatInstance();
 }
-mode=ASCII_ENCODE;
+mode=Mode.ASCII_ENCODE;
 }
 }
- while (mode != PAD_ENCODE && bits.available() > 0);
+ while (mode != Mode.PAD_ENCODE && bits.available() > 0);
 if (resultTrailer.length() > 0) {
 result.append(resultTrailer.toString());
 }

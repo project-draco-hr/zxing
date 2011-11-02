@@ -8,8 +8,8 @@
   for (int i=0; i < length; i++) {
     int indexInString=Code39Reader.ALPHABET_STRING.indexOf(contents.charAt(i));
     toIntArray(Code39Reader.CHARACTER_ENCODINGS[indexInString],widths);
-    for (int j=0; j < widths.length; j++) {
-      codeWidth+=widths[j];
+    for (    int width : widths) {
+      codeWidth+=width;
     }
   }
   byte[] result=new byte[codeWidth];

@@ -1,0 +1,4 @@
+{
+  Integer value=table.get(key);
+  table.put(key,value == null ? 1 : value + 1);
+}

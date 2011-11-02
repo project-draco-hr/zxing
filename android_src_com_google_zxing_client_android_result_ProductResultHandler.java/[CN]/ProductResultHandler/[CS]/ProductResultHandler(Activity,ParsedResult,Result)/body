@@ -1,7 +1,7 @@
 {
   super(activity,result,rawResult);
   showGoogleShopperButton(new View.OnClickListener(){
-    public void onClick(    View view){
+    @Override public void onClick(    View view){
       ProductParsedResult productResult=(ProductParsedResult)getResult();
       openGoogleShopper(productResult.getNormalizedProductID());
     }

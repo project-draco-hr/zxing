@@ -17,7 +17,7 @@ default :
   }
 }
 }
-Vector patterns=new Vector();
+Collection<int[]> patterns=new ArrayList<int[]>();
 int checkSum=0;
 int checkWeight=1;
 int codeSet=0;
@@ -76,28 +76,24 @@ patternIndex=newCodeSet;
 }
 codeSet=newCodeSet;
 }
-patterns.addElement(Code128Reader.CODE_PATTERNS[patternIndex]);
+patterns.add(Code128Reader.CODE_PATTERNS[patternIndex]);
 checkSum+=patternIndex * checkWeight;
 if (position != 0) {
 checkWeight++;
 }
 }
 checkSum%=103;
-patterns.addElement(Code128Reader.CODE_PATTERNS[checkSum]);
-patterns.addElement(Code128Reader.CODE_PATTERNS[CODE_STOP]);
+patterns.add(Code128Reader.CODE_PATTERNS[checkSum]);
+patterns.add(Code128Reader.CODE_PATTERNS[CODE_STOP]);
 int codeWidth=0;
-Enumeration patternEnumeration=patterns.elements();
-while (patternEnumeration.hasMoreElements()) {
-int[] pattern=(int[])patternEnumeration.nextElement();
-for (int i=0; i < pattern.length; i++) {
-codeWidth+=pattern[i];
+for (int[] pattern : patterns) {
+for (int width : pattern) {
+codeWidth+=width;
 }
 }
 byte[] result=new byte[codeWidth];
-patternEnumeration=patterns.elements();
 int pos=0;
-while (patternEnumeration.hasMoreElements()) {
-int[] pattern=(int[])patternEnumeration.nextElement();
+for (int[] pattern : patterns) {
 pos+=appendPattern(result,pos,pattern,1);
 }
 return result;

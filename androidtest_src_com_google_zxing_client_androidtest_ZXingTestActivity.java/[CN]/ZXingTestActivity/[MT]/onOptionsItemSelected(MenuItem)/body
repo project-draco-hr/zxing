@@ -1,13 +1,15 @@
 {
   if (item.getItemId() == ABOUT_ID) {
-    int versionCode=0;
-    String versionName="unknown";
+    int versionCode;
+    String versionName;
     try {
       PackageInfo info=getPackageManager().getPackageInfo(PACKAGE_NAME,0);
       versionCode=info.versionCode;
       versionName=info.versionName;
     }
  catch (    PackageManager.NameNotFoundException e) {
+      versionCode=0;
+      versionName="unknown";
     }
     AlertDialog.Builder builder=new AlertDialog.Builder(this);
     builder.setTitle(getString(R.string.app_name) + ' ' + versionName+ " ("+ versionCode+ ')');

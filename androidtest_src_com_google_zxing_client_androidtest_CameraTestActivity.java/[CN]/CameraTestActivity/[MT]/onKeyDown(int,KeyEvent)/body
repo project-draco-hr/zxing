@@ -1,14 +1,14 @@
 {
-  if (!mGetCameraParameters) {
+  if (!getCameraParameters) {
     if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
       if (event.getRepeatCount() == 0) {
-        CameraManager.get().requestAutoFocus(mHandler,R.id.auto_focus);
+        CameraManager.get().requestAutoFocus(handler,R.id.auto_focus);
       }
       return true;
     }
  else     if (keyCode == KeyEvent.KEYCODE_CAMERA || keyCode == KeyEvent.KEYCODE_SEARCH) {
       if (event.getRepeatCount() == 0) {
-        CameraManager.get().requestPreviewFrame(mSaveThread.mHandler,R.id.save);
+        CameraManager.get().requestPreviewFrame(saveThread.handler,R.id.save);
       }
       return true;
     }

@@ -1,21 +1,17 @@
 {
-  Vector numbers=new Vector(3);
+  List<String> numbers=new ArrayList<String>(3);
   if (number1 != null) {
-    numbers.addElement(number1);
+    numbers.add(number1);
   }
   if (number2 != null) {
-    numbers.addElement(number2);
+    numbers.add(number2);
   }
   if (number3 != null) {
-    numbers.addElement(number3);
+    numbers.add(number3);
   }
   int size=numbers.size();
   if (size == 0) {
     return null;
   }
-  String[] result=new String[size];
-  for (int i=0; i < size; i++) {
-    result[i]=(String)numbers.elementAt(i);
-  }
-  return result;
+  return numbers.toArray(new String[size]);
 }

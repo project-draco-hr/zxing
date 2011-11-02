@@ -1,11 +1,11 @@
 {
   LinearLayout layout;
-  if (!(view instanceof LinearLayout)) {
-    LayoutInflater factory=LayoutInflater.from(context);
-    layout=(LinearLayout)factory.inflate(R.layout.bookmark_picker_list_item,viewGroup,false);
+  if (view instanceof LinearLayout) {
+    layout=(LinearLayout)view;
   }
  else {
-    layout=(LinearLayout)view;
+    LayoutInflater factory=LayoutInflater.from(context);
+    layout=(LinearLayout)factory.inflate(R.layout.bookmark_picker_list_item,viewGroup,false);
   }
   cursor.moveToPosition(index);
   String title=cursor.getString(BookmarkPickerActivity.TITLE_COLUMN);

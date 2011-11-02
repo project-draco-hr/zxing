@@ -1,9 +1,0 @@
-{
-  frame.setTitle("BugBarcode");
-  frame.setBackground(Color.WHITE);
-  frame.setLayout(new BorderLayout());
-  barcodeLabel=new Label("Take a picture of a barcode!",Label.CENTER);
-  frame.add(barcodeLabel,BorderLayout.SOUTH);
-  imageCanvas=new ImageCanvas(null);
-  frame.setVisible(true);
-}

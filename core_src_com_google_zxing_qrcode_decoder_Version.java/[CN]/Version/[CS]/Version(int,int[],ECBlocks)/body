@@ -1,0 +1,12 @@
+{
+  this.versionNumber=versionNumber;
+  this.alignmentPatternCenters=alignmentPatternCenters;
+  this.ecBlocks=ecBlocks;
+  int total=0;
+  int ecCodewords=ecBlocks[0].getECCodewordsPerBlock();
+  ECB[] ecbArray=ecBlocks[0].getECBlocks();
+  for (  ECB ecBlock : ecbArray) {
+    total+=ecBlock.getCount() * (ecBlock.getDataCodewords() + ecCodewords);
+  }
+  this.totalCodewords=total;
+}

@@ -1,9 +1,0 @@
-{
-  int separator=uri.indexOf('=',paramStart);
-  if (separator >= 0) {
-    String key=uri.substring(paramStart,separator);
-    String value=uri.substring(separator + 1,paramEnd);
-    value=urlDecode(value);
-    result.put(key,value);
-  }
-}

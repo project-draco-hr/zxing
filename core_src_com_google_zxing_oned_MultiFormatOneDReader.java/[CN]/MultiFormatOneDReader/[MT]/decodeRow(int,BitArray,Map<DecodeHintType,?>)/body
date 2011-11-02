@@ -1,0 +1,10 @@
+{
+  for (  OneDReader reader : readers) {
+    try {
+      return reader.decodeRow(rowNumber,row,hints);
+    }
+ catch (    ReaderException re) {
+    }
+  }
+  throw NotFoundException.getNotFoundInstance();
+}

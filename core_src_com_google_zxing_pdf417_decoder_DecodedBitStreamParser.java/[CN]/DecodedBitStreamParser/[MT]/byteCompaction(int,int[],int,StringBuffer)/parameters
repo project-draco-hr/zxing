@@ -1,4 +1,0 @@
-int mode
-int[] codewords
-int codeIndex
-StringBuffer result

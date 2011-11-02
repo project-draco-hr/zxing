@@ -1,0 +1,82 @@
+{
+  List<List<String>> matches=null;
+  int i=0;
+  int max=rawText.length();
+  while (i < max) {
+    Matcher matcher=Pattern.compile("(?:^|\n)" + prefix + "(?:;([^:]*))?:",Pattern.CASE_INSENSITIVE).matcher(rawText);
+    if (!matcher.find(i)) {
+      break;
+    }
+    i=matcher.end(0);
+    String metadataString=matcher.group(1);
+    List<String> metadata=null;
+    boolean quotedPrintable=false;
+    String quotedPrintableCharset=null;
+    if (metadataString != null) {
+      for (      String metadatum : SEMICOLON.split(metadataString)) {
+        if (metadata == null) {
+          metadata=new ArrayList<String>(1);
+        }
+        metadata.add(metadatum);
+        String[] metadatumTokens=EQUALS.split(metadatum,2);
+        if (metadatumTokens.length > 1) {
+          String key=metadatumTokens[0];
+          String value=metadatumTokens[1];
+          if ("ENCODING".equalsIgnoreCase(key) && "QUOTED-PRINTABLE".equalsIgnoreCase(value)) {
+            quotedPrintable=true;
+          }
+ else           if ("CHARSET".equalsIgnoreCase(key)) {
+            quotedPrintableCharset=value;
+          }
+        }
+      }
+    }
+    int matchStart=i;
+    while ((i=rawText.indexOf((int)'\n',i)) >= 0) {
+      if (i < rawText.length() - 1 && (rawText.charAt(i + 1) == ' ' || rawText.charAt(i + 1) == '\t')) {
+        i+=2;
+      }
+ else       if (quotedPrintable && (rawText.charAt(i - 1) == '=' || rawText.charAt(i - 2) == '=')) {
+        i++;
+      }
+ else {
+        break;
+      }
+    }
+    if (i < 0) {
+      i=max;
+    }
+ else     if (i > matchStart) {
+      if (matches == null) {
+        matches=new ArrayList<List<String>>(1);
+      }
+      if (rawText.charAt(i - 1) == '\r') {
+        i--;
+      }
+      String element=rawText.substring(matchStart,i);
+      if (trim) {
+        element=element.trim();
+      }
+      if (quotedPrintable) {
+        element=decodeQuotedPrintable(element,quotedPrintableCharset);
+      }
+ else {
+        element=CR_LF_SPACE_TAB.matcher(element).replaceAll("");
+      }
+      if (metadata == null) {
+        List<String> match=new ArrayList<String>(1);
+        match.add(element);
+        matches.add(match);
+      }
+ else {
+        metadata.add(0,element);
+        matches.add(metadata);
+      }
+      i++;
+    }
+ else {
+      i++;
+    }
+  }
+  return matches;
+}

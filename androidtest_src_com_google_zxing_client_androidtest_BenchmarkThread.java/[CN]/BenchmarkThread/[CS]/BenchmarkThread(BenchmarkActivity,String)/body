@@ -1,4 +1,4 @@
 {
-  mActivity=activity;
-  mPath=path;
+  this.activity=activity;
+  this.path=path;
 }

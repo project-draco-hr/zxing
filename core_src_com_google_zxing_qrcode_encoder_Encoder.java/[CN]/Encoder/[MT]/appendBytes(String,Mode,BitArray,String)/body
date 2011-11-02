@@ -1,17 +1,18 @@
 {
-  if (mode.equals(Mode.NUMERIC)) {
+switch (mode) {
+case NUMERIC:
     appendNumericBytes(content,bits);
-  }
- else   if (mode.equals(Mode.ALPHANUMERIC)) {
-    appendAlphanumericBytes(content,bits);
-  }
- else   if (mode.equals(Mode.BYTE)) {
-    append8BitBytes(content,bits,encoding);
-  }
- else   if (mode.equals(Mode.KANJI)) {
-    appendKanjiBytes(content,bits);
-  }
- else {
-    throw new WriterException("Invalid mode: " + mode);
-  }
+  break;
+case ALPHANUMERIC:
+appendAlphanumericBytes(content,bits);
+break;
+case BYTE:
+append8BitBytes(content,bits,encoding);
+break;
+case KANJI:
+appendKanjiBytes(content,bits);
+break;
+default :
+throw new WriterException("Invalid mode: " + mode);
+}
 }

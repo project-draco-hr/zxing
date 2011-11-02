@@ -1,5 +1,0 @@
-{
-  this.ordinal=ordinal;
-  this.bits=bits;
-  this.name=name;
-}

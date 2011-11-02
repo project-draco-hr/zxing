@@ -1,7 +1,7 @@
 {
   long symbolValue=4537077L * leftPair.getValue() + rightPair.getValue();
   String text=String.valueOf(symbolValue);
-  StringBuffer buffer=new StringBuffer(14);
+  StringBuilder buffer=new StringBuilder(14);
   for (int i=13 - text.length(); i > 0; i--) {
     buffer.append('0');
   }

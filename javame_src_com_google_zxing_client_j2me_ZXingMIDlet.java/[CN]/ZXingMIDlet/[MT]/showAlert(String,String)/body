@@ -1,6 +1,0 @@
-{
-  alert.setTitle(title);
-  alert.setString(text);
-  alert.setType(AlertType.INFO);
-  showAlert(alert);
-}

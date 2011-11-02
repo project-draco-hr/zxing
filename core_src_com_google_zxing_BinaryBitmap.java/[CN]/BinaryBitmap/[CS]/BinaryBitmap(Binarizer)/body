@@ -3,5 +3,4 @@
     throw new IllegalArgumentException("Binarizer must be non-null.");
   }
   this.binarizer=binarizer;
-  matrix=null;
 }

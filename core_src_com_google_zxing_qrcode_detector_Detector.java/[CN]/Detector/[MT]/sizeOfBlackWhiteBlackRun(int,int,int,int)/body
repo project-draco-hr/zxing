@@ -18,7 +18,7 @@
   for (int x=fromX, y=fromY; x != xLimit; x+=xstep) {
     int realX=steep ? y : x;
     int realY=steep ? x : y;
-    if (!(state == 1 ^ image.get(realX,realY))) {
+    if ((state == 1) == image.get(realX,realY)) {
       if (state == 2) {
         int diffX=x - fromX;
         int diffY=y - fromY;

@@ -1,3 +1,0 @@
-{
-  return ((ResultPointsAndTransitions)o1).getTransitions() - ((ResultPointsAndTransitions)o2).getTransitions();
-}

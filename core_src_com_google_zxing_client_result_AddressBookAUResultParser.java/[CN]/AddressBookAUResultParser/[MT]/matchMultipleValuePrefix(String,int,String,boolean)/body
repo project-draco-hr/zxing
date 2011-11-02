@@ -1,17 +1,17 @@
 {
-  Vector values=null;
+  List<String> values=null;
   for (int i=1; i <= max; i++) {
     String value=matchSinglePrefixedField(prefix + i + ':',rawText,'\r',trim);
     if (value == null) {
       break;
     }
     if (values == null) {
-      values=new Vector(max);
+      values=new ArrayList<String>(max);
     }
-    values.addElement(value);
+    values.add(value);
   }
   if (values == null) {
     return null;
   }
-  return toStringArray(values);
+  return values.toArray(new String[values.size()]);
 }

@@ -6,31 +6,31 @@
   if (startSize > 3) {
     float totalModuleSize=0.0f;
     float square=0.0f;
-    for (int i=0; i < startSize; i++) {
-      float size=((FinderPattern)possibleCenters.elementAt(i)).getEstimatedModuleSize();
+    for (    FinderPattern center : possibleCenters) {
+      float size=center.getEstimatedModuleSize();
       totalModuleSize+=size;
       square+=size * size;
     }
     float average=totalModuleSize / (float)startSize;
     float stdDev=(float)Math.sqrt(square / startSize - average * average);
-    Collections.insertionSort(possibleCenters,new FurthestFromAverageComparator(average));
+    Collections.sort(possibleCenters,new FurthestFromAverageComparator(average));
     float limit=Math.max(0.2f * average,stdDev);
     for (int i=0; i < possibleCenters.size() && possibleCenters.size() > 3; i++) {
-      FinderPattern pattern=(FinderPattern)possibleCenters.elementAt(i);
+      FinderPattern pattern=possibleCenters.get(i);
       if (Math.abs(pattern.getEstimatedModuleSize() - average) > limit) {
-        possibleCenters.removeElementAt(i);
+        possibleCenters.remove(i);
         i--;
       }
     }
   }
   if (possibleCenters.size() > 3) {
     float totalModuleSize=0.0f;
-    for (int i=0; i < possibleCenters.size(); i++) {
-      totalModuleSize+=((FinderPattern)possibleCenters.elementAt(i)).getEstimatedModuleSize();
+    for (    FinderPattern possibleCenter : possibleCenters) {
+      totalModuleSize+=possibleCenter.getEstimatedModuleSize();
     }
     float average=totalModuleSize / (float)possibleCenters.size();
-    Collections.insertionSort(possibleCenters,new CenterComparator(average));
-    possibleCenters.setSize(3);
+    Collections.sort(possibleCenters,new CenterComparator(average));
+    possibleCenters.subList(3,possibleCenters.size()).clear();
   }
-  return new FinderPattern[]{(FinderPattern)possibleCenters.elementAt(0),(FinderPattern)possibleCenters.elementAt(1),(FinderPattern)possibleCenters.elementAt(2)};
+  return new FinderPattern[]{possibleCenters.get(0),possibleCenters.get(1),possibleCenters.get(2)};
 }

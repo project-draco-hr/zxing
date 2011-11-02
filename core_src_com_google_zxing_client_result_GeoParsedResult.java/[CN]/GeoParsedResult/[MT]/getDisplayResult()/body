@@ -1,5 +1,5 @@
 {
-  StringBuffer result=new StringBuffer(20);
+  StringBuilder result=new StringBuilder(20);
   result.append(latitude);
   result.append(", ");
   result.append(longitude);

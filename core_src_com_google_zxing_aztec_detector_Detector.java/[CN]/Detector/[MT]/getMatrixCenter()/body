@@ -11,8 +11,8 @@
     pointD=cornerPoints[3];
   }
  catch (  NotFoundException e) {
-    int cx=image.width / 2;
-    int cy=image.height / 2;
+    int cx=image.getWidth() / 2;
+    int cy=image.getHeight() / 2;
     pointA=getFirstDifferent(new Point(cx + 15 / 2,cy - 15 / 2),false,1,-1).toResultPoint();
     pointB=getFirstDifferent(new Point(cx + 15 / 2,cy + 15 / 2),false,1,1).toResultPoint();
     pointC=getFirstDifferent(new Point(cx - 15 / 2,cy + 15 / 2),false,-1,1).toResultPoint();

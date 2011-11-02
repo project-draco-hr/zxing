@@ -1,7 +1,7 @@
 {
   if (executorInstance == null) {
     executorInstance=Executors.newCachedThreadPool(new ThreadFactory(){
-      public Thread newThread(      Runnable r){
+      @Override public Thread newThread(      Runnable r){
         Thread t=new Thread(r);
         t.setDaemon(true);
         return t;

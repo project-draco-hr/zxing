@@ -2,7 +2,7 @@
   boolean isFinished;
   BlockParsedResult result;
   do {
-    int initialPosition=current.position;
+    int initialPosition=current.getPosition();
     if (current.isAlpha()) {
       result=parseAlphaBlock();
       isFinished=result.isFinished();
@@ -15,7 +15,7 @@
       result=parseNumericBlock();
       isFinished=result.isFinished();
     }
-    boolean positionChanged=initialPosition != current.position;
+    boolean positionChanged=initialPosition != current.getPosition();
     if (!positionChanged && !isFinished) {
       break;
     }

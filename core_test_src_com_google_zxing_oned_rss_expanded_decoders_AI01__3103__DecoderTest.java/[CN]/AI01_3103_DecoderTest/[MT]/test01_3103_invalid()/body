@@ -1,9 +1,4 @@
 {
   String data=header + compressedGtin_900123456798908 + compressed15bitWeight_1750+ "..";
-  try {
-    assertCorrectBinaryString(data,"");
-    fail(NotFoundException.class.getName() + " expected");
-  }
- catch (  NotFoundException nfe) {
-  }
+  assertCorrectBinaryString(data,"");
 }

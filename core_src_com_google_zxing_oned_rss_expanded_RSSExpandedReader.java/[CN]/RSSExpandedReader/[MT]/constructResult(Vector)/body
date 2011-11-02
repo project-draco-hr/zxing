@@ -1,8 +1,0 @@
-{
-  BitArray binary=BitArrayBuilder.buildBitArray(pairs);
-  AbstractExpandedDecoder decoder=AbstractExpandedDecoder.createDecoder(binary);
-  String resultingString=decoder.parseInformation();
-  ResultPoint[] firstPoints=((ExpandedPair)pairs.elementAt(0)).getFinderPattern().getResultPoints();
-  ResultPoint[] lastPoints=((ExpandedPair)pairs.lastElement()).getFinderPattern().getResultPoints();
-  return new Result(resultingString,null,new ResultPoint[]{firstPoints[0],firstPoints[1],lastPoints[0],lastPoints[1]},BarcodeFormat.RSS_EXPANDED);
-}

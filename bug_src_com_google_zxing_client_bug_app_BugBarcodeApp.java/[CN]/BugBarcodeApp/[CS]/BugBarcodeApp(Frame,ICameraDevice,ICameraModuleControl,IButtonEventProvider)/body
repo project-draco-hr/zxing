@@ -1,9 +1,0 @@
-{
-  this.frame=frame;
-  this.camera=camera;
-  this.reader=new MultiFormatReader();
-  this.cameraControl=cameraControl;
-  pictureTaken=false;
-  buttonProvider.addListener(this);
-  createUI();
-}

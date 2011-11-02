@@ -10,17 +10,25 @@
   if (sixBitValue >= 32 && sixBitValue < 58) {
     return new DecodedChar(pos + 6,(char)(sixBitValue + 33));
   }
+  char c;
 switch (sixBitValue) {
 case 58:
-    return new DecodedChar(pos + 6,'*');
+    c='*';
+  break;
 case 59:
-  return new DecodedChar(pos + 6,',');
+c=',';
+break;
 case 60:
-return new DecodedChar(pos + 6,'-');
+c='-';
+break;
 case 61:
-return new DecodedChar(pos + 6,'.');
+c='.';
+break;
 case 62:
-return new DecodedChar(pos + 6,'/');
+c='/';
+break;
+default :
+throw new IllegalStateException("Decoding invalid alphanumeric value: " + sixBitValue);
 }
-throw new RuntimeException("Decoding invalid alphanumeric value: " + sixBitValue);
+return new DecodedChar(pos + 6,c);
 }

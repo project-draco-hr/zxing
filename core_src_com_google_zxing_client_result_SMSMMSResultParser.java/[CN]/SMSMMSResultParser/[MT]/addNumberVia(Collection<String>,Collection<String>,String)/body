@@ -1,0 +1,19 @@
+{
+  int numberEnd=numberPart.indexOf(';');
+  if (numberEnd < 0) {
+    numbers.add(numberPart);
+    vias.add(null);
+  }
+ else {
+    numbers.add(numberPart.substring(0,numberEnd));
+    String maybeVia=numberPart.substring(numberEnd + 1);
+    String via;
+    if (maybeVia.startsWith("via=")) {
+      via=maybeVia.substring(4);
+    }
+ else {
+      via=null;
+    }
+    vias.add(via);
+  }
+}

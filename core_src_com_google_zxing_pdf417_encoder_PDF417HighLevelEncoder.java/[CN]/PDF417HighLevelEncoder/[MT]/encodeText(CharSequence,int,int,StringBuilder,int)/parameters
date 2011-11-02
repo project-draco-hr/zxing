@@ -1,0 +1,5 @@
+CharSequence msg
+int startpos
+int count
+StringBuilder sb
+int initialSubmode

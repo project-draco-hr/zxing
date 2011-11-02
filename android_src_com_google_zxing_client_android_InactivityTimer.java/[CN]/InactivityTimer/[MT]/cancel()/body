@@ -1,6 +1,7 @@
 {
-  if (inactivityFuture != null) {
-    inactivityFuture.cancel(true);
+  ScheduledFuture<?> future=inactivityFuture;
+  if (future != null) {
+    future.cancel(true);
     inactivityFuture=null;
   }
 }

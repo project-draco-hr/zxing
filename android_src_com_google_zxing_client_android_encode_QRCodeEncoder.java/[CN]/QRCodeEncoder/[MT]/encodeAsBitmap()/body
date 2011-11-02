@@ -1,8 +1,8 @@
 {
-  Hashtable<EncodeHintType,Object> hints=null;
+  Map<EncodeHintType,Object> hints=null;
   String encoding=guessAppropriateEncoding(contents);
   if (encoding != null) {
-    hints=new Hashtable<EncodeHintType,Object>(2);
+    hints=new EnumMap<EncodeHintType,Object>(EncodeHintType.class);
     hints.put(EncodeHintType.CHARACTER_SET,encoding);
   }
   MultiFormatWriter writer=new MultiFormatWriter();

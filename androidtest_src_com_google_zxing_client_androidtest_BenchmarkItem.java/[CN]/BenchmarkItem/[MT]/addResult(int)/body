@@ -1,4 +1,4 @@
 {
-  mTimes[mPosition]=microseconds;
-  mPosition++;
+  times[position]=microseconds;
+  position++;
 }

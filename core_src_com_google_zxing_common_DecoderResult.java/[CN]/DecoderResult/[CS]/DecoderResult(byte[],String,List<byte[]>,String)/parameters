@@ -1,0 +1,4 @@
+byte[] rawBytes
+String text
+List<byte[]> byteSegments
+String ecLevel

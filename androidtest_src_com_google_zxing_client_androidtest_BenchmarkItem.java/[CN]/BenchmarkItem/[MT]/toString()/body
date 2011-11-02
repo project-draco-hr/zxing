@@ -1,7 +1,7 @@
 {
-  StringBuilder result=new StringBuilder();
-  result.append(mDecoded ? ("DECODED " + mFormat.toString() + ": ") : "FAILED: ");
-  result.append(mPath);
+  StringBuilder result=new StringBuilder(30);
+  result.append(decoded ? "DECODED " + format.toString() + ": " : "FAILED: ");
+  result.append(path);
   result.append(" (");
   result.append(getAverageTime());
   result.append(" us average)");

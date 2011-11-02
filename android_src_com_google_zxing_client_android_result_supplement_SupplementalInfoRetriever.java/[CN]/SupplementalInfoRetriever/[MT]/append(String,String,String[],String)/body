@@ -27,7 +27,7 @@
     content.setSpan(new URLSpan(linkURL),linkStart,linkEnd,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
   }
   handler.post(new Runnable(){
-    public void run(){
+    @Override public void run(){
       textView.append(content);
       textView.setMovementMethod(LinkMovementMethod.getInstance());
     }

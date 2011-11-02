@@ -1,0 +1,68 @@
+{
+  boolean upperShift=false;
+  do {
+    int oneByte=bits.readBits(8);
+    if (oneByte == 0) {
+      throw FormatException.getFormatInstance();
+    }
+ else     if (oneByte <= 128) {
+      if (upperShift) {
+        oneByte+=128;
+      }
+      result.append((char)(oneByte - 1));
+      return Mode.ASCII_ENCODE;
+    }
+ else     if (oneByte == 129) {
+      return Mode.PAD_ENCODE;
+    }
+ else     if (oneByte <= 229) {
+      int value=oneByte - 130;
+      if (value < 10) {
+        result.append('0');
+      }
+      result.append(value);
+    }
+ else     if (oneByte == 230) {
+      return Mode.C40_ENCODE;
+    }
+ else     if (oneByte == 231) {
+      return Mode.BASE256_ENCODE;
+    }
+ else     if (oneByte == 232) {
+      result.append((char)29);
+    }
+ else     if (oneByte == 233 || oneByte == 234) {
+    }
+ else     if (oneByte == 235) {
+      upperShift=true;
+    }
+ else     if (oneByte == 236) {
+      result.append("[)>\u001E05\u001D");
+      resultTrailer.insert(0,"\u001E\u0004");
+    }
+ else     if (oneByte == 237) {
+      result.append("[)>\u001E06\u001D");
+      resultTrailer.insert(0,"\u001E\u0004");
+    }
+ else     if (oneByte == 238) {
+      return Mode.ANSIX12_ENCODE;
+    }
+ else     if (oneByte == 239) {
+      return Mode.TEXT_ENCODE;
+    }
+ else     if (oneByte == 240) {
+      return Mode.EDIFACT_ENCODE;
+    }
+ else     if (oneByte == 241) {
+    }
+ else     if (oneByte >= 242) {
+      if (oneByte == 254 && bits.available() == 0) {
+      }
+ else {
+        throw FormatException.getFormatInstance();
+      }
+    }
+  }
+ while (bits.available() > 0);
+  return Mode.ASCII_ENCODE;
+}

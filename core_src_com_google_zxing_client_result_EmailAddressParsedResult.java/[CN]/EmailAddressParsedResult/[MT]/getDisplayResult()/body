@@ -1,5 +1,5 @@
 {
-  StringBuffer result=new StringBuffer(30);
+  StringBuilder result=new StringBuilder(30);
   maybeAppend(emailAddress,result);
   maybeAppend(subject,result);
   maybeAppend(body,result);

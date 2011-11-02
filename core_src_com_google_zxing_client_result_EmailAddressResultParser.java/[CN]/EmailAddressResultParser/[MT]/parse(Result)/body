@@ -7,15 +7,15 @@
     if (queryStart >= 0) {
       emailAddress=emailAddress.substring(0,queryStart);
     }
-    Hashtable nameValues=parseNameValuePairs(rawText);
+    Map<String,String> nameValues=parseNameValuePairs(rawText);
     String subject=null;
     String body=null;
     if (nameValues != null) {
       if (emailAddress.length() == 0) {
-        emailAddress=(String)nameValues.get("to");
+        emailAddress=nameValues.get("to");
       }
-      subject=(String)nameValues.get("subject");
-      body=(String)nameValues.get("body");
+      subject=nameValues.get("subject");
+      body=nameValues.get("body");
     }
     return new EmailAddressParsedResult(emailAddress,subject,body,rawText);
   }

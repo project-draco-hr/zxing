@@ -1,4 +1,0 @@
-int[] textCompactionData
-int[] byteCompactionData
-int length
-StringBuffer result

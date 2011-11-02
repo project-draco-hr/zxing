@@ -2,8 +2,7 @@
   int confirmedCount=0;
   float totalModuleSize=0.0f;
   int max=possibleCenters.size();
-  for (int i=0; i < max; i++) {
-    FinderPattern pattern=(FinderPattern)possibleCenters.elementAt(i);
+  for (  FinderPattern pattern : possibleCenters) {
     if (pattern.getCount() >= CENTER_QUORUM) {
       confirmedCount++;
       totalModuleSize+=pattern.getEstimatedModuleSize();
@@ -14,8 +13,7 @@
   }
   float average=totalModuleSize / (float)max;
   float totalDeviation=0.0f;
-  for (int i=0; i < max; i++) {
-    FinderPattern pattern=(FinderPattern)possibleCenters.elementAt(i);
+  for (  FinderPattern pattern : possibleCenters) {
     totalDeviation+=Math.abs(pattern.getEstimatedModuleSize() - average);
   }
   return totalDeviation <= 0.05f * totalModuleSize;

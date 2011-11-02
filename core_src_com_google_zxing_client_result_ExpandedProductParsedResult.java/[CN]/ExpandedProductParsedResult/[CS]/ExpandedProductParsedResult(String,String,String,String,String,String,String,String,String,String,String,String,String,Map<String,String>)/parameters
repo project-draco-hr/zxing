@@ -1,0 +1,14 @@
+String productID
+String sscc
+String lotNumber
+String productionDate
+String packagingDate
+String bestBeforeDate
+String expirationDate
+String weight
+String weightType
+String weightIncrement
+String price
+String priceIncrement
+String priceCurrency
+Map<String,String> uncommonAIs

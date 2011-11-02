@@ -14,7 +14,7 @@
     long now=Debug.threadCpuTimeNanos();
     try {
       BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
-      result=mMultiFormatReader.decodeWithState(bitmap);
+      result=multiFormatReader.decodeWithState(bitmap);
       success=true;
     }
  catch (    ReaderException e) {

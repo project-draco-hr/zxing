@@ -1,0 +1,4 @@
+{
+  float value=center2.getEstimatedModuleSize() - center1.getEstimatedModuleSize();
+  return value < 0.0 ? -1 : value > 0.0 ? 1 : 0;
+}

@@ -11,5 +11,5 @@
   }
   String totals="TOTAL: Decoded " + count + " images in "+ time+ " us";
   Log.v(TAG,totals);
-  mTextView.setText(totals + "\n\n" + getString(R.string.benchmark_help));
+  textView.setText(totals + "\n\n" + getString(R.string.benchmark_help));
 }

@@ -1,0 +1,3 @@
+CharSequence msg
+byte[] bytes
+int startpos

@@ -1,9 +1,0 @@
-{
-  long lookUSN=FileSystemJournal.getNextUSN() - 1;
-  Log.debug("lookUSN: " + lookUSN);
-  FileSystemJournalEntry entry=FileSystemJournal.getEntry(lookUSN);
-  if (entry != null && entry.getEvent() == FileSystemJournalEntry.FILE_ADDED) {
-    Log.info("Got file: " + entry.getPath() + " @: "+ new Date());
-    screen.imageSaved(entry.getPath());
-  }
-}

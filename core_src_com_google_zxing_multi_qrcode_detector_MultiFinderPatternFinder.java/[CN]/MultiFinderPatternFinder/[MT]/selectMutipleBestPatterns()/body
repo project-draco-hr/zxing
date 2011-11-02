@@ -1,0 +1,64 @@
+{
+  List<FinderPattern> possibleCenters=getPossibleCenters();
+  int size=possibleCenters.size();
+  if (size < 3) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  if (size == 3) {
+    return new FinderPattern[][]{new FinderPattern[]{possibleCenters.get(0),possibleCenters.get(1),possibleCenters.get(2)}};
+  }
+  Collections.sort(possibleCenters,new ModuleSizeComparator());
+  List<FinderPattern[]> results=new ArrayList<FinderPattern[]>();
+  for (int i1=0; i1 < (size - 2); i1++) {
+    FinderPattern p1=possibleCenters.get(i1);
+    if (p1 == null) {
+      continue;
+    }
+    for (int i2=i1 + 1; i2 < (size - 1); i2++) {
+      FinderPattern p2=possibleCenters.get(i2);
+      if (p2 == null) {
+        continue;
+      }
+      float vModSize12=(p1.getEstimatedModuleSize() - p2.getEstimatedModuleSize()) / Math.min(p1.getEstimatedModuleSize(),p2.getEstimatedModuleSize());
+      float vModSize12A=Math.abs(p1.getEstimatedModuleSize() - p2.getEstimatedModuleSize());
+      if (vModSize12A > DIFF_MODSIZE_CUTOFF && vModSize12 >= DIFF_MODSIZE_CUTOFF_PERCENT) {
+        break;
+      }
+      for (int i3=i2 + 1; i3 < size; i3++) {
+        FinderPattern p3=possibleCenters.get(i3);
+        if (p3 == null) {
+          continue;
+        }
+        float vModSize23=(p2.getEstimatedModuleSize() - p3.getEstimatedModuleSize()) / Math.min(p2.getEstimatedModuleSize(),p3.getEstimatedModuleSize());
+        float vModSize23A=Math.abs(p2.getEstimatedModuleSize() - p3.getEstimatedModuleSize());
+        if (vModSize23A > DIFF_MODSIZE_CUTOFF && vModSize23 >= DIFF_MODSIZE_CUTOFF_PERCENT) {
+          break;
+        }
+        FinderPattern[] test={p1,p2,p3};
+        ResultPoint.orderBestPatterns(test);
+        FinderPatternInfo info=new FinderPatternInfo(test);
+        float dA=ResultPoint.distance(info.getTopLeft(),info.getBottomLeft());
+        float dC=ResultPoint.distance(info.getTopRight(),info.getBottomLeft());
+        float dB=ResultPoint.distance(info.getTopLeft(),info.getTopRight());
+        float estimatedModuleCount=(dA + dB) / (p1.getEstimatedModuleSize() * 2.0f);
+        if (estimatedModuleCount > MAX_MODULE_COUNT_PER_EDGE || estimatedModuleCount < MIN_MODULE_COUNT_PER_EDGE) {
+          continue;
+        }
+        float vABBC=Math.abs((dA - dB) / Math.min(dA,dB));
+        if (vABBC >= 0.1f) {
+          continue;
+        }
+        float dCpy=(float)Math.sqrt(dA * dA + dB * dB);
+        float vPyC=Math.abs((dC - dCpy) / Math.min(dC,dCpy));
+        if (vPyC >= 0.1f) {
+          continue;
+        }
+        results.add(test);
+      }
+    }
+  }
+  if (!results.isEmpty()) {
+    return results.toArray(new FinderPattern[results.size()][]);
+  }
+  throw NotFoundException.getNotFoundInstance();
+}

@@ -1,0 +1,2 @@
+CharSequence keyValue
+Map<String,String> result

@@ -1,23 +1,23 @@
 {
-  while (isStillAlpha(current.position)) {
-    DecodedChar alpha=decodeAlphanumeric(current.position);
-    current.position=alpha.getNewPosition();
+  while (isStillAlpha(current.getPosition())) {
+    DecodedChar alpha=decodeAlphanumeric(current.getPosition());
+    current.setPosition(alpha.getNewPosition());
     if (alpha.isFNC1()) {
-      DecodedInformation information=new DecodedInformation(current.position,buffer.toString());
+      DecodedInformation information=new DecodedInformation(current.getPosition(),buffer.toString());
       return new BlockParsedResult(information,true);
     }
     buffer.append(alpha.getValue());
   }
-  if (isAlphaOr646ToNumericLatch(current.position)) {
-    current.position+=3;
+  if (isAlphaOr646ToNumericLatch(current.getPosition())) {
+    current.incrementPosition(3);
     current.setNumeric();
   }
- else   if (isAlphaTo646ToAlphaLatch(current.position)) {
-    if (current.position + 5 < this.information.size) {
-      current.position+=5;
+ else   if (isAlphaTo646ToAlphaLatch(current.getPosition())) {
+    if (current.getPosition() + 5 < this.information.getSize()) {
+      current.incrementPosition(5);
     }
  else {
-      current.position=this.information.size;
+      current.setPosition(this.information.getSize());
     }
     current.setIsoIec646();
   }

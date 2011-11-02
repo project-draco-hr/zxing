@@ -1,6 +1,6 @@
 {
   BarcodeFormat format=result.getBarcodeFormat();
-  if (!BarcodeFormat.EAN_13.equals(format)) {
+  if (format != BarcodeFormat.EAN_13) {
     return null;
   }
   String rawText=result.getText();

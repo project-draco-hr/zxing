@@ -1,7 +1,0 @@
-{
-  Collection<String> appServices=(Collection<String>)getServices();
-  appServices.add("com.buglabs.bug.module.camera.pub.ICameraDevice");
-  appServices.add("com.buglabs.bug.module.lcd.pub.IModuleDisplay");
-  appServices.add(IButtonEventProvider.class.getName());
-  appServices.add(ICameraModuleControl.class.getName());
-}

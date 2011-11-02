@@ -1,12 +1,12 @@
 {
-  StringBuffer result=new StringBuffer(144);
+  StringBuilder result=new StringBuilder(144);
 switch (mode) {
 case 2:
 case 3:
     String postcode;
   if (mode == 2) {
     int pc=getPostCode2(bytes);
-    DecimalFormat df=new DecimalFormat("0000000000".substring(0,getPostCode2Length(bytes)));
+    NumberFormat df=new DecimalFormat("0000000000".substring(0,getPostCode2Length(bytes)));
     postcode=df.format(pc);
   }
  else {

@@ -5,7 +5,7 @@
   Collection<String> forceRetranslation=Arrays.asList(args).subList(1,args.length);
   File[] translatedValuesDirs=resDir.listFiles(new FileFilter(){
     @Override public boolean accept(    File file){
-      return file.isDirectory() && file.getName().startsWith("values-");
+      return file.isDirectory() && VALUES_DIR_PATTERN.matcher(file.getName()).matches();
     }
   }
 );
