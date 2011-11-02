@@ -2,31 +2,28 @@
   if (count == 1 && startmode == TEXT_COMPACTION) {
     sb.append((char)SHIFT_TO_BYTE);
   }
- else {
-    boolean sixpack=(count % 6) == 0;
-    if (sixpack) {
-      sb.append((char)LATCH_TO_BYTE);
-    }
- else {
-      sb.append((char)LATCH_TO_BYTE_PADDED);
+  int idx=startpos;
+  if (count >= 6) {
+    sb.append((char)LATCH_TO_BYTE);
+    char[] chars=new char[5];
+    while ((startpos + count - idx) >= 6) {
+      long t=0;
+      for (int i=0; i < 6; i++) {
+        t<<=8;
+        t+=bytes[idx + i] & 0xff;
+      }
+      for (int i=0; i < 5; i++) {
+        chars[i]=(char)(t % 900);
+        t/=900;
+      }
+      for (int i=chars.length - 1; i >= 0; i--) {
+        sb.append(chars[i]);
+      }
+      idx+=6;
     }
   }
-  char[] chars=new char[5];
-  int idx=startpos;
-  while ((startpos + count - idx) >= 6) {
-    long t=0;
-    for (int i=0; i < 6; i++) {
-      t<<=8;
-      t+=bytes[idx + i] & 0xff;
-    }
-    for (int i=0; i < 5; i++) {
-      chars[i]=(char)(t % 900);
-      t/=900;
-    }
-    for (int i=chars.length - 1; i >= 0; i--) {
-      sb.append(chars[i]);
-    }
-    idx+=6;
+  if (idx < startpos + count) {
+    sb.append((char)LATCH_TO_BYTE_PADDED);
   }
   for (int i=idx; i < startpos + count; i++) {
     int ch=bytes[i] & 0xff;

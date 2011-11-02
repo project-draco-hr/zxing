@@ -1,5 +1,4 @@
 {
-  this.errorCorrectionLevel=errorCorrectionLevel;
   int idx=0;
   for (int y=0; y < r; y++) {
     int cluster=y % 3;

@@ -1,7 +1,6 @@
 {
   float ratio=0.0f;
   int[] dimension=null;
-  int errorCorrectionCodeWords=PDF417ErrorCorrection.getErrorCorrectionCodewordCount(errorCorrectionLevel);
   for (int cols=minCols; cols <= maxCols; cols++) {
     int rows=calculateNumberOfRows(sourceCodeWords,errorCorrectionCodeWords,cols);
     if (rows < minRows) {
@@ -16,6 +15,12 @@
     }
     ratio=newRatio;
     dimension=new int[]{cols,rows};
+  }
+  if (dimension == null) {
+    int rows=calculateNumberOfRows(sourceCodeWords,errorCorrectionCodeWords,minCols);
+    if (rows < minRows) {
+      dimension=new int[]{minCols,minRows};
+    }
   }
   if (dimension == null) {
     throw new WriterException("Unable to fit message in columns");

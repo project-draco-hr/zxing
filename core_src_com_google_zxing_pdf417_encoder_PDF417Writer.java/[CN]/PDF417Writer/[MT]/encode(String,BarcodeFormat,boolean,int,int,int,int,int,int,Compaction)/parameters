@@ -7,4 +7,4 @@ int minCols
 int maxCols
 int minRows
 int maxRows
-boolean byteCompaction
+Compaction compaction

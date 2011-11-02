@@ -1,5 +1,6 @@
 {
   this.compact=compact;
+  compaction=Compaction.AUTO;
   minCols=2;
   maxCols=30;
   maxRows=30;
