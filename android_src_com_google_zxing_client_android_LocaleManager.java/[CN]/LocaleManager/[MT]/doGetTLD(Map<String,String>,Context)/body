@@ -1,0 +1,12 @@
+{
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
+  String countryOverride=prefs.getString(PreferencesActivity.KEY_SEARCH_COUNTRY,null);
+  if (countryOverride != null && countryOverride.length() > 0 && !countryOverride.equals("-")) {
+    String tld=map.get(countryOverride);
+    if (tld != null) {
+      return tld;
+    }
+  }
+  String tld=map.get(COUNTRY);
+  return tld == null ? DEFAULT_TLD : tld;
+}

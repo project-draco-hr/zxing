@@ -1,4 +1,4 @@
 {
-  Uri uri=Uri.parse("http://books.google." + LocaleManager.getBookSearchCountryTLD() + "/books?vid=isbn"+ isbn);
+  Uri uri=Uri.parse("http://books.google." + LocaleManager.getBookSearchCountryTLD(getActivity()) + "/books?vid=isbn"+ isbn);
   launchIntent(new Intent(Intent.ACTION_VIEW,uri));
 }

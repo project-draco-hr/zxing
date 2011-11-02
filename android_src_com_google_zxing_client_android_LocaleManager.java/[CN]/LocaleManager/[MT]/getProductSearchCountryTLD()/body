@@ -1,3 +1,0 @@
-{
-  return doGetTLD(GOOGLE_PRODUCT_SEARCH_COUNTRY_TLD);
-}
