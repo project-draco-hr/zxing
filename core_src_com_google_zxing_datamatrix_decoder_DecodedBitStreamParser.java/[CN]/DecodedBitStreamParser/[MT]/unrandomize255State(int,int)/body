@@ -1,5 +1,5 @@
 {
   int pseudoRandomNumber=((149 * base256CodewordPosition) % 255) + 1;
   int tempVariable=randomizedBase256Codeword - pseudoRandomNumber;
-  return (byte)(tempVariable >= 0 ? tempVariable : tempVariable + 256);
+  return tempVariable >= 0 ? tempVariable : tempVariable + 256;
 }

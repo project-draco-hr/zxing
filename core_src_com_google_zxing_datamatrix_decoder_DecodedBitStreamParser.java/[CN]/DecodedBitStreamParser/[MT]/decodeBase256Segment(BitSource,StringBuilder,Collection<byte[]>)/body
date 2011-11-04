@@ -19,7 +19,7 @@
     if (bits.available() < 8) {
       throw FormatException.getFormatInstance();
     }
-    bytes[i]=unrandomize255State(bits.readBits(8),codewordPosition++);
+    bytes[i]=(byte)unrandomize255State(bits.readBits(8),codewordPosition++);
   }
   byteSegments.add(bytes);
   try {
