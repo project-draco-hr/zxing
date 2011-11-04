@@ -3,6 +3,7 @@
   decodeThread=new DecodeThread(activity,decodeFormats,characterSet,new ViewfinderResultPointCallback(activity.getViewfinderView()));
   decodeThread.start();
   state=State.SUCCESS;
-  CameraManager.get().startPreview();
+  this.cameraManager=cameraManager;
+  cameraManager.startPreview();
   restartPreviewAndDecode();
 }

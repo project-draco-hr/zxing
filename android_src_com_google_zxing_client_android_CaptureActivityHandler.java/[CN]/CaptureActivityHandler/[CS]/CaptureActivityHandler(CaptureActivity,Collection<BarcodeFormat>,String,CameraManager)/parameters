@@ -1,3 +1,4 @@
 CaptureActivity activity
 Collection<BarcodeFormat> decodeFormats
 String characterSet
+CameraManager cameraManager

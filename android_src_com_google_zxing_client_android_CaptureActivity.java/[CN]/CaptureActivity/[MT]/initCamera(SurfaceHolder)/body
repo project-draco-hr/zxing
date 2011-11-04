@@ -1,8 +1,8 @@
 {
   try {
-    CameraManager.get().openDriver(surfaceHolder);
+    cameraManager.openDriver(surfaceHolder);
     if (handler == null) {
-      handler=new CaptureActivityHandler(this,decodeFormats,characterSet);
+      handler=new CaptureActivityHandler(this,decodeFormats,characterSet,cameraManager);
     }
   }
  catch (  IOException ioe) {

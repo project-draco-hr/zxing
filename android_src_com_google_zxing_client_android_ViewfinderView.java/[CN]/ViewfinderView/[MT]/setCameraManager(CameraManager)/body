@@ -1,0 +1,3 @@
+{
+  this.cameraManager=cameraManager;
+}

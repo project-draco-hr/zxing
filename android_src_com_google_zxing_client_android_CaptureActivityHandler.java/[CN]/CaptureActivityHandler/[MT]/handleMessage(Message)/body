@@ -2,7 +2,7 @@
 switch (message.what) {
 case R.id.auto_focus:
     if (state == State.PREVIEW) {
-      CameraManager.get().requestAutoFocus(this,R.id.auto_focus);
+      cameraManager.requestAutoFocus(this,R.id.auto_focus);
     }
   break;
 case R.id.restart_preview:
@@ -18,7 +18,7 @@ activity.handleDecode((Result)message.obj,barcode);
 break;
 case R.id.decode_failed:
 state=State.PREVIEW;
-CameraManager.get().requestPreviewFrame(decodeThread.getHandler(),R.id.decode);
+cameraManager.requestPreviewFrame(decodeThread.getHandler(),R.id.decode);
 break;
 case R.id.return_scan_result:
 Log.d(TAG,"Got return scan result message");

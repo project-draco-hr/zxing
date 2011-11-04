@@ -5,5 +5,5 @@
     handler=null;
   }
   inactivityTimer.onPause();
-  CameraManager.get().closeDriver();
+  cameraManager.closeDriver();
 }

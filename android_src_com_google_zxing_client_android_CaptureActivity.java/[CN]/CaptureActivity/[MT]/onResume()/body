@@ -1,6 +1,8 @@
 {
   super.onResume();
-  CameraManager.init(getApplication());
+  cameraManager=new CameraManager(getApplication());
+  viewfinderView=(ViewfinderView)findViewById(R.id.viewfinder_view);
+  viewfinderView.setCameraManager(cameraManager);
   resetStatusView();
   SurfaceView surfaceView=(SurfaceView)findViewById(R.id.preview_view);
   SurfaceHolder surfaceHolder=surfaceView.getHolder();
@@ -22,7 +24,7 @@
         int width=intent.getIntExtra(Intents.Scan.WIDTH,0);
         int height=intent.getIntExtra(Intents.Scan.HEIGHT,0);
         if (width > 0 && height > 0) {
-          CameraManager.get().setManualFramingRect(width,height);
+          cameraManager.setManualFramingRect(width,height);
         }
       }
     }
