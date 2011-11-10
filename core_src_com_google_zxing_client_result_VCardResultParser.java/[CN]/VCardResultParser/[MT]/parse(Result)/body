@@ -15,7 +15,7 @@
   List<List<String>> addresses=matchVCardPrefixedField("ADR",rawText,true);
   if (addresses != null) {
     for (    List<String> list : addresses) {
-      list.set(0,formatAddress(list.get(0)));
+      list.set(0,list.get(0));
     }
   }
   List<String> org=matchSingleVCardPrefixedField("ORG",rawText,true);

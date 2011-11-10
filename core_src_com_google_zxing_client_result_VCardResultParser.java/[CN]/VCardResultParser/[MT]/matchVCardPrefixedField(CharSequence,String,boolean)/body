@@ -62,6 +62,8 @@
       }
  else {
         element=CR_LF_SPACE_TAB.matcher(element).replaceAll("");
+        element=NEWLINE_ESCAPE.matcher(element).replaceAll("\n");
+        element=VCARD_ESCAPES.matcher(element).replaceAll("$1");
       }
       if (metadata == null) {
         List<String> match=new ArrayList<String>(1);

@@ -1,3 +1,0 @@
-{
-  return address == null ? null : address.replace(';',' ').trim();
-}
