@@ -1,0 +1,16 @@
+{
+  Camera camera=Camera.open();
+  if (camera == null) {
+    return null;
+  }
+  try {
+    Camera.Parameters parameters=camera.getParameters();
+    if (parameters == null) {
+      return null;
+    }
+    return parameters.flatten();
+  }
+  finally {
+    camera.release();
+  }
+}

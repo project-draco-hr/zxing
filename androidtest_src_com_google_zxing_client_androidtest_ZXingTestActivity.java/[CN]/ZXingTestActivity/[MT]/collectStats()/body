@@ -1,0 +1,31 @@
+{
+  StringBuilder result=new StringBuilder(1000);
+  result.append("BOARD=").append(Build.BOARD).append('\n');
+  result.append("BRAND=").append(Build.BRAND).append('\n');
+  result.append("CPU_ABI=").append(Build.CPU_ABI).append('\n');
+  result.append("DEVICE=").append(Build.DEVICE).append('\n');
+  result.append("DISPLAY=").append(Build.DISPLAY).append('\n');
+  result.append("FINGERPRINT=").append(Build.FINGERPRINT).append('\n');
+  result.append("HOST=").append(Build.HOST).append('\n');
+  result.append("ID=").append(Build.ID).append('\n');
+  result.append("MANUFACTURER=").append(Build.MANUFACTURER).append('\n');
+  result.append("MODEL=").append(Build.MODEL).append('\n');
+  result.append("PRODUCT=").append(Build.PRODUCT).append('\n');
+  result.append("TAGS=").append(Build.TAGS).append('\n');
+  result.append("TIME=").append(Build.TIME).append('\n');
+  result.append("TYPE=").append(Build.TYPE).append('\n');
+  result.append("USER=").append(Build.USER).append('\n');
+  result.append("VERSION.CODENAME=").append(Build.VERSION.CODENAME).append('\n');
+  result.append("VERSION.INCREMENTAL=").append(Build.VERSION.INCREMENTAL).append('\n');
+  result.append("VERSION.RELEASE=").append(Build.VERSION.RELEASE).append('\n');
+  result.append("VERSION.SDK_INT=").append(Build.VERSION.SDK_INT).append('\n');
+  String flattened=getFlattenedParams();
+  String[] params=flattened.split(";");
+  Arrays.sort(params);
+  for (  String param : params) {
+    result.append(param).append('\n');
+  }
+  String resultString=result.toString();
+  writeStats(resultString);
+  return resultString;
+}

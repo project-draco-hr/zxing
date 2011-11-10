@@ -1,0 +1,21 @@
+{
+  Intent intentScan=new Intent(BS_PACKAGE + ".SCAN");
+  intentScan.addCategory(Intent.CATEGORY_DEFAULT);
+  if (desiredBarcodeFormats != null) {
+    StringBuilder joinedByComma=new StringBuilder();
+    for (    String format : desiredBarcodeFormats) {
+      if (joinedByComma.length() > 0) {
+        joinedByComma.append(',');
+      }
+      joinedByComma.append(format);
+    }
+    intentScan.putExtra("SCAN_FORMATS",joinedByComma.toString());
+  }
+  String targetAppPackage=findTargetAppPackage(intentScan);
+  if (targetAppPackage == null) {
+    return showDownloadDialog();
+  }
+  intentScan.setPackage(targetAppPackage);
+  activity.startActivityForResult(intentScan,REQUEST_CODE);
+  return null;
+}

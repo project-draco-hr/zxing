@@ -1,6 +1,0 @@
-Activity activity
-CharSequence text
-int stringTitle
-int stringMessage
-int stringButtonYes
-int stringButtonNo

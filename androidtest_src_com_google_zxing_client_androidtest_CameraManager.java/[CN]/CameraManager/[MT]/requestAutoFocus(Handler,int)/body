@@ -1,7 +1,0 @@
-{
-  if (camera != null && previewing) {
-    autoFocusHandler=handler;
-    autoFocusMessage=message;
-    camera.autoFocus(autoFocusCallback);
-  }
-}

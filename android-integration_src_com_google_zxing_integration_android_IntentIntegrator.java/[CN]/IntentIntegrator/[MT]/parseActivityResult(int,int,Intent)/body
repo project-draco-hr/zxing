@@ -5,9 +5,7 @@
       String formatName=intent.getStringExtra("SCAN_RESULT_FORMAT");
       return new IntentResult(contents,formatName);
     }
- else {
-      return new IntentResult(null,null);
-    }
+    return new IntentResult(null,null);
   }
   return null;
 }

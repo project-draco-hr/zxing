@@ -1,0 +1,15 @@
+{
+  Intent intent=new Intent();
+  intent.addCategory(Intent.CATEGORY_DEFAULT);
+  intent.setAction(BS_PACKAGE + ".ENCODE");
+  intent.putExtra("ENCODE_TYPE","TEXT_TYPE");
+  intent.putExtra("ENCODE_DATA",text);
+  String targetAppPackage=findTargetAppPackage(intent);
+  if (targetAppPackage == null) {
+    showDownloadDialog();
+  }
+ else {
+    intent.setPackage(targetAppPackage);
+    activity.startActivity(intent);
+  }
+}

@@ -1,11 +1,11 @@
 {
-  if (requestCode == 0) {
-    if (resultCode == RESULT_OK) {
-      String contents=intent.getStringExtra("SCAN_RESULT");
-      String format=intent.getStringExtra("SCAN_RESULT_FORMAT");
-      showDialog(R.string.result_succeeded,"Format: " + format + "\nContents: "+ contents);
+  IntentResult result=IntentIntegrator.parseActivityResult(requestCode,resultCode,intent);
+  if (result != null) {
+    String contents=result.getContents();
+    if (contents != null) {
+      showDialog(R.string.result_succeeded,"Format: " + result.getFormatName() + "\nContents: "+ contents);
     }
- else     if (resultCode == RESULT_CANCELED) {
+ else {
       showDialog(R.string.result_failed,getString(R.string.result_failed_why));
     }
   }

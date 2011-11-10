@@ -1,3 +1,0 @@
-{
-  return initiateScan(activity,stringTitle,stringMessage,stringButtonYes,stringButtonNo,ALL_CODE_TYPES);
-}

@@ -1,6 +1,0 @@
-{
-  this.context=context;
-  camera=null;
-  initialized=false;
-  previewing=false;
-}

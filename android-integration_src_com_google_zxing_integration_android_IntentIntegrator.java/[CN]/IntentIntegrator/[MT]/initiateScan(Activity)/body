@@ -1,3 +1,0 @@
-{
-  return initiateScan(activity,DEFAULT_TITLE,DEFAULT_MESSAGE,DEFAULT_YES,DEFAULT_NO);
-}

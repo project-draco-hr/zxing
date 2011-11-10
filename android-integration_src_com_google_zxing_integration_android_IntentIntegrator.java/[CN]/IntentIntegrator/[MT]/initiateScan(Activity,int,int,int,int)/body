@@ -1,3 +1,0 @@
-{
-  return initiateScan(activity,activity.getString(stringTitle),activity.getString(stringMessage),activity.getString(stringButtonYes),activity.getString(stringButtonNo));
-}

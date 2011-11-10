@@ -1,7 +1,0 @@
-{
-  super.onResume();
-  if (saveThread == null && !getCameraParameters) {
-    saveThread=new SaveThread(this);
-    saveThread.start();
-  }
-}

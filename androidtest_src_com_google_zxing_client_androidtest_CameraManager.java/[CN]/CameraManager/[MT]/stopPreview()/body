@@ -1,8 +1,0 @@
-{
-  if (camera != null && previewing) {
-    camera.stopPreview();
-    previewHandler=null;
-    autoFocusHandler=null;
-    previewing=false;
-  }
-}

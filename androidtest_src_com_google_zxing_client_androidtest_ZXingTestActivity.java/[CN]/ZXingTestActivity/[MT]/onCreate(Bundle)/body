@@ -1,7 +1,6 @@
 {
   super.onCreate(icicle);
   setContentView(R.layout.test);
-  findViewById(R.id.take_test_photos).setOnClickListener(takeTestPhotos);
   findViewById(R.id.get_camera_parameters).setOnClickListener(getCameraParameters);
   findViewById(R.id.scan_product).setOnClickListener(scanProduct);
   findViewById(R.id.scan_qr_code).setOnClickListener(scanQRCode);

@@ -1,0 +1,20 @@
+{
+  Writer out=null;
+  try {
+    out=new OutputStreamWriter(new FileOutputStream(new File("/sdcard/CameraParameters.txt")),Charset.forName("UTF-8"));
+    out.write(resultString);
+  }
+ catch (  IOException e) {
+    Log.e(TAG,"Cannot write parameters file ",e);
+  }
+ finally {
+    if (out != null) {
+      try {
+        out.close();
+      }
+ catch (      IOException e) {
+        Log.w(TAG,e);
+      }
+    }
+  }
+}

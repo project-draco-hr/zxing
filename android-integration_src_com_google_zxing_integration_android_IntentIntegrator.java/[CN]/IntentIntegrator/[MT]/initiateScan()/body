@@ -1,0 +1,3 @@
+{
+  return initiateScan(ALL_CODE_TYPES);
+}
