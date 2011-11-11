@@ -9,6 +9,7 @@
   if (networkId >= 0) {
     if (wifiManager.enableNetwork(networkId,true)) {
       Log.i(TAG,"Associating to network " + config.SSID);
+      wifiManager.saveConfiguration();
     }
  else {
       Log.w(TAG,"Failed to enable network " + config.SSID);
