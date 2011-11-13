@@ -1,9 +1,0 @@
-{
-  networkType.addItem("WEP","WEP");
-  networkType.addItem("WPA/WPA2","WPA");
-  networkType.addItem("No encryption","nopass");
-  for (  TextBox w : widgets) {
-    w.addChangeListener(changeListener);
-    w.addKeyPressHandler(keyListener);
-  }
-}

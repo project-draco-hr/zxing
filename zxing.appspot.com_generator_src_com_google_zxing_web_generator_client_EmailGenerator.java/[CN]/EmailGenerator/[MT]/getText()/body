@@ -1,4 +1,0 @@
-{
-  String email=getEmailField();
-  return "mailto:" + email;
-}

@@ -1,0 +1,9 @@
+{
+  StringBuilder result=new StringBuilder(100);
+  result.append("http://chart.apis.google.com/chart?cht=qr");
+  result.append("&chs=").append(sizeX).append('x').append(sizeY);
+  result.append("&chld=").append(ecLevel);
+  result.append("&choe=").append(encoding);
+  result.append("&chl=").append(URL.encodeQueryString(content));
+  return result.toString();
+}

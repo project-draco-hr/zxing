@@ -1,0 +1,5 @@
+{
+  email.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
+  email.addChangeHandler(handler);
+  email.addKeyPressHandler(keyListener);
+}

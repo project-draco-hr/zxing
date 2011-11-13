@@ -1,0 +1,10 @@
+{
+  result.setVisible(false);
+  urlResult.setText("");
+  urlResult.setVisible(false);
+  rawTextResult.setText("");
+  rawTextResult.setVisible(false);
+  Element linkElement=DOM.getElementById("downloadlink");
+  linkElement.setAttribute("href","");
+  downloadText.setVisible(false);
+}

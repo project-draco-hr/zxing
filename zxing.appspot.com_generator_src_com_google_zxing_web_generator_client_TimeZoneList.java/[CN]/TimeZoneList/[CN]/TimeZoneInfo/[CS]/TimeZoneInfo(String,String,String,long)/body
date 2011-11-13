@@ -1,7 +1,0 @@
-{
-  super();
-  GMTRelative=relative;
-  this.abreviation=abreviation;
-  this.gmtDiff=gmtDiff;
-  this.longName=longName;
-}

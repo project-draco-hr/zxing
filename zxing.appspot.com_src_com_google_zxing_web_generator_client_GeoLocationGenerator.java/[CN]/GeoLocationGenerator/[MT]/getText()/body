@@ -1,0 +1,17 @@
+{
+  String que=getQueryField();
+  if (que != null && que.length() > 0) {
+    if (getLatitudeField() == null) {
+      latitude.setText("0");
+    }
+    if (getLongitudeField() == null) {
+      longitude.setText("0");
+    }
+  }
+  String lat=getLatitudeField();
+  String lon=getLongitudeField();
+  if (que != null && que.length() > 0) {
+    return "geo:" + lat + ','+ lon+ "?q="+ que;
+  }
+  return "geo:" + lat + ','+ lon;
+}

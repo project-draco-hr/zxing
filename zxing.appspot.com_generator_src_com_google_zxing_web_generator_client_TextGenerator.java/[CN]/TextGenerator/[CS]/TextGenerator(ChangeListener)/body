@@ -1,4 +1,0 @@
-{
-  text.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
-  text.addChangeListener(listener);
-}

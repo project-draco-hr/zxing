@@ -1,0 +1,52 @@
+{
+  topPanel.setHTML(2,0,"<span id=\"errorMessageID\" class=\"" + StylesDefs.ERROR_MESSAGE + "\"></span>");
+  for (  GeneratorSource generator : generators) {
+    genList.addItem(generator.getName());
+    setGridStyle(generator.getWidget());
+  }
+  sizeList.addItem("Small","120");
+  sizeList.addItem("Medium","230");
+  sizeList.addItem("Large","350");
+  sizeList.setSelectedIndex(2);
+  ecLevelList.addItem("L");
+  ecLevelList.addItem("M");
+  ecLevelList.addItem("Q");
+  ecLevelList.addItem("H");
+  ecLevelList.setSelectedIndex(0);
+  encodingList.addItem("UTF-8");
+  encodingList.addItem("ISO-8859-1");
+  encodingList.addItem("Shift_JIS");
+  encodingList.setSelectedIndex(0);
+  genList.addChangeHandler(new ChangeHandler(){
+    @Override public void onChange(    ChangeEvent Event){
+      int i=genList.getSelectedIndex();
+      setWidget(i);
+    }
+  }
+);
+  HTMLTable selectionTable=new Grid(1,2);
+  selectionTable.setText(0,0,"Contents");
+  selectionTable.setWidget(0,1,genList);
+  setGridStyle(selectionTable);
+  topPanel.setWidget(0,0,selectionTable);
+  HTMLTable generateGrid=new Grid(1,2);
+  setGridStyle(generateGrid);
+  Button generateButton=new Button("Generate &rarr;");
+  generateButton.addClickHandler(new ClickHandler(){
+    @Override public void onClick(    ClickEvent event){
+      generate();
+    }
+  }
+);
+  generateGrid.setWidget(0,1,generateButton);
+  topPanel.setWidget(4,0,generateGrid);
+  HTMLTable configTable=new Grid(3,2);
+  configTable.setText(0,0,"Barcode size");
+  configTable.setWidget(0,1,sizeList);
+  configTable.setText(1,0,"Error correction");
+  configTable.setWidget(1,1,ecLevelList);
+  configTable.setText(2,0,"Character encoding");
+  configTable.setWidget(2,1,encodingList);
+  setGridStyle(configTable);
+  topPanel.setWidget(3,0,configTable);
+}

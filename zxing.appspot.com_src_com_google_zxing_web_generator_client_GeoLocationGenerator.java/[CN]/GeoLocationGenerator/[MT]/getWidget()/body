@@ -1,0 +1,13 @@
+{
+  if (table != null) {
+    return table;
+  }
+  table=new Grid(3,2);
+  table.setText(0,0,"Latitude");
+  table.setWidget(0,1,latitude);
+  table.setText(1,0,"Longitude");
+  table.setWidget(1,1,longitude);
+  table.setText(2,0,"Query");
+  table.setWidget(2,1,query);
+  return table;
+}

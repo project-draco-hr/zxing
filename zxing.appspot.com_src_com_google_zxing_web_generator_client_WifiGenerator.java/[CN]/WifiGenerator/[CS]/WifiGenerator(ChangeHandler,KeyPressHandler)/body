@@ -1,0 +1,10 @@
+{
+  networkType.addItem("WEP","WEP");
+  networkType.addItem("WPA/WPA2","WPA");
+  networkType.addItem("No encryption","nopass");
+  TextBox[] widgets={ssid,password};
+  for (  TextBox w : widgets) {
+    w.addChangeHandler(handler);
+    w.addKeyPressHandler(keyListener);
+  }
+}

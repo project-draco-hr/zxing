@@ -1,8 +1,0 @@
-{
-  StringBuilder result=new StringBuilder();
-  result.append("http://chart.apis.google.com/chart?cht=qr&chs=");
-  result.append(sizeX).append('x').append(sizeY);
-  result.append("&chl=");
-  result.append(URL.encodeComponent(content));
-  return result.toString();
-}

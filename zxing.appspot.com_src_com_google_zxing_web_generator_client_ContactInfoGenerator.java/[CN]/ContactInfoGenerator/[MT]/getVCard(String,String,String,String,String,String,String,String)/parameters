@@ -1,0 +1,8 @@
+String name
+String company
+String tel
+String url
+String email
+String address
+String address2
+String memo

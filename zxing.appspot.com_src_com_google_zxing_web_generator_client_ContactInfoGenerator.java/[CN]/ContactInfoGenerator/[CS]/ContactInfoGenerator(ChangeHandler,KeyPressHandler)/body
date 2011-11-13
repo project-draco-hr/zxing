@@ -1,0 +1,10 @@
+{
+  TextBox[] widgets={name,company,tel,url,email,address,address2,memo};
+  for (  TextBox w : widgets) {
+    w.addChangeHandler(changeHandler);
+    w.addKeyPressHandler(keyListener);
+  }
+  encoding.addItem("MECARD");
+  encoding.addItem("vCard");
+  encoding.setSelectedIndex(0);
+}

@@ -1,7 +1,0 @@
-{
-  String input=name.getText();
-  if (input.length() < 1) {
-    throw new GeneratorException("Name must be at least 1 character.");
-  }
-  return parseTextField("Name",name);
-}

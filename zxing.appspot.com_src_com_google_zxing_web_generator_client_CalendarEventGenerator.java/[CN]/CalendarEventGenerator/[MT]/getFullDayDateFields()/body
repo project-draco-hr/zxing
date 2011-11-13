@@ -1,0 +1,19 @@
+{
+  Date date1=datePicker1.getValue();
+  Date date2=datePicker2.getValue();
+  if (date1 == null || date2 == null) {
+    throw new GeneratorException("Start and end dates must be set.");
+  }
+  if (date1.after(date2)) {
+    throw new GeneratorException("Start date is after end date.");
+  }
+  DateTimeFormat isoFormatter=DateTimeFormat.getFormat("yyyyMMdd");
+  StringBuilder output=new StringBuilder();
+  output.append("DTSTART:");
+  output.append(isoFormatter.format(date1));
+  output.append("\r\n");
+  output.append("DTEND:");
+  output.append(isoFormatter.format(date2));
+  output.append("\r\n");
+  return output.toString();
+}

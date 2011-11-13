@@ -1,0 +1,14 @@
+{
+  String name=getNameField();
+  String company=getCompanyField();
+  String tel=getTelField();
+  String url=getUrlField();
+  String email=getEmailField();
+  String address=getAddressField();
+  String address2=getAddress2Field();
+  String memo=getMemoField();
+  if ("vCard".equals(encoding.getValue(encoding.getSelectedIndex()))) {
+    return getVCard(name,company,tel,url,email,address,address2,memo);
+  }
+  return getMeCard(name,company,tel,url,email,address,address2,memo);
+}

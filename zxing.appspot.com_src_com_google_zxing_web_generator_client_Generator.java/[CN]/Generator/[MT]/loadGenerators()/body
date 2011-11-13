@@ -1,0 +1,11 @@
+{
+  generators.add(new CalendarEventGenerator(changeHandler,keyPressHandler));
+  generators.add(new ContactInfoGenerator(changeHandler,keyPressHandler));
+  generators.add(new EmailGenerator(changeHandler,keyPressHandler));
+  generators.add(new GeoLocationGenerator(changeHandler,keyPressHandler));
+  generators.add(new PhoneNumberGenerator(changeHandler,keyPressHandler));
+  generators.add(new SmsAddressGenerator(changeHandler,keyPressHandler));
+  generators.add(new TextGenerator(changeHandler));
+  generators.add(new UrlGenerator(changeHandler,keyPressHandler));
+  generators.add(new WifiGenerator(changeHandler,keyPressHandler));
+}

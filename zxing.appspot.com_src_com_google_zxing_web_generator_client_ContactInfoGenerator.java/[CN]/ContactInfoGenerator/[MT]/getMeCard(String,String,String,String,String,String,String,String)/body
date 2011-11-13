@@ -1,0 +1,13 @@
+{
+  StringBuilder output=new StringBuilder(100);
+  output.append("MECARD:");
+  maybeAppendMECARD(output,"N",name.replace(",",""));
+  maybeAppendMECARD(output,"ORG",company);
+  maybeAppendMECARD(output,"TEL",tel);
+  maybeAppendMECARD(output,"URL",url);
+  maybeAppendMECARD(output,"EMAIL",email);
+  maybeAppendMECARD(output,"ADR",buildAddress(address,address2));
+  maybeAppendMECARD(output,"NOTE",memo);
+  output.append(';');
+  return output.toString();
+}

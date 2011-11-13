@@ -1,5 +1,0 @@
-{
-  for (  TimeZoneInfo info : TimeZoneList.TIMEZONES) {
-    timeZones.addItem(info.GMTRelative + ' ' + info.abreviation,String.valueOf(info.gmtDiff));
-  }
-}

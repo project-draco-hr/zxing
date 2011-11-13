@@ -1,7 +1,0 @@
-{
-  for (  String s : FULL_DAY_ONLY_IDS) {
-    Element element=DOM.getElementById(s);
-    String style=fullDay ? "none" : "";
-    DOM.setStyleAttribute(element,"display",style);
-  }
-}

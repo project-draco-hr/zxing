@@ -1,0 +1,13 @@
+{
+  StringBuilder output=new StringBuilder(100);
+  output.append("BEGIN:VCARD\n");
+  maybeAppendvCard(output,"N",name);
+  maybeAppendvCard(output,"ORG",company);
+  maybeAppendvCard(output,"TEL",tel);
+  maybeAppendvCard(output,"URL",url);
+  maybeAppendvCard(output,"EMAIL",email);
+  maybeAppendvCard(output,"ADR",buildAddress(address,address2));
+  maybeAppendvCard(output,"NOTE",memo);
+  output.append("END:VCARD");
+  return output.toString();
+}

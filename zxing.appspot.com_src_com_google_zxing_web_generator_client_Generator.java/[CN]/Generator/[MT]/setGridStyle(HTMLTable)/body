@@ -1,0 +1,9 @@
+{
+  grid.getColumnFormatter().addStyleName(0,"firstColumn");
+  grid.getColumnFormatter().addStyleName(1,"secondColumn");
+  HTMLTable.CellFormatter cellFormatter=grid.getCellFormatter();
+  for (int i=0; i < grid.getRowCount(); ++i) {
+    cellFormatter.addStyleName(i,0,"firstColumn");
+    cellFormatter.addStyleName(i,1,"secondColumn");
+  }
+}

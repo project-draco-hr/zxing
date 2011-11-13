@@ -1,0 +1,5 @@
+{
+  number.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
+  number.addChangeHandler(handler);
+  number.addKeyPressHandler(keyListener);
+}

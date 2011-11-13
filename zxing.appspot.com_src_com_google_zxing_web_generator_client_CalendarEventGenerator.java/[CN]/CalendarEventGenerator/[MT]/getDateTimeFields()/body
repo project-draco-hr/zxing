@@ -1,0 +1,6 @@
+{
+  if (fullDay.getValue()) {
+    return getFullDayDateFields();
+  }
+  return getDateTimeValues();
+}

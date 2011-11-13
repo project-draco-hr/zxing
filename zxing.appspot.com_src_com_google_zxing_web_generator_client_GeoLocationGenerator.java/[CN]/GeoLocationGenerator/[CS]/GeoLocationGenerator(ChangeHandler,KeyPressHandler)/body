@@ -1,0 +1,10 @@
+{
+  latitude.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
+  latitude.addChangeHandler(handler);
+  latitude.addKeyPressHandler(keyListener);
+  longitude.addStyleName(StylesDefs.INPUT_FIELD_REQUIRED);
+  longitude.addChangeHandler(handler);
+  longitude.addKeyPressHandler(keyListener);
+  query.addChangeHandler(handler);
+  query.addKeyPressHandler(keyListener);
+}

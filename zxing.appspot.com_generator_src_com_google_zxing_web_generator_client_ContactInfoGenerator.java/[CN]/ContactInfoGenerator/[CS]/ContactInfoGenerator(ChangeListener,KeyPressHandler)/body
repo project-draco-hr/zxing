@@ -1,6 +1,0 @@
-{
-  for (  TextBox w : widgets) {
-    w.addChangeListener(changeListener);
-    w.addKeyPressHandler(keyListener);
-  }
-}
