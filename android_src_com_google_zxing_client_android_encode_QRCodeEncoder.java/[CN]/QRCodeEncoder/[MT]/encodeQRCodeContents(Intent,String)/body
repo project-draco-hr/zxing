@@ -37,12 +37,12 @@
       StringBuilder newContents=new StringBuilder(100);
       StringBuilder newDisplayContents=new StringBuilder(100);
       newContents.append("MECARD:");
-      String name=trim(bundle.getString(Contacts.Intents.Insert.NAME));
+      String name=trim(bundle.getString(ContactsContract.Intents.Insert.NAME));
       if (name != null) {
         newContents.append("N:").append(escapeMECARD(name)).append(';');
         newDisplayContents.append(name);
       }
-      String address=trim(bundle.getString(Contacts.Intents.Insert.POSTAL));
+      String address=trim(bundle.getString(ContactsContract.Intents.Insert.POSTAL));
       if (address != null) {
         newContents.append("ADR:").append(escapeMECARD(address)).append(';');
         newDisplayContents.append('\n').append(address);
