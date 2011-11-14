@@ -27,7 +27,13 @@
  else   if (source == Source.ZXING_LINK) {
     if (returnUrlTemplate != null) {
       Message message=Message.obtain(handler,R.id.launch_product_query);
-      message.obj=returnUrlTemplate.replace(RETURN_CODE_PLACEHOLDER,String.valueOf(resultHandler.getDisplayContents()));
+      String codeReplacement=String.valueOf(resultHandler.getDisplayContents());
+      try {
+        codeReplacement=URLEncoder.encode(codeReplacement,"UTF-8");
+      }
+ catch (      UnsupportedEncodingException e) {
+      }
+      message.obj=returnUrlTemplate.replace(RETURN_CODE_PLACEHOLDER,codeReplacement);
       handler.sendMessageDelayed(message,INTENT_RESULT_DURATION);
     }
   }
