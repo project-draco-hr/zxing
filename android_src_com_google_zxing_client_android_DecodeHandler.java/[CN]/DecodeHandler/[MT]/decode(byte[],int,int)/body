@@ -2,14 +2,16 @@
   long start=System.currentTimeMillis();
   Result rawResult=null;
   PlanarYUVLuminanceSource source=activity.getCameraManager().buildLuminanceSource(data,width,height);
-  BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
-  try {
-    rawResult=multiFormatReader.decodeWithState(bitmap);
-  }
- catch (  ReaderException re) {
-  }
+  if (source != null) {
+    BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
+    try {
+      rawResult=multiFormatReader.decodeWithState(bitmap);
+    }
+ catch (    ReaderException re) {
+    }
  finally {
-    multiFormatReader.reset();
+      multiFormatReader.reset();
+    }
   }
   Handler handler=activity.getHandler();
   if (rawResult != null) {

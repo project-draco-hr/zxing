@@ -1,7 +1,7 @@
 {
   Rect rect=getFramingRectInPreview();
   if (rect == null) {
-    throw new IllegalStateException();
+    return null;
   }
   int previewFormat=configManager.getPreviewFormat();
   String previewFormatString=configManager.getPreviewFormatString();
