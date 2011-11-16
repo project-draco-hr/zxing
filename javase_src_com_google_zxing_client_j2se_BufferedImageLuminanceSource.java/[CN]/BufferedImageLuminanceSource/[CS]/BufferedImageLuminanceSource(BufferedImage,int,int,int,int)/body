@@ -5,10 +5,10 @@
   if (left + width > sourceWidth || top + height > sourceHeight) {
     throw new IllegalArgumentException("Crop rectangle does not fit within image data.");
   }
-  for (int i=top; i < top + height; i++) {
-    for (int j=left; j < left + width; j++) {
-      if ((image.getRGB(i,j) & 0xFF000000) == 0) {
-        image.setRGB(i,j,0xFFFFFFFF);
+  for (int y=top; y < top + height; y++) {
+    for (int x=left; x < left + width; x++) {
+      if ((image.getRGB(x,y) & 0xFF000000) == 0) {
+        image.setRGB(x,y,0xFFFFFFFF);
       }
     }
   }
