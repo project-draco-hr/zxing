@@ -2,11 +2,6 @@
   Camera theCamera=camera;
   if (theCamera != null && previewing) {
     previewCallback.setHandler(handler,message);
-    if (useOneShotPreviewCallback) {
-      theCamera.setOneShotPreviewCallback(previewCallback);
-    }
- else {
-      theCamera.setPreviewCallback(previewCallback);
-    }
+    theCamera.setOneShotPreviewCallback(previewCallback);
   }
 }

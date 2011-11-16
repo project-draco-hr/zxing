@@ -1,8 +1,5 @@
 {
   Point cameraResolution=configManager.getCameraResolution();
-  if (!useOneShotPreviewCallback) {
-    camera.setPreviewCallback(null);
-  }
   Handler thePreviewHandler=previewHandler;
   if (thePreviewHandler != null) {
     Message message=thePreviewHandler.obtainMessage(previewMessage,cameraResolution.x,cameraResolution.y,data);

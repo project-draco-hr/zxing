@@ -1,8 +1,15 @@
 {
   Camera.Parameters parameters=camera.getParameters();
-  Log.d(TAG,"Setting preview size: " + cameraResolution);
+  if (parameters == null) {
+    Log.w(TAG,"Device error: no camera parameters are available. Proceeding without configuration.");
+    return;
+  }
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
+  initializeTorch(parameters,prefs);
+  String focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_AUTO,Camera.Parameters.FOCUS_MODE_MACRO);
+  if (focusMode != null) {
+    parameters.setFocusMode(focusMode);
+  }
   parameters.setPreviewSize(cameraResolution.x,cameraResolution.y);
-  setFlash(parameters);
-  setZoom(parameters);
   camera.setParameters(parameters);
 }

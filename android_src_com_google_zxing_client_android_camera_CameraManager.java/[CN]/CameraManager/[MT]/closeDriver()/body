@@ -1,6 +1,5 @@
 {
   if (camera != null) {
-    FlashlightManager.disableFlashlight();
     camera.release();
     camera=null;
     framingRect=null;

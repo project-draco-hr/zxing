@@ -1,0 +1,25 @@
+{
+  Point bestSize=null;
+  int diff=Integer.MAX_VALUE;
+  for (  Camera.Size supportedPreviewSize : parameters.getSupportedPreviewSizes()) {
+    if (supportedPreviewSize.height * supportedPreviewSize.width < MIN_PREVIEW_PIXELS) {
+      continue;
+    }
+    int supportedWidth=portrait ? supportedPreviewSize.height : supportedPreviewSize.width;
+    int supportedHeight=portrait ? supportedPreviewSize.width : supportedPreviewSize.height;
+    int newDiff=Math.abs(screenResolution.x * supportedHeight - supportedWidth * screenResolution.y);
+    if (newDiff == 0) {
+      bestSize=new Point(supportedWidth,supportedHeight);
+      break;
+    }
+    if (newDiff < diff) {
+      bestSize=new Point(supportedWidth,supportedHeight);
+      diff=newDiff;
+    }
+  }
+  if (bestSize == null) {
+    Camera.Size defaultSize=parameters.getPreviewSize();
+    bestSize=new Point(defaultSize.width,defaultSize.height);
+  }
+  return bestSize;
+}

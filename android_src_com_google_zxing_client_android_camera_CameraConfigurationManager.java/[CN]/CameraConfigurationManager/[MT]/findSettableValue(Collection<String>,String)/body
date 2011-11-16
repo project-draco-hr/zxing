@@ -1,0 +1,14 @@
+{
+  Log.i(TAG,"Supported values: " + supportedValues);
+  String result=null;
+  if (supportedValues != null) {
+    for (    String desiredValue : desiredValues) {
+      if (supportedValues.contains(desiredValue)) {
+        result=desiredValue;
+        break;
+      }
+    }
+  }
+  Log.i(TAG,"Settable value: " + result);
+  return result;
+}

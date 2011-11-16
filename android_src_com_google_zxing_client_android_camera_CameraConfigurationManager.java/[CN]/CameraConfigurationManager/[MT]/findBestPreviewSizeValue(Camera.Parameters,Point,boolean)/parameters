@@ -1,0 +1,3 @@
+Camera.Parameters parameters
+Point screenResolution
+boolean portrait
