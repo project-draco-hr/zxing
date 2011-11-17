@@ -13,7 +13,7 @@
       endMilliseconds=startMilliseconds + 24 * 60 * 60* 1000;
     }
  else {
-      endMilliseconds=startMilliseconds + 60 * 60 * 1000;
+      endMilliseconds=startMilliseconds;
     }
   }
  else {

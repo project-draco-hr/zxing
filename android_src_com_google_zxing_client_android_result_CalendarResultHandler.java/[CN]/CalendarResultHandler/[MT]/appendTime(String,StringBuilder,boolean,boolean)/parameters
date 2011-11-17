@@ -1,2 +1,4 @@
 String when
 StringBuilder result
+boolean end
+boolean sameStartEnd

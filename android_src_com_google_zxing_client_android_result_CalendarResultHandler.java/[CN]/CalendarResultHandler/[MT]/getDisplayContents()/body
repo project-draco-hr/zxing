@@ -2,10 +2,12 @@
   CalendarParsedResult calResult=(CalendarParsedResult)getResult();
   StringBuilder result=new StringBuilder(100);
   ParsedResult.maybeAppend(calResult.getSummary(),result);
-  appendTime(calResult.getStart(),result);
+  String startString=calResult.getStart();
+  appendTime(startString,result,false,false);
   String endString=calResult.getEnd();
   if (endString != null) {
-    appendTime(endString,result);
+    boolean sameStartEnd=startString.equals(endString);
+    appendTime(endString,result,true,sameStartEnd);
   }
   ParsedResult.maybeAppend(calResult.getLocation(),result);
   ParsedResult.maybeAppend(calResult.getAttendee(),result);

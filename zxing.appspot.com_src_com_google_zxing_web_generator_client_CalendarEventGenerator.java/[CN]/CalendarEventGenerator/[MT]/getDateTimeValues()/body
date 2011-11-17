@@ -13,8 +13,8 @@
   }
   Date dateTime1=addMilliseconds(mergeDateAndTime(date1,time1),-diffTimeZone);
   Date dateTime2=addMilliseconds(mergeDateAndTime(date2,time2),-diffTimeZone);
-  if (dateTime1.equals(dateTime2) || dateTime1.after(dateTime2)) {
-    throw new GeneratorException("Ending date/time must be after starting date.");
+  if (dateTime1.after(dateTime2)) {
+    throw new GeneratorException("Ending date/time cannot be before starting date/time.");
   }
   DateTimeFormat isoFormatter=DateTimeFormat.getFormat("yyyyMMdd'T'HHmmss'Z'");
   StringBuilder output=new StringBuilder();

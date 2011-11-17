@@ -4,16 +4,17 @@
   if (date1 == null || date2 == null) {
     throw new GeneratorException("Start and end dates must be set.");
   }
-  if (date1.equals(date2) || date1.after(date2)) {
-    throw new GeneratorException("End date must be at least a day after start date.");
+  if (date1.after(date2)) {
+    throw new GeneratorException("End date cannot be before start date.");
   }
+  Date date2PlusDay=new Date(date2.getTime() + 24 * 60 * 60* 1000);
   DateTimeFormat isoFormatter=DateTimeFormat.getFormat("yyyyMMdd");
   StringBuilder output=new StringBuilder();
   output.append("DTSTART;VALUE=DATE:");
   output.append(isoFormatter.format(date1));
   output.append("\r\n");
   output.append("DTEND;VALUE=DATE:");
-  output.append(isoFormatter.format(date2));
+  output.append(isoFormatter.format(date2PlusDay));
   output.append("\r\n");
   return output.toString();
 }
