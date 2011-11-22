@@ -1,5 +1,5 @@
 {
-  if (readers.isEmpty()) {
+  if (readers == null) {
     setHints(null);
   }
   return decodeInternal(image);

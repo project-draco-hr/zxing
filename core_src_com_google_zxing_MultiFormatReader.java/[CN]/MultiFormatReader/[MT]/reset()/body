@@ -1,5 +1,7 @@
 {
-  for (  Reader reader : readers) {
-    reader.reset();
+  if (readers != null) {
+    for (    Reader reader : readers) {
+      reader.reset();
+    }
   }
 }

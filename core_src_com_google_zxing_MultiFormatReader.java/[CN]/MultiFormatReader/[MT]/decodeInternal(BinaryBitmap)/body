@@ -1,9 +1,11 @@
 {
-  for (  Reader reader : readers) {
-    try {
-      return reader.decode(image,hints);
-    }
- catch (    ReaderException re) {
+  if (readers != null) {
+    for (    Reader reader : readers) {
+      try {
+        return reader.decode(image,hints);
+      }
+ catch (      ReaderException re) {
+      }
     }
   }
   throw NotFoundException.getNotFoundInstance();

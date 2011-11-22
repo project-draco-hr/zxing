@@ -1,6 +1,6 @@
 {
   Collection<BarcodeFormat> possibleFormats=hints == null ? null : (Collection<BarcodeFormat>)hints.get(DecodeHintType.POSSIBLE_FORMATS);
-  readers=new ArrayList<UPCEANReader>();
+  Collection<UPCEANReader> readers=new ArrayList<UPCEANReader>();
   if (possibleFormats != null) {
     if (possibleFormats.contains(BarcodeFormat.EAN_13)) {
       readers.add(new EAN13Reader());
@@ -20,4 +20,5 @@
     readers.add(new EAN8Reader());
     readers.add(new UPCEReader());
   }
+  this.readers=readers.toArray(new UPCEANReader[readers.size()]);
 }
