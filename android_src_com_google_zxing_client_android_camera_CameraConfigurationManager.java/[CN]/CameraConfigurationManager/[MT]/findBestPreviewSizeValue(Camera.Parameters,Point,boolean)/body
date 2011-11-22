@@ -2,7 +2,8 @@
   Point bestSize=null;
   int diff=Integer.MAX_VALUE;
   for (  Camera.Size supportedPreviewSize : parameters.getSupportedPreviewSizes()) {
-    if (supportedPreviewSize.height * supportedPreviewSize.width < MIN_PREVIEW_PIXELS) {
+    int pixels=supportedPreviewSize.height * supportedPreviewSize.width;
+    if (pixels < MIN_PREVIEW_PIXELS || pixels > MAX_PREVIEW_PIXELS) {
       continue;
     }
     int supportedWidth=portrait ? supportedPreviewSize.height : supportedPreviewSize.width;
