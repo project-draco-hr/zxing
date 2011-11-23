@@ -1,6 +1,6 @@
 {
+  Arrays.fill(counters,0,counters.length,0);
   int patternLength=pattern.length;
-  int[] counters=new int[patternLength];
   boolean isWhite=whiteFirst;
   int counterPosition=0;
   int patternStart=column;

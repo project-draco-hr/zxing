@@ -2,8 +2,10 @@
   boolean foundStart=false;
   int[] startRange=null;
   int nextStart=0;
+  int[] counters=new int[START_END_PATTERN.length];
   while (!foundStart) {
-    startRange=findGuardPattern(row,nextStart,false,START_END_PATTERN);
+    Arrays.fill(counters,0,START_END_PATTERN.length,0);
+    startRange=findGuardPattern(row,nextStart,false,START_END_PATTERN,counters);
     int start=startRange[0];
     nextStart=startRange[1];
     int quietStart=start - (nextStart - start);

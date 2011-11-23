@@ -4,3 +4,4 @@ int row
 int width
 boolean whiteFirst
 int[] pattern
+int[] counters

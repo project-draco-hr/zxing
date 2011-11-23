@@ -1,28 +1,25 @@
 {
+  int patternLength=pattern.length;
   int width=row.getSize();
-  int rowOffset=0;
+  boolean isWhite=false;
   while (rowOffset < width) {
-    if (row.get(rowOffset)) {
+    isWhite=!row.get(rowOffset);
+    if (whiteFirst == isWhite) {
       break;
     }
     rowOffset++;
   }
   int counterPosition=0;
-  int[] counters=new int[9];
   int patternStart=rowOffset;
-  boolean isWhite=false;
-  int patternLength=counters.length;
-  for (int i=rowOffset; i < width; i++) {
-    boolean pixel=row.get(i);
+  for (int x=rowOffset; x < width; x++) {
+    boolean pixel=row.get(x);
     if (pixel ^ isWhite) {
       counters[counterPosition]++;
     }
  else {
       if (counterPosition == patternLength - 1) {
-        if (toNarrowWidePattern(counters) == ASTERISK_ENCODING) {
-          if (row.isRange(Math.max(0,patternStart - (i - patternStart) / 2),patternStart,false)) {
-            return new int[]{patternStart,i};
-          }
+        if (patternMatchVariance(counters,pattern,MAX_INDIVIDUAL_VARIANCE) < MAX_AVG_VARIANCE) {
+          return new int[]{patternStart,x};
         }
         patternStart+=counters[0] + counters[1];
         System.arraycopy(counters,2,counters,0,patternLength - 2);

@@ -1,12 +1,12 @@
 {
-  int[] start=findAsteriskPattern(row);
+  int[] counters=new int[9];
+  int[] start=findAsteriskPattern(row,counters);
   int nextStart=start[1];
   int end=row.getSize();
   while (nextStart < end && !row.get(nextStart)) {
     nextStart++;
   }
   StringBuilder result=new StringBuilder(20);
-  int[] counters=new int[9];
   char decodedChar;
   int lastStart;
   do {
