@@ -1,10 +1,7 @@
 {
   int[] start=findAsteriskPattern(row);
-  int nextStart=start[1];
+  int nextStart=row.getNextSet(start[1]);
   int end=row.getSize();
-  while (nextStart < end && !row.get(nextStart)) {
-    nextStart++;
-  }
   StringBuilder result=new StringBuilder(20);
   int[] counters=new int[6];
   char decodedChar;
@@ -21,9 +18,7 @@
     for (    int counter : counters) {
       nextStart+=counter;
     }
-    while (nextStart < end && !row.get(nextStart)) {
-      nextStart++;
-    }
+    nextStart=row.getNextSet(nextStart);
   }
  while (decodedChar != '*');
   result.deleteCharAt(result.length() - 1);

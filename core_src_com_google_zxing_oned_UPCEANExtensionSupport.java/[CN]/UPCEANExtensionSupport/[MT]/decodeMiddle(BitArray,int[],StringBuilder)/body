@@ -17,9 +17,7 @@
       lgPatternFound|=1 << (4 - x);
     }
     if (x != 4) {
-      while (rowOffset < end && !row.get(rowOffset)) {
-        rowOffset++;
-      }
+      rowOffset=row.getNextSet(rowOffset);
       while (rowOffset < end && row.get(rowOffset)) {
         rowOffset++;
       }

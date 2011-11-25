@@ -1,11 +1,8 @@
 {
   int[] start=findAsteriskPattern(row);
   start[1]=0;
-  int nextStart=start[1];
+  int nextStart=row.getNextSet(start[1]);
   int end=row.getSize();
-  while (nextStart < end && !row.get(nextStart)) {
-    nextStart++;
-  }
   StringBuilder result=new StringBuilder();
   int[] counters=new int[7];
   int lastStart;
@@ -23,9 +20,7 @@
     for (    int counter : counters) {
       nextStart+=counter;
     }
-    while (nextStart < end && !row.get(nextStart)) {
-      nextStart++;
-    }
+    nextStart=row.getNextSet(nextStart);
   }
  while (nextStart < end);
   int lastPatternSize=0;

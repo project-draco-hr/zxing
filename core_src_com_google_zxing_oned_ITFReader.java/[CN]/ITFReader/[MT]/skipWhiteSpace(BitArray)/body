@@ -1,12 +1,6 @@
 {
   int width=row.getSize();
-  int endStart=0;
-  while (endStart < width) {
-    if (row.get(endStart)) {
-      break;
-    }
-    endStart++;
-  }
+  int endStart=row.getNextSet(0);
   if (endStart == width) {
     throw NotFoundException.getNotFoundInstance();
   }

@@ -1,11 +1,8 @@
 {
   int[] counters=new int[9];
   int[] start=findAsteriskPattern(row,counters);
-  int nextStart=start[1];
+  int nextStart=row.getNextSet(start[1]);
   int end=row.getSize();
-  while (nextStart < end && !row.get(nextStart)) {
-    nextStart++;
-  }
   StringBuilder result=new StringBuilder(20);
   char decodedChar;
   int lastStart;
@@ -21,18 +18,16 @@
     for (    int counter : counters) {
       nextStart+=counter;
     }
-    while (nextStart < end && !row.get(nextStart)) {
-      nextStart++;
-    }
+    nextStart=row.getNextSet(nextStart);
   }
  while (decodedChar != '*');
-  result.deleteCharAt(result.length() - 1);
+  result.setLength(result.length() - 1);
   int lastPatternSize=0;
   for (  int counter : counters) {
     lastPatternSize+=counter;
   }
   int whiteSpaceAfterEnd=nextStart - lastStart - lastPatternSize;
-  if (nextStart != end && whiteSpaceAfterEnd / 2 < lastPatternSize) {
+  if (nextStart != end && (whiteSpaceAfterEnd >> 1) < lastPatternSize) {
     throw NotFoundException.getNotFoundInstance();
   }
   if (usingCheckDigit) {
@@ -44,7 +39,7 @@
     if (result.charAt(max) != ALPHABET[total % 43]) {
       throw ChecksumException.getChecksumInstance();
     }
-    result.deleteCharAt(max);
+    result.setLength(max);
   }
   if (result.length() < 4) {
     throw NotFoundException.getNotFoundInstance();

@@ -9,8 +9,7 @@
   int counterPosition=0;
   int i=start;
   while (i < end) {
-    boolean pixel=row.get(i);
-    if (pixel ^ isWhite) {
+    if (row.get(i) ^ isWhite) {
       counters[counterPosition]++;
     }
  else {
