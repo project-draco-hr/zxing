@@ -14,10 +14,7 @@
   }
  else {
     start=this.startEnd[0];
-    int firstElementStart=this.startEnd[1] + 1;
-    while (firstElementStart < row.getSize() && row.get(firstElementStart)) {
-      firstElementStart++;
-    }
+    int firstElementStart=row.getNextUnset(this.startEnd[1] + 1);
     end=firstElementStart;
     firstCounter=end - this.startEnd[1];
   }

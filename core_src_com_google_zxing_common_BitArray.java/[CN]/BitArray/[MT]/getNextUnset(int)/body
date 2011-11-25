@@ -3,13 +3,13 @@
     return size;
   }
   int bitsOffset=from >> 5;
-  int currentBits=bits[bitsOffset];
+  int currentBits=~bits[bitsOffset];
   currentBits&=~((1 << (from & 0x1F)) - 1);
   while (currentBits == 0) {
     if (++bitsOffset == bits.length) {
       return size;
     }
-    currentBits=bits[bitsOffset];
+    currentBits=~bits[bitsOffset];
   }
   int result=(bitsOffset << 5) + Integer.numberOfTrailingZeros(currentBits);
   return result > size ? size : result;

@@ -145,11 +145,8 @@ if (unshift) {
 codeSet=codeSet == CODE_CODE_A ? CODE_CODE_B : CODE_CODE_A;
 }
 }
-int width=row.getSize();
-while (nextStart < width && row.get(nextStart)) {
-nextStart++;
-}
-if (!row.isRange(nextStart,Math.min(width,nextStart + (nextStart - lastStart) / 2),false)) {
+nextStart=row.getNextUnset(nextStart);
+if (!row.isRange(nextStart,Math.min(row.getSize(),nextStart + (nextStart - lastStart) / 2),false)) {
 throw NotFoundException.getNotFoundInstance();
 }
 checksumTotal-=multiplier * lastCode;

@@ -18,9 +18,7 @@
     }
     if (x != 4) {
       rowOffset=row.getNextSet(rowOffset);
-      while (rowOffset < end && row.get(rowOffset)) {
-        rowOffset++;
-      }
+      rowOffset=row.getNextUnset(rowOffset);
     }
   }
   if (resultString.length() != 5) {
