@@ -1,2 +1,3 @@
 String contents
 String formatName
+byte[] rawBytes

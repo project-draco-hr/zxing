@@ -1,4 +1,5 @@
 {
   this.contents=contents;
   this.formatName=formatName;
+  this.rawBytes=rawBytes;
 }
