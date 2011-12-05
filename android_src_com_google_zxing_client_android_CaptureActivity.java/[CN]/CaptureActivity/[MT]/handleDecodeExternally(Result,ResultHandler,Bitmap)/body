@@ -5,7 +5,7 @@
     ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
     clipboard.setText(resultHandler.getDisplayContents());
   }
-  if (source == Source.NATIVE_APP_INTENT) {
+  if (source == IntentSource.NATIVE_APP_INTENT) {
     Intent intent=new Intent(getIntent().getAction());
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
     intent.putExtra(Intents.Scan.RESULT,rawResult.toString());
@@ -18,13 +18,13 @@
     if (metadata != null) {
       Integer orientation=(Integer)metadata.get(ResultMetadataType.ORIENTATION);
       if (orientation != null) {
-        intent.putExtra(Intents.Scan.RESULT_ORIENTATION,orientation);
+        intent.putExtra(Intents.Scan.RESULT_ORIENTATION,orientation.intValue());
       }
       String ecLevel=(String)metadata.get(ResultMetadataType.ERROR_CORRECTION_LEVEL);
       if (ecLevel != null) {
         intent.putExtra(Intents.Scan.RESULT_ERROR_CORRECTION_LEVEL,ecLevel);
       }
-      List<byte[]> byteSegments=(List<byte[]>)metadata.get(ResultMetadataType.BYTE_SEGMENTS);
+      Iterable<byte[]> byteSegments=(Iterable<byte[]>)metadata.get(ResultMetadataType.BYTE_SEGMENTS);
       if (byteSegments != null) {
         int i=0;
         for (        byte[] byteSegment : byteSegments) {
@@ -33,27 +33,23 @@
         }
       }
     }
-    Message message=Message.obtain(handler,R.id.return_scan_result);
-    message.obj=intent;
-    handler.sendMessageDelayed(message,INTENT_RESULT_DURATION);
+    sendReplyMessage(R.id.return_scan_result,intent);
   }
- else   if (source == Source.PRODUCT_SEARCH_LINK) {
-    Message message=Message.obtain(handler,R.id.launch_product_query);
+ else   if (source == IntentSource.PRODUCT_SEARCH_LINK) {
     int end=sourceUrl.lastIndexOf("/scan");
-    message.obj=sourceUrl.substring(0,end) + "?q=" + resultHandler.getDisplayContents().toString()+ "&source=zxing";
-    handler.sendMessageDelayed(message,INTENT_RESULT_DURATION);
+    String replyURL=sourceUrl.substring(0,end) + "?q=" + resultHandler.getDisplayContents()+ "&source=zxing";
+    sendReplyMessage(R.id.launch_product_query,replyURL);
   }
- else   if (source == Source.ZXING_LINK) {
+ else   if (source == IntentSource.ZXING_LINK) {
     if (returnUrlTemplate != null) {
-      Message message=Message.obtain(handler,R.id.launch_product_query);
       String codeReplacement=String.valueOf(resultHandler.getDisplayContents());
       try {
         codeReplacement=URLEncoder.encode(codeReplacement,"UTF-8");
       }
  catch (      UnsupportedEncodingException e) {
       }
-      message.obj=returnUrlTemplate.replace(RETURN_CODE_PLACEHOLDER,codeReplacement);
-      handler.sendMessageDelayed(message,INTENT_RESULT_DURATION);
+      String replyURL=returnUrlTemplate.replace(RETURN_CODE_PLACEHOLDER,codeReplacement);
+      sendReplyMessage(R.id.launch_product_query,replyURL);
     }
   }
 }

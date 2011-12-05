@@ -1,11 +1,11 @@
 {
   if (keyCode == KeyEvent.KEYCODE_BACK) {
-    if (source == Source.NATIVE_APP_INTENT) {
+    if (source == IntentSource.NATIVE_APP_INTENT) {
       setResult(RESULT_CANCELED);
       finish();
       return true;
     }
- else     if ((source == Source.NONE || source == Source.ZXING_LINK) && lastResult != null) {
+ else     if ((source == IntentSource.NONE || source == IntentSource.ZXING_LINK) && lastResult != null) {
       resetStatusView();
       if (handler != null) {
         handler.sendEmptyMessage(R.id.restart_preview);

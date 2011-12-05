@@ -18,7 +18,7 @@
   String dataString=intent == null ? null : intent.getDataString();
   if (intent != null && action != null) {
     if (action.equals(Intents.Scan.ACTION)) {
-      source=Source.NATIVE_APP_INTENT;
+      source=IntentSource.NATIVE_APP_INTENT;
       decodeFormats=DecodeFormatManager.parseDecodeFormats(intent);
       if (intent.hasExtra(Intents.Scan.WIDTH) && intent.hasExtra(Intents.Scan.HEIGHT)) {
         int width=intent.getIntExtra(Intents.Scan.WIDTH,0);
@@ -29,25 +29,25 @@
       }
     }
  else     if (dataString != null && dataString.contains(PRODUCT_SEARCH_URL_PREFIX) && dataString.contains(PRODUCT_SEARCH_URL_SUFFIX)) {
-      source=Source.PRODUCT_SEARCH_LINK;
+      source=IntentSource.PRODUCT_SEARCH_LINK;
       sourceUrl=dataString;
       decodeFormats=DecodeFormatManager.PRODUCT_FORMATS;
     }
  else     if (dataString != null && dataString.startsWith(ZXING_URL)) {
-      source=Source.ZXING_LINK;
+      source=IntentSource.ZXING_LINK;
       sourceUrl=dataString;
       Uri inputUri=Uri.parse(sourceUrl);
       returnUrlTemplate=inputUri.getQueryParameter(RETURN_URL_PARAM);
       decodeFormats=DecodeFormatManager.parseDecodeFormats(inputUri);
     }
  else {
-      source=Source.NONE;
+      source=IntentSource.NONE;
       decodeFormats=null;
     }
     characterSet=intent.getStringExtra(Intents.Scan.CHARACTER_SET);
   }
  else {
-    source=Source.NONE;
+    source=IntentSource.NONE;
     decodeFormats=null;
     characterSet=null;
   }
