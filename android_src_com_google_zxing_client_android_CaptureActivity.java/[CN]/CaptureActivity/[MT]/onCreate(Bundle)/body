@@ -3,10 +3,6 @@
   Window window=getWindow();
   window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
   setContentView(R.layout.capture);
-  resultView=findViewById(R.id.result_view);
-  statusView=(TextView)findViewById(R.id.status_view);
-  handler=null;
-  lastResult=null;
   hasSurface=false;
   historyManager=new HistoryManager(this);
   historyManager.trimHistory();
