@@ -2,4 +2,6 @@
   this.contents=contents;
   this.formatName=formatName;
   this.rawBytes=rawBytes;
+  this.orientation=orientation;
+  this.errorCorrectionLevel=errorCorrectionLevel;
 }
