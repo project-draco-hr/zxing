@@ -1,28 +1,16 @@
 {
   SQLiteOpenHelper helper=new DBHelper(activity);
-  SQLiteDatabase db;
-  try {
-    db=helper.getWritableDatabase();
-  }
- catch (  SQLiteException sqle) {
-    Log.w(TAG,"Error while opening database",sqle);
-    return;
-  }
+  SQLiteDatabase db=null;
   Cursor cursor=null;
   try {
+    db=helper.getWritableDatabase();
     cursor=db.query(DBHelper.TABLE_NAME,ID_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
-    int count=0;
-    while (count < MAX_ITEMS && cursor.moveToNext()) {
-      count++;
-    }
+    cursor.move(MAX_ITEMS);
     while (cursor.moveToNext()) {
       db.delete(DBHelper.TABLE_NAME,DBHelper.ID_COL + '=' + cursor.getString(0),null);
     }
   }
   finally {
-    if (cursor != null) {
-      cursor.close();
-    }
-    db.close();
+    close(cursor,db);
   }
 }

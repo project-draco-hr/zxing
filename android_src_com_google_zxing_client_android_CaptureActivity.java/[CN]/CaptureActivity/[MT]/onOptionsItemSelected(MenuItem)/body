@@ -27,6 +27,8 @@ builder.setPositiveButton(R.string.button_open_browser,aboutListener);
 builder.setNegativeButton(R.string.button_cancel,null);
 builder.show();
 break;
-}
+default :
 return super.onOptionsItemSelected(item);
+}
+return true;
 }

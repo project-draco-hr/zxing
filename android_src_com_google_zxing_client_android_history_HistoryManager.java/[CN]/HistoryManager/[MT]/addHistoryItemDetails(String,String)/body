@@ -1,28 +1,15 @@
 {
   SQLiteOpenHelper helper=new DBHelper(activity);
-  SQLiteDatabase db;
+  SQLiteDatabase db=null;
+  Cursor cursor=null;
   try {
     db=helper.getWritableDatabase();
-  }
- catch (  SQLiteException sqle) {
-    Log.w(TAG,"Error while opening database",sqle);
-    return;
-  }
-  try {
-    Cursor cursor=null;
+    cursor=db.query(DBHelper.TABLE_NAME,ID_DETAIL_COL_PROJECTION,DBHelper.TEXT_COL + "=?",new String[]{itemID},null,null,DBHelper.TIMESTAMP_COL + " DESC","1");
     String oldID=null;
     String oldDetails=null;
-    try {
-      cursor=db.query(DBHelper.TABLE_NAME,ID_DETAIL_COL_PROJECTION,DBHelper.TEXT_COL + "=?",new String[]{itemID},null,null,DBHelper.TIMESTAMP_COL + " DESC");
-      if (cursor.moveToNext()) {
-        oldID=cursor.getString(0);
-        oldDetails=cursor.getString(1);
-      }
-    }
-  finally {
-      if (cursor != null) {
-        cursor.close();
-      }
+    if (cursor.moveToNext()) {
+      oldID=cursor.getString(0);
+      oldDetails=cursor.getString(1);
     }
     String newDetails=oldDetails == null ? itemDetails : oldDetails + " : " + itemDetails;
     ContentValues values=new ContentValues();
@@ -30,6 +17,6 @@
     db.update(DBHelper.TABLE_NAME,values,DBHelper.ID_COL + "=?",new String[]{oldID});
   }
   finally {
-    db.close();
+    close(cursor,db);
   }
 }

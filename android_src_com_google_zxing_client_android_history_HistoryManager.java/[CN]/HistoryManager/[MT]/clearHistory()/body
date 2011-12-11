@@ -1,17 +1,11 @@
 {
   SQLiteOpenHelper helper=new DBHelper(activity);
-  SQLiteDatabase db;
+  SQLiteDatabase db=null;
   try {
     db=helper.getWritableDatabase();
-  }
- catch (  SQLiteException sqle) {
-    Log.w(TAG,"Error while opening database",sqle);
-    return;
-  }
-  try {
     db.delete(DBHelper.TABLE_NAME,null,null);
   }
   finally {
-    db.close();
+    close(null,db);
   }
 }

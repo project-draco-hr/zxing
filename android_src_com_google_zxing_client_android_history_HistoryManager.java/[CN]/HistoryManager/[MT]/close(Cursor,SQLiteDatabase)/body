@@ -1,0 +1,8 @@
+{
+  if (cursor != null) {
+    cursor.close();
+  }
+  if (database != null) {
+    database.close();
+  }
+}
