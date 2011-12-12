@@ -11,8 +11,6 @@ case URI:
 return new URIResultHandler(activity,result);
 case WIFI:
 return new WifiResultHandler(activity,result);
-case TEXT:
-return new TextResultHandler(activity,result,rawResult);
 case GEO:
 return new GeoResultHandler(activity,result);
 case TEL:
@@ -23,6 +21,7 @@ case CALENDAR:
 return new CalendarResultHandler(activity,result);
 case ISBN:
 return new ISBNResultHandler(activity,result,rawResult);
-}
+default :
 return new TextResultHandler(activity,result,rawResult);
+}
 }

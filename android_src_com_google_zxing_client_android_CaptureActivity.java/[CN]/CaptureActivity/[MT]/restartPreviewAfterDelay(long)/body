@@ -1,0 +1,6 @@
+{
+  if (handler != null) {
+    handler.sendEmptyMessageDelayed(R.id.restart_preview,delayMS);
+  }
+  resetStatusView();
+}

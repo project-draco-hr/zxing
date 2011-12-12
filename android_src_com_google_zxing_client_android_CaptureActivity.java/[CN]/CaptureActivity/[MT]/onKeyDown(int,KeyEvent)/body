@@ -6,10 +6,7 @@
       return true;
     }
  else     if ((source == IntentSource.NONE || source == IntentSource.ZXING_LINK) && lastResult != null) {
-      resetStatusView();
-      if (handler != null) {
-        handler.sendEmptyMessage(R.id.restart_preview);
-      }
+      restartPreviewAfterDelay(0L);
       return true;
     }
   }
