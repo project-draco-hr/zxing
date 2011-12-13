@@ -162,10 +162,6 @@ result.delete(resultLength - 2,resultLength);
 result.delete(resultLength - 1,resultLength);
 }
 }
-String resultString=result.toString();
-if (resultString.length() < 2) {
-throw FormatException.getFormatInstance();
-}
 float left=(float)(startPatternInfo[1] + startPatternInfo[0]) / 2.0f;
 float right=(float)(nextStart + lastStart) / 2.0f;
 int rawCodesSize=rawCodes.size();
@@ -173,5 +169,5 @@ byte[] rawBytes=new byte[rawCodesSize];
 for (int i=0; i < rawCodesSize; i++) {
 rawBytes[i]=rawCodes.get(i);
 }
-return new Result(resultString,rawBytes,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODE_128);
+return new Result(result.toString(),rawBytes,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODE_128);
 }
