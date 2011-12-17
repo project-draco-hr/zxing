@@ -48,7 +48,7 @@
       sourceUrl=dataString;
       decodeFormats=DecodeFormatManager.PRODUCT_FORMATS;
     }
- else     if (dataString != null && dataString.startsWith(ZXING_URL)) {
+ else     if (isZXingURL(dataString)) {
       source=IntentSource.ZXING_LINK;
       sourceUrl=dataString;
       Uri inputUri=Uri.parse(sourceUrl);

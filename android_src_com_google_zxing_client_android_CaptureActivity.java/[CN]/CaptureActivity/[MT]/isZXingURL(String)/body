@@ -1,0 +1,11 @@
+{
+  if (dataString == null) {
+    return false;
+  }
+  for (  String url : ZXING_URLS) {
+    if (dataString.startsWith(url)) {
+      return true;
+    }
+  }
+  return false;
+}
