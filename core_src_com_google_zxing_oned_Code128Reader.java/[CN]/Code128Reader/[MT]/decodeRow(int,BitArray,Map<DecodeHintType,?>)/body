@@ -154,6 +154,9 @@ if (checksumTotal % 103 != lastCode) {
 throw ChecksumException.getChecksumInstance();
 }
 int resultLength=result.length();
+if (resultLength == 0) {
+throw ChecksumException.getChecksumInstance();
+}
 if (resultLength > 0 && lastCharacterWasPrintable) {
 if (codeSet == CODE_CODE_C) {
 result.delete(resultLength - 2,resultLength);
