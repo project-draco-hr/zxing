@@ -1,6 +1,7 @@
 {
   BitMatrix image=getImage();
-  MultiFinderPatternFinder finder=new MultiFinderPatternFinder(image);
+  ResultPointCallback resultPointCallback=hints == null ? null : (ResultPointCallback)hints.get(DecodeHintType.NEED_RESULT_POINT_CALLBACK);
+  MultiFinderPatternFinder finder=new MultiFinderPatternFinder(image,resultPointCallback);
   FinderPatternInfo[] infos=finder.findMulti(hints);
   if (infos.length == 0) {
     throw NotFoundException.getNotFoundInstance();
