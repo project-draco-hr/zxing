@@ -1,40 +1,40 @@
 {
   format=BarcodeFormat.QR_CODE;
+  Bundle bundle=intent.getExtras();
+  if (bundle == null) {
+    throw new WriterException("No extras");
+  }
+  Uri uri=(Uri)bundle.getParcelable(Intent.EXTRA_STREAM);
+  if (uri == null) {
+    throw new WriterException("No EXTRA_STREAM");
+  }
+  byte[] vcard;
+  String vcardString;
   try {
-    Uri uri=(Uri)intent.getExtras().getParcelable(Intent.EXTRA_STREAM);
     InputStream stream=activity.getContentResolver().openInputStream(uri);
     int length=stream.available();
     if (length <= 0) {
-      Log.w(TAG,"Content stream is empty");
-      return false;
+      throw new WriterException("Content stream is empty");
     }
-    byte[] vcard=new byte[length];
+    vcard=new byte[length];
     int bytesRead=stream.read(vcard,0,length);
     if (bytesRead < length) {
-      Log.w(TAG,"Unable to fully read available bytes from content stream");
-      return false;
+      throw new WriterException("Unable to fully read available bytes from content stream");
     }
-    String vcardString=new String(vcard,0,bytesRead,"UTF-8");
-    Log.d(TAG,"Encoding share intent content:");
-    Log.d(TAG,vcardString);
-    Result result=new Result(vcardString,vcard,null,BarcodeFormat.QR_CODE);
-    ParsedResult parsedResult=ResultParser.parseResult(result);
-    if (!(parsedResult instanceof AddressBookParsedResult)) {
-      Log.d(TAG,"Result was not an address");
-      return false;
-    }
-    if (!encodeQRCodeContents((AddressBookParsedResult)parsedResult)) {
-      Log.d(TAG,"Unable to encode contents");
-      return false;
-    }
+    vcardString=new String(vcard,0,bytesRead,"UTF-8");
   }
- catch (  IOException e) {
-    Log.w(TAG,e);
-    return false;
+ catch (  IOException ioe) {
+    throw new WriterException(ioe);
   }
-catch (  NullPointerException e) {
-    Log.w(TAG,e);
-    return false;
+  Log.d(TAG,"Encoding share intent content:");
+  Log.d(TAG,vcardString);
+  Result result=new Result(vcardString,vcard,null,BarcodeFormat.QR_CODE);
+  ParsedResult parsedResult=ResultParser.parseResult(result);
+  if (!(parsedResult instanceof AddressBookParsedResult)) {
+    throw new WriterException("Result was not an address");
   }
-  return contents != null && contents.length() > 0;
+  encodeQRCodeContents((AddressBookParsedResult)parsedResult);
+  if (contents == null || contents.length() == 0) {
+    throw new WriterException("No content to encode");
+  }
 }

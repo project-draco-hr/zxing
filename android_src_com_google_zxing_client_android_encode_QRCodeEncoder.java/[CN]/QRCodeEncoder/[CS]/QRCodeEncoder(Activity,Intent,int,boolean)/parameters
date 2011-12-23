@@ -1,3 +1,4 @@
 Activity activity
 Intent intent
 int dimension
+boolean useVCard

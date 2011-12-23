@@ -1,0 +1,7 @@
+Iterable<String> names
+String organization
+Iterable<String> addresses
+Iterable<String> phones
+Iterable<String> emails
+String url
+String note

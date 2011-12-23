@@ -1,0 +1,8 @@
+StringBuilder newContents
+StringBuilder newDisplayContents
+String prefix
+Iterable<String> values
+int max
+Formatter formatter
+Formatter fieldFormatter
+char terminator

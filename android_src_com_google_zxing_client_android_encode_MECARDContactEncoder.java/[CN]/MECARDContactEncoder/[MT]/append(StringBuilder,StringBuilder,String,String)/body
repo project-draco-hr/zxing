@@ -1,0 +1,3 @@
+{
+  doAppend(newContents,newDisplayContents,prefix,value,MECARD_FIELD_FORMATTER,TERMINATOR);
+}

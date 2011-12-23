@@ -1,14 +1,7 @@
 {
-  int fileNameLength=Math.min(MAX_BARCODE_FILENAME_LENGTH,contents.length());
-  StringBuilder fileName=new StringBuilder(fileNameLength);
-  for (int i=0; i < fileNameLength; i++) {
-    char c=contents.charAt(i);
-    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) {
-      fileName.append(c);
-    }
- else {
-      fileName.append('_');
-    }
+  String fileName=NOT_ALPHANUMERIC.matcher(contents).replaceAll("_");
+  if (fileName.length() > MAX_BARCODE_FILENAME_LENGTH) {
+    fileName=fileName.substring(0,MAX_BARCODE_FILENAME_LENGTH);
   }
   return fileName;
 }

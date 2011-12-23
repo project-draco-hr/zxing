@@ -1,11 +1,7 @@
 {
-  String theContents=intent.getStringExtra(Intent.EXTRA_TEXT);
-  if (theContents == null) {
-    return false;
-  }
-  theContents=theContents.trim();
-  if (theContents.length() == 0) {
-    return false;
+  String theContents=ContactEncoder.trim(intent.getStringExtra(Intent.EXTRA_TEXT));
+  if (theContents == null || theContents.length() == 0) {
+    throw new WriterException("Empty EXTRA_TEXT");
   }
   contents=theContents;
   format=BarcodeFormat.QR_CODE;
@@ -19,5 +15,4 @@
     displayContents=contents;
   }
   title=activity.getString(R.string.contents_text);
-  return true;
 }

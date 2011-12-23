@@ -1,0 +1,4 @@
+StringBuilder newContents
+StringBuilder newDisplayContents
+String prefix
+String value

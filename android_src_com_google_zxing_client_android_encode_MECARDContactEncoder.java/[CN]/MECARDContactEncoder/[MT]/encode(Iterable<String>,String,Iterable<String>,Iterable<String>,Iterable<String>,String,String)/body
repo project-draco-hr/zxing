@@ -1,0 +1,24 @@
+{
+  StringBuilder newContents=new StringBuilder(100);
+  StringBuilder newDisplayContents=new StringBuilder(100);
+  newContents.append("MECARD:");
+  appendUpToUnique(newContents,newDisplayContents,"N",names,1,new Formatter(){
+    @Override public String format(    String source){
+      return source == null ? null : COMMA.matcher(source).replaceAll("");
+    }
+  }
+);
+  append(newContents,newDisplayContents,"ORG",organization);
+  appendUpToUnique(newContents,newDisplayContents,"ADR",addresses,1,null);
+  appendUpToUnique(newContents,newDisplayContents,"TEL",phones,Integer.MAX_VALUE,new Formatter(){
+    @Override public String format(    String source){
+      return PhoneNumberUtils.formatNumber(source);
+    }
+  }
+);
+  appendUpToUnique(newContents,newDisplayContents,"EMAIL",emails,Integer.MAX_VALUE,null);
+  append(newContents,newDisplayContents,"URL",url);
+  append(newContents,newDisplayContents,"NOTE",note);
+  newContents.append(';');
+  return new String[]{newContents.toString(),newDisplayContents.toString()};
+}

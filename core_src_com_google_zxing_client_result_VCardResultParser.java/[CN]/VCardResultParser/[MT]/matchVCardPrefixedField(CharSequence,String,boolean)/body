@@ -4,6 +4,9 @@
   int max=rawText.length();
   while (i < max) {
     Matcher matcher=Pattern.compile("(?:^|\n)" + prefix + "(?:;([^:]*))?:",Pattern.CASE_INSENSITIVE).matcher(rawText);
+    if (i > 0) {
+      i--;
+    }
     if (!matcher.find(i)) {
       break;
     }
