@@ -4,8 +4,5 @@
     rawText=rawText.substring(4);
   }
   rawText=rawText.trim();
-  if (!isBasicallyValidURI(rawText)) {
-    return null;
-  }
-  return new URIParsedResult(rawText,null);
+  return isBasicallyValidURI(rawText) ? new URIParsedResult(rawText,null) : null;
 }

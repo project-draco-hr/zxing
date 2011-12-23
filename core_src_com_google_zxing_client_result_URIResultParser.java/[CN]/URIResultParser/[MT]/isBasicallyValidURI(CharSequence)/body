@@ -1,39 +1,8 @@
 {
-  if (uri == null) {
-    return false;
+  Matcher m=URL_WITH_PROTOCOL_PATTERN.matcher(uri);
+  if (m.find() && m.start() == 0) {
+    return true;
   }
-  int period=-1;
-  int colon=-1;
-  int length=uri.length();
-  for (int i=length - 1; i >= 0; i--) {
-    char c=uri.charAt(i);
-    if (c <= ' ') {
-      return false;
-    }
- else     if (c == '.') {
-      period=i;
-    }
- else     if (c == ':') {
-      colon=i;
-    }
-  }
-  if (period >= uri.length() - 2 || (period <= 0 && colon <= 0)) {
-    return false;
-  }
-  if (colon >= 0) {
-    if (period < 0 || period > colon) {
-      if (!isSubstringOfAlphaNumeric(uri,0,colon)) {
-        return false;
-      }
-    }
- else {
-      if (colon >= uri.length() - 2) {
-        return false;
-      }
-      if (!isSubstringOfDigits(uri,colon + 1,2)) {
-        return false;
-      }
-    }
-  }
-  return true;
+  m=URL_WITHOUT_PROTOCOL_PATTERN.matcher(uri);
+  return m.find() && m.start() == 0;
 }
