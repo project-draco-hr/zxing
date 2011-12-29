@@ -1,12 +1,13 @@
 {
-  try {
-    activity.getPackageManager().getPackageInfo(GOOGLE_SHOPPER_PACKAGE,0);
-    Intent intent=new Intent(Intent.ACTION_SEARCH);
-    intent.setClassName(GOOGLE_SHOPPER_PACKAGE,GOOGLE_SHOPPER_ACTIVITY);
-    intent.putExtra(SearchManager.QUERY,query);
+  Intent intent=new Intent(Intent.ACTION_SEARCH);
+  intent.setClassName(GOOGLE_SHOPPER_PACKAGE,GOOGLE_SHOPPER_ACTIVITY);
+  intent.putExtra(SearchManager.QUERY,query);
+  PackageManager pm=activity.getPackageManager();
+  Collection<?> availableApps=pm.queryIntentActivities(intent,PackageManager.MATCH_DEFAULT_ONLY);
+  if (availableApps != null && !availableApps.isEmpty()) {
     activity.startActivity(intent);
   }
- catch (  PackageManager.NameNotFoundException e) {
+ else {
     AlertDialog.Builder builder=new AlertDialog.Builder(activity);
     builder.setTitle(R.string.msg_google_shopper_missing);
     builder.setMessage(R.string.msg_install_google_shopper);
