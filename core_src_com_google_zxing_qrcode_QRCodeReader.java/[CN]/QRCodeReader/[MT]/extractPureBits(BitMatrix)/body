@@ -4,7 +4,7 @@
   if (leftTopBlack == null || rightBottomBlack == null) {
     throw NotFoundException.getNotFoundInstance();
   }
-  int moduleSize=moduleSize(leftTopBlack,image);
+  float moduleSize=moduleSize(leftTopBlack,image);
   int top=leftTopBlack[1];
   int bottom=rightBottomBlack[1];
   int left=leftTopBlack[0];
@@ -12,22 +12,22 @@
   if (bottom - top != right - left) {
     right=left + (bottom - top);
   }
-  int matrixWidth=(right - left + 1) / moduleSize;
-  int matrixHeight=(bottom - top + 1) / moduleSize;
+  int matrixWidth=Math.round((right - left + 1) / moduleSize);
+  int matrixHeight=Math.round((bottom - top + 1) / moduleSize);
   if (matrixWidth <= 0 || matrixHeight <= 0) {
     throw NotFoundException.getNotFoundInstance();
   }
   if (matrixHeight != matrixWidth) {
     throw NotFoundException.getNotFoundInstance();
   }
-  int nudge=moduleSize >> 1;
+  int nudge=Math.round(moduleSize / 2.0f);
   top+=nudge;
   left+=nudge;
   BitMatrix bits=new BitMatrix(matrixWidth,matrixHeight);
   for (int y=0; y < matrixHeight; y++) {
-    int iOffset=top + y * moduleSize;
+    int iOffset=top + (int)(y * moduleSize);
     for (int x=0; x < matrixWidth; x++) {
-      if (image.get(left + x * moduleSize,iOffset)) {
+      if (image.get(left + (int)(x * moduleSize),iOffset)) {
         bits.set(x,y);
       }
     }

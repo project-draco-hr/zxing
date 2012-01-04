@@ -3,16 +3,20 @@
   int width=image.getWidth();
   int x=leftTopBlack[0];
   int y=leftTopBlack[1];
-  while (x < width && y < height && image.get(x,y)) {
+  boolean inBlack=true;
+  int transitions=0;
+  while (x < width && y < height) {
+    if (inBlack != image.get(x,y)) {
+      if (++transitions == 5) {
+        break;
+      }
+      inBlack=!inBlack;
+    }
     x++;
     y++;
   }
   if (x == width || y == height) {
     throw NotFoundException.getNotFoundInstance();
   }
-  int moduleSize=x - leftTopBlack[0];
-  if (moduleSize == 0) {
-    throw NotFoundException.getNotFoundInstance();
-  }
-  return moduleSize;
+  return (x - leftTopBlack[0]) / 7.0f;
 }
