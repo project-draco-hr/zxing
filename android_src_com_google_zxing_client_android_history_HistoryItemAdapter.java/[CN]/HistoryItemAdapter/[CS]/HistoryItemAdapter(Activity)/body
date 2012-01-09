@@ -1,0 +1,4 @@
+{
+  super(activity,R.layout.history_list_item,new ArrayList<HistoryItem>());
+  this.activity=activity;
+}

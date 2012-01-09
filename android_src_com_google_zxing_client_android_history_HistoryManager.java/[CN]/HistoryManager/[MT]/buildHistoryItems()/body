@@ -1,0 +1,23 @@
+{
+  SQLiteOpenHelper helper=new DBHelper(activity);
+  List<HistoryItem> items=new ArrayList<HistoryItem>();
+  SQLiteDatabase db=null;
+  Cursor cursor=null;
+  try {
+    db=helper.getReadableDatabase();
+    cursor=db.query(DBHelper.TABLE_NAME,COLUMNS,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
+    while (cursor.moveToNext()) {
+      String text=cursor.getString(0);
+      String display=cursor.getString(1);
+      String format=cursor.getString(2);
+      long timestamp=cursor.getLong(3);
+      String details=cursor.getString(4);
+      Result result=new Result(text,null,null,BarcodeFormat.valueOf(format),timestamp);
+      items.add(new HistoryItem(result,display,details));
+    }
+  }
+  finally {
+    close(cursor,db);
+  }
+  return items;
+}

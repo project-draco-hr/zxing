@@ -7,8 +7,10 @@ case SHARE_ID:
   startActivity(intent);
 break;
 case HISTORY_ID:
-AlertDialog historyAlert=historyManager.buildAlert();
-historyAlert.show();
+intent=new Intent(Intent.ACTION_VIEW);
+intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+intent.setClassName(this,HistoryActivity.class.getName());
+startActivityForResult(intent,HISTORY_REQUEST_CODE);
 break;
 case SETTINGS_ID:
 intent.setClassName(this,PreferencesActivity.class.getName());

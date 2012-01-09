@@ -1,0 +1,8 @@
+{
+  if (adapter.getItem(position).getResult() != null) {
+    Intent intent=new Intent(this,CaptureActivity.class);
+    intent.putExtra(Intents.History.ITEM_NUMBER,position);
+    setResult(Activity.RESULT_OK,intent);
+    finish();
+  }
+}

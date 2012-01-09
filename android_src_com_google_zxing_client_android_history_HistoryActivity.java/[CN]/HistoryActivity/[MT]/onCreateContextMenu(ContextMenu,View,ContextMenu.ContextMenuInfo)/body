@@ -1,0 +1,4 @@
+{
+  int position=((AdapterView.AdapterContextMenuInfo)menuInfo).position;
+  menu.add(Menu.NONE,position,position,R.string.history_clear_one_history_text);
+}

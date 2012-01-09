@@ -1,0 +1,26 @@
+{
+  LinearLayout layout;
+  if (view instanceof LinearLayout) {
+    layout=(LinearLayout)view;
+  }
+ else {
+    LayoutInflater factory=LayoutInflater.from(activity);
+    layout=(LinearLayout)factory.inflate(R.layout.history_list_item,viewGroup,false);
+  }
+  HistoryItem item=getItem(position);
+  Result result=item.getResult();
+  String title;
+  String detail;
+  if (result != null) {
+    title=result.getText();
+    detail=item.getDisplayAndDetails();
+  }
+ else {
+    Resources resources=getContext().getResources();
+    title=resources.getString(R.string.history_empty);
+    detail=resources.getString(R.string.history_empty_detail);
+  }
+  ((TextView)layout.findViewById(R.id.history_title)).setText(title);
+  ((TextView)layout.findViewById(R.id.history_detail)).setText(detail);
+  return layout;
+}

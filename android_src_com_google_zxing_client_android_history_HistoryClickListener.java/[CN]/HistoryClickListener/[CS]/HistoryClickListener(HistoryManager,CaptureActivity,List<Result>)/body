@@ -1,5 +1,0 @@
-{
-  this.historyManager=historyManager;
-  this.activity=activity;
-  this.items=items;
-}

@@ -1,0 +1,11 @@
+{
+  super.onResume();
+  List<HistoryItem> items=historyManager.buildHistoryItems();
+  adapter.clear();
+  for (  HistoryItem item : items) {
+    adapter.add(item);
+  }
+  if (adapter.isEmpty()) {
+    adapter.add(new HistoryItem(null,null,null));
+  }
+}

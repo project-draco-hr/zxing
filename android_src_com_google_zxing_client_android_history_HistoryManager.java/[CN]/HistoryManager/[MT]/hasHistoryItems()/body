@@ -1,0 +1,14 @@
+{
+  SQLiteOpenHelper helper=new DBHelper(activity);
+  SQLiteDatabase db=null;
+  Cursor cursor=null;
+  try {
+    db=helper.getReadableDatabase();
+    cursor=db.query(DBHelper.TABLE_NAME,COUNT_COLUMN,null,null,null,null,null);
+    cursor.moveToFirst();
+    return cursor.getInt(0) > 0;
+  }
+  finally {
+    close(cursor,db);
+  }
+}

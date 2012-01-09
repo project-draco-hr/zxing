@@ -1,0 +1,5 @@
+{
+  this.result=result;
+  this.display=display;
+  this.details=details;
+}

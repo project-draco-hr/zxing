@@ -1,0 +1,14 @@
+{
+  SQLiteOpenHelper helper=new DBHelper(activity);
+  SQLiteDatabase db=null;
+  Cursor cursor=null;
+  try {
+    db=helper.getWritableDatabase();
+    cursor=db.query(DBHelper.TABLE_NAME,ID_COL_PROJECTION,null,null,null,null,DBHelper.TIMESTAMP_COL + " DESC");
+    cursor.move(number + 1);
+    db.delete(DBHelper.TABLE_NAME,DBHelper.ID_COL + '=' + cursor.getString(0),null);
+  }
+  finally {
+    close(cursor,db);
+  }
+}
