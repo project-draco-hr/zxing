@@ -1,6 +1,11 @@
 {
   if (camera != null && previewing) {
     autoFocusCallback.setHandler(handler,message);
-    camera.autoFocus(autoFocusCallback);
+    try {
+      camera.autoFocus(autoFocusCallback);
+    }
+ catch (    RuntimeException re) {
+      Log.w(TAG,"Unexpected exception while focusing",re);
+    }
   }
 }
