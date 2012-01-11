@@ -25,7 +25,7 @@
   if (nextStart == end || !row.get(nextStart)) {
     throw NotFoundException.getNotFoundInstance();
   }
-  if (result.length() < 4) {
+  if (result.length() < 2) {
     throw NotFoundException.getNotFoundInstance();
   }
   checkChecksums(result);

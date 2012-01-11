@@ -41,7 +41,7 @@
     }
     result.setLength(max);
   }
-  if (result.length() < 4) {
+  if (result.length() == 0) {
     throw NotFoundException.getNotFoundInstance();
   }
   String resultString;

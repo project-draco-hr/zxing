@@ -155,7 +155,7 @@ throw ChecksumException.getChecksumInstance();
 }
 int resultLength=result.length();
 if (resultLength == 0) {
-throw ChecksumException.getChecksumInstance();
+throw NotFoundException.getNotFoundInstance();
 }
 if (resultLength > 0 && lastCharacterWasPrintable) {
 if (codeSet == CODE_CODE_C) {
