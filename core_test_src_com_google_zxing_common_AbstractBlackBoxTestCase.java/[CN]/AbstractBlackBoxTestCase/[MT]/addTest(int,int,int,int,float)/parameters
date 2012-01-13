@@ -1,3 +1,5 @@
 int mustPassCount
 int tryHarderCount
+int maxMisreads
+int maxTryHarderMisreads
 float rotation

@@ -5,7 +5,7 @@
   Result result;
   try {
     result=getReader().decode(bitmap);
-    System.out.println("Found false positive: '" + result.getText() + "' with format '"+ result.getBarcodeFormat()+ "' (rotation: "+ rotationInDegrees+ ')');
+    System.out.printf("Found false positive: '%s' with format '%s' (rotation: %d)\n",result.getText(),result.getBarcodeFormat(),(int)rotationInDegrees);
     return false;
   }
  catch (  ReaderException re) {
@@ -14,7 +14,7 @@
   hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
   try {
     result=getReader().decode(bitmap,hints);
-    System.out.println("Try harder found false positive: '" + result.getText() + "' with format '"+ result.getBarcodeFormat()+ "' (rotation: "+ rotationInDegrees+ ')');
+    System.out.printf("Try harder found false positive: '%s' with format '%s' (rotation: %d)\n",result.getText(),result.getBarcodeFormat(),(int)rotationInDegrees);
     return false;
   }
  catch (  ReaderException re) {

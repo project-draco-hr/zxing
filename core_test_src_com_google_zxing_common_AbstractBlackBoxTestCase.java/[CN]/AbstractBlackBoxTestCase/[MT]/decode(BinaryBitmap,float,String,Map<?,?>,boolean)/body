@@ -1,24 +1,17 @@
 {
-  String suffix=" (" + (tryHarder ? "try harder, " : "") + "rotation: "+ rotation+ ')';
+  String suffix=String.format(" (%srotation: %d)",tryHarder ? "try harder, " : "",(int)rotation);
   Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
   if (tryHarder) {
     hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
   }
-  Result result;
-  try {
-    result=barcodeReader.decode(source,hints);
-  }
- catch (  ReaderException re) {
-    System.out.println(re + suffix);
-    return false;
-  }
+  Result result=barcodeReader.decode(source,hints);
   if (expectedFormat != result.getBarcodeFormat()) {
-    System.out.println("Format mismatch: expected '" + expectedFormat + "' but got '"+ result.getBarcodeFormat()+ '\''+ suffix);
+    System.out.printf("Format mismatch: expected '%s' but got '%s'%s\n",expectedFormat,result.getBarcodeFormat(),suffix);
     return false;
   }
   String resultText=result.getText();
   if (!expectedText.equals(resultText)) {
-    System.out.println("Mismatch: expected '" + expectedText + "' but got '"+ resultText+ '\''+ suffix);
+    System.out.printf("Content mismatch: expected '%s' but got '%s'%s\n",expectedText,resultText,suffix);
     return false;
   }
   Map<ResultMetadataType,?> resultMetadata=result.getResultMetadata();
@@ -27,7 +20,7 @@
     Object expectedValue=metadatum.getValue();
     Object actualValue=resultMetadata == null ? null : resultMetadata.get(key);
     if (!expectedValue.equals(actualValue)) {
-      System.out.println("Metadata mismatch: for key '" + key + "' expected '"+ expectedValue+ "' but got '"+ actualValue+ '\'');
+      System.out.printf("Metadata mismatch for key '%s': expected '%s' but got '%s'\n",key,expectedValue,actualValue);
       return false;
     }
   }

@@ -1,5 +1,7 @@
 {
   this.mustPassCount=mustPassCount;
   this.tryHarderCount=tryHarderCount;
+  this.maxMisreads=maxMisreads;
+  this.maxTryHarderMisreads=maxTryHarderMisreads;
   this.rotation=rotation;
 }

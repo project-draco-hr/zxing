@@ -1,0 +1,3 @@
+{
+  testResults.add(new TestResult(mustPassCount,tryHarderCount,maxMisreads,maxTryHarderMisreads,rotation));
+}
