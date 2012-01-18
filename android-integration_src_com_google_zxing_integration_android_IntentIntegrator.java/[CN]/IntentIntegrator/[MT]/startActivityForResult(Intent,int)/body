@@ -1,0 +1,3 @@
+{
+  activity.startActivityForResult(intent,code);
+}
