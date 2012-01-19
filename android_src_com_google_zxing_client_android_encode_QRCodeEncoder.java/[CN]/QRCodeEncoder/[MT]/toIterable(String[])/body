@@ -1,0 +1,3 @@
+{
+  return values == null ? null : Arrays.asList(values);
+}
