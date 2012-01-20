@@ -1,0 +1,11 @@
+{
+  if (resultCode == RESULT_OK) {
+    if (requestCode == HISTORY_REQUEST_CODE) {
+      int itemNumber=intent.getIntExtra(Intents.History.ITEM_NUMBER,-1);
+      if (itemNumber >= 0) {
+        HistoryItem historyItem=historyManager.buildHistoryItem(itemNumber);
+        decodeOrStoreSavedBitmap(null,historyItem.getResult());
+      }
+    }
+  }
+}

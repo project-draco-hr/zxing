@@ -1,0 +1,15 @@
+{
+  if (handler == null) {
+    savedResultToShow=result;
+  }
+ else {
+    if (result != null) {
+      savedResultToShow=result;
+    }
+    if (savedResultToShow != null) {
+      Message message=Message.obtain(handler,R.id.decode_succeeded,savedResultToShow);
+      handler.sendMessage(message);
+    }
+    savedResultToShow=null;
+  }
+}

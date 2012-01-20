@@ -4,6 +4,7 @@
     if (handler == null) {
       handler=new CaptureActivityHandler(this,decodeFormats,characterSet,cameraManager);
     }
+    decodeOrStoreSavedBitmap(null,null);
   }
  catch (  IOException ioe) {
     Log.w(TAG,ioe);
