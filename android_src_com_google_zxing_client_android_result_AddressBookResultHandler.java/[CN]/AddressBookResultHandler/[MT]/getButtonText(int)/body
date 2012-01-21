@@ -1,15 +1,3 @@
 {
-  int action=mapIndexToAction(index);
-switch (action) {
-case 0:
-    return R.string.button_add_contact;
-case 1:
-  return R.string.button_show_map;
-case 2:
-return R.string.button_dial;
-case 3:
-return R.string.button_email;
-default :
-throw new ArrayIndexOutOfBoundsException();
-}
+  return BUTTON_TEXTS[mapIndexToAction(index)];
 }
