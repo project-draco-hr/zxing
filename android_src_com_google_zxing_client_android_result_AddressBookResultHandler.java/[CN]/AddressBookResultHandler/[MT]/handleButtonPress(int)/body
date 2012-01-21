@@ -7,7 +7,7 @@
   int action=mapIndexToAction(index);
 switch (action) {
 case 0:
-    addContact(addressResult.getNames(),addressResult.getPronunciation(),addressResult.getPhoneNumbers(),addressResult.getPhoneTypes(),addressResult.getEmails(),addressResult.getEmailTypes(),addressResult.getNote(),addressResult.getInstantMessenger(),address1,address1Type,addressResult.getOrg(),addressResult.getTitle());
+    addContact(addressResult.getNames(),addressResult.getPronunciation(),addressResult.getPhoneNumbers(),addressResult.getPhoneTypes(),addressResult.getEmails(),addressResult.getEmailTypes(),addressResult.getNote(),addressResult.getInstantMessenger(),address1,address1Type,addressResult.getOrg(),addressResult.getTitle(),addressResult.getURL(),addressResult.getBirthday());
   break;
 case 1:
 String[] names=addressResult.getNames();

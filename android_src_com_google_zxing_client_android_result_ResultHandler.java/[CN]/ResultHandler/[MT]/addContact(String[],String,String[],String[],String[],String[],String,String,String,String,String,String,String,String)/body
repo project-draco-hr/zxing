@@ -23,7 +23,18 @@
       }
     }
   }
-  putExtra(intent,ContactsContract.Intents.Insert.NOTES,note);
+  StringBuilder aggregatedNotes=new StringBuilder();
+  for (  String aNote : new String[]{url,birthday,note}) {
+    if (aNote != null) {
+      if (aggregatedNotes.length() > 0) {
+        aggregatedNotes.append('\n');
+      }
+      aggregatedNotes.append(aNote);
+    }
+  }
+  if (aggregatedNotes.length() > 0) {
+    putExtra(intent,ContactsContract.Intents.Insert.NOTES,aggregatedNotes.toString());
+  }
   putExtra(intent,ContactsContract.Intents.Insert.IM_HANDLE,instantMessenger);
   putExtra(intent,ContactsContract.Intents.Insert.POSTAL,address);
   if (addressType != null) {

@@ -10,3 +10,5 @@ String address
 String addressType
 String org
 String title
+String url
+String birthday
