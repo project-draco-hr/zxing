@@ -1,14 +1,12 @@
 {
-  showNotOurResults(index,new AlertDialog.OnClickListener(){
-    @Override public void onClick(    DialogInterface dialogInterface,    int i){
-      ISBNParsedResult isbnResult=(ISBNParsedResult)getResult();
+  ISBNParsedResult isbnResult=(ISBNParsedResult)getResult();
 switch (index) {
 case 0:
-        openProductSearch(isbnResult.getISBN());
-      break;
-case 1:
-    openBookSearch(isbnResult.getISBN());
+    openProductSearch(isbnResult.getISBN());
   break;
+case 1:
+openBookSearch(isbnResult.getISBN());
+break;
 case 2:
 searchBookContents(isbnResult.getISBN());
 break;
@@ -16,7 +14,4 @@ case 3:
 openURL(fillInCustomSearchURL(isbnResult.getISBN()));
 break;
 }
-}
-}
-);
 }

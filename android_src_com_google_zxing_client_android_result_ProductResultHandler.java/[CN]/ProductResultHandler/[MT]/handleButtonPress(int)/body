@@ -1,19 +1,14 @@
 {
-  showNotOurResults(index,new AlertDialog.OnClickListener(){
-    @Override public void onClick(    DialogInterface dialogInterface,    int i){
-      ProductParsedResult productResult=(ProductParsedResult)getResult();
+  ProductParsedResult productResult=(ProductParsedResult)getResult();
 switch (index) {
 case 0:
-        openProductSearch(productResult.getNormalizedProductID());
-      break;
-case 1:
-    webSearch(productResult.getNormalizedProductID());
+    openProductSearch(productResult.getNormalizedProductID());
   break;
+case 1:
+webSearch(productResult.getNormalizedProductID());
+break;
 case 2:
 openURL(fillInCustomSearchURL(productResult.getNormalizedProductID()));
 break;
 }
-}
-}
-);
 }
