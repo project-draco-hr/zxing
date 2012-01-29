@@ -17,6 +17,9 @@
     Log.w(TAG,we);
     return;
   }
+  if (bitmap == null) {
+    return;
+  }
   File bsRoot=new File(Environment.getExternalStorageDirectory(),"BarcodeScanner");
   File barcodesRoot=new File(bsRoot,"Barcodes");
   if (!barcodesRoot.exists() && !barcodesRoot.mkdirs()) {
