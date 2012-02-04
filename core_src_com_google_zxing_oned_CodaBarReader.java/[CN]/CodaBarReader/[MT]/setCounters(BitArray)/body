@@ -1,0 +1,21 @@
+{
+  counterLength=0;
+  int i=row.getNextUnset(0);
+  int end=row.getSize();
+  if (i >= end) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  boolean isWhite=true;
+  int count=0;
+  for (; i < end; i++) {
+    if (row.get(i) ^ isWhite) {
+      count++;
+    }
+ else {
+      counterAppend(count);
+      count=1;
+      isWhite=!isWhite;
+    }
+  }
+  counterAppend(count);
+}

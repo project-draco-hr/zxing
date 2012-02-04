@@ -1,57 +1,53 @@
 {
-  int[] start=findAsteriskPattern(row);
-  start[1]=0;
-  int nextStart=row.getNextSet(start[1]);
-  int end=row.getSize();
-  StringBuilder result=new StringBuilder();
-  int[] counters=new int[7];
-  int lastStart;
+  setCounters(row);
+  int startOffset=findStartPattern();
+  int nextStart=startOffset;
+  decodeRowResult.setLength(0);
   do {
-    for (int i=0; i < counters.length; i++) {
-      counters[i]=0;
-    }
-    recordPattern(row,nextStart,counters);
-    char decodedChar=toNarrowWidePattern(counters);
-    if (decodedChar == '!') {
+    int charOffset=toNarrowWidePattern(nextStart);
+    if (charOffset == -1) {
       throw NotFoundException.getNotFoundInstance();
     }
-    result.append(decodedChar);
-    lastStart=nextStart;
-    for (    int counter : counters) {
-      nextStart+=counter;
+    decodeRowResult.append((char)charOffset);
+    nextStart+=8;
+    if (decodeRowResult.length() > 1 && arrayContains(STARTEND_ENCODING,ALPHABET[charOffset])) {
+      break;
     }
-    nextStart=row.getNextSet(nextStart);
   }
- while (nextStart < end);
+ while (nextStart < counterLength);
+  int trailingWhitespace=counters[nextStart - 1];
   int lastPatternSize=0;
-  for (  int counter : counters) {
-    lastPatternSize+=counter;
+  for (int i=-8; i < -1; i++) {
+    lastPatternSize+=counters[nextStart + i];
   }
-  int whiteSpaceAfterEnd=nextStart - lastStart - lastPatternSize;
-  if (nextStart != end && (whiteSpaceAfterEnd / 2 < lastPatternSize)) {
+  if (nextStart < counterLength && trailingWhitespace < lastPatternSize / 2) {
     throw NotFoundException.getNotFoundInstance();
   }
-  if (result.length() < 2) {
-    throw NotFoundException.getNotFoundInstance();
+  validatePattern(startOffset);
+  for (int i=0; i < decodeRowResult.length(); i++) {
+    decodeRowResult.setCharAt(i,ALPHABET[decodeRowResult.charAt(i)]);
   }
-  char startchar=result.charAt(0);
+  char startchar=decodeRowResult.charAt(0);
   if (!arrayContains(STARTEND_ENCODING,startchar)) {
     throw NotFoundException.getNotFoundInstance();
   }
-  for (int k=1; k < result.length(); k++) {
-    if (result.charAt(k) == startchar) {
-      if (k + 1 != result.length()) {
-        result.delete(k + 1,result.length() - 1);
-        break;
-      }
-    }
-  }
-  if (result.length() <= minCharacterLength) {
+  char endchar=decodeRowResult.charAt(decodeRowResult.length() - 1);
+  if (!arrayContains(STARTEND_ENCODING,endchar)) {
     throw NotFoundException.getNotFoundInstance();
   }
-  result.deleteCharAt(result.length() - 1);
-  result.deleteCharAt(0);
-  float left=(float)(start[1] + start[0]) / 2.0f;
-  float right=(float)(nextStart + lastStart) / 2.0f;
-  return new Result(result.toString(),null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODABAR);
+  if (decodeRowResult.length() <= MIN_CHARACTER_LENGTH) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  decodeRowResult.deleteCharAt(decodeRowResult.length() - 1);
+  decodeRowResult.deleteCharAt(0);
+  int runningCount=0;
+  for (int i=0; i < startOffset; i++) {
+    runningCount+=counters[i];
+  }
+  float left=(float)runningCount;
+  for (int i=startOffset; i < nextStart - 1; i++) {
+    runningCount+=counters[i];
+  }
+  float right=(float)runningCount;
+  return new Result(decodeRowResult.toString(),null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODABAR);
 }

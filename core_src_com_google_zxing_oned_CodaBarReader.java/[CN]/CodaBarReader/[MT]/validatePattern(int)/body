@@ -1,0 +1,43 @@
+{
+  int[] sizes={0,0,0,0};
+  int[] counts={0,0,0,0};
+  int end=decodeRowResult.length() - 1;
+  int pos=start;
+  for (int i=0; true; i++) {
+    int pattern=CHARACTER_ENCODINGS[decodeRowResult.charAt(i)];
+    for (int j=6; j >= 0; j--) {
+      int category=(j & 1) + (pattern & 1) * 2;
+      sizes[category]+=counters[pos + j];
+      counts[category]++;
+      pattern>>=1;
+    }
+    if (i >= end) {
+      break;
+    }
+    pos+=8;
+  }
+  int[] maxes=new int[4];
+  int[] mins=new int[4];
+  for (int i=0; i < 2; i++) {
+    mins[i]=0;
+    mins[i + 2]=((sizes[i] << INTEGER_MATH_SHIFT) / counts[i] + (sizes[i + 2] << INTEGER_MATH_SHIFT) / counts[i + 2]) >> 1;
+    maxes[i]=mins[i + 2];
+    maxes[i + 2]=(sizes[i + 2] * MAX_ACCEPTABLE + PADDING) / counts[i + 2];
+  }
+  pos=start;
+  for (int i=0; true; i++) {
+    int pattern=CHARACTER_ENCODINGS[decodeRowResult.charAt(i)];
+    for (int j=6; j >= 0; j--) {
+      int category=(j & 1) + (pattern & 1) * 2;
+      int size=counters[pos + j] << INTEGER_MATH_SHIFT;
+      if (size < mins[category] || size > maxes[category]) {
+        throw NotFoundException.getNotFoundInstance();
+      }
+      pattern>>=1;
+    }
+    if (i >= end) {
+      break;
+    }
+    pos+=8;
+  }
+}

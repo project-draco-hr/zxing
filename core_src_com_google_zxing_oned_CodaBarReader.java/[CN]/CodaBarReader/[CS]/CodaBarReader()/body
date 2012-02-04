@@ -1,0 +1,5 @@
+{
+  decodeRowResult=new StringBuilder(20);
+  counters=new int[80];
+  counterLength=0;
+}
