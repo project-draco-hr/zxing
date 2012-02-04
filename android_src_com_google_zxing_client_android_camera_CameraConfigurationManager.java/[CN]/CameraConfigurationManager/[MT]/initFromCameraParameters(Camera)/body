@@ -12,6 +12,6 @@
   }
   screenResolution=new Point(width,height);
   Log.i(TAG,"Screen resolution: " + screenResolution);
-  cameraResolution=findBestPreviewSizeValue(parameters,screenResolution,false);
+  cameraResolution=findBestPreviewSizeValue(parameters,screenResolution);
   Log.i(TAG,"Camera resolution: " + cameraResolution);
 }

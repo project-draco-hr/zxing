@@ -1,0 +1,55 @@
+{
+  List<Camera.Size> supportedPreviewSizes=parameters.getSupportedPreviewSizes();
+  if (Log.isLoggable(TAG,Log.INFO)) {
+    StringBuilder previewSizesString=new StringBuilder();
+    for (    Camera.Size supportedPreviewSize : supportedPreviewSizes) {
+      previewSizesString.append(supportedPreviewSize.width).append('x').append(supportedPreviewSize.height).append(' ');
+    }
+    Log.i(TAG,"Supported preview sizes: " + previewSizesString);
+  }
+  Point bestSize=null;
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
+  if (prefs.getBoolean(PreferencesActivity.KEY_FORCE_PREVIEW_TO_SCREEN_SIZE,false)) {
+    Log.i(TAG,"Forcing to screen size");
+    for (    Camera.Size supportedPreviewSize : supportedPreviewSizes) {
+      int realWidth=supportedPreviewSize.width;
+      int realHeight=supportedPreviewSize.height;
+      boolean isCandidatePortrait=realWidth < realHeight;
+      int maybeFlippedWidth=isCandidatePortrait ? realHeight : realWidth;
+      int maybeFlippedHeight=isCandidatePortrait ? realWidth : realHeight;
+      if (maybeFlippedWidth == screenResolution.x && maybeFlippedHeight == screenResolution.y) {
+        bestSize=new Point(realWidth,realHeight);
+        break;
+      }
+    }
+  }
+ else {
+    int diff=Integer.MAX_VALUE;
+    for (    Camera.Size supportedPreviewSize : supportedPreviewSizes) {
+      int realWidth=supportedPreviewSize.width;
+      int realHeight=supportedPreviewSize.height;
+      int pixels=realWidth * realHeight;
+      if (pixels < MIN_PREVIEW_PIXELS || pixels > MAX_PREVIEW_PIXELS) {
+        continue;
+      }
+      boolean isCandidatePortrait=realWidth < realHeight;
+      int maybeFlippedWidth=isCandidatePortrait ? realHeight : realWidth;
+      int maybeFlippedHeight=isCandidatePortrait ? realWidth : realHeight;
+      int newDiff=Math.abs(screenResolution.x * maybeFlippedHeight - screenResolution.y * maybeFlippedWidth);
+      if (newDiff == 0) {
+        bestSize=new Point(realWidth,realHeight);
+        break;
+      }
+      if (newDiff < diff) {
+        bestSize=new Point(realWidth,realHeight);
+        diff=newDiff;
+      }
+    }
+  }
+  if (bestSize == null) {
+    Camera.Size defaultSize=parameters.getPreviewSize();
+    bestSize=new Point(defaultSize.width,defaultSize.height);
+    Log.i(TAG,"No suitable preview sizes, using default: " + bestSize);
+  }
+  return bestSize;
+}
