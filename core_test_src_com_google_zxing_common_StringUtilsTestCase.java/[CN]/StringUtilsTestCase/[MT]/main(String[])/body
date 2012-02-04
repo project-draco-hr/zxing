@@ -1,0 +1,13 @@
+{
+  String text=args[0];
+  Charset charset=Charset.forName(args[1]);
+  StringBuilder declaration=new StringBuilder();
+  declaration.append("new byte[] { ");
+  for (  byte b : text.getBytes(charset)) {
+    declaration.append("(byte) 0x");
+    declaration.append(Integer.toHexString(b & 0xFF));
+    declaration.append(", ");
+  }
+  declaration.append('}');
+  System.out.println(declaration);
+}

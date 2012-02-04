@@ -5,94 +5,127 @@
       return characterSet;
     }
   }
-  if (bytes.length > 3 && bytes[0] == (byte)0xEF && bytes[1] == (byte)0xBB && bytes[2] == (byte)0xBF) {
-    return UTF8;
-  }
   int length=bytes.length;
   boolean canBeISO88591=true;
   boolean canBeShiftJIS=true;
   boolean canBeUTF8=true;
   int utf8BytesLeft=0;
-  int maybeDoubleByteCount=0;
-  int maybeSingleByteKatakanaCount=0;
-  boolean sawLatin1Supplement=false;
-  boolean sawUTF8Start=false;
-  boolean lastWasPossibleDoubleByteStart=false;
+  int utf2BytesChars=0;
+  int utf3BytesChars=0;
+  int utf4BytesChars=0;
+  int sjisBytesLeft=0;
+  int sjisKatakanaChars=0;
+  int sjisCurKatakanaWordLength=0;
+  int sjisCurDoubleBytesWordLength=0;
+  int sjisMaxKatakanaWordLength=0;
+  int sjisMaxDoubleBytesWordLength=0;
+  int isoHighOther=0;
+  boolean utf8bom=bytes.length > 3 && bytes[0] == (byte)0xEF && bytes[1] == (byte)0xBB && bytes[2] == (byte)0xBF;
   for (int i=0; i < length && (canBeISO88591 || canBeShiftJIS || canBeUTF8); i++) {
     int value=bytes[i] & 0xFF;
-    if (value >= 0x80 && value <= 0xBF) {
+    if (canBeUTF8) {
       if (utf8BytesLeft > 0) {
-        utf8BytesLeft--;
-      }
-    }
+        if ((value & 0x80) == 0) {
+          canBeUTF8=false;
+        }
  else {
-      if (utf8BytesLeft > 0) {
-        canBeUTF8=false;
+          utf8BytesLeft--;
+        }
       }
-      if (value >= 0xC0 && value <= 0xFD) {
-        sawUTF8Start=true;
-        int valueCopy=value;
-        while ((valueCopy & 0x40) != 0) {
+ else       if ((value & 0x80) != 0) {
+        if ((value & 0x40) == 0) {
+          canBeUTF8=false;
+        }
+ else {
           utf8BytesLeft++;
-          valueCopy<<=1;
+          if ((value & 0x20) == 0) {
+            utf2BytesChars++;
+          }
+ else {
+            utf8BytesLeft++;
+            if ((value & 0x10) == 0) {
+              utf3BytesChars++;
+            }
+ else {
+              utf8BytesLeft++;
+              if ((value & 0x08) == 0) {
+                utf4BytesChars++;
+              }
+ else {
+                canBeUTF8=false;
+              }
+            }
+          }
         }
       }
     }
-    if ((value == 0xC2 || value == 0xC3) && i < length - 1) {
-      int nextValue=bytes[i + 1] & 0xFF;
-      if (nextValue <= 0xBF && ((value == 0xC2 && nextValue >= 0xA0) || (value == 0xC3 && nextValue >= 0x80))) {
-        sawLatin1Supplement=true;
+    if (canBeISO88591) {
+      if (value > 0x7F && value < 0xA0) {
+        canBeISO88591=false;
+      }
+ else       if (value > 0x9F) {
+        if (value < 0xC0 || value == 0xD7 || value == 0xF7) {
+          isoHighOther++;
+        }
       }
     }
-    if (value >= 0x7F && value <= 0x9F) {
-      canBeISO88591=false;
-    }
-    if (value >= 0xA1 && value <= 0xDF) {
-      if (!lastWasPossibleDoubleByteStart) {
-        maybeSingleByteKatakanaCount++;
-      }
-    }
-    if (!lastWasPossibleDoubleByteStart && ((value >= 0xF0 && value <= 0xFF) || value == 0x80 || value == 0xA0)) {
-      canBeShiftJIS=false;
-    }
-    if ((value >= 0x81 && value <= 0x9F) || (value >= 0xE0 && value <= 0xEF)) {
-      if (lastWasPossibleDoubleByteStart) {
-        lastWasPossibleDoubleByteStart=false;
-      }
- else {
-        lastWasPossibleDoubleByteStart=true;
-        if (i >= bytes.length - 1) {
+    if (canBeShiftJIS) {
+      if (sjisBytesLeft > 0) {
+        if (value < 0x40 || value == 0x7F || value > 0xFC) {
           canBeShiftJIS=false;
         }
  else {
-          int nextValue=bytes[i + 1] & 0xFF;
-          if (nextValue < 0x40 || nextValue > 0xFC) {
-            canBeShiftJIS=false;
-          }
- else {
-            maybeDoubleByteCount++;
-          }
+          sjisBytesLeft--;
         }
       }
-    }
+ else       if (value == 0x80 || value == 0xA0 || value > 0xEF) {
+        canBeShiftJIS=false;
+      }
+ else       if (value > 0xA0 && value < 0xE0) {
+        sjisKatakanaChars++;
+        sjisCurDoubleBytesWordLength=0;
+        sjisCurKatakanaWordLength++;
+        if (sjisCurKatakanaWordLength > sjisMaxKatakanaWordLength) {
+          sjisMaxKatakanaWordLength=sjisCurKatakanaWordLength;
+        }
+      }
+ else       if (value > 0x7F) {
+        sjisBytesLeft++;
+        sjisCurKatakanaWordLength=0;
+        sjisCurDoubleBytesWordLength++;
+        if (sjisCurDoubleBytesWordLength > sjisMaxDoubleBytesWordLength) {
+          sjisMaxDoubleBytesWordLength=sjisCurDoubleBytesWordLength;
+        }
+      }
  else {
-      lastWasPossibleDoubleByteStart=false;
+        sjisCurKatakanaWordLength=0;
+        sjisCurDoubleBytesWordLength=0;
+      }
     }
   }
-  if (utf8BytesLeft > 0) {
+  if (canBeUTF8 && utf8BytesLeft > 0) {
     canBeUTF8=false;
   }
-  if (canBeShiftJIS && ASSUME_SHIFT_JIS) {
-    return SHIFT_JIS;
+  if (canBeShiftJIS && sjisBytesLeft > 0) {
+    canBeShiftJIS=false;
   }
-  if (canBeUTF8 && sawUTF8Start) {
+  if (canBeUTF8 && (utf8bom || utf2BytesChars + utf3BytesChars + utf4BytesChars > 0)) {
     return UTF8;
   }
-  if (canBeShiftJIS && (maybeDoubleByteCount >= 3 || 20 * maybeSingleByteKatakanaCount > length)) {
+  if (canBeShiftJIS && (ASSUME_SHIFT_JIS || sjisMaxKatakanaWordLength >= 3 || sjisMaxDoubleBytesWordLength >= 3)) {
     return SHIFT_JIS;
   }
-  if (!sawLatin1Supplement && canBeISO88591) {
+  if (canBeISO88591 && canBeShiftJIS) {
+    return (sjisMaxKatakanaWordLength == 2 && sjisKatakanaChars == 2) || isoHighOther * 10 >= length ? SHIFT_JIS : ISO88591;
+  }
+  if (canBeISO88591) {
     return ISO88591;
+  }
+  if (canBeShiftJIS) {
+    return SHIFT_JIS;
+  }
+  if (canBeUTF8) {
+    return UTF8;
   }
   return PLATFORM_DEFAULT_ENCODING;
 }

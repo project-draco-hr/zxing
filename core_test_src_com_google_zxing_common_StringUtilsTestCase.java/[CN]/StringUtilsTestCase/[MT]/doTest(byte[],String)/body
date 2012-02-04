@@ -1,0 +1,6 @@
+{
+  Charset charset=Charset.forName(charsetName);
+  String guessedName=StringUtils.guessEncoding(bytes,null);
+  Charset guessedEncoding=Charset.forName(guessedName);
+  assertEquals(charset,guessedEncoding);
+}
