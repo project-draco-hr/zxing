@@ -10,6 +10,7 @@
   boolean end=false;
   boolean shift=false;
   boolean switchShift=false;
+  boolean binaryShift=false;
   while (!end) {
     if (shift) {
       switchShift=true;
@@ -18,44 +19,71 @@
       lastTable=table;
     }
     int code;
-switch (table) {
-case BINARY:
-      if (endIndex - startIndex < 8) {
-        end=true;
+    if (binaryShift) {
+      if (endIndex - startIndex < 5) {
         break;
       }
-    code=readCode(correctedBits,startIndex,8);
-  startIndex+=8;
-result.append((char)code);
-break;
-default :
-int size=5;
-if (table == Table.DIGIT) {
-size=4;
-}
-if (endIndex - startIndex < size) {
-end=true;
-break;
-}
-code=readCode(correctedBits,startIndex,size);
-startIndex+=size;
-String str=getCharacter(table,code);
-if (str.startsWith("CTRL_")) {
-table=getTable(str.charAt(5));
-if (str.charAt(6) == 'S') {
-shift=true;
-}
-}
+      int length=readCode(correctedBits,startIndex,5);
+      startIndex+=5;
+      if (length == 0) {
+        if (endIndex - startIndex < 11) {
+          break;
+        }
+        length=readCode(correctedBits,startIndex,11) + 31;
+        startIndex+=11;
+      }
+      for (int charCount=0; charCount < length; charCount++) {
+        if (endIndex - startIndex < 8) {
+          end=true;
+          break;
+        }
+        code=readCode(correctedBits,startIndex,8);
+        result.append((char)code);
+        startIndex+=8;
+      }
+      binaryShift=false;
+    }
  else {
-result.append(str);
-}
-break;
-}
-if (switchShift) {
-table=lastTable;
-shift=false;
-switchShift=false;
-}
-}
-return result.toString();
+      if (table == Table.BINARY) {
+        if (endIndex - startIndex < 8) {
+          end=true;
+          break;
+        }
+        code=readCode(correctedBits,startIndex,8);
+        startIndex+=8;
+        result.append((char)code);
+      }
+ else {
+        int size=5;
+        if (table == Table.DIGIT) {
+          size=4;
+        }
+        if (endIndex - startIndex < size) {
+          end=true;
+          break;
+        }
+        code=readCode(correctedBits,startIndex,size);
+        startIndex+=size;
+        String str=getCharacter(table,code);
+        if (str.startsWith("CTRL_")) {
+          table=getTable(str.charAt(5));
+          if (str.charAt(6) == 'S') {
+            shift=true;
+            if (str.charAt(5) == 'B') {
+              binaryShift=true;
+            }
+          }
+        }
+ else {
+          result.append(str);
+        }
+      }
+    }
+    if (switchShift) {
+      table=lastTable;
+      shift=false;
+      switchShift=false;
+    }
+  }
+  return result.toString();
 }
