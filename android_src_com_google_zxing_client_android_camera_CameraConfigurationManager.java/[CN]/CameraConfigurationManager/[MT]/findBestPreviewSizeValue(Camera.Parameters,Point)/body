@@ -9,6 +9,13 @@
   }
   Point bestSize=null;
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
+  if (Build.MODEL.contains("optimus") || Build.MODEL.contains("Optimus") || Build.DEVICE.contains("optimus")|| Build.DEVICE.contains("Optimus")) {
+    if (!prefs.getBoolean(PreferencesActivity.KEY_FORCE_PREVIEW_TO_SCREEN_SIZE,false)) {
+      SharedPreferences.Editor editor=prefs.edit();
+      editor.putBoolean(PreferencesActivity.KEY_FORCE_PREVIEW_TO_SCREEN_SIZE,true);
+      editor.commit();
+    }
+  }
   if (prefs.getBoolean(PreferencesActivity.KEY_FORCE_PREVIEW_TO_SCREEN_SIZE,false)) {
     Log.i(TAG,"Forcing to screen size");
     for (    Camera.Size supportedPreviewSize : supportedPreviewSizes) {
