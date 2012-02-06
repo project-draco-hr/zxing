@@ -10,7 +10,10 @@
       db.delete(DBHelper.TABLE_NAME,DBHelper.ID_COL + '=' + cursor.getString(0),null);
     }
   }
-  finally {
+ catch (  SQLiteException sqle) {
+    Log.w(TAG,sqle);
+  }
+ finally {
     close(cursor,db);
   }
 }
