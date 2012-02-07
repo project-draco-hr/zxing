@@ -1,0 +1,4 @@
+BitMatrix matrix
+String format
+OutputStream stream
+MatrixToImageConfig config

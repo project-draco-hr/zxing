@@ -1,0 +1,4 @@
+BitMatrix matrix
+String format
+File file
+MatrixToImageConfig config

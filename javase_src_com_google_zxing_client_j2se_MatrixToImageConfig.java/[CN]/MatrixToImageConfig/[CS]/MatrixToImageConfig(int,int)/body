@@ -1,0 +1,4 @@
+{
+  this.onColor=onColor;
+  this.offColor=offColor;
+}

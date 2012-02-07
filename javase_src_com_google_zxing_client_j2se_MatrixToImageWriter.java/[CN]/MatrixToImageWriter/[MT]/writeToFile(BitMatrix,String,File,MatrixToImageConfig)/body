@@ -1,0 +1,6 @@
+{
+  BufferedImage image=toBufferedImage(matrix,config);
+  if (!ImageIO.write(image,format,file)) {
+    throw new IOException("Could not write an image of format " + format + " to "+ file);
+  }
+}
