@@ -7,50 +7,39 @@
     }
     Log.i(TAG,"Supported preview sizes: " + previewSizesString);
   }
+  for (  Camera.Size supportedPreviewSize : supportedPreviewSizes) {
+    int realWidth=supportedPreviewSize.width;
+    int realHeight=supportedPreviewSize.height;
+    int pixels=realWidth * realHeight;
+    if (pixels < MIN_PREVIEW_PIXELS || pixels > MAX_PREVIEW_PIXELS) {
+      continue;
+    }
+    boolean isCandidatePortrait=realWidth < realHeight;
+    int maybeFlippedWidth=isCandidatePortrait ? realHeight : realWidth;
+    int maybeFlippedHeight=isCandidatePortrait ? realWidth : realHeight;
+    if (maybeFlippedWidth == screenResolution.x && maybeFlippedHeight == screenResolution.y) {
+      return new Point(realWidth,realHeight);
+    }
+  }
   Point bestSize=null;
-  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
-  if (Build.MODEL.contains("optimus") || Build.MODEL.contains("Optimus") || Build.DEVICE.contains("optimus")|| Build.DEVICE.contains("Optimus")) {
-    if (!prefs.getBoolean(PreferencesActivity.KEY_FORCE_PREVIEW_TO_SCREEN_SIZE,false)) {
-      SharedPreferences.Editor editor=prefs.edit();
-      editor.putBoolean(PreferencesActivity.KEY_FORCE_PREVIEW_TO_SCREEN_SIZE,true);
-      editor.commit();
+  int diff=Integer.MAX_VALUE;
+  for (  Camera.Size supportedPreviewSize : supportedPreviewSizes) {
+    int realWidth=supportedPreviewSize.width;
+    int realHeight=supportedPreviewSize.height;
+    int pixels=realWidth * realHeight;
+    if (pixels < MIN_PREVIEW_PIXELS || pixels > MAX_PREVIEW_PIXELS) {
+      continue;
     }
-  }
-  if (prefs.getBoolean(PreferencesActivity.KEY_FORCE_PREVIEW_TO_SCREEN_SIZE,false)) {
-    Log.i(TAG,"Forcing to screen size");
-    for (    Camera.Size supportedPreviewSize : supportedPreviewSizes) {
-      int realWidth=supportedPreviewSize.width;
-      int realHeight=supportedPreviewSize.height;
-      boolean isCandidatePortrait=realWidth < realHeight;
-      int maybeFlippedWidth=isCandidatePortrait ? realHeight : realWidth;
-      int maybeFlippedHeight=isCandidatePortrait ? realWidth : realHeight;
-      if (maybeFlippedWidth == screenResolution.x && maybeFlippedHeight == screenResolution.y) {
-        bestSize=new Point(realWidth,realHeight);
-        break;
-      }
+    boolean isCandidatePortrait=realWidth < realHeight;
+    int maybeFlippedWidth=isCandidatePortrait ? realHeight : realWidth;
+    int maybeFlippedHeight=isCandidatePortrait ? realWidth : realHeight;
+    int newDiff=Math.abs(screenResolution.x * maybeFlippedHeight - screenResolution.y * maybeFlippedWidth);
+    if (newDiff == 0) {
+      return new Point(realWidth,realHeight);
     }
-  }
- else {
-    int diff=Integer.MAX_VALUE;
-    for (    Camera.Size supportedPreviewSize : supportedPreviewSizes) {
-      int realWidth=supportedPreviewSize.width;
-      int realHeight=supportedPreviewSize.height;
-      int pixels=realWidth * realHeight;
-      if (pixels < MIN_PREVIEW_PIXELS || pixels > MAX_PREVIEW_PIXELS) {
-        continue;
-      }
-      boolean isCandidatePortrait=realWidth < realHeight;
-      int maybeFlippedWidth=isCandidatePortrait ? realHeight : realWidth;
-      int maybeFlippedHeight=isCandidatePortrait ? realWidth : realHeight;
-      int newDiff=Math.abs(screenResolution.x * maybeFlippedHeight - screenResolution.y * maybeFlippedWidth);
-      if (newDiff == 0) {
-        bestSize=new Point(realWidth,realHeight);
-        break;
-      }
-      if (newDiff < diff) {
-        bestSize=new Point(realWidth,realHeight);
-        diff=newDiff;
-      }
+    if (newDiff < diff) {
+      bestSize=new Point(realWidth,realHeight);
+      diff=newDiff;
     }
   }
   if (bestSize == null) {
