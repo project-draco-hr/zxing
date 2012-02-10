@@ -24,9 +24,16 @@
             max=pixel;
           }
         }
+        if (max - min > MIN_DYNAMIC_RANGE) {
+          for (yy++, offset+=width; yy < BLOCK_SIZE; yy++, offset+=width) {
+            for (int xx=0; xx < BLOCK_SIZE; xx++) {
+              sum+=luminances[offset + xx] & 0xFF;
+            }
+          }
+        }
       }
-      int average=sum >> 6;
-      if (max - min <= 24) {
+      int average=sum >> (BLOCK_SIZE_POWER * 2);
+      if (max - min <= MIN_DYNAMIC_RANGE) {
         average=min >> 1;
         if (y > 0 && x > 0) {
           int averageNeighborBlackPoint=(blackPoints[y - 1][x] + (2 * blackPoints[y][x - 1]) + blackPoints[y - 1][x - 1]) >> 2;
