@@ -1,0 +1,3 @@
+{
+  doTest("bitcoin:mySD89iqpmptrK3PhHFW9fa7BXiP7ANy3Y","bitcoin:mySD89iqpmptrK3PhHFW9fa7BXiP7ANy3Y",null);
+}
