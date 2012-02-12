@@ -54,6 +54,7 @@
           value>>=8;
         }
         result.append(decodedData);
+        count=0;
       }
     }
   }

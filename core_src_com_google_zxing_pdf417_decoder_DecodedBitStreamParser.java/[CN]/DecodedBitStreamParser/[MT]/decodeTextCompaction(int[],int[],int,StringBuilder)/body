@@ -26,6 +26,7 @@ case ALPHA:
         }
  else         if (subModeCh == MODE_SHIFT_TO_BYTE_COMPACTION_MODE) {
           result.append((char)byteCompactionData[i]);
+          subMode=Mode.ALPHA;
         }
       }
     break;
@@ -50,6 +51,7 @@ case LOWER:
     }
  else     if (subModeCh == MODE_SHIFT_TO_BYTE_COMPACTION_MODE) {
       result.append((char)byteCompactionData[i]);
+      subMode=Mode.ALPHA;
     }
   }
 break;
@@ -76,6 +78,7 @@ if (subModeCh == PL) {
 }
  else if (subModeCh == MODE_SHIFT_TO_BYTE_COMPACTION_MODE) {
   result.append((char)byteCompactionData[i]);
+  subMode=Mode.ALPHA;
 }
 }
 break;
@@ -89,6 +92,7 @@ subMode=Mode.ALPHA;
 }
  else if (subModeCh == MODE_SHIFT_TO_BYTE_COMPACTION_MODE) {
 result.append((char)byteCompactionData[i]);
+subMode=Mode.ALPHA;
 }
 }
 break;
@@ -112,6 +116,10 @@ ch=PUNCT_CHARS[subModeCh];
 }
  else {
 if (subModeCh == PAL) {
+subMode=Mode.ALPHA;
+}
+ else if (subModeCh == MODE_SHIFT_TO_BYTE_COMPACTION_MODE) {
+result.append((char)byteCompactionData[i]);
 subMode=Mode.ALPHA;
 }
 }
