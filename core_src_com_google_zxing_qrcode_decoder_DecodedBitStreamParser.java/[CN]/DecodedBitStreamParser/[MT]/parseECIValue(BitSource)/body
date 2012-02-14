@@ -11,5 +11,5 @@
     int secondThirdBytes=bits.readBits(16);
     return ((firstByte & 0x1F) << 16) | secondThirdBytes;
   }
-  throw new IllegalArgumentException("Bad ECI bits starting with byte " + firstByte);
+  throw FormatException.getFormatInstance();
 }

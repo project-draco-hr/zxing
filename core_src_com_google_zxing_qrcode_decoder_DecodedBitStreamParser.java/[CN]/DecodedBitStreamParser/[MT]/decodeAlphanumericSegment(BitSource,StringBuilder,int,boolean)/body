@@ -1,6 +1,9 @@
 {
   int start=result.length();
   while (count > 1) {
+    if (bits.available() < 11) {
+      throw FormatException.getFormatInstance();
+    }
     int nextTwoCharsBits=bits.readBits(11);
     result.append(toAlphaNumericChar(nextTwoCharsBits / 45));
     result.append(toAlphaNumericChar(nextTwoCharsBits % 45));
