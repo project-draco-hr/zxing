@@ -1,0 +1,6 @@
+{
+  if (a == 0) {
+    throw new ArithmeticException();
+  }
+  return expTable[modulus - logTable[a] - 1];
+}

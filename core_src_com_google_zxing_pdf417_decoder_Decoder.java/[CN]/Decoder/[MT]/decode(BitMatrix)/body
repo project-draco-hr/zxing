@@ -7,7 +7,7 @@
   int ecLevel=parser.getECLevel();
   int numECCodewords=1 << (ecLevel + 1);
   int[] erasures=parser.getErasures();
-  correctErrors(codewords,erasures,numECCodewords);
+  correctErrors(codewords,erasures.length,numECCodewords);
   verifyCodewordCount(codewords,numECCodewords);
   return DecodedBitStreamParser.decode(codewords);
 }

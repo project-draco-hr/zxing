@@ -1,0 +1,6 @@
+{
+  if (a == 0 || b == 0) {
+    return 0;
+  }
+  return expTable[(logTable[a] + logTable[b]) % (modulus - 1)];
+}

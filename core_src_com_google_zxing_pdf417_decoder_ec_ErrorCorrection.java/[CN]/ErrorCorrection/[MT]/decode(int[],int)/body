@@ -1,0 +1,15 @@
+{
+  ModulusPoly poly=new ModulusPoly(field,received);
+  int[] syndromeCoefficients=new int[numECCodewords];
+  boolean noError=true;
+  for (int i=0; i < numECCodewords; i++) {
+    int eval=poly.evaluateAt(field.exp(i + 1));
+    syndromeCoefficients[syndromeCoefficients.length - 1 - i]=eval;
+    if (eval != 0) {
+      noError=false;
+    }
+  }
+  if (!noError) {
+    throw ChecksumException.getChecksumInstance();
+  }
+}

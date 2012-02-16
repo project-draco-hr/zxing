@@ -1,0 +1,3 @@
+{
+  return coefficients[coefficients.length - 1 - degree];
+}
