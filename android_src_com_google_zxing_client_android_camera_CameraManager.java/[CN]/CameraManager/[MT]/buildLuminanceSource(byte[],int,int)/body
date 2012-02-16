@@ -3,5 +3,5 @@
   if (rect == null) {
     return null;
   }
-  return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height(),reverseImage);
+  return new PlanarYUVLuminanceSource(data,width,height,rect.left,rect.top,rect.width(),rect.height(),false);
 }

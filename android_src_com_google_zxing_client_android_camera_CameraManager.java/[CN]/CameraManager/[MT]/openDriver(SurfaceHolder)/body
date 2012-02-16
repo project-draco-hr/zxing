@@ -18,6 +18,4 @@
     }
   }
   configManager.setDesiredCameraParameters(theCamera);
-  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
-  reverseImage=prefs.getBoolean(PreferencesActivity.KEY_REVERSE_IMAGE,false);
 }
