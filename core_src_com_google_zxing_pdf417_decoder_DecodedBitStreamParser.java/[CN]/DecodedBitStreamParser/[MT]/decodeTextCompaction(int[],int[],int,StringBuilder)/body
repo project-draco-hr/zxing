@@ -26,6 +26,8 @@ case ALPHA:
         }
  else         if (subModeCh == MODE_SHIFT_TO_BYTE_COMPACTION_MODE) {
           result.append((char)byteCompactionData[i]);
+        }
+ else         if (subModeCh == TEXT_COMPACTION_MODE_LATCH) {
           subMode=Mode.ALPHA;
         }
       }
@@ -53,6 +55,9 @@ case LOWER:
       result.append((char)byteCompactionData[i]);
       subMode=Mode.ALPHA;
     }
+ else     if (subModeCh == TEXT_COMPACTION_MODE_LATCH) {
+      subMode=Mode.ALPHA;
+    }
   }
 break;
 case MIXED:
@@ -78,6 +83,8 @@ if (subModeCh == PL) {
 }
  else if (subModeCh == MODE_SHIFT_TO_BYTE_COMPACTION_MODE) {
   result.append((char)byteCompactionData[i]);
+}
+ else if (subModeCh == TEXT_COMPACTION_MODE_LATCH) {
   subMode=Mode.ALPHA;
 }
 }
@@ -92,6 +99,8 @@ subMode=Mode.ALPHA;
 }
  else if (subModeCh == MODE_SHIFT_TO_BYTE_COMPACTION_MODE) {
 result.append((char)byteCompactionData[i]);
+}
+ else if (subModeCh == TEXT_COMPACTION_MODE_LATCH) {
 subMode=Mode.ALPHA;
 }
 }
@@ -104,6 +113,9 @@ ch=(char)('A' + subModeCh);
  else {
 if (subModeCh == 26) {
 ch=' ';
+}
+ else if (subModeCh == TEXT_COMPACTION_MODE_LATCH) {
+subMode=Mode.ALPHA;
 }
  else {
 }
@@ -120,6 +132,9 @@ subMode=Mode.ALPHA;
 }
  else if (subModeCh == MODE_SHIFT_TO_BYTE_COMPACTION_MODE) {
 result.append((char)byteCompactionData[i]);
+subMode=Mode.ALPHA;
+}
+ else if (subModeCh == TEXT_COMPACTION_MODE_LATCH) {
 subMode=Mode.ALPHA;
 }
 }

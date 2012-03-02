@@ -13,12 +13,11 @@
  else {
 switch (code) {
 case TEXT_COMPACTION_MODE_LATCH:
-        codeIndex--;
-      end=true;
-    break;
+        textCompactionData[index++]=TEXT_COMPACTION_MODE_LATCH;
+      break;
 case BYTE_COMPACTION_MODE_LATCH:
-  codeIndex--;
-end=true;
+    codeIndex--;
+  end=true;
 break;
 case NUMERIC_COMPACTION_MODE_LATCH:
 codeIndex--;
