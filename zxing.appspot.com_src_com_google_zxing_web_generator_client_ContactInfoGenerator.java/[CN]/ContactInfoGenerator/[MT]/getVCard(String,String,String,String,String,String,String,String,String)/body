@@ -3,6 +3,7 @@
   output.append("BEGIN:VCARD\n");
   maybeAppendvCard(output,"N",name);
   maybeAppendvCard(output,"ORG",company);
+  maybeAppendvCard(output,"TITLE",title);
   maybeAppendvCard(output,"TEL",tel);
   maybeAppendvCard(output,"URL",url);
   maybeAppendvCard(output,"EMAIL",email);

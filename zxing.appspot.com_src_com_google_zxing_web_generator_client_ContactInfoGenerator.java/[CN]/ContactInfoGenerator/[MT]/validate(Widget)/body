@@ -5,6 +5,9 @@
   if (widget == company) {
     getCompanyField();
   }
+  if (widget == title) {
+    getTitleField();
+  }
   if (widget == tel) {
     getTelField();
   }

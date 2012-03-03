@@ -1,5 +1,6 @@
 String name
 String company
+String title
 String tel
 String url
 String email

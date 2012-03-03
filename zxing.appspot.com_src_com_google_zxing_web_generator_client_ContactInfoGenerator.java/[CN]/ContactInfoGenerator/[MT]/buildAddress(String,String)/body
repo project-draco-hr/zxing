@@ -1,11 +1,11 @@
 {
-  if (address.length() > 0) {
-    if (address2.length() > 0) {
+  if (!address.isEmpty()) {
+    if (!address2.isEmpty()) {
       return address + ' ' + address2;
     }
     return address;
   }
-  if (address2.length() > 0) {
+  if (!address2.isEmpty()) {
     return address2;
   }
   return "";

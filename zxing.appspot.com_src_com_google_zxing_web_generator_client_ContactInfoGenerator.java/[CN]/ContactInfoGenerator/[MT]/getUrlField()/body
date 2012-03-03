@@ -1,6 +1,6 @@
 {
   String input=url.getText();
-  if (input != null && input.length() > 0) {
+  if (input != null && !input.isEmpty()) {
     Validators.validateUrl(input);
   }
   return input;

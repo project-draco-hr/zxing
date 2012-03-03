@@ -7,7 +7,17 @@
   maybeAppendMECARD(output,"URL",url);
   maybeAppendMECARD(output,"EMAIL",email);
   maybeAppendMECARD(output,"ADR",buildAddress(address,address2));
-  maybeAppendMECARD(output,"NOTE",memo);
+  StringBuilder memoContents=new StringBuilder();
+  if (memo != null) {
+    memoContents.append(memo);
+  }
+  if (title != null) {
+    if (memoContents.length() > 0) {
+      memoContents.append('\n');
+    }
+    memoContents.append(title);
+  }
+  maybeAppendMECARD(output,"NOTE",memoContents.toString());
   output.append(';');
   return output.toString();
 }
