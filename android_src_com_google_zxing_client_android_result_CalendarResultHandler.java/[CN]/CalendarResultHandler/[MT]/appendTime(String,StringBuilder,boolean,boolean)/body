@@ -17,8 +17,9 @@ synchronized (DATE_TIME_FORMAT) {
     long milliseconds=date.getTime();
     if (when.length() == 16 && when.charAt(15) == 'Z') {
       Calendar calendar=new GregorianCalendar();
-      int offset=calendar.get(Calendar.ZONE_OFFSET) + calendar.get(Calendar.DST_OFFSET);
-      milliseconds+=offset;
+      milliseconds+=calendar.get(Calendar.ZONE_OFFSET);
+      calendar.setTime(new Date(milliseconds));
+      milliseconds+=calendar.get(Calendar.DST_OFFSET);
     }
     ParsedResult.maybeAppend(DateFormat.getDateTimeInstance().format(milliseconds),result);
   }
