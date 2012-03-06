@@ -62,8 +62,14 @@
       }
       if (quotedPrintable) {
         element=decodeQuotedPrintable(element,quotedPrintableCharset);
+        if (parseFieldDivider) {
+          element=UNESCAPED_SEMICOLONS.matcher(element).replaceAll("\n").trim();
+        }
       }
  else {
+        if (parseFieldDivider) {
+          element=UNESCAPED_SEMICOLONS.matcher(element).replaceAll("\n").trim();
+        }
         element=CR_LF_SPACE_TAB.matcher(element).replaceAll("");
         element=NEWLINE_ESCAPE.matcher(element).replaceAll("\n");
         element=VCARD_ESCAPES.matcher(element).replaceAll("$1");

@@ -1,4 +1,0 @@
-{
-  List<List<String>> values=matchVCardPrefixedField(prefix,rawText,trim);
-  return values == null || values.isEmpty() ? null : values.get(0);
-}
