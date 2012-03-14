@@ -1,5 +1,5 @@
 {
-  String rawText=result.getText();
+  String rawText=getMassagedText(result);
   if (!rawText.contains("MEMORY") || !rawText.contains("\r\n")) {
     return null;
   }

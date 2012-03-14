@@ -3,7 +3,7 @@
   if (format != BarcodeFormat.RSS_EXPANDED) {
     return null;
   }
-  String rawText=result.getText();
+  String rawText=getMassagedText(result);
   if (rawText == null) {
     return null;
   }

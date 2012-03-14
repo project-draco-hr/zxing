@@ -1,5 +1,5 @@
 {
-  String rawText=result.getText();
+  String rawText=getMassagedText(result);
   if (!(rawText.startsWith("smtp:") || rawText.startsWith("SMTP:"))) {
     return null;
   }

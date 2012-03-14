@@ -1,5 +1,5 @@
 {
-  String rawText=result.getText();
+  String rawText=getMassagedText(result);
   if (!rawText.startsWith("tel:") && !rawText.startsWith("TEL:")) {
     return null;
   }

@@ -1,0 +1,7 @@
+{
+  String text=result.getText();
+  if (text.startsWith(BYTE_ORDER_MARK)) {
+    text=text.substring(1);
+  }
+  return text;
+}
