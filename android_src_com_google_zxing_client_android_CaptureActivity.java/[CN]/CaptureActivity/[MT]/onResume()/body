@@ -53,6 +53,7 @@
       sourceUrl=dataString;
       Uri inputUri=Uri.parse(sourceUrl);
       returnUrlTemplate=inputUri.getQueryParameter(RETURN_URL_PARAM);
+      returnRaw=inputUri.getQueryParameter(RAW_PARAM) != null;
       decodeFormats=DecodeFormatManager.parseDecodeFormats(inputUri);
     }
     characterSet=intent.getStringExtra(Intents.Scan.CHARACTER_SET);

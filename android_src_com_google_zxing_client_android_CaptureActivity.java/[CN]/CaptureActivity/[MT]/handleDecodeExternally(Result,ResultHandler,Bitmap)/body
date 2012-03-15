@@ -45,9 +45,9 @@
   }
  else   if (source == IntentSource.ZXING_LINK) {
     if (returnUrlTemplate != null) {
-      String codeReplacement=String.valueOf(resultHandler.getDisplayContents());
+      CharSequence codeReplacement=returnRaw ? rawResult.getText() : resultHandler.getDisplayContents();
       try {
-        codeReplacement=URLEncoder.encode(codeReplacement,"UTF-8");
+        codeReplacement=URLEncoder.encode(codeReplacement.toString(),"UTF-8");
       }
  catch (      UnsupportedEncodingException e) {
       }
