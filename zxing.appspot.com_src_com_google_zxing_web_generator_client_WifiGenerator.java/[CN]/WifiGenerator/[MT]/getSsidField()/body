@@ -3,5 +3,6 @@
   if (input.length() < 1) {
     throw new GeneratorException("SSID must be at least 1 character.");
   }
-  return parseTextField("SSID",ssid);
+  String parsed=parseTextField("SSID",ssid);
+  return quoteHex(parsed);
 }

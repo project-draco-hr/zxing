@@ -1,0 +1,9 @@
+{
+  if (value != null && value.matches("[0-9A-Fa-f]+")) {
+    if (value.charAt(0) == '"' && value.charAt(value.length() - 1) == '"') {
+      return value;
+    }
+    return '\"' + value + '\"';
+  }
+  return value;
+}
