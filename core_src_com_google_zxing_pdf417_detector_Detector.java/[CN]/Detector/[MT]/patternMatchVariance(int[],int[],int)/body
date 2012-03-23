@@ -9,11 +9,11 @@
   if (total < patternLength) {
     return Integer.MAX_VALUE;
   }
-  int unitBarWidth=(total << 8) / patternLength;
+  int unitBarWidth=(total << INTEGER_MATH_SHIFT) / patternLength;
   maxIndividualVariance=(maxIndividualVariance * unitBarWidth) >> 8;
   int totalVariance=0;
   for (int x=0; x < numCounters; x++) {
-    int counter=counters[x] << 8;
+    int counter=counters[x] << INTEGER_MATH_SHIFT;
     int scaledPattern=pattern[x] * unitBarWidth;
     int variance=counter > scaledPattern ? counter - scaledPattern : scaledPattern - counter;
     if (variance > maxIndividualVariance) {

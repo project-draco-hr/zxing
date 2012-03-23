@@ -1,8 +1,9 @@
 {
   BitMatrix matrix=image.getBlackMatrix();
-  ResultPoint[] vertices=findVertices(matrix);
+  boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
+  ResultPoint[] vertices=findVertices(matrix,tryHarder);
   if (vertices == null) {
-    vertices=findVertices180(matrix);
+    vertices=findVertices180(matrix,tryHarder);
     if (vertices != null) {
       correctCodeWordVertices(vertices,true);
     }

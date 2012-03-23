@@ -4,7 +4,8 @@
   ResultPoint[] result=new ResultPoint[8];
   boolean found=false;
   int[] counters=new int[START_PATTERN.length];
-  for (int i=0; i < height; i++) {
+  int rowStep=Math.max(1,height >> (tryHarder ? 9 : 7));
+  for (int i=0; i < height; i+=rowStep) {
     int[] loc=findGuardPattern(matrix,0,i,width,false,START_PATTERN,counters);
     if (loc != null) {
       result[0]=new ResultPoint(loc[0],i);
@@ -15,7 +16,7 @@
   }
   if (found) {
     found=false;
-    for (int i=height - 1; i > 0; i--) {
+    for (int i=height - 1; i > 0; i-=rowStep) {
       int[] loc=findGuardPattern(matrix,0,i,width,false,START_PATTERN,counters);
       if (loc != null) {
         result[1]=new ResultPoint(loc[0],i);
@@ -28,7 +29,7 @@
   counters=new int[STOP_PATTERN.length];
   if (found) {
     found=false;
-    for (int i=0; i < height; i++) {
+    for (int i=0; i < height; i+=rowStep) {
       int[] loc=findGuardPattern(matrix,0,i,width,false,STOP_PATTERN,counters);
       if (loc != null) {
         result[2]=new ResultPoint(loc[1],i);
@@ -40,7 +41,7 @@
   }
   if (found) {
     found=false;
-    for (int i=height - 1; i > 0; i--) {
+    for (int i=height - 1; i > 0; i-=rowStep) {
       int[] loc=findGuardPattern(matrix,0,i,width,false,STOP_PATTERN,counters);
       if (loc != null) {
         result[3]=new ResultPoint(loc[1],i);
