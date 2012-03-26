@@ -10,6 +10,9 @@
     count-=2;
   }
   if (count == 1) {
+    if (bits.available() < 6) {
+      throw FormatException.getFormatInstance();
+    }
     result.append(toAlphaNumericChar(bits.readBits(6)));
   }
   if (fc1InEffect) {
