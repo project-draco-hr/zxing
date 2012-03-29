@@ -2,6 +2,5 @@
   Logger logger=Logger.getLogger("com.google.zxing");
   logger.addHandler(new ServletContextLogHandler(servletConfig.getServletContext()));
   diskFileItemFactory=new DiskFileItemFactory();
-  client=new DefaultHttpClient();
   log.info("DecodeServlet configured");
 }

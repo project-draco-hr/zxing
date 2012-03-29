@@ -2,4 +2,5 @@
   timer.cancel();
   numRecentAccesses.clear();
   bannedIPAddresses.clear();
+  badIPAddresses.clear();
 }

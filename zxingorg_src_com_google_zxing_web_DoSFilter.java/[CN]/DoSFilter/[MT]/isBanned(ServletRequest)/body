@@ -1,6 +1,6 @@
 {
   String remoteIPAddressString=request.getRemoteAddr();
-  if (bannedIPAddresses.contains(remoteIPAddressString)) {
+  if (bannedIPAddresses.contains(remoteIPAddressString) || badIPAddresses.contains(remoteIPAddressString)) {
     return true;
   }
   InetAddress remoteIPAddress;

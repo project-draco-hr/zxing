@@ -22,6 +22,13 @@
   }
   HttpUriRequest getRequest=new HttpGet(imageURI);
   getRequest.addHeader("Connection","close");
+  HttpParams params=new BasicHttpParams();
+  DefaultHttpClient.setDefaultHttpParams(params);
+  params.setIntParameter(CoreConnectionPNames.SO_LINGER,5);
+  params.setIntParameter(CoreConnectionPNames.SO_TIMEOUT,5000);
+  params.setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,5000);
+  ClientConnectionManager connectionManager=new BasicClientConnectionManager();
+  HttpClient client=new DefaultHttpClient(connectionManager,params);
   try {
     HttpResponse getResponse;
     try {
@@ -67,8 +74,6 @@ catch (    IOException ioe) {
     }
   }
   finally {
-    ClientConnectionManager connectionManager=client.getConnectionManager();
-    connectionManager.closeExpiredConnections();
-    connectionManager.closeIdleConnections(1,TimeUnit.SECONDS);
+    connectionManager.shutdown();
   }
 }

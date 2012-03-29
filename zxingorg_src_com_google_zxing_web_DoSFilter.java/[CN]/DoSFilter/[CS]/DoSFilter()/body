@@ -2,4 +2,5 @@
   numRecentAccesses=new IPTrie();
   timer=new Timer("DosFilter reset timer");
   bannedIPAddresses=Collections.synchronizedSet(new HashSet<String>());
+  badIPAddresses=new HashSet<String>();
 }
