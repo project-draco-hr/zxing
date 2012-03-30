@@ -1,6 +1,13 @@
 {
   Logger logger=Logger.getLogger("com.google.zxing");
   logger.addHandler(new ServletContextLogHandler(servletConfig.getServletContext()));
+  gcHackTimer=new Timer();
+  gcHackTimer.schedule(new TimerTask(){
+    @Override public void run(){
+      System.gc();
+    }
+  }
+,GC_HACK_INTERVAL_MS,GC_HACK_INTERVAL_MS);
   diskFileItemFactory=new DiskFileItemFactory();
   log.info("DecodeServlet configured");
 }

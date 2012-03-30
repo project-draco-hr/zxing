@@ -20,60 +20,55 @@
     response.sendRedirect("badurl.jspx");
     return;
   }
-  HttpUriRequest getRequest=new HttpGet(imageURI);
-  getRequest.addHeader("Connection","close");
-  HttpParams params=new BasicHttpParams();
-  DefaultHttpClient.setDefaultHttpParams(params);
-  params.setIntParameter(CoreConnectionPNames.SO_LINGER,5);
-  params.setIntParameter(CoreConnectionPNames.SO_TIMEOUT,5000);
-  params.setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,5000);
-  ClientConnectionManager connectionManager=new BasicClientConnectionManager();
-  HttpClient client=new DefaultHttpClient(connectionManager,params);
+  HttpURLConnection connection=(HttpURLConnection)imageURI.toURL().openConnection();
+  connection.setAllowUserInteraction(false);
+  connection.setReadTimeout(5000);
+  connection.setConnectTimeout(5000);
+  connection.setRequestProperty("User-Agent","zxing.org");
+  connection.setRequestProperty("Connection","close");
   try {
-    HttpResponse getResponse;
     try {
-      getResponse=client.execute(getRequest);
+      connection.connect();
     }
- catch (    IllegalArgumentException iae) {
-      if (log.isLoggable(Level.FINE)) {
-        log.fine(iae.toString());
-      }
-      getRequest.abort();
-      response.sendRedirect("badurl.jspx");
-      return;
-    }
-catch (    IOException ioe) {
+ catch (    IOException ioe) {
       if (log.isLoggable(Level.FINE)) {
         log.fine(ioe.toString());
       }
-      getRequest.abort();
       response.sendRedirect("badurl.jspx");
       return;
     }
-    if (getResponse.getStatusLine().getStatusCode() != HttpServletResponse.SC_OK) {
-      if (log.isLoggable(Level.FINE)) {
-        log.fine("Unsuccessful return code: " + getResponse.getStatusLine().getStatusCode());
-      }
-      response.sendRedirect("badurl.jspx");
-      return;
-    }
-    if (!isSizeOK(getResponse)) {
-      log.fine("Too large");
-      response.sendRedirect("badimage.jspx");
-      return;
-    }
-    log.info("Decoding " + imageURI);
-    HttpEntity entity=getResponse.getEntity();
-    InputStream is=entity.getContent();
+    InputStream is=null;
     try {
+      is=connection.getInputStream();
+      if (connection.getResponseCode() != HttpServletResponse.SC_OK) {
+        if (log.isLoggable(Level.FINE)) {
+          log.fine("Unsuccessful return code: " + connection.getResponseCode());
+        }
+        response.sendRedirect("badurl.jspx");
+        return;
+      }
+      if (connection.getHeaderFieldInt("Content-Length",0) > MAX_IMAGE_SIZE) {
+        log.fine("Too large");
+        response.sendRedirect("badimage.jspx");
+        return;
+      }
+      log.info("Decoding " + imageURI);
       processStream(is,request,response);
     }
-  finally {
-      EntityUtils.consume(entity);
-      is.close();
+ catch (    IOException ioe) {
+      if (log.isLoggable(Level.FINE)) {
+        log.fine(ioe.toString());
+      }
+      response.sendRedirect("badurl.jspx");
+    }
+ finally {
+      if (is != null) {
+        consumeRemainder(is);
+        is.close();
+      }
     }
   }
   finally {
-    connectionManager.shutdown();
+    connection.disconnect();
   }
 }

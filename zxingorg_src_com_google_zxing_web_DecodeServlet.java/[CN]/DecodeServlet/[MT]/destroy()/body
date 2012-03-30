@@ -1,3 +1,4 @@
 {
   log.config("DecodeServlet shutting down...");
+  gcHackTimer.cancel();
 }
