@@ -1,5 +1,5 @@
 {
   super(source);
-  luminances=new byte[0];
+  luminances=EMPTY;
   buckets=new int[LUMINANCE_BUCKETS];
 }

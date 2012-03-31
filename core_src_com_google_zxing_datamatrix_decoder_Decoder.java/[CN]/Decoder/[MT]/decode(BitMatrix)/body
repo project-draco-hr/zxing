@@ -5,8 +5,8 @@
   DataBlock[] dataBlocks=DataBlock.getDataBlocks(codewords,version);
   int dataBlocksCount=dataBlocks.length;
   int totalBytes=0;
-  for (int i=0; i < dataBlocksCount; i++) {
-    totalBytes+=dataBlocks[i].getNumDataCodewords();
+  for (  DataBlock db : dataBlocks) {
+    totalBytes+=db.getNumDataCodewords();
   }
   byte[] resultBytes=new byte[totalBytes];
   for (int j=0; j < dataBlocksCount; j++) {
