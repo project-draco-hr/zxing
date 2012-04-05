@@ -56,9 +56,7 @@
  else     if (oneByte == 241) {
     }
  else     if (oneByte >= 242) {
-      if (oneByte == 254 && bits.available() == 0) {
-      }
- else {
+      if (oneByte != 254 || bits.available() != 0) {
         throw FormatException.getFormatInstance();
       }
     }

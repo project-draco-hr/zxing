@@ -7,12 +7,14 @@
   if (alignmentPattern != null) {
     bottomRightX=alignmentPattern.getX();
     bottomRightY=alignmentPattern.getY();
-    sourceBottomRightX=sourceBottomRightY=dimMinusThree - 3.0f;
+    sourceBottomRightX=dimMinusThree - 3.0f;
+    sourceBottomRightY=sourceBottomRightX;
   }
  else {
     bottomRightX=(topRight.getX() - topLeft.getX()) + bottomLeft.getX();
     bottomRightY=(topRight.getY() - topLeft.getY()) + bottomLeft.getY();
-    sourceBottomRightX=sourceBottomRightY=dimMinusThree;
+    sourceBottomRightX=dimMinusThree;
+    sourceBottomRightY=dimMinusThree;
   }
   return PerspectiveTransform.quadrilateralToQuadrilateral(3.5f,3.5f,dimMinusThree,3.5f,sourceBottomRightX,sourceBottomRightY,3.5f,dimMinusThree,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomRightX,bottomRightY,bottomLeft.getX(),bottomLeft.getY());
 }

@@ -11,10 +11,8 @@
     }
  else {
       if (counterPosition == patternLength - 1) {
-        if (toNarrowWidePattern(counters) == ASTERISK_ENCODING) {
-          if (row.isRange(Math.max(0,patternStart - ((i - patternStart) >> 1)),patternStart,false)) {
-            return new int[]{patternStart,i};
-          }
+        if (toNarrowWidePattern(counters) == ASTERISK_ENCODING && row.isRange(Math.max(0,patternStart - ((i - patternStart) >> 1)),patternStart,false)) {
+          return new int[]{patternStart,i};
         }
         patternStart+=counters[0] + counters[1];
         System.arraycopy(counters,2,counters,0,patternLength - 2);
