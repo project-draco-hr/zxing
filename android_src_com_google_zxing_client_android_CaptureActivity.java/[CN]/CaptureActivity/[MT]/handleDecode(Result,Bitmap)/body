@@ -3,24 +3,22 @@
   lastResult=rawResult;
   ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
   historyManager.addHistoryItem(rawResult,resultHandler);
-  if (barcode == null) {
-    handleDecodeInternally(rawResult,resultHandler,null);
-  }
- else {
-    beepManager.playBeepSoundAndVibrate();
+  beepManager.playBeepSoundAndVibrate();
+  if (barcode != null) {
     drawResultPoints(barcode,rawResult);
+  }
 switch (source) {
 case NATIVE_APP_INTENT:
 case PRODUCT_SEARCH_LINK:
-      handleDecodeExternally(rawResult,resultHandler,barcode);
-    break;
-case ZXING_LINK:
-  if (returnUrlTemplate == null) {
-    handleDecodeInternally(rawResult,resultHandler,barcode);
-  }
- else {
     handleDecodeExternally(rawResult,resultHandler,barcode);
-  }
+  break;
+case ZXING_LINK:
+if (returnUrlTemplate == null) {
+  handleDecodeInternally(rawResult,resultHandler,barcode);
+}
+ else {
+  handleDecodeExternally(rawResult,resultHandler,barcode);
+}
 break;
 case NONE:
 SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
@@ -33,6 +31,5 @@ restartPreviewAfterDelay(BULK_MODE_SCAN_DELAY_MS);
 handleDecodeInternally(rawResult,resultHandler,barcode);
 }
 break;
-}
 }
 }
