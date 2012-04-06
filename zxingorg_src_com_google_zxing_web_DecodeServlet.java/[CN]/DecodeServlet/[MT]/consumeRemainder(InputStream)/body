@@ -7,4 +7,6 @@
   }
  catch (  IOException ioe) {
   }
+catch (  IndexOutOfBoundsException ioobe) {
+  }
 }
