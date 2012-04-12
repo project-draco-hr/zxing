@@ -1,6 +1,0 @@
-{
-  super.onCreate(icicle);
-  if (labelsPackages.isEmpty()) {
-    new LoadPackagesAsyncTask(this).execute(labelsPackages);
-  }
-}

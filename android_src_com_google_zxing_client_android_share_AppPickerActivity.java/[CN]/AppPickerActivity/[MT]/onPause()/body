@@ -1,0 +1,7 @@
+{
+  if (backgroundTask.getStatus() != AsyncTask.Status.FINISHED) {
+    backgroundTask.cancel(true);
+  }
+  backgroundTask=null;
+  super.onPause();
+}
