@@ -1,4 +1,7 @@
 {
+  if (surfaceHolder == null) {
+    throw new IllegalStateException("No SurfaceHolder provided");
+  }
   try {
     cameraManager.openDriver(surfaceHolder);
     if (handler == null) {
