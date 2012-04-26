@@ -1,6 +1,12 @@
 {
   super.onCreate(icicle);
   cursor=getContentResolver().query(Browser.BOOKMARKS_URI,BOOKMARK_PROJECTION,BOOKMARK_SELECTION,null,null);
-  startManagingCursor(cursor);
-  setListAdapter(new BookmarkAdapter(this,cursor));
+  if (cursor == null) {
+    Log.w(TAG,"No cursor returned for bookmark query");
+    finish();
+  }
+ else {
+    startManagingCursor(cursor);
+    setListAdapter(new BookmarkAdapter(this,cursor));
+  }
 }
