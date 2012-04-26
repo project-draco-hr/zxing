@@ -5,4 +5,5 @@
   buttonYes=DEFAULT_YES;
   buttonNo=DEFAULT_NO;
   targetApplications=TARGET_ALL_KNOWN;
+  moreExtras=new HashMap<String,Object>(3);
 }

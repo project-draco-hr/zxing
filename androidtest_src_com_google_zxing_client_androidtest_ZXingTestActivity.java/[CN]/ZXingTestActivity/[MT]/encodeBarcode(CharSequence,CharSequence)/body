@@ -1,0 +1,4 @@
+{
+  IntentIntegrator integrator=new IntentIntegrator(this);
+  integrator.shareText(data,type);
+}

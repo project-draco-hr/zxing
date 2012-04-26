@@ -1,17 +1,3 @@
 {
-  Intent intent=new Intent();
-  intent.addCategory(Intent.CATEGORY_DEFAULT);
-  intent.setAction(BS_PACKAGE + ".ENCODE");
-  intent.putExtra("ENCODE_TYPE","TEXT_TYPE");
-  intent.putExtra("ENCODE_DATA",text);
-  String targetAppPackage=findTargetAppPackage(intent);
-  if (targetAppPackage == null) {
-    showDownloadDialog();
-  }
- else {
-    intent.setPackage(targetAppPackage);
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-    activity.startActivity(intent);
-  }
+  return shareText(text,"TEXT_TYPE");
 }

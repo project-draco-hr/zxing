@@ -1,0 +1,5 @@
+{
+  IntentIntegrator integrator=new IntentIntegrator(this);
+  integrator.addExtra("ENCODE_DATA",data);
+  integrator.shareText(data.toString(),type);
+}
