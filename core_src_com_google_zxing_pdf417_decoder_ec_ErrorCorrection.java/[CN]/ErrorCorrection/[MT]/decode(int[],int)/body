@@ -1,15 +1,28 @@
 {
   ModulusPoly poly=new ModulusPoly(field,received);
-  int[] syndromeCoefficients=new int[numECCodewords];
-  boolean noError=true;
-  for (int i=0; i < numECCodewords; i++) {
-    int eval=poly.evaluateAt(field.exp(i + 1));
-    syndromeCoefficients[syndromeCoefficients.length - 1 - i]=eval;
+  int[] S=new int[numECCodewords];
+  boolean error=false;
+  for (int i=numECCodewords; i > 0; i--) {
+    int eval=poly.evaluateAt(field.exp(i));
+    S[numECCodewords - i]=eval;
     if (eval != 0) {
-      noError=false;
+      error=true;
     }
   }
-  if (!noError) {
-    throw ChecksumException.getChecksumInstance();
+  if (error) {
+    ModulusPoly syndrome=new ModulusPoly(field,S);
+    ErrorCorrection ec=new ErrorCorrection();
+    ModulusPoly[] sigmaOmega=ec.runEuclideanAlgorithm(field.buildMonomial(numECCodewords,1),syndrome,numECCodewords);
+    ModulusPoly sigma=sigmaOmega[0];
+    ModulusPoly omega=sigmaOmega[1];
+    int[] errorLocations=ec.findErrorLocations(sigma);
+    int[] errorMagnitudes=ec.findErrorMagnitudes(omega,sigma,errorLocations);
+    for (int i=0; i < errorLocations.length; i++) {
+      int position=received.length - 1 - field.log(errorLocations[i]);
+      if (position < 0) {
+        throw ChecksumException.getChecksumInstance();
+      }
+      received[position]=field.subtract(received[position],errorMagnitudes[i]);
+    }
   }
 }
