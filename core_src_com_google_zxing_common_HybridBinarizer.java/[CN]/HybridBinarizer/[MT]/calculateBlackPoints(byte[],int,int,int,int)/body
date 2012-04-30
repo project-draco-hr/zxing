@@ -2,13 +2,15 @@
   int[][] blackPoints=new int[subHeight][subWidth];
   for (int y=0; y < subHeight; y++) {
     int yoffset=y << BLOCK_SIZE_POWER;
-    if ((yoffset + BLOCK_SIZE) >= height) {
-      yoffset=height - BLOCK_SIZE;
+    int maxYOffset=height - BLOCK_SIZE;
+    if (yoffset > maxYOffset) {
+      yoffset=maxYOffset;
     }
     for (int x=0; x < subWidth; x++) {
       int xoffset=x << BLOCK_SIZE_POWER;
-      if ((xoffset + BLOCK_SIZE) >= width) {
-        xoffset=width - BLOCK_SIZE;
+      int maxXOffset=width - BLOCK_SIZE;
+      if (xoffset > maxXOffset) {
+        xoffset=maxXOffset;
       }
       int sum=0;
       int min=0xFF;

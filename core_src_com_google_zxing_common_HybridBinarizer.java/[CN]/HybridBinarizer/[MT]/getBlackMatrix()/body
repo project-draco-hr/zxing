@@ -3,10 +3,10 @@
     return matrix;
   }
   LuminanceSource source=getLuminanceSource();
-  if (source.getWidth() >= MINIMUM_DIMENSION && source.getHeight() >= MINIMUM_DIMENSION) {
+  int width=source.getWidth();
+  int height=source.getHeight();
+  if (width >= MINIMUM_DIMENSION && height >= MINIMUM_DIMENSION) {
     byte[] luminances=source.getMatrix();
-    int width=source.getWidth();
-    int height=source.getHeight();
     int subWidth=width >> BLOCK_SIZE_POWER;
     if ((width & BLOCK_SIZE_MASK) != 0) {
       subWidth++;

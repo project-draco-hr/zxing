@@ -1,25 +1,25 @@
 {
   for (int y=0; y < subHeight; y++) {
     int yoffset=y << BLOCK_SIZE_POWER;
-    if ((yoffset + BLOCK_SIZE) >= height) {
-      yoffset=height - BLOCK_SIZE;
+    int maxYOffset=height - BLOCK_SIZE;
+    if (yoffset > maxYOffset) {
+      yoffset=maxYOffset;
     }
     for (int x=0; x < subWidth; x++) {
       int xoffset=x << BLOCK_SIZE_POWER;
-      if ((xoffset + BLOCK_SIZE) >= width) {
-        xoffset=width - BLOCK_SIZE;
+      int maxXOffset=width - BLOCK_SIZE;
+      if (xoffset > maxXOffset) {
+        xoffset=maxXOffset;
       }
-      int left=x > 1 ? x : 2;
-      left=left < subWidth - 2 ? left : subWidth - 3;
-      int top=y > 1 ? y : 2;
-      top=top < subHeight - 2 ? top : subHeight - 3;
+      int left=cap(x,2,subWidth - 3);
+      int top=cap(y,2,subHeight - 3);
       int sum=0;
       for (int z=-2; z <= 2; z++) {
         int[] blackRow=blackPoints[top + z];
         sum+=blackRow[left - 2] + blackRow[left - 1] + blackRow[left]+ blackRow[left + 1]+ blackRow[left + 2];
       }
       int average=sum / 25;
-      threshold8x8Block(luminances,xoffset,yoffset,average,width,matrix);
+      thresholdBlock(luminances,xoffset,yoffset,average,width,matrix);
     }
   }
 }
