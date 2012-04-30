@@ -5,16 +5,16 @@
   }
   Mode mode=chooseMode(content,encoding);
   BitArray dataBits=new BitArray();
+  if (mode == Mode.BYTE && !DEFAULT_BYTE_MODE_ENCODING.equals(encoding)) {
+    CharacterSetECI eci=CharacterSetECI.getCharacterSetECIByName(encoding);
+    if (eci != null) {
+      appendECI(eci,dataBits);
+    }
+  }
   appendBytes(content,mode,dataBits,encoding);
   int numInputBits=dataBits.getSize();
   initQRCode(numInputBits,ecLevel,mode,qrCode);
   BitArray headerAndDataBits=new BitArray();
-  if (mode == Mode.BYTE && !DEFAULT_BYTE_MODE_ENCODING.equals(encoding)) {
-    CharacterSetECI eci=CharacterSetECI.getCharacterSetECIByName(encoding);
-    if (eci != null) {
-      appendECI(eci,headerAndDataBits);
-    }
-  }
   appendModeInfo(mode,headerAndDataBits);
   int numLetters=mode == Mode.BYTE ? dataBits.getSizeInBytes() : content.length();
   appendLengthInfo(numLetters,qrCode.getVersion(),mode,headerAndDataBits);
