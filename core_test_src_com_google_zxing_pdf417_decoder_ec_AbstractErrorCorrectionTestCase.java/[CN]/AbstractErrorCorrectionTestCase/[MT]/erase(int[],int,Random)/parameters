@@ -1,0 +1,3 @@
+int[] received
+int howMany
+Random random

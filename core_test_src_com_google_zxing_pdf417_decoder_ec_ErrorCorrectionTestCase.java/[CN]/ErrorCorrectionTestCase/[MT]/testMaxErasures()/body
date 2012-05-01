@@ -2,7 +2,7 @@
   Random random=getRandom();
   for (  int test : PDF417_TEST) {
     int[] received=PDF417_TEST_WITH_EC.clone();
-    corrupt(received,MAX_ERRORS,random);
-    checkDecode(received);
+    int[] erasures=erase(received,MAX_ERASURES,random);
+    checkDecode(received,erasures);
   }
 }
