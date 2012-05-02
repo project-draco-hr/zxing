@@ -6,16 +6,12 @@
   }
   ModulusPoly rLast=a;
   ModulusPoly r=b;
-  ModulusPoly sLast=field.getOne();
-  ModulusPoly s=field.getZero();
   ModulusPoly tLast=field.getZero();
   ModulusPoly t=field.getOne();
   while (r.getDegree() >= R / 2) {
     ModulusPoly rLastLast=rLast;
-    ModulusPoly sLastLast=sLast;
     ModulusPoly tLastLast=tLast;
     rLast=r;
-    sLast=s;
     tLast=t;
     if (rLast.isZero()) {
       throw ChecksumException.getChecksumInstance();
@@ -30,7 +26,6 @@
       q=q.add(field.buildMonomial(degreeDiff,scale));
       r=r.subtract(rLast.multiplyByMonomial(degreeDiff,scale));
     }
-    s=q.multiply(sLast).subtract(sLastLast).negative();
     t=q.multiply(tLast).subtract(tLastLast).negative();
   }
   int sigmaTildeAtZero=t.getCoefficient(0);
