@@ -3,7 +3,8 @@
 switch (index) {
 case 0:
     dialPhoneFromUri(telResult.getTelURI());
-  break;
+  getActivity().finish();
+break;
 case 1:
 String[] numbers=new String[1];
 numbers[0]=telResult.getNumber();
