@@ -5,10 +5,12 @@
     String value=keyValueTokens[1];
     try {
       value=URLDecoder.decode(value,"UTF-8");
+      result.put(key,value);
     }
  catch (    UnsupportedEncodingException uee) {
       throw new IllegalStateException(uee);
     }
-    result.put(key,value);
+catch (    IllegalArgumentException iae) {
+    }
   }
 }
