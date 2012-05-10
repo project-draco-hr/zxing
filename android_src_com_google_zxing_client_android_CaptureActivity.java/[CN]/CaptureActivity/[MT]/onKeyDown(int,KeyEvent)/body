@@ -1,17 +1,25 @@
 {
-  if (keyCode == KeyEvent.KEYCODE_BACK) {
+switch (keyCode) {
+case KeyEvent.KEYCODE_BACK:
     if (source == IntentSource.NATIVE_APP_INTENT) {
       setResult(RESULT_CANCELED);
       finish();
       return true;
     }
- else     if ((source == IntentSource.NONE || source == IntentSource.ZXING_LINK) && lastResult != null) {
-      restartPreviewAfterDelay(0L);
-      return true;
-    }
-  }
- else   if (keyCode == KeyEvent.KEYCODE_FOCUS || keyCode == KeyEvent.KEYCODE_CAMERA) {
+  if ((source == IntentSource.NONE || source == IntentSource.ZXING_LINK) && lastResult != null) {
+    restartPreviewAfterDelay(0L);
     return true;
   }
-  return super.onKeyDown(keyCode,event);
+break;
+case KeyEvent.KEYCODE_FOCUS:
+case KeyEvent.KEYCODE_CAMERA:
+return true;
+case KeyEvent.KEYCODE_VOLUME_DOWN:
+cameraManager.setTorch(false);
+return true;
+case KeyEvent.KEYCODE_VOLUME_UP:
+cameraManager.setTorch(true);
+return true;
+}
+return super.onKeyDown(keyCode,event);
 }
