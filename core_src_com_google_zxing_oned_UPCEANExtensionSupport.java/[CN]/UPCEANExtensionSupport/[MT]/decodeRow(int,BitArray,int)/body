@@ -1,13 +1,9 @@
 {
   int[] extensionStartRange=UPCEANReader.findGuardPattern(row,rowOffset,false,EXTENSION_START_PATTERN);
-  StringBuilder result=decodeRowStringBuffer;
-  result.setLength(0);
-  int end=decodeMiddle(row,extensionStartRange,result);
-  String resultString=result.toString();
-  Map<ResultMetadataType,Object> extensionData=parseExtensionString(resultString);
-  Result extensionResult=new Result(resultString,null,new ResultPoint[]{new ResultPoint((extensionStartRange[0] + extensionStartRange[1]) / 2.0f,(float)rowNumber),new ResultPoint((float)end,(float)rowNumber)},BarcodeFormat.UPC_EAN_EXTENSION);
-  if (extensionData != null) {
-    extensionResult.putAllMetadata(extensionData);
+  try {
+    return fiveSupport.decodeRow(rowNumber,row,extensionStartRange);
   }
-  return extensionResult;
+ catch (  ReaderException re) {
+    return twoSupport.decodeRow(rowNumber,row,extensionStartRange);
+  }
 }
