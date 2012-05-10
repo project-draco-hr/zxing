@@ -1,8 +1,0 @@
-{
-  if (format != BarcodeFormat.PDF_417) {
-    throw new IllegalArgumentException("Can only encode PDF_417, but got " + format);
-  }
-  PDF417 encoder=new PDF417();
-  encoder.setCompact(compact);
-  return encoder;
-}

@@ -1,3 +1,19 @@
 {
-  return encode(contents,format,width,height);
+  if (format != BarcodeFormat.PDF_417) {
+    throw new IllegalArgumentException("Can only encode PDF_417, but got " + format);
+  }
+  PDF417 encoder=new PDF417();
+  if (hints != null) {
+    if (hints.containsKey(EncodeHintType.PDF417_COMPACT)) {
+      encoder.setCompact((Boolean)hints.get(EncodeHintType.PDF417_COMPACT));
+    }
+    if (hints.containsKey(EncodeHintType.PDF417_COMPACTION)) {
+      encoder.setCompaction((Compaction)hints.get(EncodeHintType.PDF417_COMPACTION));
+    }
+    if (hints.containsKey(EncodeHintType.PDF417_DIMENSIONS)) {
+      Dimensions dimensions=(Dimensions)hints.get(EncodeHintType.PDF417_DIMENSIONS);
+      encoder.setDimensions(dimensions.getMaxCols(),dimensions.getMinCols(),dimensions.getMaxRows(),dimensions.getMinRows());
+    }
+  }
+  return bitMatrixFromEncoder(encoder,contents,width,height);
 }

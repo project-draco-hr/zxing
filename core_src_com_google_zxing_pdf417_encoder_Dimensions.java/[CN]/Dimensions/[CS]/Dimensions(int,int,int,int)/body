@@ -1,0 +1,6 @@
+{
+  this.minCols=minCols;
+  this.maxCols=maxCols;
+  this.minRows=minRows;
+  this.maxRows=maxRows;
+}

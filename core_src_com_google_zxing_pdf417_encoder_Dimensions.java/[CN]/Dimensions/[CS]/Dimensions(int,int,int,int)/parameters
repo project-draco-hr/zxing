@@ -1,0 +1,4 @@
+int minCols
+int maxCols
+int minRows
+int maxRows

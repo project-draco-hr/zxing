@@ -1,6 +1,7 @@
 {
-  PDF417 encoder=initializeEncoder(format,compact);
-  encoder.setDimensions(maxCols,minCols,maxRows,minRows);
-  encoder.setCompaction(compaction);
-  return bitMatrixFromEncoder(encoder,contents,width,height);
+  Map<EncodeHintType,Object> hints=new EnumMap<EncodeHintType,Object>(EncodeHintType.class);
+  hints.put(EncodeHintType.PDF417_COMPACT,compact);
+  hints.put(EncodeHintType.PDF417_COMPACTION,compaction);
+  hints.put(EncodeHintType.PDF417_DIMENSIONS,new Dimensions(maxCols,minCols,maxRows,minRows));
+  return encode(contents,format,width,height,hints);
 }

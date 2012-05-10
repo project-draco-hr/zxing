@@ -1,4 +1,3 @@
 {
-  PDF417 encoder=initializeEncoder(format,false);
-  return bitMatrixFromEncoder(encoder,contents,width,height);
+  return encode(contents,format,width,height,null);
 }
