@@ -1,0 +1,10 @@
+{
+  if (useAutoFocus) {
+    camera.cancelAutoFocus();
+  }
+  if (outstandingTask != null) {
+    outstandingTask.cancel();
+    outstandingTask=null;
+  }
+  active=false;
+}

@@ -1,0 +1,13 @@
+{
+  if (active) {
+    outstandingTask=new TimerTask(){
+      @Override public void run(){
+        if (active) {
+          start();
+        }
+      }
+    }
+;
+    timer.schedule(outstandingTask,AUTO_FOCUS_INTERVAL_MS);
+  }
+}

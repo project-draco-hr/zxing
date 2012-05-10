@@ -6,7 +6,13 @@
   }
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
   initializeTorch(parameters,prefs);
-  String focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_AUTO,Camera.Parameters.FOCUS_MODE_MACRO);
+  String focusMode=null;
+  if (prefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS,true)) {
+    focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_AUTO);
+  }
+  if (focusMode == null) {
+    focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_MACRO,"edof");
+  }
   if (focusMode != null) {
     parameters.setFocusMode(focusMode);
   }

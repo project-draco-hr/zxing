@@ -1,5 +1,5 @@
 {
+  this.context=context;
   this.configManager=new CameraConfigurationManager(context);
   previewCallback=new PreviewCallback(configManager);
-  autoFocusCallback=new AutoFocusCallback();
 }

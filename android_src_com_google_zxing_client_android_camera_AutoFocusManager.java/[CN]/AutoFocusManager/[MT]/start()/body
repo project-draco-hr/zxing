@@ -1,0 +1,11 @@
+{
+  if (useAutoFocus) {
+    active=true;
+    try {
+      camera.autoFocus(this);
+    }
+ catch (    RuntimeException re) {
+      Log.w(TAG,"Unexpected exception while focusing",re);
+    }
+  }
+}

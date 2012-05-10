@@ -1,0 +1,9 @@
+{
+  this.camera=camera;
+  timer=new Timer(true);
+  SharedPreferences sharedPrefs=PreferenceManager.getDefaultSharedPreferences(context);
+  String currentFocusMode=camera.getParameters().getFocusMode();
+  useAutoFocus=sharedPrefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS,true) && Camera.Parameters.FOCUS_MODE_AUTO.equals(currentFocusMode);
+  Log.i(TAG,"Current focus mode '" + currentFocusMode + "'; use auto focus? "+ useAutoFocus);
+  start();
+}

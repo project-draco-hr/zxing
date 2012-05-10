@@ -1,8 +1,11 @@
 {
+  if (autoFocusManager != null) {
+    autoFocusManager.stop();
+    autoFocusManager=null;
+  }
   if (camera != null && previewing) {
     camera.stopPreview();
     previewCallback.setHandler(null,0);
-    autoFocusCallback.setHandler(null,0);
     previewing=false;
   }
 }
