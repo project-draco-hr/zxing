@@ -28,16 +28,16 @@
   float ratio=0.75f * 2 / (2 * nbCenterLayers - 3);
   int dx=pina.x - pinc.x;
   int dy=pina.y - pinc.y;
-  int targetcx=round(pinc.x - ratio * dx);
-  int targetcy=round(pinc.y - ratio * dy);
-  int targetax=round(pina.x + ratio * dx);
-  int targetay=round(pina.y + ratio * dy);
+  int targetcx=MathUtils.round(pinc.x - ratio * dx);
+  int targetcy=MathUtils.round(pinc.y - ratio * dy);
+  int targetax=MathUtils.round(pina.x + ratio * dx);
+  int targetay=MathUtils.round(pina.y + ratio * dy);
   dx=pinb.x - pind.x;
   dy=pinb.y - pind.y;
-  int targetdx=round(pind.x - ratio * dx);
-  int targetdy=round(pind.y - ratio * dy);
-  int targetbx=round(pinb.x + ratio * dx);
-  int targetby=round(pinb.y + ratio * dy);
+  int targetdx=MathUtils.round(pind.x - ratio * dx);
+  int targetdy=MathUtils.round(pind.y - ratio * dy);
+  int targetbx=MathUtils.round(pinb.x + ratio * dx);
+  int targetby=MathUtils.round(pinb.y + ratio * dy);
   if (!isValid(targetax,targetay) || !isValid(targetbx,targetby) || !isValid(targetcx,targetcy)|| !isValid(targetdx,targetdy)) {
     throw NotFoundException.getNotFoundInstance();
   }

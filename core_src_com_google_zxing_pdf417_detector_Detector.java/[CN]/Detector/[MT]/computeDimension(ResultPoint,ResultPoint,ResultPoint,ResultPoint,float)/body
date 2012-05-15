@@ -1,5 +1,5 @@
 {
-  int topRowDimension=round(ResultPoint.distance(topLeft,topRight) / moduleWidth);
-  int bottomRowDimension=round(ResultPoint.distance(bottomLeft,bottomRight) / moduleWidth);
+  int topRowDimension=MathUtils.round(ResultPoint.distance(topLeft,topRight) / moduleWidth);
+  int bottomRowDimension=MathUtils.round(ResultPoint.distance(bottomLeft,bottomRight) / moduleWidth);
   return ((((topRowDimension + bottomRowDimension) >> 1) + 8) / 17) * 17;
 }

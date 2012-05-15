@@ -18,8 +18,8 @@
     pointC=getFirstDifferent(new Point(cx - 15 / 2,cy + 15 / 2),false,-1,1).toResultPoint();
     pointD=getFirstDifferent(new Point(cx - 15 / 2,cy - 15 / 2),false,-1,-1).toResultPoint();
   }
-  int cx=round((pointA.getX() + pointD.getX() + pointB.getX()+ pointC.getX()) / 4);
-  int cy=round((pointA.getY() + pointD.getY() + pointB.getY()+ pointC.getY()) / 4);
+  int cx=MathUtils.round((pointA.getX() + pointD.getX() + pointB.getX()+ pointC.getX()) / 4);
+  int cy=MathUtils.round((pointA.getY() + pointD.getY() + pointB.getY()+ pointC.getY()) / 4);
   try {
     ResultPoint[] cornerPoints=new WhiteRectangleDetector(image,15,cx,cy).detect();
     pointA=cornerPoints[0];
@@ -33,7 +33,7 @@
     pointC=getFirstDifferent(new Point(cx - 15 / 2,cy + 15 / 2),false,-1,1).toResultPoint();
     pointD=getFirstDifferent(new Point(cx - 15 / 2,cy - 15 / 2),false,-1,-1).toResultPoint();
   }
-  cx=round((pointA.getX() + pointD.getX() + pointB.getX()+ pointC.getX()) / 4);
-  cy=round((pointA.getY() + pointD.getY() + pointB.getY()+ pointC.getY()) / 4);
+  cx=MathUtils.round((pointA.getX() + pointD.getX() + pointB.getX()+ pointC.getX()) / 4);
+  cy=MathUtils.round((pointA.getY() + pointD.getY() + pointB.getY()+ pointC.getY()) / 4);
   return new Point(cx,cy);
 }

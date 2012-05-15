@@ -20,9 +20,7 @@
     int realY=steep ? x : y;
     if ((state == 1) == image.get(realX,realY)) {
       if (state == 2) {
-        int diffX=x - fromX;
-        int diffY=y - fromY;
-        return (float)Math.sqrt((double)(diffX * diffX + diffY * diffY));
+        return MathUtils.distance(x,y,fromX,fromY);
       }
       state++;
     }
@@ -36,9 +34,7 @@
     }
   }
   if (state == 2) {
-    int diffX=toX + xstep - fromX;
-    int diffY=toY - fromY;
-    return (float)Math.sqrt((double)(diffX * diffX + diffY * diffY));
+    return MathUtils.distance(toX + xstep,toY,fromX,fromY);
   }
   return Float.NaN;
 }

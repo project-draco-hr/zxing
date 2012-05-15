@@ -1,6 +1,6 @@
 {
-  int tltrCentersDimension=round(ResultPoint.distance(topLeft,topRight) / moduleSize);
-  int tlblCentersDimension=round(ResultPoint.distance(topLeft,bottomLeft) / moduleSize);
+  int tltrCentersDimension=MathUtils.round(ResultPoint.distance(topLeft,topRight) / moduleSize);
+  int tlblCentersDimension=MathUtils.round(ResultPoint.distance(topLeft,bottomLeft) / moduleSize);
   int dimension=((tltrCentersDimension + tlblCentersDimension) >> 1) + 7;
 switch (dimension & 0x03) {
 case 0:

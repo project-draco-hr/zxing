@@ -1,0 +1,5 @@
+{
+  float xDiff=aX - bX;
+  float yDiff=aY - bY;
+  return (float)Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+}

@@ -7,7 +7,7 @@
   float px=p1.x;
   float py=p1.y;
   for (int i=0; i < size; i++) {
-    res[i]=image.get(round(px),round(py));
+    res[i]=image.get(MathUtils.round(px),MathUtils.round(py));
     px+=dx;
     py+=dy;
   }
