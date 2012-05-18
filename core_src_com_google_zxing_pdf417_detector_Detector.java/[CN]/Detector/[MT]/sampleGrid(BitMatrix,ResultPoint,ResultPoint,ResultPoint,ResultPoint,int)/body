@@ -1,4 +1,0 @@
-{
-  GridSampler sampler=GridSampler.getInstance();
-  return sampler.sampleGrid(matrix,dimension,dimension,0.0f,0.0f,dimension,0.0f,dimension,dimension,0.0f,dimension,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomRight.getX(),bottomRight.getY(),bottomLeft.getX(),bottomLeft.getY());
-}

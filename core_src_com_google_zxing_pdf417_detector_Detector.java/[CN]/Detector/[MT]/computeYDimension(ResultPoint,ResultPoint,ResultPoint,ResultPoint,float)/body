@@ -1,0 +1,5 @@
+{
+  int leftColumnDimension=MathUtils.round(ResultPoint.distance(topLeft,bottomLeft) / moduleWidth);
+  int rightColumnDimension=MathUtils.round(ResultPoint.distance(topRight,bottomRight) / moduleWidth);
+  return (leftColumnDimension + rightColumnDimension) >> 1;
+}

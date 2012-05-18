@@ -22,6 +22,8 @@
   if (dimension < 1) {
     throw NotFoundException.getNotFoundInstance();
   }
-  BitMatrix bits=sampleGrid(matrix,vertices[4],vertices[5],vertices[6],vertices[7],dimension);
+  int ydimension=computeYDimension(vertices[4],vertices[6],vertices[5],vertices[7],moduleWidth);
+  ydimension=ydimension > dimension ? ydimension : dimension;
+  BitMatrix bits=sampleGrid(matrix,vertices[4],vertices[5],vertices[6],vertices[7],dimension,ydimension);
   return new DetectorResult(bits,new ResultPoint[]{vertices[5],vertices[4],vertices[6],vertices[7]});
 }
