@@ -2,6 +2,10 @@
   if (surfaceHolder == null) {
     throw new IllegalStateException("No SurfaceHolder provided");
   }
+  if (cameraManager.isOpen()) {
+    Log.w(TAG,"initCamera() while already open -- late SurfaceView callback?");
+    return;
+  }
   try {
     cameraManager.openDriver(surfaceHolder);
     if (handler == null) {
