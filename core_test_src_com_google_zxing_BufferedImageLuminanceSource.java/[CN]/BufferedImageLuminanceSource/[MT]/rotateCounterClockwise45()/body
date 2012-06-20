@@ -1,0 +1,18 @@
+{
+  int width=getWidth();
+  int height=getHeight();
+  int oldCenterX=left + width / 2;
+  int oldCenterY=top + height / 2;
+  AffineTransform transform=AffineTransform.getRotateInstance(Math.toRadians(-45.0),oldCenterX,oldCenterY);
+  int sourceDimension=Math.max(image.getWidth(),image.getHeight());
+  BufferedImage rotatedImage=new BufferedImage(sourceDimension,sourceDimension,BufferedImage.TYPE_BYTE_GRAY);
+  Graphics2D g=rotatedImage.createGraphics();
+  g.drawImage(image,transform,null);
+  g.dispose();
+  int halfDimension=Math.max(width,height) / 2;
+  int newLeft=Math.max(0,oldCenterX - halfDimension);
+  int newTop=Math.max(0,oldCenterY - halfDimension);
+  int newRight=Math.min(sourceDimension - 1,oldCenterX + halfDimension);
+  int newBottom=Math.min(sourceDimension - 1,oldCenterY + halfDimension);
+  return new BufferedImageLuminanceSource(rotatedImage,newLeft,newTop,newRight - newLeft,newBottom - newTop);
+}
