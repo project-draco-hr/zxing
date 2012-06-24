@@ -1,7 +1,7 @@
 {
   String rawText=getMassagedText(result);
-  if (rawText.startsWith("URL:")) {
-    rawText=rawText.substring(4);
+  if (rawText.startsWith("URL:") || rawText.startsWith("URI:")) {
+    return new URIParsedResult(rawText.substring(4).trim(),null);
   }
   rawText=rawText.trim();
   return isBasicallyValidURI(rawText) ? new URIParsedResult(rawText,null) : null;
