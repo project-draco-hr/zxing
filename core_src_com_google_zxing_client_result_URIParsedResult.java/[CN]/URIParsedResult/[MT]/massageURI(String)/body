@@ -8,7 +8,7 @@
     uri="http://" + uri;
   }
  else {
-    uri=uri.substring(0,protocolEnd).toLowerCase(Locale.ENGLISH) + uri.substring(protocolEnd);
+    uri=uri.substring(0,protocolEnd) + uri.substring(protocolEnd);
   }
   return uri;
 }
