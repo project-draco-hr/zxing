@@ -7,8 +7,5 @@
  else   if (isColonFollowedByPortNumber(uri,protocolEnd)) {
     uri="http://" + uri;
   }
- else {
-    uri=uri.substring(0,protocolEnd) + uri.substring(protocolEnd);
-  }
   return uri;
 }
