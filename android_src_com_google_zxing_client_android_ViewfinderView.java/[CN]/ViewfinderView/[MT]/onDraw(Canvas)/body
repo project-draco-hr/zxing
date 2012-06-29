@@ -1,4 +1,7 @@
 {
+  if (cameraManager == null) {
+    return;
+  }
   Rect frame=cameraManager.getFramingRect();
   if (frame == null) {
     return;

@@ -5,7 +5,10 @@
   statusView.setText(getString(resultHandler.getDisplayTitle()));
   if (copyToClipboard && !resultHandler.areContentsSecure()) {
     ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
-    clipboard.setText(resultHandler.getDisplayContents());
+    CharSequence text=resultHandler.getDisplayContents();
+    if (text != null) {
+      clipboard.setText(text);
+    }
   }
   if (source == IntentSource.NATIVE_APP_INTENT) {
     Intent intent=new Intent(getIntent().getAction());
