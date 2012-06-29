@@ -1,6 +1,6 @@
 String summary
-String start
-String end
+Date start
+boolean allDay
+Date end
 String location
-String attendee
 String description

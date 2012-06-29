@@ -1,15 +1,15 @@
 {
   super(ParsedResultType.CALENDAR);
-  validateDate(start);
   this.summary=summary;
-  this.start=start;
-  if (end != null) {
-    validateDate(end);
-    this.end=end;
+  try {
+    this.start=parseDate(startString);
+    this.end=endString == null ? null : parseDate(endString);
   }
- else {
-    this.end=null;
+ catch (  ParseException pe) {
+    throw new IllegalArgumentException(pe.toString());
   }
+  this.startAllDay=startString.length() == 8;
+  this.endAllDay=endString != null && endString.length() == 8;
   this.location=location;
   this.attendee=attendee;
   this.description=description;

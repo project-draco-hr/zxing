@@ -24,7 +24,7 @@
   if (birthday != null && birthday.length() > 0) {
     Date date=parseDate(birthday);
     if (date != null) {
-      ParsedResult.maybeAppend(DateFormat.getDateInstance().format(date.getTime()),contents);
+      ParsedResult.maybeAppend(DateFormat.getDateInstance(DateFormat.MEDIUM).format(date.getTime()),contents);
     }
   }
   ParsedResult.maybeAppend(result.getNote(),contents);

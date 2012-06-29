@@ -1,6 +1,6 @@
 String summary
-String start
-String end
+String startString
+String endString
 String location
 String attendee
 String description

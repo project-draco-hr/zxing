@@ -1,3 +1,9 @@
 {
-  launchIntent(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));
+  Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse(url));
+  try {
+    launchIntent(intent);
+  }
+ catch (  ActivityNotFoundException anfe) {
+    Log.w(TAG,"Nothing available to handle " + intent);
+  }
 }

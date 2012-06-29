@@ -1,3 +1,0 @@
-{
-  this(summary,start,end,location,attendee,description,Double.NaN,Double.NaN);
-}

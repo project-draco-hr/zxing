@@ -1,8 +1,8 @@
 {
   StringBuilder result=new StringBuilder(100);
   maybeAppend(summary,result);
-  maybeAppend(start,result);
-  maybeAppend(end,result);
+  maybeAppend(format(startAllDay,start),result);
+  maybeAppend(format(endAllDay,end),result);
   maybeAppend(location,result);
   maybeAppend(attendee,result);
   maybeAppend(description,result);
