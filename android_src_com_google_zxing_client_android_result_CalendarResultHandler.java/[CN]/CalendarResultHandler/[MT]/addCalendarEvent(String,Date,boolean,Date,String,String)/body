@@ -1,5 +1,5 @@
 {
-  Intent intent=new Intent(Intent.ACTION_EDIT);
+  Intent intent=new Intent(Intent.ACTION_INSERT);
   intent.setType("vnd.android.cursor.item/event");
   long startMilliseconds=start.getTime();
   intent.putExtra("beginTime",startMilliseconds);
