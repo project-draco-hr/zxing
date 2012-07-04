@@ -4,3 +4,4 @@ boolean allDay
 Date end
 String location
 String description
+String[] attendees

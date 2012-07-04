@@ -1,6 +1,16 @@
 {
-  CalendarParsedResult calendarResult=(CalendarParsedResult)getResult();
   if (index == 0) {
-    addCalendarEvent(calendarResult.getSummary(),calendarResult.getStart(),calendarResult.isStartAllDay(),calendarResult.getEnd(),calendarResult.getLocation(),calendarResult.getDescription());
+    CalendarParsedResult calendarResult=(CalendarParsedResult)getResult();
+    String description=calendarResult.getDescription();
+    String organizer=calendarResult.getOrganizer();
+    if (organizer != null) {
+      if (description == null) {
+        description=organizer;
+      }
+ else {
+        description=description + '\n' + organizer;
+      }
+    }
+    addCalendarEvent(calendarResult.getSummary(),calendarResult.getStart(),calendarResult.isStartAllDay(),calendarResult.getEnd(),calendarResult.getLocation(),description,calendarResult.getAttendees());
   }
 }

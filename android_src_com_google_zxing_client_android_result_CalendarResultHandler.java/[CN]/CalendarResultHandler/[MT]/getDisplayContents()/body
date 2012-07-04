@@ -12,7 +12,8 @@
     ParsedResult.maybeAppend(format(calResult.isEndAllDay(),end),result);
   }
   ParsedResult.maybeAppend(calResult.getLocation(),result);
-  ParsedResult.maybeAppend(calResult.getAttendee(),result);
+  ParsedResult.maybeAppend(calResult.getOrganizer(),result);
+  ParsedResult.maybeAppend(calResult.getAttendees(),result);
   ParsedResult.maybeAppend(calResult.getDescription(),result);
   return result.toString();
 }

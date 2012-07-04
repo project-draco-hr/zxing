@@ -4,6 +4,7 @@ String summary
 String location
 String startString
 String endString
-String attendee
+String organizer
+String[] attendees
 double latitude
 double longitude

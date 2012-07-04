@@ -22,5 +22,8 @@
   intent.putExtra("title",summary);
   intent.putExtra("eventLocation",location);
   intent.putExtra("description",description);
+  if (attendees != null) {
+    intent.putExtra(Intent.EXTRA_EMAIL,attendees);
+  }
   launchIntent(intent);
 }

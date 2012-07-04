@@ -1,3 +1,3 @@
 {
-  doTest(contents,description,summary,location,startString,endString,null,Double.NaN,Double.NaN);
+  doTest(contents,description,summary,location,startString,endString,null,null,Double.NaN,Double.NaN);
 }

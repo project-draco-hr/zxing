@@ -4,7 +4,8 @@
   maybeAppend(format(startAllDay,start),result);
   maybeAppend(format(endAllDay,end),result);
   maybeAppend(location,result);
-  maybeAppend(attendee,result);
+  maybeAppend(organizer,result);
+  maybeAppend(attendees,result);
   maybeAppend(description,result);
   return result.toString();
 }

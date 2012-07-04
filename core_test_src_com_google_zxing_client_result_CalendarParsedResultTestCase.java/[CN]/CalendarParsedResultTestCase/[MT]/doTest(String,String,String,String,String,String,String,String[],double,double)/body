@@ -8,7 +8,8 @@
   assertEquals(location,calResult.getLocation());
   assertEquals(startString,DATE_TIME_FORMAT.format(calResult.getStart()));
   assertEquals(endString,calResult.getEnd() == null ? null : DATE_TIME_FORMAT.format(calResult.getEnd()));
-  assertEquals(attendee,calResult.getAttendee());
+  assertEquals(organizer,calResult.getOrganizer());
+  assertTrue((attendees == null && calResult.getAttendees() == null) || Arrays.equals(attendees,calResult.getAttendees()));
   assertEqualOrNaN(latitude,calResult.getLatitude());
   assertEqualOrNaN(longitude,calResult.getLongitude());
 }

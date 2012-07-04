@@ -11,6 +11,13 @@
   }
   String end=matchSingleVCardPrefixedField("DTEND",rawText,true);
   String location=matchSingleVCardPrefixedField("LOCATION",rawText,true);
+  String organizer=stripMailto(matchSingleVCardPrefixedField("ORGANIZER",rawText,true));
+  String[] attendees=matchVCardPrefixedField("ATTENDEE",rawText,true);
+  if (attendees != null) {
+    for (int i=0; i < attendees.length; i++) {
+      attendees[i]=stripMailto(attendees[i]);
+    }
+  }
   String description=matchSingleVCardPrefixedField("DESCRIPTION",rawText,true);
   String geoString=matchSingleVCardPrefixedField("GEO",rawText,true);
   double latitude;
@@ -30,7 +37,7 @@
     }
   }
   try {
-    return new CalendarParsedResult(summary,start,end,location,null,description,latitude,longitude);
+    return new CalendarParsedResult(summary,start,end,location,organizer,attendees,description,latitude,longitude);
   }
  catch (  IllegalArgumentException iae) {
     return null;

@@ -1,0 +1,6 @@
+{
+  if (s != null && (s.startsWith("mailto:") || s.startsWith("MAILTO:"))) {
+    s=s.substring(7);
+  }
+  return s;
+}

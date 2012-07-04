@@ -11,7 +11,8 @@
   this.startAllDay=startString.length() == 8;
   this.endAllDay=endString != null && endString.length() == 8;
   this.location=location;
-  this.attendee=attendee;
+  this.organizer=organizer;
+  this.attendees=attendees;
   this.description=description;
   this.latitude=latitude;
   this.longitude=longitude;

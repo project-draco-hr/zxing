@@ -1,0 +1,3 @@
+CharSequence prefix
+String rawText
+boolean trim
