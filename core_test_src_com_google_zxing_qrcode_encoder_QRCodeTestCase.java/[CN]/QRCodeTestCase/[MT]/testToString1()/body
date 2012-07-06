@@ -1,5 +1,5 @@
 {
   QRCode qrCode=new QRCode();
-  String expected="<<\n" + " mode: null\n" + " ecLevel: null\n"+ " version: -1\n"+ " matrixWidth: -1\n"+ " maskPattern: -1\n"+ " numTotalBytes: -1\n"+ " numDataBytes: -1\n"+ " numECBytes: -1\n"+ " numRSBlocks: -1\n"+ " matrix: null\n"+ ">>\n";
+  String expected="<<\n" + " mode: null\n" + " ecLevel: null\n"+ " version: null\n"+ " maskPattern: -1\n"+ " matrix: null\n"+ ">>\n";
   assertEquals(expected,qrCode.toString());
 }

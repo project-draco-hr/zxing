@@ -1,5 +1,0 @@
-BitArray bits
-int numTotalBytes
-int numDataBytes
-int numRSBlocks
-BitArray result

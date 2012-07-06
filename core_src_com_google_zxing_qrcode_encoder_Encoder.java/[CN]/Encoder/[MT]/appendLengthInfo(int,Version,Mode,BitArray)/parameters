@@ -1,0 +1,4 @@
+int numLetters
+Version version
+Mode mode
+BitArray bits

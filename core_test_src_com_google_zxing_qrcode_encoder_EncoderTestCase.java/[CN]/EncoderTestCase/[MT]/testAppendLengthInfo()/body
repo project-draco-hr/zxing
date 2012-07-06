@@ -1,22 +1,22 @@
 {
 {
     BitArray bits=new BitArray();
-    Encoder.appendLengthInfo(1,1,Mode.NUMERIC,bits);
+    Encoder.appendLengthInfo(1,Version.getVersionForNumber(1),Mode.NUMERIC,bits);
     assertEquals(" ........ .X",bits.toString());
   }
 {
     BitArray bits=new BitArray();
-    Encoder.appendLengthInfo(2,10,Mode.ALPHANUMERIC,bits);
+    Encoder.appendLengthInfo(2,Version.getVersionForNumber(10),Mode.ALPHANUMERIC,bits);
     assertEquals(" ........ .X.",bits.toString());
   }
 {
     BitArray bits=new BitArray();
-    Encoder.appendLengthInfo(255,27,Mode.BYTE,bits);
+    Encoder.appendLengthInfo(255,Version.getVersionForNumber(27),Mode.BYTE,bits);
     assertEquals(" ........ XXXXXXXX",bits.toString());
   }
 {
     BitArray bits=new BitArray();
-    Encoder.appendLengthInfo(512,40,Mode.KANJI,bits);
+    Encoder.appendLengthInfo(512,Version.getVersionForNumber(40),Mode.KANJI,bits);
     assertEquals(" ..X..... ....",bits.toString());
   }
 }

@@ -3,11 +3,11 @@
   embedPositionDetectionPattern(0,0,matrix);
   embedPositionDetectionPattern(matrix.getWidth() - pdpWidth,0,matrix);
   embedPositionDetectionPattern(0,matrix.getWidth() - pdpWidth,matrix);
-  int hspWidth=HORIZONTAL_SEPARATION_PATTERN[0].length;
+  int hspWidth=8;
   embedHorizontalSeparationPattern(0,hspWidth - 1,matrix);
   embedHorizontalSeparationPattern(matrix.getWidth() - hspWidth,hspWidth - 1,matrix);
   embedHorizontalSeparationPattern(0,matrix.getWidth() - hspWidth,matrix);
-  int vspSize=VERTICAL_SEPARATION_PATTERN.length;
+  int vspSize=7;
   embedVerticalSeparationPattern(vspSize,0,matrix);
   embedVerticalSeparationPattern(matrix.getHeight() - vspSize - 1,0,matrix);
   embedVerticalSeparationPattern(vspSize,matrix.getHeight() - vspSize,matrix);

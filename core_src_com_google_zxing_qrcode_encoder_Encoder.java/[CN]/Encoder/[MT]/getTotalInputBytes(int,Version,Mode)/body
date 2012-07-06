@@ -1,7 +1,0 @@
-{
-  int modeInfoBits=4;
-  int charCountBits=mode.getCharacterCountBits(version);
-  int headerBits=modeInfoBits + charCountBits;
-  int totalBits=numInputBits + headerBits;
-  return (totalBits + 7) / 8;
-}

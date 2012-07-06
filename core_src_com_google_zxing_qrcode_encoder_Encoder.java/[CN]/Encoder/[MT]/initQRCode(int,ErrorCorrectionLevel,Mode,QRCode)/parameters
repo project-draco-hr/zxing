@@ -1,4 +1,0 @@
-int numInputBits
-ErrorCorrectionLevel ecLevel
-Mode mode
-QRCode qrCode

@@ -3,6 +3,5 @@
   for (int x=0; x < 3518; x++) {
     builder.append('0');
   }
-  QRCode qrCode=new QRCode();
-  Encoder.encode(builder.toString(),ErrorCorrectionLevel.L,qrCode);
+  Encoder.encode(builder.toString(),ErrorCorrectionLevel.L);
 }

@@ -1,0 +1,39 @@
+{
+  String encoding=hints == null ? null : (String)hints.get(EncodeHintType.CHARACTER_SET);
+  if (encoding == null) {
+    encoding=DEFAULT_BYTE_MODE_ENCODING;
+  }
+  Mode mode=chooseMode(content,encoding);
+  BitArray headerBits=new BitArray();
+  if (mode == Mode.BYTE && !DEFAULT_BYTE_MODE_ENCODING.equals(encoding)) {
+    CharacterSetECI eci=CharacterSetECI.getCharacterSetECIByName(encoding);
+    if (eci != null) {
+      appendECI(eci,headerBits);
+    }
+  }
+  appendModeInfo(mode,headerBits);
+  BitArray dataBits=new BitArray();
+  appendBytes(content,mode,dataBits,encoding);
+  int bitsNeeded=headerBits.getSize() + mode.getCharacterCountBits(Version.getVersionForNumber(40)) + dataBits.getSize();
+  Version version=chooseVersion(bitsNeeded,ecLevel);
+  BitArray headerAndDataBits=new BitArray();
+  headerAndDataBits.appendBitArray(headerBits);
+  int numLetters=mode == Mode.BYTE ? dataBits.getSizeInBytes() : content.length();
+  appendLengthInfo(numLetters,version,mode,headerAndDataBits);
+  headerAndDataBits.appendBitArray(dataBits);
+  Version.ECBlocks ecBlocks=version.getECBlocksForLevel(ecLevel);
+  int numDataBytes=version.getTotalCodewords() - ecBlocks.getTotalECCodewords();
+  terminateBits(numDataBytes,headerAndDataBits);
+  BitArray finalBits=interleaveWithECBytes(headerAndDataBits,version.getTotalCodewords(),numDataBytes,ecBlocks.getNumBlocks());
+  QRCode qrCode=new QRCode();
+  qrCode.setECLevel(ecLevel);
+  qrCode.setMode(mode);
+  qrCode.setVersion(version);
+  int dimension=version.getDimensionForVersion();
+  ByteMatrix matrix=new ByteMatrix(dimension,dimension);
+  int maskPattern=chooseMaskPattern(finalBits,ecLevel,version,matrix);
+  qrCode.setMaskPattern(maskPattern);
+  MatrixUtil.buildMatrix(finalBits,ecLevel,version,maskPattern,matrix);
+  qrCode.setMatrix(matrix);
+  return qrCode;
+}

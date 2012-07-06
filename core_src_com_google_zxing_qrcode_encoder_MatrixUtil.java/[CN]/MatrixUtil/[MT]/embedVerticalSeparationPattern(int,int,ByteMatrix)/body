@@ -1,11 +1,8 @@
 {
-  if (VERTICAL_SEPARATION_PATTERN[0].length != 1 || VERTICAL_SEPARATION_PATTERN.length != 7) {
-    throw new WriterException("Bad vertical separation pattern");
-  }
   for (int y=0; y < 7; ++y) {
     if (!isEmpty(matrix.get(xStart,yStart + y))) {
       throw new WriterException();
     }
-    matrix.set(xStart,yStart + y,VERTICAL_SEPARATION_PATTERN[y][0]);
+    matrix.set(xStart,yStart + y,0);
   }
 }

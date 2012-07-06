@@ -1,0 +1,14 @@
+{
+  for (int versionNum=1; versionNum <= 40; versionNum++) {
+    Version version=Version.getVersionForNumber(versionNum);
+    int numBytes=version.getTotalCodewords();
+    Version.ECBlocks ecBlocks=version.getECBlocksForLevel(ecLevel);
+    int numEcBytes=ecBlocks.getTotalECCodewords();
+    int numDataBytes=numBytes - numEcBytes;
+    int totalInputBytes=(numInputBits + 7) / 8;
+    if (numDataBytes >= totalInputBytes) {
+      return version;
+    }
+  }
+  throw new WriterException("Data too big");
+}

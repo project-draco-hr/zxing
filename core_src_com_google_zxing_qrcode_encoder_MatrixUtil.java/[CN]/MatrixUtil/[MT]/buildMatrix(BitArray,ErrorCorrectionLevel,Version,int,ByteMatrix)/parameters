@@ -1,0 +1,5 @@
+BitArray dataBits
+ErrorCorrectionLevel ecLevel
+Version version
+int maskPattern
+ByteMatrix matrix

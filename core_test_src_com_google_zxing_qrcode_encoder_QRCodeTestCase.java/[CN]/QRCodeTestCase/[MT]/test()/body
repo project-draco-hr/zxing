@@ -1,25 +1,13 @@
 {
   QRCode qrCode=new QRCode();
-  assertFalse(qrCode.isValid());
   qrCode.setMode(Mode.BYTE);
   qrCode.setECLevel(ErrorCorrectionLevel.H);
-  qrCode.setVersion(7);
-  qrCode.setMatrixWidth(45);
+  qrCode.setVersion(Version.getVersionForNumber(7));
   qrCode.setMaskPattern(3);
-  qrCode.setNumTotalBytes(196);
-  qrCode.setNumDataBytes(66);
-  qrCode.setNumECBytes(130);
-  qrCode.setNumRSBlocks(5);
   assertSame(Mode.BYTE,qrCode.getMode());
   assertSame(ErrorCorrectionLevel.H,qrCode.getECLevel());
-  assertEquals(7,qrCode.getVersion());
-  assertEquals(45,qrCode.getMatrixWidth());
+  assertEquals(7,qrCode.getVersion().getVersionNumber());
   assertEquals(3,qrCode.getMaskPattern());
-  assertEquals(196,qrCode.getNumTotalBytes());
-  assertEquals(66,qrCode.getNumDataBytes());
-  assertEquals(130,qrCode.getNumECBytes());
-  assertEquals(5,qrCode.getNumRSBlocks());
-  assertFalse(qrCode.isValid());
   ByteMatrix matrix=new ByteMatrix(45,45);
   for (int y=0; y < 45; ++y) {
     for (int x=0; x < 45; ++x) {
@@ -28,10 +16,4 @@
   }
   qrCode.setMatrix(matrix);
   assertSame(matrix,qrCode.getMatrix());
-  assertTrue(qrCode.isValid());
-  for (int y=0; y < 45; ++y) {
-    for (int x=0; x < 45; ++x) {
-      assertEquals((y + x) % 2,qrCode.at(x,y));
-    }
-  }
 }

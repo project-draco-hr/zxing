@@ -1,4 +1,0 @@
-BitArray bits
-ErrorCorrectionLevel ecLevel
-int version
-ByteMatrix matrix

@@ -1,12 +1,6 @@
 {
-  if (POSITION_ADJUSTMENT_PATTERN[0].length != 5 || POSITION_ADJUSTMENT_PATTERN.length != 5) {
-    throw new WriterException("Bad position adjustment");
-  }
   for (int y=0; y < 5; ++y) {
     for (int x=0; x < 5; ++x) {
-      if (!isEmpty(matrix.get(xStart + x,yStart + y))) {
-        throw new WriterException();
-      }
       matrix.set(xStart + x,yStart + y,POSITION_ADJUSTMENT_PATTERN[y][x]);
     }
   }

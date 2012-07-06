@@ -1,7 +1,0 @@
-{
-  int value=matrix.get(x,y);
-  if (!(value == 0 || value == 1)) {
-    throw new IllegalStateException("Bad value");
-  }
-  return value;
-}

@@ -1,0 +1,8 @@
+{
+  bits.appendBits(version.getVersionNumber(),6);
+  int bchCode=calculateBCHCode(version.getVersionNumber(),VERSION_INFO_POLY);
+  bits.appendBits(bchCode,12);
+  if (bits.getSize() != 18) {
+    throw new WriterException("should not happen but we got: " + bits.getSize());
+  }
+}
