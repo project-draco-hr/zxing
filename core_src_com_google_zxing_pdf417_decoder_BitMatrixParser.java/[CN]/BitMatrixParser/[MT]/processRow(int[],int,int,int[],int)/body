@@ -28,37 +28,25 @@
  else {
       int cw=getCodeword(symbol);
       if (ecLevel < 0) {
-switch (rowNumber % 3) {
-case 0:
-          break;
-case 1:
-        leftColumnECData=cw;
-      break;
-case 2:
-    break;
-}
-}
-}
-symbol=0;
-columnNumber++;
-}
-if (columnNumber > 1) {
---next;
-if (ecLevel < 0) {
-switch (rowNumber % 3) {
-case 0:
-break;
-case 1:
-break;
-case 2:
-rightColumnECData=codewords[next];
-if (rightColumnECData == leftColumnECData && leftColumnECData != 0) {
-ecLevel=((rightColumnECData % 30) - rows % 3) / 3;
-}
-break;
-}
-}
-codewords[next]=0;
-}
-return next;
+        if (rowNumber % 3 == 1) {
+          leftColumnECData=cw;
+        }
+      }
+    }
+    symbol=0;
+    columnNumber++;
+  }
+  if (columnNumber > 1) {
+    --next;
+    if (ecLevel < 0) {
+      if (rowNumber % 3 == 2) {
+        rightColumnECData=codewords[next];
+        if (rightColumnECData == leftColumnECData && leftColumnECData != 0) {
+          ecLevel=((rightColumnECData % 30) - rows % 3) / 3;
+        }
+      }
+    }
+    codewords[next]=0;
+  }
+  return next;
 }
