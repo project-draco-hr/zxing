@@ -27,7 +27,7 @@
         }
       }
       matchingConsecutiveScans++;
-      if (matchingConsecutiveScans >= moduleWidth * 2) {
+      if ((matchingConsecutiveScans + 1) >= 2.0f * moduleWidth) {
         rowInProgress=true;
       }
     }
