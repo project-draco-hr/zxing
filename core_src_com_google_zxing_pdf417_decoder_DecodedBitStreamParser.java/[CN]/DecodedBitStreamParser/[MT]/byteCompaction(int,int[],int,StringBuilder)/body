@@ -11,6 +11,7 @@
       value=900 * value + nextCode;
       nextCode=codewords[codeIndex++];
       if (nextCode == TEXT_COMPACTION_MODE_LATCH || nextCode == BYTE_COMPACTION_MODE_LATCH || nextCode == NUMERIC_COMPACTION_MODE_LATCH || nextCode == BYTE_COMPACTION_MODE_LATCH_6 || nextCode == BEGIN_MACRO_PDF417_CONTROL_BLOCK || nextCode == BEGIN_MACRO_PDF417_OPTIONAL_FIELD || nextCode == MACRO_PDF417_TERMINATOR) {
+        codeIndex--;
         end=true;
       }
  else {
