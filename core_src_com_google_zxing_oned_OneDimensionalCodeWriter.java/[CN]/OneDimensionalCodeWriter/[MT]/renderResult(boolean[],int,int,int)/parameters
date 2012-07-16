@@ -1,0 +1,4 @@
+boolean[] code
+int width
+int height
+int sidesMargin

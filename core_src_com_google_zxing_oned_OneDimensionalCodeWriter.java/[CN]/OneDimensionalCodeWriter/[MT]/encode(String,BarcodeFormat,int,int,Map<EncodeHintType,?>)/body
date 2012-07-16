@@ -5,6 +5,13 @@
   if (width < 0 || height < 0) {
     throw new IllegalArgumentException("Negative size is not allowed. Input: " + width + 'x'+ height);
   }
-  byte[] code=encode(contents);
-  return renderResult(code,width,height);
+  int sidesMargin=getDefaultMargin();
+  if (hints != null) {
+    Integer sidesMarginInt=(Integer)hints.get(EncodeHintType.MARGIN);
+    if (sidesMarginInt != null) {
+      sidesMargin=sidesMarginInt;
+    }
+  }
+  boolean[] code=encode(contents);
+  return renderResult(code,width,height,sidesMargin);
 }

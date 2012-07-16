@@ -91,10 +91,10 @@ for (int width : pattern) {
 codeWidth+=width;
 }
 }
-byte[] result=new byte[codeWidth];
+boolean[] result=new boolean[codeWidth];
 int pos=0;
 for (int[] pattern : patterns) {
-pos+=appendPattern(result,pos,pattern,1);
+pos+=appendPattern(result,pos,pattern,true);
 }
 return result;
 }

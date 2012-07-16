@@ -1,4 +1,0 @@
-byte[] target
-int pos
-int[] pattern
-int startColor

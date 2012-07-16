@@ -1,0 +1,4 @@
+boolean[] target
+int pos
+int[] pattern
+boolean startColor

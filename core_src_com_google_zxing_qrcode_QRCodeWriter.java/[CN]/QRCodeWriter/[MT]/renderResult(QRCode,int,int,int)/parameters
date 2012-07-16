@@ -1,3 +1,4 @@
 QRCode code
 int width
 int height
+int quietZone

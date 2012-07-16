@@ -7,7 +7,7 @@
   int leftPadding=(outputWidth - (inputWidth * multiple)) / 2;
   BitMatrix output=new BitMatrix(outputWidth,outputHeight);
   for (int inputX=0, outputX=leftPadding; inputX < inputWidth; inputX++, outputX+=multiple) {
-    if (code[inputX] == 1) {
+    if (code[inputX]) {
       output.setRegion(outputX,0,multiple,outputHeight);
     }
   }

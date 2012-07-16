@@ -1,0 +1,12 @@
+{
+  boolean color=startColor;
+  int numAdded=0;
+  for (  int len : pattern) {
+    for (int j=0; j < len; j++) {
+      target[pos++]=color;
+    }
+    numAdded+=len;
+    color=!color;
+  }
+  return numAdded;
+}

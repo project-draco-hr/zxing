@@ -9,12 +9,17 @@
     throw new IllegalArgumentException("Requested dimensions are too small: " + width + 'x'+ height);
   }
   ErrorCorrectionLevel errorCorrectionLevel=ErrorCorrectionLevel.L;
+  int quietZone=QUIET_ZONE_SIZE;
   if (hints != null) {
     ErrorCorrectionLevel requestedECLevel=(ErrorCorrectionLevel)hints.get(EncodeHintType.ERROR_CORRECTION);
     if (requestedECLevel != null) {
       errorCorrectionLevel=requestedECLevel;
     }
+    Integer quietZoneInt=(Integer)hints.get(EncodeHintType.MARGIN);
+    if (quietZoneInt != null) {
+      quietZone=quietZoneInt;
+    }
   }
   QRCode code=Encoder.encode(contents,errorCorrectionLevel,hints);
-  return renderResult(code,width,height);
+  return renderResult(code,width,height,quietZone);
 }

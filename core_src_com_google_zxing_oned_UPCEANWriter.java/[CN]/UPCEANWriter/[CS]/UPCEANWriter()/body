@@ -1,3 +1,0 @@
-{
-  super(UPCEANReader.START_END_PATTERN.length << 1);
-}
