@@ -25,11 +25,11 @@
     TextView contents=(TextView)findViewById(R.id.contents_text_view);
     if (intent.getBooleanExtra(Intents.Encode.SHOW_CONTENTS,true)) {
       contents.setText(qrCodeEncoder.getDisplayContents());
-      setTitle(getString(R.string.app_name) + " - " + qrCodeEncoder.getTitle());
+      setTitle(qrCodeEncoder.getTitle());
     }
  else {
       contents.setText("");
-      setTitle(getString(R.string.app_name));
+      setTitle("");
     }
   }
  catch (  WriterException e) {

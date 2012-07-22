@@ -1,9 +1,9 @@
 {
 switch (item.getItemId()) {
-case SHARE_MENU:
+case R.id.menu_share:
     share();
   return true;
-case ENCODE_FORMAT_MENU:
+case R.id.menu_encode:
 Intent intent=getIntent();
 intent.putExtra(USE_VCARD_KEY,!qrCodeEncoder.isUseVCard());
 startActivity(getIntent());

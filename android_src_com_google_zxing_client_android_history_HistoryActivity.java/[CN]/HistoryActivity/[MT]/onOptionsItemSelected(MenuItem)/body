@@ -1,6 +1,6 @@
 {
 switch (item.getItemId()) {
-case SEND_ID:
+case R.id.menu_history_send:
     CharSequence history=historyManager.buildHistory();
   Uri historyFile=HistoryManager.saveHistory(history.toString());
 if (historyFile == null) {
@@ -20,7 +20,7 @@ if (historyFile == null) {
   startActivity(intent);
 }
 break;
-case CLEAR_ID:
+case R.id.menu_history_clear_text:
 AlertDialog.Builder builder=new AlertDialog.Builder(this);
 builder.setMessage(R.string.msg_sure);
 builder.setCancelable(true);

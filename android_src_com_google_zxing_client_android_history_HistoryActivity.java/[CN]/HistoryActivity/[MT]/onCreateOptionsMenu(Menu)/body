@@ -1,9 +1,7 @@
 {
-  super.onCreateOptionsMenu(menu);
   if (historyManager.hasHistoryItems()) {
-    menu.add(0,SEND_ID,0,R.string.history_send).setIcon(android.R.drawable.ic_menu_share);
-    menu.add(0,CLEAR_ID,0,R.string.history_clear_text).setIcon(android.R.drawable.ic_menu_delete);
-    return true;
+    MenuInflater menuInflater=getMenuInflater();
+    menuInflater.inflate(R.menu.history,menu);
   }
-  return false;
+  return super.onCreateOptionsMenu(menu);
 }
