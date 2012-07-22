@@ -2,23 +2,23 @@
   Intent intent=new Intent(Intent.ACTION_VIEW);
   intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 switch (item.getItemId()) {
-case SHARE_ID:
+case R.id.menu_share:
     intent.setClassName(this,ShareActivity.class.getName());
   startActivity(intent);
 break;
-case HISTORY_ID:
+case R.id.menu_history:
 intent.setClassName(this,HistoryActivity.class.getName());
 startActivityForResult(intent,HISTORY_REQUEST_CODE);
 break;
-case SETTINGS_ID:
+case R.id.menu_settings:
 intent.setClassName(this,PreferencesActivity.class.getName());
 startActivity(intent);
 break;
-case HELP_ID:
+case R.id.menu_help:
 intent.setClassName(this,HelpActivity.class.getName());
 startActivity(intent);
 break;
-case ABOUT_ID:
+case R.id.menu_about:
 AlertDialog.Builder builder=new AlertDialog.Builder(this);
 builder.setTitle(getString(R.string.title_about) + versionName);
 builder.setMessage(getString(R.string.msg_about) + "\n\n" + getString(R.string.zxing_url));
