@@ -17,7 +17,12 @@ if (historyFile == null) {
   intent.putExtra(Intent.EXTRA_TEXT,subject);
   intent.putExtra(Intent.EXTRA_STREAM,historyFile);
   intent.setType("text/csv");
-  startActivity(intent);
+  try {
+    startActivity(intent);
+  }
+ catch (  ActivityNotFoundException anfe) {
+    Log.w(TAG,anfe.toString());
+  }
 }
 break;
 case R.id.menu_history_clear_text:
