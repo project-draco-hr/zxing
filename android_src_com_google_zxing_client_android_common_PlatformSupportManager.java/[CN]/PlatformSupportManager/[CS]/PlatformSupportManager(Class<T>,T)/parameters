@@ -1,0 +1,2 @@
+Class<T> managedInterface
+T defaultImplementation
