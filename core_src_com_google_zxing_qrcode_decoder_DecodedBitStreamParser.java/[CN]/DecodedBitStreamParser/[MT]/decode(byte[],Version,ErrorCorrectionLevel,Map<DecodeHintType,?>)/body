@@ -22,6 +22,9 @@
         fc1InEffect=true;
       }
  else       if (mode == Mode.STRUCTURED_APPEND) {
+        if (bits.available() < 16) {
+          throw FormatException.getFormatInstance();
+        }
         bits.readBits(16);
       }
  else       if (mode == Mode.ECI) {
