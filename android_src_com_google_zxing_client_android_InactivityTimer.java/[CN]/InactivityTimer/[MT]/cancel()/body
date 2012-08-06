@@ -1,7 +1,7 @@
 {
-  ScheduledFuture<?> future=inactivityFuture;
-  if (future != null) {
-    future.cancel(true);
-    inactivityFuture=null;
+  AsyncTask<?,?,?> task=inactivityTask;
+  if (task != null) {
+    task.cancel(true);
+    inactivityTask=null;
   }
 }
