@@ -8,7 +8,12 @@
   initializeTorch(parameters,prefs);
   String focusMode=null;
   if (prefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS,true)) {
-    focusMode=findSettableValue(parameters.getSupportedFocusModes(),"continuous-picture",Camera.Parameters.FOCUS_MODE_AUTO);
+    if (prefs.getBoolean(PreferencesActivity.KEY_DISABLE_CONTINUOUS_FOCUS,false)) {
+      focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_AUTO);
+    }
+ else {
+      focusMode=findSettableValue(parameters.getSupportedFocusModes(),"continuous-picture",Camera.Parameters.FOCUS_MODE_AUTO);
+    }
   }
   if (focusMode == null) {
     focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_MACRO,"edof");
