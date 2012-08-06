@@ -1,0 +1,4 @@
+String networkEncryption
+String ssid
+String password
+boolean hidden

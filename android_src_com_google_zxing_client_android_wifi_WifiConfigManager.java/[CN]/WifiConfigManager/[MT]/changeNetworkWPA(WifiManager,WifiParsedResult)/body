@@ -1,6 +1,6 @@
 {
-  WifiConfiguration config=changeNetworkCommon(ssid);
-  config.preSharedKey=quoteNonHex(password,64);
+  WifiConfiguration config=changeNetworkCommon(wifiResult);
+  config.preSharedKey=quoteNonHex(wifiResult.getPassword(),64);
   config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
   config.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
   config.allowedProtocols.set(WifiConfiguration.Protocol.RSN);

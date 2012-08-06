@@ -5,6 +5,7 @@
   config.allowedKeyManagement.clear();
   config.allowedPairwiseCiphers.clear();
   config.allowedProtocols.clear();
-  config.SSID=quoteNonHex(ssid);
+  config.SSID=quoteNonHex(wifiResult.getSsid());
+  config.hiddenSSID=wifiResult.isHidden();
   return config;
 }

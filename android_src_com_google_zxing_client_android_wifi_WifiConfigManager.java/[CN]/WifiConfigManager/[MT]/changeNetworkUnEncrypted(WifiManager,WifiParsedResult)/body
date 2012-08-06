@@ -1,5 +1,5 @@
 {
-  WifiConfiguration config=changeNetworkCommon(ssid);
+  WifiConfiguration config=changeNetworkCommon(wifiResult);
   config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
   updateNetwork(wifiManager,config);
 }

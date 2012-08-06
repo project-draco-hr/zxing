@@ -25,6 +25,7 @@
           count++;
         }
       }
+      String networkTypeString=wifiResult.getNetworkEncryption();
       NetworkType networkType;
       try {
         networkType=NetworkType.forIntentValue(networkTypeString);
@@ -34,17 +35,18 @@
         return;
       }
       if (networkType == NetworkType.NO_PASSWORD) {
-        changeNetworkUnEncrypted(wifiManager,ssid);
+        changeNetworkUnEncrypted(wifiManager,wifiResult);
       }
  else {
+        String password=wifiResult.getPassword();
         if (password == null || password.length() == 0) {
           throw new IllegalArgumentException();
         }
         if (networkType == NetworkType.WEP) {
-          changeNetworkWEP(wifiManager,ssid,password);
+          changeNetworkWEP(wifiManager,wifiResult);
         }
  else         if (networkType == NetworkType.WPA) {
-          changeNetworkWPA(wifiManager,ssid,password);
+          changeNetworkWPA(wifiManager,wifiResult);
         }
       }
     }

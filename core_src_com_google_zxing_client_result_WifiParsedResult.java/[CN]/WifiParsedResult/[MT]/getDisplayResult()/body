@@ -3,5 +3,6 @@
   maybeAppend(ssid,result);
   maybeAppend(networkEncryption,result);
   maybeAppend(password,result);
+  maybeAppend(Boolean.toString(hidden),result);
   return result.toString();
 }

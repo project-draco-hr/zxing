@@ -1,4 +1,0 @@
-WifiManager wifiManager
-String ssid
-String password
-String networkTypeString

@@ -1,6 +1,3 @@
 {
-  super(ParsedResultType.WIFI);
-  this.ssid=ssid;
-  this.networkEncryption=networkEncryption;
-  this.password=password;
+  this(networkEncryption,ssid,password,false);
 }

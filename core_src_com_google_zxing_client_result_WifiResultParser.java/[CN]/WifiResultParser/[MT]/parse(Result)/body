@@ -3,15 +3,15 @@
   if (!rawText.startsWith("WIFI:")) {
     return null;
   }
-  boolean trim=false;
-  String ssid=matchSinglePrefixedField("S:",rawText,';',trim);
+  String ssid=matchSinglePrefixedField("S:",rawText,';',false);
   if (ssid == null || ssid.length() == 0) {
     return null;
   }
-  String pass=matchSinglePrefixedField("P:",rawText,';',trim);
-  String type=matchSinglePrefixedField("T:",rawText,';',trim);
+  String pass=matchSinglePrefixedField("P:",rawText,';',false);
+  String type=matchSinglePrefixedField("T:",rawText,';',false);
   if (type == null) {
     type="nopass";
   }
-  return new WifiParsedResult(type,ssid,pass);
+  boolean hidden=Boolean.parseBoolean(matchSinglePrefixedField("B:",rawText,';',false));
+  return new WifiParsedResult(type,ssid,pass,hidden);
 }
