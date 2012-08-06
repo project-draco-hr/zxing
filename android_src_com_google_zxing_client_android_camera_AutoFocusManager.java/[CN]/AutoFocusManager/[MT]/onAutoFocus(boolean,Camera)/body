@@ -1,5 +1,6 @@
 {
   if (active) {
     outstandingTask=new AutoFocusTask();
+    outstandingTask.execute();
   }
 }
