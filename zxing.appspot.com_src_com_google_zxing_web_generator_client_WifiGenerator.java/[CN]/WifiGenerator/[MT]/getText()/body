@@ -2,5 +2,6 @@
   String ssid=getSsidField();
   String password=getPasswordField();
   String networkType=getNetworkTypeField();
-  return getWifiString(ssid,password,networkType);
+  boolean hidden=getHiddenField();
+  return getWifiString(ssid,password,networkType,hidden);
 }

@@ -1,0 +1,4 @@
+{
+  Boolean value=hidden.getValue();
+  return value != null && value;
+}
