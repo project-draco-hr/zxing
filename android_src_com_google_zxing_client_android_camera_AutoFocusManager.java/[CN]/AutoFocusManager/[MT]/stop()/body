@@ -8,7 +8,7 @@
     }
   }
   if (outstandingTask != null) {
-    outstandingTask.cancel();
+    outstandingTask.cancel(true);
     outstandingTask=null;
   }
   active=false;
