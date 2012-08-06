@@ -9,8 +9,8 @@
       for (int x=0; x < count; x++) {
         items.add(parseResult(results.getJSONObject(x)));
       }
-      resultListView.setOnItemClickListener(new BrowseBookListener(this,items));
-      resultListView.setAdapter(new SearchBookContentsAdapter(this,items));
+      resultListView.setOnItemClickListener(new BrowseBookListener(SearchBookContentsActivity.this,items));
+      resultListView.setAdapter(new SearchBookContentsAdapter(SearchBookContentsActivity.this,items));
     }
  else {
       String searchable=json.optString("searchable");

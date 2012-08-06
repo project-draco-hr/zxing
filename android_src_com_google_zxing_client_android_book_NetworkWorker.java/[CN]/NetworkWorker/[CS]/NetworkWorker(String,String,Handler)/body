@@ -1,5 +1,0 @@
-{
-  this.isbn=isbn;
-  this.query=query;
-  this.handler=handler;
-}

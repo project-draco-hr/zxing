@@ -1,6 +1,0 @@
-{
-  networkThread=null;
-  queryTextView.setEnabled(true);
-  queryTextView.selectAll();
-  queryButton.setEnabled(true);
-}

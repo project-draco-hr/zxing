@@ -1,0 +1,11 @@
+{
+  if (result == null) {
+    headerView.setText(R.string.msg_sbc_failed);
+  }
+ else {
+    handleSearchResults(result);
+  }
+  queryTextView.setEnabled(true);
+  queryTextView.selectAll();
+  queryButton.setEnabled(true);
+}

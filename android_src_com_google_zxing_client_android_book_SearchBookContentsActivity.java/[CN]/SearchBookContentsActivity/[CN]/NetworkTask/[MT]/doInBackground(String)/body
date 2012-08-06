@@ -1,0 +1,25 @@
+{
+  try {
+    String theQuery=args[0];
+    String theIsbn=args[1];
+    String uri;
+    if (LocaleManager.isBookSearchUrl(theIsbn)) {
+      int equals=theIsbn.indexOf('=');
+      String volumeId=theIsbn.substring(equals + 1);
+      uri="http://www.google.com/books?id=" + volumeId + "&jscmd=SearchWithinVolume2&q="+ theQuery;
+    }
+ else {
+      uri="http://www.google.com/books?vid=isbn" + theIsbn + "&jscmd=SearchWithinVolume2&q="+ theQuery;
+    }
+    String content=HttpHelper.downloadViaHttp(uri,HttpHelper.ContentType.JSON);
+    return new JSONObject(content);
+  }
+ catch (  IOException ioe) {
+    Log.w(TAG,"Error accessing book search",ioe);
+    return null;
+  }
+catch (  JSONException je) {
+    Log.w(TAG,"Error accessing book search",je);
+    return null;
+  }
+}

@@ -1,13 +1,11 @@
 {
-  if (networkThread == null) {
-    String query=queryTextView.getText().toString();
-    if (query != null && query.length() > 0) {
-      networkThread=new Thread(new NetworkWorker(isbn,query,handler));
-      networkThread.start();
-      headerView.setText(R.string.msg_sbc_searching_book);
-      resultListView.setAdapter(null);
-      queryTextView.setEnabled(false);
-      queryButton.setEnabled(false);
-    }
+  String query=queryTextView.getText().toString();
+  if (query != null && query.length() > 0) {
+    NetworkTask networkTask=new NetworkTask();
+    networkTask.execute(query,isbn);
+    headerView.setText(R.string.msg_sbc_searching_book);
+    resultListView.setAdapter(null);
+    queryTextView.setEnabled(false);
+    queryButton.setEnabled(false);
   }
 }
