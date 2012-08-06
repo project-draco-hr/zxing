@@ -1,8 +1,4 @@
 {
-  final TextView textView=textViewRef.get();
-  if (textView == null) {
-    throw new InterruptedException();
-  }
   StringBuilder newTextCombined=new StringBuilder();
   if (source != null) {
     newTextCombined.append(source).append(" : ");
@@ -22,16 +18,10 @@
   }
   int linkEnd=newTextCombined.length();
   String newText=newTextCombined.toString();
-  final Spannable content=new SpannableString(newText + "\n\n");
+  Spannable content=new SpannableString(newText + "\n\n");
   if (linkURL != null) {
     content.setSpan(new URLSpan(linkURL),linkStart,linkEnd,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
   }
-  handler.post(new Runnable(){
-    @Override public void run(){
-      textView.append(content);
-      textView.setMovementMethod(LinkMovementMethod.getInstance());
-    }
-  }
-);
-  historyManager.addHistoryItemDetails(itemID,newText);
+  newContents.add(content);
+  newHistories.add(new String[]{itemID,newText});
 }

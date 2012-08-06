@@ -1,0 +1,5 @@
+{
+  super(textView,historyManager);
+  redirectString=context.getString(R.string.msg_redirect);
+  this.result=result;
+}

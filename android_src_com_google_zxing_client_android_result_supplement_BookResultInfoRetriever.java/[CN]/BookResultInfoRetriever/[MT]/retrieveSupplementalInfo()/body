@@ -20,7 +20,7 @@
     pages=volumeInfo.optString("pageCount");
     JSONArray authorsArray=volumeInfo.optJSONArray("authors");
     if (authorsArray != null && !authorsArray.isNull(0)) {
-      authors=new ArrayList<String>();
+      authors=new ArrayList<String>(authorsArray.length());
       for (int i=0; i < authorsArray.length(); i++) {
         authors.add(authorsArray.getString(i));
       }

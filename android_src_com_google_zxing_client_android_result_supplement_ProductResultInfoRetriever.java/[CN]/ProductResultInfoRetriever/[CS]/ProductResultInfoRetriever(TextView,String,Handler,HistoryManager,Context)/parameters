@@ -1,5 +1,0 @@
-TextView textView
-String productID
-Handler handler
-HistoryManager historyManager
-Context context

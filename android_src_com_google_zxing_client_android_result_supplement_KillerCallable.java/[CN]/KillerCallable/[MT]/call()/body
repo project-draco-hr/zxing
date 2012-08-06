@@ -1,9 +1,0 @@
-{
-  try {
-    future.get(timeout,unit);
-  }
- catch (  TimeoutException te) {
-    future.cancel(true);
-  }
-  return null;
-}

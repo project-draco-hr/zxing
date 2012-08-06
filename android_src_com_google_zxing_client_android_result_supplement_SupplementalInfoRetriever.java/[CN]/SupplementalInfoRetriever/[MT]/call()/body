@@ -1,4 +1,0 @@
-{
-  retrieveSupplementalInfo();
-  return null;
-}

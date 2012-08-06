@@ -1,0 +1,14 @@
+{
+  if (result instanceof URIParsedResult) {
+    new URIResultInfoRetriever(textView,(URIParsedResult)result,historyManager,context).execute();
+  }
+ else   if (result instanceof ProductParsedResult) {
+    String productID=((ProductParsedResult)result).getProductID();
+    new ProductResultInfoRetriever(textView,productID,historyManager,context).execute();
+  }
+ else   if (result instanceof ISBNParsedResult) {
+    String isbn=((ISBNParsedResult)result).getISBN();
+    new ProductResultInfoRetriever(textView,isbn,historyManager,context).execute();
+    new BookResultInfoRetriever(textView,isbn,historyManager,context).execute();
+  }
+}

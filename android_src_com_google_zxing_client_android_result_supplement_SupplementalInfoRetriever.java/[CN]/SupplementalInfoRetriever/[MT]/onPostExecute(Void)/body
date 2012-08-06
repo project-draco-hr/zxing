@@ -1,0 +1,15 @@
+{
+  TextView textView=textViewRef.get();
+  if (textView != null) {
+    for (    Spannable content : newContents) {
+      textView.append(content);
+    }
+    textView.setMovementMethod(LinkMovementMethod.getInstance());
+  }
+  HistoryManager historyManager=historyManagerRef.get();
+  if (historyManager != null) {
+    for (    String[] text : newHistories) {
+      historyManager.addHistoryItemDetails(text[0],text[1]);
+    }
+  }
+}

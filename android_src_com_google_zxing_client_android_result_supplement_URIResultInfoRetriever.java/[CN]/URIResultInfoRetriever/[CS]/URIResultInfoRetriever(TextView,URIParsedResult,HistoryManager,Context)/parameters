@@ -1,0 +1,4 @@
+TextView textView
+URIParsedResult result
+HistoryManager historyManager
+Context context

@@ -1,0 +1,6 @@
+{
+  textViewRef=new WeakReference<TextView>(textView);
+  historyManagerRef=new WeakReference<HistoryManager>(historyManager);
+  newContents=new ArrayList<Spannable>();
+  newHistories=new ArrayList<String[]>();
+}

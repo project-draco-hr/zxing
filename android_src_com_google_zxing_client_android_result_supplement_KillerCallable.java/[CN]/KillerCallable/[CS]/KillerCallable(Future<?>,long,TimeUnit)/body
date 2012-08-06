@@ -1,5 +1,0 @@
-{
-  this.future=future;
-  this.timeout=timeout;
-  this.unit=unit;
-}

@@ -1,0 +1,4 @@
+TextView textView
+String isbn
+HistoryManager historyManager
+Context context

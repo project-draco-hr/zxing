@@ -1,0 +1,4 @@
+TextView textView
+String productID
+HistoryManager historyManager
+Context context

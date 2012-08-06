@@ -1,6 +1,0 @@
-{
-  super(textView,handler,historyManager);
-  this.isbn=isbn;
-  this.source=context.getString(R.string.msg_google_books);
-  this.context=context;
-}
