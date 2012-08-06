@@ -3,14 +3,16 @@
   byte[][] array=matrix.getArray();
   int width=matrix.getWidth();
   int height=matrix.getHeight();
-  for (int y=0; y < height; ++y) {
-    for (int x=0; x < width; ++x) {
-      if (array[y][x] == 1) {
-        numDarkCells+=1;
+  for (int y=0; y < height; y++) {
+    byte[] arrayY=array[y];
+    for (int x=0; x < width; x++) {
+      if (arrayY[x] == 1) {
+        numDarkCells++;
       }
     }
   }
   int numTotalCells=matrix.getHeight() * matrix.getWidth();
   double darkRatio=(double)numDarkCells / numTotalCells;
-  return Math.abs((int)(darkRatio * 100 - 50)) / 5 * 10;
+  int fivePercentVariances=(int)(Math.abs(darkRatio - 0.5) * 20.0);
+  return fivePercentVariances * N4;
 }

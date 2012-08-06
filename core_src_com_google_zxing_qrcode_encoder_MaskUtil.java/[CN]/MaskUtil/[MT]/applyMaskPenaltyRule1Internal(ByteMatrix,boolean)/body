@@ -1,28 +1,27 @@
 {
   int penalty=0;
-  int numSameBitCells=0;
-  int prevBit=-1;
   int iLimit=isHorizontal ? matrix.getHeight() : matrix.getWidth();
   int jLimit=isHorizontal ? matrix.getWidth() : matrix.getHeight();
   byte[][] array=matrix.getArray();
-  for (int i=0; i < iLimit; ++i) {
-    for (int j=0; j < jLimit; ++j) {
+  for (int i=0; i < iLimit; i++) {
+    int numSameBitCells=0;
+    int prevBit=-1;
+    for (int j=0; j < jLimit; j++) {
       int bit=isHorizontal ? array[i][j] : array[j][i];
       if (bit == prevBit) {
-        numSameBitCells+=1;
-        if (numSameBitCells == 5) {
-          penalty+=3;
-        }
- else         if (numSameBitCells > 5) {
-          penalty+=1;
-        }
+        numSameBitCells++;
       }
  else {
+        if (numSameBitCells >= 5) {
+          penalty+=N1 + (numSameBitCells - 5);
+        }
         numSameBitCells=1;
         prevBit=bit;
       }
     }
-    numSameBitCells=0;
+    if (numSameBitCells > 5) {
+      penalty+=N1 + (numSameBitCells - 5);
+    }
   }
   return penalty;
 }

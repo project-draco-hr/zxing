@@ -1,7 +1,4 @@
 {
-  if (!QRCode.isValidMaskPattern(maskPattern)) {
-    throw new IllegalArgumentException("Invalid mask pattern");
-  }
   int intermediate;
   int temp;
 switch (maskPattern) {
