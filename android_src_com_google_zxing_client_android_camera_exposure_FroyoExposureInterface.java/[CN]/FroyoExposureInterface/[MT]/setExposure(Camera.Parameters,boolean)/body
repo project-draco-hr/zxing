@@ -1,0 +1,19 @@
+{
+  int minExposure=parameters.getMinExposureCompensation();
+  int maxExposure=parameters.getMaxExposureCompensation();
+  if (minExposure != 0 || maxExposure != 0) {
+    float step=parameters.getExposureCompensationStep();
+    int desiredCompensation;
+    if (lightOn) {
+      desiredCompensation=Math.max((int)(MIN_EXPOSURE_COMPENSATION / step),minExposure);
+    }
+ else {
+      desiredCompensation=Math.min((int)(MAX_EXPOSURE_COMPENSATION / step),maxExposure);
+    }
+    Log.i(TAG,"Setting exposure compensation to " + desiredCompensation + " / "+ (step * desiredCompensation));
+    parameters.setExposureCompensation(desiredCompensation);
+  }
+ else {
+    Log.i(TAG,"Camera does not support exposure compensation");
+  }
+}

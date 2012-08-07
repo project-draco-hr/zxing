@@ -9,4 +9,5 @@
   if (flashMode != null) {
     parameters.setFlashMode(flashMode);
   }
+  exposure.setExposure(parameters,newSetting);
 }
