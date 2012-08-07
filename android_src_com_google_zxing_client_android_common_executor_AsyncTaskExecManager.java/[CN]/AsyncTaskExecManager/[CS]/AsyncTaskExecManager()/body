@@ -1,0 +1,4 @@
+{
+  super(AsyncTaskExecInterface.class,new DefaultAsyncTaskExecInterface());
+  addImplementationClass(11,"com.google.zxing.client.android.common.executor.HoneycombAsyncTaskExecInterface");
+}

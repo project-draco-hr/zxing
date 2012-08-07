@@ -1,8 +1,12 @@
 {
   String query=queryTextView.getText().toString();
   if (query != null && query.length() > 0) {
-    NetworkTask networkTask=new NetworkTask();
-    networkTask.execute(query,isbn);
+    NetworkTask oldTask=networkTask;
+    if (oldTask != null) {
+      oldTask.cancel(true);
+    }
+    networkTask=new NetworkTask();
+    taskExec.execute(networkTask,query,isbn);
     headerView.setText(R.string.msg_sbc_searching_book);
     resultListView.setAdapter(null);
     queryTextView.setEnabled(false);

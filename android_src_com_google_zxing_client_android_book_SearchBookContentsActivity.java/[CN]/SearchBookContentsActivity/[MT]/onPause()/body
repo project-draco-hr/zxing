@@ -1,0 +1,8 @@
+{
+  NetworkTask oldTask=networkTask;
+  if (oldTask != null) {
+    oldTask.cancel(true);
+    networkTask=null;
+  }
+  super.onPause();
+}

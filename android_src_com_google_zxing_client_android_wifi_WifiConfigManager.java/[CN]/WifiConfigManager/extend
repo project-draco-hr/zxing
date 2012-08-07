@@ -1,1 +1,1 @@
-AsyncTask<WifiParsedResult,Void,Void>
+AsyncTask<WifiParsedResult,Object,Object>

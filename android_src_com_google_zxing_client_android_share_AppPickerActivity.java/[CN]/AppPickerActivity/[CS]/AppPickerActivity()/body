@@ -1,5 +1,4 @@
 {
-  super(activity,result);
-  parent=activity;
+  labelsPackages=new ArrayList<String[]>();
   taskExec=new AsyncTaskExecManager().build();
 }

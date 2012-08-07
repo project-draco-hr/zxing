@@ -1,14 +1,15 @@
 {
+  AsyncTaskExecInterface taskExec=new AsyncTaskExecManager().build();
   if (result instanceof URIParsedResult) {
-    new URIResultInfoRetriever(textView,(URIParsedResult)result,historyManager,context).execute();
+    taskExec.execute(new URIResultInfoRetriever(textView,(URIParsedResult)result,historyManager,context));
   }
  else   if (result instanceof ProductParsedResult) {
     String productID=((ProductParsedResult)result).getProductID();
-    new ProductResultInfoRetriever(textView,productID,historyManager,context).execute();
+    taskExec.execute(new ProductResultInfoRetriever(textView,productID,historyManager,context));
   }
  else   if (result instanceof ISBNParsedResult) {
     String isbn=((ISBNParsedResult)result).getISBN();
-    new ProductResultInfoRetriever(textView,isbn,historyManager,context).execute();
-    new BookResultInfoRetriever(textView,isbn,historyManager,context).execute();
+    taskExec.execute(new ProductResultInfoRetriever(textView,isbn,historyManager,context));
+    taskExec.execute(new BookResultInfoRetriever(textView,isbn,historyManager,context));
   }
 }

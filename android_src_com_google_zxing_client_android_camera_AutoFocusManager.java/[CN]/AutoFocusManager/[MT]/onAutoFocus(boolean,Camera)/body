@@ -1,6 +1,6 @@
 {
   if (active) {
     outstandingTask=new AutoFocusTask();
-    outstandingTask.execute();
+    taskExec.execute(outstandingTask);
   }
 }

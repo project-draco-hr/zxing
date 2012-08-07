@@ -2,5 +2,5 @@
   super.onResume();
   labelsPackages.clear();
   backgroundTask=new LoadPackagesAsyncTask(this);
-  backgroundTask.execute(labelsPackages);
+  taskExec.execute(backgroundTask,labelsPackages);
 }

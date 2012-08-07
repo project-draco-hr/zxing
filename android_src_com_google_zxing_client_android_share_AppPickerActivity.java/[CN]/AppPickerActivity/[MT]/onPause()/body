@@ -1,7 +1,8 @@
 {
-  if (backgroundTask.getStatus() != AsyncTask.Status.FINISHED) {
-    backgroundTask.cancel(true);
+  LoadPackagesAsyncTask task=backgroundTask;
+  if (task != null) {
+    task.cancel(true);
+    backgroundTask=null;
   }
-  backgroundTask=null;
   super.onPause();
 }
