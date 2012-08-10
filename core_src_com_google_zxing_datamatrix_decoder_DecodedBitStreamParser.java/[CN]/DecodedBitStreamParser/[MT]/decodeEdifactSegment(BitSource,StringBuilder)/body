@@ -1,5 +1,4 @@
 {
-  boolean unlatch=false;
   do {
     if (bits.available() <= 16) {
       return;
@@ -7,15 +6,17 @@
     for (int i=0; i < 4; i++) {
       int edifactValue=bits.readBits(6);
       if (edifactValue == 0x1F) {
-        unlatch=true;
-      }
-      if (!unlatch) {
-        if ((edifactValue & 0x20) == 0) {
-          edifactValue|=0x40;
+        int bitsLeft=8 - bits.getBitOffset();
+        if (bitsLeft != 8) {
+          bits.readBits(bitsLeft);
         }
-        result.append((char)edifactValue);
+        return;
       }
+      if ((edifactValue & 0x20) == 0) {
+        edifactValue|=0x40;
+      }
+      result.append((char)edifactValue);
     }
   }
- while (!unlatch && bits.available() > 0);
+ while (bits.available() > 0);
 }
