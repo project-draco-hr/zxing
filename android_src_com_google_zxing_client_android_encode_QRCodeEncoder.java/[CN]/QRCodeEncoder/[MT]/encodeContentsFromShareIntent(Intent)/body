@@ -1,8 +1,8 @@
 {
-  if (intent.hasExtra(Intent.EXTRA_TEXT)) {
-    encodeContentsFromShareIntentPlainText(intent);
+  if (intent.hasExtra(Intent.EXTRA_STREAM)) {
+    encodeFromStreamExtra(intent);
   }
  else {
-    encodeContentsFromShareIntentDefault(intent);
+    encodeFromTextExtras(intent);
   }
 }

@@ -1,5 +1,20 @@
 {
   String theContents=ContactEncoder.trim(intent.getStringExtra(Intent.EXTRA_TEXT));
+  if (theContents == null) {
+    theContents=ContactEncoder.trim(intent.getStringExtra("android.intent.extra.HTML_TEXT"));
+    if (theContents == null) {
+      theContents=ContactEncoder.trim(intent.getStringExtra(Intent.EXTRA_SUBJECT));
+      if (theContents == null) {
+        String[] emails=intent.getStringArrayExtra(Intent.EXTRA_EMAIL);
+        if (emails != null) {
+          theContents=ContactEncoder.trim(emails[0]);
+        }
+ else {
+          theContents="?";
+        }
+      }
+    }
+  }
   if (theContents == null || theContents.length() == 0) {
     throw new WriterException("Empty EXTRA_TEXT");
   }
