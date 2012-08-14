@@ -46,7 +46,6 @@
  else {
       if (table == Table.BINARY) {
         if (endIndex - startIndex < 8) {
-          end=true;
           break;
         }
         code=readCode(correctedBits,startIndex,8);
@@ -59,7 +58,6 @@
           size=4;
         }
         if (endIndex - startIndex < size) {
-          end=true;
           break;
         }
         code=readCode(correctedBits,startIndex,size);
