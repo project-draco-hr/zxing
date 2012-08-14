@@ -1,9 +1,5 @@
 {
-  super(bitmap.getWidth(),bitmap.getHeight());
-  int width=bitmap.getWidth();
-  int height=bitmap.getHeight();
-  int[] pixels=new int[width * height];
-  bitmap.getPixels(pixels,0,width,0,0,width,height);
+  super(width,height);
   luminances=new byte[width * height];
   for (int y=0; y < height; y++) {
     int offset=y * width;

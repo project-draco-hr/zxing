@@ -1,12 +1,14 @@
 {
-  RGBLuminanceSource source;
-  try {
-    source=new RGBLuminanceSource(path);
-  }
- catch (  FileNotFoundException e) {
-    Log.e(TAG,e.toString());
+  Bitmap imageBitmap=BitmapFactory.decodeFile(path);
+  if (imageBitmap == null) {
+    Log.e(TAG,"Couldn't open " + path);
     return null;
   }
+  int width=imageBitmap.getWidth();
+  int height=imageBitmap.getHeight();
+  int[] pixels=new int[width * height];
+  imageBitmap.getPixels(pixels,0,width,0,0,width,height);
+  RGBLuminanceSource source=new RGBLuminanceSource(width,height,pixels);
   BenchmarkItem item=new BenchmarkItem(path,RUNS);
   for (int x=0; x < RUNS; x++) {
     boolean success;
