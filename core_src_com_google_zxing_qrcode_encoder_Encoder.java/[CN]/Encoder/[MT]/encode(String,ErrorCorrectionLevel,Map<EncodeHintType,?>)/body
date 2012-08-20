@@ -14,7 +14,9 @@
   appendModeInfo(mode,headerBits);
   BitArray dataBits=new BitArray();
   appendBytes(content,mode,dataBits,encoding);
-  int bitsNeeded=headerBits.getSize() + mode.getCharacterCountBits(Version.getVersionForNumber(40)) + dataBits.getSize();
+  int provisionalBitsNeeded=headerBits.getSize() + mode.getCharacterCountBits(Version.getVersionForNumber(1)) + dataBits.getSize();
+  Version provisionalVersion=chooseVersion(provisionalBitsNeeded,ecLevel);
+  int bitsNeeded=headerBits.getSize() + mode.getCharacterCountBits(provisionalVersion) + dataBits.getSize();
   Version version=chooseVersion(bitsNeeded,ecLevel);
   BitArray headerAndDataBits=new BitArray();
   headerAndDataBits.appendBitArray(headerBits);
