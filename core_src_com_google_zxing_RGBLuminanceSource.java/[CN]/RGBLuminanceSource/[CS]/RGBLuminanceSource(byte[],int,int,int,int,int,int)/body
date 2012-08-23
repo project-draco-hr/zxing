@@ -1,0 +1,11 @@
+{
+  super(width,height);
+  if (left + width > dataWidth || top + height > dataHeight) {
+    throw new IllegalArgumentException("Crop rectangle does not fit within image data.");
+  }
+  this.luminances=pixels;
+  this.dataWidth=dataWidth;
+  this.dataHeight=dataHeight;
+  this.left=left;
+  this.top=top;
+}

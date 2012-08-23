@@ -1,5 +1,9 @@
 {
   super(width,height);
+  dataWidth=width;
+  dataHeight=height;
+  left=0;
+  top=0;
   luminances=new byte[width * height];
   for (int y=0; y < height; y++) {
     int offset=y * width;
