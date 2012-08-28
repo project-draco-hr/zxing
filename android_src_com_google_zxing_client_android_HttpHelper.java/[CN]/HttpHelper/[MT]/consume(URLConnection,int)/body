@@ -1,0 +1,23 @@
+{
+  String encoding=getEncoding(connection);
+  StringBuilder out=new StringBuilder();
+  Reader in=null;
+  try {
+    in=new InputStreamReader(connection.getInputStream(),encoding);
+    char[] buffer=new char[1024];
+    int charsRead;
+    while (out.length() < maxChars && (charsRead=in.read(buffer)) > 0) {
+      out.append(buffer,0,charsRead);
+    }
+  }
+  finally {
+    if (in != null) {
+      try {
+        in.close();
+      }
+ catch (      IOException ioe) {
+      }
+    }
+  }
+  return out;
+}

@@ -1,1 +1,2 @@
 URLConnection connection
+int maxChars

@@ -2,6 +2,7 @@
   AsyncTaskExecInterface taskExec=new AsyncTaskExecManager().build();
   if (result instanceof URIParsedResult) {
     taskExec.execute(new URIResultInfoRetriever(textView,(URIParsedResult)result,historyManager,context));
+    taskExec.execute(new TitleRetriever(textView,(URIParsedResult)result,historyManager));
   }
  else   if (result instanceof ProductParsedResult) {
     String productID=((ProductParsedResult)result).getProductID();

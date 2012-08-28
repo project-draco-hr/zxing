@@ -1,0 +1,3 @@
+String uri
+ContentType type
+int maxChars
