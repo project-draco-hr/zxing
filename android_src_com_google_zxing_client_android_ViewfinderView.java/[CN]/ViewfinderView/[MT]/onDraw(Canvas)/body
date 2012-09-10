@@ -18,11 +18,6 @@
     canvas.drawBitmap(resultBitmap,null,frame,paint);
   }
  else {
-    paint.setColor(frameColor);
-    canvas.drawRect(frame.left,frame.top,frame.right + 1,frame.top + 2,paint);
-    canvas.drawRect(frame.left,frame.top + 2,frame.left + 2,frame.bottom - 1,paint);
-    canvas.drawRect(frame.right - 1,frame.top,frame.right + 1,frame.bottom - 1,paint);
-    canvas.drawRect(frame.left,frame.bottom - 1,frame.right + 1,frame.bottom + 1,paint);
     paint.setColor(laserColor);
     paint.setAlpha(SCANNER_ALPHA[scannerAlpha]);
     scannerAlpha=(scannerAlpha + 1) % SCANNER_ALPHA.length;
