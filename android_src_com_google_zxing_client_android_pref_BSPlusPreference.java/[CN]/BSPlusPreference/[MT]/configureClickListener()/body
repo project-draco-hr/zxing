@@ -1,0 +1,11 @@
+{
+  setOnPreferenceClickListener(new OnPreferenceClickListener(){
+    @Override public boolean onPreferenceClick(    Preference preference){
+      Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse(MARKET_URL));
+      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+      getContext().startActivity(intent);
+      return true;
+    }
+  }
+);
+}
