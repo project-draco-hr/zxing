@@ -2,7 +2,16 @@
   if (barcode != null) {
     viewfinderView.drawResultBitmap(barcode);
   }
-  statusView.setText(getString(resultHandler.getDisplayTitle()));
+  long resultDurationMS;
+  if (getIntent() == null) {
+    resultDurationMS=DEFAULT_INTENT_RESULT_DURATION_MS;
+  }
+ else {
+    resultDurationMS=getIntent().getLongExtra(Intents.Scan.RESULT_DISPLAY_DURATION_MS,DEFAULT_INTENT_RESULT_DURATION_MS);
+  }
+  if (resultDurationMS > 0) {
+    statusView.setText(getString(resultHandler.getDisplayTitle()));
+  }
   if (copyToClipboard && !resultHandler.areContentsSecure()) {
     ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
     CharSequence text=resultHandler.getDisplayContents();
@@ -41,12 +50,12 @@
         }
       }
     }
-    sendReplyMessage(R.id.return_scan_result,intent);
+    sendReplyMessage(R.id.return_scan_result,intent,resultDurationMS);
   }
  else   if (source == IntentSource.PRODUCT_SEARCH_LINK) {
     int end=sourceUrl.lastIndexOf("/scan");
     String replyURL=sourceUrl.substring(0,end) + "?q=" + resultHandler.getDisplayContents()+ "&source=zxing";
-    sendReplyMessage(R.id.launch_product_query,replyURL);
+    sendReplyMessage(R.id.launch_product_query,replyURL,resultDurationMS);
   }
  else   if (source == IntentSource.ZXING_LINK) {
     if (returnUrlTemplate != null) {
@@ -57,7 +66,7 @@
  catch (      UnsupportedEncodingException e) {
       }
       String replyURL=returnUrlTemplate.replace(RETURN_CODE_PLACEHOLDER,codeReplacement);
-      sendReplyMessage(R.id.launch_product_query,replyURL);
+      sendReplyMessage(R.id.launch_product_query,replyURL,resultDurationMS);
     }
   }
 }
