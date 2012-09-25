@@ -3,8 +3,8 @@
   lastResult=rawResult;
   ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
   historyManager.addHistoryItem(rawResult,resultHandler);
-  beepManager.playBeepSoundAndVibrate();
   if (barcode != null) {
+    beepManager.playBeepSoundAndVibrate();
     drawResultPoints(barcode,rawResult);
   }
 switch (source) {
