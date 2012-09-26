@@ -20,6 +20,12 @@
   String newText=newTextCombined.toString();
   Spannable content=new SpannableString(newText + "\n\n");
   if (linkURL != null) {
+    if (linkURL.startsWith("HTTP://")) {
+      linkURL="http" + linkURL.substring(4);
+    }
+ else     if (linkURL.startsWith("HTTPS://")) {
+      linkURL="https" + linkURL.substring(5);
+    }
     content.setSpan(new URLSpan(linkURL),linkStart,linkEnd,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
   }
   newContents.add(content);
