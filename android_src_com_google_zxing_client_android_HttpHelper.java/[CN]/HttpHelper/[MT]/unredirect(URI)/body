@@ -9,7 +9,12 @@
   connection.setRequestMethod("HEAD");
   connection.setRequestProperty("User-Agent","ZXing (Android)");
   try {
-    connection.connect();
+    try {
+      connection.connect();
+    }
+ catch (    NullPointerException npe) {
+      throw new IOException(npe);
+    }
 switch (connection.getResponseCode()) {
 case HttpURLConnection.HTTP_MULT_CHOICE:
 case HttpURLConnection.HTTP_MOVED_PERM:
