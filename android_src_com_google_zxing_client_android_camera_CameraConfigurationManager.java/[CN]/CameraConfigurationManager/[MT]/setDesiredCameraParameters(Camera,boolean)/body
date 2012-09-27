@@ -4,18 +4,22 @@
     Log.w(TAG,"Device error: no camera parameters are available. Proceeding without configuration.");
     return;
   }
+  Log.i(TAG,"Initial camera parameters: " + parameters.flatten());
+  if (safeMode) {
+    Log.w(TAG,"In camera config safe mode -- most settings will not be honored");
+  }
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
-  initializeTorch(parameters,prefs);
+  initializeTorch(parameters,prefs,safeMode);
   String focusMode=null;
   if (prefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS,true)) {
-    if (prefs.getBoolean(PreferencesActivity.KEY_DISABLE_CONTINUOUS_FOCUS,false)) {
+    if (safeMode || prefs.getBoolean(PreferencesActivity.KEY_DISABLE_CONTINUOUS_FOCUS,false)) {
       focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_AUTO);
     }
  else {
       focusMode=findSettableValue(parameters.getSupportedFocusModes(),"continuous-picture","continuous-video",Camera.Parameters.FOCUS_MODE_AUTO);
     }
   }
-  if (focusMode == null) {
+  if (!safeMode && focusMode == null) {
     focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_MACRO,"edof");
   }
   if (focusMode != null) {

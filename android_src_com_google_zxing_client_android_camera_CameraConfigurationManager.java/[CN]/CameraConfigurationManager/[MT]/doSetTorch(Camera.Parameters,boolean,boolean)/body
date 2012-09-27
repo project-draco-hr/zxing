@@ -9,5 +9,8 @@
   if (flashMode != null) {
     parameters.setFlashMode(flashMode);
   }
-  exposure.setExposure(parameters,newSetting);
+  if (!safeMode) {
+    ExposureInterface exposure=new ExposureManager().build();
+    exposure.setExposure(parameters,newSetting);
+  }
 }

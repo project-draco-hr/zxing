@@ -1,4 +1,3 @@
 {
   this.context=context;
-  exposure=new ExposureManager().build();
 }

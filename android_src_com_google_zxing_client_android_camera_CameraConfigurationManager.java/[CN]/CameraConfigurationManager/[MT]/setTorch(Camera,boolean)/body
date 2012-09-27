@@ -1,6 +1,6 @@
 {
   Camera.Parameters parameters=camera.getParameters();
-  doSetTorch(parameters,newSetting);
+  doSetTorch(parameters,newSetting,false);
   camera.setParameters(parameters);
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
   boolean currentSetting=prefs.getBoolean(PreferencesActivity.KEY_FRONT_LIGHT,false);
