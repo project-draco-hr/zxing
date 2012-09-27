@@ -25,5 +25,12 @@
   if (attendees != null) {
     intent.putExtra(Intent.EXTRA_EMAIL,attendees);
   }
-  launchIntent(intent);
+  try {
+    rawLaunchIntent(intent);
+  }
+ catch (  ActivityNotFoundException anfe) {
+    Log.w(TAG,"No calendar app available that responds to " + Intent.ACTION_INSERT);
+    intent.setAction(Intent.ACTION_EDIT);
+    launchIntent(intent);
+  }
 }

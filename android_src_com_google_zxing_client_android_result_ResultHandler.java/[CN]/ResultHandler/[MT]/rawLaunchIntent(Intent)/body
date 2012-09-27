@@ -1,0 +1,7 @@
+{
+  if (intent != null) {
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+    Log.d(TAG,"Launching intent: " + intent + " with extras: "+ intent.getExtras());
+    activity.startActivity(intent);
+  }
+}
