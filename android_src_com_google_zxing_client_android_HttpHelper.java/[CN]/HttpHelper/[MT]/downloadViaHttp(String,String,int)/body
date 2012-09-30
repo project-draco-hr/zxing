@@ -14,7 +14,12 @@
       connection.connect();
     }
  catch (    NullPointerException npe) {
+      Log.w(TAG,"Bad URI? " + uri);
       throw new IOException(npe);
+    }
+catch (    IllegalArgumentException iae) {
+      Log.w(TAG,"Bad URI? " + uri);
+      throw new IOException(iae);
     }
     if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
       throw new IOException("Bad HTTP response: " + connection.getResponseCode());

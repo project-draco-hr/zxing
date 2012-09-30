@@ -17,7 +17,12 @@
       connection.connect();
     }
  catch (    NullPointerException npe) {
+      Log.w(TAG,"Bad URI? " + uri);
       throw new IOException(npe);
+    }
+catch (    IllegalArgumentException iae) {
+      Log.w(TAG,"Bad URI? " + uri);
+      throw new IOException(iae);
     }
 switch (connection.getResponseCode()) {
 case HttpURLConnection.HTTP_MULT_CHOICE:
