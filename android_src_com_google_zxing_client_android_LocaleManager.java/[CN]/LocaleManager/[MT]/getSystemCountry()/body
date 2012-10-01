@@ -1,0 +1,4 @@
+{
+  Locale locale=Locale.getDefault();
+  return locale == null ? DEFAULT_COUNTRY : locale.getCountry();
+}

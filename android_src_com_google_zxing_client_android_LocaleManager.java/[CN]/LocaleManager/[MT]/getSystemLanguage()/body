@@ -1,0 +1,11 @@
+{
+  Locale locale=Locale.getDefault();
+  if (locale == null) {
+    return DEFAULT_LANGUAGE;
+  }
+  String language=locale.getLanguage();
+  if (Locale.SIMPLIFIED_CHINESE.getLanguage().equals(language)) {
+    return language + "-r" + getSystemCountry();
+  }
+  return language;
+}

@@ -7,6 +7,6 @@
       return tld;
     }
   }
-  String tld=map.get(COUNTRY);
+  String tld=map.get(getSystemCountry());
   return tld == null ? DEFAULT_TLD : tld;
 }
