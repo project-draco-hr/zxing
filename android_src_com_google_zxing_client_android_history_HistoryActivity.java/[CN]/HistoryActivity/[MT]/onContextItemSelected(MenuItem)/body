@@ -1,6 +1,6 @@
 {
   int position=item.getItemId();
   historyManager.deleteHistoryItem(position);
-  finish();
+  reloadHistoryItems();
   return true;
 }
