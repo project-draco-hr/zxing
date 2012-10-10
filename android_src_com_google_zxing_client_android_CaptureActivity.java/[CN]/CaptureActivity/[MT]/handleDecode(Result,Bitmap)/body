@@ -2,8 +2,9 @@
   inactivityTimer.onActivity();
   lastResult=rawResult;
   ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
-  historyManager.addHistoryItem(rawResult,resultHandler);
-  if (barcode != null) {
+  boolean fromLiveScan=barcode != null;
+  if (fromLiveScan) {
+    historyManager.addHistoryItem(rawResult,resultHandler);
     beepManager.playBeepSoundAndVibrate();
     drawResultPoints(barcode,rawResult);
   }
@@ -22,7 +23,7 @@ if (returnUrlTemplate == null) {
 break;
 case NONE:
 SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
-if (prefs.getBoolean(PreferencesActivity.KEY_BULK_MODE,false)) {
+if (fromLiveScan && prefs.getBoolean(PreferencesActivity.KEY_BULK_MODE,false)) {
 String message=getResources().getString(R.string.msg_bulk_mode_scanned) + " (" + rawResult.getText()+ ')';
 Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
 restartPreviewAfterDelay(BULK_MODE_SCAN_DELAY_MS);
