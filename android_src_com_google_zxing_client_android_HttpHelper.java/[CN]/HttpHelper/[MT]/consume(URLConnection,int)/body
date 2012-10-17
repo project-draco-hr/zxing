@@ -17,6 +17,8 @@
       }
  catch (      IOException ioe) {
       }
+catch (      NullPointerException npe) {
+      }
     }
   }
   return out;

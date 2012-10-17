@@ -24,7 +24,15 @@ catch (    IllegalArgumentException iae) {
       Log.w(TAG,"Bad URI? " + uri);
       throw new IOException(iae);
     }
-switch (connection.getResponseCode()) {
+    int responseCode;
+    try {
+      responseCode=connection.getResponseCode();
+    }
+ catch (    NullPointerException npe) {
+      Log.w(TAG,"Bad URI? " + uri);
+      throw new IOException(npe);
+    }
+switch (responseCode) {
 case HttpURLConnection.HTTP_MULT_CHOICE:
 case HttpURLConnection.HTTP_MOVED_PERM:
 case HttpURLConnection.HTTP_MOVED_TEMP:
