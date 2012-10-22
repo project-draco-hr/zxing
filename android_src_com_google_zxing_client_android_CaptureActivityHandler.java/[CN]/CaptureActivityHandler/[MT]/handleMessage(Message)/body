@@ -32,7 +32,7 @@ if (resolveInfo.activityInfo != null) {
 browserPackageName=resolveInfo.activityInfo.packageName;
 Log.d(TAG,"Using browser in package " + browserPackageName);
 }
-if ("com.android.browser".equals(browserPackageName)) {
+if ("com.android.browser".equals(browserPackageName) || "com.android.chrome".equals(browserPackageName)) {
 intent.setPackage(browserPackageName);
 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 intent.putExtra(Browser.EXTRA_APPLICATION_ID,browserPackageName);
