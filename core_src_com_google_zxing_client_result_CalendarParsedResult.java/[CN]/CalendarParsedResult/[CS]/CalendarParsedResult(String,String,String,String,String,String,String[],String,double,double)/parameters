@@ -1,6 +1,7 @@
 String summary
 String startString
 String endString
+String durationString
 String location
 String organizer
 String[] attendees

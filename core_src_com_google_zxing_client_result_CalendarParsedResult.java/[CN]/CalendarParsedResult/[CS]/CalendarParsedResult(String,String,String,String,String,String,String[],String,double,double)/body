@@ -3,10 +3,21 @@
   this.summary=summary;
   try {
     this.start=parseDate(startString);
-    this.end=endString == null ? null : parseDate(endString);
   }
  catch (  ParseException pe) {
     throw new IllegalArgumentException(pe.toString());
+  }
+  if (endString == null) {
+    long durationMS=parseDurationMS(durationString);
+    end=durationMS < 0L ? null : new Date(start.getTime() + durationMS);
+  }
+ else {
+    try {
+      this.end=parseDate(endString);
+    }
+ catch (    ParseException pe) {
+      throw new IllegalArgumentException(pe.toString());
+    }
   }
   this.startAllDay=startString.length() == 8;
   this.endAllDay=endString != null && endString.length() == 8;
