@@ -18,11 +18,11 @@
     }
  catch (    NullPointerException npe) {
       Log.w(TAG,"Bad URI? " + uri);
-      throw new IOException(npe);
+      throw new IOException(npe.toString());
     }
 catch (    IllegalArgumentException iae) {
       Log.w(TAG,"Bad URI? " + uri);
-      throw new IOException(iae);
+      throw new IOException(iae.toString());
     }
     int responseCode;
     try {
@@ -30,7 +30,7 @@ catch (    IllegalArgumentException iae) {
     }
  catch (    NullPointerException npe) {
       Log.w(TAG,"Bad URI? " + uri);
-      throw new IOException(npe);
+      throw new IOException(npe.toString());
     }
 switch (responseCode) {
 case HttpURLConnection.HTTP_MULT_CHOICE:
