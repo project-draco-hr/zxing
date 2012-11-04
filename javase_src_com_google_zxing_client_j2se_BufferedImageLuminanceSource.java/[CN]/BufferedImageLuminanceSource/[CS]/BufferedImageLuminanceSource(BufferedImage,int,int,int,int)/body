@@ -20,9 +20,7 @@
           if ((pixel & 0xFF000000) == 0) {
             pixel=0xFFFFFFFF;
           }
-          int luminance=0;
-          luminance=(306 * ((pixel >> 16) & 0xFF) + 601 * ((pixel >> 8) & 0xFF) + 117 * (pixel & 0xFF) + (0x200)) >> 10;
-          buffer[x]=luminance;
+          buffer[x]=(306 * ((pixel >> 16) & 0xFF) + 601 * ((pixel >> 8) & 0xFF) + 117 * (pixel & 0xFF) + 0x200) >> 10;
         }
         raster.setPixels(left,y,width,1,buffer);
       }
