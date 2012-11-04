@@ -1,28 +1,52 @@
 {
   super(width,height);
-  int sourceWidth=image.getWidth();
-  int sourceHeight=image.getHeight();
-  if (left + width > sourceWidth || top + height > sourceHeight) {
-    throw new IllegalArgumentException("Crop rectangle does not fit within image data.");
+  if (image.getType() == BufferedImage.TYPE_BYTE_GRAY) {
+    this.image=image;
   }
-  if (image.getAlphaRaster() != null) {
-    int[] buffer=new int[width];
-    for (int y=top; y < top + height; y++) {
-      image.getRGB(left,y,width,1,buffer,0,sourceWidth);
-      boolean rowChanged=false;
-      for (int x=0; x < width; x++) {
-        if ((buffer[x] & 0xFF000000) == 0) {
-          buffer[x]=0xFFFFFFFF;
-          rowChanged=true;
+ else {
+    int sourceWidth=image.getWidth();
+    int sourceHeight=image.getHeight();
+    if (left + width > sourceWidth || top + height > sourceHeight) {
+      throw new IllegalArgumentException("Crop rectangle does not fit within image data.");
+    }
+    this.image=new BufferedImage(sourceWidth,sourceHeight,BufferedImage.TYPE_BYTE_GRAY);
+    if (EXPLICIT_LUMINANCE_CONVERSION) {
+      WritableRaster raster=this.image.getRaster();
+      int[] buffer=new int[width];
+      for (int y=top; y < top + height; y++) {
+        image.getRGB(left,y,width,1,buffer,0,sourceWidth);
+        for (int x=0; x < width; x++) {
+          int pixel=buffer[x];
+          if ((pixel & 0xFF000000) == 0) {
+            pixel=0xFFFFFFFF;
+          }
+          int luminance=0;
+          luminance=(306 * ((pixel >> 16) & 0xFF) + 601 * ((pixel >> 8) & 0xFF) + 117 * (pixel & 0xFF) + (0x200)) >> 10;
+          buffer[x]=luminance;
         }
-      }
-      if (rowChanged) {
-        image.setRGB(left,y,width,1,buffer,0,sourceWidth);
+        raster.setPixels(left,y,width,1,buffer);
       }
     }
+ else {
+      if (image.getAlphaRaster() != null) {
+        int[] buffer=new int[width];
+        for (int y=top; y < top + height; y++) {
+          image.getRGB(left,y,width,1,buffer,0,sourceWidth);
+          boolean rowChanged=false;
+          for (int x=0; x < width; x++) {
+            if ((buffer[x] & 0xFF000000) == 0) {
+              buffer[x]=0xFFFFFFFF;
+              rowChanged=true;
+            }
+          }
+          if (rowChanged) {
+            image.setRGB(left,y,width,1,buffer,0,sourceWidth);
+          }
+        }
+      }
+      this.image.getGraphics().drawImage(image,0,0,null);
+    }
   }
-  this.image=new BufferedImage(sourceWidth,sourceHeight,BufferedImage.TYPE_BYTE_GRAY);
-  this.image.getGraphics().drawImage(image,0,0,null);
   this.left=left;
   this.top=top;
 }

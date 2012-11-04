@@ -46,6 +46,7 @@
         }
       }
  catch (      ReaderException re) {
+        System.out.printf("could not read at rotation %f\n",rotation);
       }
       try {
         if (decode(bitmap,rotation,expectedText,expectedMetadata,true)) {
@@ -56,6 +57,7 @@
         }
       }
  catch (      ReaderException re) {
+        System.out.printf("could not read at rotation %f w/TH\n",rotation);
       }
     }
   }

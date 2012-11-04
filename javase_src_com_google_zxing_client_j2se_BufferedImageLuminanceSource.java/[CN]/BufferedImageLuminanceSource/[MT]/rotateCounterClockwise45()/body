@@ -3,7 +3,7 @@
   int height=getHeight();
   int oldCenterX=left + width / 2;
   int oldCenterY=top + height / 2;
-  AffineTransform transform=AffineTransform.getRotateInstance(Math.toRadians(-45.0),oldCenterX,oldCenterY);
+  AffineTransform transform=AffineTransform.getRotateInstance(MINUS_45_IN_RADIANS,oldCenterX,oldCenterY);
   int sourceDimension=Math.max(image.getWidth(),image.getHeight());
   BufferedImage rotatedImage=new BufferedImage(sourceDimension,sourceDimension,BufferedImage.TYPE_BYTE_GRAY);
   Graphics2D g=rotatedImage.createGraphics();
