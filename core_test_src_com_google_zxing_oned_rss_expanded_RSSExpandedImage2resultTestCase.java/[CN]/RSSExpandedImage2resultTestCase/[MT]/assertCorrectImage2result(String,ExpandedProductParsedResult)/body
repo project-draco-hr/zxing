@@ -8,7 +8,14 @@
   BinaryBitmap binaryMap=new BinaryBitmap(new GlobalHistogramBinarizer(new BufferedImageLuminanceSource(image)));
   int rowNumber=binaryMap.getHeight() / 2;
   BitArray row=binaryMap.getBlackRow(rowNumber,null);
-  Result theResult=rssExpandedReader.decodeRow(rowNumber,row,null);
+  Result theResult;
+  try {
+    theResult=rssExpandedReader.decodeRow(rowNumber,row,null);
+  }
+ catch (  ReaderException re) {
+    fail(re.toString());
+    return;
+  }
   assertSame(BarcodeFormat.RSS_EXPANDED,theResult.getBarcodeFormat());
   ParsedResult result=ResultParser.parseResult(theResult);
   assertEquals(expected,result);
