@@ -18,6 +18,7 @@
     surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
   }
   beepManager.updatePrefs();
+  ambientLightManager.start(cameraManager);
   inactivityTimer.onResume();
   Intent intent=getIntent();
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);

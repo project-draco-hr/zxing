@@ -1,5 +1,5 @@
 {
-  if (newSetting != configManager.getTorchSetting()) {
+  if (newSetting != configManager.getTorchState(camera)) {
     if (camera != null) {
       if (autoFocusManager != null) {
         autoFocusManager.stop();
