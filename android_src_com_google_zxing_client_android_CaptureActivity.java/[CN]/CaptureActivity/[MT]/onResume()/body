@@ -52,9 +52,8 @@
  else     if (isZXingURL(dataString)) {
       source=IntentSource.ZXING_LINK;
       sourceUrl=dataString;
-      Uri inputUri=Uri.parse(sourceUrl);
-      returnUrlTemplate=inputUri.getQueryParameter(RETURN_URL_PARAM);
-      returnRaw=inputUri.getQueryParameter(RAW_PARAM) != null;
+      Uri inputUri=Uri.parse(dataString);
+      scanFromWebPageManager=new ScanFromWebPageManager(inputUri);
       decodeFormats=DecodeFormatManager.parseDecodeFormats(inputUri);
     }
     characterSet=intent.getStringExtra(Intents.Scan.CHARACTER_SET);

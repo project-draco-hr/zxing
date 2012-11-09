@@ -58,14 +58,8 @@
     sendReplyMessage(R.id.launch_product_query,replyURL,resultDurationMS);
   }
  else   if (source == IntentSource.ZXING_LINK) {
-    if (returnUrlTemplate != null) {
-      CharSequence codeReplacement=returnRaw ? rawResult.getText() : resultHandler.getDisplayContents();
-      try {
-        codeReplacement=URLEncoder.encode(codeReplacement.toString(),"UTF-8");
-      }
- catch (      UnsupportedEncodingException e) {
-      }
-      String replyURL=returnUrlTemplate.replace(RETURN_CODE_PLACEHOLDER,codeReplacement);
+    if (scanFromWebPageManager != null && scanFromWebPageManager.isScanFromWebPage()) {
+      String replyURL=scanFromWebPageManager.buildReplyURL(rawResult,resultHandler);
       sendReplyMessage(R.id.launch_product_query,replyURL,resultDurationMS);
     }
   }

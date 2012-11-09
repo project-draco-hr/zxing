@@ -1,0 +1,9 @@
+{
+  String result=returnUrlTemplate;
+  result=replace(CODE_PLACEHOLDER,returnRaw ? rawResult.getText() : resultHandler.getDisplayContents(),result);
+  result=replace(RAW_CODE_PLACEHOLDER,rawResult.getText(),result);
+  result=replace(FORMAT_PLACEHOLDER,rawResult.getBarcodeFormat().toString(),result);
+  result=replace(TYPE_PLACEHOLDER,resultHandler.getType().toString(),result);
+  result=replace(META_PLACEHOLDER,String.valueOf(rawResult.getResultMetadata()),result);
+  return result;
+}

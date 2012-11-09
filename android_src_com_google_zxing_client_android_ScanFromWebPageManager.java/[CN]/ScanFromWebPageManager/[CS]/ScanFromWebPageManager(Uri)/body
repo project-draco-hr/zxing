@@ -1,0 +1,4 @@
+{
+  returnUrlTemplate=inputUri.getQueryParameter(RETURN_URL_PARAM);
+  returnRaw=inputUri.getQueryParameter(RAW_PARAM) != null;
+}

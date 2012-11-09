@@ -1,0 +1,9 @@
+{
+  CharSequence escapedWith=with == null ? "" : with;
+  try {
+    escapedWith=URLEncoder.encode(escapedWith.toString(),"UTF-8");
+  }
+ catch (  UnsupportedEncodingException e) {
+  }
+  return pattern.replace(placeholder,escapedWith);
+}

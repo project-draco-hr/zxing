@@ -14,7 +14,7 @@ case PRODUCT_SEARCH_LINK:
     handleDecodeExternally(rawResult,resultHandler,barcode);
   break;
 case ZXING_LINK:
-if (returnUrlTemplate == null) {
+if (scanFromWebPageManager == null || !scanFromWebPageManager.isScanFromWebPage()) {
   handleDecodeInternally(rawResult,resultHandler,barcode);
 }
  else {
