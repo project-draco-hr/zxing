@@ -1,3 +1,4 @@
 {
   this.pairs.clear();
+  this.rows.clear();
 }

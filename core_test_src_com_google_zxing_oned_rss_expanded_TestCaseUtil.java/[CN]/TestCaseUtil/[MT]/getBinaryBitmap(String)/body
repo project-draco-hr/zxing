@@ -1,0 +1,5 @@
+{
+  BufferedImage bufferedImage=getBufferedImage(path);
+  BufferedImageLuminanceSource luminanceSource=new BufferedImageLuminanceSource(bufferedImage);
+  return new BinaryBitmap(new GlobalHistogramBinarizer(luminanceSource));
+}

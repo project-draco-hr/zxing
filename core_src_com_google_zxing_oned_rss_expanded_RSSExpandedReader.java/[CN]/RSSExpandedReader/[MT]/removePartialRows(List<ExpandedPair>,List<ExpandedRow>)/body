@@ -1,0 +1,22 @@
+{
+  check:   for (  ExpandedRow r : rows) {
+    if (r.getPairs().size() == pairs.size()) {
+      continue;
+    }
+    for (    ExpandedPair p : r.getPairs()) {
+      boolean found=false;
+      for (      ExpandedPair pp : pairs) {
+        if (p.equals(pp)) {
+          found=true;
+          break;
+        }
+      }
+      if (!found) {
+        continue check;
+      }
+    }
+    rows.remove(r);
+    removePartialRows(pairs,rows);
+    return;
+  }
+}

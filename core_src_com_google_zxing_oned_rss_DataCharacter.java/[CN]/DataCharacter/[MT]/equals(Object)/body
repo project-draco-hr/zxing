@@ -1,0 +1,7 @@
+{
+  if (!(o instanceof DataCharacter)) {
+    return false;
+  }
+  DataCharacter that=(DataCharacter)o;
+  return value == that.value && checksumPortion == that.checksumPortion;
+}

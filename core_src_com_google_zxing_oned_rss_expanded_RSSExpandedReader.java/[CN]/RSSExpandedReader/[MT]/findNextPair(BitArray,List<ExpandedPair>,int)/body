@@ -17,6 +17,9 @@
     rowOffset=lastPair.getFinderPattern().getStartEnd()[1];
   }
   boolean searchingEvenPair=previousPairs.size() % 2 != 0;
+  if (startFromEven) {
+    searchingEvenPair=!searchingEvenPair;
+  }
   boolean isWhite=false;
   while (rowOffset < width) {
     isWhite=!row.get(rowOffset);

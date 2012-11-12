@@ -1,0 +1,18 @@
+{
+  check:   for (  ExpandedRow r : rows) {
+    for (    ExpandedPair p : pairs) {
+      boolean found=false;
+      for (      ExpandedPair pp : r.getPairs()) {
+        if (p.equals(pp)) {
+          found=true;
+          break;
+        }
+      }
+      if (!found) {
+        continue check;
+      }
+    }
+    return true;
+  }
+  return false;
+}

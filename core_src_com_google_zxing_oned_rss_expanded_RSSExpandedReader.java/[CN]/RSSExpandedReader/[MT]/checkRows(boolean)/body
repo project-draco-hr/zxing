@@ -1,0 +1,16 @@
+{
+  this.pairs.clear();
+  if (reverse) {
+    Collections.reverse(this.rows);
+  }
+  for (  ExpandedRow erow : this.rows) {
+    this.pairs.addAll(erow.getPairs());
+  }
+  if (checkChecksum()) {
+    return this.pairs;
+  }
+  if (reverse) {
+    Collections.reverse(this.rows);
+  }
+  return null;
+}

@@ -1,0 +1,5 @@
+{
+  this.pairs=new ArrayList<ExpandedPair>(pairs);
+  this.rowNumber=rowNumber;
+  this.wasReversed=wasReversed;
+}

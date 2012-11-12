@@ -1,0 +1,7 @@
+{
+  if (!(o instanceof ExpandedRow)) {
+    return false;
+  }
+  ExpandedRow that=(ExpandedRow)o;
+  return this.pairs.equals(that.getPairs()) && wasReversed == that.wasReversed;
+}

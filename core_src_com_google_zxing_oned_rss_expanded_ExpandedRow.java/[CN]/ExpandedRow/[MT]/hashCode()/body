@@ -1,0 +1,3 @@
+{
+  return pairs.hashCode() ^ Boolean.valueOf(wasReversed).hashCode();
+}

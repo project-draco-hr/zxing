@@ -1,0 +1,7 @@
+{
+  if (!(o instanceof ExpandedPair)) {
+    return false;
+  }
+  ExpandedPair that=(ExpandedPair)o;
+  return equalsOrNull(leftChar,that.leftChar) && equalsOrNull(rightChar,that.rightChar) && equalsOrNull(finderPattern,that.finderPattern);
+}

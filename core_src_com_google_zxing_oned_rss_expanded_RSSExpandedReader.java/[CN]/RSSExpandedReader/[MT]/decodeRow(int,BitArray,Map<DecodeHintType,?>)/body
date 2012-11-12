@@ -1,5 +1,14 @@
 {
-  this.reset();
-  decodeRow2pairs(rowNumber,row);
-  return constructResult(this.pairs);
+  this.pairs.clear();
+  this.startFromEven=false;
+  try {
+    List<ExpandedPair> pairs=decodeRow2pairs(rowNumber,row);
+    return constructResult(pairs);
+  }
+ catch (  NotFoundException e) {
+  }
+  this.pairs.clear();
+  this.startFromEven=true;
+  List<ExpandedPair> pairs=decodeRow2pairs(rowNumber,row);
+  return constructResult(pairs);
 }

@@ -1,0 +1,3 @@
+{
+  return hashNotNull(leftChar) ^ hashNotNull(rightChar) ^ hashNotNull(finderPattern);
+}

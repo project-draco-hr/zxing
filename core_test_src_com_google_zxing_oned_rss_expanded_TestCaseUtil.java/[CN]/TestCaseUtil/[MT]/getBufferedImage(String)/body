@@ -1,0 +1,7 @@
+{
+  File file=new File(path);
+  if (!file.exists()) {
+    file=new File("core",path);
+  }
+  return ImageIO.read(file);
+}

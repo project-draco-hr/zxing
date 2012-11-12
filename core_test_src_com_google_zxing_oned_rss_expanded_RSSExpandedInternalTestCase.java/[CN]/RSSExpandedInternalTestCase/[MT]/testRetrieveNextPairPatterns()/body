@@ -15,11 +15,9 @@
   FinderPattern finderPattern=pair1.getFinderPattern();
   assertNotNull(finderPattern);
   assertEquals(0,finderPattern.getValue());
-  assertFalse(pair1.mayBeLast());
   ExpandedPair pair2=rssExpandedReader.retrieveNextPair(row,previousPairs,rowNumber);
   previousPairs.add(pair2);
   finderPattern=pair2.getFinderPattern();
   assertNotNull(finderPattern);
   assertEquals(0,finderPattern.getValue());
-  assertTrue(pair2.mayBeLast());
 }

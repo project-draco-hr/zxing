@@ -2,6 +2,9 @@
   ExpandedPair firstPair=this.pairs.get(0);
   DataCharacter checkCharacter=firstPair.getLeftChar();
   DataCharacter firstCharacter=firstPair.getRightChar();
+  if (firstCharacter == null) {
+    return false;
+  }
   int checksum=firstCharacter.getChecksumPortion();
   int s=2;
   for (int i=1; i < this.pairs.size(); ++i) {

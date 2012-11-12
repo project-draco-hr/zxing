@@ -1,14 +1,30 @@
 {
-  while (true) {
-    ExpandedPair nextPair=retrieveNextPair(row,this.pairs,rowNumber);
-    this.pairs.add(nextPair);
-    if (nextPair.mayBeLast()) {
-      if (checkChecksum()) {
-        return this.pairs;
-      }
-      if (nextPair.mustBeLast()) {
-        throw NotFoundException.getNotFoundInstance();
-      }
+  try {
+    while (true) {
+      ExpandedPair nextPair=retrieveNextPair(row,this.pairs,rowNumber);
+      this.pairs.add(nextPair);
     }
   }
+ catch (  NotFoundException nfe) {
+    if (this.pairs.isEmpty()) {
+      throw nfe;
+    }
+  }
+  if (checkChecksum()) {
+    return this.pairs;
+  }
+  boolean tryStackedDecode=!this.rows.isEmpty();
+  boolean wasReversed=false;
+  storeRow(rowNumber,wasReversed);
+  if (tryStackedDecode) {
+    List<ExpandedPair> ps=checkRows(false);
+    if (ps != null) {
+      return ps;
+    }
+    ps=checkRows(true);
+    if (ps != null) {
+      return ps;
+    }
+  }
+  throw NotFoundException.getNotFoundInstance();
 }

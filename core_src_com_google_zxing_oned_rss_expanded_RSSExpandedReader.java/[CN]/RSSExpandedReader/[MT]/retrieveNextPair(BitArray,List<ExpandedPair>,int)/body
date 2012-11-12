@@ -1,5 +1,8 @@
 {
   boolean isOddPattern=previousPairs.size() % 2 == 0;
+  if (startFromEven) {
+    isOddPattern=!isOddPattern;
+  }
   FinderPattern pattern;
   boolean keepFinding=true;
   int forcedOffset=-1;
@@ -14,19 +17,19 @@
     }
   }
  while (keepFinding);
-  boolean mayBeLast=checkPairSequence(previousPairs,pattern);
   DataCharacter leftChar=this.decodeDataCharacter(row,pattern,isOddPattern,true);
+  if (!previousPairs.isEmpty()) {
+    if (previousPairs.get(previousPairs.size() - 1).mustBeLast()) {
+      throw NotFoundException.getNotFoundInstance();
+    }
+  }
   DataCharacter rightChar;
   try {
     rightChar=this.decodeDataCharacter(row,pattern,isOddPattern,false);
   }
  catch (  NotFoundException nfe) {
-    if (mayBeLast) {
-      rightChar=null;
-    }
- else {
-      throw nfe;
-    }
+    rightChar=null;
   }
+  boolean mayBeLast=true;
   return new ExpandedPair(leftChar,rightChar,pattern,mayBeLast);
 }

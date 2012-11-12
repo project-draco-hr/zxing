@@ -1,0 +1,7 @@
+{
+  if (!(o instanceof FinderPattern)) {
+    return false;
+  }
+  FinderPattern that=(FinderPattern)o;
+  return value == that.value;
+}

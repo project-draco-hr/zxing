@@ -1,0 +1,22 @@
+{
+  int insertPos=0;
+  boolean prevIsSame=false;
+  boolean nextIsSame=false;
+  while (insertPos < this.rows.size()) {
+    ExpandedRow erow=this.rows.get(insertPos);
+    if (erow.getRowNumber() > rowNumber) {
+      nextIsSame=erow.isEquivalent(this.pairs);
+      break;
+    }
+    prevIsSame=erow.isEquivalent(this.pairs);
+    insertPos+=1;
+  }
+  if (nextIsSame || prevIsSame) {
+    return;
+  }
+  if (isPartialRow(this.pairs,this.rows)) {
+    return;
+  }
+  this.rows.add(insertPos,new ExpandedRow(this.pairs,rowNumber,wasReversed));
+  removePartialRows(this.pairs,this.rows);
+}

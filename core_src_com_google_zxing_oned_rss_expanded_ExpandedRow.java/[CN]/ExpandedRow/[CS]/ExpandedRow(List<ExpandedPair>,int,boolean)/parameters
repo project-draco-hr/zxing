@@ -1,0 +1,3 @@
+List<ExpandedPair> pairs
+int rowNumber
+boolean wasReversed
