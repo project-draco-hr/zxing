@@ -9,7 +9,7 @@
       break;
     }
     prevIsSame=erow.isEquivalent(this.pairs);
-    insertPos+=1;
+    insertPos++;
   }
   if (nextIsSame || prevIsSame) {
     return;

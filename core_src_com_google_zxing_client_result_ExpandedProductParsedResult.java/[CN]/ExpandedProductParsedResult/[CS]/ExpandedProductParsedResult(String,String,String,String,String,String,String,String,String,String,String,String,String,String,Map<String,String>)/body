@@ -1,5 +1,6 @@
 {
   super(ParsedResultType.PRODUCT);
+  this.rawText=rawText;
   this.productID=productID;
   this.sscc=sscc;
   this.lotNumber=lotNumber;

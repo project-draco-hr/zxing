@@ -1,5 +1,6 @@
 {
-  check:   for (  ExpandedRow r : rows) {
+  for (  ExpandedRow r : rows) {
+    boolean allFound=true;
     for (    ExpandedPair p : pairs) {
       boolean found=false;
       for (      ExpandedPair pp : r.getPairs()) {
@@ -9,10 +10,13 @@
         }
       }
       if (!found) {
-        continue check;
+        allFound=false;
+        break;
       }
     }
-    return true;
+    if (allFound) {
+      return true;
+    }
   }
   return false;
 }

@@ -1,3 +1,4 @@
+String rawText
 String productID
 String sscc
 String lotNumber

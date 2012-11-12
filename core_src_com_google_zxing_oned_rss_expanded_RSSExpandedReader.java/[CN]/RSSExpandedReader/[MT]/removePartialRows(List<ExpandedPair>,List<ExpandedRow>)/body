@@ -1,8 +1,10 @@
 {
-  check:   for (  ExpandedRow r : rows) {
+  for (Iterator<ExpandedRow> iterator=rows.iterator(); iterator.hasNext(); ) {
+    ExpandedRow r=iterator.next();
     if (r.getPairs().size() == pairs.size()) {
       continue;
     }
+    boolean allFound=true;
     for (    ExpandedPair p : r.getPairs()) {
       boolean found=false;
       for (      ExpandedPair pp : pairs) {
@@ -12,11 +14,13 @@
         }
       }
       if (!found) {
-        continue check;
+        allFound=false;
+        break;
       }
     }
-    rows.remove(r);
-    removePartialRows(pairs,rows);
-    return;
+    if (allFound) {
+      iterator.remove();
+      removePartialRows(pairs,rows);
+    }
   }
 }

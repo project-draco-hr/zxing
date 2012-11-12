@@ -77,5 +77,5 @@
       uncommonAIs.put(ai,value);
     }
   }
-  return new ExpandedProductParsedResult(productID,sscc,lotNumber,productionDate,packagingDate,bestBeforeDate,expirationDate,weight,weightType,weightIncrement,price,priceIncrement,priceCurrency,uncommonAIs);
+  return new ExpandedProductParsedResult(rawText,productID,sscc,lotNumber,productionDate,packagingDate,bestBeforeDate,expirationDate,weight,weightType,weightIncrement,price,priceIncrement,priceCurrency,uncommonAIs);
 }
