@@ -1,9 +1,9 @@
 {
-  int[] counters=new int[9];
+  Arrays.fill(counters,0);
+  decodeRowResult.setLength(0);
   int[] start=findAsteriskPattern(row,counters);
   int nextStart=row.getNextSet(start[1]);
   int end=row.getSize();
-  StringBuilder result=new StringBuilder(20);
   char decodedChar;
   int lastStart;
   do {
@@ -13,7 +13,7 @@
       throw NotFoundException.getNotFoundInstance();
     }
     decodedChar=patternToChar(pattern);
-    result.append(decodedChar);
+    decodeRowResult.append(decodedChar);
     lastStart=nextStart;
     for (    int counter : counters) {
       nextStart+=counter;
@@ -21,7 +21,7 @@
     nextStart=row.getNextSet(nextStart);
   }
  while (decodedChar != '*');
-  result.setLength(result.length() - 1);
+  decodeRowResult.setLength(decodeRowResult.length() - 1);
   int lastPatternSize=0;
   for (  int counter : counters) {
     lastPatternSize+=counter;
@@ -31,25 +31,25 @@
     throw NotFoundException.getNotFoundInstance();
   }
   if (usingCheckDigit) {
-    int max=result.length() - 1;
+    int max=decodeRowResult.length() - 1;
     int total=0;
     for (int i=0; i < max; i++) {
-      total+=ALPHABET_STRING.indexOf(result.charAt(i));
+      total+=ALPHABET_STRING.indexOf(decodeRowResult.charAt(i));
     }
-    if (result.charAt(max) != ALPHABET[total % 43]) {
+    if (decodeRowResult.charAt(max) != ALPHABET[total % 43]) {
       throw ChecksumException.getChecksumInstance();
     }
-    result.setLength(max);
+    decodeRowResult.setLength(max);
   }
-  if (result.length() == 0) {
+  if (decodeRowResult.length() == 0) {
     throw NotFoundException.getNotFoundInstance();
   }
   String resultString;
   if (extendedMode) {
-    resultString=decodeExtended(result);
+    resultString=decodeExtended(decodeRowResult);
   }
  else {
-    resultString=result.toString();
+    resultString=decodeRowResult.toString();
   }
   float left=(float)(start[1] + start[0]) / 2.0f;
   float right=(float)(nextStart + lastStart) / 2.0f;

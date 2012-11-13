@@ -1,4 +1,3 @@
 {
-  this.usingCheckDigit=usingCheckDigit;
-  this.extendedMode=false;
+  this(usingCheckDigit,false);
 }

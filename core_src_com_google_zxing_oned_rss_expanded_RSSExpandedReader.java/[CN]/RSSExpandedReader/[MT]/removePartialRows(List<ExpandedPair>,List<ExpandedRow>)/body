@@ -20,7 +20,6 @@
     }
     if (allFound) {
       iterator.remove();
-      removePartialRows(pairs,rows);
     }
   }
 }

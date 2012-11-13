@@ -1,4 +1,3 @@
 {
-  usingCheckDigit=false;
-  extendedMode=false;
+  this(false);
 }

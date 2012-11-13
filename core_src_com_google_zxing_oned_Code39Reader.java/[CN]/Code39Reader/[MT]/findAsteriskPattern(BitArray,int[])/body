@@ -1,5 +1,4 @@
 {
-  Arrays.fill(counters,0);
   int width=row.getSize();
   int rowOffset=row.getNextSet(0);
   int counterPosition=0;

@@ -1,4 +1,6 @@
 {
   this.usingCheckDigit=usingCheckDigit;
   this.extendedMode=extendedMode;
+  decodeRowResult=new StringBuilder(20);
+  counters=new int[9];
 }
