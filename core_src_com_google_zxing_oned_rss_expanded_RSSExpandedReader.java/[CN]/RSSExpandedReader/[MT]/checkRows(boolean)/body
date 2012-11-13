@@ -1,16 +1,20 @@
 {
+  if (this.rows.size() > 25) {
+    this.rows.clear();
+    return null;
+  }
   this.pairs.clear();
   if (reverse) {
     Collections.reverse(this.rows);
   }
-  for (  ExpandedRow erow : this.rows) {
-    this.pairs.addAll(erow.getPairs());
+  List<ExpandedPair> ps=null;
+  try {
+    ps=checkRows(new ArrayList<ExpandedRow>(),0);
   }
-  if (checkChecksum()) {
-    return this.pairs;
+ catch (  NotFoundException e) {
   }
   if (reverse) {
     Collections.reverse(this.rows);
   }
-  return null;
+  return ps;
 }

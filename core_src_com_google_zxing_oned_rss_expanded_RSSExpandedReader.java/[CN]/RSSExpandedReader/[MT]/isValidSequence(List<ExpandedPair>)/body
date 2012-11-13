@@ -1,0 +1,18 @@
+{
+  for (  int[] sequence : FINDER_PATTERN_SEQUENCES) {
+    if (pairs.size() > sequence.length) {
+      continue;
+    }
+    boolean stop=true;
+    for (int j=0; j < pairs.size(); j++) {
+      if (pairs.get(j).getFinderPattern().getValue() != sequence[j]) {
+        stop=false;
+        break;
+      }
+    }
+    if (stop) {
+      return true;
+    }
+  }
+  return false;
+}

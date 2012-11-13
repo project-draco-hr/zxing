@@ -2,20 +2,22 @@
   int[] start=findAsteriskPattern(row);
   int nextStart=row.getNextSet(start[1]);
   int end=row.getSize();
-  StringBuilder result=new StringBuilder(20);
-  int[] counters=new int[6];
+  int[] theCounters=counters;
+  Arrays.fill(theCounters,0);
+  StringBuilder result=decodeRowResult;
+  result.setLength(0);
   char decodedChar;
   int lastStart;
   do {
-    recordPattern(row,nextStart,counters);
-    int pattern=toPattern(counters);
+    recordPattern(row,nextStart,theCounters);
+    int pattern=toPattern(theCounters);
     if (pattern < 0) {
       throw NotFoundException.getNotFoundInstance();
     }
     decodedChar=patternToChar(pattern);
     result.append(decodedChar);
     lastStart=nextStart;
-    for (    int counter : counters) {
+    for (    int counter : theCounters) {
       nextStart+=counter;
     }
     nextStart=row.getNextSet(nextStart);

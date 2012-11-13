@@ -1,30 +1,31 @@
 {
   int width=row.getSize();
   int rowOffset=row.getNextSet(0);
-  int counterPosition=0;
-  int[] counters=new int[6];
+  Arrays.fill(counters,0);
+  int[] theCounters=counters;
   int patternStart=rowOffset;
   boolean isWhite=false;
-  int patternLength=counters.length;
+  int patternLength=theCounters.length;
+  int counterPosition=0;
   for (int i=rowOffset; i < width; i++) {
     if (row.get(i) ^ isWhite) {
-      counters[counterPosition]++;
+      theCounters[counterPosition]++;
     }
  else {
       if (counterPosition == patternLength - 1) {
-        if (toPattern(counters) == ASTERISK_ENCODING) {
+        if (toPattern(theCounters) == ASTERISK_ENCODING) {
           return new int[]{patternStart,i};
         }
-        patternStart+=counters[0] + counters[1];
-        System.arraycopy(counters,2,counters,0,patternLength - 2);
-        counters[patternLength - 2]=0;
-        counters[patternLength - 1]=0;
+        patternStart+=theCounters[0] + theCounters[1];
+        System.arraycopy(theCounters,2,theCounters,0,patternLength - 2);
+        theCounters[patternLength - 2]=0;
+        theCounters[patternLength - 1]=0;
         counterPosition--;
       }
  else {
         counterPosition++;
       }
-      counters[counterPosition]=1;
+      theCounters[counterPosition]=1;
       isWhite=!isWhite;
     }
   }

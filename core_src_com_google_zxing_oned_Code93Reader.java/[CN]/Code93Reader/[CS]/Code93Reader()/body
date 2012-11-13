@@ -1,0 +1,4 @@
+{
+  decodeRowResult=new StringBuilder(20);
+  counters=new int[6];
+}
