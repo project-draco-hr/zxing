@@ -41,9 +41,5 @@
   if (!isValid(targetax,targetay) || !isValid(targetbx,targetby) || !isValid(targetcx,targetcy)|| !isValid(targetdx,targetdy)) {
     throw NotFoundException.getNotFoundInstance();
   }
-  Point pa=new Point(targetax,targetay);
-  Point pb=new Point(targetbx,targetby);
-  Point pc=new Point(targetcx,targetcy);
-  Point pd=new Point(targetdx,targetdy);
-  return new Point[]{pa,pb,pc,pd};
+  return new Point[]{new Point(targetax,targetay),new Point(targetbx,targetby),new Point(targetcx,targetcy),new Point(targetdx,targetdy)};
 }

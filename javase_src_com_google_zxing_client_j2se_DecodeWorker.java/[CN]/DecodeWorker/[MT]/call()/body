@@ -1,0 +1,33 @@
+{
+  int successful=0;
+  String input;
+  while ((input=inputs.poll()) != null) {
+    File inputFile=new File(input);
+    if (inputFile.exists()) {
+      if (config.isMulti()) {
+        Result[] results=decodeMulti(inputFile.toURI(),config.getHints());
+        if (results != null) {
+          successful++;
+          if (config.isDumpResults()) {
+            dumpResultMulti(inputFile,results);
+          }
+        }
+      }
+ else {
+        Result result=decode(inputFile.toURI(),config.getHints());
+        if (result != null) {
+          successful++;
+          if (config.isDumpResults()) {
+            dumpResult(inputFile,result);
+          }
+        }
+      }
+    }
+ else {
+      if (decode(URI.create(input),config.getHints()) != null) {
+        successful++;
+      }
+    }
+  }
+  return successful;
+}

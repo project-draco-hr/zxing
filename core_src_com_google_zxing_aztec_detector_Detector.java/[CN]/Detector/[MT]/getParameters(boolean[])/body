@@ -12,13 +12,13 @@
   for (int i=0; i < nbBitsForNbLayers; i++) {
     nbLayers<<=1;
     if (parameterData[i]) {
-      nbLayers+=1;
+      nbLayers++;
     }
   }
   for (int i=nbBitsForNbLayers; i < nbBitsForNbLayers + nbBitsForNbDatablocks; i++) {
     nbDataBlocks<<=1;
     if (parameterData[i]) {
-      nbDataBlocks+=1;
+      nbDataBlocks++;
     }
   }
   nbLayers++;

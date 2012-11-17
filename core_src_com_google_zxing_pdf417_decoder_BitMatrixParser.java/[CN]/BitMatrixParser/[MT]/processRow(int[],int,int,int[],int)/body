@@ -27,10 +27,8 @@
     }
  else {
       int cw=getCodeword(symbol);
-      if (ecLevel < 0) {
-        if (rowNumber % 3 == 1) {
-          leftColumnECData=cw;
-        }
+      if (ecLevel < 0 && rowNumber % 3 == 1) {
+        leftColumnECData=cw;
       }
     }
     symbol=0;
@@ -38,12 +36,10 @@
   }
   if (columnNumber > 1) {
     --next;
-    if (ecLevel < 0) {
-      if (rowNumber % 3 == 2) {
-        rightColumnECData=codewords[next];
-        if (rightColumnECData == leftColumnECData && leftColumnECData != 0) {
-          ecLevel=((rightColumnECData % 30) - rows % 3) / 3;
-        }
+    if (ecLevel < 0 && rowNumber % 3 == 2) {
+      rightColumnECData=codewords[next];
+      if (rightColumnECData == leftColumnECData && leftColumnECData != 0) {
+        ecLevel=((rightColumnECData % 30) - rows % 3) / 3;
       }
     }
     codewords[next]=0;

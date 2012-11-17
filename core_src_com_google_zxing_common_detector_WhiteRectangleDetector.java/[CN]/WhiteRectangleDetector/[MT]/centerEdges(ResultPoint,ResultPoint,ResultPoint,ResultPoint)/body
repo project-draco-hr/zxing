@@ -7,7 +7,7 @@
   float xj=x.getY();
   float ti=t.getX();
   float tj=t.getY();
-  if (yi < width / 2) {
+  if (yi < width / 2.0f) {
     return new ResultPoint[]{new ResultPoint(ti - CORR,tj + CORR),new ResultPoint(zi + CORR,zj + CORR),new ResultPoint(xi - CORR,xj - CORR),new ResultPoint(yi + CORR,yj - CORR)};
   }
  else {
