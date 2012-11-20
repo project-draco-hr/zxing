@@ -25,7 +25,7 @@ case NONE:
 SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
 if (fromLiveScan && prefs.getBoolean(PreferencesActivity.KEY_BULK_MODE,false)) {
 String message=getResources().getString(R.string.msg_bulk_mode_scanned) + " (" + rawResult.getText()+ ')';
-Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
 restartPreviewAfterDelay(BULK_MODE_SCAN_DELAY_MS);
 }
  else {
