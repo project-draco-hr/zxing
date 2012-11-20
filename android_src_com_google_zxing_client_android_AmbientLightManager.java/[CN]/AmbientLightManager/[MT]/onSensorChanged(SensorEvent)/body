@@ -1,9 +1,11 @@
 {
   float ambientLightLux=sensorEvent.values[0];
-  if (ambientLightLux <= TOO_DARK_LUX) {
-    cameraManager.setTorch(true);
-  }
- else   if (ambientLightLux >= BRIGHT_ENOUGH_LUX) {
-    cameraManager.setTorch(false);
+  if (cameraManager != null) {
+    if (ambientLightLux <= TOO_DARK_LUX) {
+      cameraManager.setTorch(true);
+    }
+ else     if (ambientLightLux >= BRIGHT_ENOUGH_LUX) {
+      cameraManager.setTorch(false);
+    }
   }
 }
