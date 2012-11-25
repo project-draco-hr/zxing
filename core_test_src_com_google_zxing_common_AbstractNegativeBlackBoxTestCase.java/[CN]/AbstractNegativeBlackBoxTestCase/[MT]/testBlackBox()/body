@@ -3,7 +3,7 @@
   File[] imageFiles=getImageFiles();
   int[] falsePositives=new int[testResults.size()];
   for (  File testImage : imageFiles) {
-    System.out.printf("Starting %s\n",testImage.getAbsolutePath());
+    log.info(String.format("Starting %s",testImage.getAbsolutePath()));
     BufferedImage image=ImageIO.read(testImage);
     if (image == null) {
       throw new IOException("Could not read image: " + testImage);
@@ -23,14 +23,14 @@
     totalAllowed+=testResult.getFalsePositivesAllowed();
   }
   if (totalFalsePositives < totalAllowed) {
-    System.out.printf("  +++ Test too lax by %d images\n",totalAllowed - totalFalsePositives);
+    log.warning(String.format("+++ Test too lax by %d images",totalAllowed - totalFalsePositives));
   }
  else   if (totalFalsePositives > totalAllowed) {
-    System.out.printf("  --- Test failed by %d images\n",totalFalsePositives - totalAllowed);
+    log.warning(String.format("--- Test failed by %d images",totalFalsePositives - totalAllowed));
   }
   for (int x=0; x < testResults.size(); x++) {
     TestResult testResult=testResults.get(x);
-    System.out.printf("Rotation %d degrees: %d of %d images were false positives (%d allowed)\n",(int)testResult.getRotation(),falsePositives[x],imageFiles.length,testResult.getFalsePositivesAllowed());
+    log.info(String.format("Rotation %d degrees: %d of %d images were false positives (%d allowed)",(int)testResult.getRotation(),falsePositives[x],imageFiles.length,testResult.getFalsePositivesAllowed()));
     assertTrue("Rotation " + testResult.getRotation() + " degrees: Too many false positives found",falsePositives[x] <= testResult.getFalsePositivesAllowed());
   }
 }

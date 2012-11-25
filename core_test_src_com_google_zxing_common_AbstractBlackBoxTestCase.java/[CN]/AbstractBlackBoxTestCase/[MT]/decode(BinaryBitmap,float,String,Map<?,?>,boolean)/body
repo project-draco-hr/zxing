@@ -6,12 +6,12 @@
   }
   Result result=barcodeReader.decode(source,hints);
   if (expectedFormat != result.getBarcodeFormat()) {
-    System.out.printf("Format mismatch: expected '%s' but got '%s'%s\n",expectedFormat,result.getBarcodeFormat(),suffix);
+    log.info(String.format("Format mismatch: expected '%s' but got '%s'%s",expectedFormat,result.getBarcodeFormat(),suffix));
     return false;
   }
   String resultText=result.getText();
   if (!expectedText.equals(resultText)) {
-    System.out.printf("Content mismatch: expected '%s' but got '%s'%s\n",expectedText,resultText,suffix);
+    log.info(String.format("Content mismatch: expected '%s' but got '%s'%s",expectedText,resultText,suffix));
     return false;
   }
   Map<ResultMetadataType,?> resultMetadata=result.getResultMetadata();
@@ -20,7 +20,7 @@
     Object expectedValue=metadatum.getValue();
     Object actualValue=resultMetadata == null ? null : resultMetadata.get(key);
     if (!expectedValue.equals(actualValue)) {
-      System.out.printf("Metadata mismatch for key '%s': expected '%s' but got '%s'\n",key,expectedValue,actualValue);
+      log.info(String.format("Metadata mismatch for key '%s': expected '%s' but got '%s'",key,expectedValue,actualValue));
       return false;
     }
   }
