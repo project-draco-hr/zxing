@@ -24,6 +24,10 @@ catch (    IllegalArgumentException iae) {
       Log.w(TAG,"Bad URI? " + uri);
       throw new IOException(iae.toString());
     }
+catch (    SecurityException se) {
+      Log.w(TAG,"Restricted URI? " + uri);
+      throw new IOException(se);
+    }
     int responseCode;
     try {
       responseCode=connection.getResponseCode();
