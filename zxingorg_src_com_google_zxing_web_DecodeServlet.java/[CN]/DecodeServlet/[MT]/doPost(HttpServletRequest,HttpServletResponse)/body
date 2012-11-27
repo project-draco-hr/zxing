@@ -1,6 +1,6 @@
 {
   if (!ServletFileUpload.isMultipartContent(request)) {
-    log.fine("File upload was not multipart");
+    log.info("File upload was not multipart");
     response.sendRedirect("badimage.jspx");
     return;
   }
@@ -20,7 +20,7 @@
           }
         }
  else {
-          log.fine("Too large");
+          log.info("Too large");
           response.sendRedirect("badimage.jspx");
         }
         break;
@@ -28,9 +28,7 @@
     }
   }
  catch (  FileUploadException fue) {
-    if (log.isLoggable(Level.FINE)) {
-      log.fine(fue.toString());
-    }
+    log.info(fue.toString());
     response.sendRedirect("badimage.jspx");
   }
 }

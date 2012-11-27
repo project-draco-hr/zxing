@@ -4,23 +4,17 @@
     image=ImageIO.read(is);
   }
  catch (  IOException ioe) {
-    if (log.isLoggable(Level.FINE)) {
-      log.fine(ioe.toString());
-    }
+    log.info(ioe.toString());
     response.sendRedirect("badimage.jspx");
     return;
   }
 catch (  CMMException cmme) {
-    if (log.isLoggable(Level.FINE)) {
-      log.fine(cmme.toString());
-    }
+    log.info(cmme.toString());
     response.sendRedirect("badimage.jspx");
     return;
   }
 catch (  IllegalArgumentException iae) {
-    if (log.isLoggable(Level.FINE)) {
-      log.fine(iae.toString());
-    }
+    log.info(iae.toString());
     response.sendRedirect("badimage.jspx");
     return;
   }
@@ -29,9 +23,7 @@ catch (  IllegalArgumentException iae) {
     return;
   }
   if (image.getHeight() <= 1 || image.getWidth() <= 1 || image.getHeight() * image.getWidth() > MAX_PIXELS) {
-    if (log.isLoggable(Level.FINE)) {
-      log.fine("Dimensions too large: " + image.getWidth() + 'x'+ image.getHeight());
-    }
+    log.info("Dimensions too large: " + image.getWidth() + 'x'+ image.getHeight());
     response.sendRedirect("badimage.jspx");
     return;
   }

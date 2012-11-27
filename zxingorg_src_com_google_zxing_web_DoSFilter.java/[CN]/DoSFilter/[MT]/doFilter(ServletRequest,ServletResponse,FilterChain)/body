@@ -1,9 +1,0 @@
-{
-  if (isBanned(request)) {
-    HttpServletResponse servletResponse=(HttpServletResponse)response;
-    servletResponse.sendError(HttpServletResponse.SC_FORBIDDEN);
-  }
- else {
-    chain.doFilter(request,response);
-  }
-}
