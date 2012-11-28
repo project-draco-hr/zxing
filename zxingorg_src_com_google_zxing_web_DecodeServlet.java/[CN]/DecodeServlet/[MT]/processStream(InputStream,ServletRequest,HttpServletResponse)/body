@@ -80,10 +80,12 @@ catch (  IllegalArgumentException iae) {
     handleException(savedException,response);
     return;
   }
-  if (request.getParameter("full") == null) {
+  String fullParameter=request.getParameter("full");
+  boolean minimalOutput=fullParameter != null && !Boolean.parseBoolean(fullParameter);
+  if (minimalOutput) {
     response.setContentType("text/plain");
     response.setCharacterEncoding("UTF8");
-    Writer out=new OutputStreamWriter(response.getOutputStream(),"UTF8");
+    Writer out=new OutputStreamWriter(response.getOutputStream(),Charset.forName("UTF-8"));
     try {
       for (      Result result : results) {
         out.write(result.getText());
