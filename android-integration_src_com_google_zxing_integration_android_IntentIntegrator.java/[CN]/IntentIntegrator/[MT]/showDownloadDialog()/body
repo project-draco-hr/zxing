@@ -4,13 +4,14 @@
   downloadDialog.setMessage(message);
   downloadDialog.setPositiveButton(buttonYes,new DialogInterface.OnClickListener(){
     @Override public void onClick(    DialogInterface dialogInterface,    int i){
-      Uri uri=Uri.parse("market://details?id=" + BS_PACKAGE);
+      String packageName=targetApplications.get(0);
+      Uri uri=Uri.parse("market://details?id=" + packageName);
       Intent intent=new Intent(Intent.ACTION_VIEW,uri);
       try {
         activity.startActivity(intent);
       }
  catch (      ActivityNotFoundException anfe) {
-        Log.w(TAG,"Android Market is not installed; cannot install Barcode Scanner");
+        Log.w(TAG,"Google Play is not installed; cannot install " + packageName);
       }
     }
   }

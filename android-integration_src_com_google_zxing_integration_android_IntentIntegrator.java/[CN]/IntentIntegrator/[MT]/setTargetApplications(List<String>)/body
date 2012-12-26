@@ -1,0 +1,6 @@
+{
+  if (targetApplications.isEmpty()) {
+    throw new IllegalArgumentException("No target applications");
+  }
+  this.targetApplications=targetApplications;
+}
