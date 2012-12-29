@@ -1,0 +1,28 @@
+{
+  try {
+    connection.connect();
+  }
+ catch (  NullPointerException npe) {
+    Log.w(TAG,"Bad URI? " + uri);
+    throw new IOException(npe);
+  }
+catch (  IllegalArgumentException iae) {
+    Log.w(TAG,"Bad URI? " + uri);
+    throw new IOException(iae);
+  }
+catch (  SecurityException se) {
+    Log.w(TAG,"Restricted URI? " + uri);
+    throw new IOException(se);
+  }
+catch (  IndexOutOfBoundsException ioobe) {
+    Log.w(TAG,"Bad URI? " + uri);
+    throw new IOException(ioobe);
+  }
+  try {
+    return connection.getResponseCode();
+  }
+ catch (  NullPointerException npe) {
+    Log.w(TAG,"Bad URI? " + uri);
+    throw new IOException(npe);
+  }
+}

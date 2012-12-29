@@ -13,29 +13,7 @@
   connection.setRequestMethod("HEAD");
   connection.setRequestProperty("User-Agent","ZXing (Android)");
   try {
-    try {
-      connection.connect();
-    }
- catch (    NullPointerException npe) {
-      Log.w(TAG,"Bad URI? " + uri);
-      throw new IOException(npe.toString());
-    }
-catch (    IllegalArgumentException iae) {
-      Log.w(TAG,"Bad URI? " + uri);
-      throw new IOException(iae.toString());
-    }
-catch (    SecurityException se) {
-      Log.w(TAG,"Restricted URI? " + uri);
-      throw new IOException(se);
-    }
-    int responseCode;
-    try {
-      responseCode=connection.getResponseCode();
-    }
- catch (    NullPointerException npe) {
-      Log.w(TAG,"Bad URI? " + uri);
-      throw new IOException(npe.toString());
-    }
+    int responseCode=safelyConnect(uri.toString(),connection);
 switch (responseCode) {
 case HttpURLConnection.HTTP_MULT_CHOICE:
 case HttpURLConnection.HTTP_MOVED_PERM:
