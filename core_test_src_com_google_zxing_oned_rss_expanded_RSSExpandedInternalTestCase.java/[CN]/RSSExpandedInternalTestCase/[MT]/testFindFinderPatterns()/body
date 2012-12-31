@@ -1,6 +1,6 @@
 {
   RSSExpandedReader rssExpandedReader=new RSSExpandedReader();
-  String path="test/data/blackbox/rssexpanded-1/2.jpg";
+  String path="test/data/blackbox/rssexpanded-1/2.png";
   File file=new File(path);
   if (!file.exists()) {
     file=new File("core",path);
