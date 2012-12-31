@@ -2,16 +2,28 @@
   if (degrees == 0.0f) {
     return original;
   }
-  double radians=Math.toRadians(degrees);
-  AffineTransform at=new AffineTransform();
-  at.rotate(radians,original.getWidth() / 2.0,original.getHeight() / 2.0);
-  BufferedImageOp op=new AffineTransformOp(at,AffineTransformOp.TYPE_BICUBIC);
-  Rectangle2D r=op.getBounds2D(original);
-  int width=(int)Math.ceil(r.getWidth());
-  int height=(int)Math.ceil(r.getHeight());
-  at=new AffineTransform();
-  at.rotate(radians,width / 2.0,height / 2.0);
-  at.translate((width - original.getWidth()) / 2.0,(height - original.getHeight()) / 2.0);
-  op=new AffineTransformOp(at,AffineTransformOp.TYPE_BICUBIC);
-  return op.filter(original,null);
+switch (original.getType()) {
+case BufferedImage.TYPE_BYTE_INDEXED:
+case BufferedImage.TYPE_BYTE_BINARY:
+    BufferedImage argb=new BufferedImage(original.getWidth(),original.getHeight(),BufferedImage.TYPE_INT_ARGB);
+  Graphics2D g=argb.createGraphics();
+g.drawImage(original,0,0,null);
+g.dispose();
+original=argb;
+break;
+default :
+break;
+}
+double radians=Math.toRadians(degrees);
+AffineTransform at=new AffineTransform();
+at.rotate(radians,original.getWidth() / 2.0,original.getHeight() / 2.0);
+BufferedImageOp op=new AffineTransformOp(at,AffineTransformOp.TYPE_BICUBIC);
+Rectangle2D r=op.getBounds2D(original);
+int width=(int)Math.ceil(r.getWidth());
+int height=(int)Math.ceil(r.getHeight());
+at=new AffineTransform();
+at.rotate(radians,width / 2.0,height / 2.0);
+at.translate((width - original.getWidth()) / 2.0,(height - original.getHeight()) / 2.0);
+op=new AffineTransformOp(at,AffineTransformOp.TYPE_BICUBIC);
+return op.filter(original,new BufferedImage(width,height,original.getType()));
 }
