@@ -1,6 +1,7 @@
 {
   StringBuilder result=new StringBuilder(100);
   maybeAppend(names,result);
+  maybeAppend(nicknames,result);
   maybeAppend(pronunciation,result);
   maybeAppend(title,result);
   maybeAppend(org,result);
@@ -10,6 +11,7 @@
   maybeAppend(instantMessenger,result);
   maybeAppend(url,result);
   maybeAppend(birthday,result);
+  maybeAppend(geo,result);
   maybeAppend(note,result);
   return result.toString();
 }

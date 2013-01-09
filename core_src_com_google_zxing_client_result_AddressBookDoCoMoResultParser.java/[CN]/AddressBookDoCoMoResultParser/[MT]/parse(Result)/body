@@ -19,5 +19,5 @@
   }
   String url=matchSingleDoCoMoPrefixedField("URL:",rawText,true);
   String org=matchSingleDoCoMoPrefixedField("ORG:",rawText,true);
-  return new AddressBookParsedResult(maybeWrap(name),pronunciation,phoneNumbers,null,emails,null,null,note,addresses,null,org,birthday,null,url);
+  return new AddressBookParsedResult(maybeWrap(name),null,pronunciation,phoneNumbers,null,emails,null,null,note,addresses,null,org,birthday,null,url,null);
 }

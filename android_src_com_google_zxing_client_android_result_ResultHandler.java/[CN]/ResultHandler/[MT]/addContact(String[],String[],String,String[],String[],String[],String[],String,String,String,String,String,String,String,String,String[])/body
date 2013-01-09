@@ -26,14 +26,19 @@
   StringBuilder aggregatedNotes=new StringBuilder();
   for (  String aNote : new String[]{url,birthday,note}) {
     if (aNote != null) {
-      if (aggregatedNotes.length() > 0) {
-        aggregatedNotes.append('\n');
-      }
-      aggregatedNotes.append(aNote);
+      aggregatedNotes.append('\n').append(aNote);
     }
   }
+  if (nicknames != null) {
+    for (    String nickname : nicknames) {
+      aggregatedNotes.append('\n').append(nickname);
+    }
+  }
+  if (geo != null) {
+    aggregatedNotes.append('\n').append(geo[0]).append(',').append(geo[1]);
+  }
   if (aggregatedNotes.length() > 0) {
-    putExtra(intent,ContactsContract.Intents.Insert.NOTES,aggregatedNotes.toString());
+    putExtra(intent,ContactsContract.Intents.Insert.NOTES,aggregatedNotes.substring(1));
   }
   putExtra(intent,ContactsContract.Intents.Insert.IM_HANDLE,instantMessenger);
   putExtra(intent,ContactsContract.Intents.Insert.POSTAL,address);

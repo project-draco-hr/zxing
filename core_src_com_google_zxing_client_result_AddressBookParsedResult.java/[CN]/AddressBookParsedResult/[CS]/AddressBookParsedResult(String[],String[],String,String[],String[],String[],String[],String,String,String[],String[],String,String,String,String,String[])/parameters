@@ -1,0 +1,16 @@
+String[] names
+String[] nicknames
+String pronunciation
+String[] phoneNumbers
+String[] phoneTypes
+String[] emails
+String[] emailTypes
+String instantMessenger
+String note
+String[] addresses
+String[] addressTypes
+String org
+String birthday
+String title
+String url
+String[] geo

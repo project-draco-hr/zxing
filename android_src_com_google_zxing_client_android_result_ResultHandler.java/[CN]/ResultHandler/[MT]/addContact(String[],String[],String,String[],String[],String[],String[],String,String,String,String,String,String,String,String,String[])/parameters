@@ -1,4 +1,5 @@
 String[] names
+String[] nicknames
 String pronunciation
 String[] phoneNumbers
 String[] phoneTypes
@@ -12,3 +13,4 @@ String org
 String title
 String url
 String birthday
+String[] geo
