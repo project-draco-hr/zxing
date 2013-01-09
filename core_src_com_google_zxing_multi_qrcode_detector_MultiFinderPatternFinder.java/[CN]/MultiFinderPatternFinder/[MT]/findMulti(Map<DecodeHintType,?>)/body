@@ -25,15 +25,7 @@
  else {
         if ((currentState & 1) == 0) {
           if (currentState == 4) {
-            if (foundPatternCross(stateCount)) {
-              boolean confirmed=handlePossibleCenter(stateCount,i,j);
-              if (!confirmed) {
-                do {
-                  j++;
-                }
- while (j < maxJ && !image.get(j,i));
-                j--;
-              }
+            if (foundPatternCross(stateCount) && handlePossibleCenter(stateCount,i,j)) {
               currentState=0;
               stateCount[0]=0;
               stateCount[1]=0;
