@@ -4,25 +4,25 @@
   }
  catch (  NullPointerException npe) {
     Log.w(TAG,"Bad URI? " + uri);
-    throw new IOException(npe);
+    throw new IOException(npe.toString());
   }
 catch (  IllegalArgumentException iae) {
     Log.w(TAG,"Bad URI? " + uri);
-    throw new IOException(iae);
+    throw new IOException(iae.toString());
   }
 catch (  SecurityException se) {
     Log.w(TAG,"Restricted URI? " + uri);
-    throw new IOException(se);
+    throw new IOException(se.toString());
   }
 catch (  IndexOutOfBoundsException ioobe) {
     Log.w(TAG,"Bad URI? " + uri);
-    throw new IOException(ioobe);
+    throw new IOException(ioobe.toString());
   }
   try {
     return connection.getResponseCode();
   }
  catch (  NullPointerException npe) {
     Log.w(TAG,"Bad URI? " + uri);
-    throw new IOException(npe);
+    throw new IOException(npe.toString());
   }
 }
