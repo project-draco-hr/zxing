@@ -25,4 +25,8 @@ catch (  IndexOutOfBoundsException ioobe) {
     Log.w(TAG,"Bad URI? " + uri);
     throw new IOException(npe.toString());
   }
+catch (  NumberFormatException nfe) {
+    Log.w(TAG,"Bad server status? " + uri);
+    throw new IOException(nfe.toString());
+  }
 }
