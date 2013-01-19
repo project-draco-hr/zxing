@@ -1,14 +1,24 @@
 {
-  ProductParsedResult productResult=(ProductParsedResult)getResult();
+  ParsedResult rawResult=getResult();
+  String productID;
+  if (rawResult instanceof ProductParsedResult) {
+    productID=((ProductParsedResult)rawResult).getNormalizedProductID();
+  }
+ else   if (rawResult instanceof ExpandedProductParsedResult) {
+    productID=((ExpandedProductParsedResult)rawResult).getRawText();
+  }
+ else {
+    throw new IllegalArgumentException(rawResult.getClass().toString());
+  }
 switch (index) {
 case 0:
-    openProductSearch(productResult.getNormalizedProductID());
+    openProductSearch(productID);
   break;
 case 1:
-webSearch(productResult.getNormalizedProductID());
+webSearch(productID);
 break;
 case 2:
-openURL(fillInCustomSearchURL(productResult.getNormalizedProductID()));
+openURL(fillInCustomSearchURL(productID));
 break;
 }
 }
