@@ -6,7 +6,7 @@
   if (fromLiveScan) {
     historyManager.addHistoryItem(rawResult,resultHandler);
     beepManager.playBeepSoundAndVibrate();
-    drawResultPoints(barcode,rawResult);
+    drawResultPoints(barcode,scaleFactor,rawResult);
   }
 switch (source) {
 case NATIVE_APP_INTENT:

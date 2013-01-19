@@ -1,0 +1,3 @@
+{
+  canvas.drawLine(scaleFactor * a.getX(),scaleFactor * a.getY(),scaleFactor * b.getX(),scaleFactor * b.getY(),paint);
+}

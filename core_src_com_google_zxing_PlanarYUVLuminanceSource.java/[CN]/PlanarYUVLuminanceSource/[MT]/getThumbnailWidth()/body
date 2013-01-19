@@ -1,0 +1,3 @@
+{
+  return getWidth() / THUMBNAIL_SCALE_FACTOR;
+}

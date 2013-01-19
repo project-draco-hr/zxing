@@ -2,3 +2,4 @@ Canvas canvas
 Paint paint
 ResultPoint a
 ResultPoint b
+float scaleFactor

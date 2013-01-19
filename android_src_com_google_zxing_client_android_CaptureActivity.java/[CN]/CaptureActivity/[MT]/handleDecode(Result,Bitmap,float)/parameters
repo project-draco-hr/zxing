@@ -1,2 +1,3 @@
 Result rawResult
 Bitmap barcode
+float scaleFactor
