@@ -16,7 +16,12 @@
     ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
     CharSequence text=resultHandler.getDisplayContents();
     if (text != null) {
-      clipboard.setText(text);
+      try {
+        clipboard.setText(text);
+      }
+ catch (      NullPointerException npe) {
+        Log.w(TAG,"Clipboard bug",npe);
+      }
     }
   }
   if (source == IntentSource.NATIVE_APP_INTENT) {
