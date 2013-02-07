@@ -1,0 +1,14 @@
+{
+  URLConnection conn;
+  try {
+    conn=url.openConnection();
+  }
+ catch (  NullPointerException npe) {
+    Log.w(TAG,"Bad URI? " + url);
+    throw new IOException(npe.toString());
+  }
+  if (!(conn instanceof HttpURLConnection)) {
+    throw new IOException();
+  }
+  return (HttpURLConnection)conn;
+}

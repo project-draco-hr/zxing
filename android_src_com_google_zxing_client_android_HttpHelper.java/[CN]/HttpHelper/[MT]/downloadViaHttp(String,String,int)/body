@@ -1,11 +1,7 @@
 {
   Log.i(TAG,"Downloading " + uri);
   URL url=new URL(uri);
-  URLConnection conn=url.openConnection();
-  if (!(conn instanceof HttpURLConnection)) {
-    throw new IOException();
-  }
-  HttpURLConnection connection=(HttpURLConnection)conn;
+  HttpURLConnection connection=safelyOpenConnection(url);
   connection.setRequestProperty("Accept",contentTypes);
   connection.setRequestProperty("Accept-Charset","utf-8,*");
   connection.setRequestProperty("User-Agent","ZXing (Android)");

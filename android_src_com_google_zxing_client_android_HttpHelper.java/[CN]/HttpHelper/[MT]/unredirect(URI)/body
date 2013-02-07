@@ -3,11 +3,7 @@
     return uri;
   }
   URL url=uri.toURL();
-  URLConnection conn=url.openConnection();
-  if (!(conn instanceof HttpURLConnection)) {
-    throw new IOException();
-  }
-  HttpURLConnection connection=(HttpURLConnection)conn;
+  HttpURLConnection connection=safelyOpenConnection(url);
   connection.setInstanceFollowRedirects(false);
   connection.setDoInput(false);
   connection.setRequestMethod("HEAD");
