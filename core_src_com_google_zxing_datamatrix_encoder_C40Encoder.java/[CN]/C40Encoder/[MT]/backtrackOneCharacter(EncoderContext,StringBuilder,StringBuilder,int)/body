@@ -1,0 +1,9 @@
+{
+  int count=buffer.length();
+  buffer.delete(count - lastCharSize,count);
+  context.pos--;
+  char c=context.getCurrentChar();
+  lastCharSize=encodeChar(c,removed);
+  context.resetSymbolInfo();
+  return lastCharSize;
+}

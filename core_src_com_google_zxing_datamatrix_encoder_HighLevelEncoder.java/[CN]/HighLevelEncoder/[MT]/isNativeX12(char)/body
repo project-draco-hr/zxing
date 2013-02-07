@@ -1,0 +1,3 @@
+{
+  return isX12TermSep(ch) || (ch == ' ') || (ch >= '0' && ch <= '9')|| (ch >= 'A' && ch <= 'Z');
+}

@@ -1,0 +1,10 @@
+{
+  module(row - 2,col - 2,pos,1);
+  module(row - 2,col - 1,pos,2);
+  module(row - 1,col - 2,pos,3);
+  module(row - 1,col - 1,pos,4);
+  module(row - 1,col,pos,5);
+  module(row,col - 2,pos,6);
+  module(row,col - 1,pos,7);
+  module(row,col,pos,8);
+}

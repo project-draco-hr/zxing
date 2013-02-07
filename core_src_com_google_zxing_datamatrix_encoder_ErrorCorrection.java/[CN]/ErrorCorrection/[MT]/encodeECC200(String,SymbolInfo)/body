@@ -1,0 +1,38 @@
+{
+  if (codewords.length() != symbolInfo.dataCapacity) {
+    throw new IllegalArgumentException("The number of codewords does not match the selected symbol");
+  }
+  StringBuilder sb=new StringBuilder(symbolInfo.dataCapacity + symbolInfo.errorCodewords);
+  sb.append(codewords);
+  int blockCount=symbolInfo.getInterleavedBlockCount();
+  if (blockCount == 1) {
+    String ecc=createECCBlock(codewords,symbolInfo.errorCodewords);
+    sb.append(ecc);
+  }
+ else {
+    sb.setLength(sb.capacity());
+    int[] dataSizes=new int[blockCount];
+    int[] errorSizes=new int[blockCount];
+    int[] startPos=new int[blockCount];
+    for (int i=0; i < blockCount; i++) {
+      dataSizes[i]=symbolInfo.getDataLengthForInterleavedBlock(i + 1);
+      errorSizes[i]=symbolInfo.getErrorLengthForInterleavedBlock(i + 1);
+      startPos[i]=0;
+      if (i > 0) {
+        startPos[i]=startPos[i - 1] + dataSizes[i];
+      }
+    }
+    for (int block=0; block < blockCount; block++) {
+      StringBuilder temp=new StringBuilder(dataSizes[block]);
+      for (int d=block; d < symbolInfo.dataCapacity; d+=blockCount) {
+        temp.append(codewords.charAt(d));
+      }
+      String ecc=createECCBlock(temp.toString(),errorSizes[block]);
+      int pos=0;
+      for (int e=block; e < errorSizes[block] * blockCount; e+=blockCount) {
+        sb.setCharAt(symbolInfo.dataCapacity + e,ecc.charAt(pos++));
+      }
+    }
+  }
+  return sb.toString();
+}

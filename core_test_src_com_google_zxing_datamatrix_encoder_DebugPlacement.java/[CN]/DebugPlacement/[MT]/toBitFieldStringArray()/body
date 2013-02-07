@@ -1,0 +1,16 @@
+{
+  byte[] bits=getBits();
+  int numrows=getNumrows();
+  int numcols=getNumcols();
+  String[] array=new String[numrows];
+  int startpos=0;
+  for (int row=0; row < numrows; row++) {
+    StringBuilder sb=new StringBuilder(bits.length);
+    for (int i=0; i < numcols; i++) {
+      sb.append(bits[startpos + i] == 1 ? '1' : '0');
+    }
+    array[row]=sb.toString();
+    startpos+=numcols;
+  }
+  return array;
+}

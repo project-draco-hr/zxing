@@ -1,0 +1,4 @@
+{
+  SymbolShapeHint shape=allowRectangular ? SymbolShapeHint.FORCE_NONE : SymbolShapeHint.FORCE_SQUARE;
+  return lookup(dataCodewords,shape,fail);
+}

@@ -1,0 +1,6 @@
+boolean rectangular
+int dataCapacity
+int errorCodewords
+int matrixWidth
+int matrixHeight
+int dataRegions

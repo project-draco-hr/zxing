@@ -1,0 +1,5 @@
+int dataCodewords
+SymbolShapeHint shape
+Dimension minSize
+Dimension maxSize
+boolean fail

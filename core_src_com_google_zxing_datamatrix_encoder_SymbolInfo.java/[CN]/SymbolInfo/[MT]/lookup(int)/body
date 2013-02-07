@@ -1,0 +1,3 @@
+{
+  return lookup(dataCodewords,SymbolShapeHint.FORCE_NONE,true);
+}

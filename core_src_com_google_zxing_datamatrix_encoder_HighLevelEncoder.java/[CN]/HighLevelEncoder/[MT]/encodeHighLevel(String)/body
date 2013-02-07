@@ -1,0 +1,3 @@
+{
+  return encodeHighLevel(msg,SymbolShapeHint.FORCE_NONE,null,null);
+}

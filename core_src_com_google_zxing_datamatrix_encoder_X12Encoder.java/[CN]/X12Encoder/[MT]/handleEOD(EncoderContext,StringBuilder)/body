@@ -1,0 +1,17 @@
+{
+  context.updateSymbolInfo();
+  int available=context.symbolInfo.dataCapacity - context.getCodewordCount();
+  int count=buffer.length();
+  if (count == 2) {
+    context.writeCodeword(HighLevelEncoder.X12_UNLATCH);
+    context.pos-=2;
+    context.signalEncoderChange(HighLevelEncoder.ASCII_ENCODATION);
+  }
+ else   if (count == 1) {
+    context.pos--;
+    if (available > 1) {
+      context.writeCodeword(HighLevelEncoder.X12_UNLATCH);
+    }
+    context.signalEncoderChange(HighLevelEncoder.ASCII_ENCODATION);
+  }
+}

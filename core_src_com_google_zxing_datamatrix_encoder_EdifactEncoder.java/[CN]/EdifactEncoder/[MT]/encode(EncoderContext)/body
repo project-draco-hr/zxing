@@ -1,0 +1,20 @@
+{
+  StringBuilder buffer=new StringBuilder();
+  while (context.hasMoreCharacters()) {
+    char c=context.getCurrentChar();
+    encodeChar(c,buffer);
+    context.pos++;
+    int count=buffer.length();
+    if (count >= 4) {
+      context.writeCodewords(encodeToCodewords(buffer,0));
+      buffer.delete(0,4);
+      int newMode=HighLevelEncoder.lookAheadTest(context.msg,context.pos,getEncodingMode());
+      if (newMode != getEncodingMode()) {
+        context.signalEncoderChange(HighLevelEncoder.ASCII_ENCODATION);
+        break;
+      }
+    }
+  }
+  buffer.append((char)31);
+  handleEOD(context,buffer);
+}

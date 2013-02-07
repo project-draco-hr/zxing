@@ -1,0 +1,4 @@
+float[] charCounts
+int[] intCharCounts
+int min
+byte[] mins

@@ -1,0 +1,33 @@
+{
+  StringBuilder buffer=new StringBuilder();
+  while (context.hasMoreCharacters()) {
+    char c=context.getCurrentChar();
+    context.pos++;
+    int lastCharSize=encodeChar(c,buffer);
+    int unwritten=(buffer.length() / 3) * 2;
+    int curCodewordCount=context.getCodewordCount() + unwritten;
+    context.updateSymbolInfo(curCodewordCount);
+    int available=context.symbolInfo.dataCapacity - curCodewordCount;
+    if (!context.hasMoreCharacters()) {
+      StringBuilder removed=new StringBuilder();
+      if ((buffer.length() % 3) == 2) {
+        if (available < 2 || available > 2) {
+          lastCharSize=backtrackOneCharacter(context,buffer,removed,lastCharSize);
+        }
+      }
+      while ((buffer.length() % 3) == 1 && ((lastCharSize <= 3 && available != 1) || lastCharSize > 3)) {
+        lastCharSize=backtrackOneCharacter(context,buffer,removed,lastCharSize);
+      }
+      break;
+    }
+    int count=buffer.length();
+    if ((count % 3) == 0) {
+      int newMode=HighLevelEncoder.lookAheadTest(context.msg,context.pos,getEncodingMode());
+      if (newMode != getEncodingMode()) {
+        context.signalEncoderChange(newMode);
+        break;
+      }
+    }
+  }
+  handleEOD(context,buffer);
+}

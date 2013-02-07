@@ -1,0 +1,4 @@
+EncoderContext context
+StringBuilder buffer
+StringBuilder removed
+int lastCharSize

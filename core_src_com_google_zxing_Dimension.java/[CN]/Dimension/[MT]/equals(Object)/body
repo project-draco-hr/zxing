@@ -1,0 +1,7 @@
+{
+  if (other instanceof Dimension) {
+    Dimension d=(Dimension)other;
+    return width == d.width && height == d.height;
+  }
+  return false;
+}

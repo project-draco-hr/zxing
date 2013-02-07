@@ -1,0 +1,4 @@
+CharSequence codewords
+int start
+int len
+int numECWords

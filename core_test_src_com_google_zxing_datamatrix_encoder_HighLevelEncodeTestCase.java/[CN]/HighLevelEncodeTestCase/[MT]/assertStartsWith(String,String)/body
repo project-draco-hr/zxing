@@ -1,0 +1,5 @@
+{
+  if (!actual.startsWith(expected)) {
+    throw new ComparisonFailure(null,expected,actual.substring(0,expected.length()));
+  }
+}

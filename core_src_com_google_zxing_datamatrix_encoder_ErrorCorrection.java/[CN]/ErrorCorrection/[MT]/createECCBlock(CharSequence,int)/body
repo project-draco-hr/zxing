@@ -1,0 +1,3 @@
+{
+  return createECCBlock(codewords,0,codewords.length(),numECWords);
+}

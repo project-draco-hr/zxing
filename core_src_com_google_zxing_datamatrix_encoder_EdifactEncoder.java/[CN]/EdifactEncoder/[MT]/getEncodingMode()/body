@@ -1,0 +1,3 @@
+{
+  return HighLevelEncoder.EDIFACT_ENCODATION;
+}

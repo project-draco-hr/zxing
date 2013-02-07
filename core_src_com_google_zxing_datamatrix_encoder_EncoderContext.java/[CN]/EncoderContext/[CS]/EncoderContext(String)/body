@@ -1,0 +1,15 @@
+{
+  byte[] msgBinary=msg.getBytes(Charset.forName("ISO-8859-1"));
+  StringBuilder sb=new StringBuilder(msgBinary.length);
+  for (int i=0, c=msgBinary.length; i < c; i++) {
+    char ch=(char)(msgBinary[i] & 0xff);
+    if (ch == '?' && msg.charAt(i) != '?') {
+      throw new IllegalArgumentException("Message contains characters outside ISO-8859-1 encoding.");
+    }
+    sb.append(ch);
+  }
+  this.msg=sb.toString();
+  shape=SymbolShapeHint.FORCE_NONE;
+  this.codewords=new StringBuilder(msg.length());
+  newEncoding=-1;
+}

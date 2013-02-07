@@ -1,0 +1,3 @@
+int dataCodewords
+boolean allowRectangular
+boolean fail

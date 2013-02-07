@@ -1,0 +1,4 @@
+{
+  this.minSize=minSize;
+  this.maxSize=maxSize;
+}

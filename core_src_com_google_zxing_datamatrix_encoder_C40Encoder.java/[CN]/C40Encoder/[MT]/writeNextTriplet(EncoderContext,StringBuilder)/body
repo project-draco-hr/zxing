@@ -1,0 +1,4 @@
+{
+  context.writeCodewords(encodeToCodewords(buffer,0));
+  buffer.delete(0,3);
+}

@@ -1,0 +1,4 @@
+int row
+int col
+int pos
+int bit

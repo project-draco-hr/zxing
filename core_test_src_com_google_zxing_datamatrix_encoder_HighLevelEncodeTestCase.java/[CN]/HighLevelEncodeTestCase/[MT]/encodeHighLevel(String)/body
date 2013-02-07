@@ -1,0 +1,4 @@
+{
+  String encoded=HighLevelEncoder.encodeHighLevel(msg);
+  return visualize(encoded);
+}

@@ -1,0 +1,7 @@
+{
+  this.codewords=codewords;
+  this.numcols=numcols;
+  this.numrows=numrows;
+  this.bits=new byte[numcols * numrows];
+  Arrays.fill(this.bits,(byte)-1);
+}

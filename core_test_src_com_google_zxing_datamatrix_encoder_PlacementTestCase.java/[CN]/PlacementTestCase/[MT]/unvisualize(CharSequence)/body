@@ -1,0 +1,7 @@
+{
+  StringBuilder sb=new StringBuilder();
+  for (  String token : SPACE.split(visualized)) {
+    sb.append((char)Integer.parseInt(token));
+  }
+  return sb.toString();
+}

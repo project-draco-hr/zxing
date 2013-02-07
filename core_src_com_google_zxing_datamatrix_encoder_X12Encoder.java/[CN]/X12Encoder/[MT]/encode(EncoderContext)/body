@@ -1,0 +1,18 @@
+{
+  StringBuilder buffer=new StringBuilder();
+  while (context.hasMoreCharacters()) {
+    char c=context.getCurrentChar();
+    context.pos++;
+    encodeChar(c,buffer);
+    int count=buffer.length();
+    if ((count % 3) == 0) {
+      writeNextTriplet(context,buffer);
+      int newMode=HighLevelEncoder.lookAheadTest(context.msg,context.pos,getEncodingMode());
+      if (newMode != getEncodingMode()) {
+        context.signalEncoderChange(newMode);
+        break;
+      }
+    }
+  }
+  handleEOD(context,buffer);
+}

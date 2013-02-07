@@ -1,0 +1,10 @@
+{
+  module(numrows - 3,0,pos,1);
+  module(numrows - 2,0,pos,2);
+  module(numrows - 1,0,pos,3);
+  module(0,numcols - 4,pos,4);
+  module(0,numcols - 3,pos,5);
+  module(0,numcols - 2,pos,6);
+  module(0,numcols - 1,pos,7);
+  module(1,numcols - 1,pos,8);
+}

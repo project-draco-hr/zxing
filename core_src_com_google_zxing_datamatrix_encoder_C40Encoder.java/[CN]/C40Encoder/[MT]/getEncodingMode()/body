@@ -1,0 +1,3 @@
+{
+  return HighLevelEncoder.C40_ENCODATION;
+}

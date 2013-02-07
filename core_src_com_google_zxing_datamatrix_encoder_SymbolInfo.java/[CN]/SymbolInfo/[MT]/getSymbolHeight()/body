@@ -1,0 +1,3 @@
+{
+  return getSymbolDataHeight() + (getVerticalDataRegions() * 2);
+}

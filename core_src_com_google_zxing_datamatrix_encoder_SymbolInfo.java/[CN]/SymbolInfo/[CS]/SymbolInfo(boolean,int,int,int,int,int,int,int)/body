@@ -1,0 +1,10 @@
+{
+  this.rectangular=rectangular;
+  this.dataCapacity=dataCapacity;
+  this.errorCodewords=errorCodewords;
+  this.matrixWidth=matrixWidth;
+  this.matrixHeight=matrixHeight;
+  this.dataRegions=dataRegions;
+  this.rsBlockData=rsBlockData;
+  this.rsBlockError=rsBlockError;
+}

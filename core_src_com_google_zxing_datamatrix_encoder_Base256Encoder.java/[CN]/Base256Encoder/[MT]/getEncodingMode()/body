@@ -1,0 +1,3 @@
+{
+  return HighLevelEncoder.BASE256_ENCODATION;
+}

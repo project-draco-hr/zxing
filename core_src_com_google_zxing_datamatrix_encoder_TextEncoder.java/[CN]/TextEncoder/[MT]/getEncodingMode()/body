@@ -1,0 +1,3 @@
+{
+  return HighLevelEncoder.TEXT_ENCODATION;
+}

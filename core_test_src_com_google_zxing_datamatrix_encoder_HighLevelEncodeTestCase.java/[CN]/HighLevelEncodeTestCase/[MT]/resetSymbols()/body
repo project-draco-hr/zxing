@@ -1,0 +1,3 @@
+{
+  SymbolInfo.overrideSymbolSet(SymbolInfo.PROD_SYMBOLS);
+}

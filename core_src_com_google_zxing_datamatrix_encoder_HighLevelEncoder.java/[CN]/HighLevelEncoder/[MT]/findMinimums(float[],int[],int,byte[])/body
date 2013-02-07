@@ -1,0 +1,15 @@
+{
+  Arrays.fill(mins,(byte)0);
+  for (int i=0; i < 6; i++) {
+    intCharCounts[i]=(int)Math.ceil(charCounts[i]);
+    int current=intCharCounts[i];
+    if (min > current) {
+      min=current;
+      Arrays.fill(mins,(byte)0);
+    }
+    if (min == current) {
+      mins[i]++;
+    }
+  }
+  return min;
+}

@@ -1,0 +1,4 @@
+{
+  String visualized=encodeHighLevel("AIMAIMAIM");
+  assertEquals("230 91 11 91 11 91 11 254",visualized);
+}

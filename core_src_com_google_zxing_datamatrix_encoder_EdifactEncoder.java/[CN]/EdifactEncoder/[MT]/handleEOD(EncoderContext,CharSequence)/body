@@ -1,0 +1,41 @@
+{
+  try {
+    int count=buffer.length();
+    if (count == 0) {
+      return;
+    }
+    if (count == 1) {
+      context.updateSymbolInfo();
+      int available=context.symbolInfo.dataCapacity - context.getCodewordCount();
+      int remaining=context.getRemainingCharacters();
+      if (remaining == 0 && available <= 2) {
+        return;
+      }
+    }
+    if (count > 4) {
+      throw new IllegalStateException("Count must not exceed 4");
+    }
+    int restChars=count - 1;
+    String encoded=encodeToCodewords(buffer,0);
+    boolean endOfSymbolReached=!context.hasMoreCharacters();
+    boolean restInAscii=endOfSymbolReached && restChars <= 2;
+    if (restChars <= 2) {
+      context.updateSymbolInfo(context.getCodewordCount() + restChars);
+      int available=context.symbolInfo.dataCapacity - context.getCodewordCount();
+      if (available >= 3) {
+        restInAscii=false;
+        context.updateSymbolInfo(context.getCodewordCount() + encoded.length());
+      }
+    }
+    if (restInAscii) {
+      context.resetSymbolInfo();
+      context.pos-=restChars;
+    }
+ else {
+      context.writeCodewords(encoded);
+    }
+  }
+  finally {
+    context.signalEncoderChange(HighLevelEncoder.ASCII_ENCODATION);
+  }
+}
