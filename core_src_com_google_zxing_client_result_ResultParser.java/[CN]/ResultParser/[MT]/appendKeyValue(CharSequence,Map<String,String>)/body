@@ -4,13 +4,10 @@
     String key=keyValueTokens[0];
     String value=keyValueTokens[1];
     try {
-      value=URLDecoder.decode(value,"UTF-8");
+      value=urlDecode(value);
       result.put(key,value);
     }
- catch (    UnsupportedEncodingException uee) {
-      throw new IllegalStateException(uee);
-    }
-catch (    IllegalArgumentException iae) {
+ catch (    IllegalArgumentException iae) {
     }
   }
 }
