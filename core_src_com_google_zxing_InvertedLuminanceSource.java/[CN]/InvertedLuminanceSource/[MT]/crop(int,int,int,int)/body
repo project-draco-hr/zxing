@@ -1,0 +1,3 @@
+{
+  return new InvertedLuminanceSource(delegate.crop(left,top,width,height));
+}
