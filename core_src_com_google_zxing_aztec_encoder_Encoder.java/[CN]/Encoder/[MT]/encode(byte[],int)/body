@@ -1,0 +1,118 @@
+{
+  AztecCode aztec=new AztecCode();
+  BitArray bits=highLevelEncode(data);
+  int eccBits=bits.getSize() * minECCPercent / 100 + 11;
+  int totalSizeBits=bits.getSize() + eccBits;
+  int layers;
+  int wordSize=0;
+  int totalSymbolBits=0;
+  BitArray stuffedBits=null;
+  for (layers=1; layers < NB_BITS_COMPACT.length; layers++) {
+    if (NB_BITS_COMPACT[layers] >= totalSizeBits) {
+      if (wordSize != WORD_SIZE[layers]) {
+        wordSize=WORD_SIZE[layers];
+        stuffedBits=stuffBits(bits,wordSize);
+      }
+      totalSymbolBits=NB_BITS_COMPACT[layers];
+      if (stuffedBits.getSize() + eccBits <= NB_BITS_COMPACT[layers]) {
+        break;
+      }
+    }
+  }
+  boolean compact=true;
+  if (layers == NB_BITS_COMPACT.length) {
+    compact=false;
+    for (layers=1; layers < NB_BITS.length; layers++) {
+      if (NB_BITS[layers] >= totalSizeBits) {
+        if (wordSize != WORD_SIZE[layers]) {
+          wordSize=WORD_SIZE[layers];
+          stuffedBits=stuffBits(bits,wordSize);
+        }
+        totalSymbolBits=NB_BITS[layers];
+        if (stuffedBits.getSize() + eccBits <= NB_BITS[layers]) {
+          break;
+        }
+      }
+    }
+  }
+  if (layers == NB_BITS.length) {
+    throw new IllegalArgumentException("Data too large for an Aztec code");
+  }
+  int messageSizeInWords=(stuffedBits.getSize() + wordSize - 1) / wordSize;
+  for (int i=messageSizeInWords * wordSize - stuffedBits.getSize(); i > 0; i--) {
+    stuffedBits.appendBit(true);
+  }
+  ReedSolomonEncoder rs=new ReedSolomonEncoder(getGF(wordSize));
+  int totalSizeInFullWords=totalSymbolBits / wordSize;
+  int[] messageWords=bitsToWords(stuffedBits,wordSize,totalSizeInFullWords);
+  rs.encode(messageWords,totalSizeInFullWords - messageSizeInWords);
+  int startPad=totalSymbolBits % wordSize;
+  BitArray messageBits=new BitArray();
+  messageBits.appendBits(0,startPad);
+  for (  int messageWord : messageWords) {
+    messageBits.appendBits(messageWord,wordSize);
+  }
+  BitArray modeMessage=generateModeMessage(compact,layers,messageSizeInWords);
+  int baseMatrixSize=compact ? 11 + layers * 4 : 14 + layers * 4;
+  int[] alignmentMap=new int[baseMatrixSize];
+  int matrixSize;
+  if (compact) {
+    matrixSize=baseMatrixSize;
+    for (int i=0; i < alignmentMap.length; i++) {
+      alignmentMap[i]=i;
+    }
+  }
+ else {
+    matrixSize=baseMatrixSize + 1 + 2 * ((baseMatrixSize / 2 - 1) / 15);
+    int origCenter=baseMatrixSize / 2;
+    int center=matrixSize / 2;
+    for (int i=0; i < origCenter; i++) {
+      int newOffset=i + i / 15;
+      alignmentMap[origCenter - i - 1]=center - newOffset - 1;
+      alignmentMap[origCenter + i]=center + newOffset + 1;
+    }
+  }
+  BitMatrix matrix=new BitMatrix(matrixSize);
+  for (int i=0, rowOffset=0; i < layers; i++) {
+    int rowSize=compact ? (layers - i) * 4 + 9 : (layers - i) * 4 + 12;
+    for (int j=0; j < rowSize; j++) {
+      int columnOffset=j * 2;
+      for (int k=0; k < 2; k++) {
+        if (messageBits.get(rowOffset + columnOffset + k)) {
+          matrix.set(alignmentMap[i * 2 + k],alignmentMap[i * 2 + j]);
+        }
+        if (messageBits.get(rowOffset + rowSize * 2 + columnOffset + k)) {
+          matrix.set(alignmentMap[i * 2 + j],alignmentMap[baseMatrixSize - 1 - i * 2 - k]);
+        }
+        if (messageBits.get(rowOffset + rowSize * 4 + columnOffset + k)) {
+          matrix.set(alignmentMap[baseMatrixSize - 1 - i * 2 - k],alignmentMap[baseMatrixSize - 1 - i * 2 - j]);
+        }
+        if (messageBits.get(rowOffset + rowSize * 6 + columnOffset + k)) {
+          matrix.set(alignmentMap[baseMatrixSize - 1 - i * 2 - j],alignmentMap[i * 2 + k]);
+        }
+      }
+    }
+    rowOffset+=rowSize * 8;
+  }
+  drawModeMessage(matrix,compact,matrixSize,modeMessage);
+  if (compact) {
+    drawBullsEye(matrix,matrixSize / 2,5);
+  }
+ else {
+    drawBullsEye(matrix,matrixSize / 2,7);
+    for (int i=0, j=0; i < baseMatrixSize / 2 - 1; i+=15, j+=16) {
+      for (int k=(matrixSize / 2) & 1; k < matrixSize; k+=2) {
+        matrix.set(matrixSize / 2 - j,k);
+        matrix.set(matrixSize / 2 + j,k);
+        matrix.set(k,matrixSize / 2 - j);
+        matrix.set(k,matrixSize / 2 + j);
+      }
+    }
+  }
+  aztec.setCompact(compact);
+  aztec.setSize(matrixSize);
+  aztec.setLayers(layers);
+  aztec.setCodeWords(messageSizeInWords);
+  aztec.setMatrix(matrix);
+  return aztec;
+}

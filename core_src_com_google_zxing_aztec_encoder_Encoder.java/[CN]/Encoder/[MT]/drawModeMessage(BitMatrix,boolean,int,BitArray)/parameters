@@ -1,0 +1,4 @@
+BitMatrix matrix
+boolean compact
+int matrixSize
+BitArray modeMessage

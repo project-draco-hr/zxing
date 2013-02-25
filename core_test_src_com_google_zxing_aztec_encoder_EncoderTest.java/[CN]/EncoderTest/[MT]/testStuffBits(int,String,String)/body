@@ -1,0 +1,5 @@
+{
+  BitArray in=toBitArray(bits);
+  BitArray stuffed=Encoder.stuffBits(in,wordSize);
+  assertEquals("stuffBits() failed for input string: " + bits,expected.replace(" ",""),stuffed.toString().replace(" ",""));
+}

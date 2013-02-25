@@ -1,0 +1,14 @@
+{
+  BitSet corrupted=new BitSet(received.length);
+  for (int j=0; j < howMany; j++) {
+    int location=random.nextInt(received.length);
+    int value=random.nextInt(max);
+    if (corrupted.get(location) || received[location] == value) {
+      j--;
+    }
+ else {
+      corrupted.set(location);
+      received[location]=value;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  AztecCode aztec=Encoder.encode(data.getBytes(LATIN_1),33);
+  assertEquals("Unexpected symbol format (compact)",compact,aztec.isCompact());
+  assertEquals("Unexpected nr. of layers",layers,aztec.getLayers());
+  BitMatrix matrix=aztec.getMatrix();
+  assertEquals("encode() failed",expected,matrix.toString());
+}

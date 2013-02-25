@@ -1,0 +1,4 @@
+{
+  AztecCode aztec=Encoder.encode(contents.getBytes(LATIN_1),30);
+  return aztec.getMatrix();
+}

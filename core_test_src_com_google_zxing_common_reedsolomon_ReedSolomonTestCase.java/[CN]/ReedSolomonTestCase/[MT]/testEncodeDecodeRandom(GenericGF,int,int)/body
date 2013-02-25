@@ -1,0 +1,19 @@
+{
+  assertTrue("Invalid data size for " + field,dataSize > 0 && dataSize <= field.getSize() - 3);
+  assertTrue("Invalid ECC size for " + field,ecSize > 0 && ecSize + dataSize <= field.getSize());
+  ReedSolomonEncoder encoder=new ReedSolomonEncoder(field);
+  int[] message=new int[dataSize + ecSize];
+  int[] dataWords=new int[dataSize];
+  int[] ecWords=new int[ecSize];
+  Random random=getPseudoRandom();
+  int iterations=field.getSize() > 256 ? 1 : DECODER_RANDOM_TEST_ITERATIONS;
+  for (int i=0; i < iterations; i++) {
+    for (int k=0; k < dataSize; k++) {
+      dataWords[k]=random.nextInt(field.getSize());
+    }
+    System.arraycopy(dataWords,0,message,0,dataWords.length);
+    encoder.encode(message,ecWords.length);
+    System.arraycopy(message,dataSize,ecWords,0,ecSize);
+    testDecoder(field,dataWords,ecWords);
+  }
+}

@@ -1,0 +1,11 @@
+{
+  if (mode == TABLE_DIGIT) {
+    bits.appendBits(value,4);
+  }
+ else   if (mode < TABLE_BINARY) {
+    bits.appendBits(value,5);
+  }
+ else {
+    bits.appendBits(value,8);
+  }
+}

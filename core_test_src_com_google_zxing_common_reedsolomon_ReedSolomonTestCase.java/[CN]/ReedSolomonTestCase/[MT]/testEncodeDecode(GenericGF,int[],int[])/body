@@ -1,0 +1,4 @@
+{
+  testEncoder(field,dataWords,ecWords);
+  testDecoder(field,dataWords,ecWords);
+}

@@ -1,0 +1,5 @@
+{
+  BitArray bits=Encoder.highLevelEncode(s.getBytes(LATIN_1));
+  String receivedBits=bits.toString().replace(" ","");
+  assertEquals("highLevelEncode() failed for input string: " + s,expectedBits.replace(" ",""),receivedBits);
+}

@@ -1,0 +1,3 @@
+int wordSize
+String bits
+String expected

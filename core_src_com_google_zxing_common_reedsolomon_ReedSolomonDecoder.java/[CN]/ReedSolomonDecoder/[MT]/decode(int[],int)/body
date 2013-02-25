@@ -1,10 +1,9 @@
 {
   GenericGFPoly poly=new GenericGFPoly(field,received);
   int[] syndromeCoefficients=new int[twoS];
-  boolean dataMatrix=field.equals(GenericGF.DATA_MATRIX_FIELD_256);
   boolean noError=true;
   for (int i=0; i < twoS; i++) {
-    int eval=poly.evaluateAt(field.exp(dataMatrix ? i + 1 : i));
+    int eval=poly.evaluateAt(field.exp(i + field.getGeneratorBase()));
     syndromeCoefficients[syndromeCoefficients.length - 1 - i]=eval;
     if (eval != 0) {
       noError=false;
@@ -18,7 +17,7 @@
   GenericGFPoly sigma=sigmaOmega[0];
   GenericGFPoly omega=sigmaOmega[1];
   int[] errorLocations=findErrorLocations(sigma);
-  int[] errorMagnitudes=findErrorMagnitudes(omega,errorLocations,dataMatrix);
+  int[] errorMagnitudes=findErrorMagnitudes(omega,errorLocations);
   for (int i=0; i < errorLocations.length; i++) {
     int position=received.length - 1 - field.log(errorLocations[i]);
     if (position < 0) {

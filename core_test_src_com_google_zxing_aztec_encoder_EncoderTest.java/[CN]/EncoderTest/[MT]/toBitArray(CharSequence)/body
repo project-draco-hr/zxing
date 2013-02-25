@@ -1,0 +1,8 @@
+{
+  BitArray in=new BitArray();
+  char[] str=DOTX.matcher(bits).replaceAll("").toCharArray();
+  for (  char aStr : str) {
+    in.appendBit(aStr == 'X');
+  }
+  return in;
+}

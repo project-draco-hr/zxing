@@ -1,0 +1,4 @@
+boolean compact
+int layers
+int words
+String expected

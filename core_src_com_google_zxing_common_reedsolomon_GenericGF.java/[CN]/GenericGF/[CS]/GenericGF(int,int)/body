@@ -1,7 +1,0 @@
-{
-  this.primitive=primitive;
-  this.size=size;
-  if (size <= INITIALIZATION_THRESHOLD) {
-    initialize();
-  }
-}

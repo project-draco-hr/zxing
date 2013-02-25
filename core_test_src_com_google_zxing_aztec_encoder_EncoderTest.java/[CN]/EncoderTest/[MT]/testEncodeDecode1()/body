@@ -1,0 +1,3 @@
+{
+  testEncodeDecode("Abc123!",true,1);
+}

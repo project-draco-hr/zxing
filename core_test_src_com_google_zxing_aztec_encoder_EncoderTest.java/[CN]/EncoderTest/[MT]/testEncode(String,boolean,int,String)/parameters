@@ -1,0 +1,4 @@
+String data
+boolean compact
+int layers
+String expected

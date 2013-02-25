@@ -1,0 +1,18 @@
+{
+  AztecCode aztec=Encoder.encode(data.getBytes(LATIN_1),25);
+  assertEquals("Unexpected symbol format (compact)",compact,aztec.isCompact());
+  assertEquals("Unexpected nr. of layers",layers,aztec.getLayers());
+  BitMatrix matrix=aztec.getMatrix();
+  new File("target/tmp").mkdirs();
+  AztecDetectorResult r=new AztecDetectorResult(matrix,NO_POINTS,aztec.isCompact(),aztec.getCodeWords(),aztec.getLayers());
+  DecoderResult res=new Decoder().decode(r);
+  assertEquals(data,res.getText());
+  Random random=getPseudoRandom();
+  matrix.flip(random.nextInt(matrix.getWidth()),random.nextInt(2));
+  matrix.flip(random.nextInt(matrix.getWidth()),matrix.getHeight() - 2 + random.nextInt(2));
+  matrix.flip(random.nextInt(2),random.nextInt(matrix.getHeight()));
+  matrix.flip(matrix.getWidth() - 2 + random.nextInt(2),random.nextInt(matrix.getHeight()));
+  r=new AztecDetectorResult(matrix,NO_POINTS,aztec.isCompact(),aztec.getCodeWords(),aztec.getLayers());
+  res=new Decoder().decode(r);
+  assertEquals(data,res.getText());
+}

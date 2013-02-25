@@ -1,0 +1,27 @@
+{
+  ReedSolomonDecoder decoder=new ReedSolomonDecoder(field);
+  int[] message=new int[dataWords.length + ecWords.length];
+  int maxErrors=ecWords.length / 2;
+  Random random=getPseudoRandom();
+  int iterations=field.getSize() > 256 ? 1 : DECODER_TEST_ITERATIONS;
+  for (int j=0; j < iterations; j++) {
+    for (int i=0; i < ecWords.length; i++) {
+      if (i > 10 && i < ecWords.length / 2 - 10) {
+        i+=ecWords.length / 10;
+      }
+      System.arraycopy(dataWords,0,message,0,dataWords.length);
+      System.arraycopy(ecWords,0,message,dataWords.length,ecWords.length);
+      corrupt(message,i,random,field.getSize());
+      try {
+        decoder.decode(message,ecWords.length);
+      }
+ catch (      ReedSolomonException e) {
+        assertTrue("Decode in " + field + " ("+ dataWords.length+ ','+ ecWords.length+ ") failed at "+ i+ " errors: "+ e,i > maxErrors);
+        break;
+      }
+      if (i < maxErrors) {
+        assertDataEquals("Decode in " + field + " ("+ dataWords.length+ ','+ ecWords.length+ ") failed at "+ i+ " errors",dataWords,message);
+      }
+    }
+  }
+}

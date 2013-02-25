@@ -1,0 +1,3 @@
+boolean compact
+int layers
+int messageSizeInWords

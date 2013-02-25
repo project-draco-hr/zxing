@@ -1,0 +1,3 @@
+{
+  return "GF(0x" + Integer.toHexString(primitive) + ','+ size+ ')';
+}

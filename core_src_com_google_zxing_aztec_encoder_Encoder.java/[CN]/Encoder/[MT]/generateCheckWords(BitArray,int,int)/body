@@ -1,0 +1,17 @@
+{
+  int messageSizeInWords=(stuffedBits.getSize() + wordSize - 1) / wordSize;
+  for (int i=messageSizeInWords * wordSize - stuffedBits.getSize(); i > 0; i--) {
+    stuffedBits.appendBit(true);
+  }
+  ReedSolomonEncoder rs=new ReedSolomonEncoder(getGF(wordSize));
+  int totalSizeInFullWords=totalSymbolBits / wordSize;
+  int[] messageWords=bitsToWords(stuffedBits,wordSize,totalSizeInFullWords);
+  rs.encode(messageWords,totalSizeInFullWords - messageSizeInWords);
+  int startPad=totalSymbolBits % wordSize;
+  BitArray messageBits=new BitArray();
+  messageBits.appendBits(0,startPad);
+  for (  int messageWord : messageWords) {
+    messageBits.appendBits(messageWord,wordSize);
+  }
+  return messageBits;
+}

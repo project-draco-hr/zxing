@@ -1,0 +1,10 @@
+{
+  ReedSolomonEncoder encoder=new ReedSolomonEncoder(field);
+  int[] messageExpected=new int[dataWords.length + ecWords.length];
+  int[] message=new int[dataWords.length + ecWords.length];
+  System.arraycopy(dataWords,0,messageExpected,0,dataWords.length);
+  System.arraycopy(ecWords,0,messageExpected,dataWords.length,ecWords.length);
+  System.arraycopy(dataWords,0,message,0,dataWords.length);
+  encoder.encode(message,ecWords.length);
+  assertDataEquals("Encode in " + field + " ("+ dataWords.length+ ','+ ecWords.length+ ") failed",messageExpected,message);
+}

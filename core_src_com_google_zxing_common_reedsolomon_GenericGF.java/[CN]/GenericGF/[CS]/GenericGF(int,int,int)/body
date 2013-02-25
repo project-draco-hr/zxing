@@ -1,0 +1,8 @@
+{
+  this.primitive=primitive;
+  this.size=size;
+  this.generatorBase=b;
+  if (size <= INITIALIZATION_THRESHOLD) {
+    initialize();
+  }
+}

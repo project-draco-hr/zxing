@@ -1,9 +1,0 @@
-{
-  int[] received=new int[DM_CODE_TEST_WITH_EC.length];
-  Random random=getRandom();
-  for (  int test : DM_CODE_TEST) {
-    System.arraycopy(DM_CODE_TEST_WITH_EC,0,received,0,received.length);
-    corrupt(received,DM_CODE_CORRECTABLE,random);
-    checkQRRSDecode(received);
-  }
-}
