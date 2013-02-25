@@ -3,7 +3,6 @@
   assertEquals("Unexpected symbol format (compact)",compact,aztec.isCompact());
   assertEquals("Unexpected nr. of layers",layers,aztec.getLayers());
   BitMatrix matrix=aztec.getMatrix();
-  new File("target/tmp").mkdirs();
   AztecDetectorResult r=new AztecDetectorResult(matrix,NO_POINTS,aztec.isCompact(),aztec.getCodeWords(),aztec.getLayers());
   DecoderResult res=new Decoder().decode(r);
   assertEquals(data,res.getText());
