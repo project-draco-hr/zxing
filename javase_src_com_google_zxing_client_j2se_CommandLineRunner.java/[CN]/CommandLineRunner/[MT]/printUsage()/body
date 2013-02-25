@@ -1,5 +1,6 @@
 {
-  System.err.println("Decode barcode images using the ZXing library\n");
+  System.err.println("Decode barcode images using the ZXing library");
+  System.err.println();
   System.err.println("usage: CommandLineRunner { file | dir | url } [ options ]");
   System.err.println("  --try_harder: Use the TRY_HARDER hint, default is normal (mobile) mode");
   System.err.println("  --pure_barcode: Input image is a pure monochrome barcode image, not a photo");
@@ -10,5 +11,4 @@
   System.err.println("  --brief: Only output one line per file, omitting the contents");
   System.err.println("  --recursive: Descend into subdirectories");
   System.err.println("  --crop=left,top,width,height: Only examine cropped region of input image(s)");
-  System.err.println("  --threads=n: The number of threads to use while decoding");
 }
