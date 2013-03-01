@@ -10,7 +10,7 @@
   try {
     rsDecoder.decode(codewordsInts,ecCodewords / divisor);
   }
- catch (  ReedSolomonException rse) {
+ catch (  ReedSolomonException ignored) {
     throw ChecksumException.getChecksumInstance();
   }
   for (int i=0; i < dataCodewords; i++) {

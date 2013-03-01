@@ -14,7 +14,7 @@
     DataCharacter inside=decodeDataCharacter(row,pattern,false);
     return new Pair(1597 * outside.getValue() + inside.getValue(),outside.getChecksumPortion() + 4 * inside.getChecksumPortion(),pattern);
   }
- catch (  NotFoundException re) {
+ catch (  NotFoundException ignored) {
     return null;
   }
 }

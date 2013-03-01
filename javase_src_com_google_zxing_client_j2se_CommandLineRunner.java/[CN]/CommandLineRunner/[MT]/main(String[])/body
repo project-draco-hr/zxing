@@ -4,7 +4,6 @@
     return;
   }
   Config config=new Config();
-  Queue<String> inputs=new ConcurrentLinkedQueue<String>();
   for (  String arg : args) {
     if ("--try_harder".equals(arg)) {
       config.setTryHarder(true);
@@ -45,6 +44,7 @@
     }
   }
   config.setHints(buildHints(config));
+  Queue<String> inputs=new ConcurrentLinkedQueue<String>();
   for (  String arg : args) {
     if (!arg.startsWith("--")) {
       addArgumentToInputs(arg,config,inputs);

@@ -5,7 +5,7 @@
     try {
       result=reader.decodeRow(rowNumber,row,startGuardPattern,hints);
     }
- catch (    ReaderException re) {
+ catch (    ReaderException ignored) {
       continue;
     }
     boolean ean13MayBeUPCA=result.getBarcodeFormat() == BarcodeFormat.EAN_13 && result.getText().charAt(0) == '0';

@@ -1,5 +1,4 @@
 {
-  RSSExpandedReader rssExpandedReader=new RSSExpandedReader();
   File file=new File(path);
   if (!file.exists()) {
     file=new File("core",path);
@@ -10,6 +9,7 @@
   BitArray row=binaryMap.getBlackRow(rowNumber,null);
   Result theResult;
   try {
+    RSSExpandedReader rssExpandedReader=new RSSExpandedReader();
     theResult=rssExpandedReader.decodeRow(rowNumber,row,null);
   }
  catch (  ReaderException re) {

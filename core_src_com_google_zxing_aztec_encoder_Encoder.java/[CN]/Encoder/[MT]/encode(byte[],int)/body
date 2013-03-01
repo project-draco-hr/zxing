@@ -1,5 +1,4 @@
 {
-  AztecCode aztec=new AztecCode();
   BitArray bits=highLevelEncode(data);
   int eccBits=bits.getSize() * minECCPercent / 100 + 11;
   int totalSizeBits=bits.getSize() + eccBits;
@@ -109,6 +108,7 @@
       }
     }
   }
+  AztecCode aztec=new AztecCode();
   aztec.setCompact(compact);
   aztec.setSize(matrixSize);
   aztec.setLayers(layers);

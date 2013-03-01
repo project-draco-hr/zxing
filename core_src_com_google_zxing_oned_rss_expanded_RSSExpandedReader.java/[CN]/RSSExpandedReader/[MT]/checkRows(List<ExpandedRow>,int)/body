@@ -20,7 +20,6 @@
       return checkRows(rs,i + 1);
     }
  catch (    NotFoundException e) {
-      continue;
     }
   }
   throw NotFoundException.getNotFoundInstance();

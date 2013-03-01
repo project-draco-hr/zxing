@@ -1,5 +1,4 @@
 {
-  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
   Collection<BarcodeFormat> vector=new ArrayList<BarcodeFormat>(8);
   vector.add(BarcodeFormat.UPC_A);
   vector.add(BarcodeFormat.UPC_E);
@@ -19,6 +18,7 @@
     vector.add(BarcodeFormat.CODABAR);
     vector.add(BarcodeFormat.MAXICODE);
   }
+  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
   hints.put(DecodeHintType.POSSIBLE_FORMATS,vector);
   if (config.isTryHarder()) {
     hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);

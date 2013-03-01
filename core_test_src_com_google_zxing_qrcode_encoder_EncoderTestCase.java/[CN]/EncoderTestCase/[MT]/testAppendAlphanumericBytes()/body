@@ -20,9 +20,8 @@
     assertEquals("",bits.toString());
   }
 {
-    BitArray bits=new BitArray();
     try {
-      Encoder.appendAlphanumericBytes("abc",bits);
+      Encoder.appendAlphanumericBytes("abc",new BitArray());
     }
  catch (    WriterException we) {
     }

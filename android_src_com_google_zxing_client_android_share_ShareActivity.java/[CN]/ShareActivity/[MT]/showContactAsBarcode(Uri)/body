@@ -4,12 +4,11 @@
     return;
   }
   ContentResolver resolver=getContentResolver();
-  Bundle bundle=new Bundle();
   Cursor cursor;
   try {
     cursor=resolver.query(contactUri,null,null,null,null);
   }
- catch (  IllegalArgumentException e) {
+ catch (  IllegalArgumentException ignored) {
     return;
   }
   if (cursor == null) {
@@ -29,6 +28,7 @@
   finally {
     cursor.close();
   }
+  Bundle bundle=new Bundle();
   if (name != null && name.length() > 0) {
     bundle.putString(ContactsContract.Intents.Insert.NAME,massageContactData(name));
   }

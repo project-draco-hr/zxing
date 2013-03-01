@@ -7,7 +7,7 @@
       versionCode=info.versionCode;
       versionName=info.versionName;
     }
- catch (    PackageManager.NameNotFoundException e) {
+ catch (    PackageManager.NameNotFoundException ignored) {
       versionCode=0;
       versionName="unknown";
     }

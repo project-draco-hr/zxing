@@ -24,7 +24,7 @@
   try {
     value=parseFinderValue(counters,FINDER_PATTERNS);
   }
- catch (  NotFoundException nfe) {
+ catch (  NotFoundException ignored) {
     return null;
   }
   return new FinderPattern(value,new int[]{start,end},start,end,rowNumber);

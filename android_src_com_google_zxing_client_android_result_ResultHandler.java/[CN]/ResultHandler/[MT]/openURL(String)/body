@@ -9,7 +9,7 @@
   try {
     launchIntent(intent);
   }
- catch (  ActivityNotFoundException anfe) {
+ catch (  ActivityNotFoundException ignored) {
     Log.w(TAG,"Nothing available to handle " + intent);
   }
 }

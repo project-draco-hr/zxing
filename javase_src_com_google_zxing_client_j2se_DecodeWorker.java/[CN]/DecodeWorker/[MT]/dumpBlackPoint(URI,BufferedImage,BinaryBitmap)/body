@@ -48,7 +48,7 @@
       }
     }
   }
- catch (  NotFoundException nfe) {
+ catch (  NotFoundException ignored) {
   }
   writeResultImage(stride,height,pixels,uri,inputName,".mono.png");
 }

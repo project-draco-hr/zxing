@@ -20,8 +20,6 @@
     if (context.hasMoreCharacters()) {
       context.writeCodeword(HighLevelEncoder.C40_UNLATCH);
     }
- else {
-    }
     context.pos--;
   }
  else   if (rest == 0) {

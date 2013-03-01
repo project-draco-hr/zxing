@@ -25,7 +25,7 @@
   try {
     rightChar=this.decodeDataCharacter(row,pattern,isOddPattern,false);
   }
- catch (  NotFoundException nfe) {
+ catch (  NotFoundException ignored) {
     rightChar=null;
   }
   boolean mayBeLast=true;

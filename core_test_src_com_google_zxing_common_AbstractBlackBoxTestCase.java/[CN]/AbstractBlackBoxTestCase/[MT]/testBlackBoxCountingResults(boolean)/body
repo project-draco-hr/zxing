@@ -45,7 +45,7 @@
           misreadCounts[x]++;
         }
       }
- catch (      ReaderException re) {
+ catch (      ReaderException ignored) {
         log.fine(String.format("could not read at rotation %f",rotation));
       }
       try {
@@ -56,7 +56,7 @@
           tryHaderMisreadCounts[x]++;
         }
       }
- catch (      ReaderException re) {
+ catch (      ReaderException ignored) {
         log.fine(String.format("could not read at rotation %f w/TH",rotation));
       }
     }

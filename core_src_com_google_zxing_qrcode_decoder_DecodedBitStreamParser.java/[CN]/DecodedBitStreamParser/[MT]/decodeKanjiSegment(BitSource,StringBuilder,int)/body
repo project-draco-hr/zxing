@@ -21,7 +21,7 @@
   try {
     result.append(new String(buffer,StringUtils.SHIFT_JIS));
   }
- catch (  UnsupportedEncodingException uee) {
+ catch (  UnsupportedEncodingException ignored) {
     throw FormatException.getFormatInstance();
   }
 }

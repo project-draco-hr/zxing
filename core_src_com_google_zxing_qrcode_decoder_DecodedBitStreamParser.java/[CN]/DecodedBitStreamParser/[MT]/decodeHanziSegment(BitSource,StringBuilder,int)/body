@@ -21,7 +21,7 @@
   try {
     result.append(new String(buffer,StringUtils.GB2312));
   }
- catch (  UnsupportedEncodingException uee) {
+ catch (  UnsupportedEncodingException ignored) {
     throw FormatException.getFormatInstance();
   }
 }

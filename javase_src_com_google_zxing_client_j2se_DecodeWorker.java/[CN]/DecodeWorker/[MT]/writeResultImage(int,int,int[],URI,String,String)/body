@@ -20,10 +20,10 @@
       System.err.println("Could not encode an image to " + resultName);
     }
   }
- catch (  FileNotFoundException e) {
+ catch (  FileNotFoundException ignored) {
     System.err.println("Could not create " + resultName);
   }
-catch (  IOException e) {
+catch (  IOException ignored) {
     System.err.println("Could not write to " + resultName);
   }
  finally {

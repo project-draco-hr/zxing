@@ -7,7 +7,7 @@
       throw new IllegalArgumentException("Contents do not pass checksum");
     }
   }
- catch (  FormatException fe) {
+ catch (  FormatException ignored) {
     throw new IllegalArgumentException("Illegal contents");
   }
   int firstDigit=Integer.parseInt(contents.substring(0,1));
