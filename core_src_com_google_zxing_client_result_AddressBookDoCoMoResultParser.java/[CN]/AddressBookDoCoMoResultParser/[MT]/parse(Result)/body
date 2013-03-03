@@ -17,7 +17,7 @@
   if (birthday != null && !isStringOfDigits(birthday,8)) {
     birthday=null;
   }
-  String url=matchSingleDoCoMoPrefixedField("URL:",rawText,true);
+  String[] urls=matchDoCoMoPrefixedField("URL:",rawText,true);
   String org=matchSingleDoCoMoPrefixedField("ORG:",rawText,true);
-  return new AddressBookParsedResult(maybeWrap(name),null,pronunciation,phoneNumbers,null,emails,null,null,note,addresses,null,org,birthday,null,url,null);
+  return new AddressBookParsedResult(maybeWrap(name),null,pronunciation,phoneNumbers,null,emails,null,null,note,addresses,null,org,birthday,null,urls,null);
 }

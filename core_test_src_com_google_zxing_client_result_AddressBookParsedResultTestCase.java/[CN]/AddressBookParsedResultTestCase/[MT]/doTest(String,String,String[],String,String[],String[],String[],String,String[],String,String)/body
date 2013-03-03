@@ -4,13 +4,13 @@
   assertSame(ParsedResultType.ADDRESSBOOK,result.getType());
   AddressBookParsedResult addressResult=(AddressBookParsedResult)result;
   assertEquals(title,addressResult.getTitle());
-  assertTrue(Arrays.equals(names,addressResult.getNames()));
+  assertArrayEquals(names,addressResult.getNames());
   assertEquals(pronunciation,addressResult.getPronunciation());
-  assertTrue(Arrays.equals(addresses,addressResult.getAddresses()));
-  assertTrue(Arrays.equals(emails,addressResult.getEmails()));
-  assertTrue(Arrays.equals(phoneNumbers,addressResult.getPhoneNumbers()));
+  assertArrayEquals(addresses,addressResult.getAddresses());
+  assertArrayEquals(emails,addressResult.getEmails());
+  assertArrayEquals(phoneNumbers,addressResult.getPhoneNumbers());
   assertEquals(org,addressResult.getOrg());
-  assertEquals(url,addressResult.getURL());
+  assertArrayEquals(urls,addressResult.getURLs());
   assertEquals(birthday,addressResult.getBirthday());
   assertEquals(note,addressResult.getNote());
 }

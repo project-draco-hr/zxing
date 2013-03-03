@@ -14,6 +14,6 @@
   this.org=org;
   this.birthday=birthday;
   this.title=title;
-  this.url=url;
+  this.urls=urls;
   this.geo=geo;
 }

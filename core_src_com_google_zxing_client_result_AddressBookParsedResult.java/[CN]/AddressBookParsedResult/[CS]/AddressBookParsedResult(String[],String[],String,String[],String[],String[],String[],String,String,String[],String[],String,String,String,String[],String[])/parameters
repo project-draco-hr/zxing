@@ -12,5 +12,5 @@ String[] addressTypes
 String org
 String birthday
 String title
-String url
+String[] urls
 String[] geo

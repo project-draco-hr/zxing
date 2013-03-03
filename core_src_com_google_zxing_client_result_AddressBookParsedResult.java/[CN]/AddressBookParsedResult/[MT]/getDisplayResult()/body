@@ -9,7 +9,7 @@
   maybeAppend(phoneNumbers,result);
   maybeAppend(emails,result);
   maybeAppend(instantMessenger,result);
-  maybeAppend(url,result);
+  maybeAppend(urls,result);
   maybeAppend(birthday,result);
   maybeAppend(geo,result);
   maybeAppend(note,result);

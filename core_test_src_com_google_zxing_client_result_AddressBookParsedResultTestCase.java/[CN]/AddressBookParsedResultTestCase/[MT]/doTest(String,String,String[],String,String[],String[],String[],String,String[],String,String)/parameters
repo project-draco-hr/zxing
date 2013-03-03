@@ -6,6 +6,6 @@ String[] addresses
 String[] emails
 String[] phoneNumbers
 String org
-String url
+String[] urls
 String birthday
 String note

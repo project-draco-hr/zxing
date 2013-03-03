@@ -21,12 +21,12 @@
     birthday=null;
   }
   List<String> title=matchSingleVCardPrefixedField("TITLE",rawText,true,false);
-  List<String> url=matchSingleVCardPrefixedField("URL",rawText,true,false);
+  List<List<String>> urls=matchVCardPrefixedField("URL",rawText,true,false);
   List<String> instantMessenger=matchSingleVCardPrefixedField("IMPP",rawText,true,false);
   List<String> geoString=matchSingleVCardPrefixedField("GEO",rawText,true,false);
   String[] geo=geoString == null ? null : SEMICOLON_OR_COMMA.split(geoString.get(0));
   if (geo != null && geo.length != 2) {
     geo=null;
   }
-  return new AddressBookParsedResult(toPrimaryValues(names),nicknames,null,toPrimaryValues(phoneNumbers),toTypes(phoneNumbers),toPrimaryValues(emails),toTypes(emails),toPrimaryValue(instantMessenger),toPrimaryValue(note),toPrimaryValues(addresses),toTypes(addresses),toPrimaryValue(org),toPrimaryValue(birthday),toPrimaryValue(title),toPrimaryValue(url),geo);
+  return new AddressBookParsedResult(toPrimaryValues(names),nicknames,null,toPrimaryValues(phoneNumbers),toTypes(phoneNumbers),toPrimaryValues(emails),toTypes(emails),toPrimaryValue(instantMessenger),toPrimaryValue(note),toPrimaryValues(addresses),toTypes(addresses),toPrimaryValue(org),toPrimaryValue(birthday),toPrimaryValue(title),toPrimaryValues(urls),geo);
 }
