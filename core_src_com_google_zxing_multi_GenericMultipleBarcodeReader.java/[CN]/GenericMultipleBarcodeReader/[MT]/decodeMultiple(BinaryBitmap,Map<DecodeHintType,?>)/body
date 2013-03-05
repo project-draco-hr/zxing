@@ -1,6 +1,6 @@
 {
   List<Result> results=new ArrayList<Result>();
-  doDecodeMultiple(image,hints,results,0,0);
+  doDecodeMultiple(image,hints,results,0,0,0);
   if (results.isEmpty()) {
     throw NotFoundException.getNotFoundInstance();
   }

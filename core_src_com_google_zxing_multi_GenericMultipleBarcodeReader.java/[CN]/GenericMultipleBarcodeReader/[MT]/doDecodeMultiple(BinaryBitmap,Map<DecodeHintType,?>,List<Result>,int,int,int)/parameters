@@ -3,3 +3,4 @@ Map<DecodeHintType,?> hints
 List<Result> results
 int xOffset
 int yOffset
+int currentDepth

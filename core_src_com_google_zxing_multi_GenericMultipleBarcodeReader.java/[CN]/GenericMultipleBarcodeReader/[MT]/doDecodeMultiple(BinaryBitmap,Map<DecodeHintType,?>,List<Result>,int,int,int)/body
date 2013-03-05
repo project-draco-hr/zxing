@@ -1,4 +1,7 @@
 {
+  if (currentDepth > MAX_DEPTH) {
+    return;
+  }
   Result result;
   try {
     result=delegate.decode(image,hints);
@@ -43,15 +46,15 @@
     }
   }
   if (minX > MIN_DIMENSION_TO_RECUR) {
-    doDecodeMultiple(image.crop(0,0,(int)minX,height),hints,results,xOffset,yOffset);
+    doDecodeMultiple(image.crop(0,0,(int)minX,height),hints,results,xOffset,yOffset,currentDepth + 1);
   }
   if (minY > MIN_DIMENSION_TO_RECUR) {
-    doDecodeMultiple(image.crop(0,0,width,(int)minY),hints,results,xOffset,yOffset);
+    doDecodeMultiple(image.crop(0,0,width,(int)minY),hints,results,xOffset,yOffset,currentDepth + 1);
   }
   if (maxX < width - MIN_DIMENSION_TO_RECUR) {
-    doDecodeMultiple(image.crop((int)maxX,0,width - (int)maxX,height),hints,results,xOffset + (int)maxX,yOffset);
+    doDecodeMultiple(image.crop((int)maxX,0,width - (int)maxX,height),hints,results,xOffset + (int)maxX,yOffset,currentDepth + 1);
   }
   if (maxY < height - MIN_DIMENSION_TO_RECUR) {
-    doDecodeMultiple(image.crop(0,(int)maxY,width,height - (int)maxY),hints,results,xOffset,yOffset + (int)maxY);
+    doDecodeMultiple(image.crop(0,(int)maxY,width,height - (int)maxY),hints,results,xOffset,yOffset + (int)maxY,currentDepth + 1);
   }
 }
