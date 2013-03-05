@@ -1,4 +1,7 @@
 {
+  if (uri.contains(" ")) {
+    return false;
+  }
   Matcher m=URL_WITH_PROTOCOL_PATTERN.matcher(uri);
   if (m.find() && m.start() == 0) {
     return true;
