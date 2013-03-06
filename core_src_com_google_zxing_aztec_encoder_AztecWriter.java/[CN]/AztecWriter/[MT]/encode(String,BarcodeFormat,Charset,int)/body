@@ -1,0 +1,7 @@
+{
+  if (format != BarcodeFormat.AZTEC) {
+    throw new IllegalArgumentException("Can only encode QR_AZTECCODE, but got " + format);
+  }
+  AztecCode aztec=Encoder.encode(contents.getBytes(charset),eccPercent);
+  return aztec.getMatrix();
+}

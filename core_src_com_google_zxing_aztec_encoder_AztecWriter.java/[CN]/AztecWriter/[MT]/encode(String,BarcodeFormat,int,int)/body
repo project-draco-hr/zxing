@@ -1,4 +1,3 @@
 {
-  AztecCode aztec=Encoder.encode(contents.getBytes(LATIN_1),30);
-  return aztec.getMatrix();
+  return encode(contents,format,DEFAULT_CHARSET,Encoder.DEFAULT_EC_PERCENT);
 }

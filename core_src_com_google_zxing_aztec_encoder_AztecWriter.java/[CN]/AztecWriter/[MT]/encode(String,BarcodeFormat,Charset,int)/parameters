@@ -1,0 +1,4 @@
+String contents
+BarcodeFormat format
+Charset charset
+int eccPercent

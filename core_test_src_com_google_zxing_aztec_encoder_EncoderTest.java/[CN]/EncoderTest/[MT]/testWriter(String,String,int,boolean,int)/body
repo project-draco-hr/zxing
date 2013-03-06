@@ -1,0 +1,26 @@
+{
+  String expectedData=new String(data.getBytes(Charset.forName(charset)),LATIN_1);
+  Map<EncodeHintType,Object> hints=new EnumMap<EncodeHintType,Object>(EncodeHintType.class);
+  hints.put(EncodeHintType.CHARACTER_SET,charset);
+  hints.put(EncodeHintType.ERROR_CORRECTION,eccPercent);
+  AztecWriter writer=new AztecWriter();
+  BitMatrix matrix=writer.encode(data,BarcodeFormat.AZTEC,0,0,hints);
+  AztecCode aztec=Encoder.encode(data.getBytes(Charset.forName(charset)),eccPercent);
+  assertEquals("Unexpected symbol format (compact)",compact,aztec.isCompact());
+  assertEquals("Unexpected nr. of layers",layers,aztec.getLayers());
+  BitMatrix matrix2=aztec.getMatrix();
+  assertEquals(matrix,matrix2);
+  AztecDetectorResult r=new AztecDetectorResult(matrix,NO_POINTS,aztec.isCompact(),aztec.getCodeWords(),aztec.getLayers());
+  DecoderResult res=new Decoder().decode(r);
+  assertEquals(expectedData,res.getText());
+  int ecWords=aztec.getCodeWords() * eccPercent / 100;
+  Random random=getPseudoRandom();
+  for (int i=0; i < ecWords; i++) {
+    int x=random.nextBoolean() ? random.nextInt(aztec.getLayers() * 2) : matrix.getWidth() - 1 - random.nextInt(aztec.getLayers() * 2);
+    int y=random.nextBoolean() ? random.nextInt(aztec.getLayers() * 2) : matrix.getHeight() - 1 - random.nextInt(aztec.getLayers() * 2);
+    matrix.flip(x,y);
+  }
+  r=new AztecDetectorResult(matrix,NO_POINTS,aztec.isCompact(),aztec.getCodeWords(),aztec.getLayers());
+  res=new Decoder().decode(r);
+  assertEquals(expectedData,res.getText());
+}

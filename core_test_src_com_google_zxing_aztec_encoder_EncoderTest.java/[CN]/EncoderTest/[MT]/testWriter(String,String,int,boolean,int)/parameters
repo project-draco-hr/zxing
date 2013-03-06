@@ -1,0 +1,5 @@
+String data
+String charset
+int eccPercent
+boolean compact
+int layers
