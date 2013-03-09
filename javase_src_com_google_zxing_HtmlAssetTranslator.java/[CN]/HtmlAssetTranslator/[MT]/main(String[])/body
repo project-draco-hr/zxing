@@ -1,8 +1,13 @@
 {
+  if (args.length < 3) {
+    System.err.println("Usage: HtmlAssetTranslator android/assets/ " + "(all|lang1[,lang2 ...]) (all|file1.html[ file2.html ...])");
+    return;
+  }
   File assetsDir=new File(args[0]);
   Collection<String> languagesToTranslate=parseLanguagesToTranslate(assetsDir,args[1]);
-  Collection<String> filesToTranslate=parseFilesToTranslate(args);
+  List<String> restOfArgs=Arrays.asList(args).subList(2,args.length);
+  Collection<String> fileNamesToTranslate=parseFileNamesToTranslate(assetsDir,restOfArgs);
   for (  String language : languagesToTranslate) {
-    translateOneLanguage(assetsDir,language,filesToTranslate);
+    translateOneLanguage(assetsDir,language,fileNamesToTranslate);
   }
 }

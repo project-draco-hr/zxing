@@ -11,10 +11,11 @@
   }
   System.out.println("Translating " + language);
   File resultTempFile=File.createTempFile(parentName,".xml");
+  resultTempFile.deleteOnExit();
   boolean anyChange=false;
   Writer out=null;
   try {
-    out=new OutputStreamWriter(new FileOutputStream(resultTempFile),UTF8);
+    out=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(resultTempFile),UTF8));
     out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
     out.write(APACHE_2_LICENSE);
     out.write("<resources>\n");
@@ -46,5 +47,8 @@
     System.out.println("  Writing translations");
     translatedFile.delete();
     resultTempFile.renameTo(translatedFile);
+  }
+ else {
+    resultTempFile.delete();
   }
 }

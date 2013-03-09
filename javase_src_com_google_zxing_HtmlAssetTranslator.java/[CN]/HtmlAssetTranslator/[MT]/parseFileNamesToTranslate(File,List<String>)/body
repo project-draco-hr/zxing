@@ -1,0 +1,21 @@
+{
+  Collection<String> fileNamesToTranslate=new ArrayList<String>();
+  if ("all".equals(restOfArgs.get(0))) {
+    File htmlEnAssetDir=new File(assetsDir,"html-en");
+    FileFilter fileFilter=new FileFilter(){
+      @Override public boolean accept(      File file){
+        return file.isFile() && file.getName().endsWith(".html");
+      }
+    }
+;
+    for (    File file : htmlEnAssetDir.listFiles(fileFilter)) {
+      fileNamesToTranslate.add(file.getName());
+    }
+  }
+ else {
+    for (    String fileName : restOfArgs) {
+      fileNamesToTranslate.add(fileName);
+    }
+  }
+  return fileNamesToTranslate;
+}

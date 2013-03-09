@@ -26,7 +26,7 @@ catch (  SAXException sae) {
     }
     if (node.getNodeType() == Node.TEXT_NODE) {
       String text=node.getTextContent();
-      if (text.trim().length() > 0) {
+      if (!text.trim().isEmpty()) {
         text=StringsResourceTranslator.translateString(text,language);
         node.setTextContent(' ' + text + ' ');
       }

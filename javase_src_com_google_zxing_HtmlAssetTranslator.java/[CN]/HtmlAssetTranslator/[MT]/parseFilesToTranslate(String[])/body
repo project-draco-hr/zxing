@@ -1,7 +1,0 @@
-{
-  Collection<String> fileNamesToTranslate=new ArrayList<String>();
-  for (int i=2; i < args.length; i++) {
-    fileNamesToTranslate.add(args[i]);
-  }
-  return fileNamesToTranslate;
-}
