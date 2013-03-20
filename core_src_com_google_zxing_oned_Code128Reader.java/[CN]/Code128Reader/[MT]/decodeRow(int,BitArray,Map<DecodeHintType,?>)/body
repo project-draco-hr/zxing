@@ -64,6 +64,13 @@ lastCharacterWasPrintable=false;
 }
 switch (code) {
 case CODE_FNC_1:
+if (result.length() == 0) {
+result.append("]C1");
+}
+ else {
+result.append((char)29);
+}
+break;
 case CODE_FNC_2:
 case CODE_FNC_3:
 case CODE_FNC_4_A:
