@@ -1,4 +1,7 @@
 {
+  if (symbolsPerLine > symbolWidths.size()) {
+    throw NotFoundException.getNotFoundInstance();
+  }
   for (int y=0; y < linesMatrix.getHeight(); y++) {
     codewords[y]=new int[symbolsPerLine];
     clusterNumbers[y]=new int[symbolsPerLine];
