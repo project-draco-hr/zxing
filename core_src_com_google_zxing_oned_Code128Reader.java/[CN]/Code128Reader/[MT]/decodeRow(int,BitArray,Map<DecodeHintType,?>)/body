@@ -1,4 +1,5 @@
 {
+  boolean convertFNC1=hints != null && hints.containsKey(DecodeHintType.ASSUME_GS1);
   int[] startPatternInfo=findStartPattern(row);
   int startCode=startPatternInfo[2];
   int codeSet;
@@ -64,11 +65,13 @@ lastCharacterWasPrintable=false;
 }
 switch (code) {
 case CODE_FNC_1:
+if (convertFNC1) {
 if (result.length() == 0) {
 result.append("]C1");
 }
  else {
 result.append((char)29);
+}
 }
 break;
 case CODE_FNC_2:
@@ -101,6 +104,15 @@ lastCharacterWasPrintable=false;
 }
 switch (code) {
 case CODE_FNC_1:
+if (convertFNC1) {
+if (result.length() == 0) {
+result.append("]C1");
+}
+ else {
+result.append((char)29);
+}
+}
+break;
 case CODE_FNC_2:
 case CODE_FNC_3:
 case CODE_FNC_4_B:
@@ -134,6 +146,14 @@ lastCharacterWasPrintable=false;
 }
 switch (code) {
 case CODE_FNC_1:
+if (convertFNC1) {
+if (result.length() == 0) {
+result.append("]C1");
+}
+ else {
+result.append((char)29);
+}
+}
 break;
 case CODE_CODE_A:
 codeSet=CODE_CODE_A;
