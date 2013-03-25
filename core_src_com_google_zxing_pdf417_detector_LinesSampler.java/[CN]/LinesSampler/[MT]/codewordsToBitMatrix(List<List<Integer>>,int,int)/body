@@ -1,0 +1,14 @@
+{
+  BitMatrix result=new BitMatrix(dimension,yDimension);
+  for (int i=0; i < codewords.size(); i++) {
+    for (int j=0; j < codewords.get(i).size(); j++) {
+      int moduleOffset=j * MODULES_IN_SYMBOL;
+      for (int k=0; k < MODULES_IN_SYMBOL; k++) {
+        if ((codewords.get(i).get(j) & (1 << (MODULES_IN_SYMBOL - k - 1))) > 0) {
+          result.set(moduleOffset + k,i);
+        }
+      }
+    }
+  }
+  return result;
+}

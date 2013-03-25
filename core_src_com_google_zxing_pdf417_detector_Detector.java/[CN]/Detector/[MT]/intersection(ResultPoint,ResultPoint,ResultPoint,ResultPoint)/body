@@ -1,0 +1,15 @@
+{
+  float dxa=a1.getX() - a2.getX();
+  float dxb=b1.getX() - b2.getX();
+  float dya=a1.getY() - a2.getY();
+  float dyb=b1.getY() - b2.getY();
+  float p=a1.getX() * a2.getY() - a1.getY() * a2.getX();
+  float q=b1.getX() * b2.getY() - b1.getY() * b2.getX();
+  float denom=dxa * dyb - dya * dxb;
+  if (denom == 0) {
+    return null;
+  }
+  float x=(p * dxb - dxa * q) / denom;
+  float y=(p * dyb - dya * q) / denom;
+  return new ResultPoint(x,y);
+}

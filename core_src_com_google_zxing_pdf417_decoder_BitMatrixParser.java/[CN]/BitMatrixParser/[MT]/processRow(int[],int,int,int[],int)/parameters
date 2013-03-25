@@ -1,5 +1,0 @@
-int[] rowCounters
-int rowNumber
-int rowHeight
-int[] codewords
-int next

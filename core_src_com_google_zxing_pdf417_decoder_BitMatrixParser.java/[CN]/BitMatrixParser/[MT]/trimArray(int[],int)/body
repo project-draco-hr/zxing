@@ -2,9 +2,6 @@
   if (size < 0) {
     throw new IllegalArgumentException();
   }
-  if (size == 0) {
-    return NO_ERRORS;
-  }
   int[] a=new int[size];
   System.arraycopy(array,0,a,0,size);
   return a;

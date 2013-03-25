@@ -1,0 +1,12 @@
+{
+  ResultPoint result=intersection(vertices[idxLineA1],vertices[idxLineA2],vertices[idxLineB1],vertices[idxLineB2]);
+  if (result == null) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  int x=Math.round(result.getX());
+  int y=Math.round(result.getY());
+  if (x < 0 || x >= matrix.getWidth() || y < 0 || y >= matrix.getHeight()) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  vertices[idxResult]=result;
+}

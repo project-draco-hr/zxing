@@ -1,60 +1,15 @@
 {
-  int width=bitMatrix.getWidth();
   int height=bitMatrix.getHeight();
   erasures=new int[MAX_CW_CAPACITY];
-  float moduleWidth=1.0f;
-  int[] rowCounters=new int[width];
   int[] codewords=new int[MAX_CW_CAPACITY];
   int next=0;
-  int matchingConsecutiveScans=0;
-  boolean rowInProgress=false;
   int rowNumber=0;
-  int rowHeight=0;
-  for (int i=1; i < height; i++) {
+  for (int i=0; i < height; i++) {
     if (rowNumber >= MAX_ROWS) {
       throw FormatException.getFormatInstance();
     }
-    int rowDifference=0;
-    for (int j=0; j < width; j++) {
-      if (bitMatrix.get(j,i) != bitMatrix.get(j,i - 1)) {
-        rowDifference++;
-      }
-    }
-    if (rowDifference <= moduleWidth * MAX_ROW_DIFFERENCE) {
-      for (int j=0; j < width; j++) {
-        if (bitMatrix.get(j,i)) {
-          rowCounters[j]++;
-        }
-      }
-      matchingConsecutiveScans++;
-      if ((matchingConsecutiveScans + 1) >= 2.0f * moduleWidth) {
-        rowInProgress=true;
-      }
-    }
- else {
-      if (rowInProgress) {
-        next=processRow(rowCounters,rowNumber,rowHeight,codewords,next);
-        if (next == -1) {
-          throw FormatException.getFormatInstance();
-        }
-        for (int j=0; j < rowCounters.length; j++) {
-          rowCounters[j]=0;
-        }
-        rowNumber++;
-        rowHeight=0;
-      }
-      matchingConsecutiveScans=0;
-      rowInProgress=false;
-    }
-    rowHeight++;
-  }
-  if (rowInProgress) {
-    if (rowNumber >= MAX_ROWS) {
-      throw FormatException.getFormatInstance();
-    }
-    next=processRow(rowCounters,rowNumber,rowHeight,codewords,next);
+    next=processRow(rowNumber,codewords,next);
     rowNumber++;
-    rows=rowNumber;
   }
   erasures=trimArray(erasures,eraseCount);
   return trimArray(codewords,next);

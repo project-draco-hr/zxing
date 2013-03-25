@@ -1,0 +1,7 @@
+BitMatrix matrix
+ResultPoint[] vertices
+int offsetVertex
+int startWideBar
+int lenWideBar
+int lenPattern
+int rowStep

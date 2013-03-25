@@ -1,7 +1,0 @@
-BitMatrix matrix
-ResultPoint topLeft
-ResultPoint bottomLeft
-ResultPoint topRight
-ResultPoint bottomRight
-int xdimension
-int ydimension

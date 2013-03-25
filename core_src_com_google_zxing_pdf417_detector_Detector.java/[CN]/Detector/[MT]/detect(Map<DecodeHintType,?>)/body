@@ -1,15 +1,15 @@
 {
   BitMatrix matrix=image.getBlackMatrix();
-  boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
-  ResultPoint[] vertices=findVertices(matrix,tryHarder);
+  int rowStep=8;
+  ResultPoint[] vertices=findVertices(matrix,rowStep);
   if (vertices == null) {
-    vertices=findVertices180(matrix,tryHarder);
+    vertices=findVertices180(matrix,rowStep);
     if (vertices != null) {
-      correctCodeWordVertices(vertices,true);
+      correctVertices(matrix,vertices,true);
     }
   }
  else {
-    correctCodeWordVertices(vertices,false);
+    correctVertices(matrix,vertices,false);
   }
   if (vertices == null) {
     throw NotFoundException.getNotFoundInstance();
@@ -18,12 +18,12 @@
   if (moduleWidth < 1.0f) {
     throw NotFoundException.getNotFoundInstance();
   }
-  int dimension=computeDimension(vertices[4],vertices[6],vertices[5],vertices[7],moduleWidth);
+  int dimension=computeDimension(vertices[12],vertices[14],vertices[13],vertices[15],moduleWidth);
   if (dimension < 1) {
     throw NotFoundException.getNotFoundInstance();
   }
-  int ydimension=computeYDimension(vertices[4],vertices[6],vertices[5],vertices[7],moduleWidth);
-  ydimension=ydimension > dimension ? ydimension : dimension;
-  BitMatrix bits=sampleGrid(matrix,vertices[4],vertices[5],vertices[6],vertices[7],dimension,ydimension);
-  return new DetectorResult(bits,new ResultPoint[]{vertices[5],vertices[4],vertices[6],vertices[7]});
+  int yDimension=Math.max(computeYDimension(vertices[12],vertices[14],vertices[13],vertices[15],moduleWidth),dimension);
+  BitMatrix linesMatrix=sampleLines(vertices,dimension,yDimension);
+  BitMatrix linesGrid=new LinesSampler(linesMatrix,dimension).sample();
+  return new DetectorResult(linesGrid,new ResultPoint[]{vertices[5],vertices[4],vertices[6],vertices[7]});
 }

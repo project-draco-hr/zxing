@@ -1,0 +1,82 @@
+{
+  for (int y=0; y < linesMatrix.getHeight(); y++) {
+    codewords[y]=new int[symbolsPerLine];
+    clusterNumbers[y]=new int[symbolsPerLine];
+    Arrays.fill(clusterNumbers[y],0,clusterNumbers[y].length,-1);
+    List<Integer> barWidths=new ArrayList<Integer>();
+    barWidths.add(BARCODE_START_OFFSET);
+    boolean isSetBar=true;
+    for (int x=BARCODE_START_OFFSET; x < linesMatrix.getWidth(); x++) {
+      if (linesMatrix.get(x,y)) {
+        if (!isSetBar) {
+          isSetBar=true;
+          barWidths.add(0);
+        }
+      }
+ else {
+        if (isSetBar) {
+          isSetBar=false;
+          barWidths.add(0);
+        }
+      }
+      int lastIndex=barWidths.size() - 1;
+      barWidths.set(lastIndex,barWidths.get(lastIndex) + 1);
+    }
+    int[] cwStarts=new int[symbolsPerLine];
+    cwStarts[0]=0;
+    int cwCount=1;
+    int cwWidth=0;
+    for (int i=0; i < barWidths.size() && cwCount < symbolsPerLine; i++) {
+      cwWidth+=barWidths.get(i);
+      if ((float)cwWidth > symbolWidths.get(cwCount - 1)) {
+        if ((i % 2) == 1) {
+          i++;
+        }
+        if (i < barWidths.size()) {
+          cwWidth=barWidths.get(i);
+        }
+        cwStarts[cwCount]=i;
+        cwCount++;
+      }
+    }
+    float[][] cwRatios=new float[symbolsPerLine][BARS_IN_SYMBOL];
+    for (int i=0; i < symbolsPerLine; i++) {
+      int cwStart=cwStarts[i];
+      int cwEnd=(i == symbolsPerLine - 1) ? barWidths.size() : cwStarts[i + 1];
+      int cwLength=cwEnd - cwStart;
+      if (cwLength < 7 || cwLength > 9) {
+        continue;
+      }
+      float cwWidthF=0.0f;
+      for (int j=0; j < Math.min(BARS_IN_SYMBOL,cwLength); ++j) {
+        cwWidthF+=(float)barWidths.get(cwStart + j);
+      }
+      if (cwLength == 7) {
+        for (int j=0; j < cwLength; ++j) {
+          cwRatios[i][j]=(float)barWidths.get(cwStart + j) / symbolWidths.get(i);
+        }
+        cwRatios[i][7]=(symbolWidths.get(i) - cwWidthF) / symbolWidths.get(i);
+      }
+ else {
+        for (int j=0; j < cwRatios[i].length; ++j) {
+          cwRatios[i][j]=barWidths.get(cwStart + j) / cwWidthF;
+        }
+      }
+      float bestMatchError=Float.MAX_VALUE;
+      int bestMatch=0;
+      for (int j=0; j < BitMatrixParser.SYMBOL_TABLE.length; j++) {
+        float error=0.0f;
+        for (int k=0; k < BARS_IN_SYMBOL; k++) {
+          float diff=RATIOS_TABLE[j * BARS_IN_SYMBOL + k] - cwRatios[i][k];
+          error+=diff * diff;
+        }
+        if (error < bestMatchError) {
+          bestMatchError=error;
+          bestMatch=BitMatrixParser.SYMBOL_TABLE[j];
+        }
+      }
+      codewords[y][i]=bestMatch;
+      clusterNumbers[y][i]=calculateClusterNumber(bestMatch);
+    }
+  }
+}

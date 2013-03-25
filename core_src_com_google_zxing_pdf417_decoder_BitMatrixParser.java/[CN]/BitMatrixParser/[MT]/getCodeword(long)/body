@@ -4,9 +4,5 @@
   if (i == -1) {
     return -1;
   }
- else {
-    long cw=CODEWORD_TABLE[i] - 1;
-    cw%=929;
-    return (int)cw;
-  }
+  return (CODEWORD_TABLE[i] - 1) % 929;
 }

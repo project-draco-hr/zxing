@@ -1,0 +1,7 @@
+ResultPoint[] vertices
+int idxResult
+int idxLineA1
+int idxLineA2
+int idxLineB1
+int idxLineB2
+BitMatrix matrix

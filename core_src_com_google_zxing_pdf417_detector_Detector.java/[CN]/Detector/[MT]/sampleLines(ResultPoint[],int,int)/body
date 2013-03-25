@@ -1,0 +1,6 @@
+{
+  int sampleDimensionX=dimension * 8;
+  int sampleDimensionY=yDimension * 4;
+  PerspectiveTransform transform=PerspectiveTransform.quadrilateralToQuadrilateral(0.0f,0.0f,sampleDimensionX,0.0f,0.0f,sampleDimensionY,sampleDimensionX,sampleDimensionY,vertices[12].getX(),vertices[12].getY(),vertices[14].getX(),vertices[14].getY(),vertices[13].getX(),vertices[13].getY(),vertices[15].getX(),vertices[15].getY());
+  return GridSampler.getInstance().sampleGrid(image.getBlackMatrix(),sampleDimensionX,sampleDimensionY,transform);
+}
