@@ -7,7 +7,7 @@
   ServletFileUpload upload=new ServletFileUpload(diskFileItemFactory);
   upload.setFileSizeMax(MAX_IMAGE_SIZE);
   try {
-    for (    FileItem item : (List<FileItem>)upload.parseRequest(request)) {
+    for (    FileItem item : upload.parseRequest(request)) {
       if (!item.isFormField()) {
         if (item.getSize() <= MAX_IMAGE_SIZE) {
           log.info("Decoding uploaded file");

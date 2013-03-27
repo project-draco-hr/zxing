@@ -1,5 +1,9 @@
 {
   Logger logger=Logger.getLogger("com.google.zxing");
-  logger.addHandler(new ServletContextLogHandler(servletConfig.getServletContext()));
-  diskFileItemFactory=new DiskFileItemFactory();
+  ServletContext context=servletConfig.getServletContext();
+  logger.addHandler(new ServletContextLogHandler(context));
+  File repository=(File)context.getAttribute("javax.servlet.context.tempdir");
+  FileCleaningTracker fileCleaningTracker=FileCleanerCleanup.getFileCleaningTracker(context);
+  diskFileItemFactory=new DiskFileItemFactory(1 << 16,repository);
+  diskFileItemFactory.setFileCleaningTracker(fileCleaningTracker);
 }
