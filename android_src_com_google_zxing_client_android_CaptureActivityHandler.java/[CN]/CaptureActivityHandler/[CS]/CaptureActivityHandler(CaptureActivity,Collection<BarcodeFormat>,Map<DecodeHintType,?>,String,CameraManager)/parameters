@@ -1,4 +1,5 @@
 CaptureActivity activity
 Collection<BarcodeFormat> decodeFormats
+Map<DecodeHintType,?> baseHints
 String characterSet
-ResultPointCallback resultPointCallback
+CameraManager cameraManager

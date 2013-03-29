@@ -1,0 +1,66 @@
+{
+  String query=inputUri.getEncodedQuery();
+  if (query == null || query.length() == 0) {
+    return null;
+  }
+  Map<String,String> parameters=splitQuery(query);
+  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+  for (  DecodeHintType hintType : DecodeHintType.values()) {
+    if (hintType == DecodeHintType.CHARACTER_SET || hintType == DecodeHintType.NEED_RESULT_POINT_CALLBACK || hintType == DecodeHintType.POSSIBLE_FORMATS) {
+      continue;
+    }
+    String parameterName=hintType.name();
+    String parameterText=parameters.get(parameterName);
+    if (parameterText == null) {
+      continue;
+    }
+    if (hintType.getValueType().equals(Object.class)) {
+      hints.put(hintType,parameterText);
+      continue;
+    }
+    if (hintType.getValueType().equals(Void.class)) {
+      hints.put(hintType,Boolean.TRUE);
+      continue;
+    }
+    if (hintType.getValueType().equals(String.class)) {
+      hints.put(hintType,parameterText);
+      continue;
+    }
+    if (hintType.getValueType().equals(Boolean.class)) {
+      if (parameterText.length() == 0) {
+        hints.put(hintType,Boolean.TRUE);
+      }
+ else       if ("0".equals(parameterText) || "false".equalsIgnoreCase(parameterText) || "no".equalsIgnoreCase(parameterText)) {
+        hints.put(hintType,Boolean.FALSE);
+      }
+ else {
+        hints.put(hintType,Boolean.TRUE);
+      }
+      continue;
+    }
+    if (hintType.getValueType().equals(int[].class)) {
+      if (parameterText.length() > 0 && parameterText.charAt(parameterText.length() - 1) == ',') {
+        parameterText=parameterText.substring(0,parameterText.length() - 1);
+      }
+      String[] values=COMMA.split(parameterText);
+      int[] array=new int[values.length];
+      for (int i=0; i < values.length; i++) {
+        try {
+          array[i]=Integer.parseInt(values[i]);
+        }
+ catch (        NumberFormatException ignored) {
+          Log.w(TAG,"Skipping array of integers hint " + hintType + " due to invalid numeric value: '"+ values[i]+ '\'');
+          array=null;
+          break;
+        }
+      }
+      if (array != null) {
+        hints.put(hintType,array);
+      }
+      continue;
+    }
+    Log.w(TAG,"Unsupported hint type '" + hintType + "' of type "+ hintType.getValueType());
+  }
+  Log.i(TAG,"Hints from the URI: " + hints);
+  return hints;
+}

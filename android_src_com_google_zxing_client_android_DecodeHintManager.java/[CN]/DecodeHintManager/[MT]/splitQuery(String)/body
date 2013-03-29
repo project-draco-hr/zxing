@@ -1,0 +1,55 @@
+{
+  Map<String,String> map=new HashMap<String,String>();
+  int pos=0;
+  while (pos < query.length()) {
+    if (query.charAt(pos) == '&') {
+      pos++;
+      continue;
+    }
+    int amp=query.indexOf('&',pos);
+    int equ=query.indexOf('=',pos);
+    if (amp < 0) {
+      String name;
+      String text;
+      if (equ < 0) {
+        name=query.substring(pos);
+        name=name.replace('+',' ');
+        name=Uri.decode(name);
+        text="";
+      }
+ else {
+        name=query.substring(pos,equ);
+        name=name.replace('+',' ');
+        name=Uri.decode(name);
+        text=query.substring(equ + 1);
+        text=text.replace('+',' ');
+        text=Uri.decode(text);
+      }
+      if (!map.containsKey(name)) {
+        map.put(name,text);
+      }
+      break;
+    }
+    if (equ < 0 || equ > amp) {
+      String name=query.substring(pos,amp);
+      name=name.replace('+',' ');
+      name=Uri.decode(name);
+      if (!map.containsKey(name)) {
+        map.put(name,"");
+      }
+      pos=amp + 1;
+      continue;
+    }
+    String name=query.substring(pos,equ);
+    name=name.replace('+',' ');
+    name=Uri.decode(name);
+    String text=query.substring(equ + 1,amp);
+    text=text.replace('+',' ');
+    text=Uri.decode(text);
+    if (!map.containsKey(name)) {
+      map.put(name,text);
+    }
+    pos=amp + 1;
+  }
+  return map;
+}

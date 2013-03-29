@@ -32,6 +32,7 @@
     if (Intents.Scan.ACTION.equals(action)) {
       source=IntentSource.NATIVE_APP_INTENT;
       decodeFormats=DecodeFormatManager.parseDecodeFormats(intent);
+      decodeHints=DecodeHintManager.parseDecodeHints(intent);
       if (intent.hasExtra(Intents.Scan.WIDTH) && intent.hasExtra(Intents.Scan.HEIGHT)) {
         int width=intent.getIntExtra(Intents.Scan.WIDTH,0);
         int height=intent.getIntExtra(Intents.Scan.HEIGHT,0);
@@ -55,6 +56,7 @@
       Uri inputUri=Uri.parse(dataString);
       scanFromWebPageManager=new ScanFromWebPageManager(inputUri);
       decodeFormats=DecodeFormatManager.parseDecodeFormats(inputUri);
+      decodeHints=DecodeHintManager.parseDecodeHints(inputUri);
     }
     characterSet=intent.getStringExtra(Intents.Scan.CHARACTER_SET);
   }

@@ -2,6 +2,9 @@
   this.activity=activity;
   handlerInitLatch=new CountDownLatch(1);
   hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+  if (baseHints != null) {
+    hints.putAll(baseHints);
+  }
   if (decodeFormats == null || decodeFormats.isEmpty()) {
     SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
     decodeFormats=EnumSet.noneOf(BarcodeFormat.class);
@@ -20,4 +23,5 @@
     hints.put(DecodeHintType.CHARACTER_SET,characterSet);
   }
   hints.put(DecodeHintType.NEED_RESULT_POINT_CALLBACK,resultPointCallback);
+  Log.i("DecodeThread","Hints: " + hints);
 }

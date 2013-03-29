@@ -1,0 +1,29 @@
+{
+  Bundle extras=intent.getExtras();
+  if (extras == null || extras.isEmpty()) {
+    return null;
+  }
+  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+  for (  DecodeHintType hintType : DecodeHintType.values()) {
+    if (hintType == DecodeHintType.CHARACTER_SET || hintType == DecodeHintType.NEED_RESULT_POINT_CALLBACK || hintType == DecodeHintType.POSSIBLE_FORMATS) {
+      continue;
+    }
+    String hintName=hintType.name();
+    if (extras.containsKey(hintName)) {
+      if (hintType.getValueType().equals(Void.class)) {
+        hints.put(hintType,Boolean.TRUE);
+      }
+ else {
+        Object hintData=extras.get(hintName);
+        if (hintType.getValueType().isInstance(hintData)) {
+          hints.put(hintType,hintData);
+        }
+ else {
+          Log.w(TAG,"Ignoring hint " + hintType + " because it is not assignable from "+ hintData);
+        }
+      }
+    }
+  }
+  Log.i(TAG,"Hints from the Intent: " + hints);
+  return hints;
+}

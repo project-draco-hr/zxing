@@ -9,7 +9,7 @@
   try {
     cameraManager.openDriver(surfaceHolder);
     if (handler == null) {
-      handler=new CaptureActivityHandler(this,decodeFormats,characterSet,cameraManager);
+      handler=new CaptureActivityHandler(this,decodeFormats,decodeHints,characterSet,cameraManager);
     }
     decodeOrStoreSavedBitmap(null,null);
   }
