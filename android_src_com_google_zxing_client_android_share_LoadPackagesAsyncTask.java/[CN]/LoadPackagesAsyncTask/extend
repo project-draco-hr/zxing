@@ -1,1 +1,1 @@
-AsyncTask<List<String[]>,Object,List<String[]>>
+AsyncTask<List<AppInfo>,Object,List<AppInfo>>

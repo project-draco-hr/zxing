@@ -1,0 +1,7 @@
+{
+  if (!(other instanceof AppInfo)) {
+    return false;
+  }
+  AppInfo another=(AppInfo)other;
+  return label.equals(another.label);
+}

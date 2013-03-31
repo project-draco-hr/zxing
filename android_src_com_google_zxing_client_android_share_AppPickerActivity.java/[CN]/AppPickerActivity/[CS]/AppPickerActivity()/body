@@ -1,4 +1,4 @@
 {
-  labelsPackages=new ArrayList<String[]>();
+  labelsPackages=Collections.synchronizedList(new ArrayList<AppInfo>());
   taskExec=new AsyncTaskExecManager().build();
 }

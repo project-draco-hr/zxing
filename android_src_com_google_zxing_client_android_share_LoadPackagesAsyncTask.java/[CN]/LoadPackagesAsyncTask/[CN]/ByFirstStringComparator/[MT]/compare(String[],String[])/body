@@ -1,3 +1,0 @@
-{
-  return o1[0].compareTo(o2[0]);
-}

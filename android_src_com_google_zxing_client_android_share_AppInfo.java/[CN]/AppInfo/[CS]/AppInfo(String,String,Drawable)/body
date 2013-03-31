@@ -1,0 +1,5 @@
+{
+  this.packageName=packageName;
+  this.label=label;
+  this.icon=icon;
+}

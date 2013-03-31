@@ -1,0 +1,19 @@
+{
+  List<AppInfo> labelsPackages=objects[0];
+  PackageManager packageManager=activity.getPackageManager();
+  List<ApplicationInfo> appInfos=packageManager.getInstalledApplications(0);
+  for (  ApplicationInfo appInfo : appInfos) {
+    String packageName=appInfo.packageName;
+    if (!isHidden(packageName)) {
+      CharSequence label=appInfo.loadLabel(packageManager);
+      Drawable icon=appInfo.loadIcon(packageManager);
+      if (label != null) {
+        labelsPackages.add(new AppInfo(packageName,label.toString(),icon));
+      }
+    }
+  }
+synchronized (labelsPackages) {
+    Collections.sort(labelsPackages);
+  }
+  return labelsPackages;
+}
