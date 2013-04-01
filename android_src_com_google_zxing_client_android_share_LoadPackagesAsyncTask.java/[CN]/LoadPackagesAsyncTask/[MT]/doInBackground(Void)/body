@@ -1,5 +1,5 @@
 {
-  List<AppInfo> labelsPackages=objects[0];
+  List<AppInfo> labelsPackages=new ArrayList<AppInfo>();
   PackageManager packageManager=activity.getPackageManager();
   List<ApplicationInfo> appInfos=packageManager.getInstalledApplications(0);
   for (  ApplicationInfo appInfo : appInfos) {
@@ -12,8 +12,6 @@
       }
     }
   }
-synchronized (labelsPackages) {
-    Collections.sort(labelsPackages);
-  }
+  Collections.sort(labelsPackages);
   return labelsPackages;
 }

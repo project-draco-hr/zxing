@@ -1,1 +1,1 @@
-AsyncTask<List<AppInfo>,Object,List<AppInfo>>
+AsyncTask<Void,Void,List<AppInfo>>
