@@ -37,6 +37,9 @@
       }
       config.setCrop(crop);
     }
+ else     if (arg.startsWith(POSSIBLE_FORMATS_ARG)) {
+      config.setPossibleFormats(COMMA.split(arg.substring(POSSIBLE_FORMATS_ARG.length())));
+    }
  else     if (arg.startsWith("-")) {
       System.err.println("Unknown command line option " + arg);
       printUsage();
