@@ -1,0 +1,6 @@
+{
+  if (value < 0 || value > 15) {
+    throw new IllegalArgumentException();
+  }
+  return (char)(value < 10 ? ('0' + value) : ('a' + (value - 10)));
+}

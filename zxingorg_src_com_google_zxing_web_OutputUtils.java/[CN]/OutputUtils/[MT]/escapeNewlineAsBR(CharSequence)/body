@@ -1,0 +1,3 @@
+{
+  return NEWLINE.matcher(in).replaceAll("&lt;br/&gt;");
+}

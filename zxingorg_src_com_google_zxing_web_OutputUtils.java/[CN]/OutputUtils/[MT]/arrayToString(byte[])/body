@@ -1,0 +1,20 @@
+{
+  StringBuilder result=new StringBuilder(bytes.length * 4);
+  int i=0;
+  while (i < bytes.length) {
+    int value=bytes[i] & 0xFF;
+    result.append(hexChar(value / 16));
+    result.append(hexChar(value % 16));
+    i++;
+    if (i % BYTES_PER_LINE == 0) {
+      result.append('\n');
+    }
+ else     if (i % HALF_BYTES_PER_LINE == 0) {
+      result.append("   ");
+    }
+ else {
+      result.append(' ');
+    }
+  }
+  return result.toString();
+}
