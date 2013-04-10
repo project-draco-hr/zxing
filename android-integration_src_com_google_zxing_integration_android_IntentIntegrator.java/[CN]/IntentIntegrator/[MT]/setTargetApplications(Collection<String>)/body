@@ -1,7 +1,0 @@
-{
-  List<String> list=new ArrayList<String>(targetApplications.size());
-  for (  String app : targetApplications) {
-    list.add(app);
-  }
-  setTargetApplications(list);
-}
