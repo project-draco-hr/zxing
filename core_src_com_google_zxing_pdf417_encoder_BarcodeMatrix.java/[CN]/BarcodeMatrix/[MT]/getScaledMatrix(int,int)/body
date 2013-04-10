@@ -1,8 +1,8 @@
 {
   byte[][] matrixOut=new byte[height * yScale][width * xScale];
   int yMax=height * yScale;
-  for (int ii=0; ii < yMax; ii++) {
-    matrixOut[yMax - ii - 1]=matrix[ii / yScale].getScaledRow(xScale);
+  for (int i=0; i < yMax; i++) {
+    matrixOut[yMax - i - 1]=matrix[i / yScale].getScaledRow(xScale);
   }
   return matrixOut;
 }
