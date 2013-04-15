@@ -10,7 +10,11 @@
     resultDurationMS=getIntent().getLongExtra(Intents.Scan.RESULT_DISPLAY_DURATION_MS,DEFAULT_INTENT_RESULT_DURATION_MS);
   }
   if (resultDurationMS > 0) {
-    statusView.setText(getString(resultHandler.getDisplayTitle()));
+    String rawResultString=String.valueOf(rawResult);
+    if (rawResultString.length() > 32) {
+      rawResultString=rawResultString.substring(0,32) + " ...";
+    }
+    statusView.setText(getString(resultHandler.getDisplayTitle()) + " : " + rawResultString);
   }
   if (copyToClipboard && !resultHandler.areContentsSecure()) {
     ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
