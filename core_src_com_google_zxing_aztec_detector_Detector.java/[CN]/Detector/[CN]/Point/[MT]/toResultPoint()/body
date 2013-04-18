@@ -1,3 +1,3 @@
 {
-  return new ResultPoint(x,y);
+  return new ResultPoint(getX(),getY());
 }

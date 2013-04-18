@@ -26,18 +26,18 @@
   }
   compact=nbCenterLayers == 5;
   float ratio=0.75f * 2 / (2 * nbCenterLayers - 3);
-  int dx=pina.x - pinc.x;
-  int dy=pina.y - pinc.y;
-  int targetcx=MathUtils.round(pinc.x - ratio * dx);
-  int targetcy=MathUtils.round(pinc.y - ratio * dy);
-  int targetax=MathUtils.round(pina.x + ratio * dx);
-  int targetay=MathUtils.round(pina.y + ratio * dy);
-  dx=pinb.x - pind.x;
-  dy=pinb.y - pind.y;
-  int targetdx=MathUtils.round(pind.x - ratio * dx);
-  int targetdy=MathUtils.round(pind.y - ratio * dy);
-  int targetbx=MathUtils.round(pinb.x + ratio * dx);
-  int targetby=MathUtils.round(pinb.y + ratio * dy);
+  int dx=pina.getX() - pinc.getX();
+  int dy=pina.getY() - pinc.getY();
+  int targetcx=MathUtils.round(pinc.getX() - ratio * dx);
+  int targetcy=MathUtils.round(pinc.getY() - ratio * dy);
+  int targetax=MathUtils.round(pina.getX() + ratio * dx);
+  int targetay=MathUtils.round(pina.getY() + ratio * dy);
+  dx=pinb.getX() - pind.getX();
+  dy=pinb.getY() - pind.getY();
+  int targetdx=MathUtils.round(pind.getX() - ratio * dx);
+  int targetdy=MathUtils.round(pind.getY() - ratio * dy);
+  int targetbx=MathUtils.round(pinb.getX() + ratio * dx);
+  int targetby=MathUtils.round(pinb.getY() + ratio * dy);
   if (!isValid(targetax,targetay) || !isValid(targetbx,targetby) || !isValid(targetcx,targetcy)|| !isValid(targetdx,targetdy)) {
     throw NotFoundException.getNotFoundInstance();
   }

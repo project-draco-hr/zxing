@@ -1,9 +1,9 @@
 {
   int corr=3;
-  p1=new Point(p1.x - corr,p1.y + corr);
-  p2=new Point(p2.x - corr,p2.y - corr);
-  p3=new Point(p3.x + corr,p3.y - corr);
-  p4=new Point(p4.x + corr,p4.y + corr);
+  p1=new Point(p1.getX() - corr,p1.getY() + corr);
+  p2=new Point(p2.getX() - corr,p2.getY() - corr);
+  p3=new Point(p3.getX() + corr,p3.getY() - corr);
+  p4=new Point(p4.getX() + corr,p4.getY() + corr);
   int cInit=getColor(p4,p1);
   if (cInit == 0) {
     return false;

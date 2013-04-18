@@ -1,6 +1,6 @@
 {
-  int x=init.x + dx;
-  int y=init.y + dy;
+  int x=init.getX() + dx;
+  int y=init.getY() + dy;
   while (isValid(x,y) && image.get(x,y) == color) {
     x+=dx;
     y+=dy;
