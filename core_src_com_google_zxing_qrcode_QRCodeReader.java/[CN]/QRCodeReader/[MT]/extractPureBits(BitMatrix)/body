@@ -9,6 +9,9 @@
   int bottom=rightBottomBlack[1];
   int left=leftTopBlack[0];
   int right=rightBottomBlack[0];
+  if (left >= right || top >= bottom) {
+    throw NotFoundException.getNotFoundInstance();
+  }
   if (bottom - top != right - left) {
     right=left + (bottom - top);
   }
