@@ -1,0 +1,3 @@
+BufferedImage image
+ServletRequest request
+HttpServletResponse response

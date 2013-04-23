@@ -9,16 +9,31 @@
   if (!(imageURIString.startsWith("http://") || imageURIString.startsWith("https://"))) {
     imageURIString="http://" + imageURIString;
   }
-  URL imageURL;
+  URI imageURI;
   try {
-    imageURL=new URI(imageURIString).toURL();
+    imageURI=new URI(imageURIString);
   }
  catch (  URISyntaxException ignored) {
     log.info("URI was not valid: " + imageURIString);
     response.sendRedirect("badurl.jspx");
     return;
   }
-catch (  MalformedURLException ignored) {
+  if ("data".equals(imageURI.getScheme())) {
+    try {
+      BufferedImage image=ImageReader.readDataURIImage(imageURI);
+      processImage(image,request,response);
+    }
+ catch (    IOException ioe) {
+      log.info(ioe.toString());
+      response.sendRedirect("badurl.jspx");
+      return;
+    }
+  }
+  URL imageURL;
+  try {
+    imageURL=imageURI.toURL();
+  }
+ catch (  MalformedURLException ignored) {
     log.info("URI was not valid: " + imageURIString);
     response.sendRedirect("badurl.jspx");
     return;

@@ -1,0 +1,16 @@
+{
+  if ("data".equals(uri.getScheme())) {
+    return readDataURIImage(uri);
+  }
+  BufferedImage result;
+  try {
+    result=ImageIO.read(uri.toURL());
+  }
+ catch (  IllegalArgumentException iae) {
+    throw new IOException("Resource not found: " + uri,iae);
+  }
+  if (result == null) {
+    throw new IOException("Could not load " + uri);
+  }
+  return result;
+}
