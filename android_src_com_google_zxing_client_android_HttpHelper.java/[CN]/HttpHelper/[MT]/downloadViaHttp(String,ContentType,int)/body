@@ -7,6 +7,9 @@ case HTML:
 case JSON:
 contentTypes="application/json,text/*,*/*";
 break;
+case XML:
+contentTypes="application/xml,text/*,*/*";
+break;
 case TEXT:
 default :
 contentTypes="text/*,*/*";
