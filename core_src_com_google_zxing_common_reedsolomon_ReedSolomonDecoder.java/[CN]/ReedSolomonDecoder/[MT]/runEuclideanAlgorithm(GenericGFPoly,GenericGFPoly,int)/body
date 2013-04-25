@@ -27,6 +27,9 @@
       r=r.addOrSubtract(rLast.multiplyByMonomial(degreeDiff,scale));
     }
     t=q.multiply(tLast).addOrSubtract(tLastLast);
+    if (r.getDegree() >= rLast.getDegree()) {
+      throw new IllegalStateException("Division algorithm failed to reduce polynomial?");
+    }
   }
   int sigmaTildeAtZero=t.getCoefficient(0);
   if (sigmaTildeAtZero == 0) {
