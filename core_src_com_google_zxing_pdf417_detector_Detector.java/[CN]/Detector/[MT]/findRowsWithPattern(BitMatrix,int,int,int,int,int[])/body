@@ -1,0 +1,53 @@
+{
+  ResultPoint[] result=new ResultPoint[4];
+  boolean found=false;
+  int[] counters=new int[pattern.length];
+  for (; startRow < height; startRow+=ROW_STEP) {
+    int[] loc=findGuardPattern(matrix,startColumn,startRow,width,false,pattern,counters);
+    if (loc != null) {
+      while (startRow > 0) {
+        int[] previousRowLoc=findGuardPattern(matrix,startColumn,--startRow,width,false,pattern,counters);
+        if (previousRowLoc != null) {
+          loc=previousRowLoc;
+        }
+ else {
+          startRow++;
+          break;
+        }
+      }
+      result[0]=new ResultPoint(loc[0],startRow);
+      result[1]=new ResultPoint(loc[1],startRow);
+      found=true;
+      break;
+    }
+  }
+  int stopRow=startRow + 1;
+  if (found) {
+    int skippedRowCount=0;
+    int[] previousRowLoc={(int)result[0].getX(),(int)result[1].getX()};
+    for (; stopRow < height; stopRow++) {
+      int[] loc=findGuardPattern(matrix,previousRowLoc[0],stopRow,width,false,pattern,counters);
+      if (loc != null && Math.abs(previousRowLoc[0] - loc[0]) < MAX_PATTERN_DRIFT && Math.abs(previousRowLoc[1] - loc[1]) < MAX_PATTERN_DRIFT) {
+        previousRowLoc=loc;
+        skippedRowCount=0;
+      }
+ else {
+        if (skippedRowCount > SKIPPED_ROW_COUNT_MAX) {
+          break;
+        }
+ else {
+          skippedRowCount++;
+        }
+      }
+    }
+    stopRow-=skippedRowCount;
+    result[2]=new ResultPoint(previousRowLoc[0],stopRow);
+    result[3]=new ResultPoint(previousRowLoc[1],stopRow);
+  }
+  if (stopRow - startRow < BARCODE_MIN_HEIGHT) {
+    for (int i=0; i < result.length; i++) {
+      result[i]=null;
+    }
+  }
+  return result;
+}

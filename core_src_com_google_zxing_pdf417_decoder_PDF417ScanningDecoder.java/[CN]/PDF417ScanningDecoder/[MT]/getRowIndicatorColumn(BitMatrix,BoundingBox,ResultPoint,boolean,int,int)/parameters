@@ -1,0 +1,6 @@
+BitMatrix image
+BoundingBox boundingBox
+ResultPoint startPoint
+boolean leftToRight
+int minCodewordWidth
+int maxCodewordWidth

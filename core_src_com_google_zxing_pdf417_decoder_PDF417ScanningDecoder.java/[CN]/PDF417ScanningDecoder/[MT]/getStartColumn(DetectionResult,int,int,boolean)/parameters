@@ -1,0 +1,4 @@
+DetectionResult detectionResult
+int barcodeColumn
+int imageRow
+boolean leftToRight

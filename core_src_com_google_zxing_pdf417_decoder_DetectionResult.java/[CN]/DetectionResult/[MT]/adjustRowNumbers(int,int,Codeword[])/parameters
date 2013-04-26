@@ -1,0 +1,3 @@
+int barcodeColumn
+int codewordsRow
+Codeword[] codewords

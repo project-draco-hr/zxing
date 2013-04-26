@@ -1,0 +1,3 @@
+{
+  init(boundingBox.image,boundingBox.topLeft,boundingBox.bottomLeft,boundingBox.topRight,boundingBox.bottomRight);
+}

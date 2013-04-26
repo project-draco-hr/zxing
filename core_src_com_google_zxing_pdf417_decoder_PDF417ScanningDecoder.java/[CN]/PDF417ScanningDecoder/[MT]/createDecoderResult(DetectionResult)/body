@@ -1,0 +1,28 @@
+{
+  BarcodeMatrix barcodeMatrix=createBarcodeMatrix(detectionResult);
+  Integer numberOfCodewords=barcodeMatrix.getValue(0,1);
+  int calculatedNumberOfCodewords=detectionResult.getBarcodeColumnCount() * detectionResult.getBarcodeRowCount() - getNumberOfECCodeWords(detectionResult.getBarcodeECLevel());
+  if (numberOfCodewords == null) {
+    if (calculatedNumberOfCodewords < 1 || calculatedNumberOfCodewords > PDF417Common.MAX_CODEWORDS_IN_BARCODE) {
+      throw NotFoundException.getNotFoundInstance();
+    }
+    barcodeMatrix.setValue(0,1,calculatedNumberOfCodewords);
+  }
+ else   if (numberOfCodewords != calculatedNumberOfCodewords) {
+    numberOfCodewords=calculatedNumberOfCodewords;
+  }
+  Collection<Integer> erasures=new ArrayList<Integer>();
+  int[] codewords=new int[detectionResult.getBarcodeRowCount() * detectionResult.getBarcodeColumnCount()];
+  for (int row=0; row < detectionResult.getBarcodeRowCount(); row++) {
+    for (int column=0; column < detectionResult.getBarcodeColumnCount(); column++) {
+      Integer codeword=barcodeMatrix.getValue(row,column + 1);
+      if (codeword == null) {
+        erasures.add(row * detectionResult.getBarcodeColumnCount() + column);
+      }
+ else {
+        codewords[row * detectionResult.getBarcodeColumnCount() + column]=codeword;
+      }
+    }
+  }
+  return decodeCodewords(codewords,detectionResult.getBarcodeECLevel(),getErasureArray(erasures));
+}

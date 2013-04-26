@@ -1,6 +1,6 @@
 {
-  int[] textCompactionData=new int[codewords[0] << 1];
-  int[] byteCompactionData=new int[codewords[0] << 1];
+  int[] textCompactionData=new int[(codewords[0] - codeIndex) << 1];
+  int[] byteCompactionData=new int[(codewords[0] - codeIndex) << 1];
   int index=0;
   boolean end=false;
   while ((codeIndex < codewords[0]) && !end) {
@@ -20,6 +20,18 @@ case BYTE_COMPACTION_MODE_LATCH:
   end=true;
 break;
 case NUMERIC_COMPACTION_MODE_LATCH:
+codeIndex--;
+end=true;
+break;
+case BEGIN_MACRO_PDF417_CONTROL_BLOCK:
+codeIndex--;
+end=true;
+break;
+case BEGIN_MACRO_PDF417_OPTIONAL_FIELD:
+codeIndex--;
+end=true;
+break;
+case MACRO_PDF417_TERMINATOR:
 codeIndex--;
 end=true;
 break;

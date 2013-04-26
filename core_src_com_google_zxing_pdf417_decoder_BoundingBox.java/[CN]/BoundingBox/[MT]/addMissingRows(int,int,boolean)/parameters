@@ -1,0 +1,3 @@
+int missingStartRows
+int missingEndRows
+boolean isLeft

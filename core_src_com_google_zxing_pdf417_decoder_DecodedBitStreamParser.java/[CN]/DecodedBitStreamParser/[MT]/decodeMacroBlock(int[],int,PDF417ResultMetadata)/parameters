@@ -1,0 +1,3 @@
+int[] codewords
+int codeIndex
+PDF417ResultMetadata resultMetadata

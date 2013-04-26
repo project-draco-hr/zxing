@@ -1,0 +1,3 @@
+BitMatrix matrix
+int startRow
+int startColumn

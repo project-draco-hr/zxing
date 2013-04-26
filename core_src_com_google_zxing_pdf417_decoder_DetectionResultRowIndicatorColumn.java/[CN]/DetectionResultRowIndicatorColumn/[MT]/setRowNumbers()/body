@@ -1,0 +1,7 @@
+{
+  for (  Codeword codeword : getCodewords()) {
+    if (codeword != null) {
+      codeword.setRowNumberAsRowIndicatorColumn();
+    }
+  }
+}

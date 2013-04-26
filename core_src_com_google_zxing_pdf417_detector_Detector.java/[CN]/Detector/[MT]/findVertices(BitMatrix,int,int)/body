@@ -1,0 +1,12 @@
+{
+  int height=matrix.getHeight();
+  int width=matrix.getWidth();
+  ResultPoint[] result=new ResultPoint[8];
+  copyToResult(result,findRowsWithPattern(matrix,height,width,startRow,startColumn,START_PATTERN),INDEXES_START_PATTERN);
+  if (result[4] != null) {
+    startColumn=(int)result[4].getX();
+    startRow=(int)result[4].getY();
+  }
+  copyToResult(result,findRowsWithPattern(matrix,height,width,startRow,startColumn,STOP_PATTERN),INDEXES_STOP_PATTERN);
+  return result;
+}

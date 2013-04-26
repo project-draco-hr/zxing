@@ -1,0 +1,7 @@
+{
+  BarcodeValue barcodeValue=values.get(getKey(row,column));
+  if (barcodeValue == null) {
+    return null;
+  }
+  return barcodeValue.getValue();
+}

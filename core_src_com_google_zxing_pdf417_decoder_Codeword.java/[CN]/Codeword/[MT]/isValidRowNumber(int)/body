@@ -1,0 +1,3 @@
+{
+  return rowNumber != BARCODE_ROW_UNKNOWN && bucket == (rowNumber % 3) * 3;
+}

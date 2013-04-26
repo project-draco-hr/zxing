@@ -1,0 +1,6 @@
+{
+  this.startX=startX;
+  this.endX=endX;
+  this.bucket=bucket;
+  this.value=value;
+}

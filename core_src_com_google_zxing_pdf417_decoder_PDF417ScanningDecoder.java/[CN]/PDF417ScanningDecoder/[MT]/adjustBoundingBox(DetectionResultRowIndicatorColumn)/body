@@ -1,0 +1,27 @@
+{
+  if (rowIndicatorColumn == null) {
+    return null;
+  }
+  int[] rowHeights=rowIndicatorColumn.getRowHeights();
+  int maxRowHeight=getMax(rowHeights);
+  int missingStartRows=0;
+  for (  int rowHeight : rowHeights) {
+    if (rowHeight < maxRowHeight - ROW_HEIGHT_SKEW) {
+      missingStartRows++;
+    }
+ else {
+      break;
+    }
+  }
+  int missingEndRows=0;
+  for (int row=rowHeights.length - 1; row >= 0; row--) {
+    if (rowHeights[row] < maxRowHeight - ROW_HEIGHT_SKEW) {
+      missingEndRows++;
+    }
+ else {
+      break;
+    }
+  }
+  rowIndicatorColumn.getBoundingBox().addMissingRows(missingStartRows * maxRowHeight,missingEndRows * maxRowHeight,rowIndicatorColumn.isLeft());
+  return rowIndicatorColumn.getBoundingBox();
+}

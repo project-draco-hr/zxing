@@ -1,0 +1,17 @@
+{
+  BarcodeMatrix barcodeMatrix=new BarcodeMatrix();
+  int column=-1;
+  for (  DetectionResultColumn detectionResultColumn : detectionResult.getDetectionResultColumns()) {
+    column++;
+    if (detectionResultColumn == null) {
+      continue;
+    }
+    for (    Codeword codeword : detectionResultColumn.getCodewords()) {
+      if (codeword == null) {
+        continue;
+      }
+      barcodeMatrix.setValue(codeword.getRowNumber(),column,codeword.getValue());
+    }
+  }
+  return barcodeMatrix;
+}

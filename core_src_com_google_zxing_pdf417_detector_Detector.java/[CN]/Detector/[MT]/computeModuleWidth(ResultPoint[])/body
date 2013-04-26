@@ -1,9 +1,0 @@
-{
-  float pixels1=ResultPoint.distance(vertices[0],vertices[4]);
-  float pixels2=ResultPoint.distance(vertices[1],vertices[5]);
-  float moduleWidth1=(pixels1 + pixels2) / (17 * 2.0f);
-  float pixels3=ResultPoint.distance(vertices[6],vertices[2]);
-  float pixels4=ResultPoint.distance(vertices[7],vertices[3]);
-  float moduleWidth2=(pixels3 + pixels4) / (18 * 2.0f);
-  return (moduleWidth1 + moduleWidth2) / 2.0f;
-}

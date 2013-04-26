@@ -1,0 +1,6 @@
+{
+  this.barcodeMetadata=barcodeMetadata;
+  this.barcodeColumnCount=barcodeMetadata.getColumnCount();
+  this.boundingBox=boundingBox;
+  detectionResultColumns=new DetectionResultColumn[barcodeColumnCount + 2];
+}

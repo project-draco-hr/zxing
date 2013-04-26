@@ -1,0 +1,7 @@
+BitMatrix image
+ResultPoint imageTopLeft
+ResultPoint imageBottomLeft
+ResultPoint imageTopRight
+ResultPoint imageBottomRight
+int minCodewordWidth
+int maxCodewordWidth

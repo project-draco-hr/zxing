@@ -1,0 +1,4 @@
+int columnCount
+int rowCountUpperPart
+int rowCountLowerPart
+int errorCorrectionLevel

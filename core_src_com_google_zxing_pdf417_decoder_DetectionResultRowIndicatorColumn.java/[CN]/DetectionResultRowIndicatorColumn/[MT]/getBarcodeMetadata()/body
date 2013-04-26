@@ -1,0 +1,36 @@
+{
+  Codeword[] codewords=getCodewords();
+  BarcodeValue barcodeColumnCount=new BarcodeValue();
+  BarcodeValue barcodeRowCountUpperPart=new BarcodeValue();
+  BarcodeValue barcodeRowCountLowerPart=new BarcodeValue();
+  BarcodeValue barcodeECLevel=new BarcodeValue();
+  for (  Codeword codeword : codewords) {
+    if (codeword == null) {
+      continue;
+    }
+    codeword.setRowNumberAsRowIndicatorColumn();
+    int rowIndicatorValue=codeword.getValue() % 30;
+    int codewordRowNumber=codeword.getRowNumber();
+    if (!isLeft) {
+      codewordRowNumber+=2;
+    }
+switch (codewordRowNumber % 3) {
+case 0:
+      barcodeRowCountUpperPart.setValue(rowIndicatorValue * 3 + 1);
+    break;
+case 1:
+  barcodeECLevel.setValue(rowIndicatorValue / 3);
+barcodeRowCountLowerPart.setValue(rowIndicatorValue % 3);
+break;
+case 2:
+barcodeColumnCount.setValue(rowIndicatorValue + 1);
+break;
+}
+}
+if ((barcodeColumnCount.getValue() == null) || (barcodeRowCountUpperPart.getValue() == null) || (barcodeRowCountLowerPart.getValue() == null)|| (barcodeECLevel.getValue() == null)|| barcodeColumnCount.getValue() < 1 || barcodeRowCountUpperPart.getValue() + barcodeRowCountLowerPart.getValue() < MIN_BARCODE_ROWS || barcodeRowCountUpperPart.getValue() + barcodeRowCountLowerPart.getValue() > MAX_BARCODE_ROWS) {
+return null;
+}
+BarcodeMetadata barcodeMetadata=new BarcodeMetadata(barcodeColumnCount.getValue(),barcodeRowCountUpperPart.getValue(),barcodeRowCountLowerPart.getValue(),barcodeECLevel.getValue());
+removeIncorrectCodewords(codewords,barcodeMetadata);
+return barcodeMetadata;
+}

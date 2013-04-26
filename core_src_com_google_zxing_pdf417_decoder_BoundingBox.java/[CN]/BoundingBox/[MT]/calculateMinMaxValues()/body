@@ -1,0 +1,14 @@
+{
+  if (topLeft == null) {
+    topLeft=new ResultPoint(0,topRight.getY());
+    bottomLeft=new ResultPoint(0,bottomRight.getY());
+  }
+ else   if (topRight == null) {
+    topRight=new ResultPoint(image.getWidth() - 1,topLeft.getY());
+    bottomRight=new ResultPoint(image.getWidth() - 1,bottomLeft.getY());
+  }
+  minX=(int)Math.min(topLeft.getX(),bottomLeft.getX());
+  maxX=(int)Math.max(topRight.getX(),bottomRight.getX());
+  minY=(int)Math.min(topLeft.getY(),topRight.getY());
+  maxY=(int)Math.max(bottomLeft.getY(),bottomRight.getY());
+}

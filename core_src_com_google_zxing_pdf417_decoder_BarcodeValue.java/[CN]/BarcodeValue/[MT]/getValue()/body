@@ -1,0 +1,16 @@
+{
+  int maxConfidence=-1;
+  Integer result=null;
+  boolean ambiguous=false;
+  for (  Entry<Integer,Integer> entry : values.entrySet()) {
+    if (entry.getValue() > maxConfidence) {
+      maxConfidence=entry.getValue();
+      result=entry.getKey();
+      ambiguous=false;
+    }
+  }
+  if (ambiguous) {
+    return null;
+  }
+  return result;
+}

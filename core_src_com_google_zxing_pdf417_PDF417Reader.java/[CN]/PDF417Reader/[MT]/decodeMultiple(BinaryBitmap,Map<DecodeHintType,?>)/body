@@ -1,0 +1,11 @@
+{
+  try {
+    return decode(image,hints,true);
+  }
+ catch (  FormatException ignored) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+catch (  ChecksumException ignored) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+}

@@ -1,5 +1,5 @@
 {
   super("test/data/blackbox/pdf417-3",new MultiFormatReader(),BarcodeFormat.PDF_417);
-  addTest(10,10,0,0,0.0f);
-  addTest(10,10,0,0,180.0f);
+  addTest(18,18,0,0,0.0f);
+  addTest(18,18,0,0,180.0f);
 }

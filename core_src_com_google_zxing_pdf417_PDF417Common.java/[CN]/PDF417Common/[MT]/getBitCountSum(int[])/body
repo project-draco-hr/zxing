@@ -1,0 +1,7 @@
+{
+  int bitCountSum=0;
+  for (  int count : moduleBitCount) {
+    bitCountSum+=count;
+  }
+  return bitCountSum;
+}

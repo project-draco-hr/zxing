@@ -1,0 +1,3 @@
+int codewordSize
+int minCodewordWidth
+int maxCodewordWidth

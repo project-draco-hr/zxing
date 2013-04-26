@@ -1,0 +1,6 @@
+BitMatrix matrix
+int height
+int width
+int startRow
+int startColumn
+int[] pattern

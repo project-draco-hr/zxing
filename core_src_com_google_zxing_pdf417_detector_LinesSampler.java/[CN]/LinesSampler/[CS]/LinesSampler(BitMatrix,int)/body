@@ -1,5 +1,0 @@
-{
-  this.linesMatrix=linesMatrix;
-  this.symbolsPerLine=dimension / MODULES_IN_SYMBOL;
-  this.dimension=dimension;
-}

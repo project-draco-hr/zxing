@@ -1,0 +1,6 @@
+{
+  if (p1 == null || p2 == null) {
+    return Integer.MAX_VALUE;
+  }
+  return (int)Math.abs(p1.getX() - p2.getX());
+}

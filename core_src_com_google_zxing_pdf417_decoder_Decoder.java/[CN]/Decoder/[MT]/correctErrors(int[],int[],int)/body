@@ -1,6 +1,0 @@
-{
-  if (erasures.length > numECCodewords / 2 + MAX_ERRORS || numECCodewords < 0 || numECCodewords > MAX_EC_CODEWORDS) {
-    throw ChecksumException.getChecksumInstance();
-  }
-  errorCorrection.decode(codewords,numECCodewords,erasures);
-}

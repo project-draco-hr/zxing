@@ -1,0 +1,3 @@
+{
+  return barcodeColumn >= 0 && barcodeColumn <= detectionResult.getBarcodeColumnCount() + 1;
+}

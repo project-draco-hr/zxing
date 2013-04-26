@@ -1,0 +1,8 @@
+BitMatrix image
+int minColumn
+int maxColumn
+boolean leftToRight
+int startColumn
+int imageRow
+int minCodewordWidth
+int maxCodewordWidth

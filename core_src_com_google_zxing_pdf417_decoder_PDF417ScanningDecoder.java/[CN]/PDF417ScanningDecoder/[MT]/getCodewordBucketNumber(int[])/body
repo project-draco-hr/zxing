@@ -1,0 +1,3 @@
+{
+  return (moduleBitCount[0] - moduleBitCount[2] + moduleBitCount[4] - moduleBitCount[6] + 9) % 9;
+}

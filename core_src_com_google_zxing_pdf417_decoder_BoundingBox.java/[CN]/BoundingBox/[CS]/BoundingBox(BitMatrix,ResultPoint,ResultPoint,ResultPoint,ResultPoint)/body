@@ -1,0 +1,6 @@
+{
+  if ((topLeft == null && topRight == null) || (bottomLeft == null && bottomRight == null) || (topLeft != null && bottomLeft == null)|| (topRight != null && bottomRight == null)) {
+    throw NotFoundException.getNotFoundInstance();
+  }
+  init(image,topLeft,bottomLeft,topRight,bottomRight);
+}

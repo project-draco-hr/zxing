@@ -1,0 +1,21 @@
+{
+  int imageColumn=startColumn;
+  int[] moduleBitCount=new int[8];
+  int moduleNumber=0;
+  int increment=leftToRight ? 1 : -1;
+  boolean previousPixelValue=leftToRight;
+  while (((leftToRight && imageColumn < maxColumn) || (!leftToRight && imageColumn >= minColumn)) && moduleNumber < moduleBitCount.length) {
+    if (image.get(imageColumn,imageRow) == previousPixelValue) {
+      moduleBitCount[moduleNumber]++;
+      imageColumn+=increment;
+    }
+ else {
+      moduleNumber++;
+      previousPixelValue=!previousPixelValue;
+    }
+  }
+  if (moduleNumber == moduleBitCount.length || (((leftToRight && imageColumn == maxColumn) || (!leftToRight && imageColumn == minColumn)) && moduleNumber == moduleBitCount.length - 1)) {
+    return moduleBitCount;
+  }
+  return null;
+}

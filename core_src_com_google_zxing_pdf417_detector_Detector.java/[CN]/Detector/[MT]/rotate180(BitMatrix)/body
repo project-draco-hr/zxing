@@ -1,0 +1,12 @@
+{
+  int width=bitMatrix.getWidth();
+  int height=bitMatrix.getHeight();
+  BitArray firstRowBitArray=new BitArray(width);
+  BitArray secondRowBitArray=new BitArray(width);
+  BitArray tmpBitArray=new BitArray(width);
+  for (int y=0; y < height + 1 >> 1; y++) {
+    firstRowBitArray=bitMatrix.getRow(y,firstRowBitArray);
+    bitMatrix.setRow(y,mirror(bitMatrix.getRow(height - 1 - y,secondRowBitArray),tmpBitArray));
+    bitMatrix.setRow(height - 1 - y,mirror(firstRowBitArray,tmpBitArray));
+  }
+}

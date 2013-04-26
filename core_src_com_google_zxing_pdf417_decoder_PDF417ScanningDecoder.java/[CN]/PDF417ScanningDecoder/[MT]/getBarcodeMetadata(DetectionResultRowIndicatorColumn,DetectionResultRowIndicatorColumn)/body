@@ -1,0 +1,14 @@
+{
+  if (leftRowIndicatorColumn == null || leftRowIndicatorColumn.getBarcodeMetadata() == null) {
+    return rightRowIndicatorColumn.getBarcodeMetadata();
+  }
+  if (rightRowIndicatorColumn == null || rightRowIndicatorColumn.getBarcodeMetadata() == null) {
+    return leftRowIndicatorColumn.getBarcodeMetadata();
+  }
+  BarcodeMetadata leftBarcodeMetadata=leftRowIndicatorColumn.getBarcodeMetadata();
+  BarcodeMetadata rightBarcodeMetadata=rightRowIndicatorColumn.getBarcodeMetadata();
+  if (leftBarcodeMetadata.getColumnCount() != rightBarcodeMetadata.getColumnCount() && leftBarcodeMetadata.getErrorCorrectionLevel() != rightBarcodeMetadata.getErrorCorrectionLevel() && leftBarcodeMetadata.getRowCount() != rightBarcodeMetadata.getRowCount()) {
+    return null;
+  }
+  return leftBarcodeMetadata;
+}

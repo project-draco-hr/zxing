@@ -1,8 +1,0 @@
-{
-  if (size < 0) {
-    throw new IllegalArgumentException();
-  }
-  int[] a=new int[size];
-  System.arraycopy(array,0,a,0,size);
-  return a;
-}

@@ -1,0 +1,4 @@
+{
+  this.boundingBox=new BoundingBox(boundingBox);
+  codewords=new Codeword[boundingBox.getMaxY() - boundingBox.getMinY() + 1];
+}

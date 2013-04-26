@@ -1,0 +1,4 @@
+{
+  this.bottomRight=bottomRight;
+  calculateMinMaxValues();
+}

@@ -1,0 +1,21 @@
+{
+  int bitCountSum=PDF417Common.getBitCountSum(moduleBitCount);
+  float[] bitCountRatios=new float[PDF417Common.BARS_IN_MODULE];
+  for (int i=0; i < bitCountRatios.length; i++) {
+    bitCountRatios[i]=moduleBitCount[i] / (float)bitCountSum;
+  }
+  float bestMatchError=Float.MAX_VALUE;
+  int bestMatch=-1;
+  for (int j=0; j < RATIOS_TABLE.length; j++) {
+    float error=0.0f;
+    for (int k=0; k < PDF417Common.BARS_IN_MODULE; k++) {
+      float diff=RATIOS_TABLE[j][k] - bitCountRatios[k];
+      error+=diff * diff;
+    }
+    if (error < bestMatchError) {
+      bestMatchError=error;
+      bestMatch=PDF417Common.SYMBOL_TABLE[j];
+    }
+  }
+  return bestMatch;
+}

@@ -1,0 +1,44 @@
+{
+  StringBuilder result=new StringBuilder(codewords.length * 2);
+  int codeIndex=1;
+  int code=codewords[codeIndex++];
+  PDF417ResultMetadata resultMetadata=new PDF417ResultMetadata();
+  while (codeIndex < codewords[0]) {
+switch (code) {
+case TEXT_COMPACTION_MODE_LATCH:
+      codeIndex=textCompaction(codewords,codeIndex,result);
+    break;
+case BYTE_COMPACTION_MODE_LATCH:
+  codeIndex=byteCompaction(code,codewords,codeIndex,result);
+break;
+case NUMERIC_COMPACTION_MODE_LATCH:
+codeIndex=numericCompaction(codewords,codeIndex,result);
+break;
+case MODE_SHIFT_TO_BYTE_COMPACTION_MODE:
+codeIndex=byteCompaction(code,codewords,codeIndex,result);
+break;
+case BYTE_COMPACTION_MODE_LATCH_6:
+codeIndex=byteCompaction(code,codewords,codeIndex,result);
+break;
+case BEGIN_MACRO_PDF417_CONTROL_BLOCK:
+codeIndex=decodeMacroBlock(codewords,codeIndex,resultMetadata);
+break;
+default :
+codeIndex--;
+codeIndex=textCompaction(codewords,codeIndex,result);
+break;
+}
+if (codeIndex < codewords.length) {
+code=codewords[codeIndex++];
+}
+ else {
+throw FormatException.getFormatInstance();
+}
+}
+if (result.length() == 0) {
+throw FormatException.getFormatInstance();
+}
+DecoderResult decoderResult=new DecoderResult(null,result.toString(),null,ecLevel);
+decoderResult.setOther(resultMetadata);
+return decoderResult;
+}

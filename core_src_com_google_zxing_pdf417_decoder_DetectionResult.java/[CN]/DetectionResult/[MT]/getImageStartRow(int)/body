@@ -1,0 +1,15 @@
+{
+  while (barcodeColumn > 0) {
+    DetectionResultColumn detectionResultColumn=detectionResultColumns[--barcodeColumn];
+    Codeword[] codewords=detectionResultColumn.getCodewords();
+    for (int rowNumber=0; rowNumber < codewords.length; rowNumber++) {
+      if (codewords[rowNumber] != null) {
+        if (rowNumber > 0) {
+          rowNumber--;
+        }
+        return detectionResultColumn.getImageRow(rowNumber);
+      }
+    }
+  }
+  return -1;
+}

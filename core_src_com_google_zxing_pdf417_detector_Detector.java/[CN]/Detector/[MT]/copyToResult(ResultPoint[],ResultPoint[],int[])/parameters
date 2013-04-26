@@ -1,0 +1,3 @@
+ResultPoint[] result
+ResultPoint[] tmpResult
+int[] destinationIndexes

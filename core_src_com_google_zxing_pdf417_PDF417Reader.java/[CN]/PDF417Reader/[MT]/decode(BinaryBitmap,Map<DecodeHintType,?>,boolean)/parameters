@@ -1,0 +1,3 @@
+BinaryBitmap image
+Map<DecodeHintType,?> hints
+boolean multiple
