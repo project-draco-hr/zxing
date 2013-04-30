@@ -1,5 +1,5 @@
 {
-  Collection<BarcodeFormat> possibleFormats=hints == null ? null : (Collection<BarcodeFormat>)hints.get(DecodeHintType.POSSIBLE_FORMATS);
+  @SuppressWarnings("unchecked") Collection<BarcodeFormat> possibleFormats=hints == null ? null : (Collection<BarcodeFormat>)hints.get(DecodeHintType.POSSIBLE_FORMATS);
   Collection<UPCEANReader> readers=new ArrayList<UPCEANReader>();
   if (possibleFormats != null) {
     if (possibleFormats.contains(BarcodeFormat.EAN_13)) {

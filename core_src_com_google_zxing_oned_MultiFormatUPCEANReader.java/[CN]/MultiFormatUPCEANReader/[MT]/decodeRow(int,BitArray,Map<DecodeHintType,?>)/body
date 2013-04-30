@@ -9,7 +9,7 @@
       continue;
     }
     boolean ean13MayBeUPCA=result.getBarcodeFormat() == BarcodeFormat.EAN_13 && result.getText().charAt(0) == '0';
-    Collection<BarcodeFormat> possibleFormats=hints == null ? null : (Collection<BarcodeFormat>)hints.get(DecodeHintType.POSSIBLE_FORMATS);
+    @SuppressWarnings("unchecked") Collection<BarcodeFormat> possibleFormats=hints == null ? null : (Collection<BarcodeFormat>)hints.get(DecodeHintType.POSSIBLE_FORMATS);
     boolean canReturnUPCA=possibleFormats == null || possibleFormats.contains(BarcodeFormat.UPC_A);
     if (ean13MayBeUPCA && canReturnUPCA) {
       Result resultUPCA=new Result(result.getText().substring(1),result.getRawBytes(),result.getResultPoints(),BarcodeFormat.UPC_A);
