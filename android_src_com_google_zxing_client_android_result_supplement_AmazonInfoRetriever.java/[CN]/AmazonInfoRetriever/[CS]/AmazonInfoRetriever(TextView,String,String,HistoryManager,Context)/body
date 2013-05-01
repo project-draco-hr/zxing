@@ -1,0 +1,10 @@
+{
+  super(textView,historyManager);
+  String country=LocaleManager.getCountry(context);
+  if ("ISBN".equals(type) && !Locale.US.getCountry().equals(country)) {
+    type="EAN";
+  }
+  this.type=type;
+  this.productID=productID;
+  this.country=country;
+}
