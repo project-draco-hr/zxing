@@ -20,7 +20,7 @@
   result.append("VERSION.RELEASE=").append(Build.VERSION.RELEASE).append('\n');
   result.append("VERSION.SDK_INT=").append(Build.VERSION.SDK_INT).append('\n');
   String flattened=getFlattenedParams();
-  String[] params=flattened.split(";");
+  String[] params=SEMICOLON.split(flattened);
   Arrays.sort(params);
   for (  String param : params) {
     result.append(param).append('\n');

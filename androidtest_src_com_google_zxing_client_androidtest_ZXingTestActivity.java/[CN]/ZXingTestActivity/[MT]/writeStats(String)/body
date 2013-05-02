@@ -1,7 +1,8 @@
 {
+  File cameraParamsFile=new File(Environment.getExternalStorageDirectory().getPath() + "/CameraParameters.txt");
   Writer out=null;
   try {
-    out=new OutputStreamWriter(new FileOutputStream(new File("/sdcard/CameraParameters.txt")),Charset.forName("UTF-8"));
+    out=new OutputStreamWriter(new FileOutputStream(cameraParamsFile),Charset.forName("UTF-8"));
     out.write(resultString);
   }
  catch (  IOException e) {
