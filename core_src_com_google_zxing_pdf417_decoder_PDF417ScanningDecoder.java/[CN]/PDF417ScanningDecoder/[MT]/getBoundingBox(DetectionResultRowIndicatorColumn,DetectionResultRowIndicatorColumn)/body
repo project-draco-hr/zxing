@@ -1,5 +1,0 @@
-{
-  BoundingBox box1=adjustBoundingBox(leftRowIndicatorColumn);
-  BoundingBox box2=adjustBoundingBox(rightRowIndicatorColumn);
-  return BoundingBox.merge(box1,box2);
-}

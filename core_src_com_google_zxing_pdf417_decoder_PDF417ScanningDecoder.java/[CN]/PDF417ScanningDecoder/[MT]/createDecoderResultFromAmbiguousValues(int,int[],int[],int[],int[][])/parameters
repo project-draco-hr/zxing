@@ -1,0 +1,5 @@
+int ecLevel
+int[] codewords
+int[] erasureArray
+int[] ambiguousIndexes
+int[][] ambiguousIndexValues

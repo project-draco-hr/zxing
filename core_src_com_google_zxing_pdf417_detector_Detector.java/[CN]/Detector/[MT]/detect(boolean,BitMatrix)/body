@@ -3,7 +3,7 @@
   int row=0;
   int column=0;
   boolean foundBarcodeInRow=false;
-  while (row < image.getHeight()) {
+  while (row < bitMatrix.getHeight()) {
     ResultPoint[] vertices=findVertices(bitMatrix,row,column);
     if (vertices[0] == null && vertices[3] == null) {
       if (!foundBarcodeInRow) {

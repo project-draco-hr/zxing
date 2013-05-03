@@ -6,6 +6,6 @@
   if (barcodeMetadata == null) {
     return null;
   }
-  BoundingBox boundingBox=getBoundingBox(leftRowIndicatorColumn,rightRowIndicatorColumn);
+  BoundingBox boundingBox=BoundingBox.merge(adjustBoundingBox(leftRowIndicatorColumn),adjustBoundingBox(rightRowIndicatorColumn));
   return new DetectionResult(barcodeMetadata,boundingBox);
 }

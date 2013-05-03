@@ -6,22 +6,24 @@
   int maxRowHeight=getMax(rowHeights);
   int missingStartRows=0;
   for (  int rowHeight : rowHeights) {
-    if (rowHeight < maxRowHeight - ROW_HEIGHT_SKEW) {
-      missingStartRows++;
-    }
- else {
+    missingStartRows+=maxRowHeight - rowHeight;
+    if (rowHeight > 0) {
       break;
     }
+  }
+  Codeword[] codewords=rowIndicatorColumn.getCodewords();
+  for (int row=0; missingStartRows > 0 && codewords[row] == null; row++) {
+    missingStartRows--;
   }
   int missingEndRows=0;
   for (int row=rowHeights.length - 1; row >= 0; row--) {
-    if (rowHeights[row] < maxRowHeight - ROW_HEIGHT_SKEW) {
-      missingEndRows++;
-    }
- else {
+    missingEndRows+=maxRowHeight - rowHeights[row];
+    if (rowHeights[row] > 0) {
       break;
     }
   }
-  rowIndicatorColumn.getBoundingBox().addMissingRows(missingStartRows * maxRowHeight,missingEndRows * maxRowHeight,rowIndicatorColumn.isLeft());
-  return rowIndicatorColumn.getBoundingBox();
+  for (int row=codewords.length - 1; missingEndRows > 0 && codewords[row] == null; row--) {
+    missingEndRows--;
+  }
+  return rowIndicatorColumn.getBoundingBox().addMissingRows(missingStartRows,missingEndRows,rowIndicatorColumn.isLeft());
 }

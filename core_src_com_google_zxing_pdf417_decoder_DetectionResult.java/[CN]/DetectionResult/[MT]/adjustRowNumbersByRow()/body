@@ -1,4 +1,5 @@
 {
+  adjustRowNumbersFromBothRI();
   int unadjustedCount=adjustRowNumbersFromLRI();
   return unadjustedCount + adjustRowNumbersFromRRI();
 }

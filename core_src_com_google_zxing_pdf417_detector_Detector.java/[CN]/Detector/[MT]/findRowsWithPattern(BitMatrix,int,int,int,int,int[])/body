@@ -40,7 +40,7 @@
         }
       }
     }
-    stopRow-=skippedRowCount;
+    stopRow-=skippedRowCount + 1;
     result[2]=new ResultPoint(previousRowLoc[0],stopRow);
     result[3]=new ResultPoint(previousRowLoc[1],stopRow);
   }

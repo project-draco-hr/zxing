@@ -1,0 +1,3 @@
+{
+  return result.getResultMetadata() == null ? null : (PDF417ResultMetadata)result.getResultMetadata().get(ResultMetadataType.PDF417_EXTRA_METADATA);
+}

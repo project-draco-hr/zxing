@@ -1,28 +1,29 @@
 {
-  BarcodeMatrix barcodeMatrix=createBarcodeMatrix(detectionResult);
-  Integer numberOfCodewords=barcodeMatrix.getValue(0,1);
-  int calculatedNumberOfCodewords=detectionResult.getBarcodeColumnCount() * detectionResult.getBarcodeRowCount() - getNumberOfECCodeWords(detectionResult.getBarcodeECLevel());
-  if (numberOfCodewords == null) {
-    if (calculatedNumberOfCodewords < 1 || calculatedNumberOfCodewords > PDF417Common.MAX_CODEWORDS_IN_BARCODE) {
-      throw NotFoundException.getNotFoundInstance();
-    }
-    barcodeMatrix.setValue(0,1,calculatedNumberOfCodewords);
-  }
- else   if (numberOfCodewords != calculatedNumberOfCodewords) {
-    numberOfCodewords=calculatedNumberOfCodewords;
-  }
+  BarcodeValue[][] barcodeMatrix=createBarcodeMatrix(detectionResult);
+  adjustCodewordCount(detectionResult,barcodeMatrix);
   Collection<Integer> erasures=new ArrayList<Integer>();
   int[] codewords=new int[detectionResult.getBarcodeRowCount() * detectionResult.getBarcodeColumnCount()];
+  List<int[]> ambiguousIndexValuesList=new ArrayList<int[]>();
+  List<Integer> ambiguousIndexesList=new ArrayList<Integer>();
   for (int row=0; row < detectionResult.getBarcodeRowCount(); row++) {
     for (int column=0; column < detectionResult.getBarcodeColumnCount(); column++) {
-      Integer codeword=barcodeMatrix.getValue(row,column + 1);
-      if (codeword == null) {
-        erasures.add(row * detectionResult.getBarcodeColumnCount() + column);
+      int[] values=barcodeMatrix[row][column + 1].getValue();
+      int codewordIndex=row * detectionResult.getBarcodeColumnCount() + column;
+      if (values.length == 0) {
+        erasures.add(codewordIndex);
+      }
+ else       if (values.length == 1) {
+        codewords[codewordIndex]=values[0];
       }
  else {
-        codewords[row * detectionResult.getBarcodeColumnCount() + column]=codeword;
+        ambiguousIndexesList.add(codewordIndex);
+        ambiguousIndexValuesList.add(values);
       }
     }
   }
-  return decodeCodewords(codewords,detectionResult.getBarcodeECLevel(),getErasureArray(erasures));
+  int[][] ambiguousIndexValues=new int[ambiguousIndexValuesList.size()][];
+  for (int i=0; i < ambiguousIndexValues.length; i++) {
+    ambiguousIndexValues[i]=ambiguousIndexValuesList.get(i);
+  }
+  return createDecoderResultFromAmbiguousValues(detectionResult.getBarcodeECLevel(),codewords,PDF417Common.toIntArray(erasures),PDF417Common.toIntArray(ambiguousIndexesList),ambiguousIndexValues);
 }

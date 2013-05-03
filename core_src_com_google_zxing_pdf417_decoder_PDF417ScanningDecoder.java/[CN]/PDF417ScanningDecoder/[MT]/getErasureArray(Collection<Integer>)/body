@@ -1,8 +1,0 @@
-{
-  int[] result=new int[list.size()];
-  int i=0;
-  for (  Integer integer : list) {
-    result[i++]=integer;
-  }
-  return result;
-}

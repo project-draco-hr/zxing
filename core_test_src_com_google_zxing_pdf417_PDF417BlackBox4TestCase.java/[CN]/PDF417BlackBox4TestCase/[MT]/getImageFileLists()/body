@@ -1,0 +1,14 @@
+{
+  Map<String,List<File>> result=new HashMap<String,List<File>>();
+  for (  File file : getImageFiles()) {
+    String testImageFileName=file.getName();
+    String fileBaseName=testImageFileName.substring(0,testImageFileName.indexOf('-'));
+    List<File> files=result.get(fileBaseName);
+    if (files == null) {
+      files=new ArrayList<File>();
+      result.put(fileBaseName,files);
+    }
+    files.add(file);
+  }
+  return result;
+}

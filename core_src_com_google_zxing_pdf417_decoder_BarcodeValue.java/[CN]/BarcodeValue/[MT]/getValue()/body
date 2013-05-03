@@ -1,16 +1,15 @@
 {
   int maxConfidence=-1;
-  Integer result=null;
-  boolean ambiguous=false;
+  Collection<Integer> result=new ArrayList<Integer>();
   for (  Entry<Integer,Integer> entry : values.entrySet()) {
     if (entry.getValue() > maxConfidence) {
       maxConfidence=entry.getValue();
-      result=entry.getKey();
-      ambiguous=false;
+      result.clear();
+      result.add(entry.getKey());
+    }
+ else     if (entry.getValue() == maxConfidence) {
+      result.add(entry.getKey());
     }
   }
-  if (ambiguous) {
-    return null;
-  }
-  return result;
+  return PDF417Common.toIntArray(result);
 }

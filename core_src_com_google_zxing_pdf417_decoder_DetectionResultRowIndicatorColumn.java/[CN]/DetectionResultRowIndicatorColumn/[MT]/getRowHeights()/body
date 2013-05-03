@@ -3,7 +3,7 @@
   if (barcodeMetadata == null) {
     return null;
   }
-  adjustIndicatorColumnRowNumbers(barcodeMetadata);
+  adjustIncompleteIndicatorColumnRowNumbers(barcodeMetadata);
   int[] result=new int[barcodeMetadata.getRowCount()];
   for (  Codeword codeword : getCodewords()) {
     if (codeword != null) {

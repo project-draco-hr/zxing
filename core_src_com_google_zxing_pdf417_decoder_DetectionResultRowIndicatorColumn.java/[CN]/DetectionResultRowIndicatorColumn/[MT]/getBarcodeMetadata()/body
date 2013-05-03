@@ -27,10 +27,10 @@ barcodeColumnCount.setValue(rowIndicatorValue + 1);
 break;
 }
 }
-if ((barcodeColumnCount.getValue() == null) || (barcodeRowCountUpperPart.getValue() == null) || (barcodeRowCountLowerPart.getValue() == null)|| (barcodeECLevel.getValue() == null)|| barcodeColumnCount.getValue() < 1 || barcodeRowCountUpperPart.getValue() + barcodeRowCountLowerPart.getValue() < MIN_BARCODE_ROWS || barcodeRowCountUpperPart.getValue() + barcodeRowCountLowerPart.getValue() > MAX_BARCODE_ROWS) {
+if ((barcodeColumnCount.getValue().length == 0) || (barcodeRowCountUpperPart.getValue().length == 0) || (barcodeRowCountLowerPart.getValue().length == 0)|| (barcodeECLevel.getValue().length == 0)|| barcodeColumnCount.getValue()[0] < 1 || barcodeRowCountUpperPart.getValue()[0] + barcodeRowCountLowerPart.getValue()[0] < PDF417Common.MIN_ROWS_IN_BARCODE || barcodeRowCountUpperPart.getValue()[0] + barcodeRowCountLowerPart.getValue()[0] > PDF417Common.MAX_ROWS_IN_BARCODE) {
 return null;
 }
-BarcodeMetadata barcodeMetadata=new BarcodeMetadata(barcodeColumnCount.getValue(),barcodeRowCountUpperPart.getValue(),barcodeRowCountLowerPart.getValue(),barcodeECLevel.getValue());
+BarcodeMetadata barcodeMetadata=new BarcodeMetadata(barcodeColumnCount.getValue()[0],barcodeRowCountUpperPart.getValue()[0],barcodeRowCountLowerPart.getValue()[0],barcodeECLevel.getValue()[0]);
 removeIncorrectCodewords(codewords,barcodeMetadata);
 return barcodeMetadata;
 }

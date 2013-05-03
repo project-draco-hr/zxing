@@ -1,0 +1,8 @@
+{
+  super(TEST_BASE_PATH_SUFFIX,null,BarcodeFormat.PDF_417);
+  testBase=new File(TEST_BASE_PATH_SUFFIX);
+  if (!testBase.exists()) {
+    testBase=new File("core/" + TEST_BASE_PATH_SUFFIX);
+  }
+  testResults.add(new TestResult(2,2,0,0,0.0f));
+}

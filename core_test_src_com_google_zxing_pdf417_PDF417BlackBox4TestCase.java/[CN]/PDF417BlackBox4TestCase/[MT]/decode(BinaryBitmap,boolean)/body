@@ -1,0 +1,7 @@
+{
+  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+  if (tryHarder) {
+    hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
+  }
+  return barcodeReader.decodeMultiple(source,hints);
+}

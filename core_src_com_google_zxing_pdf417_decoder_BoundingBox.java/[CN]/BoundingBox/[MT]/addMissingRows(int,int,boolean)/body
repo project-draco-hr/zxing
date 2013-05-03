@@ -1,4 +1,8 @@
 {
+  ResultPoint newTopLeft=topLeft;
+  ResultPoint newBottomLeft=bottomLeft;
+  ResultPoint newTopRight=topRight;
+  ResultPoint newBottomRight=bottomRight;
   if (missingStartRows > 0) {
     ResultPoint top=isLeft ? topLeft : topRight;
     int newMinY=(int)top.getY() - missingStartRows;
@@ -7,25 +11,26 @@
     }
     ResultPoint newTop=new ResultPoint(top.getX(),newMinY);
     if (isLeft) {
-      topLeft=newTop;
+      newTopLeft=newTop;
     }
  else {
-      topRight=newTop;
+      newTopRight=newTop;
     }
   }
   if (missingEndRows > 0) {
     ResultPoint bottom=isLeft ? bottomLeft : bottomRight;
-    int newMaxY=(int)bottom.getY() - missingStartRows;
+    int newMaxY=(int)bottom.getY() + missingEndRows;
     if (newMaxY >= image.getHeight()) {
       newMaxY=image.getHeight() - 1;
     }
     ResultPoint newBottom=new ResultPoint(bottom.getX(),newMaxY);
     if (isLeft) {
-      bottomLeft=newBottom;
+      newBottomLeft=newBottom;
     }
  else {
-      bottomRight=newBottom;
+      newBottomRight=newBottom;
     }
   }
   calculateMinMaxValues();
+  return new BoundingBox(image,newTopLeft,newBottomLeft,newTopRight,newBottomRight);
 }

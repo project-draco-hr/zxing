@@ -4,14 +4,14 @@
     return codeword;
   }
   for (int i=1; i < MAX_NEARBY_DISTANCE; i++) {
-    int nearImageRow=getCodewordsIndex(imageRow) - i;
+    int nearImageRow=imageRowToCodewordIndex(imageRow) - i;
     if (nearImageRow >= 0) {
       codeword=codewords[nearImageRow];
       if (codeword != null) {
         return codeword;
       }
     }
-    nearImageRow=getCodewordsIndex(imageRow) + i;
+    nearImageRow=imageRowToCodewordIndex(imageRow) + i;
     if (nearImageRow < codewords.length) {
       codeword=codewords[nearImageRow];
       if (codeword != null) {

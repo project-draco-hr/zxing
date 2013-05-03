@@ -1,5 +1,10 @@
 {
-  BarcodeMatrix barcodeMatrix=new BarcodeMatrix();
+  BarcodeValue[][] barcodeMatrix=new BarcodeValue[detectionResult.getBarcodeRowCount()][detectionResult.getBarcodeColumnCount() + 2];
+  for (int row=0; row < barcodeMatrix.length; row++) {
+    for (int column=0; column < barcodeMatrix[row].length; column++) {
+      barcodeMatrix[row][column]=new BarcodeValue();
+    }
+  }
   int column=-1;
   for (  DetectionResultColumn detectionResultColumn : detectionResult.getDetectionResultColumns()) {
     column++;
@@ -7,10 +12,10 @@
       continue;
     }
     for (    Codeword codeword : detectionResultColumn.getCodewords()) {
-      if (codeword == null) {
+      if (codeword == null || codeword.getRowNumber() == -1) {
         continue;
       }
-      barcodeMatrix.setValue(codeword.getRowNumber(),column,codeword.getValue());
+      barcodeMatrix[codeword.getRowNumber()][column].setValue(codeword.getValue());
     }
   }
   return barcodeMatrix;

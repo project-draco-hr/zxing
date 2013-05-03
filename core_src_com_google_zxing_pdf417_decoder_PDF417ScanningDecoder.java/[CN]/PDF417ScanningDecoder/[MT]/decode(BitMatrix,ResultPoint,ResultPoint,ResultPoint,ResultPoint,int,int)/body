@@ -3,24 +3,23 @@
   DetectionResultRowIndicatorColumn leftRowIndicatorColumn=null;
   DetectionResultRowIndicatorColumn rightRowIndicatorColumn=null;
   DetectionResult detectionResult=null;
-  boolean again=true;
-  while (again) {
-    again=false;
+  for (int i=0; i < 2; i++) {
     if (imageTopLeft != null) {
       leftRowIndicatorColumn=getRowIndicatorColumn(image,boundingBox,imageTopLeft,true,minCodewordWidth,maxCodewordWidth);
-      leftRowIndicatorColumn.setRowNumbers();
     }
     if (imageTopRight != null) {
       rightRowIndicatorColumn=getRowIndicatorColumn(image,boundingBox,imageTopRight,false,minCodewordWidth,maxCodewordWidth);
-      rightRowIndicatorColumn.setRowNumbers();
     }
     detectionResult=merge(leftRowIndicatorColumn,rightRowIndicatorColumn);
     if (detectionResult == null) {
       throw NotFoundException.getNotFoundInstance();
     }
-    if (detectionResult.getBoundingBox().getMinY() < boundingBox.getMinY() || detectionResult.getBoundingBox().getMaxY() > boundingBox.getMaxY()) {
+    if (i == 0 && (detectionResult.getBoundingBox().getMinY() < boundingBox.getMinY() || detectionResult.getBoundingBox().getMaxY() > boundingBox.getMaxY())) {
       boundingBox=detectionResult.getBoundingBox();
-      again=true;
+    }
+ else {
+      detectionResult.setBoundingBox(boundingBox);
+      break;
     }
   }
   int maxBarcodeColumn=detectionResult.getBarcodeColumnCount() + 1;
@@ -42,7 +41,7 @@
     detectionResult.setDetectionResultColumn(barcodeColumn,detectionResultColumn);
     int startColumn=-1;
     int previousStartColumn=startColumn;
-    for (int imageRow=boundingBox.getMinY(); imageRow < boundingBox.getMaxY(); imageRow++) {
+    for (int imageRow=boundingBox.getMinY(); imageRow <= boundingBox.getMaxY(); imageRow++) {
       startColumn=getStartColumn(detectionResult,barcodeColumn,imageRow,leftToRight);
       if (startColumn < 0 || startColumn > boundingBox.getMaxX()) {
         if (previousStartColumn == -1) {

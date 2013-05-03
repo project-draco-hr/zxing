@@ -1,0 +1,13 @@
+{
+  int[] numberOfCodewords=barcodeMatrix[0][1].getValue();
+  int calculatedNumberOfCodewords=detectionResult.getBarcodeColumnCount() * detectionResult.getBarcodeRowCount() - getNumberOfECCodeWords(detectionResult.getBarcodeECLevel());
+  if (numberOfCodewords.length == 0) {
+    if (calculatedNumberOfCodewords < 1 || calculatedNumberOfCodewords > PDF417Common.MAX_CODEWORDS_IN_BARCODE) {
+      throw NotFoundException.getNotFoundInstance();
+    }
+    barcodeMatrix[0][1].setValue(calculatedNumberOfCodewords);
+  }
+ else   if (numberOfCodewords[0] != calculatedNumberOfCodewords) {
+    barcodeMatrix[0][1].setValue(calculatedNumberOfCodewords);
+  }
+}

@@ -1,5 +1,5 @@
 {
   if (detectionResultColumn != null) {
-    ((DetectionResultRowIndicatorColumn)detectionResultColumn).adjustIndicatorColumnRowNumbers(barcodeMetadata);
+    ((DetectionResultRowIndicatorColumn)detectionResultColumn).adjustCompleteIndicatorColumnRowNumbers(barcodeMetadata);
   }
 }
