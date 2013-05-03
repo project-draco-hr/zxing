@@ -7,6 +7,9 @@
     language=massagedLanguage;
   }
   System.out.println("  Need translation for " + english);
+  if (API_KEY == null) {
+    throw new IllegalArgumentException("translateAPI.key is not specified");
+  }
   URL translateURL=new URL("https://www.googleapis.com/language/translate/v2?key=" + API_KEY + "&q="+ URLEncoder.encode(english,"UTF-8")+ "&source=en&target="+ language);
   CharSequence translateResult=fetch(translateURL);
   Matcher m=TRANSLATE_RESPONSE_PATTERN.matcher(translateResult);
