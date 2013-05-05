@@ -5,52 +5,58 @@
   Collection<Result> results=new ArrayList<Result>(1);
   ReaderException savedException=null;
   try {
-    MultipleBarcodeReader multiReader=new GenericMultipleBarcodeReader(reader);
-    Result[] theResults=multiReader.decodeMultiple(bitmap,HINTS);
-    if (theResults != null) {
-      results.addAll(Arrays.asList(theResults));
-    }
-  }
- catch (  ReaderException re) {
-    savedException=re;
-  }
-  if (results.isEmpty()) {
     try {
-      Result theResult=reader.decode(bitmap,HINTS_PURE);
-      if (theResult != null) {
-        results.add(theResult);
+      MultipleBarcodeReader multiReader=new GenericMultipleBarcodeReader(reader);
+      Result[] theResults=multiReader.decodeMultiple(bitmap,HINTS);
+      if (theResults != null) {
+        results.addAll(Arrays.asList(theResults));
       }
     }
  catch (    ReaderException re) {
       savedException=re;
     }
-  }
-  if (results.isEmpty()) {
-    try {
-      Result theResult=reader.decode(bitmap,HINTS);
-      if (theResult != null) {
-        results.add(theResult);
+    if (results.isEmpty()) {
+      try {
+        Result theResult=reader.decode(bitmap,HINTS_PURE);
+        if (theResult != null) {
+          results.add(theResult);
+        }
+      }
+ catch (      ReaderException re) {
+        savedException=re;
       }
     }
- catch (    ReaderException re) {
-      savedException=re;
-    }
-  }
-  if (results.isEmpty()) {
-    try {
-      BinaryBitmap hybridBitmap=new BinaryBitmap(new HybridBinarizer(source));
-      Result theResult=reader.decode(hybridBitmap,HINTS);
-      if (theResult != null) {
-        results.add(theResult);
+    if (results.isEmpty()) {
+      try {
+        Result theResult=reader.decode(bitmap,HINTS);
+        if (theResult != null) {
+          results.add(theResult);
+        }
+      }
+ catch (      ReaderException re) {
+        savedException=re;
       }
     }
- catch (    ReaderException re) {
-      savedException=re;
+    if (results.isEmpty()) {
+      try {
+        BinaryBitmap hybridBitmap=new BinaryBitmap(new HybridBinarizer(source));
+        Result theResult=reader.decode(hybridBitmap,HINTS);
+        if (theResult != null) {
+          results.add(theResult);
+        }
+      }
+ catch (      ReaderException re) {
+        savedException=re;
+      }
+    }
+    if (results.isEmpty()) {
+      handleException(savedException,response);
+      return;
     }
   }
-  if (results.isEmpty()) {
-    handleException(savedException,response);
-    return;
+ catch (  RuntimeException re) {
+    log.log(Level.WARNING,"Unexpected exception from library",re);
+    throw new ServletException(re);
   }
   String fullParameter=request.getParameter("full");
   boolean minimalOutput=fullParameter != null && !Boolean.parseBoolean(fullParameter);
