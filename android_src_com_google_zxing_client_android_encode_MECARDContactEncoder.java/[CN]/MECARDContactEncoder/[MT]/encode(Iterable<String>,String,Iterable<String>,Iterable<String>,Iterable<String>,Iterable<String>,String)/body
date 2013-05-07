@@ -12,7 +12,7 @@
   appendUpToUnique(newContents,newDisplayContents,"ADR",addresses,1,null);
   appendUpToUnique(newContents,newDisplayContents,"TEL",phones,Integer.MAX_VALUE,new Formatter(){
     @Override public String format(    String source){
-      return PhoneNumberUtils.formatNumber(source);
+      return keepOnlyDigits(PhoneNumberUtils.formatNumber(source));
     }
   }
 );
