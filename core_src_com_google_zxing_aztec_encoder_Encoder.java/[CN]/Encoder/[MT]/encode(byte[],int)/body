@@ -38,9 +38,6 @@
     throw new IllegalArgumentException("Data too large for an Aztec code");
   }
   int messageSizeInWords=(stuffedBits.getSize() + wordSize - 1) / wordSize;
-  for (int i=messageSizeInWords * wordSize - stuffedBits.getSize(); i > 0; i--) {
-    stuffedBits.appendBit(true);
-  }
   ReedSolomonEncoder rs=new ReedSolomonEncoder(getGF(wordSize));
   int totalSizeInFullWords=totalSymbolBits / wordSize;
   int[] messageWords=bitsToWords(stuffedBits,wordSize,totalSizeInFullWords);
