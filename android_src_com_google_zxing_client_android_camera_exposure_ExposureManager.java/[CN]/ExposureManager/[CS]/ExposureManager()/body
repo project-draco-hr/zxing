@@ -1,4 +1,0 @@
-{
-  super(ExposureInterface.class,new DefaultExposureInterface());
-  addImplementationClass(8,"com.google.zxing.client.android.camera.exposure.FroyoExposureInterface");
-}
