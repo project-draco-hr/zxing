@@ -1,15 +1,5 @@
 {
-  ParsedResult rawResult=getResult();
-  String productID;
-  if (rawResult instanceof ProductParsedResult) {
-    productID=((ProductParsedResult)rawResult).getNormalizedProductID();
-  }
- else   if (rawResult instanceof ExpandedProductParsedResult) {
-    productID=((ExpandedProductParsedResult)rawResult).getRawText();
-  }
- else {
-    throw new IllegalArgumentException(rawResult.getClass().toString());
-  }
+  String productID=getProductIDFromResult(getResult());
 switch (index) {
 case 0:
     openProductSearch(productID);

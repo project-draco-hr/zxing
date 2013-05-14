@@ -1,0 +1,9 @@
+{
+  if (rawResult instanceof ProductParsedResult) {
+    return ((ProductParsedResult)rawResult).getNormalizedProductID();
+  }
+  if (rawResult instanceof ExpandedProductParsedResult) {
+    return ((ExpandedProductParsedResult)rawResult).getRawText();
+  }
+  throw new IllegalArgumentException(rawResult.getClass().toString());
+}
