@@ -1,5 +1,5 @@
 {
-  super.onCreateOptionsMenu(menu);
-  menu.add(0,ABOUT_ID,0,R.string.about_menu).setIcon(android.R.drawable.ic_menu_info_details);
-  return true;
+  MenuInflater menuInflater=getMenuInflater();
+  menuInflater.inflate(R.menu.main,menu);
+  return super.onCreateOptionsMenu(menu);
 }

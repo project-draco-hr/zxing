@@ -1,5 +1,5 @@
 {
-  if (item.getItemId() == ABOUT_ID) {
+  if (item.getItemId() == R.id.menu_about) {
     int versionCode;
     String versionName;
     try {
