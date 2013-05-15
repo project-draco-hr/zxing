@@ -1,0 +1,11 @@
+{
+  if (what == MediaPlayer.MEDIA_ERROR_SERVER_DIED) {
+    activity.finish();
+  }
+ else {
+    mp.release();
+    mediaPlayer=null;
+    updatePrefs();
+  }
+  return true;
+}
