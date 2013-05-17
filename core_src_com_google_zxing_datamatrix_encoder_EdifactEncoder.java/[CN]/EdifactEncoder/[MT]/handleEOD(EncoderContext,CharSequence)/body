@@ -6,7 +6,7 @@
     }
     if (count == 1) {
       context.updateSymbolInfo();
-      int available=context.symbolInfo.dataCapacity - context.getCodewordCount();
+      int available=context.getSymbolInfo().getDataCapacity() - context.getCodewordCount();
       int remaining=context.getRemainingCharacters();
       if (remaining == 0 && available <= 2) {
         return;
@@ -21,7 +21,7 @@
     boolean restInAscii=endOfSymbolReached && restChars <= 2;
     if (restChars <= 2) {
       context.updateSymbolInfo(context.getCodewordCount() + restChars);
-      int available=context.symbolInfo.dataCapacity - context.getCodewordCount();
+      int available=context.getSymbolInfo().getDataCapacity() - context.getCodewordCount();
       if (available >= 3) {
         restInAscii=false;
         context.updateSymbolInfo(context.getCodewordCount() + encoded.length());

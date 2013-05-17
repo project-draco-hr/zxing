@@ -7,7 +7,7 @@
     int count=buffer.length();
     if ((count % 3) == 0) {
       writeNextTriplet(context,buffer);
-      int newMode=HighLevelEncoder.lookAheadTest(context.msg,context.pos,getEncodingMode());
+      int newMode=HighLevelEncoder.lookAheadTest(context.getMessage(),context.pos,getEncodingMode());
       if (newMode != getEncodingMode()) {
         context.signalEncoderChange(newMode);
         break;

@@ -3,7 +3,7 @@
   int rest=buffer.length() % 3;
   int curCodewordCount=context.getCodewordCount() + unwritten;
   context.updateSymbolInfo(curCodewordCount);
-  int available=context.symbolInfo.dataCapacity - curCodewordCount;
+  int available=context.getSymbolInfo().getDataCapacity() - curCodewordCount;
   if (rest == 2) {
     buffer.append('\0');
     while (buffer.length() >= 3) {

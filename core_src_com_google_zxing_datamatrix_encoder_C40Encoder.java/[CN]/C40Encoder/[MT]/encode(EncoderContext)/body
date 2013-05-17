@@ -7,7 +7,7 @@
     int unwritten=(buffer.length() / 3) * 2;
     int curCodewordCount=context.getCodewordCount() + unwritten;
     context.updateSymbolInfo(curCodewordCount);
-    int available=context.symbolInfo.dataCapacity - curCodewordCount;
+    int available=context.getSymbolInfo().getDataCapacity() - curCodewordCount;
     if (!context.hasMoreCharacters()) {
       StringBuilder removed=new StringBuilder();
       if ((buffer.length() % 3) == 2) {
@@ -22,7 +22,7 @@
     }
     int count=buffer.length();
     if ((count % 3) == 0) {
-      int newMode=HighLevelEncoder.lookAheadTest(context.msg,context.pos,getEncodingMode());
+      int newMode=HighLevelEncoder.lookAheadTest(context.getMessage(),context.pos,getEncodingMode());
       if (newMode != getEncodingMode()) {
         context.signalEncoderChange(newMode);
         break;

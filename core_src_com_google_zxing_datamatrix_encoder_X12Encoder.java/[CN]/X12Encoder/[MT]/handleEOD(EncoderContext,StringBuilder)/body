@@ -1,6 +1,6 @@
 {
   context.updateSymbolInfo();
-  int available=context.symbolInfo.dataCapacity - context.getCodewordCount();
+  int available=context.getSymbolInfo().getDataCapacity() - context.getCodewordCount();
   int count=buffer.length();
   if (count == 2) {
     context.writeCodeword(HighLevelEncoder.X12_UNLATCH);

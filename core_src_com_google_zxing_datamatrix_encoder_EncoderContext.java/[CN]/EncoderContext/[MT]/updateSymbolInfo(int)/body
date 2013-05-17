@@ -1,5 +1,5 @@
 {
-  if (this.symbolInfo == null || len > this.symbolInfo.dataCapacity) {
+  if (this.symbolInfo == null || len > this.symbolInfo.getDataCapacity()) {
     this.symbolInfo=SymbolInfo.lookup(len,shape,minSize,maxSize,true);
   }
 }

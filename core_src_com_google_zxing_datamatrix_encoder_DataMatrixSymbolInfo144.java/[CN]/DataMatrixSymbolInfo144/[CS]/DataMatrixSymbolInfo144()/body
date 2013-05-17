@@ -1,5 +1,3 @@
 {
-  super(false,1558,620,22,22,36);
-  this.rsBlockData=-1;
-  this.rsBlockError=62;
+  super(false,1558,620,22,22,36,-1,62);
 }
