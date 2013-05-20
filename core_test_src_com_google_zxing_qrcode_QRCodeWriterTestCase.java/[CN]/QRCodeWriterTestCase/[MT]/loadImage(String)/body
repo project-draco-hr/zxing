@@ -3,6 +3,6 @@
   if (!file.exists()) {
     file=new File("core/" + BASE_IMAGE_PATH + fileName);
   }
-  assertTrue("Please run from the 'core' directory",file.exists());
+  assertTrue("Please download and install test images, and run from the 'core' directory",file.exists());
   return ImageIO.read(file);
 }
