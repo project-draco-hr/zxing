@@ -28,10 +28,16 @@
   left+=nudge;
   int nudgedTooFarRight=left + (int)((matrixWidth - 1) * moduleSize) - (right - 1);
   if (nudgedTooFarRight > 0) {
+    if (nudgedTooFarRight > nudge) {
+      throw NotFoundException.getNotFoundInstance();
+    }
     left-=nudgedTooFarRight;
   }
   int nudgedTooFarDown=top + (int)((matrixHeight - 1) * moduleSize) - (bottom - 1);
   if (nudgedTooFarDown > 0) {
+    if (nudgedTooFarDown > nudge) {
+      throw NotFoundException.getNotFoundInstance();
+    }
     top-=nudgedTooFarDown;
   }
   BitMatrix bits=new BitMatrix(matrixWidth,matrixHeight);
