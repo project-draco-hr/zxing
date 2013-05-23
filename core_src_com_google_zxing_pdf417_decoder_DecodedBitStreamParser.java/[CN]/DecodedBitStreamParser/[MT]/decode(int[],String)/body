@@ -23,6 +23,9 @@ break;
 case BEGIN_MACRO_PDF417_CONTROL_BLOCK:
 codeIndex=decodeMacroBlock(codewords,codeIndex,resultMetadata);
 break;
+case BEGIN_MACRO_PDF417_OPTIONAL_FIELD:
+case MACRO_PDF417_TERMINATOR:
+throw FormatException.getFormatInstance();
 default :
 codeIndex--;
 codeIndex=textCompaction(codewords,codeIndex,result);
