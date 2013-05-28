@@ -1,16 +1,7 @@
 {
-  int dimension;
-  if (compact) {
-    dimension=4 * nbLayers + 11;
-  }
- else {
-    if (nbLayers <= 4) {
-      dimension=4 * nbLayers + 15;
-    }
- else {
-      dimension=4 * nbLayers + 2 * ((nbLayers - 4) / 8 + 1) + 15;
-    }
-  }
   GridSampler sampler=GridSampler.getInstance();
-  return sampler.sampleGrid(image,dimension,dimension,0.5f,0.5f,dimension - 0.5f,0.5f,dimension - 0.5f,dimension - 0.5f,0.5f,dimension - 0.5f,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomRight.getX(),bottomRight.getY(),bottomLeft.getX(),bottomLeft.getY());
+  int dimension=getDimension();
+  float low=dimension / 2.0f - nbCenterLayers;
+  float high=dimension / 2.0f + nbCenterLayers;
+  return sampler.sampleGrid(image,dimension,dimension,low,low,high,low,high,high,low,high,topLeft.getX(),topLeft.getY(),topRight.getX(),topRight.getY(),bottomRight.getX(),bottomRight.getY(),bottomLeft.getX(),bottomLeft.getY());
 }

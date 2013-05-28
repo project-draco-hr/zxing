@@ -1,0 +1,3 @@
+{
+  return expandSquare(bullsEyeCorners,2 * nbCenterLayers,getDimension());
+}

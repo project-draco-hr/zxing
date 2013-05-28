@@ -1,9 +1,9 @@
 {
   int twoCenterLayers=2 * nbCenterLayers;
-  boolean[] resab=sampleLine(bullEyeCornerPoints[0],bullEyeCornerPoints[1],twoCenterLayers + 1);
-  boolean[] resbc=sampleLine(bullEyeCornerPoints[1],bullEyeCornerPoints[2],twoCenterLayers + 1);
-  boolean[] rescd=sampleLine(bullEyeCornerPoints[2],bullEyeCornerPoints[3],twoCenterLayers + 1);
-  boolean[] resda=sampleLine(bullEyeCornerPoints[3],bullEyeCornerPoints[0],twoCenterLayers + 1);
+  boolean[] resab=sampleLine(bullsEyeCorners[0],bullsEyeCorners[1],twoCenterLayers + 1);
+  boolean[] resbc=sampleLine(bullsEyeCorners[1],bullsEyeCorners[2],twoCenterLayers + 1);
+  boolean[] rescd=sampleLine(bullsEyeCorners[2],bullsEyeCorners[3],twoCenterLayers + 1);
+  boolean[] resda=sampleLine(bullsEyeCorners[3],bullsEyeCorners[0],twoCenterLayers + 1);
   if (resab[0] && resab[twoCenterLayers]) {
     shift=0;
   }
