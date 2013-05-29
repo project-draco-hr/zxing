@@ -1,5 +1,5 @@
 {
-  String charset=(String)hints.get(EncodeHintType.CHARACTER_SET);
-  Number eccPercent=(Number)hints.get(EncodeHintType.ERROR_CORRECTION);
+  String charset=hints == null ? null : (String)hints.get(EncodeHintType.CHARACTER_SET);
+  Number eccPercent=hints == null ? null : (Number)hints.get(EncodeHintType.ERROR_CORRECTION);
   return encode(contents,format,charset == null ? DEFAULT_CHARSET : Charset.forName(charset),eccPercent == null ? Encoder.DEFAULT_EC_PERCENT : eccPercent.intValue());
 }
