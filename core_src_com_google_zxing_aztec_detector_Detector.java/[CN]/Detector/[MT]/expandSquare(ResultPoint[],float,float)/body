@@ -12,8 +12,5 @@
   centery=(cornerPoints[1].getY() + cornerPoints[3].getY()) / 2.0f;
   ResultPoint result1=new ResultPoint(centerx + ratio * dx,centery + ratio * dy);
   ResultPoint result3=new ResultPoint(centerx - ratio * dx,centery - ratio * dy);
-  if (!isValid(result0) || !isValid(result1) || !isValid(result2)|| !isValid(result3)) {
-    throw NotFoundException.getNotFoundInstance();
-  }
   return new ResultPoint[]{result0,result1,result2,result3};
 }

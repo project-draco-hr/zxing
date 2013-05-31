@@ -1,4 +1,7 @@
 {
+  if (!isValid(bullsEyeCorners[0]) || !isValid(bullsEyeCorners[1]) || !isValid(bullsEyeCorners[2])|| !isValid(bullsEyeCorners[3])) {
+    throw NotFoundException.getNotFoundInstance();
+  }
   int twoCenterLayers=2 * nbCenterLayers;
   boolean[] resab=sampleLine(bullsEyeCorners[0],bullsEyeCorners[1],twoCenterLayers + 1);
   boolean[] resbc=sampleLine(bullsEyeCorners[1],bullsEyeCorners[2],twoCenterLayers + 1);
