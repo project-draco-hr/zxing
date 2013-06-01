@@ -1,0 +1,3 @@
+{
+  return getEncodedData(correctedBits,correctedBits.length);
+}

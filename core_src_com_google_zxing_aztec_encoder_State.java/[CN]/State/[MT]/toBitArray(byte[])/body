@@ -1,0 +1,11 @@
+{
+  Deque<Token> symbols=new LinkedList<Token>();
+  for (Token token=endBinaryShift(text.length).token; token != null; token=token.getPrevious()) {
+    symbols.addFirst(token);
+  }
+  BitArray bitArray=new BitArray();
+  for (  Token symbol : symbols) {
+    symbol.appendTo(bitArray,text);
+  }
+  return bitArray;
+}

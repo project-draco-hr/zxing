@@ -1,0 +1,37 @@
+{
+  List<State> states=Collections.singletonList(State.INITIAL_STATE);
+  for (int index=0; index < text.length; index++) {
+    int pairCode;
+    int nextChar=index + 1 < text.length ? text[index + 1] : 0;
+switch (text[index]) {
+case '\r':
+      pairCode=nextChar == '\n' ? 2 : 0;
+    break;
+case '.':
+  pairCode=nextChar == ' ' ? 3 : 0;
+break;
+case ',':
+pairCode=nextChar == ' ' ? 4 : 0;
+break;
+case ':':
+pairCode=nextChar == ' ' ? 5 : 0;
+break;
+default :
+pairCode=0;
+}
+if (pairCode > 0) {
+states=updateStateListForPair(states,index,pairCode);
+index++;
+}
+ else {
+states=updateStateListForChar(states,index);
+}
+}
+State minState=Collections.min(states,new Comparator<State>(){
+@Override public int compare(State a,State b){
+return a.getBitCount() - b.getBitCount();
+}
+}
+);
+return minState.toBitArray(text);
+}

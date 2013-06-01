@@ -1,0 +1,5 @@
+{
+  int value=this.value & ((1 << bitCount) - 1);
+  value|=1 << bitCount;
+  return '<' + Integer.toBinaryString(value | (1 << bitCount)).substring(1) + '>';
+}

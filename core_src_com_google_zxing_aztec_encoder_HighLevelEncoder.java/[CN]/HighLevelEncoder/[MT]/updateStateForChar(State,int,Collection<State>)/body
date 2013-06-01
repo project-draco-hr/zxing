@@ -1,0 +1,25 @@
+{
+  char ch=(char)(text[index] & 0xFF);
+  boolean charInCurrentTable=CHAR_MAP[state.getMode()][ch] > 0;
+  State stateNoBinary=null;
+  for (int mode=0; mode <= MODE_PUNCT; mode++) {
+    int charInMode=CHAR_MAP[mode][ch];
+    if (charInMode > 0) {
+      if (stateNoBinary == null) {
+        stateNoBinary=state.endBinaryShift(index);
+      }
+      if (!charInCurrentTable || mode == state.getMode() || mode == MODE_DIGIT) {
+        State latch_state=stateNoBinary.latchAndAppend(mode,charInMode);
+        result.add(latch_state);
+      }
+      if (!charInCurrentTable && SHIFT_TABLE[state.getMode()][mode] >= 0) {
+        State shift_state=stateNoBinary.shiftAndAppend(mode,charInMode);
+        result.add(shift_state);
+      }
+    }
+  }
+  if (state.getBinaryShiftByteCount() > 0 || CHAR_MAP[state.getMode()][ch] == 0) {
+    State binaryState=state.addBinaryShiftChar(index);
+    result.add(binaryState);
+  }
+}

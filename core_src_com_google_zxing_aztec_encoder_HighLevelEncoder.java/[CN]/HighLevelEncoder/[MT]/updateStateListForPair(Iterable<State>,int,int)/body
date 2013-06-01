@@ -1,0 +1,7 @@
+{
+  Collection<State> result=new LinkedList<State>();
+  for (  State state : states) {
+    updateStateForPair(state,index,pairCode,result);
+  }
+  return simplifyStates(result);
+}

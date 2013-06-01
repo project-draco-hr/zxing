@@ -1,0 +1,4 @@
+State state
+int index
+int pairCode
+Collection<State> result

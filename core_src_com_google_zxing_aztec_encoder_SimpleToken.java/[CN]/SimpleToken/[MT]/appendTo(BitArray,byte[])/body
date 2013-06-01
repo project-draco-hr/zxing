@@ -1,0 +1,3 @@
+{
+  bitArray.appendBits(value,bitCount);
+}

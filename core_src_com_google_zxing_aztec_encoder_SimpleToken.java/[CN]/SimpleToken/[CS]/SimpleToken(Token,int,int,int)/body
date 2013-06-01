@@ -1,0 +1,5 @@
+{
+  super(previous,totalBitCount);
+  this.value=(short)value;
+  this.bitCount=(short)bitCount;
+}

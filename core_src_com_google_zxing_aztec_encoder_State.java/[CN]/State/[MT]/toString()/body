@@ -1,0 +1,3 @@
+{
+  return String.format("%s bits=%d bytes=%d",HighLevelEncoder.MODE_NAMES[mode],bitCount,binaryShiftByteCount);
+}

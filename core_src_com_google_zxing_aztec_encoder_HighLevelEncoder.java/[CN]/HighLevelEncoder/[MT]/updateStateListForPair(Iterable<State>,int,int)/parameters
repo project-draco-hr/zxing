@@ -1,0 +1,3 @@
+Iterable<State> states
+int index
+int pairCode

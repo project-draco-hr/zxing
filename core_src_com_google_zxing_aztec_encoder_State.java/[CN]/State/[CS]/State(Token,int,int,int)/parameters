@@ -1,0 +1,4 @@
+Token token
+int mode
+int binaryBytes
+int bitCount

@@ -1,0 +1,6 @@
+{
+  this.token=token;
+  this.mode=mode;
+  this.binaryShiftByteCount=binaryBytes;
+  this.bitCount=bitCount;
+}

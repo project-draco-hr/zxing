@@ -1,0 +1,5 @@
+{
+  super(previous,totalBitCount);
+  this.binaryShiftStart=(short)binaryShiftStart;
+  this.binaryShiftByteCount=(short)binaryShiftByteCount;
+}

@@ -1,0 +1,3 @@
+{
+  return "<" + binaryShiftStart + "::"+ (binaryShiftStart + binaryShiftByteCount - 1)+ '>';
+}

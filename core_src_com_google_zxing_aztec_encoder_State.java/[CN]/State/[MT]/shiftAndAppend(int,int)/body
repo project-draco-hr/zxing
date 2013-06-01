@@ -1,0 +1,7 @@
+{
+  Token token=this.token;
+  int thisModeBitCount=this.mode == HighLevelEncoder.MODE_DIGIT ? 4 : 5;
+  token=token.add(HighLevelEncoder.SHIFT_TABLE[this.mode][mode],thisModeBitCount);
+  token=token.add(value,5);
+  return new State(token,this.mode,0,this.bitCount + thisModeBitCount + 5);
+}

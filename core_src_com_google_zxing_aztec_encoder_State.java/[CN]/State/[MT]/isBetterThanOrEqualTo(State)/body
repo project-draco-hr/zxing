@@ -1,0 +1,7 @@
+{
+  int mySize=this.bitCount + (HighLevelEncoder.LATCH_TABLE[this.mode][other.mode] >> 16);
+  if (other.binaryShiftByteCount > 0 && (this.binaryShiftByteCount == 0 || this.binaryShiftByteCount > other.binaryShiftByteCount)) {
+    mySize+=10;
+  }
+  return mySize <= other.bitCount;
+}
