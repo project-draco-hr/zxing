@@ -1,3 +1,4 @@
 {
-  return bitMatrix.get(i,j) ? (versionBits << 1) | 0x1 : versionBits << 1;
+  boolean bit=mirror ? bitMatrix.get(j,i) : bitMatrix.get(i,j);
+  return bit ? (versionBits << 1) | 0x1 : versionBits << 1;
 }

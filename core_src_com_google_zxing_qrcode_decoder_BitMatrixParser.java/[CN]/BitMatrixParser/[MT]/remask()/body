@@ -1,0 +1,8 @@
+{
+  if (parsedFormatInfo == null) {
+    return;
+  }
+  DataMask dataMask=DataMask.forReference(parsedFormatInfo.getDataMask());
+  int dimension=bitMatrix.getHeight();
+  dataMask.unmaskBitMatrix(bitMatrix,dimension);
+}

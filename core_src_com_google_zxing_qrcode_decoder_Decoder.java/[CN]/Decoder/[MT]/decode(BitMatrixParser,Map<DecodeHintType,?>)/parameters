@@ -1,0 +1,2 @@
+BitMatrixParser parser
+Map<DecodeHintType,?> hints

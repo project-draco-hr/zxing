@@ -1,0 +1,5 @@
+{
+  parsedVersion=null;
+  parsedFormatInfo=null;
+  this.mirror=mirror;
+}

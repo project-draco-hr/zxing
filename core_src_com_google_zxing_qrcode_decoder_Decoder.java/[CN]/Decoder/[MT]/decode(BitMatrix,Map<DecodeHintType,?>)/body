@@ -1,22 +1,42 @@
 {
   BitMatrixParser parser=new BitMatrixParser(bits);
-  Version version=parser.readVersion();
-  ErrorCorrectionLevel ecLevel=parser.readFormatInformation().getErrorCorrectionLevel();
-  byte[] codewords=parser.readCodewords();
-  DataBlock[] dataBlocks=DataBlock.getDataBlocks(codewords,version,ecLevel);
-  int totalBytes=0;
-  for (  DataBlock dataBlock : dataBlocks) {
-    totalBytes+=dataBlock.getNumDataCodewords();
+  FormatException fe=null;
+  ChecksumException ce=null;
+  try {
+    return decode(parser,hints);
   }
-  byte[] resultBytes=new byte[totalBytes];
-  int resultOffset=0;
-  for (  DataBlock dataBlock : dataBlocks) {
-    byte[] codewordBytes=dataBlock.getCodewords();
-    int numDataCodewords=dataBlock.getNumDataCodewords();
-    correctErrors(codewordBytes,numDataCodewords);
-    for (int i=0; i < numDataCodewords; i++) {
-      resultBytes[resultOffset++]=codewordBytes[i];
+ catch (  FormatException e) {
+    fe=e;
+  }
+catch (  ChecksumException e) {
+    ce=e;
+  }
+  try {
+    parser.remask();
+    parser.setMirror(true);
+    parser.readVersion();
+    parser.readFormatInformation();
+    parser.mirror();
+    DecoderResult result=decode(parser,hints);
+    result.setOther(new QRCodeDecoderMetaData(true));
+    return result;
+  }
+ catch (  FormatException e) {
+    if (fe != null) {
+      throw fe;
     }
+    if (ce != null) {
+      throw ce;
+    }
+    throw e;
   }
-  return DecodedBitStreamParser.decode(resultBytes,version,ecLevel,hints);
+catch (  ChecksumException e) {
+    if (fe != null) {
+      throw fe;
+    }
+    if (ce != null) {
+      throw ce;
+    }
+    throw e;
+  }
 }

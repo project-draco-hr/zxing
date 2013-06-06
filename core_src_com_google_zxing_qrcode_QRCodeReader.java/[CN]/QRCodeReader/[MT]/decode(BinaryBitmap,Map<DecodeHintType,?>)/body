@@ -11,6 +11,9 @@
     decoderResult=decoder.decode(detectorResult.getBits(),hints);
     points=detectorResult.getPoints();
   }
+  if (decoderResult.getOther() instanceof QRCodeDecoderMetaData) {
+    ((QRCodeDecoderMetaData)decoderResult.getOther()).applyMirroredCorrection(points);
+  }
   Result result=new Result(decoderResult.getText(),decoderResult.getRawBytes(),points,BarcodeFormat.QR_CODE);
   List<byte[]> byteSegments=decoderResult.getByteSegments();
   if (byteSegments != null) {
