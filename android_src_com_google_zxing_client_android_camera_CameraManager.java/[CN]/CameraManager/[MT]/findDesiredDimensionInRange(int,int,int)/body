@@ -1,5 +1,5 @@
 {
-  int dim=resolution / 2;
+  int dim=5 * resolution / 8;
   if (dim < hardMin) {
     return hardMin;
   }
