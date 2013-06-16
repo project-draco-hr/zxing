@@ -4,9 +4,7 @@
   if (cursor == null) {
     Log.w(TAG,"No cursor returned for bookmark query");
     finish();
+    return;
   }
- else {
-    startManagingCursor(cursor);
-    setListAdapter(new BookmarkAdapter(this,cursor));
-  }
+  setListAdapter(new BookmarkAdapter(this,cursor));
 }
