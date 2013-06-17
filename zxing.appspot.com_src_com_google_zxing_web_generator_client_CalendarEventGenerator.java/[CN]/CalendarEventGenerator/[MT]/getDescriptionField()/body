@@ -1,6 +1,6 @@
 {
   String descriptionString=description.getText();
-  if (descriptionString.length() < 1) {
+  if (descriptionString.isEmpty()) {
     return "";
   }
   if (descriptionString.contains("\n")) {

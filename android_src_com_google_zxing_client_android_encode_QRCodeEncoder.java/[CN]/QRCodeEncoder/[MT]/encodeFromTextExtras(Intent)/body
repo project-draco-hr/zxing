@@ -15,7 +15,7 @@
       }
     }
   }
-  if (theContents == null || theContents.length() == 0) {
+  if (theContents == null || theContents.isEmpty()) {
     throw new WriterException("Empty EXTRA_TEXT");
   }
   contents=theContents;

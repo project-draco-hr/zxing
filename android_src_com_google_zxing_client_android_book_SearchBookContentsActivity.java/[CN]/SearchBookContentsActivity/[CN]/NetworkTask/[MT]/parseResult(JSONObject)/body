@@ -2,24 +2,24 @@
   try {
     String pageId=json.getString("page_id");
     String pageNumber=json.getString("page_number");
-    if (pageNumber.length() > 0) {
-      pageNumber=getString(R.string.msg_sbc_page) + ' ' + pageNumber;
+    if (pageNumber.isEmpty()) {
+      pageNumber=getString(R.string.msg_sbc_unknown_page);
     }
  else {
-      pageNumber=getString(R.string.msg_sbc_unknown_page);
+      pageNumber=getString(R.string.msg_sbc_page) + ' ' + pageNumber;
     }
     String snippet=json.optString("snippet_text");
     boolean valid=true;
-    if (snippet.length() > 0) {
+    if (snippet.isEmpty()) {
+      snippet='(' + getString(R.string.msg_sbc_snippet_unavailable) + ')';
+      valid=false;
+    }
+ else {
       snippet=TAG_PATTERN.matcher(snippet).replaceAll("");
       snippet=LT_ENTITY_PATTERN.matcher(snippet).replaceAll("<");
       snippet=GT_ENTITY_PATTERN.matcher(snippet).replaceAll(">");
       snippet=QUOTE_ENTITY_PATTERN.matcher(snippet).replaceAll("'");
       snippet=QUOT_ENTITY_PATTERN.matcher(snippet).replaceAll("\"");
-    }
- else {
-      snippet='(' + getString(R.string.msg_sbc_snippet_unavailable) + ')';
-      valid=false;
     }
     return new SearchBookContentsResult(pageId,pageNumber,snippet,valid);
   }

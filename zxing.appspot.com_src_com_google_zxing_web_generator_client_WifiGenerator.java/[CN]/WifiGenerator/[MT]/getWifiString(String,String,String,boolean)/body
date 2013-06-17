@@ -2,7 +2,7 @@
   StringBuilder output=new StringBuilder(100);
   output.append("WIFI:");
   output.append("S:").append(ssid).append(';');
-  if (type != null && type.length() > 0 && !"nopass".equals(type)) {
+  if (type != null && !type.isEmpty() && !"nopass".equals(type)) {
     maybeAppend(output,"T:",type);
   }
   maybeAppend(output,"P:",password);

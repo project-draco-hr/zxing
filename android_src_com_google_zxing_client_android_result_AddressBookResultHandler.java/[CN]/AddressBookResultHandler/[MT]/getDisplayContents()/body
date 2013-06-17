@@ -4,7 +4,7 @@
   ParsedResult.maybeAppend(result.getNames(),contents);
   int namesLength=contents.length();
   String pronunciation=result.getPronunciation();
-  if (pronunciation != null && pronunciation.length() > 0) {
+  if (pronunciation != null && !pronunciation.isEmpty()) {
     contents.append("\n(");
     contents.append(pronunciation);
     contents.append(')');
@@ -23,7 +23,7 @@
   ParsedResult.maybeAppend(result.getEmails(),contents);
   ParsedResult.maybeAppend(result.getURLs(),contents);
   String birthday=result.getBirthday();
-  if (birthday != null && birthday.length() > 0) {
+  if (birthday != null && !birthday.isEmpty()) {
     Date date=parseDate(birthday);
     if (date != null) {
       ParsedResult.maybeAppend(DateFormat.getDateInstance(DateFormat.MEDIUM).format(date.getTime()),contents);

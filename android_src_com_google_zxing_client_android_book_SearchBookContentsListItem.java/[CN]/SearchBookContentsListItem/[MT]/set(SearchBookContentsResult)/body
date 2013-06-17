@@ -1,7 +1,10 @@
 {
   pageNumberView.setText(result.getPageNumber());
   String snippet=result.getSnippet();
-  if (snippet.length() > 0) {
+  if (snippet.isEmpty()) {
+    snippetView.setText("");
+  }
+ else {
     if (result.getValidSnippet()) {
       String lowerQuery=SearchBookContentsResult.getQuery().toLowerCase(Locale.getDefault());
       String lowerSnippet=snippet.toLowerCase(Locale.getDefault());
@@ -22,8 +25,5 @@
  else {
       snippetView.setText(snippet);
     }
-  }
- else {
-    snippetView.setText("");
   }
 }

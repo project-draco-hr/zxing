@@ -38,7 +38,7 @@
   }
  else {
     String password=theWifiResult.getPassword();
-    if (password != null && password.length() != 0) {
+    if (password != null && !password.isEmpty()) {
       if (networkType == NetworkType.WEP) {
         changeNetworkWEP(wifiManager,theWifiResult);
       }

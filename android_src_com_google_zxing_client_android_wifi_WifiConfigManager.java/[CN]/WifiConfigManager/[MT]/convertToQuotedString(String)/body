@@ -1,9 +1,9 @@
 {
-  if (string == null || string.length() == 0) {
+  if (s == null || s.isEmpty()) {
     return null;
   }
-  if (string.charAt(0) == '"' && string.charAt(string.length() - 1) == '"') {
-    return string;
+  if (s.charAt(0) == '"' && s.charAt(s.length() - 1) == '"') {
+    return s;
   }
-  return '\"' + string + '\"';
+  return '\"' + s + '\"';
 }

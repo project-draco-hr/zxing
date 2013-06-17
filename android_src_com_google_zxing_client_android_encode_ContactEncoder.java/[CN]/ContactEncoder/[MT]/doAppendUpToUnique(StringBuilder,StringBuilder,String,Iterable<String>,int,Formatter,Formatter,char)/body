@@ -6,7 +6,7 @@
   Collection<String> uniques=new HashSet<String>(2);
   for (  String value : values) {
     String trimmed=trim(value);
-    if (trimmed != null && trimmed.length() > 0 && !uniques.contains(trimmed)) {
+    if (trimmed != null && !trimmed.isEmpty() && !uniques.contains(trimmed)) {
       newContents.append(prefix).append(':').append(fieldFormatter.format(trimmed)).append(terminator);
       String display=formatter == null ? trimmed : formatter.format(trimmed);
       newDisplayContents.append(display).append('\n');

@@ -1,7 +1,7 @@
 {
   ContactEncoder encoder=useVCard ? new VCardContactEncoder() : new MECARDContactEncoder();
   String[] encoded=encoder.encode(toIterable(contact.getNames()),contact.getOrg(),toIterable(contact.getAddresses()),toIterable(contact.getPhoneNumbers()),toIterable(contact.getEmails()),toIterable(contact.getURLs()),null);
-  if (encoded[1].length() > 0) {
+  if (!encoded[1].isEmpty()) {
     contents=encoded[0];
     displayContents=encoded[1];
     title=activity.getString(R.string.contents_contact);

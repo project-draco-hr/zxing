@@ -1,6 +1,6 @@
 {
   String query=inputUri.getEncodedQuery();
-  if (query == null || query.length() == 0) {
+  if (query == null || query.isEmpty()) {
     return null;
   }
   Map<String,String> parameters=splitQuery(query);
@@ -27,7 +27,7 @@
       continue;
     }
     if (hintType.getValueType().equals(Boolean.class)) {
-      if (parameterText.length() == 0) {
+      if (parameterText.isEmpty()) {
         hints.put(hintType,Boolean.TRUE);
       }
  else       if ("0".equals(parameterText) || "false".equalsIgnoreCase(parameterText) || "no".equalsIgnoreCase(parameterText)) {

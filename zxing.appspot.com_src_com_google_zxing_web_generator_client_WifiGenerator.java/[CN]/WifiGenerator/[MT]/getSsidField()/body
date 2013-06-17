@@ -1,6 +1,6 @@
 {
   String input=ssid.getText();
-  if (input.length() < 1) {
+  if (input.isEmpty()) {
     throw new GeneratorException("SSID must be at least 1 character.");
   }
   String parsed=parseTextField("SSID",ssid);

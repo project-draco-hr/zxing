@@ -1,6 +1,6 @@
 {
   String query=queryTextView.getText().toString();
-  if (query != null && query.length() > 0) {
+  if (query != null && !query.isEmpty()) {
     NetworkTask oldTask=networkTask;
     if (oldTask != null) {
       oldTask.cancel(true);

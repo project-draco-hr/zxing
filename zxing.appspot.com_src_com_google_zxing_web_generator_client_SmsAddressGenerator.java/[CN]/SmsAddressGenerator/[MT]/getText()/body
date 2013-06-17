@@ -2,7 +2,7 @@
   String inputNumber=getTelField();
   String inputMessage=getMessageField();
   String output=inputNumber;
-  if (inputMessage.length() > 0) {
+  if (!inputMessage.isEmpty()) {
     output+=':' + inputMessage;
   }
   return "smsto:" + output;

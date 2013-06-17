@@ -10,7 +10,7 @@
   }
   if (format == null || format == BarcodeFormat.QR_CODE) {
     String type=intent.getStringExtra(Intents.Encode.TYPE);
-    if (type == null || type.length() == 0) {
+    if (type == null || type.isEmpty()) {
       return false;
     }
     this.format=BarcodeFormat.QR_CODE;
@@ -18,11 +18,11 @@
   }
  else {
     String data=intent.getStringExtra(Intents.Encode.DATA);
-    if (data != null && data.length() > 0) {
+    if (data != null && !data.isEmpty()) {
       contents=data;
       displayContents=data;
       title=activity.getString(R.string.contents_text);
     }
   }
-  return contents != null && contents.length() > 0;
+  return contents != null && !contents.isEmpty();
 }

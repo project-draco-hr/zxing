@@ -3,5 +3,5 @@
     return null;
   }
   String result=s.trim();
-  return result.length() == 0 ? null : result;
+  return result.isEmpty() ? null : result;
 }

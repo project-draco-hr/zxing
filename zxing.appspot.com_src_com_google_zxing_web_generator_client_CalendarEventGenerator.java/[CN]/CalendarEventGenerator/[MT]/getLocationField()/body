@@ -1,6 +1,6 @@
 {
   String locationString=location.getText();
-  if (locationString.length() < 1) {
+  if (locationString.isEmpty()) {
     return "";
   }
   if (locationString.contains("\n")) {

@@ -26,7 +26,7 @@
   StringBuilder aggregatedNotes=new StringBuilder();
   if (urls != null) {
     for (    String url : urls) {
-      if (url != null && url.length() > 0) {
+      if (url != null && !url.isEmpty()) {
         aggregatedNotes.append('\n').append(url);
       }
     }
@@ -38,7 +38,7 @@
   }
   if (nicknames != null) {
     for (    String nickname : nicknames) {
-      if (nickname != null && nickname.length() > 0) {
+      if (nickname != null && !nickname.isEmpty()) {
         aggregatedNotes.append('\n').append(nickname);
       }
     }

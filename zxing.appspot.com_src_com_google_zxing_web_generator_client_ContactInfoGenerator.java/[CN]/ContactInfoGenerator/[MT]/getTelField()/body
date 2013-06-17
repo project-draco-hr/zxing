@@ -1,6 +1,6 @@
 {
   String input=Validators.filterNumber(tel.getText());
-  if (input.length() < 1) {
+  if (input.isEmpty()) {
     return "";
   }
   Validators.validateNumber(input);

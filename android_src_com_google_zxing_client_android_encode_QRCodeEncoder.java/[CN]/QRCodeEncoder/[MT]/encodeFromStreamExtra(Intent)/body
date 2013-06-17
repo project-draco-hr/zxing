@@ -32,7 +32,7 @@
     throw new WriterException("Result was not an address");
   }
   encodeQRCodeContents((AddressBookParsedResult)parsedResult);
-  if (contents == null || contents.length() == 0) {
+  if (contents == null || contents.isEmpty()) {
     throw new WriterException("No content to encode");
   }
 }

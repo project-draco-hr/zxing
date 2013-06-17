@@ -1,6 +1,6 @@
 {
   String input=email.getText();
-  if (input.length() < 1) {
+  if (input.isEmpty()) {
     return "";
   }
   Validators.validateEmail(input);

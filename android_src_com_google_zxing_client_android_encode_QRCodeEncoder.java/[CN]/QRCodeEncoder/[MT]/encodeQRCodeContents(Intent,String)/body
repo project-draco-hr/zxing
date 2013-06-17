@@ -1,7 +1,7 @@
 {
   if (type.equals(Contents.Type.TEXT)) {
     String data=intent.getStringExtra(Intents.Encode.DATA);
-    if (data != null && data.length() > 0) {
+    if (data != null && !data.isEmpty()) {
       contents=data;
       displayContents=data;
       title=activity.getString(R.string.contents_text);
@@ -50,7 +50,7 @@
       String note=bundle.getString(Contents.NOTE_KEY);
       ContactEncoder mecardEncoder=useVCard ? new VCardContactEncoder() : new MECARDContactEncoder();
       String[] encoded=mecardEncoder.encode(Collections.singleton(name),organization,Collections.singleton(address),phones,emails,urls,note);
-      if (encoded[1].length() > 0) {
+      if (!encoded[1].isEmpty()) {
         contents=encoded[0];
         displayContents=encoded[1];
         title=activity.getString(R.string.contents_contact);

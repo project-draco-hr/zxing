@@ -1,6 +1,6 @@
 {
   String url=webView.getUrl();
-  if (url != null && url.length() > 0) {
+  if (url != null && !url.isEmpty()) {
     webView.saveState(state);
     state.putBoolean(WEBVIEW_STATE_PRESENT,true);
   }

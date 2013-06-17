@@ -17,7 +17,7 @@
   setContentView(R.layout.search_book_contents);
   queryTextView=(EditText)findViewById(R.id.query_text_view);
   String initialQuery=intent.getStringExtra(Intents.SearchBookContents.QUERY);
-  if (initialQuery != null && initialQuery.length() > 0) {
+  if (initialQuery != null && !initialQuery.isEmpty()) {
     queryTextView.setText(initialQuery);
   }
   queryTextView.setOnKeyListener(keyListener);
