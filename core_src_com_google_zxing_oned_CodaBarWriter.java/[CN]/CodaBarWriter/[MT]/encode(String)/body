@@ -1,9 +1,13 @@
 {
-  if (!CodaBarReader.arrayContains(START_CHARS,Character.toUpperCase(contents.charAt(0)))) {
-    throw new IllegalArgumentException("Codabar should start with one of the following: " + Arrays.toString(START_CHARS));
+  if (contents.length() < 2) {
+    throw new IllegalArgumentException("Codabar should start/end with start/stop symbols");
   }
-  if (!CodaBarReader.arrayContains(END_CHARS,Character.toUpperCase(contents.charAt(contents.length() - 1)))) {
-    throw new IllegalArgumentException("Codabar should end with one of the following: " + Arrays.toString(END_CHARS));
+  char firstChar=Character.toUpperCase(contents.charAt(0));
+  char lastChar=Character.toUpperCase(contents.charAt(contents.length() - 1));
+  boolean startsEndsNormal=CodaBarReader.arrayContains(START_END_CHARS,firstChar) && CodaBarReader.arrayContains(START_END_CHARS,lastChar);
+  boolean startsEndsAlt=CodaBarReader.arrayContains(ALT_START_END_CHARS,firstChar) && CodaBarReader.arrayContains(ALT_START_END_CHARS,lastChar);
+  if (!(startsEndsNormal || startsEndsAlt)) {
+    throw new IllegalArgumentException("Codabar should start/end with " + Arrays.toString(START_END_CHARS) + ", or start/end with "+ Arrays.toString(ALT_START_END_CHARS));
   }
   int resultLength=20;
   char[] charsWhichAreTenLengthEachAfterDecoded={'/',':','+','.'};
