@@ -1,0 +1,18 @@
+{
+  int width=input.getWidth();
+  BitMatrix matrix0=new BitMatrix(width);
+  BitMatrix matrix90=new BitMatrix(width);
+  BitMatrix matrix180=new BitMatrix(width);
+  BitMatrix matrix270=new BitMatrix(width);
+  for (int x=0; x < width; x++) {
+    for (int y=0; y < width; y++) {
+      if (input.get(x,y)) {
+        matrix0.set(x,y);
+        matrix90.set(y,width - x - 1);
+        matrix180.set(width - x - 1,width - y - 1);
+        matrix270.set(width - y - 1,x);
+      }
+    }
+  }
+  return Arrays.asList(matrix0,matrix90,matrix180,matrix270);
+}

@@ -11,6 +11,6 @@ return PUNCT_TABLE[code];
 case DIGIT:
 return DIGIT_TABLE[code];
 default :
-return "";
+throw new IllegalStateException("Bad table");
 }
 }

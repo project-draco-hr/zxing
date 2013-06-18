@@ -1,0 +1,27 @@
+{
+  AztecCode aztec=Encoder.encode(data.getBytes(LATIN_1),25);
+  int layers=aztec.getLayers();
+  boolean compact=aztec.isCompact();
+  List<Point> orientationPoints=getOrientationPoints(aztec);
+  Random random=new Random(aztec.getMatrix().hashCode());
+  for (  BitMatrix matrix : getRotations(aztec.getMatrix())) {
+    Collections.shuffle(orientationPoints,random);
+    for (int errors=1; errors <= 3; errors++) {
+      matrix.flip(orientationPoints.get(errors).getX(),orientationPoints.get(errors).getY());
+      try {
+        AztecDetectorResult r=new Detector(makeLarger(matrix,3)).detect();
+        if (errors < 3) {
+          assertNotNull(r);
+          assertEquals(r.getNbLayers(),layers);
+          assertEquals(r.isCompact(),compact);
+        }
+ else {
+          fail("Should not succeed with more than two errors");
+        }
+      }
+ catch (      NotFoundException e) {
+        assertEquals("Should only fail with three errors",3,errors);
+      }
+    }
+  }
+}

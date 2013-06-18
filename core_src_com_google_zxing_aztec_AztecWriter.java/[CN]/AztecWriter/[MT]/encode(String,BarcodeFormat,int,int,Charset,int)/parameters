@@ -1,4 +1,6 @@
 String contents
 BarcodeFormat format
+int width
+int height
 Charset charset
 int eccPercent

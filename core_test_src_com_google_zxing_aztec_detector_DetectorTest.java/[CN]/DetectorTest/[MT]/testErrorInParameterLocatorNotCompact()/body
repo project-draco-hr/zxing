@@ -1,0 +1,4 @@
+{
+  String alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz";
+  testErrorInParameterLocator(alphabet + alphabet + alphabet);
+}

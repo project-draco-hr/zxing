@@ -11,15 +11,9 @@
   }
   int numECCodewords=numCodewords - numDataCodewords;
   int[] parameterWords=new int[numCodewords];
-  int codewordSize=4;
-  for (int i=0; i < numCodewords; i++) {
-    int flag=1;
-    for (int j=1; j <= codewordSize; j++) {
-      if (parameterData[codewordSize * i + codewordSize - j]) {
-        parameterWords[i]+=flag;
-      }
-      flag<<=1;
-    }
+  for (int i=numCodewords - 1; i >= 0; --i) {
+    parameterWords[i]=(int)parameterData & 0xF;
+    parameterData>>=4;
   }
   try {
     ReedSolomonDecoder rsDecoder=new ReedSolomonDecoder(GenericGF.AZTEC_PARAM);
@@ -28,11 +22,9 @@
  catch (  ReedSolomonException ignored) {
     throw NotFoundException.getNotFoundInstance();
   }
+  int result=0;
   for (int i=0; i < numDataCodewords; i++) {
-    int flag=1;
-    for (int j=1; j <= codewordSize; j++) {
-      parameterData[i * codewordSize + codewordSize - j]=(parameterWords[i] & flag) == flag;
-      flag<<=1;
-    }
+    result=(result << 4) + parameterWords[i];
   }
+  return result;
 }

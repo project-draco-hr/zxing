@@ -2,50 +2,36 @@
   BitArray bits=new HighLevelEncoder(data).encode();
   int eccBits=bits.getSize() * minECCPercent / 100 + 11;
   int totalSizeBits=bits.getSize() + eccBits;
+  boolean compact;
   int layers;
+  int totalBitsInLayer;
   int wordSize=0;
-  int totalSymbolBits=0;
   BitArray stuffedBits=null;
-  for (layers=1; layers < NB_BITS_COMPACT.length; layers++) {
-    if (NB_BITS_COMPACT[layers] >= totalSizeBits) {
-      if (wordSize != WORD_SIZE[layers]) {
-        wordSize=WORD_SIZE[layers];
-        stuffedBits=stuffBits(bits,wordSize);
-      }
-      totalSymbolBits=NB_BITS_COMPACT[layers];
-      if (stuffedBits.getSize() + eccBits <= NB_BITS_COMPACT[layers]) {
-        break;
-      }
+  for (int i=0; ; i++) {
+    if (i > MAX_NB_BITS) {
+      throw new IllegalArgumentException("Data too large for an Aztec code");
+    }
+    compact=i <= 3;
+    layers=compact ? i + 1 : i;
+    totalBitsInLayer=totalBitsInLayer(layers,compact);
+    if (totalSizeBits > totalBitsInLayer) {
+      continue;
+    }
+    if (wordSize != WORD_SIZE[layers]) {
+      wordSize=WORD_SIZE[layers];
+      stuffedBits=stuffBits(bits,wordSize);
+    }
+    int usableBitsInLayers=totalBitsInLayer - (totalBitsInLayer % wordSize);
+    if (stuffedBits.getSize() + eccBits <= usableBitsInLayers) {
+      break;
     }
   }
-  boolean compact=true;
-  if (layers == NB_BITS_COMPACT.length) {
-    compact=false;
-    for (layers=1; layers < NB_BITS.length; layers++) {
-      if (NB_BITS[layers] >= totalSizeBits) {
-        if (wordSize != WORD_SIZE[layers]) {
-          wordSize=WORD_SIZE[layers];
-          stuffedBits=stuffBits(bits,wordSize);
-        }
-        totalSymbolBits=NB_BITS[layers];
-        if (stuffedBits.getSize() + eccBits <= NB_BITS[layers]) {
-          break;
-        }
-      }
-    }
-  }
-  if (layers == NB_BITS.length) {
-    throw new IllegalArgumentException("Data too large for an Aztec code");
-  }
-  int messageSizeInWords=(stuffedBits.getSize() + wordSize - 1) / wordSize;
-  for (int i=messageSizeInWords * wordSize - stuffedBits.getSize(); i > 0; i--) {
-    stuffedBits.appendBit(true);
-  }
+  int messageSizeInWords=stuffedBits.getSize() / wordSize;
   ReedSolomonEncoder rs=new ReedSolomonEncoder(getGF(wordSize));
-  int totalSizeInFullWords=totalSymbolBits / wordSize;
-  int[] messageWords=bitsToWords(stuffedBits,wordSize,totalSizeInFullWords);
-  rs.encode(messageWords,totalSizeInFullWords - messageSizeInWords);
-  int startPad=totalSymbolBits % wordSize;
+  int totalWordsInLayer=totalBitsInLayer / wordSize;
+  int[] messageWords=bitsToWords(stuffedBits,wordSize,totalWordsInLayer);
+  rs.encode(messageWords,totalWordsInLayer - messageSizeInWords);
+  int startPad=totalBitsInLayer % wordSize;
   BitArray messageBits=new BitArray();
   messageBits.appendBits(0,startPad);
   for (  int messageWord : messageWords) {

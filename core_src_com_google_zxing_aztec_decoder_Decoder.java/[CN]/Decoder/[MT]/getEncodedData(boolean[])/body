@@ -1,7 +1,53 @@
 {
-  int endIndex=codewordSize * ddata.getNbDatablocks() - invertedBitCount;
-  if (endIndex > correctedBits.length) {
-    throw FormatException.getFormatInstance();
+  int endIndex=correctedBits.length;
+  Table latchTable=Table.UPPER;
+  Table shiftTable=Table.UPPER;
+  StringBuilder result=new StringBuilder(20);
+  int index=0;
+  while (index < endIndex) {
+    if (shiftTable == Table.BINARY) {
+      if (endIndex - index < 5) {
+        break;
+      }
+      int length=readCode(correctedBits,index,5);
+      index+=5;
+      if (length == 0) {
+        if (endIndex - index < 11) {
+          break;
+        }
+        length=readCode(correctedBits,index,11) + 31;
+        index+=11;
+      }
+      for (int charCount=0; charCount < length; charCount++) {
+        if (endIndex - index < 8) {
+          index=endIndex;
+          break;
+        }
+        int code=readCode(correctedBits,index,8);
+        result.append((char)code);
+        index+=8;
+      }
+      shiftTable=latchTable;
+    }
+ else {
+      int size=shiftTable == Table.DIGIT ? 4 : 5;
+      if (endIndex - index < size) {
+        break;
+      }
+      int code=readCode(correctedBits,index,size);
+      index+=size;
+      String str=getCharacter(shiftTable,code);
+      if (str.startsWith("CTRL_")) {
+        shiftTable=getTable(str.charAt(5));
+        if (str.charAt(6) == 'L') {
+          latchTable=shiftTable;
+        }
+      }
+ else {
+        result.append(str);
+        shiftTable=latchTable;
+      }
+    }
   }
-  return getEncodedData(correctedBits,endIndex);
+  return result.toString();
 }

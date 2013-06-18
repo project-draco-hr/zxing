@@ -3,5 +3,5 @@
     throw new IllegalArgumentException("Can only encode AZTEC, but got " + format);
   }
   AztecCode aztec=Encoder.encode(contents.getBytes(charset),eccPercent);
-  return aztec.getMatrix();
+  return renderResult(aztec,width,height);
 }
