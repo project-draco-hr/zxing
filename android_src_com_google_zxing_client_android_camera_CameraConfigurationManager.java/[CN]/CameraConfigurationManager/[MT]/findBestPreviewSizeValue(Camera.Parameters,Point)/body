@@ -27,36 +27,39 @@
     }
     Log.i(TAG,"Supported preview sizes: " + previewSizesString);
   }
-  Point bestSize=null;
-  float screenAspectRatio=(float)screenResolution.x / (float)screenResolution.y;
-  float diff=Float.POSITIVE_INFINITY;
-  for (  Camera.Size supportedPreviewSize : supportedPreviewSizes) {
+  double screenAspectRatio=(double)screenResolution.x / (double)screenResolution.y;
+  Iterator<Camera.Size> it=supportedPreviewSizes.iterator();
+  while (it.hasNext()) {
+    Camera.Size supportedPreviewSize=it.next();
     int realWidth=supportedPreviewSize.width;
     int realHeight=supportedPreviewSize.height;
-    int pixels=realWidth * realHeight;
-    if (pixels < MIN_PREVIEW_PIXELS || pixels > MAX_PREVIEW_PIXELS) {
+    if (realWidth * realHeight < MIN_PREVIEW_PIXELS) {
+      it.remove();
       continue;
     }
     boolean isCandidatePortrait=realWidth < realHeight;
     int maybeFlippedWidth=isCandidatePortrait ? realHeight : realWidth;
     int maybeFlippedHeight=isCandidatePortrait ? realWidth : realHeight;
+    double aspectRatio=(double)maybeFlippedWidth / (double)maybeFlippedHeight;
+    double distortion=Math.abs(aspectRatio - screenAspectRatio);
+    if (distortion > MAX_ASPECT_DISTORTION) {
+      it.remove();
+      continue;
+    }
     if (maybeFlippedWidth == screenResolution.x && maybeFlippedHeight == screenResolution.y) {
       Point exactPoint=new Point(realWidth,realHeight);
       Log.i(TAG,"Found preview size exactly matching screen size: " + exactPoint);
       return exactPoint;
     }
-    float aspectRatio=(float)maybeFlippedWidth / (float)maybeFlippedHeight;
-    float newDiff=Math.abs(aspectRatio - screenAspectRatio);
-    if (newDiff < diff) {
-      bestSize=new Point(realWidth,realHeight);
-      diff=newDiff;
-    }
   }
-  if (bestSize == null) {
-    Camera.Size defaultSize=parameters.getPreviewSize();
-    bestSize=new Point(defaultSize.width,defaultSize.height);
-    Log.i(TAG,"No suitable preview sizes, using default: " + bestSize);
+  if (!supportedPreviewSizes.isEmpty()) {
+    Camera.Size largestPreview=supportedPreviewSizes.get(0);
+    Point largestSize=new Point(largestPreview.width,largestPreview.height);
+    Log.i(TAG,"Using largest suitable preview size: " + largestSize);
+    return largestSize;
   }
-  Log.i(TAG,"Found best approximate preview size: " + bestSize);
-  return bestSize;
+  Camera.Size defaultPreview=parameters.getPreviewSize();
+  Point defaultSize=new Point(defaultPreview.width,defaultPreview.height);
+  Log.i(TAG,"No suitable preview sizes, using default: " + defaultSize);
+  return defaultSize;
 }

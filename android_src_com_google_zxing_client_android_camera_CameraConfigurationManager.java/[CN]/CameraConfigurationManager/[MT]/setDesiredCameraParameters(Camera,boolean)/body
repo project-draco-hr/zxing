@@ -20,7 +20,7 @@
     }
   }
   if (!safeMode && focusMode == null) {
-    focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_MACRO,"edof");
+    focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_MACRO,Camera.Parameters.FOCUS_MODE_EDOF);
   }
   if (focusMode != null) {
     parameters.setFocusMode(focusMode);
