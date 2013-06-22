@@ -1,0 +1,2 @@
+Iterable<ResolveInfo> availableApps
+String targetApp

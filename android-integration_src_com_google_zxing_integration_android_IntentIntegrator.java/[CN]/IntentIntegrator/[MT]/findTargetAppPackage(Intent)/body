@@ -2,10 +2,9 @@
   PackageManager pm=activity.getPackageManager();
   List<ResolveInfo> availableApps=pm.queryIntentActivities(intent,PackageManager.MATCH_DEFAULT_ONLY);
   if (availableApps != null) {
-    for (    ResolveInfo availableApp : availableApps) {
-      String packageName=availableApp.activityInfo.packageName;
-      if (targetApplications.contains(packageName)) {
-        return packageName;
+    for (    String targetApp : targetApplications) {
+      if (contains(availableApps,targetApp)) {
+        return targetApp;
       }
     }
   }

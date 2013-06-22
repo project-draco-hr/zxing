@@ -1,0 +1,9 @@
+{
+  for (  ResolveInfo availableApp : availableApps) {
+    String packageName=availableApp.activityInfo.packageName;
+    if (targetApp.equals(packageName)) {
+      return true;
+    }
+  }
+  return false;
+}
