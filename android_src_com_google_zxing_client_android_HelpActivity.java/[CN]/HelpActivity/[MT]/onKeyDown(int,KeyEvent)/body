@@ -1,9 +1,7 @@
 {
-  if (keyCode == KeyEvent.KEYCODE_BACK) {
-    if (webView.canGoBack()) {
-      webView.goBack();
-      return true;
-    }
+  if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
+    webView.goBack();
+    return true;
   }
   return super.onKeyDown(keyCode,event);
 }
