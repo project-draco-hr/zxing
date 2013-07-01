@@ -1,4 +1,3 @@
 Token previous
-int totalBitCount
 int binaryShiftStart
 int binaryShiftByteCount

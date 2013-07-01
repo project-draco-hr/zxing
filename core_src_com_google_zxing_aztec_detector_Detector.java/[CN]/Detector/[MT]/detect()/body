@@ -1,8 +1,3 @@
 {
-  Point pCenter=getMatrixCenter();
-  ResultPoint[] bullsEyeCorners=getBullsEyeCorners(pCenter);
-  extractParameters(bullsEyeCorners);
-  BitMatrix bits=sampleGrid(image,bullsEyeCorners[shift % 4],bullsEyeCorners[(shift + 1) % 4],bullsEyeCorners[(shift + 2) % 4],bullsEyeCorners[(shift + 3) % 4]);
-  ResultPoint[] corners=getMatrixCornerPoints(bullsEyeCorners);
-  return new AztecDetectorResult(bits,corners,compact,nbDataBlocks,nbLayers);
+  return detect(false);
 }

@@ -2,6 +2,6 @@
   if (format != BarcodeFormat.AZTEC) {
     throw new IllegalArgumentException("Can only encode AZTEC, but got " + format);
   }
-  AztecCode aztec=Encoder.encode(contents.getBytes(charset),eccPercent);
+  AztecCode aztec=Encoder.encode(contents.getBytes(charset),eccPercent,layers);
   return renderResult(aztec,width,height);
 }

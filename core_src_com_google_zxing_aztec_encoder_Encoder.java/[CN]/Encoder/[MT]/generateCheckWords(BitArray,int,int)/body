@@ -1,14 +1,2 @@
 {
-  int messageSizeInWords=stuffedBits.getSize() / wordSize;
-  ReedSolomonEncoder rs=new ReedSolomonEncoder(getGF(wordSize));
-  int totalWords=totalBits / wordSize;
-  int[] messageWords=bitsToWords(stuffedBits,wordSize,totalWords);
-  rs.encode(messageWords,totalWords - messageSizeInWords);
-  int startPad=totalBits % wordSize;
-  BitArray messageBits=new BitArray();
-  messageBits.appendBits(0,startPad);
-  for (  int messageWord : messageWords) {
-    messageBits.appendBits(messageWord,wordSize);
-  }
-  return messageBits;
 }

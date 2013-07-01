@@ -1,6 +1,45 @@
 {
-  AztecDetectorResult detectorResult=new Detector(image.getBlackMatrix()).detect();
-  ResultPoint[] points=detectorResult.getPoints();
+  NotFoundException notFoundException=null;
+  FormatException formatException=null;
+  Detector detector=new Detector(image.getBlackMatrix());
+  ResultPoint[] points=null;
+  DecoderResult decoderResult=null;
+  try {
+    AztecDetectorResult detectorResult=detector.detect(false);
+    points=detectorResult.getPoints();
+    decoderResult=new Decoder().decode(detectorResult);
+  }
+ catch (  NotFoundException e) {
+    notFoundException=e;
+  }
+catch (  FormatException e) {
+    formatException=e;
+  }
+  if (decoderResult == null) {
+    try {
+      AztecDetectorResult detectorResult=detector.detect(true);
+      points=detectorResult.getPoints();
+      decoderResult=new Decoder().decode(detectorResult);
+    }
+ catch (    NotFoundException e) {
+      if (notFoundException != null) {
+        throw notFoundException;
+      }
+      if (formatException != null) {
+        throw formatException;
+      }
+      throw e;
+    }
+catch (    FormatException e) {
+      if (notFoundException != null) {
+        throw notFoundException;
+      }
+      if (formatException != null) {
+        throw formatException;
+      }
+      throw e;
+    }
+  }
   if (hints != null) {
     ResultPointCallback rpcb=(ResultPointCallback)hints.get(DecodeHintType.NEED_RESULT_POINT_CALLBACK);
     if (rpcb != null) {
@@ -9,7 +48,6 @@
       }
     }
   }
-  DecoderResult decoderResult=new Decoder().decode(detectorResult);
   Result result=new Result(decoderResult.getText(),decoderResult.getRawBytes(),points,BarcodeFormat.AZTEC);
   List<byte[]> byteSegments=decoderResult.getByteSegments();
   if (byteSegments != null) {

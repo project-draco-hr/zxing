@@ -4,3 +4,4 @@ int width
 int height
 Charset charset
 int eccPercent
+int layers

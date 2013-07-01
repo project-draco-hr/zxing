@@ -1,3 +1,3 @@
-BitArray stuffedBits
+BitArray bitArray
 int totalBits
 int wordSize

@@ -1,26 +1,41 @@
 {
-  AztecCode aztec=Encoder.encode(data.getBytes(LATIN_1),25);
+  AztecCode aztec=Encoder.encode(data.getBytes(LATIN_1),25,Encoder.DEFAULT_AZTEC_LAYERS);
+  Random random=new Random(aztec.getMatrix().hashCode());
   int layers=aztec.getLayers();
   boolean compact=aztec.isCompact();
   List<Point> orientationPoints=getOrientationPoints(aztec);
-  Random random=new Random(aztec.getMatrix().hashCode());
-  for (  BitMatrix matrix : getRotations(aztec.getMatrix())) {
-    Collections.shuffle(orientationPoints,random);
-    for (int errors=1; errors <= 3; errors++) {
-      matrix.flip(orientationPoints.get(errors).getX(),orientationPoints.get(errors).getY());
-      try {
-        AztecDetectorResult r=new Detector(makeLarger(matrix,3)).detect();
-        if (errors < 3) {
+  for (  boolean isMirror : new boolean[]{false,true}) {
+    for (    BitMatrix matrix : getRotations(aztec.getMatrix())) {
+      for (int error1=0; error1 < orientationPoints.size(); error1++) {
+        for (int error2=error1; error2 < orientationPoints.size(); error2++) {
+          BitMatrix copy=isMirror ? transpose(matrix) : clone(matrix);
+          copy.flip(orientationPoints.get(error1).getX(),orientationPoints.get(error1).getY());
+          if (error2 > error1) {
+            copy.flip(orientationPoints.get(error2).getX(),orientationPoints.get(error2).getY());
+          }
+          AztecDetectorResult r=new Detector(makeLarger(copy,3)).detect(isMirror);
           assertNotNull(r);
           assertEquals(r.getNbLayers(),layers);
           assertEquals(r.isCompact(),compact);
-        }
- else {
-          fail("Should not succeed with more than two errors");
+          DecoderResult res=new Decoder().decode(r);
+          assertEquals(data,res.getText());
         }
       }
- catch (      NotFoundException e) {
-        assertEquals("Should only fail with three errors",3,errors);
+      for (int i=0; i < 5; i++) {
+        BitMatrix copy=clone(matrix);
+        Set<Integer> errors=new TreeSet<Integer>();
+        while (errors.size() < 3) {
+          errors.add(random.nextInt(orientationPoints.size()));
+        }
+        for (        int error : errors) {
+          copy.flip(orientationPoints.get(error).getX(),orientationPoints.get(error).getY());
+        }
+        try {
+          new Detector(makeLarger(copy,3)).detect(false);
+          fail("Should not reach here");
+        }
+ catch (        NotFoundException expected) {
+        }
       }
     }
   }

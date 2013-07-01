@@ -5,7 +5,7 @@
   hints.put(EncodeHintType.ERROR_CORRECTION,eccPercent);
   AztecWriter writer=new AztecWriter();
   BitMatrix matrix=writer.encode(data,BarcodeFormat.AZTEC,0,0,hints);
-  AztecCode aztec=Encoder.encode(data.getBytes(Charset.forName(charset)),eccPercent);
+  AztecCode aztec=Encoder.encode(data.getBytes(Charset.forName(charset)),eccPercent,Encoder.DEFAULT_AZTEC_LAYERS);
   assertEquals("Unexpected symbol format (compact)",compact,aztec.isCompact());
   assertEquals("Unexpected nr. of layers",layers,aztec.getLayers());
   BitMatrix matrix2=aztec.getMatrix();

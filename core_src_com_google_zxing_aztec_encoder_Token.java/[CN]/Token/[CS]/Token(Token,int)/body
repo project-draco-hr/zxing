@@ -1,4 +1,0 @@
-{
-  this.previous=previous;
-  this.totalBitCount=totalBitCount;
-}

@@ -6,7 +6,7 @@
   }
   cornerBits=((cornerBits & 1) << 11) + (cornerBits >> 1);
   for (int shift=0; shift < 4; shift++) {
-    if (Integer.bitCount(cornerBits ^ expectedCornerBits[shift]) <= 2) {
+    if (Integer.bitCount(cornerBits ^ EXPECTED_CORNER_BITS[shift]) <= 2) {
       return shift;
     }
   }

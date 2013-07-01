@@ -5,38 +5,53 @@
   boolean compact;
   int layers;
   int totalBitsInLayer;
-  int wordSize=0;
-  BitArray stuffedBits=null;
-  for (int i=0; ; i++) {
-    if (i > MAX_NB_BITS) {
-      throw new IllegalArgumentException("Data too large for an Aztec code");
+  int wordSize;
+  BitArray stuffedBits;
+  if (userSpecifiedLayers != DEFAULT_AZTEC_LAYERS) {
+    compact=userSpecifiedLayers < 0;
+    layers=Math.abs(userSpecifiedLayers);
+    if (layers > (compact ? MAX_NB_BITS_COMPACT : MAX_NB_BITS)) {
+      throw new IllegalArgumentException(String.format("Illegal value %s for layers",userSpecifiedLayers));
     }
-    compact=i <= 3;
-    layers=compact ? i + 1 : i;
     totalBitsInLayer=totalBitsInLayer(layers,compact);
-    if (totalSizeBits > totalBitsInLayer) {
-      continue;
-    }
-    if (wordSize != WORD_SIZE[layers]) {
-      wordSize=WORD_SIZE[layers];
-      stuffedBits=stuffBits(bits,wordSize);
-    }
+    wordSize=WORD_SIZE[layers];
     int usableBitsInLayers=totalBitsInLayer - (totalBitsInLayer % wordSize);
-    if (stuffedBits.getSize() + eccBits <= usableBitsInLayers) {
-      break;
+    stuffedBits=stuffBits(bits,wordSize);
+    if (stuffedBits.getSize() + eccBits > usableBitsInLayers) {
+      throw new IllegalArgumentException("Data to large for user specified layer");
+    }
+    if (compact && stuffedBits.getSize() > wordSize * 64) {
+      throw new IllegalArgumentException("Data to large for user specified layer");
     }
   }
-  int messageSizeInWords=stuffedBits.getSize() / wordSize;
-  ReedSolomonEncoder rs=new ReedSolomonEncoder(getGF(wordSize));
-  int totalWordsInLayer=totalBitsInLayer / wordSize;
-  int[] messageWords=bitsToWords(stuffedBits,wordSize,totalWordsInLayer);
-  rs.encode(messageWords,totalWordsInLayer - messageSizeInWords);
-  int startPad=totalBitsInLayer % wordSize;
-  BitArray messageBits=new BitArray();
-  messageBits.appendBits(0,startPad);
-  for (  int messageWord : messageWords) {
-    messageBits.appendBits(messageWord,wordSize);
+ else {
+    wordSize=0;
+    stuffedBits=null;
+    for (int i=0; ; i++) {
+      if (i > MAX_NB_BITS) {
+        throw new IllegalArgumentException("Data too large for an Aztec code");
+      }
+      compact=i <= 3;
+      layers=compact ? i + 1 : i;
+      totalBitsInLayer=totalBitsInLayer(layers,compact);
+      if (totalSizeBits > totalBitsInLayer) {
+        continue;
+      }
+      if (wordSize != WORD_SIZE[layers]) {
+        wordSize=WORD_SIZE[layers];
+        stuffedBits=stuffBits(bits,wordSize);
+      }
+      int usableBitsInLayers=totalBitsInLayer - (totalBitsInLayer % wordSize);
+      if (compact && stuffedBits.getSize() > wordSize * 64) {
+        continue;
+      }
+      if (stuffedBits.getSize() + eccBits <= usableBitsInLayers) {
+        break;
+      }
+    }
   }
+  BitArray messageBits=generateCheckWords(stuffedBits,totalBitsInLayer,wordSize);
+  int messageSizeInWords=stuffedBits.getSize() / wordSize;
   BitArray modeMessage=generateModeMessage(compact,layers,messageSizeInWords);
   int baseMatrixSize=compact ? 11 + layers * 4 : 14 + layers * 4;
   int[] alignmentMap=new int[baseMatrixSize];
