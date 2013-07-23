@@ -3,6 +3,7 @@
     throw new IllegalArgumentException("Can only encode PDF_417, but got " + format);
   }
   PDF417 encoder=new PDF417();
+  int margin=WHITE_SPACE;
   if (hints != null) {
     if (hints.containsKey(EncodeHintType.PDF417_COMPACT)) {
       encoder.setCompact((Boolean)hints.get(EncodeHintType.PDF417_COMPACT));
@@ -14,6 +15,9 @@
       Dimensions dimensions=(Dimensions)hints.get(EncodeHintType.PDF417_DIMENSIONS);
       encoder.setDimensions(dimensions.getMaxCols(),dimensions.getMinCols(),dimensions.getMaxRows(),dimensions.getMinRows());
     }
+    if (hints.containsKey(EncodeHintType.MARGIN)) {
+      margin=((Number)hints.get(EncodeHintType.MARGIN)).intValue();
+    }
   }
-  return bitMatrixFromEncoder(encoder,contents,width,height);
+  return bitMatrixFromEncoder(encoder,contents,width,height,margin);
 }

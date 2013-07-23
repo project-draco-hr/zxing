@@ -23,7 +23,7 @@
     if (rotated) {
       scaledMatrix=rotateArray(scaledMatrix);
     }
-    return bitMatrixFrombitArray(scaledMatrix);
+    return bitMatrixFrombitArray(scaledMatrix,margin);
   }
-  return bitMatrixFrombitArray(originalScale);
+  return bitMatrixFrombitArray(originalScale,margin);
 }
