@@ -1,5 +1,5 @@
 {
-  Collection<BarcodeFormat> possibleFormats=new ArrayList<BarcodeFormat>();
+  Collection<BarcodeFormat> possibleFormats=new ArrayList<>();
   String[] possibleFormatsNames=config.getPossibleFormats();
   if (possibleFormatsNames != null && possibleFormatsNames.length > 0) {
     for (    String format : possibleFormatsNames) {
@@ -26,7 +26,7 @@
       possibleFormats.add(BarcodeFormat.MAXICODE);
     }
   }
-  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+  Map<DecodeHintType,Object> hints=new EnumMap<>(DecodeHintType.class);
   hints.put(DecodeHintType.POSSIBLE_FORMATS,possibleFormats);
   if (config.isTryHarder()) {
     hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);

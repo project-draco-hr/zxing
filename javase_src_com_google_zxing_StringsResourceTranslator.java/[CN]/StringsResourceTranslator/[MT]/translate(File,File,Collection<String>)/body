@@ -13,9 +13,7 @@
   File resultTempFile=File.createTempFile(parentName,".xml");
   resultTempFile.deleteOnExit();
   boolean anyChange=false;
-  Writer out=null;
-  try {
-    out=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(resultTempFile),UTF8));
+  try (Writer out=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(resultTempFile),UTF8))){
     out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
     out.write(APACHE_2_LICENSE);
     out.write("<resources>\n");
@@ -40,10 +38,7 @@
     out.write("</resources>\n");
     out.flush();
   }
-  finally {
-    quietClose(out);
-  }
-  if (anyChange) {
+   if (anyChange) {
     System.out.println("  Writing translations");
     translatedFile.delete();
     resultTempFile.renameTo(translatedFile);

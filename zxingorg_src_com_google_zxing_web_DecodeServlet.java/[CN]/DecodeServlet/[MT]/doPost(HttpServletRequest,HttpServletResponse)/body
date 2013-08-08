@@ -11,14 +11,10 @@
       if (!item.isFormField()) {
         if (item.getSize() <= MAX_IMAGE_SIZE) {
           log.info("Decoding uploaded file");
-          InputStream is=item.getInputStream();
-          try {
+          try (InputStream is=item.getInputStream()){
             processStream(is,request,response);
           }
-  finally {
-            is.close();
-          }
-        }
+         }
  else {
           log.info("Too large");
           response.sendRedirect("badimage.jspx");

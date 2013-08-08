@@ -2,17 +2,12 @@
   URLConnection connection=translateURL.openConnection();
   connection.connect();
   StringBuilder translateResult=new StringBuilder(200);
-  Reader in=null;
-  try {
-    in=new BufferedReader(new InputStreamReader(connection.getInputStream(),UTF8));
+  try (Reader in=new BufferedReader(new InputStreamReader(connection.getInputStream(),UTF8))){
     char[] buffer=new char[1024];
     int charsRead;
     while ((charsRead=in.read(buffer)) > 0) {
       translateResult.append(buffer,0,charsRead);
     }
   }
-  finally {
-    quietClose(in);
-  }
-  return translateResult;
+   return translateResult;
 }

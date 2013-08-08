@@ -13,26 +13,12 @@
     resultName=resultName.substring(0,pos);
   }
   resultName+=suffix;
-  OutputStream outStream=null;
-  try {
-    outStream=new FileOutputStream(resultName);
+  try (OutputStream outStream=new FileOutputStream(resultName)){
     if (!ImageIO.write(result,"png",outStream)) {
       System.err.println("Could not encode an image to " + resultName);
     }
   }
- catch (  FileNotFoundException ignored) {
-    System.err.println("Could not create " + resultName);
-  }
-catch (  IOException ignored) {
+ catch (  IOException ignored) {
     System.err.println("Could not write to " + resultName);
-  }
- finally {
-    try {
-      if (outStream != null) {
-        outStream.close();
-      }
-    }
- catch (    IOException ioe) {
-    }
   }
 }

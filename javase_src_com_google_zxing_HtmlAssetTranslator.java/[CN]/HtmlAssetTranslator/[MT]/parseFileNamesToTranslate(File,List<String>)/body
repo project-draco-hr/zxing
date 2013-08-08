@@ -1,5 +1,5 @@
 {
-  Collection<String> fileNamesToTranslate=new ArrayList<String>();
+  Collection<String> fileNamesToTranslate=new ArrayList<>();
   if ("all".equals(restOfArgs.get(0))) {
     File htmlEnAssetDir=new File(assetsDir,"html-en");
     FileFilter fileFilter=new FileFilter(){

@@ -6,24 +6,15 @@
   FileCleaningTracker fileCleaningTracker=FileCleanerCleanup.getFileCleaningTracker(context);
   diskFileItemFactory=new DiskFileItemFactory(1 << 16,repository);
   diskFileItemFactory.setFileCleaningTracker(fileCleaningTracker);
-  blockedURLSubstrings=new ArrayList<String>();
-  InputStream in=DecodeServlet.class.getResourceAsStream("/private/uri-block-substrings.txt");
-  if (in != null) {
-    try {
-      BufferedReader reader=new BufferedReader(new InputStreamReader(in,Charset.forName("UTF-8")));
-      try {
-        String line;
-        while ((line=reader.readLine()) != null) {
-          blockedURLSubstrings.add(line);
-        }
-      }
-  finally {
-        reader.close();
-      }
+  blockedURLSubstrings=new ArrayList<>();
+  try (BufferedReader reader=new BufferedReader(new InputStreamReader(DecodeServlet.class.getResourceAsStream("/private/uri-block-substrings.txt"),UTF8))){
+    String line;
+    while ((line=reader.readLine()) != null) {
+      blockedURLSubstrings.add(line);
     }
- catch (    IOException ioe) {
-      throw new ServletException(ioe);
-    }
+  }
+ catch (  IOException ioe) {
+    throw new ServletException(ioe);
   }
   log.info("Blocking URIs containing: " + blockedURLSubstrings);
 }

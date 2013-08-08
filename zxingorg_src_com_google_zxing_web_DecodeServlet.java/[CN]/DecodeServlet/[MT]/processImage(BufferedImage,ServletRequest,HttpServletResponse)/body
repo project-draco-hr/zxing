@@ -2,7 +2,7 @@
   Reader reader=new MultiFormatReader();
   LuminanceSource source=new BufferedImageLuminanceSource(image);
   BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
-  Collection<Result> results=new ArrayList<Result>(1);
+  Collection<Result> results=new ArrayList<>(1);
   ReaderException savedException=null;
   try {
     try {
@@ -63,17 +63,13 @@
   if (minimalOutput) {
     response.setContentType("text/plain");
     response.setCharacterEncoding("UTF8");
-    Writer out=new OutputStreamWriter(response.getOutputStream(),Charset.forName("UTF-8"));
-    try {
+    try (Writer out=new OutputStreamWriter(response.getOutputStream(),UTF8)){
       for (      Result result : results) {
         out.write(result.getText());
         out.write('\n');
       }
     }
-  finally {
-      out.close();
-    }
-  }
+   }
  else {
     request.setAttribute("results",results);
     request.getRequestDispatcher("decoderesult.jspx").forward(request,response);

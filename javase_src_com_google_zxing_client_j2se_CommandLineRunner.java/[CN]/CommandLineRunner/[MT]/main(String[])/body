@@ -4,73 +4,74 @@
     return;
   }
   Config config=new Config();
+  Queue<String> inputs=new ConcurrentLinkedQueue<>();
   for (  String arg : args) {
-    if ("--try_harder".equals(arg)) {
+    String[] argValue=arg.split("=");
+switch (argValue[0]) {
+case "--try_harder":
       config.setTryHarder(true);
-    }
- else     if ("--pure_barcode".equals(arg)) {
-      config.setPureBarcode(true);
-    }
- else     if ("--products_only".equals(arg)) {
-      config.setProductsOnly(true);
-    }
- else     if ("--dump_results".equals(arg)) {
-      config.setDumpResults(true);
-    }
- else     if ("--dump_black_point".equals(arg)) {
-      config.setDumpBlackPoint(true);
-    }
- else     if ("--multi".equals(arg)) {
-      config.setMulti(true);
-    }
- else     if ("--brief".equals(arg)) {
-      config.setBrief(true);
-    }
- else     if ("--recursive".equals(arg)) {
-      config.setRecursive(true);
-    }
- else     if (arg.startsWith("--crop")) {
-      int[] crop=new int[4];
-      String[] tokens=COMMA.split(arg.substring(7));
-      for (int i=0; i < crop.length; i++) {
-        crop[i]=Integer.parseInt(tokens[i]);
-      }
-      config.setCrop(crop);
-    }
- else     if (arg.startsWith(POSSIBLE_FORMATS_ARG)) {
-      config.setPossibleFormats(COMMA.split(arg.substring(POSSIBLE_FORMATS_ARG.length())));
-    }
- else     if (arg.startsWith("-")) {
-      System.err.println("Unknown command line option " + arg);
-      printUsage();
-      return;
-    }
-  }
-  config.setHints(buildHints(config));
-  Queue<String> inputs=new ConcurrentLinkedQueue<String>();
-  for (  String arg : args) {
-    if (!arg.startsWith("--")) {
-      addArgumentToInputs(arg,config,inputs);
-    }
-  }
-  int numThreads=Math.min(inputs.size(),Runtime.getRuntime().availableProcessors());
-  int successful=0;
-  if (numThreads > 1) {
-    ExecutorService executor=Executors.newFixedThreadPool(numThreads);
-    Collection<Future<Integer>> futures=new ArrayList<Future<Integer>>(numThreads);
-    for (int x=0; x < numThreads; x++) {
-      futures.add(executor.submit(new DecodeWorker(config,inputs)));
-    }
-    executor.shutdown();
-    for (    Future<Integer> future : futures) {
-      successful+=future.get();
-    }
-  }
+    break;
+case "--pure_barcode":
+  config.setPureBarcode(true);
+break;
+case "--products_only":
+config.setProductsOnly(true);
+break;
+case "--dump_results":
+config.setDumpResults(true);
+break;
+case "--dump_black_point":
+config.setDumpBlackPoint(true);
+break;
+case "--multi":
+config.setMulti(true);
+break;
+case "--brief":
+config.setBrief(true);
+break;
+case "--recursive":
+config.setRecursive(true);
+break;
+case "--crop":
+int[] crop=new int[4];
+String[] tokens=COMMA.split(argValue[1]);
+for (int i=0; i < crop.length; i++) {
+crop[i]=Integer.parseInt(tokens[i]);
+}
+config.setCrop(crop);
+break;
+case "--possibleFormats":
+config.setPossibleFormats(COMMA.split(argValue[1]));
+break;
+default :
+if (arg.startsWith("-")) {
+System.err.println("Unknown command line option " + arg);
+printUsage();
+return;
+}
+addArgumentToInputs(arg,config,inputs);
+break;
+}
+}
+config.setHints(buildHints(config));
+int numThreads=Math.min(inputs.size(),Runtime.getRuntime().availableProcessors());
+int successful=0;
+if (numThreads > 1) {
+ExecutorService executor=Executors.newFixedThreadPool(numThreads);
+Collection<Future<Integer>> futures=new ArrayList<>(numThreads);
+for (int x=0; x < numThreads; x++) {
+futures.add(executor.submit(new DecodeWorker(config,inputs)));
+}
+executor.shutdown();
+for (Future<Integer> future : futures) {
+successful+=future.get();
+}
+}
  else {
-    successful+=new DecodeWorker(config,inputs).call();
-  }
-  int total=inputs.size();
-  if (total > 1) {
-    System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)\n");
-  }
+successful+=new DecodeWorker(config,inputs).call();
+}
+int total=inputs.size();
+if (total > 1) {
+System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)\n");
+}
 }

@@ -11,7 +11,8 @@
   System.err.println("  --brief: Only output one line per file, omitting the contents");
   System.err.println("  --recursive: Descend into subdirectories");
   System.err.println("  --crop=left,top,width,height: Only examine cropped region of input image(s)");
-  StringBuilder builder=new StringBuilder("  " + POSSIBLE_FORMATS_ARG + "barcodeFormat[,barcodeFormat2...] where barcodeFormat is any of: ");
+  StringBuilder builder=new StringBuilder();
+  builder.append("  --possibleFormats=barcodeFormat[,barcodeFormat2...] where barcodeFormat is any of: ");
   for (  BarcodeFormat format : BarcodeFormat.values()) {
     builder.append(format).append(',');
   }

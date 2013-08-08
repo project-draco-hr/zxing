@@ -14,7 +14,7 @@ catch (  SAXException sae) {
   }
   Element rootElement=document.getDocumentElement();
   rootElement.normalize();
-  Queue<Node> nodes=new LinkedList<Node>();
+  Queue<Node> nodes=new LinkedList<>();
   nodes.add(rootElement);
   while (!nodes.isEmpty()) {
     Node node=nodes.poll();
@@ -41,14 +41,8 @@ catch (  SAXException sae) {
   try {
     registry=DOMImplementationRegistry.newInstance();
   }
- catch (  ClassNotFoundException cnfe) {
-    throw new IllegalStateException(cnfe);
-  }
-catch (  InstantiationException ie) {
-    throw new IllegalStateException(ie);
-  }
-catch (  IllegalAccessException iae) {
-    throw new IllegalStateException(iae);
+ catch (  ClassNotFoundException|InstantiationException|IllegalAccessException e) {
+    throw new IllegalStateException(e);
   }
   DOMImplementationLS impl=(DOMImplementationLS)registry.getDOMImplementation("LS");
   LSSerializer writer=impl.createLSSerializer();

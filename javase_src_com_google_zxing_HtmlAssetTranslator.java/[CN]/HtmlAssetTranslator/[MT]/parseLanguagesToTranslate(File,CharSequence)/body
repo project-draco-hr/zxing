@@ -1,5 +1,5 @@
 {
-  Collection<String> languages=new ArrayList<String>();
+  Collection<String> languages=new ArrayList<>();
   if ("all".equals(languageArg)) {
     FileFilter fileFilter=new FileFilter(){
       @Override public boolean accept(      File file){

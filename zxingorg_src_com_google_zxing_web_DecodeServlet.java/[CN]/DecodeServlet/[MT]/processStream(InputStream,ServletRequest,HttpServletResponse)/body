@@ -3,18 +3,8 @@
   try {
     image=ImageIO.read(is);
   }
- catch (  IOException ioe) {
+ catch (  IOException|CMMException|IllegalArgumentException ioe) {
     log.info(ioe.toString());
-    response.sendRedirect("badimage.jspx");
-    return;
-  }
-catch (  CMMException cmme) {
-    log.info(cmme.toString());
-    response.sendRedirect("badimage.jspx");
-    return;
-  }
-catch (  IllegalArgumentException iae) {
-    log.info(iae.toString());
     response.sendRedirect("badimage.jspx");
     return;
   }
