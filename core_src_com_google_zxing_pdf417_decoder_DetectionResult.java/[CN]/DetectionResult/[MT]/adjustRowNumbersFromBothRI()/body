@@ -1,6 +1,6 @@
 {
   if (detectionResultColumns[0] == null || detectionResultColumns[barcodeColumnCount + 1] == null) {
-    return 0;
+    return;
   }
   Codeword[] LRIcodewords=detectionResultColumns[0].getCodewords();
   Codeword[] RRIcodewords=detectionResultColumns[barcodeColumnCount + 1].getCodewords();
@@ -18,5 +18,4 @@
       }
     }
   }
-  return 0;
 }

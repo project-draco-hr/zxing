@@ -12,7 +12,8 @@
   appendUpToUnique(newContents,newDisplayContents,"ADR",addresses,1,null);
   appendUpToUnique(newContents,newDisplayContents,"TEL",phones,Integer.MAX_VALUE,new Formatter(){
     @Override public String format(    String source){
-      return keepOnlyDigits(PhoneNumberUtils.formatNumber(source));
+      CharSequence s=PhoneNumberUtils.formatNumber(source);
+      return s == null ? null : NOT_DIGITS.matcher(s).replaceAll("");
     }
   }
 );

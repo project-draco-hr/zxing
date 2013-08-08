@@ -1,2 +1,61 @@
 {
+  GenericGF gf;
+  int codewordSize;
+  if (ddata.getNbLayers() <= 2) {
+    codewordSize=6;
+    gf=GenericGF.AZTEC_DATA_6;
+  }
+ else   if (ddata.getNbLayers() <= 8) {
+    codewordSize=8;
+    gf=GenericGF.AZTEC_DATA_8;
+  }
+ else   if (ddata.getNbLayers() <= 22) {
+    codewordSize=10;
+    gf=GenericGF.AZTEC_DATA_10;
+  }
+ else {
+    codewordSize=12;
+    gf=GenericGF.AZTEC_DATA_12;
+  }
+  int numDataCodewords=ddata.getNbDatablocks();
+  int numCodewords=rawbits.length / codewordSize;
+  int offset=rawbits.length % codewordSize;
+  int numECCodewords=numCodewords - numDataCodewords;
+  int[] dataWords=new int[numCodewords];
+  for (int i=0; i < numCodewords; i++, offset+=codewordSize) {
+    dataWords[i]=readCode(rawbits,offset,codewordSize);
+  }
+  try {
+    ReedSolomonDecoder rsDecoder=new ReedSolomonDecoder(gf);
+    rsDecoder.decode(dataWords,numECCodewords);
+  }
+ catch (  ReedSolomonException ignored) {
+    throw FormatException.getFormatInstance();
+  }
+  int mask=(1 << codewordSize) - 1;
+  int stuffedBits=0;
+  for (int i=0; i < numDataCodewords; i++) {
+    int dataWord=dataWords[i];
+    if (dataWord == 0 || dataWord == mask) {
+      throw FormatException.getFormatInstance();
+    }
+ else     if (dataWord == 1 || dataWord == mask - 1) {
+      stuffedBits++;
+    }
+  }
+  boolean[] correctedBits=new boolean[numDataCodewords * codewordSize - stuffedBits];
+  int index=0;
+  for (int i=0; i < numDataCodewords; i++) {
+    int dataWord=dataWords[i];
+    if (dataWord == 1 || dataWord == mask - 1) {
+      Arrays.fill(correctedBits,index,index + codewordSize - 1,dataWord > 1);
+      index+=codewordSize - 1;
+    }
+ else {
+      for (int bit=codewordSize - 1; bit >= 0; --bit) {
+        correctedBits[index++]=(dataWord & (1 << bit)) != 0;
+      }
+    }
+  }
+  return correctedBits;
 }
