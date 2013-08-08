@@ -1,9 +1,11 @@
 {
-  Message message=Message.obtain(handler,id,arg);
-  if (delayMS > 0L) {
-    handler.sendMessageDelayed(message,delayMS);
-  }
+  if (handler != null) {
+    Message message=Message.obtain(handler,id,arg);
+    if (delayMS > 0L) {
+      handler.sendMessageDelayed(message,delayMS);
+    }
  else {
-    handler.sendMessage(message);
+      handler.sendMessage(message);
+    }
   }
 }
