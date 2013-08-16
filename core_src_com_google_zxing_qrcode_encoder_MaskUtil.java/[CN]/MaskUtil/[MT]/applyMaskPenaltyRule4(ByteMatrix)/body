@@ -12,7 +12,6 @@
     }
   }
   int numTotalCells=matrix.getHeight() * matrix.getWidth();
-  double darkRatio=(double)numDarkCells / numTotalCells;
-  int fivePercentVariances=(int)(Math.abs(darkRatio - 0.5) * 20.0);
+  int fivePercentVariances=Math.abs(numDarkCells * 2 - numTotalCells) * 10 / numTotalCells;
   return fivePercentVariances * N4;
 }
