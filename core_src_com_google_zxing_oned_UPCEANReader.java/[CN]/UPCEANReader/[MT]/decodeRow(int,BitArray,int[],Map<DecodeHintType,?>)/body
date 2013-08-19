@@ -19,6 +19,9 @@
     throw NotFoundException.getNotFoundInstance();
   }
   String resultString=result.toString();
+  if (resultString.length() < 8) {
+    throw FormatException.getFormatInstance();
+  }
   if (!checkChecksum(resultString)) {
     throw ChecksumException.getChecksumInstance();
   }
