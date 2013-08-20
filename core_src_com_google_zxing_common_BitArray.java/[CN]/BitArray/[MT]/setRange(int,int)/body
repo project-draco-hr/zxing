@@ -6,8 +6,8 @@
     return;
   }
   end--;
-  int firstInt=start >> 5;
-  int lastInt=end >> 5;
+  int firstInt=start / 32;
+  int lastInt=end / 32;
   for (int i=firstInt; i <= lastInt; i++) {
     int firstBit=i > firstInt ? 0 : start & 0x1F;
     int lastBit=i < lastInt ? 31 : end & 0x1F;

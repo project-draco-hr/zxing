@@ -1,0 +1,4 @@
+{
+  this.bits=bits;
+  this.size=size;
+}
