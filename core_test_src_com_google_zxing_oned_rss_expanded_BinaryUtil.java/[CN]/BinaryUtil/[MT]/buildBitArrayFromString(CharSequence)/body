@@ -1,5 +1,5 @@
 {
-  String dotsAndXs=ZERO.matcher(ONE.matcher(data).replaceAll("X")).replaceAll(".");
+  CharSequence dotsAndXs=ZERO.matcher(ONE.matcher(data).replaceAll("X")).replaceAll(".");
   BitArray binary=new BitArray(SPACE.matcher(dotsAndXs).replaceAll("").length());
   int counter=0;
   for (int i=0; i < dotsAndXs.length(); ++i) {

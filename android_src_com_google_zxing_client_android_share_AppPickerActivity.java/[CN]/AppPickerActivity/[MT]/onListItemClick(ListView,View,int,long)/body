@@ -1,5 +1,5 @@
 {
-  ListAdapter adapter=getListAdapter();
+  Adapter adapter=getListAdapter();
   if (position >= 0 && position < adapter.getCount()) {
     String packageName=((AppInfo)adapter.getItem(position)).getPackageName();
     Intent intent=new Intent();

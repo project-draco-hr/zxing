@@ -1,5 +1,5 @@
 {
-  List<State> states=Collections.singletonList(State.INITIAL_STATE);
+  Collection<State> states=Collections.singletonList(State.INITIAL_STATE);
   for (int index=0; index < text.length; index++) {
     int pairCode;
     int nextChar=index + 1 < text.length ? text[index + 1] : 0;

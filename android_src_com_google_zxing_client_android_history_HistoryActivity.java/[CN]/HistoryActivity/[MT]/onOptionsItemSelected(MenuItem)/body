@@ -2,7 +2,7 @@
 switch (item.getItemId()) {
 case R.id.menu_history_send:
     CharSequence history=historyManager.buildHistory();
-  Uri historyFile=HistoryManager.saveHistory(history.toString());
+  Parcelable historyFile=HistoryManager.saveHistory(history.toString());
 if (historyFile == null) {
   AlertDialog.Builder builder=new AlertDialog.Builder(this);
   builder.setMessage(R.string.msg_unmount_usb);

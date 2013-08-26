@@ -1,7 +1,7 @@
 {
   super.onCreate(icicle);
   addPreferencesFromResource(R.xml.preferences);
-  PreferenceScreen preferences=getPreferenceScreen();
+  PreferenceGroup preferences=getPreferenceScreen();
   preferences.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
   decode1D=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_1D);
   decodeQR=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_QR);

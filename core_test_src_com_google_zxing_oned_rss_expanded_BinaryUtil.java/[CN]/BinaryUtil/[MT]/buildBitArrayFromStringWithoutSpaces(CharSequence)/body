@@ -1,6 +1,6 @@
 {
   StringBuilder sb=new StringBuilder();
-  String dotsAndXs=ZERO.matcher(ONE.matcher(data).replaceAll("X")).replaceAll(".");
+  CharSequence dotsAndXs=ZERO.matcher(ONE.matcher(data).replaceAll("X")).replaceAll(".");
   int current=0;
   while (current < dotsAndXs.length()) {
     sb.append(' ');

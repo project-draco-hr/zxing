@@ -1,6 +1,5 @@
 {
-  BitMatrix matrix0=input;
-  BitMatrix matrix90=rotateRight(input);
+  BitMatrix matrix90=rotateRight(matrix0);
   BitMatrix matrix180=rotateRight(matrix90);
   BitMatrix matrix270=rotateRight(matrix180);
   return Arrays.asList(matrix0,matrix90,matrix180,matrix270);

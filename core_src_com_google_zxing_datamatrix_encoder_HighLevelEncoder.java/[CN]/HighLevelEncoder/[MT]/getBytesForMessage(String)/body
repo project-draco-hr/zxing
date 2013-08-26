@@ -1,3 +1,0 @@
-{
-  return msg.getBytes(Charset.forName("cp437"));
-}

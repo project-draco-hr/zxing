@@ -45,7 +45,7 @@
         statusView.setText(customPromptMessage);
       }
     }
- else     if (dataString != null && dataString.contains(PRODUCT_SEARCH_URL_PREFIX) && dataString.contains(PRODUCT_SEARCH_URL_SUFFIX)) {
+ else     if (dataString != null && dataString.contains("http://www.google") && dataString.contains("/m/products/scan")) {
       source=IntentSource.PRODUCT_SEARCH_LINK;
       sourceUrl=dataString;
       decodeFormats=DecodeFormatManager.PRODUCT_FORMATS;

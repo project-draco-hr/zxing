@@ -4,7 +4,7 @@
     return entries;
   }
   try (BufferedReader reader=new BufferedReader(new InputStreamReader(new FileInputStream(file),UTF8))){
-    String line;
+    CharSequence line;
     while ((line=reader.readLine()) != null) {
       Matcher m=ENTRY_PATTERN.matcher(line);
       if (m.find()) {

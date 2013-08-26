@@ -1,4 +1,4 @@
 {
-  String encoded=HighLevelEncoder.encodeHighLevel(msg);
+  CharSequence encoded=HighLevelEncoder.encodeHighLevel(msg);
   return visualize(encoded);
 }

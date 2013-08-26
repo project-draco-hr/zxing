@@ -1,6 +1,6 @@
 {
   String charset=hints == null ? null : (String)hints.get(EncodeHintType.CHARACTER_SET);
   Number eccPercent=hints == null ? null : (Number)hints.get(EncodeHintType.ERROR_CORRECTION);
-  Integer layers=hints == null ? null : (Integer)hints.get(EncodeHintType.AZTEC_LAYERS);
+  Number layers=hints == null ? null : (Number)hints.get(EncodeHintType.AZTEC_LAYERS);
   return encode(contents,format,width,height,charset == null ? DEFAULT_CHARSET : Charset.forName(charset),eccPercent == null ? Encoder.DEFAULT_EC_PERCENT : eccPercent.intValue(),layers == null ? Encoder.DEFAULT_AZTEC_LAYERS : layers.intValue());
 }

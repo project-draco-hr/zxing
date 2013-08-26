@@ -1,5 +1,0 @@
-int[] expected
-int expectedOffset
-int[] actual
-int actualOffset
-int length

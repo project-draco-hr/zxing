@@ -1,5 +1,5 @@
 {
-  String data=" ..X..X.. ..XXX... XXXXXXXX ........";
+  CharSequence data=" ..X..X.. ..XXX... XXXXXXXX ........";
   check(data);
   data=" XXX..X..";
   check(data);

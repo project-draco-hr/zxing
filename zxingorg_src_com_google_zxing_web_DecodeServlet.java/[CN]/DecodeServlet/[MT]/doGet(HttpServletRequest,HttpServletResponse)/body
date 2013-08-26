@@ -6,7 +6,7 @@
     return;
   }
   imageURIString=imageURIString.trim();
-  for (  String substring : blockedURLSubstrings) {
+  for (  CharSequence substring : blockedURLSubstrings) {
     if (imageURIString.contains(substring)) {
       log.info("Disallowed URI " + imageURIString);
       response.sendRedirect("badurl.jspx");

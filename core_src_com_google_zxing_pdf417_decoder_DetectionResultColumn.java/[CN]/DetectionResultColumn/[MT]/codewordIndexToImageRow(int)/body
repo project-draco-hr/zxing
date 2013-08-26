@@ -1,3 +1,0 @@
-{
-  return boundingBox.getMinY() + codewordIndex;
-}

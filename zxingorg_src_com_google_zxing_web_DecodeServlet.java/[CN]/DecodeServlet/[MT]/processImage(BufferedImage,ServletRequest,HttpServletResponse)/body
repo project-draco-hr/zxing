@@ -1,10 +1,10 @@
 {
-  Reader reader=new MultiFormatReader();
   LuminanceSource source=new BufferedImageLuminanceSource(image);
   BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
   Collection<Result> results=new ArrayList<>(1);
-  ReaderException savedException=null;
   try {
+    Reader reader=new MultiFormatReader();
+    ReaderException savedException=null;
     try {
       MultipleBarcodeReader multiReader=new GenericMultipleBarcodeReader(reader);
       Result[] theResults=multiReader.decodeMultiple(bitmap,HINTS);

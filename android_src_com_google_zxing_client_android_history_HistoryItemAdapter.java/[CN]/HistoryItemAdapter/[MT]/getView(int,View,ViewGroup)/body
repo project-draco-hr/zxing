@@ -1,16 +1,16 @@
 {
-  LinearLayout layout;
+  View layout;
   if (view instanceof LinearLayout) {
-    layout=(LinearLayout)view;
+    layout=view;
   }
  else {
     LayoutInflater factory=LayoutInflater.from(activity);
-    layout=(LinearLayout)factory.inflate(R.layout.history_list_item,viewGroup,false);
+    layout=factory.inflate(R.layout.history_list_item,viewGroup,false);
   }
   HistoryItem item=getItem(position);
   Result result=item.getResult();
-  String title;
-  String detail;
+  CharSequence title;
+  CharSequence detail;
   if (result != null) {
     title=result.getText();
     detail=item.getDisplayAndDetails();

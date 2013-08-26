@@ -1,5 +1,5 @@
 {
-  LoadPackagesAsyncTask task=backgroundTask;
+  AsyncTask<?,?,?> task=backgroundTask;
   if (task != null) {
     task.cancel(true);
     backgroundTask=null;

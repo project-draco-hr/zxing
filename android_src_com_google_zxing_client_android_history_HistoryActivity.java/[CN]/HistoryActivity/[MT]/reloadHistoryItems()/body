@@ -1,5 +1,5 @@
 {
-  List<HistoryItem> items=historyManager.buildHistoryItems();
+  Iterable<HistoryItem> items=historyManager.buildHistoryItems();
   adapter.clear();
   for (  HistoryItem item : items) {
     adapter.add(item);

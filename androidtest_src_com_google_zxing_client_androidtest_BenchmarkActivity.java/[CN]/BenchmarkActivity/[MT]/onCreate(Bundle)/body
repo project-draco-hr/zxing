@@ -1,7 +1,7 @@
 {
   super.onCreate(icicle);
   setContentView(R.layout.benchmark);
-  runBenchmarkButton=(Button)findViewById(R.id.benchmark_run);
+  runBenchmarkButton=findViewById(R.id.benchmark_run);
   runBenchmarkButton.setOnClickListener(runBenchmark);
   textView=(TextView)findViewById(R.id.benchmark_help);
   benchmarkThread=null;

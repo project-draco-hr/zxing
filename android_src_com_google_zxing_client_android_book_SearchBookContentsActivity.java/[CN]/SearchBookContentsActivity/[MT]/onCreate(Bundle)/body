@@ -21,7 +21,7 @@
     queryTextView.setText(initialQuery);
   }
   queryTextView.setOnKeyListener(keyListener);
-  queryButton=(Button)findViewById(R.id.query_button);
+  queryButton=findViewById(R.id.query_button);
   queryButton.setOnClickListener(buttonListener);
   resultListView=(ListView)findViewById(R.id.result_list_view);
   LayoutInflater factory=LayoutInflater.from(this);

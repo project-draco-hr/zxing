@@ -1,5 +1,5 @@
 {
-  NetworkTask oldTask=networkTask;
+  AsyncTask<?,?,?> oldTask=networkTask;
   if (oldTask != null) {
     oldTask.cancel(true);
     networkTask=null;

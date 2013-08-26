@@ -1,5 +1,5 @@
 {
-  SortedMap<String,String> english=readLines(englishFile);
+  Map<String,String> english=readLines(englishFile);
   SortedMap<String,String> translated=readLines(translatedFile);
   String parentName=translatedFile.getParentFile().getName();
   Matcher stringsFileNameMatcher=STRINGS_FILE_NAME_PATTERN.matcher(parentName);
