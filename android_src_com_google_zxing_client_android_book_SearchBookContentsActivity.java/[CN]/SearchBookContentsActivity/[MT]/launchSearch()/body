@@ -6,7 +6,7 @@
       oldTask.cancel(true);
     }
     networkTask=new NetworkTask();
-    taskExec.execute(networkTask,query,isbn);
+    networkTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,query,isbn);
     headerView.setText(R.string.msg_sbc_searching_book);
     resultListView.setAdapter(null);
     queryTextView.setEnabled(false);

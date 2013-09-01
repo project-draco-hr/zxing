@@ -17,16 +17,8 @@
     statusView.setText(getString(resultHandler.getDisplayTitle()) + " : " + rawResultString);
   }
   if (copyToClipboard && !resultHandler.areContentsSecure()) {
-    ClipboardManager clipboard=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
     CharSequence text=resultHandler.getDisplayContents();
-    if (text != null) {
-      try {
-        clipboard.setText(text);
-      }
- catch (      NullPointerException npe) {
-        Log.w(TAG,"Clipboard bug",npe);
-      }
-    }
+    ClipboardInterface.setText(text,this);
   }
   if (source == IntentSource.NATIVE_APP_INTENT) {
     Intent intent=new Intent(getIntent().getAction());

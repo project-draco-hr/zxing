@@ -1,5 +1,5 @@
 {
   cancel();
   inactivityTask=new InactivityAsyncTask();
-  taskExec.execute(inactivityTask);
+  inactivityTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 }

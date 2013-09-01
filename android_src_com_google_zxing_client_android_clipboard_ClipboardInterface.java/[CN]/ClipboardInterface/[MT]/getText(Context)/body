@@ -1,0 +1,5 @@
+{
+  ClipboardManager clipboard=getManager(context);
+  ClipData clip=clipboard.getPrimaryClip();
+  return hasText(context) ? clip.getItemAt(0).coerceToText(context) : null;
+}

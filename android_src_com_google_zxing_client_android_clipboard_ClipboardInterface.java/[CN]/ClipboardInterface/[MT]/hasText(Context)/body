@@ -1,0 +1,5 @@
+{
+  ClipboardManager clipboard=getManager(context);
+  ClipData clip=clipboard.getPrimaryClip();
+  return clip != null && clip.getItemCount() > 0;
+}

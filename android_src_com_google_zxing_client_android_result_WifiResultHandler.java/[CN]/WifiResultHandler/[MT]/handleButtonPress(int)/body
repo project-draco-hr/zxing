@@ -13,7 +13,7 @@
       }
     }
 );
-    taskExec.execute(new WifiConfigManager(wifiManager),wifiResult);
+    new WifiConfigManager(wifiManager).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,wifiResult);
     parent.restartPreviewAfterDelay(0L);
   }
 }

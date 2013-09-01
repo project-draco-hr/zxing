@@ -1,0 +1,10 @@
+{
+  super.onCreate(icicle);
+  addPreferencesFromResource(R.xml.preferences);
+  PreferenceScreen preferences=getPreferenceScreen();
+  preferences.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+  decode1D=(CheckBoxPreference)preferences.findPreference(PreferencesActivity.KEY_DECODE_1D);
+  decodeQR=(CheckBoxPreference)preferences.findPreference(PreferencesActivity.KEY_DECODE_QR);
+  decodeDataMatrix=(CheckBoxPreference)preferences.findPreference(PreferencesActivity.KEY_DECODE_DATA_MATRIX);
+  disableLastCheckedPref();
+}

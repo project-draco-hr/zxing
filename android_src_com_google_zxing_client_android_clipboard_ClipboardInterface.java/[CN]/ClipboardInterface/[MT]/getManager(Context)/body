@@ -1,0 +1,3 @@
+{
+  return (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
+}

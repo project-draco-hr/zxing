@@ -16,7 +16,7 @@
       focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_AUTO);
     }
  else {
-      focusMode=findSettableValue(parameters.getSupportedFocusModes(),"continuous-picture","continuous-video",Camera.Parameters.FOCUS_MODE_AUTO);
+      focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE,Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO,Camera.Parameters.FOCUS_MODE_AUTO);
     }
   }
   if (!safeMode && focusMode == null) {

@@ -1,10 +1,4 @@
 {
   super.onCreate(icicle);
-  addPreferencesFromResource(R.xml.preferences);
-  PreferenceGroup preferences=getPreferenceScreen();
-  preferences.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-  decode1D=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_1D);
-  decodeQR=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_QR);
-  decodeDataMatrix=(CheckBoxPreference)preferences.findPreference(KEY_DECODE_DATA_MATRIX);
-  disableLastCheckedPref();
+  getFragmentManager().beginTransaction().replace(android.R.id.content,new PreferencesFragment()).commit();
 }

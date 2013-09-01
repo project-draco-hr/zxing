@@ -1,3 +1,0 @@
-{
-  taskExec=new AsyncTaskExecManager().build();
-}

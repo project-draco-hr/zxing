@@ -1,5 +1,5 @@
 {
   super.onResume();
   backgroundTask=new LoadPackagesAsyncTask(this);
-  taskExec.execute(backgroundTask);
+  backgroundTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 }

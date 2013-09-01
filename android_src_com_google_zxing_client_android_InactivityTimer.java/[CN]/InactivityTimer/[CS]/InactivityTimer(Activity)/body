@@ -1,6 +1,5 @@
 {
   this.activity=activity;
-  taskExec=new AsyncTaskExecManager().build();
   powerStatusReceiver=new PowerStatusReceiver();
   onActivity();
 }

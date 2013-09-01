@@ -1,2 +1,0 @@
-AsyncTask<T,?,?> task
-T args

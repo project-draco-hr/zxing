@@ -1,6 +1,6 @@
 {
   if (active) {
     outstandingTask=new AutoFocusTask();
-    taskExec.execute(outstandingTask);
+    outstandingTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
   }
 }
