@@ -1,2 +1,3 @@
+MultiFormatReader reader
 String currentPath
 List<BenchmarkItem> items

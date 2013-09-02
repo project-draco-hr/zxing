@@ -4,5 +4,5 @@
   runBenchmarkButton=findViewById(R.id.benchmark_run);
   runBenchmarkButton.setOnClickListener(runBenchmark);
   textView=(TextView)findViewById(R.id.benchmark_help);
-  benchmarkThread=null;
+  benchmarkTask=null;
 }

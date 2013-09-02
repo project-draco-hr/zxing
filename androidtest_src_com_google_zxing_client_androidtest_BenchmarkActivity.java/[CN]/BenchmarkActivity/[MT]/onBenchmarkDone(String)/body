@@ -1,0 +1,5 @@
+{
+  textView.setText(message + "\n\n" + getString(R.string.benchmark_help));
+  runBenchmarkButton.setEnabled(true);
+  benchmarkTask=null;
+}

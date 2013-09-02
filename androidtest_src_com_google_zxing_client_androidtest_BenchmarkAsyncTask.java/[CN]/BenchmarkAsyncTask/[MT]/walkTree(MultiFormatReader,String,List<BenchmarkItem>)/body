@@ -4,11 +4,11 @@
     String[] files=file.list();
     Arrays.sort(files);
     for (    String fileName : files) {
-      walkTree(file.getAbsolutePath() + '/' + fileName,items);
+      walkTree(reader,file.getAbsolutePath() + '/' + fileName,items);
     }
   }
  else {
-    BenchmarkItem item=decode(currentPath);
+    BenchmarkItem item=decode(reader,currentPath);
     if (item != null) {
       items.add(item);
     }

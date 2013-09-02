@@ -1,0 +1,4 @@
+{
+  this.benchmarkActivity=benchmarkActivity;
+  this.path=path;
+}

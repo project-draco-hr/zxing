@@ -1,0 +1,3 @@
+{
+  benchmarkActivity.onBenchmarkDone(totals);
+}

@@ -1,4 +1,0 @@
-{
-  this.activity=activity;
-  this.path=path;
-}

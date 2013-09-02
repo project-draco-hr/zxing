@@ -1,0 +1,17 @@
+{
+  MultiFormatReader reader=new MultiFormatReader();
+  reader.setHints(null);
+  System.gc();
+  List<BenchmarkItem> items=new ArrayList<BenchmarkItem>();
+  walkTree(reader,path,items);
+  int count=0;
+  int time=0;
+  for (  BenchmarkItem item : items) {
+    if (item != null) {
+      Log.v(TAG,item.toString());
+      count++;
+      time+=item.getAverageTime();
+    }
+  }
+  return "TOTAL: Decoded " + count + " images in "+ time+ " us";
+}
