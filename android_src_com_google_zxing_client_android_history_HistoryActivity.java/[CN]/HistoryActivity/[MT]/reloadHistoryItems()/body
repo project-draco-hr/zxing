@@ -4,6 +4,7 @@
   for (  HistoryItem item : items) {
     adapter.add(item);
   }
+  setTitle(originalTitle + " (" + adapter.getCount()+ ')');
   if (adapter.isEmpty()) {
     adapter.add(new HistoryItem(null,null,null));
   }

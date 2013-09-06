@@ -5,4 +5,5 @@
   setListAdapter(adapter);
   View listview=getListView();
   registerForContextMenu(listview);
+  originalTitle=getTitle();
 }
