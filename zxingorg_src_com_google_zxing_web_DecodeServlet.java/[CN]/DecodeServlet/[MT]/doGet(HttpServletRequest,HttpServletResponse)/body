@@ -57,8 +57,8 @@
   connection.setAllowUserInteraction(false);
   connection.setReadTimeout(5000);
   connection.setConnectTimeout(5000);
-  connection.setRequestProperty("User-Agent","zxing.org");
-  connection.setRequestProperty("Connection","close");
+  connection.setRequestProperty(HttpHeaders.USER_AGENT,"zxing.org");
+  connection.setRequestProperty(HttpHeaders.CONNECTION,"close");
   try {
     try {
       connection.connect();
@@ -76,7 +76,7 @@
         response.sendRedirect("badurl.jspx");
         return;
       }
-      if (connection.getHeaderFieldInt("Content-Length",0) > MAX_IMAGE_SIZE) {
+      if (connection.getHeaderFieldInt(HttpHeaders.CONTENT_LENGTH,0) > MAX_IMAGE_SIZE) {
         log.info("Too large");
         response.sendRedirect("badimage.jspx");
         return;
