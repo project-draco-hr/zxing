@@ -172,6 +172,7 @@ if (unshift) {
 codeSet=codeSet == CODE_CODE_A ? CODE_CODE_B : CODE_CODE_A;
 }
 }
+int lastPatternSize=nextStart - lastStart;
 nextStart=row.getNextUnset(nextStart);
 if (!row.isRange(nextStart,Math.min(row.getSize(),nextStart + (nextStart - lastStart) / 2),false)) {
 throw NotFoundException.getNotFoundInstance();
@@ -193,7 +194,7 @@ result.delete(resultLength - 1,resultLength);
 }
 }
 float left=(float)(startPatternInfo[1] + startPatternInfo[0]) / 2.0f;
-float right=(float)(nextStart + lastStart) / 2.0f;
+float right=lastStart + lastPatternSize / 2.0f;
 int rawCodesSize=rawCodes.size();
 byte[] rawBytes=new byte[rawCodesSize];
 for (int i=0; i < rawCodesSize; i++) {

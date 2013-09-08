@@ -24,6 +24,10 @@
   }
  while (decodedChar != '*');
   result.deleteCharAt(result.length() - 1);
+  int lastPatternSize=0;
+  for (  int counter : theCounters) {
+    lastPatternSize+=counter;
+  }
   if (nextStart == end || !row.get(nextStart)) {
     throw NotFoundException.getNotFoundInstance();
   }
@@ -34,6 +38,6 @@
   result.setLength(result.length() - 2);
   String resultString=decodeExtended(result);
   float left=(float)(start[1] + start[0]) / 2.0f;
-  float right=(float)(nextStart + lastStart) / 2.0f;
+  float right=lastStart + lastPatternSize / 2.0f;
   return new Result(resultString,null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODE_93);
 }
