@@ -6,5 +6,8 @@
  catch (    NullPointerException npe) {
       Log.w(TAG,"Clipboard bug",npe);
     }
+catch (    IllegalStateException ise) {
+      Log.w(TAG,"Clipboard bug",ise);
+    }
   }
 }
