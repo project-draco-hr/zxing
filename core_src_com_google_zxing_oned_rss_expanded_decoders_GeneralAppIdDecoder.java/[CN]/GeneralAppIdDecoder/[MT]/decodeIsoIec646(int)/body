@@ -80,7 +80,7 @@ case 252:
 c=' ';
 break;
 default :
-throw new IllegalArgumentException("Decoding invalid ISO/IEC 646 value: " + eightBitValue);
+throw FormatException.getFormatInstance();
 }
 return new DecodedChar(pos + 8,c);
 }

@@ -1,7 +1,4 @@
 {
-  if (bits > 32) {
-    throw new IllegalArgumentException("extractNumberValueFromBitArray can't handle more than 32 bits");
-  }
   int value=0;
   for (int i=0; i < bits; ++i) {
     if (information.get(pos + i)) {

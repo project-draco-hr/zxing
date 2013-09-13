@@ -1,11 +1,8 @@
 {
   super(newPosition);
+  if (firstDigit < 0 || firstDigit > 10 || secondDigit < 0 || secondDigit > 10) {
+    throw FormatException.getFormatInstance();
+  }
   this.firstDigit=firstDigit;
   this.secondDigit=secondDigit;
-  if (this.firstDigit < 0 || this.firstDigit > 10) {
-    throw new IllegalArgumentException("Invalid firstDigit: " + firstDigit);
-  }
-  if (this.secondDigit < 0 || this.secondDigit > 10) {
-    throw new IllegalArgumentException("Invalid secondDigit: " + secondDigit);
-  }
 }
