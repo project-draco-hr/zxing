@@ -1,4 +1,10 @@
 {
   cancel();
-  activity.unregisterReceiver(powerStatusReceiver);
+  if (registered) {
+    activity.unregisterReceiver(powerStatusReceiver);
+    registered=false;
+  }
+ else {
+    Log.w(TAG,"PowerStatusReceiver was never registered?");
+  }
 }
