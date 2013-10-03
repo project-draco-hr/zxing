@@ -6,7 +6,7 @@
   }
   List<List<String>> names=matchVCardPrefixedField("FN",rawText,true,false);
   if (names == null) {
-    names=matchVCardPrefixedField("N",rawText,true,false);
+    names=matchVCardPrefixedField("N",rawText,true,true);
     formatNames(names);
   }
   List<String> nicknameString=matchSingleVCardPrefixedField("NICKNAME",rawText,true,false);
