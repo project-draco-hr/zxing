@@ -5,7 +5,7 @@
   }
  catch (  NullPointerException npe) {
     Log.w(TAG,"Bad URI? " + url);
-    throw new IOException(npe.toString());
+    throw new IOException(npe);
   }
   if (!(conn instanceof HttpURLConnection)) {
     throw new IOException();

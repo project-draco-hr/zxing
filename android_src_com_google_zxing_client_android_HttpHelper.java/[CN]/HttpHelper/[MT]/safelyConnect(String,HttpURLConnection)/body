@@ -3,30 +3,29 @@
     connection.connect();
   }
  catch (  NullPointerException npe) {
-    Log.w(TAG,"Bad URI? " + uri);
-    throw new IOException(npe.toString());
+    throw new IOException(npe);
   }
 catch (  IllegalArgumentException iae) {
-    Log.w(TAG,"Bad URI? " + uri);
-    throw new IOException(iae.toString());
+    throw new IOException(iae);
   }
 catch (  SecurityException se) {
     Log.w(TAG,"Restricted URI? " + uri);
-    throw new IOException(se.toString());
+    throw new IOException(se);
   }
 catch (  IndexOutOfBoundsException ioobe) {
-    Log.w(TAG,"Bad URI? " + uri);
-    throw new IOException(ioobe.toString());
+    throw new IOException(ioobe);
   }
   try {
     return connection.getResponseCode();
   }
  catch (  NullPointerException npe) {
-    Log.w(TAG,"Bad URI? " + uri);
-    throw new IOException(npe.toString());
+    throw new IOException(npe);
   }
 catch (  IllegalArgumentException iae) {
     Log.w(TAG,"Bad server status? " + uri);
-    throw new IOException(iae.toString());
+    throw new IOException(iae);
+  }
+catch (  StringIndexOutOfBoundsException sioobe) {
+    throw new IOException(sioobe);
   }
 }
