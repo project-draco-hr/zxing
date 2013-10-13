@@ -1,6 +1,8 @@
 {
-  if (components[i] != null) {
-    newName.append(' ');
+  if (components[i] != null && !components[i].isEmpty()) {
+    if (newName.length() > 0) {
+      newName.append(' ');
+    }
     newName.append(components[i]);
   }
 }
