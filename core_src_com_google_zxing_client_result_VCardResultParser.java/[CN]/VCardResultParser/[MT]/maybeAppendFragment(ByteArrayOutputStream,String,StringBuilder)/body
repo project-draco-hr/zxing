@@ -3,14 +3,14 @@
     byte[] fragmentBytes=fragmentBuffer.toByteArray();
     String fragment;
     if (charset == null) {
-      fragment=new String(fragmentBytes);
+      fragment=new String(fragmentBytes,Charset.forName("UTF-8"));
     }
  else {
       try {
         fragment=new String(fragmentBytes,charset);
       }
  catch (      UnsupportedEncodingException e) {
-        fragment=new String(fragmentBytes);
+        fragment=new String(fragmentBytes,Charset.forName("UTF-8"));
       }
     }
     fragmentBuffer.reset();

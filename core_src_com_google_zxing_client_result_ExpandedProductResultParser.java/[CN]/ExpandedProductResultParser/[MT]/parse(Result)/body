@@ -4,9 +4,6 @@
     return null;
   }
   String rawText=getMassagedText(result);
-  if (rawText == null) {
-    return null;
-  }
   String productID=null;
   String sscc=null;
   String lotNumber=null;
