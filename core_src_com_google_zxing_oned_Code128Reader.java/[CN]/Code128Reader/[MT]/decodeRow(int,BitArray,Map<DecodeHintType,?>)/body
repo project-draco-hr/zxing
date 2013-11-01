@@ -2,6 +2,8 @@
   boolean convertFNC1=hints != null && hints.containsKey(DecodeHintType.ASSUME_GS1);
   int[] startPatternInfo=findStartPattern(row);
   int startCode=startPatternInfo[2];
+  List<Byte> rawCodes=new ArrayList<Byte>(20);
+  rawCodes.add((byte)startCode);
   int codeSet;
 switch (startCode) {
 case CODE_START_A:
@@ -19,7 +21,6 @@ throw FormatException.getFormatInstance();
 boolean done=false;
 boolean isNextShifted=false;
 StringBuilder result=new StringBuilder(20);
-List<Byte> rawCodes=new ArrayList<Byte>(20);
 int lastStart=startPatternInfo[0];
 int nextStart=startPatternInfo[1];
 int[] counters=new int[6];
