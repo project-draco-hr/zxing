@@ -4,7 +4,13 @@
   downloadDialog.setMessage(message);
   downloadDialog.setPositiveButton(buttonYes,new DialogInterface.OnClickListener(){
     @Override public void onClick(    DialogInterface dialogInterface,    int i){
-      String packageName=targetApplications.get(0);
+      String packageName;
+      if (targetApplications.contains(BS_PACKAGE)) {
+        packageName=BS_PACKAGE;
+      }
+ else {
+        packageName=targetApplications.get(0);
+      }
       Uri uri=Uri.parse("market://details?id=" + packageName);
       Intent intent=new Intent(Intent.ACTION_VIEW,uri);
       try {
