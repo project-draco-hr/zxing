@@ -1,0 +1,5 @@
+{
+  String expected="(10)1098/1234";
+  String path="src/test/resources/blackbox/rssexpanded-1/28.png";
+  assertCorrectImage2string(path,expected);
+}

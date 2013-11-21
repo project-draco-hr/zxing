@@ -1,0 +1,7 @@
+{
+  super("src/test/resources/blackbox/qrcode-5",new MultiFormatReader(),BarcodeFormat.QR_CODE);
+  addTest(19,19,0.0f);
+  addTest(19,19,90.0f);
+  addTest(19,19,180.0f);
+  addTest(18,19,270.0f);
+}

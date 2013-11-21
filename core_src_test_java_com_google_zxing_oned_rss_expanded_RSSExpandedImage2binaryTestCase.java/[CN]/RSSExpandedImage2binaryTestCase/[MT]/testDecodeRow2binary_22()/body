@@ -1,0 +1,5 @@
+{
+  String expected=" ..XXXXXX ........ .X..XXX. X.X.X... XX.XXXXX .XXXX.X. ..XX...X .X.....X .XX..... XXXX.X.. XX..";
+  String path="src/test/resources/blackbox/rssexpanded-1/22.png";
+  assertCorrectImage2binary(path,expected);
+}

@@ -1,0 +1,5 @@
+{
+  super("src/test/resources/blackbox/rssexpandedstacked-2",new MultiFormatReader(),BarcodeFormat.RSS_EXPANDED);
+  addTest(2,7,0.0f);
+  addTest(2,7,180.0f);
+}

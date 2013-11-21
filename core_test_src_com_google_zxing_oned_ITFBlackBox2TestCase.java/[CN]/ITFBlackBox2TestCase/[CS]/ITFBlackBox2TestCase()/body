@@ -1,5 +1,0 @@
-{
-  super("test/data/blackbox/itf-2",new MultiFormatReader(),BarcodeFormat.ITF);
-  addTest(13,13,0.0f);
-  addTest(13,13,180.0f);
-}
