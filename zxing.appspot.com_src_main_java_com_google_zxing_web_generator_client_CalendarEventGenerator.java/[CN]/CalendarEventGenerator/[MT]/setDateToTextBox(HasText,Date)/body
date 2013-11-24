@@ -1,0 +1,4 @@
+{
+  DateTimeFormat extractTime=DateTimeFormat.getFormat("HHmm");
+  textBox.setText(extractTime.format(date));
+}

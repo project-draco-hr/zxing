@@ -1,8 +1,8 @@
 {
   Date date1=datePicker1.getValue();
   Date date2=datePicker2.getValue();
-  Date time1=timePicker1.getDateTime();
-  Date time2=timePicker2.getDateTime();
+  Date time1=getDateFromTextBox(timePicker1);
+  Date time2=getDateFromTextBox(timePicker2);
   if (date1 == null || date2 == null || time1 == null || time2 == null) {
     throw new GeneratorException("Start and end dates/times must be set.");
   }

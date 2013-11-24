@@ -1,0 +1,9 @@
+{
+  DateTimeFormat extractTime=DateTimeFormat.getFormat("HHmm");
+  try {
+    return extractTime.parseStrict(textBox.getText());
+  }
+ catch (  IllegalArgumentException iae) {
+    throw new GeneratorException("Invalid time");
+  }
+}
