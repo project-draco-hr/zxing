@@ -7,7 +7,7 @@
   diskFileItemFactory=new DiskFileItemFactory(1 << 16,repository);
   diskFileItemFactory.setFileCleaningTracker(fileCleaningTracker);
   try {
-    blockedURLSubstrings=Resources.readLines(Resources.getResource("/private/uri-block-substrings.txt"),Charsets.UTF_8);
+    blockedURLSubstrings=Resources.readLines(Resources.getResource("/private/uri-block-substrings.txt"),StandardCharsets.UTF_8);
   }
  catch (  IOException ioe) {
     throw new ServletException(ioe);

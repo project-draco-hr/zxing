@@ -62,8 +62,8 @@
   boolean minimalOutput=fullParameter != null && !Boolean.parseBoolean(fullParameter);
   if (minimalOutput) {
     response.setContentType(MediaType.PLAIN_TEXT_UTF_8.toString());
-    response.setCharacterEncoding(Charsets.UTF_8.name());
-    try (Writer out=new OutputStreamWriter(response.getOutputStream(),Charsets.UTF_8)){
+    response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+    try (Writer out=new OutputStreamWriter(response.getOutputStream(),StandardCharsets.UTF_8)){
       for (      Result result : results) {
         out.write(result.getText());
         out.write('\n');

@@ -1,0 +1,3 @@
+ServletRequest request
+HttpServletResponse response
+boolean isPost

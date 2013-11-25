@@ -1,0 +1,31 @@
+{
+  ChartServletRequestParameters parameters;
+  try {
+    parameters=doParseParameters(request,isPost);
+  }
+ catch (  IllegalArgumentException|NullPointerException e) {
+    response.sendError(HttpServletResponse.SC_BAD_REQUEST,e.toString());
+    return;
+  }
+  Map<EncodeHintType,Object> hints=new EnumMap<>(EncodeHintType.class);
+  hints.put(EncodeHintType.MARGIN,parameters.getMargin());
+  if (!StandardCharsets.ISO_8859_1.equals(parameters.getOutputEncoding())) {
+    hints.put(EncodeHintType.CHARACTER_SET,parameters.getOutputEncoding().name());
+  }
+  hints.put(EncodeHintType.ERROR_CORRECTION,parameters.getEcLevel());
+  BitMatrix matrix;
+  try {
+    matrix=new QRCodeWriter().encode(parameters.getText(),BarcodeFormat.QR_CODE,parameters.getWidth(),parameters.getHeight(),hints);
+  }
+ catch (  WriterException we) {
+    response.sendError(HttpServletResponse.SC_BAD_REQUEST,we.toString());
+    return;
+  }
+  ByteArrayOutputStream pngOut=new ByteArrayOutputStream();
+  MatrixToImageWriter.writeToStream(matrix,"PNG",pngOut);
+  byte[] pngData=pngOut.toByteArray();
+  response.setContentType("image/png");
+  response.setContentLength(pngData.length);
+  response.setHeader("Cache-Control","public");
+  response.getOutputStream().write(pngData);
+}

@@ -1,0 +1,8 @@
+{
+  this.width=width;
+  this.height=height;
+  this.outputEncoding=outputEncoding;
+  this.ecLevel=ecLevel;
+  this.margin=margin;
+  this.text=text;
+}
