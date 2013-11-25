@@ -35,7 +35,7 @@
       for (      String s : FULL_DAY_ONLY_IDS) {
         Element element=DOM.getElementById(s);
         String style=cb.getValue() ? "none" : "";
-        DOM.setStyleAttribute(element,"display",style);
+        element.getStyle().setProperty("display",style);
       }
     }
   }
