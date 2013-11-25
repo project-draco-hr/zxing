@@ -1,6 +1,6 @@
 {
-  doRetrieveForCountry(country);
-  if (!"US".equals(country)) {
+  boolean success=doRetrieveForCountry(country);
+  if (!success && !"US".equals(country)) {
     doRetrieveForCountry("US");
   }
 }
