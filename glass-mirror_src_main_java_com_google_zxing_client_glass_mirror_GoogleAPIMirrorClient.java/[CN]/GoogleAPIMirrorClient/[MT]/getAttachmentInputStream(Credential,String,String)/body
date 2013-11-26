@@ -1,0 +1,7 @@
+{
+  Mirror mirrorService=getMirror(credential);
+  Mirror.Timeline.Attachments attachments=mirrorService.timeline().attachments();
+  Attachment attachmentMetadata=attachments.get(timelineItemId,attachmentId).execute();
+  HttpResponse resp=mirrorService.getRequestFactory().buildGetRequest(new GenericUrl(attachmentMetadata.getContentUrl())).execute();
+  return resp.getContent();
+}

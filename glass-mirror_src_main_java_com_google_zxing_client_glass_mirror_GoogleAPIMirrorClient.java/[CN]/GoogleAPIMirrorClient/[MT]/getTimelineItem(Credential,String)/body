@@ -1,0 +1,3 @@
+{
+  return getMirror(credential).timeline().get(id).execute();
+}

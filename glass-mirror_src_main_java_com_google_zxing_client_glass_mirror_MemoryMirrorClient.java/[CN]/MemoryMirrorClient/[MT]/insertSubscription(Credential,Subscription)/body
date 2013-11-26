@@ -1,0 +1,4 @@
+{
+  log.info("Insert Subscription: {}",subscription);
+  subscriptions.add(subscription);
+}

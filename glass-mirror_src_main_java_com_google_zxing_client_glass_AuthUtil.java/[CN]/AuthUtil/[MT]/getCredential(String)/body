@@ -1,0 +1,3 @@
+{
+  return userId == null ? null : newAuthorizationCodeFlow().loadCredential(userId);
+}

@@ -1,0 +1,28 @@
+{
+  Reader reader=new MultiFormatReader();
+  LuminanceSource source=new BufferedImageLuminanceSource(image);
+  BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
+  Collection<Result> results=new ArrayList<>(1);
+  if (results.isEmpty()) {
+    try {
+      Result theResult=reader.decode(bitmap,HINTS);
+      if (theResult != null) {
+        results.add(theResult);
+      }
+    }
+ catch (    ReaderException re) {
+    }
+  }
+  if (results.isEmpty()) {
+    try {
+      BinaryBitmap hybridBitmap=new BinaryBitmap(new HybridBinarizer(source));
+      Result theResult=reader.decode(hybridBitmap,HINTS);
+      if (theResult != null) {
+        results.add(theResult);
+      }
+    }
+ catch (    ReaderException re) {
+    }
+  }
+  return results;
+}

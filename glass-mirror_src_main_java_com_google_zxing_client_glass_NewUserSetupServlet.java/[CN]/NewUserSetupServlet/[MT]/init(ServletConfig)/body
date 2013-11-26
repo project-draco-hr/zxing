@@ -1,0 +1,7 @@
+{
+  ServletContext context=servletConfig.getServletContext();
+  authUtil=new AuthUtil(context.getInitParameter("CLIENT_ID"),context.getInitParameter("CLIENT_SECRET"));
+  baseURL=context.getInitParameter("BASE_URL");
+  notificationCallbackURL=baseURL + "/notification";
+  subscriptionVerifyToken=context.getInitParameter("SUBSCRIPTION_VERIFY_TOKEN");
+}

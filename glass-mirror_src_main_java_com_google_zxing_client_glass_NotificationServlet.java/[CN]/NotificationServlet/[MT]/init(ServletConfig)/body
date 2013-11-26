@@ -1,0 +1,6 @@
+{
+  ServletContext context=servletConfig.getServletContext();
+  authUtil=new AuthUtil(context.getInitParameter("CLIENT_ID"),context.getInitParameter("CLIENT_SECRET"));
+  executor=Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+  subscriptionVerifyToken=context.getInitParameter("SUBSCRIPTION_VERIFY_TOKEN");
+}

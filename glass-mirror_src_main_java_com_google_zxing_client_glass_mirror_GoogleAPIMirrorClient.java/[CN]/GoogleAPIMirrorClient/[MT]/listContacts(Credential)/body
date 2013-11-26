@@ -1,0 +1,3 @@
+{
+  return getMirror(credential).contacts().list().execute().getItems();
+}

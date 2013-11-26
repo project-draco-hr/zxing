@@ -1,0 +1,39 @@
+{
+  Credential credential=authUtil.newAuthorizationCodeFlow().loadCredential(userId);
+  String appName=resources.getString("app.title");
+  MirrorClient mirrorClient=MirrorClient.get();
+  boolean contactExists=false;
+  for (  Contact contact : mirrorClient.listContacts(credential)) {
+    if (BS_ID.equals(contact.getId())) {
+      contactExists=true;
+      break;
+    }
+  }
+  if (!contactExists) {
+    Contact contact=new Contact();
+    contact.setId(BS_ID);
+    contact.setDisplayName(appName);
+    contact.setAcceptTypes(Arrays.asList("image/png","image/jpeg","image/gif","image/bmp"));
+    mirrorClient.insertContact(credential,contact);
+  }
+  boolean subscriptionExists=false;
+  for (  Subscription subscription : mirrorClient.listSubscriptions(credential)) {
+    if (notificationCallbackURL.equals(subscription.getCallbackUrl())) {
+      subscriptionExists=true;
+      break;
+    }
+  }
+  if (!subscriptionExists) {
+    Subscription subscription=new Subscription();
+    subscription.setCollection("timeline");
+    subscription.setOperation(Collections.singletonList("INSERT"));
+    subscription.setCallbackUrl(notificationCallbackURL);
+    subscription.setVerifyToken(subscriptionVerifyToken);
+    subscription.setUserToken(userId);
+    mirrorClient.insertSubscription(credential,subscription);
+  }
+  TimelineItem timelineItem=new TimelineItem();
+  timelineItem.setTitle(MessageFormat.format(resources.getString("setup.welcome.title"),appName));
+  timelineItem.setText(MessageFormat.format(resources.getString("setup.welcome.text"),appName));
+  mirrorClient.insertTimelineItem(credential,timelineItem);
+}

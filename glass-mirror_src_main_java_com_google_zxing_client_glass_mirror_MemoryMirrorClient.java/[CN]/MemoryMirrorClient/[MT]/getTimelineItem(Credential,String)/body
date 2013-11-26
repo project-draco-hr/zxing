@@ -1,0 +1,9 @@
+{
+  log.info("Get Timeline {}",id);
+  TimelineItem timelineItem=new TimelineItem();
+  timelineItem.setId(id);
+  Attachment fakeAttachment=new Attachment();
+  fakeAttachment.setId(FAKE_ATTACHMENT_ID);
+  timelineItem.setAttachments(Collections.singletonList(fakeAttachment));
+  return timelineItem;
+}

@@ -1,0 +1,3 @@
+{
+  return getMirror(credential).subscriptions().list().execute().getItems();
+}

@@ -1,0 +1,3 @@
+{
+  getMirror(credential).contacts().insert(contact).execute();
+}

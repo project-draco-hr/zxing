@@ -1,0 +1,5 @@
+{
+  dataStoreFactory=new MemoryDataStoreFactory();
+  this.clientID=clientID;
+  this.clientSecret=clientSecret;
+}

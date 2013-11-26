@@ -1,0 +1,5 @@
+{
+  String uri=parsedResult.getURI();
+  item.setHtml("<a href=\"" + uri + "\">"+ parsedResult.getDisplayResult()+ "</a>");
+  item.setCanonicalUrl(uri);
+}
