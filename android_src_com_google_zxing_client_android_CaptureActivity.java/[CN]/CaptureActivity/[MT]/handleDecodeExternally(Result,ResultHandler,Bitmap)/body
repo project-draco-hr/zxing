@@ -42,7 +42,7 @@
       if (ecLevel != null) {
         intent.putExtra(Intents.Scan.RESULT_ERROR_CORRECTION_LEVEL,ecLevel);
       }
-      Iterable<byte[]> byteSegments=(Iterable<byte[]>)metadata.get(ResultMetadataType.BYTE_SEGMENTS);
+      @SuppressWarnings("unchecked") Iterable<byte[]> byteSegments=(Iterable<byte[]>)metadata.get(ResultMetadataType.BYTE_SEGMENTS);
       if (byteSegments != null) {
         int i=0;
         for (        byte[] byteSegment : byteSegments) {
