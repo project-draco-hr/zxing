@@ -1,4 +1,0 @@
-{
-  super(fragment.getActivity());
-  this.fragment=fragment;
-}
