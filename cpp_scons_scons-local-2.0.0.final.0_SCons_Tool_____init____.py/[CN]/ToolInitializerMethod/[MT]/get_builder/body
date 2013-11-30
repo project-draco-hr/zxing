@@ -1,9 +1,0 @@
-def get_builder(self, env):
-    '\n\tReturns the appropriate real Builder for this method name\n\tafter having the associated ToolInitializer object apply\n\tthe appropriate Tool module.\n        '
-    builder = getattr(env, self.__name__)
-    self.initializer.apply_tools(env)
-    builder = getattr(env, self.__name__)
-    if (builder is self):
-        return None
-    self.initializer.remove_methods(env)
-    return builder

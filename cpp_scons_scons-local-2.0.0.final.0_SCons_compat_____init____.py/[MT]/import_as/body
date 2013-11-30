@@ -1,4 +1,0 @@
-def import_as(module, name):
-    '\n    Imports the specified module (from our local directory) as the\n    specified name, returning the loaded module object.\n    '
-    dir = os.path.split(__file__)[0]
-    return imp.load_module(name, *imp.find_module(module, [dir]))

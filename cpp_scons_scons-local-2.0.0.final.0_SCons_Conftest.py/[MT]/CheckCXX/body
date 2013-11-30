@@ -1,7 +1,0 @@
-def CheckCXX(context):
-    '\n    Configure check for a working CXX compiler.\n\n    This checks whether the CXX compiler, as defined in the $CXX construction\n    variable, can compile a CXX source file. It uses the current $CXXCOM value\n    too, so that it can test against non working flags.\n\n    '
-    context.Display('Checking whether the C++ compiler works')
-    text = '\nint main()\n{\n    return 0;\n}\n'
-    ret = _check_empty_program(context, 'CXX', text, 'C++')
-    _YesNoResult(context, ret, None, text)
-    return ret

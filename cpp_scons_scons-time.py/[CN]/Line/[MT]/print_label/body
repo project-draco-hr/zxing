@@ -1,3 +1,0 @@
-def print_label(self, inx, x, y):
-    if self.label:
-        print ('set label %s "%s" at %s,%s right' % (inx, self.label, x, y))

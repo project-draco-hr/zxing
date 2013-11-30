@@ -1,6 +1,0 @@
-def default_mapper(entry, name):
-    try:
-        val = eval(('entry.' + name))
-    except:
-        val = None
-    return str(val)

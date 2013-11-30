@@ -1,6 +1,0 @@
-def GetBuildPath(self, files):
-    result = list(map(str, self.arg2nodes(files, self.fs.Entry)))
-    if SCons.Util.is_List(files):
-        return result
-    else:
-        return result[0]

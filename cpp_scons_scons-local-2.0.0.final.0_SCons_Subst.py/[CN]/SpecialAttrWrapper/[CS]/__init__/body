@@ -1,7 +1,0 @@
-def __init__(self, lstr, for_signature=None):
-    'The for_signature parameter, if supplied, will be the\n        canonical string we return from for_signature().  Else\n        we will simply return lstr.'
-    self.lstr = lstr
-    if for_signature:
-        self.forsig = for_signature
-    else:
-        self.forsig = lstr

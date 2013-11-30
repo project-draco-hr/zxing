@@ -1,9 +1,0 @@
-"SCons.Tool.rpcgen\n\nTool-specific initialization for RPCGEN tools.\n\nThree normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n"
-__revision__ = 'src/engine/SCons/Tool/rpcgen.py 5023 2010/06/14 22:05:46 scons'
-from SCons.Builder import Builder
-import SCons.Util
-cmd = 'cd ${SOURCE.dir} && $RPCGEN -%s $RPCGENFLAGS %s -o ${TARGET.abspath} ${SOURCE.file}'
-rpcgen_client = (cmd % ('l', '$RPCGENCLIENTFLAGS'))
-rpcgen_header = (cmd % ('h', '$RPCGENHEADERFLAGS'))
-rpcgen_service = (cmd % ('m', '$RPCGENSERVICEFLAGS'))
-rpcgen_xdr = (cmd % ('c', '$RPCGENXDRFLAGS'))

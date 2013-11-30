@@ -1,2 +1,0 @@
-def scan_targets(self, scanner):
-    self.scan(scanner, self.get_all_targets())

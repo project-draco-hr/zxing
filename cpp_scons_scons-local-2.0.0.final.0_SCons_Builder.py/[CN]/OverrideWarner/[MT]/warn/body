@@ -1,9 +1,0 @@
-def warn(self):
-    if self.already_warned:
-        return
-    for k in self.keys():
-        if (k in misleading_keywords):
-            alt = misleading_keywords[k]
-            msg = ("Did you mean to use `%s' instead of `%s'?" % (alt, k))
-            SCons.Warnings.warn(SCons.Warnings.MisleadingKeywordsWarning, msg)
-    self.already_warned = 1

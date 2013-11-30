@@ -1,2 +1,0 @@
-def is_done(self):
-    return (not self.stack)

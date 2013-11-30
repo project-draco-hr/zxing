@@ -1,6 +1,0 @@
-def get_DefaultEnvironmentProxy():
-    global _DefaultEnvironmentProxy
-    if (not _DefaultEnvironmentProxy):
-        default_env = SCons.Defaults.DefaultEnvironment()
-        _DefaultEnvironmentProxy = SCons.Environment.NoSubstitutionProxy(default_env)
-    return _DefaultEnvironmentProxy

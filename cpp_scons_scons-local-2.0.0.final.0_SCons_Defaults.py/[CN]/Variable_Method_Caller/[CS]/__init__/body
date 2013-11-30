@@ -1,3 +1,0 @@
-def __init__(self, variable, method):
-    self.variable = variable
-    self.method = method

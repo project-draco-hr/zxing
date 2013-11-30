@@ -1,4 +1,0 @@
-def set_suffix(self, suffix):
-    if (not callable(suffix)):
-        suffix = self.adjust_suffix(suffix)
-    self.suffix = suffix

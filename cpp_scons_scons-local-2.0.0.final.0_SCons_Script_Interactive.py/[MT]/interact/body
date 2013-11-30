@@ -1,3 +1,0 @@
-def interact(fs, parser, options, targets, target_top):
-    c = SConsInteractiveCmd(prompt='scons>>> ', fs=fs, parser=parser, options=options, targets=targets, target_top=target_top)
-    c.cmdloop()

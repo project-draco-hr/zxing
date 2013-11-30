@@ -1,2 +1,0 @@
-def MD5signature(s):
-    return str(s)

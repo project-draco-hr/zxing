@@ -1,3 +1,0 @@
-def set_noclean(self, noclean=1):
-    "Set the Node's noclean value."
-    self.noclean = ((noclean and 1) or 0)

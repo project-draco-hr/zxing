@@ -1,6 +1,0 @@
-def must_be_same(self, klass):
-    "Called to make sure a Node is a Dir.  Since we're an\n        Entry, we can morph into one."
-    if (self.__class__ is not klass):
-        self.__class__ = klass
-        self._morph()
-        self.clear()

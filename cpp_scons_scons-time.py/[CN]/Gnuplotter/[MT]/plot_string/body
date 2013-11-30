@@ -1,2 +1,0 @@
-def plot_string(self, line):
-    return line.plot_string()

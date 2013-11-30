@@ -1,2 +1,0 @@
-def __init__(self, cmdline):
-    self.cmdline = cmdline

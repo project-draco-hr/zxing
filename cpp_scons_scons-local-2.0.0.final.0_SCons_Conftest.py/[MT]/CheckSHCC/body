@@ -1,7 +1,0 @@
-def CheckSHCC(context):
-    '\n    Configure check for a working shared C compiler.\n\n    This checks whether the C compiler, as defined in the $SHCC construction\n    variable, can compile a C source file. It uses the current $SHCCCOM value\n    too, so that it can test against non working flags.\n\n    '
-    context.Display('Checking whether the (shared) C compiler works')
-    text = '\nint foo()\n{\n    return 0;\n}\n'
-    ret = _check_empty_program(context, 'SHCC', text, 'C', use_shared=True)
-    _YesNoResult(context, ret, None, text)
-    return ret

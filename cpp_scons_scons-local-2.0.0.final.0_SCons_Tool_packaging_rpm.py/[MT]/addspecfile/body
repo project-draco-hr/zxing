@@ -1,5 +1,0 @@
-def addspecfile(target, source, env):
-    specfile = ('%s-%s' % (env['NAME'], env['VERSION']))
-    bld = SCons.Builder.Builder(action=build_specfile, suffix='.spec', target_factory=SCons.Node.FS.File)
-    source.extend(bld(env, specfile, source))
-    return (target, source)

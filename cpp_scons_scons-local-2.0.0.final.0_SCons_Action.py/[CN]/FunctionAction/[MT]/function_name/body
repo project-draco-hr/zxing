@@ -1,8 +1,0 @@
-def function_name(self):
-    try:
-        return self.execfunction.__name__
-    except AttributeError:
-        try:
-            return self.execfunction.__class__.__name__
-        except AttributeError:
-            return 'unknown_python_function'

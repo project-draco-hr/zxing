@@ -1,2 +1,0 @@
-def ignore_diskcheck_rcs(node, name):
-    return None

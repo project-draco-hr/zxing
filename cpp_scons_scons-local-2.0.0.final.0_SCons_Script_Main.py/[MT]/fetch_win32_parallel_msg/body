@@ -1,3 +1,0 @@
-def fetch_win32_parallel_msg():
-    import SCons.Platform.win32
-    return SCons.Platform.win32.parallel_msg

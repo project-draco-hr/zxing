@@ -1,9 +1,0 @@
-def _YesNoResult(context, ret, key, text, comment=None):
-    '\n    Handle the result of a test with a "yes" or "no" result.\n    "ret" is the return value: empty if OK, error message when not.\n    "key" is the name of the symbol to be defined (HAVE_foo).\n    "text" is the source code of the program used for testing.\n    "comment" is the C comment to add above the line defining the symbol (the\n    comment is automatically put inside a /* */). If None, no comment is added.\n    '
-    if key:
-        _Have(context, key, (not ret), comment)
-    if ret:
-        context.Display('no\n')
-        _LogFailed(context, text, ret)
-    else:
-        context.Display('yes\n')

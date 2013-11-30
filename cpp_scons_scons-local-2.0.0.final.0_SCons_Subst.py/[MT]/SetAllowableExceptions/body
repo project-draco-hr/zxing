@@ -1,3 +1,0 @@
-def SetAllowableExceptions(*excepts):
-    global AllowableExceptions
-    AllowableExceptions = [_f for _f in excepts if _f]

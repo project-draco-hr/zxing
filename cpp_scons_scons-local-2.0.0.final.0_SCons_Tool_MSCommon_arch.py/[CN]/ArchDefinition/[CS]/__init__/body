@@ -1,3 +1,0 @@
-def __init__(self, arch, synonyms=[]):
-    self.arch = arch
-    self.synonyms = synonyms

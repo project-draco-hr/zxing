@@ -1,6 +1,0 @@
-def write(self, arg):
-    try:
-        self.file.write(arg)
-        self.file.flush()
-    except IOError:
-        pass

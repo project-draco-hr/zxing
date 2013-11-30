@@ -1,2 +1,0 @@
-def piped_fork_spawn(sh, escape, cmd, args, env, stdout, stderr):
-    return exec_piped_fork([sh, '-c', ' '.join(args)], env, stdout, stderr)

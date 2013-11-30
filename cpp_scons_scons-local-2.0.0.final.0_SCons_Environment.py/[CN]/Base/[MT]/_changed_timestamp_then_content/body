@@ -1,2 +1,0 @@
-def _changed_timestamp_then_content(self, dependency, target, prev_ni):
-    return dependency.changed_timestamp_then_content(target, prev_ni)

@@ -1,7 +1,0 @@
-def add_to_waiting_parents(self, node):
-    '\n        Returns the number of nodes added to our waiting parents list:\n        1 if we add a unique waiting parent, 0 if not.  (Note that the\n        returned values are intended to be used to increment a reference\n        count, so don\'t think you can "clean up" this function by using\n        True and False instead...)\n        '
-    wp = self.waiting_parents
-    if (node in wp):
-        return 0
-    wp.add(node)
-    return 1

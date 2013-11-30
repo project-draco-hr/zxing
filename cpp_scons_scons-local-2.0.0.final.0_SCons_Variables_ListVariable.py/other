@@ -1,5 +1,0 @@
-"engine.SCons.Variables.ListVariable\n\nThis file defines the option type for SCons implementing 'lists'.\n\nA 'list' option may either be 'all', 'none' or a list of names\nseparated by comma. After the option has been processed, the option\nvalue holds either the named list elements, all list elemens or no\nlist elements at all.\n\nUsage example:\n\n  list_of_libs = Split('x11 gl qt ical')\n\n  opts = Variables()\n  opts.Add(ListVariable('shared',\n                      'libraries to build as shared libraries',\n                      'all',\n                      elems = list_of_libs))\n  ...\n  for lib in list_of_libs:\n     if lib in env['shared']:\n         env.SharedObject(...)\n     else:\n         env.Object(...)\n"
-__revision__ = 'src/engine/SCons/Variables/ListVariable.py 5023 2010/06/14 22:05:46 scons'
-__all__ = ['ListVariable']
-import collections
-import SCons.Util

@@ -1,5 +1,0 @@
-def __ior__(self, other):
-    'Update a set with the union of itself and another.'
-    self._binary_sanity_check(other)
-    self._data.update(other._data)
-    return self

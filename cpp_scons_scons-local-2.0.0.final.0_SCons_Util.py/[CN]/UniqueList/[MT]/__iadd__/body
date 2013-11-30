@@ -1,4 +1,0 @@
-def __iadd__(self, other):
-    result = UserList.__iadd__(self, other)
-    result.unique = False
-    return result

@@ -1,2 +1,0 @@
-def is_Scalar(obj, isinstance=isinstance, StringTypes=StringTypes, SequenceTypes=SequenceTypes):
-    return (isinstance(obj, StringTypes) or (not isinstance(obj, SequenceTypes)))

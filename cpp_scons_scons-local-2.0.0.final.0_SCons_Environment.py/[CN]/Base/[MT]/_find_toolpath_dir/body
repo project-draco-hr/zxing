@@ -1,2 +1,0 @@
-def _find_toolpath_dir(self, tp):
-    return self.fs.Dir(self.subst(tp)).srcnode().abspath

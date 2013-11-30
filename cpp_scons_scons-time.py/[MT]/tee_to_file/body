@@ -1,2 +1,0 @@
-def tee_to_file(command, log):
-    return ('%s 2>&1 | tee %s' % (command, log))

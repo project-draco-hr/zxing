@@ -1,2 +1,0 @@
-def print_cmd_line(self, s, target, source, env):
-    sys.stdout.write((s + u'\n'))

@@ -1,8 +1,0 @@
-'SCons\n\nThe main package for the SCons software construction utility.\n\n'
-__revision__ = 'src/engine/SCons/__init__.py 5023 2010/06/14 22:05:46 scons'
-__version__ = '2.0.0.final.0'
-__build__ = 'r5023'
-__buildsys__ = 'scons-dev'
-__date__ = '2010/06/14 22:05:46'
-__developer__ = 'scons'
-import SCons.compat

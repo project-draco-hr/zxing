@@ -1,4 +1,0 @@
-def DScanner():
-    'Return a prototype Scanner instance for scanning D source files'
-    ds = D()
-    return ds

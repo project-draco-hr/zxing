@@ -1,6 +1,0 @@
-def generate2(env):
-    bld = env['BUILDERS']['PDF']
-    bld.add_action('.eps', EpsPdfAction)
-    env['EPSTOPDF'] = 'epstopdf'
-    env['EPSTOPDFFLAGS'] = SCons.Util.CLVar('')
-    env['EPSTOPDFCOM'] = '$EPSTOPDF $EPSTOPDFFLAGS ${SOURCE} --outfile=${TARGET}'

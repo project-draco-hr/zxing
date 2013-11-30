@@ -1,2 +1,0 @@
-def _do_nothing(self, *args, **kw):
-    pass

@@ -1,4 +1,0 @@
-def tex_pdf_emitter(target, source, env):
-    'An emitter for TeX and LaTeX sources when\n    executing pdftex or pdflatex. It will accept graphics\n    files of types .pdf, .jpg, .png, .gif, and .tif\n    '
-    (target, source) = tex_emitter_core(target, source, env, LatexGraphics)
-    return (target, source)

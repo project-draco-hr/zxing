@@ -1,2 +1,0 @@
-def getmtime(self, path):
-    return os.path.getmtime(path)

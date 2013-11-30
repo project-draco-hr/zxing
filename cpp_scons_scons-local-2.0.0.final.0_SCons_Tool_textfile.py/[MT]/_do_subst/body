@@ -1,8 +1,0 @@
-def _do_subst(node, subs):
-    "\n    Fetch the node contents and replace all instances of the keys with\n    their values.  For example, if subs is\n        {'%VERSION%': '1.2345', '%BASE%': 'MyProg', '%prefix%': '/bin'},\n    then all instances of %VERSION% in the file will be replaced with\n    1.2345 and so forth.\n    "
-    contents = node.get_text_contents()
-    if (not subs):
-        return contents
-    for (k, v) in subs:
-        contents = re.sub(k, v, contents)
-    return contents

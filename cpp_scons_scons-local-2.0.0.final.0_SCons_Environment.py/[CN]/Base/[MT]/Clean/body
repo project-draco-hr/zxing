@@ -1,9 +1,0 @@
-def Clean(self, targets, files):
-    global CleanTargets
-    tlist = self.arg2nodes(targets, self.fs.Entry)
-    flist = self.arg2nodes(files, self.fs.Entry)
-    for t in tlist:
-        try:
-            CleanTargets[t].extend(flist)
-        except KeyError:
-            CleanTargets[t] = flist

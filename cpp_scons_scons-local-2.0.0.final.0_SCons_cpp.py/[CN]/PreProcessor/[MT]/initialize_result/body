@@ -1,2 +1,0 @@
-def initialize_result(self, fname):
-    self.result = [fname]

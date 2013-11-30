@@ -1,3 +1,0 @@
-def __get_abspath(self):
-    entry = self.get()
-    return SCons.Subst.SpecialAttrWrapper(entry.get_abspath(), (entry.name + '_abspath'))

@@ -1,3 +1,0 @@
-def write(self, built_value):
-    'Set the value of the node.'
-    self.built_value = built_value

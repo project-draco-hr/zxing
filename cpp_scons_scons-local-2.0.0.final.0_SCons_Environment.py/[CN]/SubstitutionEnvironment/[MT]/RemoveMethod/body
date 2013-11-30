@@ -1,3 +1,0 @@
-def RemoveMethod(self, function):
-    "\n        Removes the specified function's MethodWrapper from the\n        added_methods list, so we don't re-bind it when making a clone.\n        "
-    self.added_methods = [dm for dm in self.added_methods if (not (dm.method is function))]

@@ -1,3 +1,0 @@
-def add_skey(self, skey):
-    'Add a skey to the list of skeys'
-    self.skeys.append(skey)

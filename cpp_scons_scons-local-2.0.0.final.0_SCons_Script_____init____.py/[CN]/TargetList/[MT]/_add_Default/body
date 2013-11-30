@@ -1,2 +1,0 @@
-def _add_Default(self, list):
-    self.extend(list)

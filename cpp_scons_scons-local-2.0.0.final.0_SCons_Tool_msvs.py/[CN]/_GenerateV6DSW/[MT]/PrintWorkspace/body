@@ -1,5 +1,0 @@
-def PrintWorkspace(self):
-    ' writes a DSW file '
-    name = self.name
-    dspfile = self.dspfiles[0]
-    self.file.write((V6DSWHeader % locals()))

@@ -1,6 +1,0 @@
-def find_file(filename, paths, node_factory):
-    for dir in paths:
-        node = node_factory(filename, dir)
-        if node.rexists():
-            return node
-    return None

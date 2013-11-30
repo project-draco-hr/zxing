@@ -1,8 +1,0 @@
-def get_implicit_deps(self):
-    "Return the executor's implicit dependencies, i.e. the nodes of\n        the commands to be executed."
-    result = []
-    build_env = self.get_build_env()
-    for act in self.get_action_list():
-        deps = act.get_implicit_deps(self.get_all_targets(), self.get_all_sources(), build_env)
-        result.extend(deps)
-    return result

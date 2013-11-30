@@ -1,7 +1,0 @@
-def __getattr__(self, attr):
-    nl = self.nl._create_nodelist()
-    try:
-        nl0 = nl[0]
-    except IndexError:
-        raise AttributeError(('NodeList has no attribute: %s' % attr))
-    return getattr(nl0, attr)

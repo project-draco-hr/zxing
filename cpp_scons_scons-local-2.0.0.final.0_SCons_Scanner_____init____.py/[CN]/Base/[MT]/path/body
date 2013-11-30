@@ -1,7 +1,0 @@
-def path(self, env, dir=None, target=None, source=None):
-    if (not self.path_function):
-        return ()
-    if (not (self.argument is _null)):
-        return self.path_function(env, dir, target, source, self.argument)
-    else:
-        return self.path_function(env, dir, target, source)

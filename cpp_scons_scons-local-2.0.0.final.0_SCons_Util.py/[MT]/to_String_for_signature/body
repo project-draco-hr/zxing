@@ -1,7 +1,0 @@
-def to_String_for_signature(obj, to_String_for_subst=to_String_for_subst, AttributeError=AttributeError):
-    try:
-        f = obj.for_signature
-    except AttributeError:
-        return to_String_for_subst(obj)
-    else:
-        return f()

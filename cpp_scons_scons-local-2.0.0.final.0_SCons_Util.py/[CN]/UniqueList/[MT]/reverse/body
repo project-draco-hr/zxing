@@ -1,3 +1,0 @@
-def reverse(self):
-    self.__make_unique()
-    UserList.reverse(self)

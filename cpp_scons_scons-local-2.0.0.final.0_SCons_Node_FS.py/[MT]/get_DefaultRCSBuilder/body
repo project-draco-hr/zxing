@@ -1,7 +1,0 @@
-def get_DefaultRCSBuilder():
-    global DefaultRCSBuilder
-    if (DefaultRCSBuilder is None):
-        import SCons.Builder
-        act = SCons.Action.Action('$RCS_COCOM', '$RCS_COCOMSTR')
-        DefaultRCSBuilder = SCons.Builder.Builder(action=act, env=None, name='DefaultRCSBuilder')
-    return DefaultRCSBuilder

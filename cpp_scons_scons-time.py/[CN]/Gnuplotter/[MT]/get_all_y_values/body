@@ -1,5 +1,0 @@
-def get_all_y_values(self):
-    result = []
-    for line in self.lines:
-        result.extend(line.get_y_values())
-    return [r for r in result if (not (r is None))]

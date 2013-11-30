@@ -1,4 +1,0 @@
-def __call__(self, *args, **kw):
-    ac = ActionCaller(self, args, kw)
-    action = Action(ac, strfunction=ac.strfunction)
-    return action

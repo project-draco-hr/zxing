@@ -1,5 +1,0 @@
-def _Add_Arguments(alist):
-    for arg in alist:
-        (a, b) = arg.split('=', 1)
-        ARGUMENTS[a] = b
-        ARGLIST.append((a, b))

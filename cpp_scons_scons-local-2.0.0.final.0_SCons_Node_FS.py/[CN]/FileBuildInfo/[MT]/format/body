@@ -1,8 +1,0 @@
-def format(self, names=0):
-    result = []
-    bkids = ((self.bsources + self.bdepends) + self.bimplicit)
-    bkidsigs = ((self.bsourcesigs + self.bdependsigs) + self.bimplicitsigs)
-    for (bkid, bkidsig) in zip(bkids, bkidsigs):
-        result.append(((str(bkid) + ': ') + ' '.join(bkidsig.format(names=names))))
-    result.append(('%s [%s]' % (self.bactsig, self.bact)))
-    return '\n'.join(result)

@@ -1,3 +1,0 @@
-def is_up_to_date(self):
-    'Default check for whether the Node is current: unknown Node\n        subtypes are always out of date, so they will always get built.'
-    return None

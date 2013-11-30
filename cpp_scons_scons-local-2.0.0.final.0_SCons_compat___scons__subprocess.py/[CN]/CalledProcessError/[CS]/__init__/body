@@ -1,3 +1,0 @@
-def __init__(self, returncode, cmd):
-    self.returncode = returncode
-    self.cmd = cmd

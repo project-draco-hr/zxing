@@ -1,8 +1,0 @@
-def CreateJavaFileBuilder(env):
-    try:
-        java_file = env['BUILDERS']['JavaFile']
-    except KeyError:
-        java_file = SCons.Builder.Builder(action={}, emitter={}, suffix={None: '$JAVASUFFIX', })
-        env['BUILDERS']['JavaFile'] = java_file
-        env['JAVASUFFIX'] = '.java'
-    return java_file

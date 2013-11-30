@@ -1,8 +1,0 @@
-def PrintHeader(self):
-    confkeys = sorted(self.configs.keys())
-    name = self.name
-    confkey = confkeys[0]
-    self.file.write((V6DSPHeader % locals()))
-    for kind in confkeys:
-        self.file.write(('!MESSAGE "%s - Win32 %s" (based on "Win32 (x86) External Target")\n' % (name, kind)))
-    self.file.write('!MESSAGE \n\n')

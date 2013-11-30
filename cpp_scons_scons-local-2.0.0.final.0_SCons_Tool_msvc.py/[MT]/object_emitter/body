@@ -1,9 +1,0 @@
-def object_emitter(target, source, env, parent_emitter):
-    'Sets up the PCH dependencies for an object file.'
-    validate_vars(env)
-    parent_emitter(target, source, env)
-    if ('PCH' in env):
-        pch = env['PCH']
-        if (str(target[0]) != (SCons.Util.splitext(str(pch))[0] + '.obj')):
-            env.Depends(target, pch)
-    return (target, source)

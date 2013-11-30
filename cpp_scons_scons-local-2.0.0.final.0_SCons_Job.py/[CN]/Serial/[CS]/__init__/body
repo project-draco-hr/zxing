@@ -1,4 +1,0 @@
-def __init__(self, taskmaster):
-    "Create a new serial job given a taskmaster. \n\n        The taskmaster's next_task() method should return the next task\n        that needs to be executed, or None if there are no more tasks. The\n        taskmaster's executed() method will be called for each task when it\n        is successfully executed or failed() will be called if it failed to\n        execute (e.g. execute() raised an exception)."
-    self.taskmaster = taskmaster
-    self.interrupted = InterruptState()

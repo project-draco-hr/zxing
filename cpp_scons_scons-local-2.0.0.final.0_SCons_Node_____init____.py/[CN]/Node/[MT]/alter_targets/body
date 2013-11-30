@@ -1,3 +1,0 @@
-def alter_targets(self):
-    'Return a list of alternate targets for this Node.\n        '
-    return ([], None)

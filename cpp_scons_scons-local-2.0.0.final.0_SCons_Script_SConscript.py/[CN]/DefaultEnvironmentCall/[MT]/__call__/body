@@ -1,4 +1,0 @@
-def __call__(self, *args, **kw):
-    env = self.factory()
-    method = getattr(env, self.method_name)
-    return method(*args, **kw)

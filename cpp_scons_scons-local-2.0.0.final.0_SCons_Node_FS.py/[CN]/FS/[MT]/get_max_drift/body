@@ -1,2 +1,0 @@
-def get_max_drift(self):
-    return self.max_drift

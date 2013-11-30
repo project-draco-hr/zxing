@@ -1,4 +1,0 @@
-def PackageVariable(key, help, default, searchfunc=None):
-    "\n    The input parameters describe a 'package list' option, thus they\n    are returned with the correct converter and validator appended. The\n    result is usable for input to opts.Add() .\n\n    A 'package list' option may either be 'all', 'none' or a list of\n    package names (seperated by space).\n    "
-    help = '\n    '.join((help, ('( yes | no | /path/to/%s )' % key)))
-    return (key, help, default, (lambda k, v, e: _validator(k, v, e, searchfunc)), _converter)

@@ -1,9 +1,0 @@
-def get_min_x(self):
-    try:
-        return self.min_x
-    except AttributeError:
-        try:
-            self.min_x = min(self.get_all_x_values())
-        except ValueError:
-            self.min_x = 0
-        return self.min_x

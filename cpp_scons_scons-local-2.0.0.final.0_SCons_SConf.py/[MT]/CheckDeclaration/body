@@ -1,4 +1,0 @@
-def CheckDeclaration(context, declaration, includes='', language=None):
-    res = SCons.Conftest.CheckDeclaration(context, declaration, includes=includes, language=language)
-    context.did_show_result = 1
-    return (not res)

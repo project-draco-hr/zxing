@@ -1,5 +1,0 @@
-'SCons.Scanner.RC\n\nThis module implements the depenency scanner for RC (Interface\nDefinition Language) files.\n\n'
-__revision__ = 'src/engine/SCons/Scanner/RC.py 5023 2010/06/14 22:05:46 scons'
-import SCons.Node.FS
-import SCons.Scanner
-import re

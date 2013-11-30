@@ -1,5 +1,0 @@
-def __init__(self, type, do, ignore):
-    self.type = type
-    self.do = do
-    self.ignore = ignore
-    self.func = do

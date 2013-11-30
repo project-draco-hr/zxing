@@ -1,3 +1,0 @@
-def add_pre_action(self, action):
-    self._morph()
-    self.add_pre_action(action)

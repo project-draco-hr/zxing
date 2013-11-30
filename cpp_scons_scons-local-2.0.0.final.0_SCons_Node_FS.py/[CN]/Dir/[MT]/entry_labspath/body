@@ -1,2 +1,0 @@
-def entry_labspath(self, name):
-    return ((self.labspath + '/') + name)

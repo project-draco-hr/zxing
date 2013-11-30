@@ -1,3 +1,0 @@
-def Builder(self, **kw):
-    nkw = self.subst_kw(kw)
-    return SCons.Builder.Builder(**nkw)

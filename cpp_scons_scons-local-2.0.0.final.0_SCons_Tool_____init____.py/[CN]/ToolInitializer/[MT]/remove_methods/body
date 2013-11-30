@@ -1,4 +1,0 @@
-def remove_methods(self, env):
-    '\n        Removes the methods that were added by the tool initialization\n        so we no longer copy and re-bind them when the construction\n        environment gets cloned.\n        '
-    for method in self.methods.values():
-        env.RemoveMethod(method)

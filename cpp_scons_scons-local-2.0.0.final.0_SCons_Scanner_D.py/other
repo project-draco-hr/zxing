@@ -1,4 +1,0 @@
-'SCons.Scanner.D\n\nScanner for the Digital Mars "D" programming language.\n\nCoded by Andy Friesen\n17 Nov 2003\n\n'
-__revision__ = 'src/engine/SCons/Scanner/D.py 5023 2010/06/14 22:05:46 scons'
-import re
-import SCons.Scanner

@@ -1,6 +1,0 @@
-def tupleize(self, contents):
-    "\n        Turns the contents of a file into a list of easily-processed\n        tuples describing the CPP lines in the file.\n\n        The first element of each tuple is the line's preprocessor\n        directive (#if, #include, #define, etc., minus the initial '#').\n        The remaining elements are specific to the type of directive, as\n        pulled apart by the regular expression.\n        "
-    global CPP_Expression, Table
-    contents = line_continuations.sub('', contents)
-    cpp_tuples = CPP_Expression.findall(contents)
-    return [((m[0],) + Table[m[0]].match(m[1]).groups()) for m in cpp_tuples]

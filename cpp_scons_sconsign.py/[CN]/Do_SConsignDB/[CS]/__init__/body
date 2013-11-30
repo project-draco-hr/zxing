@@ -1,3 +1,0 @@
-def __init__(self, dbm_name, dbm):
-    self.dbm_name = dbm_name
-    self.dbm = dbm

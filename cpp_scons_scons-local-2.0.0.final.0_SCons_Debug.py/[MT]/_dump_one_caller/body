@@ -1,6 +1,0 @@
-def _dump_one_caller(key, file, level=0):
-    leader = ('      ' * level)
-    for (v, c) in sorted([((- v), c) for (c, v) in caller_dicts[key].items()]):
-        file.write(('%s  %6d %s:%d(%s)\n' % ((leader, (- v)) + func_shorten(c[(-3):]))))
-        if (c in caller_dicts):
-            _dump_one_caller(c, file, (level + 1))

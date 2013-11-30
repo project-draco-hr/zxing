@@ -1,3 +1,0 @@
-def printentries(self, dir, val):
-    print (('=== ' + dir) + ':')
-    printentries(pickle.loads(val), dir)

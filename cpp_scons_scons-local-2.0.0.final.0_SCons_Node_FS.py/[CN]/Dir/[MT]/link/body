@@ -1,6 +1,0 @@
-def link(self, srcdir, duplicate):
-    'Set this directory as the variant directory for the\n        supplied source directory.'
-    self.srcdir = srcdir
-    self.duplicate = duplicate
-    self.__clearRepositoryCache(duplicate)
-    srcdir.variant_dirs.append(self)

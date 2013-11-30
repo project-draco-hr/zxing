@@ -1,2 +1,0 @@
-def _clear(self):
-    del self[:]

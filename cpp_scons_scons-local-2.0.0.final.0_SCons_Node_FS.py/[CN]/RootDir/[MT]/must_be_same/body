@@ -1,4 +1,0 @@
-def must_be_same(self, klass):
-    if (klass is Dir):
-        return
-    Base.must_be_same(self, klass)

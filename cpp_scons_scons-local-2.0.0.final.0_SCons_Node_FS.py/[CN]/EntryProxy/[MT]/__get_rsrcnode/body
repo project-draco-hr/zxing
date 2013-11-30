@@ -1,2 +1,0 @@
-def __get_rsrcnode(self):
-    return EntryProxy(self.get().srcnode().rfile())

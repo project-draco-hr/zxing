@@ -1,3 +1,0 @@
-def is_derived(self):
-    '\n        Returns true iff this node is derived (i.e. built).\n\n        This should return true only for nodes whose path should be in\n        the variant directory when duplicate=0 and should contribute their build\n        signatures when they are used as source files to other derived files. For\n        example: source with source builders are not derived in this sense,\n        and hence should not return true.\n        '
-    return (self.has_builder() or self.side_effect)

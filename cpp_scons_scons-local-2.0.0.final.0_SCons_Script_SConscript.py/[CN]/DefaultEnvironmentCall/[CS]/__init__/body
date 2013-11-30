@@ -1,6 +1,0 @@
-def __init__(self, method_name, subst=0):
-    self.method_name = method_name
-    if subst:
-        self.factory = SCons.Defaults.DefaultEnvironment
-    else:
-        self.factory = get_DefaultEnvironmentProxy

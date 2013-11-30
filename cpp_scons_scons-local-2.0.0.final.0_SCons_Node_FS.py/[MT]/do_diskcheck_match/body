@@ -1,9 +1,0 @@
-def do_diskcheck_match(node, predicate, errorfmt):
-    result = predicate()
-    try:
-        if (node._memo['stat'] is None):
-            del node._memo['stat']
-    except (AttributeError, KeyError):
-        pass
-    if result:
-        raise TypeError((errorfmt % node.abspath))

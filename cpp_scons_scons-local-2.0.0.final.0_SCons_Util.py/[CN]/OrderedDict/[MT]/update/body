@@ -1,3 +1,0 @@
-def update(self, dict):
-    for (key, val) in dict.items():
-        self.__setitem__(key, val)

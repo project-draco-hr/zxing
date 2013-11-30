@@ -1,2 +1,0 @@
-def cleanup(self):
-    self._memo = {}

@@ -1,6 +1,0 @@
-def exec_popen3(l, env, stdout, stderr):
-    proc = subprocess.Popen(' '.join(l), stdout=stdout, stderr=stderr, shell=True)
-    stat = proc.wait()
-    if (stat & 255):
-        return (stat | 128)
-    return (stat >> 8)

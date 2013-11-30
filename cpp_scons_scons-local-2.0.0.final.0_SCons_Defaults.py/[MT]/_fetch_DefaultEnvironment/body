@@ -1,4 +1,0 @@
-def _fetch_DefaultEnvironment(*args, **kw):
-    '\n    Returns the already-created default construction environment.\n    '
-    global _default_env
-    return _default_env

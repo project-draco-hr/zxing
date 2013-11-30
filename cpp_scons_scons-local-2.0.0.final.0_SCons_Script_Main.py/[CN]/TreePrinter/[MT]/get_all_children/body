@@ -1,2 +1,0 @@
-def get_all_children(self, node):
-    return node.all_children()

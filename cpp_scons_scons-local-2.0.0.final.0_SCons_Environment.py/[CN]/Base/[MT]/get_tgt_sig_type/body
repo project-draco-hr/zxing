@@ -1,7 +1,0 @@
-def get_tgt_sig_type(self):
-    try:
-        return self.tgt_sig_type
-    except AttributeError:
-        t = SCons.Defaults.DefaultEnvironment().tgt_sig_type
-        self.tgt_sig_type = t
-        return t

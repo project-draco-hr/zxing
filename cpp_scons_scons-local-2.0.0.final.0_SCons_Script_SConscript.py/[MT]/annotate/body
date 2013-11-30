@@ -1,8 +1,0 @@
-def annotate(node):
-    'Annotate a node with the stack frame describing the\n    SConscript file and line number that created it.'
-    tb = sys.exc_info()[2]
-    while (tb and (stack_bottom not in tb.tb_frame.f_locals)):
-        tb = tb.tb_next
-    if (not tb):
-        raise SCons.Errors.InternalError('could not find SConscript stack frame')
-    node.creator = traceback.extract_stack(tb)[0]

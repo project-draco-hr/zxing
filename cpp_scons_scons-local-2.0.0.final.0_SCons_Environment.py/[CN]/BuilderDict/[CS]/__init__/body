@@ -1,3 +1,0 @@
-def __init__(self, dict, env):
-    self.env = env
-    UserDict.__init__(self, dict)

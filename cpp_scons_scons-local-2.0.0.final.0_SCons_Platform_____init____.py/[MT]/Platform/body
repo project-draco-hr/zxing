@@ -1,5 +1,0 @@
-def Platform(name=platform_default()):
-    'Select a canned Platform specification.\n    '
-    module = platform_module(name)
-    spec = PlatformSpec(name, module.generate)
-    return spec

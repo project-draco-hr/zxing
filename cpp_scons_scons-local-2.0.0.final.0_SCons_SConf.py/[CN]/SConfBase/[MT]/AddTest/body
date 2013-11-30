@@ -1,3 +1,0 @@
-def AddTest(self, test_name, test_instance):
-    'Adds test_class to this SConf instance. It can be called with\n        self.test_name(...)'
-    setattr(self, test_name, SConfBase.TestWrapper(test_instance, self))

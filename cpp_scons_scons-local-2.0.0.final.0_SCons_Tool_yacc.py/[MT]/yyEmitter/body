@@ -1,2 +1,0 @@
-def yyEmitter(target, source, env):
-    return _yaccEmitter(target, source, env, ['.yy'], '$YACCHXXFILESUFFIX')

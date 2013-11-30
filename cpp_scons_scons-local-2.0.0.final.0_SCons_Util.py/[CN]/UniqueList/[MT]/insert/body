@@ -1,3 +1,0 @@
-def insert(self, i):
-    UserList.insert(self, i)
-    self.unique = False

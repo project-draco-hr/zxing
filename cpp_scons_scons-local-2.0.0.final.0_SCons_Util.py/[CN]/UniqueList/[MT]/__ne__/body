@@ -1,3 +1,0 @@
-def __ne__(self, other):
-    self.__make_unique()
-    return UserList.__ne__(self, other)

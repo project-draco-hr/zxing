@@ -1,4 +1,0 @@
-'SCons.Errors\n\nThis file contains the exception classes used to handle internal\nand user errors in SCons.\n\n'
-__revision__ = 'src/engine/SCons/Errors.py 5023 2010/06/14 22:05:46 scons'
-import SCons.Util
-import exceptions

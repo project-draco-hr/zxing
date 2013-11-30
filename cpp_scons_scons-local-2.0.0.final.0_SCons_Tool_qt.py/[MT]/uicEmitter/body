@@ -1,9 +1,0 @@
-def uicEmitter(target, source, env):
-    adjustixes = SCons.Util.adjustixes
-    bs = SCons.Util.splitext(str(source[0].name))[0]
-    bs = os.path.join(str(target[0].get_dir()), bs)
-    if (len(target) < 2):
-        target.append(adjustixes(bs, env.subst('$QT_UICIMPLPREFIX'), env.subst('$QT_UICIMPLSUFFIX')))
-    if (len(target) < 3):
-        target.append(adjustixes(bs, env.subst('$QT_MOCHPREFIX'), env.subst('$QT_MOCHSUFFIX')))
-    return (target, source)

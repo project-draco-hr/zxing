@@ -1,4 +1,0 @@
-def initialize_do_splitdrive():
-    global do_splitdrive
-    (drive, path) = os.path.splitdrive('X:/foo')
-    do_splitdrive = (not (not drive))

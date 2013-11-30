@@ -1,5 +1,0 @@
-def set(self, list):
-    if (self.type in list):
-        self.func = self.do
-    else:
-        self.func = self.ignore

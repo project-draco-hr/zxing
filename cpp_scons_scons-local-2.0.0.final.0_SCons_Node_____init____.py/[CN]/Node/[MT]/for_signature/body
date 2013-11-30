@@ -1,3 +1,0 @@
-def for_signature(self):
-    '\n        Return a string representation of the Node that will always\n        be the same for this particular Node, no matter what.  This\n        is by contrast to the __str__() method, which might, for\n        instance, return a relative path for a file Node.  The purpose\n        of this method is to generate a value to be used in signature\n        calculation for the command line used to build a target, and\n        we use this method instead of str() to avoid unnecessary\n        rebuilds.  This method does not need to return something that\n        would actually work in a command line; it can return any kind of\n        nonsense, so long as it does not change.\n        '
-    return str(self)

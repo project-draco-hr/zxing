@@ -1,5 +1,0 @@
-def add_sources(self, sources):
-    'Add source files to this Executor\'s list.  This is necessary\n        for "multi" Builders that can be called repeatedly to build up\n        a source file list for a given target.'
-    assert (len(self.batches) == 1)
-    sources = [x for x in sources if (x not in self.batches[0].sources)]
-    self.batches[0].sources.extend(sources)

@@ -1,6 +1,0 @@
-def execute(self, action, *args):
-    "\n        Executes the specified action.\n\n        The action is called if it's a callable Python function, and\n        otherwise passed to os.system().\n        "
-    if callable(action):
-        action(*args)
-    else:
-        os.system((action % args))

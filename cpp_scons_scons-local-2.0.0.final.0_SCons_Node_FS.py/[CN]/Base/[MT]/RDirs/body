@@ -1,4 +1,0 @@
-def RDirs(self, pathlist):
-    'Search for a list of directories in the Repository list.'
-    cwd = (self.cwd or self.fs._cwd)
-    return cwd.Rfindalldirs(pathlist)

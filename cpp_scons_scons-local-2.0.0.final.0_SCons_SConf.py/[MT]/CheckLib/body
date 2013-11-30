@@ -1,9 +1,0 @@
-def CheckLib(context, library=None, symbol='main', header=None, language=None, autoadd=1):
-    '\n    A test for a library. See also CheckLibWithHeader.\n    Note that library may also be None to test whether the given symbol\n    compiles without flags.\n    '
-    if (library == []):
-        library = [None]
-    if (not SCons.Util.is_List(library)):
-        library = [library]
-    res = SCons.Conftest.CheckLib(context, library, symbol, header=header, language=language, autoadd=autoadd)
-    context.did_show_result = 1
-    return (not res)

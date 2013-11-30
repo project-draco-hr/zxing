@@ -1,2 +1,0 @@
-def _get_sources(self, *args, **kw):
-    return SCons.Util.NodeList([rfile(n).get_subst_proxy() for n in self.get_all_sources()])

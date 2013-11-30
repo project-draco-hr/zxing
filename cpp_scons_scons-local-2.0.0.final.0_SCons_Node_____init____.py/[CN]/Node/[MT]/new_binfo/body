@@ -1,3 +1,0 @@
-def new_binfo(self):
-    binfo = self.BuildInfo(self)
-    return binfo

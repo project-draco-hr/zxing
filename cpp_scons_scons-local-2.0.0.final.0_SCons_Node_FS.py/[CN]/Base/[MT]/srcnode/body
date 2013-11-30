@@ -1,8 +1,0 @@
-def srcnode(self):
-    'If this node is in a build path, return the node\n        corresponding to its source file.  Otherwise, return\n        ourself.\n        '
-    srcdir_list = self.dir.srcdir_list()
-    if srcdir_list:
-        srcnode = srcdir_list[0].Entry(self.name)
-        srcnode.must_be_same(self.__class__)
-        return srcnode
-    return self

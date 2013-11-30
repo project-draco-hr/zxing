@@ -1,7 +1,0 @@
-def checkMocIncluded(target, source, env):
-    moc = target[0]
-    cpp = source[0]
-    path = SCons.Defaults.CScan.path(env, moc.cwd)
-    includes = SCons.Defaults.CScan(cpp, env, path)
-    if (not (moc in includes)):
-        SCons.Warnings.warn(GeneratedMocFileNotIncluded, ("Generated moc file '%s' is not included by '%s'" % (str(moc), str(cpp))))

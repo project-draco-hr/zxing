@@ -1,9 +1,0 @@
-def _Add_Targets(tlist):
-    if tlist:
-        COMMAND_LINE_TARGETS.extend(tlist)
-        BUILD_TARGETS.extend(tlist)
-        BUILD_TARGETS._add_Default = BUILD_TARGETS._do_nothing
-        BUILD_TARGETS._clear = BUILD_TARGETS._do_nothing
-        _build_plus_default.extend(tlist)
-        _build_plus_default._add_Default = _build_plus_default._do_nothing
-        _build_plus_default._clear = _build_plus_default._do_nothing

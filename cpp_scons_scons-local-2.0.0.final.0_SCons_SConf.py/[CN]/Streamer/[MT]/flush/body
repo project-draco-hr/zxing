@@ -1,4 +1,0 @@
-def flush(self):
-    if self.orig:
-        self.orig.flush()
-    self.s.flush()

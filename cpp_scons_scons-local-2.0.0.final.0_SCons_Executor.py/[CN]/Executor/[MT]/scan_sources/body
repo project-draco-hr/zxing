@@ -1,3 +1,0 @@
-def scan_sources(self, scanner):
-    if self.batches[0].sources:
-        self.scan(scanner, self.get_all_sources())

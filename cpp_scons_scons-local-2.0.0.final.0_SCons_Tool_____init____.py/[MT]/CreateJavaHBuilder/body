@@ -1,9 +1,0 @@
-def CreateJavaHBuilder(env):
-    try:
-        java_javah = env['BUILDERS']['JavaH']
-    except KeyError:
-        fs = SCons.Node.FS.get_default_fs()
-        java_javah_com = SCons.Action.Action('$JAVAHCOM', '$JAVAHCOMSTR')
-        java_javah = SCons.Builder.Builder(action=java_javah_com, src_suffix='$JAVACLASSSUFFIX', target_factory=fs.Entry, source_factory=fs.File, src_builder='JavaClassFile')
-        env['BUILDERS']['JavaH'] = java_javah
-    return java_javah

@@ -1,9 +1,0 @@
-def walk(self, func, arg):
-    '\n        Walk this directory tree by calling the specified function\n        for each directory in the tree.\n\n        This behaves like the os.path.walk() function, but for in-memory\n        Node.FS.Dir objects.  The function takes the same arguments as\n        the functions passed to os.path.walk():\n\n                func(arg, dirname, fnames)\n\n        Except that "dirname" will actually be the directory *Node*,\n        not the string.  The \'.\' and \'..\' entries are excluded from\n        fnames.  The fnames list may be modified in-place to filter the\n        subdirectories visited or otherwise impose a specific order.\n        The "arg" argument is always passed to func() and may be used\n        in any way (or ignored, passing None is common).\n        '
-    entries = self.entries
-    names = list(entries.keys())
-    names.remove('.')
-    names.remove('..')
-    func(arg, self, names)
-    for dirname in [n for n in names if isinstance(entries[n], Dir)]:
-        entries[dirname].walk(func, arg)

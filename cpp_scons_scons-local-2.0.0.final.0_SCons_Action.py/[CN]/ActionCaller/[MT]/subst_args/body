@@ -1,2 +1,0 @@
-def subst_args(self, target, source, env):
-    return [self.subst(x, target, source, env) for x in self.args]

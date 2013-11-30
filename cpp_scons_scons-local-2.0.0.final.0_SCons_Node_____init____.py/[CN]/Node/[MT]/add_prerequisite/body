@@ -1,4 +1,0 @@
-def add_prerequisite(self, prerequisite):
-    'Adds prerequisites'
-    self.prerequisites.extend(prerequisite)
-    self._children_reset()

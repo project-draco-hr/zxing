@@ -1,3 +1,0 @@
-def add_scanner(self, skey, scanner):
-    self.function[skey] = scanner
-    self.add_skey(skey)

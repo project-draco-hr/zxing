@@ -1,2 +1,0 @@
-def new_ninfo(self):
-    return self.disambiguate().new_ninfo()

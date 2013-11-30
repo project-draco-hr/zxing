@@ -1,6 +1,0 @@
-def get_builder(self, name):
-    'Fetch the builder with the specified name from the environment.\n        '
-    try:
-        return self._dict['BUILDERS'][name]
-    except KeyError:
-        return None

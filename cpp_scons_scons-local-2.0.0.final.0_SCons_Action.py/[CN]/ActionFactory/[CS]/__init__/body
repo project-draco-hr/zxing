@@ -1,4 +1,0 @@
-def __init__(self, actfunc, strfunc, convert=(lambda x: x)):
-    self.actfunc = actfunc
-    self.strfunc = strfunc
-    self.convert = convert

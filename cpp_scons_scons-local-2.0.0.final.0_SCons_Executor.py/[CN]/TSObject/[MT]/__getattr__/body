@@ -1,3 +1,0 @@
-def __getattr__(self, attr):
-    n = self.func()
-    return getattr(n, attr)

@@ -1,6 +1,0 @@
-def doc_to_help(self, obj):
-    '\n        Translates an object\'s __doc__ string into help text.\n\n        This strips a consistent number of spaces from each line in the\n        help text, essentially "outdenting" the text to the left-most\n        column.\n        '
-    doc = obj.__doc__
-    if (doc is None):
-        return ''
-    return self.outdent(doc)

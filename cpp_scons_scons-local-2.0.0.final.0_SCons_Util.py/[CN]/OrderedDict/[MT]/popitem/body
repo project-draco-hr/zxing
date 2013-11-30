@@ -1,8 +1,0 @@
-def popitem(self):
-    try:
-        key = self._keys[(-1)]
-    except IndexError:
-        raise KeyError('dictionary is empty')
-    val = self[key]
-    del self[key]
-    return (key, val)

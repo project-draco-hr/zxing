@@ -1,2 +1,0 @@
-def changed_since_last_build(self, target, prev_ni):
-    return self.disambiguate().changed_since_last_build(target, prev_ni)

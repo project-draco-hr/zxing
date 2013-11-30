@@ -1,2 +1,0 @@
-def chmod(self, path, mode):
-    return os.chmod(path, mode)

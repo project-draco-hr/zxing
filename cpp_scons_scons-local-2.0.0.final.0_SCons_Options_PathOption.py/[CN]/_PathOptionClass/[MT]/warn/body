@@ -1,6 +1,0 @@
-def warn(self):
-    global warned
-    if (not warned):
-        msg = 'The PathOption() function is deprecated; use the PathVariable() function instead.'
-        SCons.Warnings.warn(SCons.Warnings.DeprecatedOptionsWarning, msg)
-        warned = True

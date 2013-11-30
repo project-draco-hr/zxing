@@ -1,8 +1,0 @@
-def reset_installed_visual_studios():
-    global InstalledVSList
-    global InstalledVSMap
-    InstalledVSList = None
-    InstalledVSMap = None
-    for vs in SupportedVSList:
-        vs.reset()
-    SCons.Tool.MSCommon.vc.reset_installed_vcs()

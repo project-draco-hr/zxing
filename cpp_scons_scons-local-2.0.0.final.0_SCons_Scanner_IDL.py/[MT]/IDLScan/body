@@ -1,4 +1,0 @@
-def IDLScan():
-    'Return a prototype Scanner instance for scanning IDL source files'
-    cs = SCons.Scanner.ClassicCPP('IDLScan', '$IDLSUFFIXES', 'CPPPATH', '^[ \t]*(?:#[ \t]*include|[ \t]*import)[ \t]+(<|")([^>"]+)(>|")')
-    return cs

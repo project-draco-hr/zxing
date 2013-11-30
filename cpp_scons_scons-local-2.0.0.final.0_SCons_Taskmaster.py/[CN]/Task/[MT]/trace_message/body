@@ -1,3 +1,0 @@
-def trace_message(self, method, node, description='node'):
-    fmt = '%-20s %s %s\n'
-    return (fmt % ((method + ':'), description, self.tm.trace_node(node)))

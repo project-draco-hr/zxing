@@ -1,3 +1,0 @@
-def DviPsFunction(target=None, source=None, env=None):
-    result = SCons.Tool.dvipdf.DviPdfPsFunction(PSAction, target, source, env)
-    return result

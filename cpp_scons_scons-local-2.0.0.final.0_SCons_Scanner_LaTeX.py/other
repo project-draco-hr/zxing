@@ -1,9 +1,0 @@
-'SCons.Scanner.LaTeX\n\nThis module implements the dependency scanner for LaTeX code.\n\n'
-__revision__ = 'src/engine/SCons/Scanner/LaTeX.py 5023 2010/06/14 22:05:46 scons'
-import os.path
-import re
-import SCons.Scanner
-import SCons.Util
-TexGraphics = ['.eps', '.ps']
-LatexGraphics = ['.pdf', '.png', '.jpg', '.gif', '.tif']
-_null = _Null

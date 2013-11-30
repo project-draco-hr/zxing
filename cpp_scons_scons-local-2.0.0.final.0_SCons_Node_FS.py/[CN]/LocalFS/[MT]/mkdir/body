@@ -1,2 +1,0 @@
-def mkdir(self, path):
-    return os.mkdir(path)

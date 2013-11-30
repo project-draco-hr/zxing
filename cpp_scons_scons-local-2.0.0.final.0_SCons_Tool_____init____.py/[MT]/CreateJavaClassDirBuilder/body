@@ -1,9 +1,0 @@
-def CreateJavaClassDirBuilder(env):
-    try:
-        java_class_dir = env['BUILDERS']['JavaClassDir']
-    except KeyError:
-        fs = SCons.Node.FS.get_default_fs()
-        javac_com = SCons.Action.Action('$JAVACCOM', '$JAVACCOMSTR')
-        java_class_dir = SCons.Builder.Builder(action=javac_com, emitter={}, target_factory=fs.Dir, source_factory=fs.Dir)
-        env['BUILDERS']['JavaClassDir'] = java_class_dir
-    return java_class_dir

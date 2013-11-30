@@ -1,6 +1,0 @@
-def getmtime(self):
-    st = self.stat()
-    if st:
-        return st[stat.ST_MTIME]
-    else:
-        return None

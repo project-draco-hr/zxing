@@ -1,6 +1,0 @@
-def copy_action_func(target, source, env):
-    assert (len(target) == len(source)), ('\ntarget: %s\nsource: %s' % (list(map(str, target)), list(map(str, source))))
-    for (t, s) in zip(target, source):
-        if copyFunc(t.get_path(), s.get_path(), env):
-            return 1
-    return 0

@@ -1,5 +1,0 @@
-def _PathList_key(self, pathlist):
-    "\n        Returns the key for memoization of PathLists.\n\n        Note that we want this to be pretty quick, so we don't completely\n        canonicalize all forms of the same list.  For example,\n        'dir1:$ROOT/dir2' and ['$ROOT/dir1', 'dir'] may logically\n        represent the same list if you're executing from $ROOT, but\n        we're not going to bother splitting strings into path elements,\n        or massaging strings into Nodes, to identify that equivalence.\n        We just want to eliminate obvious redundancy from the normal\n        case of re-using exactly the same cloned value for a path.\n        "
-    if SCons.Util.is_Sequence(pathlist):
-        pathlist = tuple(SCons.Util.flatten(pathlist))
-    return pathlist

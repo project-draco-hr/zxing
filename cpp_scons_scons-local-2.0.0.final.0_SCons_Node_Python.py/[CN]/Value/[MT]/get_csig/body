@@ -1,9 +1,0 @@
-def get_csig(self, calc=None):
-    "Because we're a Python value node and don't have a real\n        timestamp, we get to ignore the calculator and just use the\n        value contents."
-    try:
-        return self.ninfo.csig
-    except AttributeError:
-        pass
-    contents = self.get_contents()
-    self.get_ninfo().csig = contents
-    return contents

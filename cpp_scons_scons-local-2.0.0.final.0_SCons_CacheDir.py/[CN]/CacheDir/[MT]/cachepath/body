@@ -1,8 +1,0 @@
-def cachepath(self, node):
-    '\n        '
-    if (not self.is_enabled()):
-        return (None, None)
-    sig = node.get_cachedir_bsig()
-    subdir = sig[0].upper()
-    dir = os.path.join(self.path, subdir)
-    return (dir, os.path.join(dir, sig))

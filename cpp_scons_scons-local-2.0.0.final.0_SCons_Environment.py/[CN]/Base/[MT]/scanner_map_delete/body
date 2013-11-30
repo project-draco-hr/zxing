@@ -1,6 +1,0 @@
-def scanner_map_delete(self, kw=None):
-    'Delete the cached scanner map (if we need to).\n        '
-    try:
-        del self._memo['_gsm']
-    except KeyError:
-        pass

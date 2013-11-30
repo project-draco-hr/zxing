@@ -1,2 +1,0 @@
-def exists(self, path):
-    return os.path.exists(path)

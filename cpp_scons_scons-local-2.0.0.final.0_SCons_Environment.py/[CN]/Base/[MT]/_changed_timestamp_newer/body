@@ -1,2 +1,0 @@
-def _changed_timestamp_newer(self, dependency, target, prev_ni):
-    return dependency.changed_timestamp_newer(target, prev_ni)

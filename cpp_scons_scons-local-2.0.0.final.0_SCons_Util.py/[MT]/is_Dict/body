@@ -1,2 +1,0 @@
-def is_Dict(obj, isinstance=isinstance, DictTypes=DictTypes):
-    return isinstance(obj, DictTypes)

@@ -1,2 +1,0 @@
-def __init__(self, var):
-    self.var = SCons.Util.to_String(var)

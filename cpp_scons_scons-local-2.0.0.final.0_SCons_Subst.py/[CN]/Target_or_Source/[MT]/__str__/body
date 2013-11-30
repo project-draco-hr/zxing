@@ -1,5 +1,0 @@
-def __str__(self):
-    nl = self.nl._create_nodelist()
-    if nl:
-        return str(nl[0])
-    return ''

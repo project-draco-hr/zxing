@@ -1,2 +1,0 @@
-def exists(env):
-    return (internal_zip or env.Detect('zip'))

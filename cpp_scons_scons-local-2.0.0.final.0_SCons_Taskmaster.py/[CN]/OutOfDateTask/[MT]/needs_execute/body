@@ -1,3 +1,0 @@
-def needs_execute(self):
-    "\n        Returns True (indicating this Task should be executed) if this\n        Task's target state indicates it needs executing, which has\n        already been determined by an earlier up-to-date check.\n        "
-    return (self.targets[0].get_state() == SCons.Node.executing)

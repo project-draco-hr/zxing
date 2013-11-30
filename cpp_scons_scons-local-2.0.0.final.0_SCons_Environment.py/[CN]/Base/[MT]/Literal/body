@@ -1,2 +1,0 @@
-def Literal(self, string):
-    return SCons.Subst.Literal(string)

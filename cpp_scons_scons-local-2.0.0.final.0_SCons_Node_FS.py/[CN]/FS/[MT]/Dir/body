@@ -1,3 +1,0 @@
-def Dir(self, name, directory=None, create=True):
-    'Look up or create a Dir node with the specified name.  If\n        the name is a relative path (begins with ./, ../, or a file name),\n        then it is looked up relative to the supplied directory node,\n        or to the top level directory of the FS (supplied at construction\n        time) if no directory is supplied.\n\n        This method will raise TypeError if a normal file is found at the\n        specified path.\n        '
-    return self._lookup(name, directory, Dir, create)

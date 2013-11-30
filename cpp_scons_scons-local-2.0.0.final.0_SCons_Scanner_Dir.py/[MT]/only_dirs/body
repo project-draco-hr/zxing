@@ -1,3 +1,0 @@
-def only_dirs(nodes):
-    is_Dir = (lambda n: isinstance(n.disambiguate(), SCons.Node.FS.Dir))
-    return list(filter(is_Dir, nodes))

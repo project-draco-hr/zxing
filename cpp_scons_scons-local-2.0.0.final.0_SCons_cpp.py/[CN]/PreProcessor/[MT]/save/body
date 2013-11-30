@@ -1,4 +1,0 @@
-def save(self):
-    '\n        Pushes the current dispatch table on the stack and re-initializes\n        the current dispatch table to the default.\n        '
-    self.stack.append(self.dispatch_table)
-    self.dispatch_table = self.default_table.copy()

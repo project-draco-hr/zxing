@@ -1,2 +1,0 @@
-def msvs_exists():
-    return (len(get_installed_visual_studios()) > 0)

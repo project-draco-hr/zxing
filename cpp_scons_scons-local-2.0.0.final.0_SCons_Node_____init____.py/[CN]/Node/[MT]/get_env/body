@@ -1,6 +1,0 @@
-def get_env(self):
-    env = self.env
-    if (not env):
-        import SCons.Defaults
-        env = SCons.Defaults.DefaultEnvironment()
-    return env

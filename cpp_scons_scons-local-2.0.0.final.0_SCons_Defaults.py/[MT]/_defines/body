@@ -1,3 +1,0 @@
-def _defines(prefix, defs, suffix, env, c=_concat_ixes):
-    'A wrapper around _concat_ixes that turns a list or string\n    into a list of C preprocessor command-line definitions.\n    '
-    return c(prefix, env.subst_path(processDefines(defs)), suffix, env)

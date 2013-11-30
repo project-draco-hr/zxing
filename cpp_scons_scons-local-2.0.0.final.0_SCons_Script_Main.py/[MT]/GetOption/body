@@ -1,2 +1,0 @@
-def GetOption(name):
-    return getattr(OptionsParser.values, name)

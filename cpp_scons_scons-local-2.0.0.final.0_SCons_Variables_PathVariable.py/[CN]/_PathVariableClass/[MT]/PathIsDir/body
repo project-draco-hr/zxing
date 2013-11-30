@@ -1,8 +1,0 @@
-def PathIsDir(self, key, val, env):
-    'Validator to check if Path is a directory.'
-    if (not os.path.isdir(val)):
-        if os.path.isfile(val):
-            m = 'Directory path for option %s is a file: %s'
-        else:
-            m = 'Directory path for option %s does not exist: %s'
-        raise SCons.Errors.UserError((m % (key, val)))

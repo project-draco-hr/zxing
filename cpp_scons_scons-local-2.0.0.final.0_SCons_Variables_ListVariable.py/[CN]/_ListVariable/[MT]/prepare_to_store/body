@@ -1,2 +1,0 @@
-def prepare_to_store(self):
-    return self.__str__()

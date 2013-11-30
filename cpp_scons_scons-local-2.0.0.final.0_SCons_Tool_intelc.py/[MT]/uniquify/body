@@ -1,6 +1,0 @@
-def uniquify(s):
-    'Return a sequence containing only one copy of each unique element from input sequence s.\n    Does not preserve order.\n    Input sequence must be hashable (i.e. must be usable as a dictionary key).'
-    u = {}
-    for x in s:
-        u[x] = 1
-    return list(u.keys())

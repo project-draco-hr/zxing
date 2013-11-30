@@ -1,5 +1,0 @@
-def rfile(n):
-    try:
-        return n.rfile()
-    except AttributeError:
-        return n

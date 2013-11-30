@@ -1,3 +1,0 @@
-def __init__(self, name, variable):
-    self.name = name
-    self.path = SCons.Scanner.FindPathDirs(variable)

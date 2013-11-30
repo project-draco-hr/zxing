@@ -1,7 +1,0 @@
-def get_timestamp(self):
-    'Return the latest timestamp from among our children'
-    stamp = 0
-    for kid in self.children():
-        if (kid.get_timestamp() > stamp):
-            stamp = kid.get_timestamp()
-    return stamp

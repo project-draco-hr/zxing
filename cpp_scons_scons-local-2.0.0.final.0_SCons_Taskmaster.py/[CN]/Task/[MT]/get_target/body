@@ -1,3 +1,0 @@
-def get_target(self):
-    'Fetch the target being built or updated by this task.\n        '
-    return self.node

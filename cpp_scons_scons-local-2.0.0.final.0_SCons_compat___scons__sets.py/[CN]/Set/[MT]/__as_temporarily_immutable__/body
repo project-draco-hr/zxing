@@ -1,2 +1,0 @@
-def __as_temporarily_immutable__(self):
-    return _TemporarilyImmutableSet(self)

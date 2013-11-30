@@ -1,3 +1,0 @@
-def CompileSharedObject(self, text, ext):
-    self.sconf.cached = 1
-    return (not self.TryBuild(self.env.SharedObject, text, ext))

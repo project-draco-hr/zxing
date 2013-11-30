@@ -1,9 +1,0 @@
-__revision__ = 'src/engine/SCons/Tool/MSCommon/arch.py 5023 2010/06/14 22:05:46 scons'
-__doc__ = 'Module to define supported Windows chip architectures.\n'
-import os
-SupportedArchitectureList = [ArchitectureDefinition('x86', ['i386', 'i486', 'i586', 'i686']), ArchitectureDefinition('x86_64', ['AMD64', 'amd64', 'em64t', 'EM64T', 'x86_64']), ArchitectureDefinition('ia64', ['IA64'])]
-SupportedArchitectureMap = {}
-for a in SupportedArchitectureList:
-    SupportedArchitectureMap[a.arch] = a
-    for s in a.synonyms:
-        SupportedArchitectureMap[s] = a

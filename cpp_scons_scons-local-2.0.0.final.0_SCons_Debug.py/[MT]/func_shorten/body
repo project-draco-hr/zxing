@@ -1,9 +1,0 @@
-def func_shorten(func_tuple):
-    f = func_tuple[0]
-    for t in shorten_list:
-        i = f.find(t[0])
-        if (i >= 0):
-            if t[1]:
-                i = (i + len(t[0]))
-            return ((f[i:],) + func_tuple[1:])
-    return func_tuple

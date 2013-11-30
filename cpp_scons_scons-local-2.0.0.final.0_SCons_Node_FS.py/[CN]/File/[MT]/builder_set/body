@@ -1,3 +1,0 @@
-def builder_set(self, builder):
-    SCons.Node.Node.builder_set(self, builder)
-    self.changed_since_last_build = self.decide_target

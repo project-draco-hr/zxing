@@ -1,6 +1,0 @@
-def FormatVariableHelpText(self, env, key, help, default, actual, aliases=[]):
-    aliases = [a for a in aliases if (a != key)]
-    if (len(aliases) == 0):
-        return (self.format % (key, help, default, actual))
-    else:
-        return (self.format_ % (key, help, default, actual, aliases))

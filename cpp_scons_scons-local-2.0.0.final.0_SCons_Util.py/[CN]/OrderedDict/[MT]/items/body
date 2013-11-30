@@ -1,2 +1,0 @@
-def items(self):
-    return list(zip(self._keys, list(self.values())))

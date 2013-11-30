@@ -1,3 +1,0 @@
-def Dir(self, name):
-    name = make_path_relative(name)
-    return self.dir.Dir(name)

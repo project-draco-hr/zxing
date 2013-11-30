@@ -1,8 +1,0 @@
-def Tool(self, tool, toolpath=None, **kw):
-    if SCons.Util.is_String(tool):
-        tool = self.subst(tool)
-        if (toolpath is None):
-            toolpath = self.get('toolpath', [])
-        toolpath = list(map(self._find_toolpath_dir, toolpath))
-        tool = SCons.Tool.Tool(tool, toolpath, **kw)
-    tool(self)

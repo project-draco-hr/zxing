@@ -1,7 +1,0 @@
-def __init__(self, generator, kw):
-    if __debug__:
-        logInstanceCreation(self, 'Action.CommandGeneratorAction')
-    self.generator = generator
-    self.gen_kw = kw
-    self.varlist = kw.get('varlist', ())
-    self.targets = kw.get('targets', '$TARGETS')

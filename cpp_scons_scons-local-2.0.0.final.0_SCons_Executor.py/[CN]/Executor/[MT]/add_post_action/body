@@ -1,2 +1,0 @@
-def add_post_action(self, action):
-    self.post_actions.append(action)

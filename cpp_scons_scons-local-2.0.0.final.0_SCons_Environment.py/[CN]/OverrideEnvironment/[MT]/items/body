@@ -1,3 +1,0 @@
-def items(self):
-    'Emulates the items() method of dictionaries.'
-    return list(self.Dictionary().items())

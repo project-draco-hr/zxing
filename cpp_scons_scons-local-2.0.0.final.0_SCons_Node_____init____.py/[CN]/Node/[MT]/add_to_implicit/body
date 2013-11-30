@@ -1,6 +1,0 @@
-def add_to_implicit(self, deps):
-    if ((not hasattr(self, 'implicit')) or (self.implicit is None)):
-        self.implicit = []
-        self.implicit_set = set()
-        self._children_reset()
-    self._add_child(self.implicit, self.implicit_set, deps)

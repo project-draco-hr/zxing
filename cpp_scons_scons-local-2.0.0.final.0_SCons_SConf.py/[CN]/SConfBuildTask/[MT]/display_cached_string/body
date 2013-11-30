@@ -1,6 +1,0 @@
-def display_cached_string(self, bi):
-    '\n        Logs the original builder messages, given the SConfBuildInfo instance\n        bi.\n        '
-    if (not isinstance(bi, SConfBuildInfo)):
-        SCons.Warnings.warn(SConfWarning, ('The stored build information has an unexpected class: %s' % bi.__class__))
-    else:
-        self.display(('The original builder output was:\n' + ('  |' + str(bi.string)).replace('\n', '\n  |')))

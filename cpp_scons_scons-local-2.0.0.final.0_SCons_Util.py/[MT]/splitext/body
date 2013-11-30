@@ -1,8 +1,0 @@
-def splitext(path):
-    'Same as os.path.splitext() but faster.'
-    sep = rightmost_separator(path, os.sep)
-    dot = path.rfind('.')
-    if ((dot > sep) and (not containsOnly(path[dot:], '0123456789.'))):
-        return (path[:dot], path[dot:])
-    else:
-        return (path, '')

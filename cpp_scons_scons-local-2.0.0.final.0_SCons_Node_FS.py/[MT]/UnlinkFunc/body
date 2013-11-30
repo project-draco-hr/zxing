@@ -1,4 +1,0 @@
-def UnlinkFunc(target, source, env):
-    t = target[0]
-    t.fs.unlink(t.abspath)
-    return 0

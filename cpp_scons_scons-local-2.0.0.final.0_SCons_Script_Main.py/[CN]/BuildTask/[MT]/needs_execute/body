@@ -1,6 +1,0 @@
-def needs_execute(self):
-    if SCons.Taskmaster.OutOfDateTask.needs_execute(self):
-        return True
-    if (self.top and self.targets[0].has_builder()):
-        display(("scons: `%s' is up to date." % str(self.node)))
-    return False

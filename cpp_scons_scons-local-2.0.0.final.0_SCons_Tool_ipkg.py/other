@@ -1,4 +1,0 @@
-"SCons.Tool.ipkg\n\nTool-specific initialization for ipkg.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\nThe ipkg tool calls the ipkg-build. Its only argument should be the \npackages fake_root.\n"
-__revision__ = 'src/engine/SCons/Tool/ipkg.py 5023 2010/06/14 22:05:46 scons'
-import os
-import SCons.Builder

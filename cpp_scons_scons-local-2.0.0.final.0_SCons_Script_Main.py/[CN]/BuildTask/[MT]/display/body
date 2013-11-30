@@ -1,2 +1,0 @@
-def display(self, message):
-    display(('scons: ' + message))

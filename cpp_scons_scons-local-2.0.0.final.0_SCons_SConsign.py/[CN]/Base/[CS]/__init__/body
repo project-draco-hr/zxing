@@ -1,4 +1,0 @@
-def __init__(self):
-    self.entries = {}
-    self.dirty = False
-    self.to_be_merged = {}

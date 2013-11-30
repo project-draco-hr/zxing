@@ -1,3 +1,0 @@
-def __init__(self, orig):
-    self.orig = orig
-    self.s = io.StringIO()

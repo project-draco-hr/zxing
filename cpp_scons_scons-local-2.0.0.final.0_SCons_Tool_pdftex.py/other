@@ -1,9 +1,0 @@
-"SCons.Tool.pdftex\n\nTool-specific initialization for pdftex.\nGenerates .pdf files from .tex files\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
-__revision__ = 'src/engine/SCons/Tool/pdftex.py 5023 2010/06/14 22:05:46 scons'
-import os
-import SCons.Action
-import SCons.Util
-import SCons.Tool.tex
-PDFTeXAction = None
-PDFLaTeXAction = None
-PDFTeXLaTeXAction = None

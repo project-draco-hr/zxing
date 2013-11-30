@@ -1,2 +1,0 @@
-def _return_nodelist(self):
-    return self.nodelist

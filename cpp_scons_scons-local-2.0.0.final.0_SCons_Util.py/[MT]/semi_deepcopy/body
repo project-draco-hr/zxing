@@ -1,6 +1,0 @@
-def semi_deepcopy(x):
-    copier = _semi_deepcopy_dispatch.get(type(x))
-    if copier:
-        return copier(x)
-    else:
-        return x

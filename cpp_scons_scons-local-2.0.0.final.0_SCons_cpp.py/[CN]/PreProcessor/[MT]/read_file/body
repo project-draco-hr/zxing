@@ -1,2 +1,0 @@
-def read_file(self, file):
-    return open(file).read()

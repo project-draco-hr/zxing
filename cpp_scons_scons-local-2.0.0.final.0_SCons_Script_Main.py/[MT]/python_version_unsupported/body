@@ -1,2 +1,0 @@
-def python_version_unsupported(version=sys.version_info):
-    return (version < unsupported_python_version)

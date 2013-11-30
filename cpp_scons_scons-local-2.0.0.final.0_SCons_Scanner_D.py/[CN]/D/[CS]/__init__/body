@@ -1,3 +1,0 @@
-def __init__(self):
-    SCons.Scanner.Classic.__init__(self, name='DScanner', suffixes='$DSUFFIXES', path_variable='DPATH', regex='import\\s+(?:[a-zA-Z0-9_.]+)\\s*(?:,\\s*(?:[a-zA-Z0-9_.]+)\\s*)*;')
-    self.cre2 = re.compile('(?:import\\s)?\\s*([a-zA-Z0-9_.]+)\\s*(?:,|;)', re.M)

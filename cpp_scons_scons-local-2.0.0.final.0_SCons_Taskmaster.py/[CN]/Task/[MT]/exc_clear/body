@@ -1,4 +1,0 @@
-def exc_clear(self):
-    '\n        Clears any recorded exception.\n\n        This also changes the "exception_raise" attribute to point\n        to the appropriate do-nothing method.\n        '
-    self.exception = (None, None, None)
-    self.exception_raise = self._no_exception_to_raise

@@ -1,3 +1,0 @@
-def remove(self):
-    'Remove this Node:  no-op by default.'
-    return None

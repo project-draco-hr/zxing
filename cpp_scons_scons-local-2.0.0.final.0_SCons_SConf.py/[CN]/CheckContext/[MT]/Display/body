@@ -1,6 +1,0 @@
-def Display(self, msg):
-    if self.sconf.cached:
-        msg = ('(cached) ' + msg)
-        self.sconf.cached = 0
-    progress_display(msg, append_newline=0)
-    self.Log((('scons: Configure: ' + msg) + '\n'))

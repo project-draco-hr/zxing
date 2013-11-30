@@ -1,3 +1,0 @@
-def update(self, iterable):
-    'Add all values from an iterable (such as a list or file).'
-    self._update(iterable)

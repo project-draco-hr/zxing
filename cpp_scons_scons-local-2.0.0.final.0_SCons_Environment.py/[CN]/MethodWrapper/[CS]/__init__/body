@@ -1,7 +1,0 @@
-def __init__(self, object, method, name=None):
-    if (name is None):
-        name = method.__name__
-    self.object = object
-    self.method = method
-    self.name = name
-    setattr(self.object, name, self)

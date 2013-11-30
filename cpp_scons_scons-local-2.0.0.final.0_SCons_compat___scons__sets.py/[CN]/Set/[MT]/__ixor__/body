@@ -1,5 +1,0 @@
-def __ixor__(self, other):
-    'Update a set with the symmetric difference of itself and another.'
-    self._binary_sanity_check(other)
-    self.symmetric_difference_update(other)
-    return self

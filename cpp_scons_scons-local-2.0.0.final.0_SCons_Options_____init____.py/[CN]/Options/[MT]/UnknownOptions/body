@@ -1,2 +1,0 @@
-def UnknownOptions(self, *args, **kw):
-    return SCons.Variables.Variables.UnknownVariables(self, *args, **kw)

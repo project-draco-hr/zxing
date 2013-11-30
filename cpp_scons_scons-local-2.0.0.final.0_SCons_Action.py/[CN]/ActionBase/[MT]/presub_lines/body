@@ -1,5 +1,0 @@
-def presub_lines(self, env):
-    self.presub_env = env
-    lines = str(self).split('\n')
-    self.presub_env = None
-    return lines

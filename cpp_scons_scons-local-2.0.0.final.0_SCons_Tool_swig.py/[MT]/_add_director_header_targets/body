@@ -1,7 +1,0 @@
-def _add_director_header_targets(target, env):
-    suffix = env.subst(env['SWIGCXXFILESUFFIX'])
-    for x in target[:]:
-        n = x.name
-        d = x.dir
-        if (n[(- len(suffix)):] == suffix):
-            target.append(d.File((n[:(- len(suffix))] + env['SWIGDIRECTORSUFFIX'])))

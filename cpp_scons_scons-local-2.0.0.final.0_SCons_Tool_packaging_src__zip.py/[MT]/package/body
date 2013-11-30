@@ -1,5 +1,0 @@
-def package(env, target, source, PACKAGEROOT, **kw):
-    bld = env['BUILDERS']['Zip']
-    bld.set_suffix('.zip')
-    (target, source) = putintopackageroot(target, source, env, PACKAGEROOT, honor_install_location=0)
-    return bld(env, target, source)

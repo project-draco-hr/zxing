@@ -1,4 +1,0 @@
-def __init__(self, *args, **kw):
-    if __debug__:
-        logInstanceCreation(self, 'Executor.Null')
-    self.batches = [Batch(kw['targets'][:], [])]

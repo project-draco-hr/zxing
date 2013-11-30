@@ -1,2 +1,0 @@
-def isdir(self, path):
-    return os.path.isdir(path)

@@ -1,2 +1,0 @@
-def __call__(self, target, source, env, for_signature=None):
-    return self.cmd

@@ -1,2 +1,0 @@
-def string_wxsfile(target, source, env):
-    return ('building WiX file %s' % target[0].path)

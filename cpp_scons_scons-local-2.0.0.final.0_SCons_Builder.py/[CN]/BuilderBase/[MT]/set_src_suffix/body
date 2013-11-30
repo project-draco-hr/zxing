@@ -1,6 +1,0 @@
-def set_src_suffix(self, src_suffix):
-    if (not src_suffix):
-        src_suffix = []
-    elif (not SCons.Util.is_List(src_suffix)):
-        src_suffix = [src_suffix]
-    self.src_suffix = [((callable(suf) and suf) or self.adjust_suffix(suf)) for suf in src_suffix]

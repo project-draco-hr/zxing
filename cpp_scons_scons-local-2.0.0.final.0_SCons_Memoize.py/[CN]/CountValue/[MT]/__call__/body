@@ -1,7 +1,0 @@
-def __call__(self, *args, **kw):
-    obj = args[0]
-    if (self.method_name in obj._memo):
-        self.hit = (self.hit + 1)
-    else:
-        self.miss = (self.miss + 1)
-    return self.underlying_method(*args, **kw)

@@ -1,2 +1,0 @@
-def LocalString(target, source, env):
-    return ('Local copy of %s from %s' % (target[0], source[0]))

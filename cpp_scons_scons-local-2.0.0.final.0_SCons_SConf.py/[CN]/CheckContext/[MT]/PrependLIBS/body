@@ -1,4 +1,0 @@
-def PrependLIBS(self, lib_name_list):
-    oldLIBS = self.env.get('LIBS', [])
-    self.env.Prepend(LIBS=lib_name_list)
-    return oldLIBS

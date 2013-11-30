@@ -1,4 +1,0 @@
-def write(self, str):
-    if self.orig:
-        self.orig.write(str)
-    self.s.write(str)

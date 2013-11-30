@@ -1,4 +1,0 @@
-"engine.SCons.Variables.EnumVariable\n\nThis file defines the option type for SCons allowing only specified\ninput-values.\n\nUsage example:\n\n  opts = Variables()\n  opts.Add(EnumVariable('debug', 'debug output and symbols', 'no',\n                      allowed_values=('yes', 'no', 'full'),\n                      map={}, ignorecase=2))\n  ...\n  if env['debug'] == 'full':\n    ...\n"
-__revision__ = 'src/engine/SCons/Variables/EnumVariable.py 5023 2010/06/14 22:05:46 scons'
-__all__ = ['EnumVariable']
-import SCons.Errors

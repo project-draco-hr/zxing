@@ -1,7 +1,0 @@
-def __setattr__(self, name, value):
-    if (name == 'env'):
-        self.object = value
-    elif (name == 'builder'):
-        self.method = value
-    else:
-        self.__dict__[name] = value

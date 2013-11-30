@@ -1,3 +1,0 @@
-def SetBuildType(type):
-    global build_type
-    build_type = type

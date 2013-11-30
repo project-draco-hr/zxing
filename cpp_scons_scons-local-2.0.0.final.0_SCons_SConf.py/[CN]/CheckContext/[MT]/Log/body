@@ -1,3 +1,0 @@
-def Log(self, msg):
-    if (self.sconf.logstream is not None):
-        self.sconf.logstream.write(msg)

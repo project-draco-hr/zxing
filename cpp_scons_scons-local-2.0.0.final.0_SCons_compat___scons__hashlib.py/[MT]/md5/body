@@ -1,2 +1,0 @@
-def md5(string=''):
-    return md5obj('md5', string)

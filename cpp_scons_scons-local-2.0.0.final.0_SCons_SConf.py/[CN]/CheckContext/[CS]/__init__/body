@@ -1,8 +1,0 @@
-def __init__(self, sconf):
-    'Constructor. Pass the corresponding SConf instance.'
-    self.sconf = sconf
-    self.did_show_result = 0
-    self.vardict = {}
-    self.havedict = {}
-    self.headerfilename = None
-    self.config_h = ''

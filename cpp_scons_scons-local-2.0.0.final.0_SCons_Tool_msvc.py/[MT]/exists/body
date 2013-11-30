@@ -1,2 +1,0 @@
-def exists(env):
-    return msvc_exists()

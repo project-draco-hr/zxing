@@ -1,6 +1,0 @@
-def copy_attr(f1, f2):
-    ' copies the special packaging file attributes from f1 to f2.\n    '
-    copyit = (lambda x: ((not hasattr(f2, x)) and (x[:10] == 'PACKAGING_')))
-    pattrs = list(filter(copyit, dir(f1)))
-    for attr in pattrs:
-        setattr(f2, attr, getattr(f1, attr))

@@ -1,6 +1,0 @@
-def get_all_sources(self):
-    'Returns all sources for all batches of this Executor.'
-    result = []
-    for batch in self.batches:
-        result.extend(batch.sources)
-    return result

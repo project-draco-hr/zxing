@@ -1,2 +1,0 @@
-def is_enabled(self):
-    return (cache_enabled and (not (self.path is None)))

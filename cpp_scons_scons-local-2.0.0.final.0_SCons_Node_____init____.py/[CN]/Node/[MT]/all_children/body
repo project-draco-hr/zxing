@@ -1,8 +1,0 @@
-def all_children(self, scan=1):
-    "Return a list of all the node's direct children."
-    if scan:
-        self.scan()
-    if (self.implicit is None):
-        return (self.sources + self.depends)
-    else:
-        return ((self.sources + self.depends) + self.implicit)

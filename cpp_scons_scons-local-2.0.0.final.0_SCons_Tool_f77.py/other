@@ -1,8 +1,0 @@
-"engine.SCons.Tool.f77\n\nTool-specific initialization for the generic Posix f77 Fortran compiler.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
-__revision__ = 'src/engine/SCons/Tool/f77.py 5023 2010/06/14 22:05:46 scons'
-import SCons.Defaults
-import SCons.Scanner.Fortran
-import SCons.Tool
-import SCons.Util
-from SCons.Tool.FortranCommon import add_all_to_env, add_f77_to_env
-compilers = ['f77']

@@ -1,9 +1,0 @@
-def _generate_cache(self, env):
-    if env:
-        c = env.get(self.var, '')
-    else:
-        c = ''
-    gen_cmd = Action(c, **self.gen_kw)
-    if (not gen_cmd):
-        raise SCons.Errors.UserError(('$%s value %s cannot be used to create an Action.' % (self.var, repr(c))))
-    return gen_cmd

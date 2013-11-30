@@ -1,2 +1,0 @@
-def hexdigest(self):
-    return self.m.hexdigest()

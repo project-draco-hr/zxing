@@ -1,5 +1,0 @@
-def changed_timestamp_newer(self, target, prev_ni):
-    try:
-        return (self.get_timestamp() > target.get_timestamp())
-    except AttributeError:
-        return 1

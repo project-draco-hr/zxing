@@ -1,4 +1,0 @@
-def AddTests(self, tests):
-    'Adds all the tests given in the tests dictionary to this SConf\n        instance\n        '
-    for name in tests.keys():
-        self.AddTest(name, tests[name])

@@ -1,5 +1,0 @@
-def swigSuffixEmitter(env, source):
-    if ('-c++' in SCons.Util.CLVar(env.subst('$SWIGFLAGS', source=source))):
-        return '$SWIGCXXFILESUFFIX'
-    else:
-        return '$SWIGCFILESUFFIX'

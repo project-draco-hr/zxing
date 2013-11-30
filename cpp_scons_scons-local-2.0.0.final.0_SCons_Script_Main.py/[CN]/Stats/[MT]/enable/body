@@ -1,4 +1,0 @@
-def enable(self, outfp):
-    self.outfp = outfp
-    self.append = self.do_append
-    self.print_stats = self.do_print

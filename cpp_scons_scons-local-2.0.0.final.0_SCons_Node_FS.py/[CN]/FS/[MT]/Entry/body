@@ -1,3 +1,0 @@
-def Entry(self, name, directory=None, create=1):
-    'Look up or create a generic Entry node with the specified name.\n        If the name is a relative path (begins with ./, ../, or a file\n        name), then it is looked up relative to the supplied directory\n        node, or to the top level directory of the FS (supplied at\n        construction time) if no directory is supplied.\n        '
-    return self._lookup(name, directory, Entry, create)

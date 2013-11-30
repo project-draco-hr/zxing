@@ -1,4 +1,0 @@
-def AddMethod(self, function, name=None):
-    '\n        Adds the specified function as a method of this construction\n        environment with the specified name.  If the name is omitted,\n        the default name is the name of the function itself.\n        '
-    method = MethodWrapper(self, function, name)
-    self.added_methods.append(method)

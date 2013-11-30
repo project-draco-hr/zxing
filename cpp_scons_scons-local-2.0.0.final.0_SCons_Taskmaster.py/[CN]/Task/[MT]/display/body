@@ -1,3 +1,0 @@
-def display(self, message):
-    '\n        Hook to allow the calling interface to display a message.\n\n        This hook gets called as part of preparing a task for execution\n        (that is, a Node to be built).  As part of figuring out what Node\n        should be built next, the actually target list may be altered,\n        along with a message describing the alteration.  The calling\n        interface can subclass Task and provide a concrete implementation\n        of this method to see those messages.\n        '
-    pass

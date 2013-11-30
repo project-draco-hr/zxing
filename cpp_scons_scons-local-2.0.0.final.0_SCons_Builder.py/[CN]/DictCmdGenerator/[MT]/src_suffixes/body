@@ -1,2 +1,0 @@
-def src_suffixes(self):
-    return list(self.keys())

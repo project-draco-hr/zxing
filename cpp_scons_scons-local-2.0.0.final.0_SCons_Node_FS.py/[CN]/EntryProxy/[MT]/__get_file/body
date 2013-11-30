@@ -1,3 +1,0 @@
-def __get_file(self):
-    name = self.get().name
-    return SCons.Subst.SpecialAttrWrapper(name, (name + '_file'))

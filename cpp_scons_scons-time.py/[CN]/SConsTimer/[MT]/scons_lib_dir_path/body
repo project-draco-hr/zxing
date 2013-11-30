@@ -1,2 +1,0 @@
-def scons_lib_dir_path(self, dir):
-    return os.path.join(dir, 'src', 'engine')

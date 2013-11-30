@@ -1,2 +1,0 @@
-def __str__(self):
-    return self.parent.strfunc(*self.args, **self.kw)

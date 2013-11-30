@@ -1,2 +1,0 @@
-def windowsLibEmitter(target, source, env):
-    return _dllEmitter(target, source, env, 'SHLIB')

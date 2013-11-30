@@ -1,3 +1,0 @@
-def find_include(self, include, source_dir, path):
-    n = SCons.Node.FS.find_file(include, ((source_dir,) + tuple(path)))
-    return (n, include)

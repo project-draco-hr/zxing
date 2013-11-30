@@ -1,2 +1,0 @@
-def __semi_deepcopy__(self):
-    return self.__class__(self.data, self.env)

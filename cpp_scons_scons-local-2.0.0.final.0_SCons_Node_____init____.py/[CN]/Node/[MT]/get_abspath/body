@@ -1,3 +1,0 @@
-def get_abspath(self):
-    '\n        Return an absolute path to the Node.  This will return simply\n        str(Node) by default, but for Node types that have a concept of\n        relative path, this might return something different.\n        '
-    return str(self)

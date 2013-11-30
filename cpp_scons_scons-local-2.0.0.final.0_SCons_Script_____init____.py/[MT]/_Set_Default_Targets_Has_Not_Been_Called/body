@@ -1,4 +1,0 @@
-def _Set_Default_Targets_Has_Not_Been_Called(d, fs):
-    if (d is None):
-        d = [fs.Dir('.')]
-    return d

@@ -1,3 +1,0 @@
-def get_derived_children(self, node):
-    children = node.all_children(None)
-    return [x for x in children if x.has_builder()]

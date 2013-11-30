@@ -1,2 +1,0 @@
-def for_signature(self):
-    return self.forsig

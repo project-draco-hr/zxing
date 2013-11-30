@@ -1,3 +1,0 @@
-def UnknownVariables(self):
-    '\n        Returns any options in the specified arguments lists that\n        were not known, declared options in this object.\n        '
-    return self.unknown

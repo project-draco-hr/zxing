@@ -1,3 +1,0 @@
-def Value(self, value, built_value=None):
-    '\n        '
-    return SCons.Node.Python.Value(value, built_value)

@@ -1,3 +1,0 @@
-def dump_stats():
-    for n in sorted(StatsNodes, key=(lambda a: str(a))):
-        print ((fmt % n.stats.__dict__) + str(n))

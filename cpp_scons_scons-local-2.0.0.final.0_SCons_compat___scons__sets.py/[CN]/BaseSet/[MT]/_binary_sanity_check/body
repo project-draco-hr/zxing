@@ -1,3 +1,0 @@
-def _binary_sanity_check(self, other):
-    if (not isinstance(other, BaseSet)):
-        raise TypeError('Binary operation only permitted between sets')

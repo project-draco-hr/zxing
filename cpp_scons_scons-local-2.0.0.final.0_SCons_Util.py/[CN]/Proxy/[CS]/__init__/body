@@ -1,3 +1,0 @@
-def __init__(self, subject):
-    'Wrap an object as a Proxy object'
-    self._subject = subject

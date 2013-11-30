@@ -1,3 +1,0 @@
-def do_clean(self, argv):
-    "        clean [TARGETS]         Clean (remove) the specified TARGETS\n                                and their dependencies.  'c' is a synonym.\n        "
-    return self.do_build((['build', '--clean'] + argv[1:]))

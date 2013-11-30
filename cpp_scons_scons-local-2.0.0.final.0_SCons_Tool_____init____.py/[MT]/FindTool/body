@@ -1,6 +1,0 @@
-def FindTool(tools, env):
-    for tool in tools:
-        t = Tool(tool)
-        if t.exists(env):
-            return tool
-    return None

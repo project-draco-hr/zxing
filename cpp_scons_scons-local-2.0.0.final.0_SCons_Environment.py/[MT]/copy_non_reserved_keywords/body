@@ -1,8 +1,0 @@
-def copy_non_reserved_keywords(dict):
-    result = semi_deepcopy(dict)
-    for k in result.keys():
-        if (k in reserved_construction_var_names):
-            msg = "Ignoring attempt to set reserved variable `$%s'"
-            SCons.Warnings.warn(SCons.Warnings.ReservedVariableWarning, (msg % k))
-            del result[k]
-    return result

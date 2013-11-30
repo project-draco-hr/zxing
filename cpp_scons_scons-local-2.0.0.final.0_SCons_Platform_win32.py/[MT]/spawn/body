@@ -1,5 +1,0 @@
-def spawn(sh, escape, cmd, args, env):
-    if (not sh):
-        sys.stderr.write('scons: Could not find command interpreter, is it in your PATH?\n')
-        return 127
-    return exec_spawn([sh, '/C', escape(' '.join(args))], env)

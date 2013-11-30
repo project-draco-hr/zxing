@@ -1,3 +1,0 @@
-def merge_default_version(env):
-    version = get_default_version(env)
-    arch = get_default_arch(env)

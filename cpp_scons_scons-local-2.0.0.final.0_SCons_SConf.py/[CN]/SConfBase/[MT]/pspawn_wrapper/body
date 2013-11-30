@@ -1,3 +1,0 @@
-def pspawn_wrapper(self, sh, escape, cmd, args, env):
-    'Wrapper function for handling piped spawns.\n\n        This looks to the calling interface (in Action.py) like a "normal"\n        spawn, but associates the call with the PSPAWN variable from\n        the construction environment and with the streams to which we\n        want the output logged.  This gets slid into the construction\n        environment as the SPAWN variable so Action.py doesn\'t have to\n        know or care whether it\'s spawning a piped command or not.\n        '
-    return self.pspawn(sh, escape, cmd, args, env, self.logstream, self.logstream)

@@ -1,2 +1,0 @@
-def _subst_src_suffixes_key(self, env):
-    return id(env)

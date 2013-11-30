@@ -1,3 +1,0 @@
-'SCons.Tool.Packaging.targz\n\nThe targz SRC packager.\n'
-__revision__ = 'src/engine/SCons/Tool/packaging/src_targz.py 5023 2010/06/14 22:05:46 scons'
-from SCons.Tool.packaging import putintopackageroot

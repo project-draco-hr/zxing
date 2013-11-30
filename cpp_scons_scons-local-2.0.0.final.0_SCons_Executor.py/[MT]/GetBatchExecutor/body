@@ -1,2 +1,0 @@
-def GetBatchExecutor(key):
-    return _batch_executors[key]

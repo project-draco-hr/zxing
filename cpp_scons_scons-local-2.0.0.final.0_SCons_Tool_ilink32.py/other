@@ -1,5 +1,0 @@
-'SCons.Tool.ilink32\n\nXXX\n\n'
-__revision__ = 'src/engine/SCons/Tool/ilink32.py 5023 2010/06/14 22:05:46 scons'
-import SCons.Tool
-import SCons.Tool.bcc32
-import SCons.Util

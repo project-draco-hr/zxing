@@ -1,2 +1,0 @@
-def _Set_Default_Targets_Has_Been_Called(d, fs):
-    return DEFAULT_TARGETS

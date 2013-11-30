@@ -1,3 +1,0 @@
-def __init__(self, cmd, literal=None):
-    collections.UserString.__init__(self, cmd)
-    self.literal = literal

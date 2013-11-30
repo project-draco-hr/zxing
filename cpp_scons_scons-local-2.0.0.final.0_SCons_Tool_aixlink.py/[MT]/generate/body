@@ -1,7 +1,0 @@
-def generate(env):
-    '\n    Add Builders and construction variables for Visual Age linker to\n    an Environment.\n    '
-    link.generate(env)
-    env['SMARTLINKFLAGS'] = smart_linkflags
-    env['LINKFLAGS'] = SCons.Util.CLVar('$SMARTLINKFLAGS')
-    env['SHLINKFLAGS'] = SCons.Util.CLVar('$LINKFLAGS -qmkshrobj -qsuppress=1501-218')
-    env['SHLIBSUFFIX'] = '.a'

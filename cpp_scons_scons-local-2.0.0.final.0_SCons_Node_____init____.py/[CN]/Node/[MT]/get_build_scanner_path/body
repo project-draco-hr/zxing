@@ -1,3 +1,0 @@
-def get_build_scanner_path(self, scanner):
-    'Fetch the appropriate scanner path for this node.'
-    return self.get_executor().get_build_scanner_path(scanner)

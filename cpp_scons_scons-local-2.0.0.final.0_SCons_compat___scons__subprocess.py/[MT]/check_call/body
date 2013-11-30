@@ -1,9 +1,0 @@
-def check_call(*popenargs, **kwargs):
-    'Run command with arguments.  Wait for command to complete.  If\n    the exit code was zero then return, otherwise raise\n    CalledProcessError.  The CalledProcessError object will have the\n    return code in the returncode attribute.\n\n    The arguments are the same as for the Popen constructor.  Example:\n\n    check_call(["ls", "-l"])\n    '
-    retcode = call(*popenargs, **kwargs)
-    cmd = kwargs.get('args')
-    if (cmd is None):
-        cmd = popenargs[0]
-    if retcode:
-        raise CalledProcessError(retcode, cmd)
-    return retcode

@@ -1,3 +1,0 @@
-def union_update(self, other):
-    'Update a set with the union of itself and another.'
-    self._update(other)

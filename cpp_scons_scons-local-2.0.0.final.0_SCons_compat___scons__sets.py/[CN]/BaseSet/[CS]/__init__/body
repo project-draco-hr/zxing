@@ -1,4 +1,0 @@
-def __init__(self):
-    'This is an abstract class.'
-    if (self.__class__ is BaseSet):
-        raise TypeError('BaseSet is an abstract class.  Use Set or ImmutableSet.')

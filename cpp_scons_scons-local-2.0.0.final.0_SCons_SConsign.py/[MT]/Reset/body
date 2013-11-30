@@ -1,5 +1,0 @@
-def Reset():
-    'Reset global state.  Used by unit tests that end up using\n    SConsign multiple times to get a clean slate for each test.'
-    global sig_files, DB_sync_list
-    sig_files = []
-    DB_sync_list = []

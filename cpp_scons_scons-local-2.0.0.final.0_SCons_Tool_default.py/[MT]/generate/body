@@ -1,4 +1,0 @@
-def generate(env):
-    'Add default tools.'
-    for t in SCons.Tool.tool_list(env['PLATFORM'], env):
-        SCons.Tool.Tool(t)(env)

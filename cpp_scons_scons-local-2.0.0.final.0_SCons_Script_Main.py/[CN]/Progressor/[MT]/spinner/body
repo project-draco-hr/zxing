@@ -1,2 +1,0 @@
-def spinner(self, node):
-    self.write(self.obj[(self.count % len(self.obj))])

@@ -1,3 +1,0 @@
-def ldmodEmitter(target, source, env):
-    'Emitter for loadable modules.\n    \n    Loadable modules are identical to shared libraries on Windows, but building\n    them is subject to different parameters (LDMODULE*).\n    '
-    return _dllEmitter(target, source, env, 'LDMODULE')

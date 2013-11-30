@@ -1,9 +1,0 @@
-def Dir(self, name, *args, **kw):
-    '\n        '
-    s = self.subst(name)
-    if SCons.Util.is_Sequence(s):
-        result = []
-        for e in s:
-            result.append(self.fs.Dir(e, *args, **kw))
-        return result
-    return self.fs.Dir(s, *args, **kw)

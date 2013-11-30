@@ -1,3 +1,0 @@
-def Dir(self, name, create=True):
-    "Create a directory node named 'name' relative to\n        the directory of this file."
-    return self.dir.Dir(name, create=create)

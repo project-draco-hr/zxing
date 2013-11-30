@@ -1,6 +1,0 @@
-def rfile(self):
-    "We're a generic Entry, but the caller is actually looking for\n        a File at this point, so morph into one."
-    self.__class__ = File
-    self._morph()
-    self.clear()
-    return File.rfile(self)

@@ -1,2 +1,0 @@
-def set_local(self):
-    self._local = 1

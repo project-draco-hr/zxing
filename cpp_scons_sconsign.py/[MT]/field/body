@@ -1,9 +1,0 @@
-def field(name, entry, verbose=Verbose):
-    if (not Print_Flags[name]):
-        return None
-    fieldname = map_name.get(name, name)
-    mapper = map_field.get(fieldname, default_mapper)
-    val = mapper(entry, name)
-    if verbose:
-        val = ((name + ': ') + val)
-    return val

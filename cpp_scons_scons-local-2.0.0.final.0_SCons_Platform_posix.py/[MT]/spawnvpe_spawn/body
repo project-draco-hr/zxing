@@ -1,2 +1,0 @@
-def spawnvpe_spawn(sh, escape, cmd, args, env):
-    return exec_spawnvpe([sh, '-c', ' '.join(args)], env)

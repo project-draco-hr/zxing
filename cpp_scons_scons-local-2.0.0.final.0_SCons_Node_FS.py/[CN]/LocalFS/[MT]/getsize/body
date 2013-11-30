@@ -1,2 +1,0 @@
-def getsize(self, path):
-    return os.path.getsize(path)

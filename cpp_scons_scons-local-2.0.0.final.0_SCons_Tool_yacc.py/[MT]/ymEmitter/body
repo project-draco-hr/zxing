@@ -1,2 +1,0 @@
-def ymEmitter(target, source, env):
-    return _yaccEmitter(target, source, env, ['.ym'], '$YACCHFILESUFFIX')

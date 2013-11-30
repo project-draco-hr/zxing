@@ -1,6 +1,0 @@
-def __call__(self, env, *args, **kw):
-    '\n        '
-    builder = self.get_builder(env)
-    if (builder is None):
-        return ([], [])
-    return builder(*args, **kw)

@@ -1,8 +1,0 @@
-def CacheRetrieveString(target, source, env):
-    t = target[0]
-    fs = t.fs
-    cd = env.get_CacheDir()
-    (cachedir, cachefile) = cd.cachepath(t)
-    if t.fs.exists(cachefile):
-        return ("Retrieved `%s' from cache" % t.path)
-    return None

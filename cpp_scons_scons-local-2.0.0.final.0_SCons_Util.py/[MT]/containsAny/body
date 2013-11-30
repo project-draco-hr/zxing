@@ -1,6 +1,0 @@
-def containsAny(str, set):
-    'Check whether sequence str contains ANY of the items in set.'
-    for c in set:
-        if (c in str):
-            return 1
-    return 0

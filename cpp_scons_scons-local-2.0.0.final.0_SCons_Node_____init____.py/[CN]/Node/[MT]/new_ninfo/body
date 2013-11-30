@@ -1,3 +1,0 @@
-def new_ninfo(self):
-    ninfo = self.NodeInfo(self)
-    return ninfo

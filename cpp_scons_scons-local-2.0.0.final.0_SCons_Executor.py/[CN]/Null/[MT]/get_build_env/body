@@ -1,2 +1,0 @@
-def get_build_env(self):
-    return get_NullEnvironment()

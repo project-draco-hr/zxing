@@ -1,3 +1,0 @@
-def get_targets(self, env, executor):
-    '\n        Returns the type of targets ($TARGETS, $CHANGED_TARGETS) used\n        by this action.\n        '
-    return self.targets

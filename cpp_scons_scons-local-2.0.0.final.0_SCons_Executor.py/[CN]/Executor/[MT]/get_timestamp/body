@@ -1,3 +1,0 @@
-def get_timestamp(self):
-    "Fetch a time stamp for this Executor.  We don't have one, of\n        course (only files do), but this is the interface used by the\n        timestamp module.\n        "
-    return 0

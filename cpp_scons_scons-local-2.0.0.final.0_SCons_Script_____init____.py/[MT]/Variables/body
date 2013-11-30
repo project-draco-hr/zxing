@@ -1,2 +1,0 @@
-def Variables(files=[], args=ARGUMENTS):
-    return SCons.Variables.Variables(files, args)

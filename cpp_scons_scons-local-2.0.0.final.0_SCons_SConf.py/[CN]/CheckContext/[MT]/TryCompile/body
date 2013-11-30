@@ -1,2 +1,0 @@
-def TryCompile(self, *args, **kw):
-    return self.sconf.TryCompile(*args, **kw)

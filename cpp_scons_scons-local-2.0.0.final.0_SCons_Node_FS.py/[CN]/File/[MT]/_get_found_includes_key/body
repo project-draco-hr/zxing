@@ -1,2 +1,0 @@
-def _get_found_includes_key(self, env, scanner, path):
-    return (id(env), id(scanner), path)

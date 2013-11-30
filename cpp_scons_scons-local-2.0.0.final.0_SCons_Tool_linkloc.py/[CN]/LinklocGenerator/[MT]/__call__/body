@@ -1,9 +1,0 @@
-def __call__(self, env, target, source, for_signature):
-    if for_signature:
-        subs = 1
-        strsub = env.subst(self.cmdline, target=target, source=source)
-        while subs:
-            (strsub, subs) = _re_linker_command.subn(repl_linker_command, strsub)
-        return strsub
-    else:
-        return (("${TEMPFILE('" + self.cmdline) + "')}")

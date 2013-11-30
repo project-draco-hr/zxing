@@ -1,3 +1,0 @@
-def writelines(self, lines):
-    for l in lines:
-        self.write((l + '\n'))

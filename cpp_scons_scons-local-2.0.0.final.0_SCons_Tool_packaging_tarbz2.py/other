@@ -1,3 +1,0 @@
-'SCons.Tool.Packaging.tarbz2\n\nThe tarbz2 SRC packager.\n'
-__revision__ = 'src/engine/SCons/Tool/packaging/tarbz2.py 5023 2010/06/14 22:05:46 scons'
-from SCons.Tool.packaging import stripinstallbuilder, putintopackageroot

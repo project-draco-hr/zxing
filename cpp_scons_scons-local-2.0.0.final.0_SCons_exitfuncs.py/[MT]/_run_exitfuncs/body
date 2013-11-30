@@ -1,5 +1,0 @@
-def _run_exitfuncs():
-    'run any registered exit functions\n\n    _exithandlers is traversed in reverse order so functions are executed\n    last in, first out.\n    '
-    while _exithandlers:
-        (func, targs, kargs) = _exithandlers.pop()
-        func(*targs, **kargs)

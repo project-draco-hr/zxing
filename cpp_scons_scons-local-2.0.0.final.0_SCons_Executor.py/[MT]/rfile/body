@@ -1,8 +1,0 @@
-def rfile(node):
-    "\n    A function to return the results of a Node's rfile() method,\n    if it exists, and the Node itself otherwise (if it's a Value\n    Node, e.g.).\n    "
-    try:
-        rfile = node.rfile
-    except AttributeError:
-        return node
-    else:
-        return rfile()

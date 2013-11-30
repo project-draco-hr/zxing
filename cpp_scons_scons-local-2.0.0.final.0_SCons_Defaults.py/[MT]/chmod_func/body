@@ -1,6 +1,0 @@
-def chmod_func(dest, mode):
-    SCons.Node.FS.invalidate_node_memos(dest)
-    if (not SCons.Util.is_List(dest)):
-        dest = [dest]
-    for element in dest:
-        os.chmod(str(element), mode)

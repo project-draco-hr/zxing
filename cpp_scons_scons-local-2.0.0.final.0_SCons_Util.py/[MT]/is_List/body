@@ -1,2 +1,0 @@
-def is_List(obj, isinstance=isinstance, ListTypes=ListTypes):
-    return isinstance(obj, ListTypes)

@@ -1,7 +1,0 @@
-'SCons.Tool.bcc32\n\nXXX\n\n'
-__revision__ = 'src/engine/SCons/Tool/bcc32.py 5023 2010/06/14 22:05:46 scons'
-import os
-import os.path
-import SCons.Defaults
-import SCons.Tool
-import SCons.Util

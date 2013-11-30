@@ -1,6 +1,0 @@
-def __init__(self, version, **kw):
-    self.version = version
-    kw['vc_version'] = kw.get('vc_version', version)
-    kw['sdk_version'] = kw.get('sdk_version', version)
-    self.__dict__.update(kw)
-    self._cache = {}

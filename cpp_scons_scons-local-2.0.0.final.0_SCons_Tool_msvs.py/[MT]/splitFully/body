@@ -1,7 +1,0 @@
-def splitFully(path):
-    (dir, base) = os.path.split(path)
-    if (dir and (dir != '') and (dir != path)):
-        return (splitFully(dir) + [base])
-    if (base == ''):
-        return []
-    return [base]

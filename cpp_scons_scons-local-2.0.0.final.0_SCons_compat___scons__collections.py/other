@@ -1,3 +1,0 @@
-__doc__ = '\ncollections compatibility module for older (pre-2.4) Python versions\n\nThis does not not NOT (repeat, *NOT*) provide complete collections\nfunctionality.  It only wraps the portions of collections functionality\nused by SCons, in an interface that looks enough like collections for\nour purposes.\n'
-__revision__ = 'src/engine/SCons/compat/_scons_collections.py 5023 2010/06/14 22:05:46 scons'
-exec 'if True:\n            from UserDict import UserDict\n            from UserList import UserList\n            from UserString import UserString'

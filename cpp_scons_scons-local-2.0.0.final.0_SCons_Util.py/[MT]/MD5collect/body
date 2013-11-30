@@ -1,6 +1,0 @@
-def MD5collect(signatures):
-    '\n    Collects a list of signatures into an aggregate signature.\n\n    signatures - a list of signatures\n    returns - the aggregate signature\n    '
-    if (len(signatures) == 1):
-        return signatures[0]
-    else:
-        return MD5signature(', '.join(signatures))

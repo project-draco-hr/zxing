@@ -1,4 +1,0 @@
-def lvars(self):
-    lvars = self.__dict__['__subject'].lvars()
-    lvars.update(self.__dict__['overrides'])
-    return lvars

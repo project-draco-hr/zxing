@@ -1,7 +1,0 @@
-def _lang2suffix(lang):
-    '\n    Convert a language name to a suffix.\n    When "lang" is empty or None C is assumed.\n    Returns a tuple (lang, suffix, None) when it works.\n    For an unrecognized language returns (None, None, msg).\n    Where:\n        lang   = the unified language name\n        suffix = the suffix, including the leading dot\n        msg    = an error message\n    '
-    if ((not lang) or (lang in ['C', 'c'])):
-        return ('C', '.c', None)
-    if (lang in ['c++', 'C++', 'cpp', 'CXX', 'cxx']):
-        return ('C++', '.cpp', None)
-    return (None, None, ('Unsupported language: %s' % lang))

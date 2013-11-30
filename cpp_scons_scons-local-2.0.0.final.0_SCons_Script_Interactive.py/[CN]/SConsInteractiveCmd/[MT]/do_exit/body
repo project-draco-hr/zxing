@@ -1,3 +1,0 @@
-def do_exit(self, argv):
-    '        exit                    Exit SCons interactive mode.\n        '
-    sys.exit(0)

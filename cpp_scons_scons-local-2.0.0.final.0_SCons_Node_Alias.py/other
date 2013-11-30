@@ -1,8 +1,0 @@
-'scons.Node.Alias\n\nAlias nodes.\n\nThis creates a hash of global Aliases (dummy targets).\n\n'
-__revision__ = 'src/engine/SCons/Node/Alias.py 5023 2010/06/14 22:05:46 scons'
-import collections
-import SCons.Errors
-import SCons.Node
-import SCons.Util
-default_ans = AliasNameSpace()
-SCons.Node.arg2nodes_lookups.append(default_ans.lookup)

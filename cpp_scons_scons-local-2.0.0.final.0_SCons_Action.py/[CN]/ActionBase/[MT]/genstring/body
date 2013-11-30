@@ -1,2 +1,0 @@
-def genstring(self, target, source, env):
-    return str(self)

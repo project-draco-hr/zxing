@@ -1,4 +1,0 @@
-def PDFLaTeXScanner():
-    'Return a prototype Scanner instance for scanning LaTeX source files\n    when built with pdflatex.\n    '
-    ds = LaTeX(name='PDFLaTeXScanner', suffixes='$LATEXSUFFIXES', graphics_extensions=LatexGraphics, recursive=0)
-    return ds

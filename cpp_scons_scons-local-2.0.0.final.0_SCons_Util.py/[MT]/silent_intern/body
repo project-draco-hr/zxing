@@ -1,6 +1,0 @@
-def silent_intern(x):
-    '\n    Perform sys.intern() on the passed argument and return the result.\n    If the input is ineligible (e.g. a unicode string) the original argument is\n    returned and no exception is thrown.\n    '
-    try:
-        return sys.intern(x)
-    except TypeError:
-        return x

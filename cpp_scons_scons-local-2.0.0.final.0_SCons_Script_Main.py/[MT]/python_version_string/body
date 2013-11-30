@@ -1,2 +1,0 @@
-def python_version_string():
-    return sys.version.split()[0]

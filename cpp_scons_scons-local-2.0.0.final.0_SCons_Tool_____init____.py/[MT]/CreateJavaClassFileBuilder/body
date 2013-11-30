@@ -1,9 +1,0 @@
-def CreateJavaClassFileBuilder(env):
-    try:
-        java_class_file = env['BUILDERS']['JavaClassFile']
-    except KeyError:
-        fs = SCons.Node.FS.get_default_fs()
-        javac_com = SCons.Action.Action('$JAVACCOM', '$JAVACCOMSTR')
-        java_class_file = SCons.Builder.Builder(action=javac_com, emitter={}, src_suffix='$JAVASUFFIX', src_builder=['JavaFile'], target_factory=fs.Entry, source_factory=fs.File)
-        env['BUILDERS']['JavaClassFile'] = java_class_file
-    return java_class_file

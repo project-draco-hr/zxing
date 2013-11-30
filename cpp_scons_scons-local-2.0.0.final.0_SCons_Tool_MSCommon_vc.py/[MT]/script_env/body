@@ -1,6 +1,0 @@
-def script_env(script, args=None):
-    stdout = common.get_output(script, args)
-    olines = stdout.splitlines()
-    if olines[0].startswith('The specified configuration type is missing'):
-        raise BatchFileExecutionError('\n'.join(olines[:2]))
-    return common.parse_output(stdout)

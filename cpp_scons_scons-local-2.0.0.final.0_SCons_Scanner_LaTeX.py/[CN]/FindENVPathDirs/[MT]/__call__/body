@@ -1,9 +1,0 @@
-def __call__(self, env, dir=None, target=None, source=None, argument=None):
-    import SCons.PathList
-    try:
-        path = env['ENV'][self.variable]
-    except KeyError:
-        return ()
-    dir = (dir or env.fs._cwd)
-    path = SCons.PathList.PathList(path).subst_path(env, target, source)
-    return tuple(dir.Rfindalldirs(path))

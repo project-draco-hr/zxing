@@ -1,6 +1,0 @@
-def Dump(title=None):
-    if title:
-        print title
-    CounterList.sort()
-    for counter in CounterList:
-        counter.display()

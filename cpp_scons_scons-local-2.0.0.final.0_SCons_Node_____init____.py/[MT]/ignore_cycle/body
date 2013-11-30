@@ -1,2 +1,0 @@
-def ignore_cycle(node, stack):
-    pass

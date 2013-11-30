@@ -1,4 +1,0 @@
-def __init__(self, method_name, keymaker):
-    '\n        '
-    Counter.__init__(self, method_name)
-    self.keymaker = keymaker

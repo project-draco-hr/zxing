@@ -1,6 +1,0 @@
-def add_targets_to_INSTALLED_FILES(target, source, env):
-    ' an emitter that adds all target files to the list stored in the\n    _INSTALLED_FILES global variable. This way all installed files of one\n    scons call will be collected.\n    '
-    global _INSTALLED_FILES, _UNIQUE_INSTALLED_FILES
-    _INSTALLED_FILES.extend(target)
-    _UNIQUE_INSTALLED_FILES = None
-    return (target, source)

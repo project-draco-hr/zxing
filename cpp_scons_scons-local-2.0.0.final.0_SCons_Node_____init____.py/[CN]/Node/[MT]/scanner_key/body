@@ -1,2 +1,0 @@
-def scanner_key(self):
-    return None

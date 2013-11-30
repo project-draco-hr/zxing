@@ -1,6 +1,0 @@
-def del_binfo(self):
-    'Delete the build info from this node.'
-    try:
-        delattr(self, 'binfo')
-    except AttributeError:
-        pass

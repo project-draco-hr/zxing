@@ -1,7 +1,0 @@
-def get_architecture(arch=None):
-    'Returns the definition for the specified architecture string.\n\n    If no string is specified, the system default is returned (as defined\n    by the PROCESSOR_ARCHITEW6432 or PROCESSOR_ARCHITECTURE environment\n    variables).\n    '
-    if (arch is None):
-        arch = os.environ.get('PROCESSOR_ARCHITEW6432')
-        if (not arch):
-            arch = os.environ.get('PROCESSOR_ARCHITECTURE')
-    return SupportedArchitectureMap.get(arch, ArchDefinition('', ['']))

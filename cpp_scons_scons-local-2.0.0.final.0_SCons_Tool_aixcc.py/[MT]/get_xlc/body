@@ -1,4 +1,0 @@
-def get_xlc(env):
-    xlc = env.get('CC', 'xlc')
-    xlc_r = env.get('SHCC', 'xlc_r')
-    return SCons.Platform.aix.get_xlc(env, xlc, xlc_r, packages)

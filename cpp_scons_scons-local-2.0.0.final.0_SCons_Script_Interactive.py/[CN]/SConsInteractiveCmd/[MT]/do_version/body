@@ -1,3 +1,0 @@
-def do_version(self, argv):
-    '        version                 Prints SCons version information.\n        '
-    sys.stdout.write((self.parser.version + '\n'))

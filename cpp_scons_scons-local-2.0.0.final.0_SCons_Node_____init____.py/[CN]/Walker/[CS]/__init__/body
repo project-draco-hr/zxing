@@ -1,8 +1,0 @@
-def __init__(self, node, kids_func=get_children, cycle_func=ignore_cycle, eval_func=do_nothing):
-    self.kids_func = kids_func
-    self.cycle_func = cycle_func
-    self.eval_func = eval_func
-    node.wkids = copy.copy(kids_func(node, None))
-    self.stack = [node]
-    self.history = {}
-    self.history[node] = None

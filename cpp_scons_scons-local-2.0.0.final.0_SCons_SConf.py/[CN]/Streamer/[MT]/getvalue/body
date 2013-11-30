@@ -1,3 +1,0 @@
-def getvalue(self):
-    '\n        Return everything written to orig since the Streamer was created.\n        '
-    return self.s.getvalue()

@@ -1,5 +1,0 @@
-def __init__(self, name, directory, fs):
-    if __debug__:
-        logInstanceCreation(self, 'Node.FS.Dir')
-    Base.__init__(self, name, directory, fs)
-    self._morph()

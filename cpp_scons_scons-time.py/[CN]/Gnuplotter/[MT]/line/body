@@ -1,4 +1,0 @@
-def line(self, points, type, title=None, label=None, comment=None, fmt='%s %s'):
-    if points:
-        line = Line(points, type, title, label, comment, fmt)
-        self.lines.append(line)

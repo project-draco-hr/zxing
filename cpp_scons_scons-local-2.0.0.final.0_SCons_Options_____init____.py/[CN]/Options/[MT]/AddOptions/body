@@ -1,2 +1,0 @@
-def AddOptions(self, *args, **kw):
-    return SCons.Variables.Variables.AddVariables(self, *args, **kw)

@@ -1,7 +1,0 @@
-def get_action_targets(self):
-    if (not self.action_list):
-        return []
-    targets_string = self.action_list[0].get_targets(self.env, self)
-    if (targets_string[0] == '$'):
-        targets_string = targets_string[1:]
-    return self.get_lvars()[targets_string]

@@ -1,3 +1,0 @@
-def _update(self, dict):
-    "Update an environment's values directly, bypassing the normal\n        checks that occur when users try to set items.\n        "
-    self._dict.update(dict)

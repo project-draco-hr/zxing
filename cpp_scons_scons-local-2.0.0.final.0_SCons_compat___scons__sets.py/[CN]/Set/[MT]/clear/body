@@ -1,3 +1,0 @@
-def clear(self):
-    'Remove all elements from this set.'
-    self._data.clear()

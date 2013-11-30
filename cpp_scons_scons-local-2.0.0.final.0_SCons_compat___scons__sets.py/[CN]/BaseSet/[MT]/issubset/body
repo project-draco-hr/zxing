@@ -1,8 +1,0 @@
-def issubset(self, other):
-    'Report whether another set contains this set.'
-    self._binary_sanity_check(other)
-    if (len(self) > len(other)):
-        return False
-    for elt in filterfalse(other._data.has_key, self):
-        return False
-    return True

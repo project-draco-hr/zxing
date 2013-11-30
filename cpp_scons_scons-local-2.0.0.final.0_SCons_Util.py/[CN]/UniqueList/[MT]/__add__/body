@@ -1,4 +1,0 @@
-def __add__(self, other):
-    result = UserList.__add__(self, other)
-    result.unique = False
-    return result

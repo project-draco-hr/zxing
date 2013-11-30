@@ -1,9 +1,0 @@
-def run_command_list(self, commands, dict):
-    '\n        Executes a list of commands, substituting values from the\n        specified dictionary.\n        '
-    commands = [self.subst_variables(c, dict) for c in commands]
-    for (action, string, args) in commands:
-        self.display(string, *args)
-        sys.stdout.flush()
-        status = self.execute(action, *args)
-        if status:
-            sys.exit(status)

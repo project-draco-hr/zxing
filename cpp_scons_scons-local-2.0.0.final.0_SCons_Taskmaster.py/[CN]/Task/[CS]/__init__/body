@@ -1,6 +1,0 @@
-def __init__(self, tm, targets, top, node):
-    self.tm = tm
-    self.targets = targets
-    self.top = top
-    self.node = node
-    self.exc_clear()

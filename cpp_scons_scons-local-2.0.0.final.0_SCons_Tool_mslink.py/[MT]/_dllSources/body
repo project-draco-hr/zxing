@@ -1,9 +1,0 @@
-def _dllSources(target, source, env, for_signature, paramtp):
-    listCmd = []
-    deffile = env.FindIxes(source, 'WINDOWSDEFPREFIX', 'WINDOWSDEFSUFFIX')
-    for src in source:
-        if (deffile and (src == deffile)):
-            listCmd.append(('/def:%s' % src.get_string(for_signature)))
-        else:
-            listCmd.append(src)
-    return listCmd

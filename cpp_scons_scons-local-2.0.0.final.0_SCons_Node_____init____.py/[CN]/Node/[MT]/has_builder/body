@@ -1,7 +1,0 @@
-def has_builder(self):
-    'Return whether this Node has a builder or not.\n\n        In Boolean tests, this turns out to be a *lot* more efficient\n        than simply examining the builder attribute directly ("if\n        node.builder: ..."). When the builder attribute is examined\n        directly, it ends up calling __getattr__ for both the __len__\n        and __nonzero__ attributes on instances of our Builder Proxy\n        class(es), generating a bazillion extra calls and slowing\n        things down immensely.\n        '
-    try:
-        b = self.builder
-    except AttributeError:
-        b = self.builder = None
-    return (b is not None)

@@ -1,5 +1,0 @@
-def _doc_to_help(self, obj):
-    doc = obj.__doc__
-    if (doc is None):
-        return ''
-    return self._strip_initial_spaces(doc)

@@ -1,3 +1,0 @@
-def exists(self):
-    "Return if the Entry exists.  Check the file system to see\n        what we should turn into first.  Assume a file if there's no\n        directory."
-    return self.disambiguate().exists()

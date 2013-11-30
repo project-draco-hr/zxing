@@ -1,3 +1,0 @@
-def SConscriptChdir(self, flag):
-    global sconscript_chdir
-    sconscript_chdir = flag

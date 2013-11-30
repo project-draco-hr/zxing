@@ -1,3 +1,0 @@
-def check_file_error_message(utility, filename='log'):
-    msg = ('%s returned an error, check the %s file\n' % (utility, filename))
-    sys.stdout.write(msg)

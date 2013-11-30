@@ -1,3 +1,0 @@
-def PDFLaTeXAuxAction(target=None, source=None, env=None):
-    result = SCons.Tool.tex.InternalLaTeXAuxAction(PDFLaTeXAction, target, source, env)
-    return result

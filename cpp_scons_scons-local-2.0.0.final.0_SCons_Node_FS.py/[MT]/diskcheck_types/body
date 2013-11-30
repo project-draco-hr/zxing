@@ -1,2 +1,0 @@
-def diskcheck_types():
-    return [dc.type for dc in diskcheckers]

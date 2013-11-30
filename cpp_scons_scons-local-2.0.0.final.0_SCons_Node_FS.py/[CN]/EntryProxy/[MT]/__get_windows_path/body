@@ -1,8 +1,0 @@
-def __get_windows_path(self):
-    'Return the path with \\ as the path separator,\n        regardless of platform.'
-    if (os.sep == '\\'):
-        return self
-    else:
-        entry = self.get()
-        r = entry.get_path().replace(os.sep, '\\')
-        return SCons.Subst.SpecialAttrWrapper(r, (entry.name + '_windows'))

@@ -1,4 +1,0 @@
-def _copy_func(fs, src, dest):
-    shutil.copy2(src, dest)
-    st = fs.stat(src)
-    fs.chmod(dest, (stat.S_IMODE(st[stat.ST_MODE]) | stat.S_IWRITE))

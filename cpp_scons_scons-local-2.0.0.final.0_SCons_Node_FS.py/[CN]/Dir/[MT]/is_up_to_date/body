@@ -1,9 +1,0 @@
-def is_up_to_date(self):
-    "If any child is not up-to-date, then this directory isn't,\n        either."
-    if ((self.builder is not MkdirBuilder) and (not self.exists())):
-        return 0
-    up_to_date = SCons.Node.up_to_date
-    for kid in self.children():
-        if (kid.get_state() > up_to_date):
-            return 0
-    return 1

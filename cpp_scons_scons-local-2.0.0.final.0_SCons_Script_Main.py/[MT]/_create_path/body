@@ -1,8 +1,0 @@
-def _create_path(plist):
-    path = '.'
-    for d in plist:
-        if os.path.isabs(d):
-            path = d
-        else:
-            path = ((path + '/') + d)
-    return path

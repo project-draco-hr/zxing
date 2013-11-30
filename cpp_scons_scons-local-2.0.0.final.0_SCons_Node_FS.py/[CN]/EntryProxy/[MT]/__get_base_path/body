@@ -1,4 +1,0 @@
-def __get_base_path(self):
-    "Return the file's directory and file name, with the\n        suffix stripped."
-    entry = self.get()
-    return SCons.Subst.SpecialAttrWrapper(SCons.Util.splitext(entry.get_path())[0], (entry.name + '_base'))

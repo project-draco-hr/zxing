@@ -1,4 +1,0 @@
-def __call__(self, target, source, env, executor=None):
-    args = self.subst_args(target, source, env)
-    kw = self.subst_kw(target, source, env)
-    return self.parent.actfunc(*args, **kw)

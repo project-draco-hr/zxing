@@ -1,6 +1,0 @@
-def package(env, target, source, PACKAGEROOT, **kw):
-    bld = env['BUILDERS']['Zip']
-    bld.set_suffix('.zip')
-    (target, source) = stripinstallbuilder(target, source, env)
-    (target, source) = putintopackageroot(target, source, env, PACKAGEROOT)
-    return bld(env, target, source)

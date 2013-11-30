@@ -1,3 +1,0 @@
-def fetchLoggedInstances(classes='*'):
-    classnames = string_to_classes(classes)
-    return [(cn, len(tracked_classes[cn])) for cn in classnames]

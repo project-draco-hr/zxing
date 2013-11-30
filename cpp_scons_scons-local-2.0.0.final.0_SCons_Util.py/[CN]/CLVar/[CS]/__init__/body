@@ -1,2 +1,0 @@
-def __init__(self, seq=[]):
-    UserList.__init__(self, Split(seq))

@@ -1,2 +1,0 @@
-def escape(self, escape_func):
-    return escape_func(self.lstr)

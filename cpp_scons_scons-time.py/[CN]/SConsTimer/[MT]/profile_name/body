@@ -1,4 +1,0 @@
-def profile_name(self, invocation):
-    '\n        Returns the absolute path of a profile file for the specified\n        invocation number.\n        '
-    name = (self.prefix_run + ('-%d.prof' % invocation))
-    return os.path.join(self.outdir, name)

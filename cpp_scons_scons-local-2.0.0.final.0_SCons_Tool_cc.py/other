@@ -1,8 +1,0 @@
-"SCons.Tool.cc\n\nTool-specific initialization for generic Posix C compilers.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n"
-__revision__ = 'src/engine/SCons/Tool/cc.py 5023 2010/06/14 22:05:46 scons'
-import SCons.Tool
-import SCons.Defaults
-import SCons.Util
-CSuffixes = ['.c', '.m']
-if (not SCons.Util.case_sensitive_suffixes('.c', '.C')):
-    CSuffixes.append('.C')

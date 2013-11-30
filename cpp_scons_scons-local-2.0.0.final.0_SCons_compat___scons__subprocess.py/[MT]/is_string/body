@@ -1,2 +1,0 @@
-def is_string(obj):
-    return isinstance(obj, types.StringTypes)

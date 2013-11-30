@@ -1,4 +1,0 @@
-def nullify(self):
-    self.cleanup()
-    self.do_execute = self.do_nothing
-    self.my_str = (lambda : '')

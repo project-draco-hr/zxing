@@ -1,3 +1,0 @@
-def set_specific_source(self, source):
-    self.add_source(source)
-    self._specific_sources = True

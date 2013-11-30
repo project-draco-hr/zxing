@@ -1,3 +1,0 @@
-def push_to_cache(self):
-    'Try to push a node into a cache\n        '
-    pass

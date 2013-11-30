@@ -1,6 +1,0 @@
-def get_contents(self):
-    'Return content signatures and names of all our children\n        separated by new-lines. Ensure that the nodes are sorted.'
-    contents = []
-    for node in sorted(self.children(), key=(lambda t: t.name)):
-        contents.append(('%s %s\n' % (node.get_csig(), node.name)))
-    return ''.join(contents)

@@ -1,8 +1,0 @@
-def FindIxes(self, paths, prefix, suffix):
-    '\n        Search a list of paths for something that matches the prefix and suffix.\n\n        paths - the list of paths or nodes.\n        prefix - construction variable for the prefix.\n        suffix - construction variable for the suffix.\n        '
-    suffix = self.subst(('$' + suffix))
-    prefix = self.subst(('$' + prefix))
-    for path in paths:
-        (dir, name) = os.path.split(str(path))
-        if ((name[:len(prefix)] == prefix) and (name[(- len(suffix)):] == suffix)):
-            return path

@@ -1,6 +1,0 @@
-def log_execute(self, command, log):
-    command = self.subst(command, self.__dict__)
-    output = os.popen(command).read()
-    if self.verbose:
-        sys.stdout.write(output)
-    open(log, 'wb').write(output)

@@ -1,2 +1,0 @@
-def lvars(self):
-    return {}

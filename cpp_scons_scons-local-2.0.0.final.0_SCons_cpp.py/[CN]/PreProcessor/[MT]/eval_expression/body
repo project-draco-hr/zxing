@@ -1,7 +1,0 @@
-def eval_expression(self, t):
-    '\n        Evaluates a C preprocessor expression.\n\n        This is done by converting it to a Python equivalent and\n        eval()ing it in the C preprocessor namespace we use to\n        track #define values.\n        '
-    t = CPP_to_Python(' '.join(t[1:]))
-    try:
-        return eval(t, self.cpp_namespace)
-    except (NameError, TypeError):
-        return 0

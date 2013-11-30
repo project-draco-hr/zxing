@@ -1,7 +1,0 @@
-def get_csig(self):
-    try:
-        return self.ninfo.csig
-    except AttributeError:
-        ninfo = self.get_ninfo()
-        ninfo.csig = SCons.Util.MD5signature(self.get_contents())
-        return self.ninfo.csig

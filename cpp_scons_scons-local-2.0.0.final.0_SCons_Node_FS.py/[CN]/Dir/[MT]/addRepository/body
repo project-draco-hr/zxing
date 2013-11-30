@@ -1,5 +1,0 @@
-def addRepository(self, dir):
-    if ((dir != self) and (not (dir in self.repositories))):
-        self.repositories.append(dir)
-        dir.tpath = '.'
-        self.__clearRepositoryCache()

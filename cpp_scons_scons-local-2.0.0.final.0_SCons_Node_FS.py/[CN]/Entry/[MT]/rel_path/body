@@ -1,5 +1,0 @@
-def rel_path(self, other):
-    d = self.disambiguate()
-    if (d.__class__ is Entry):
-        raise Exception('rel_path() could not disambiguate File/Dir')
-    return d.rel_path(other)

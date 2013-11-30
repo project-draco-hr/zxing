@@ -1,8 +1,0 @@
-def run(self, postfunc=(lambda : None)):
-    'Run the jobs.\n\n        postfunc() will be invoked after the jobs has run. It will be\n        invoked even if the jobs are interrupted by a keyboard\n        interrupt (well, in fact by a signal such as either SIGINT,\n        SIGTERM or SIGHUP). The execution of postfunc() is protected\n        against keyboard interrupts and is guaranteed to run to\n        completion.'
-    self._setup_sig_handler()
-    try:
-        self.job.start()
-    finally:
-        postfunc()
-        self._reset_sig_handler()

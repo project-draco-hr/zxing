@@ -1,2 +1,0 @@
-def GenerateSolution(target, source, env):
-    GenerateDSW(target[0], source, env)

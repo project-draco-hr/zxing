@@ -1,3 +1,0 @@
-def Dirs(self, pathlist):
-    'Create a list of directories relative to the SConscript\n        directory of this file.'
-    return [self.Dir(p) for p in pathlist]

@@ -1,9 +1,0 @@
-def visited(self):
-    'Called just after this node has been visited (with or\n        without a build).'
-    try:
-        binfo = self.binfo
-    except AttributeError:
-        pass
-    else:
-        self.ninfo.update(self)
-        self.store_info()

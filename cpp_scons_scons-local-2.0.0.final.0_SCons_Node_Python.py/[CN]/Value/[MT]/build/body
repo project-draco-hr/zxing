@@ -1,3 +1,0 @@
-def build(self, **kw):
-    if (not hasattr(self, 'built_value')):
-        SCons.Node.Node.build(self, **kw)

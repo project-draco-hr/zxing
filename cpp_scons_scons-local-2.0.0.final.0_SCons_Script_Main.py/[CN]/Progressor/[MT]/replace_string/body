@@ -1,2 +1,0 @@
-def replace_string(self, node):
-    self.write(self.obj.replace(self.target_string, str(node)))

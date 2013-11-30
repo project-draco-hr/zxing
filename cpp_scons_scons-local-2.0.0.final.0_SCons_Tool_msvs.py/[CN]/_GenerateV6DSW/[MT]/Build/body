@@ -1,8 +1,0 @@
-def Build(self):
-    try:
-        self.file = open(self.dswfile, 'w')
-    except IOError as detail:
-        raise SCons.Errors.InternalError(((('Unable to open "' + self.dswfile) + '" for writing:') + str(detail)))
-    else:
-        self.PrintWorkspace()
-        self.file.close()

@@ -1,3 +1,0 @@
-def store_info(self):
-    if do_store_info:
-        self.dir.sconsign().store_info(self.name, self)

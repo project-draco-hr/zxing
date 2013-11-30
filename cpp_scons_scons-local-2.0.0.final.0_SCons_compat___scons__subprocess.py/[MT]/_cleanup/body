@@ -1,7 +1,0 @@
-def _cleanup():
-    for inst in _active[:]:
-        if (inst.poll(_deadstate=sys.maxsize) >= 0):
-            try:
-                _active.remove(inst)
-            except ValueError:
-                pass

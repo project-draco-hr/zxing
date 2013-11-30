@@ -1,8 +1,0 @@
-def subst_kw(self, kw, raw=0, target=None, source=None):
-    nkw = {}
-    for (k, v) in kw.items():
-        k = self.subst(k, raw, target, source)
-        if SCons.Util.is_String(v):
-            v = self.subst(v, raw, target, source)
-        nkw[k] = v
-    return nkw

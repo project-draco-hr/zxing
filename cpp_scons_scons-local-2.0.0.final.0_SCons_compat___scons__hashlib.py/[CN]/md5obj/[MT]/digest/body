@@ -1,2 +1,0 @@
-def digest(self):
-    return self.m.digest()

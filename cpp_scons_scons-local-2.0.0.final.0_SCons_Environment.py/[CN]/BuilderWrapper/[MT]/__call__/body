@@ -1,9 +1,0 @@
-def __call__(self, target=None, source=_null, *args, **kw):
-    if (source is _null):
-        source = target
-        target = None
-    if ((target is not None) and (not SCons.Util.is_List(target))):
-        target = [target]
-    if ((source is not None) and (not SCons.Util.is_List(source))):
-        source = [source]
-    return MethodWrapper.__call__(self, target, source, *args, **kw)

@@ -1,8 +1,0 @@
-def _convert_list_R(newlist, sources):
-    for elem in sources:
-        if is_Sequence(elem):
-            _convert_list_R(newlist, elem)
-        elif isinstance(elem, Node):
-            newlist.append(elem)
-        else:
-            newlist.append(Value(elem))

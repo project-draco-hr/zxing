@@ -1,3 +1,0 @@
-def set_build_result(self, result, string):
-    self.result = result
-    self.string = string

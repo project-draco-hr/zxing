@@ -1,8 +1,0 @@
-'SCons.Scanner.Fortran\n\nThis module implements the dependency scanner for Fortran code.\n\n'
-__revision__ = 'src/engine/SCons/Scanner/Fortran.py 5023 2010/06/14 22:05:46 scons'
-import re
-import SCons.Node
-import SCons.Node.FS
-import SCons.Scanner
-import SCons.Util
-import SCons.Warnings

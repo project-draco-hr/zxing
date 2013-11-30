@@ -1,5 +1,0 @@
-def FindAllTools(tools, env):
-
-    def ToolExists(tool, env=env):
-        return Tool(tool).exists(env)
-    return list(filter(ToolExists, tools))

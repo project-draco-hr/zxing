@@ -1,2 +1,0 @@
-__doc__ = "\ndbm compatibility module for Python versions that don't have dbm.\n\nThis does not not NOT (repeat, *NOT*) provide complete dbm functionality.\nIt's just a stub on which to hang just enough pieces of dbm functionality\nthat the whichdb.whichdb() implementstation in the various 2.X versions of\nPython won't blow up even if dbm wasn't compiled in.\n"
-__revision__ = 'src/engine/SCons/compat/_scons_dbm.py 5023 2010/06/14 22:05:46 scons'

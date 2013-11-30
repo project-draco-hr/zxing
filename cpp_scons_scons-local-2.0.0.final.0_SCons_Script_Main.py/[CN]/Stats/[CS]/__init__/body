@@ -1,5 +1,0 @@
-def __init__(self):
-    self.stats = []
-    self.labels = []
-    self.append = self.do_nothing
-    self.print_stats = self.do_nothing

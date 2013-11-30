@@ -1,6 +1,0 @@
-def get(self, key, default=None):
-    'Emulates the get() method of dictionaries.'
-    try:
-        return self.__dict__['overrides'][key]
-    except KeyError:
-        return self.__dict__['__subject'].get(key, default)

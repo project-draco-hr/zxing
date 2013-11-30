@@ -1,5 +1,0 @@
-def query_versions():
-    'Query the system to get available versions of VS. A version is\n    considered when a batfile is found.'
-    msvs_list = get_installed_visual_studios()
-    versions = [msvs.version for msvs in msvs_list]
-    return versions

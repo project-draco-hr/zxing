@@ -1,9 +1,0 @@
-def print_points(self, fmt=None):
-    if (fmt is None):
-        fmt = self.fmt
-    if self.comment:
-        print ('# %s' % self.comment)
-    for (x, y) in self.points:
-        if (not (y is None)):
-            print (fmt % (x, y))
-    print 'e'

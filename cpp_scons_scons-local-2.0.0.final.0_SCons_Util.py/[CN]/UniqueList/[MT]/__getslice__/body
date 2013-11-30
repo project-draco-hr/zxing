@@ -1,3 +1,0 @@
-def __getslice__(self, i, j):
-    self.__make_unique()
-    return UserList.__getslice__(self, i, j)

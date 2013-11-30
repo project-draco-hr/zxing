@@ -1,2 +1,0 @@
-def alias_builder(env, target, source):
-    pass

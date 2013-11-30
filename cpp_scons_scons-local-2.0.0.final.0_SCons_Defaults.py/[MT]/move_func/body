@@ -1,4 +1,0 @@
-def move_func(dest, src):
-    SCons.Node.FS.invalidate_node_memos(dest)
-    SCons.Node.FS.invalidate_node_memos(src)
-    shutil.move(src, dest)

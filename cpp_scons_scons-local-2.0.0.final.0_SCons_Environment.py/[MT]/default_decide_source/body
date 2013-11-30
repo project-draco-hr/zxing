@@ -1,3 +1,0 @@
-def default_decide_source(dependency, target, prev_ni):
-    f = SCons.Defaults.DefaultEnvironment().decide_source
-    return f(dependency, target, prev_ni)

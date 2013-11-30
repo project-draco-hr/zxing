@@ -1,8 +1,0 @@
-def __init__(self, **kw):
-    cmd.Cmd.__init__(self)
-    for (key, val) in kw.items():
-        setattr(self, key, val)
-    if (sys.platform == 'win32'):
-        self.shell_variable = 'COMSPEC'
-    else:
-        self.shell_variable = 'SHELL'

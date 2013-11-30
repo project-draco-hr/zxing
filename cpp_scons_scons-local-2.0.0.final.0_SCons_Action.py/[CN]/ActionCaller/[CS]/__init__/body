@@ -1,4 +1,0 @@
-def __init__(self, parent, args, kw):
-    self.parent = parent
-    self.args = args
-    self.kw = kw

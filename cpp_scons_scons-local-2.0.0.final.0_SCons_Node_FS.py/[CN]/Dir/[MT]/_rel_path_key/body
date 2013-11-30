@@ -1,2 +1,0 @@
-def _rel_path_key(self, other):
-    return str(other)

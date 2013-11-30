@@ -1,8 +1,0 @@
-def _reset_sig_handler(self):
-    'Restore the signal handlers to their previous state (before the\n         call to _setup_sig_handler().'
-    signal.signal(signal.SIGINT, self.old_sigint)
-    signal.signal(signal.SIGTERM, self.old_sigterm)
-    try:
-        signal.signal(signal.SIGHUP, self.old_sighup)
-    except AttributeError:
-        pass

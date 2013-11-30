@@ -1,3 +1,0 @@
-def is_a_Builder(obj):
-    '"Returns True iff the specified obj is one of our Builder classes.\n\n    The test is complicated a bit by the fact that CompositeBuilder\n    is a proxy, not a subclass of BuilderBase.\n    '
-    return (isinstance(obj, BuilderBase) or isinstance(obj, CompositeBuilder) or callable(obj))

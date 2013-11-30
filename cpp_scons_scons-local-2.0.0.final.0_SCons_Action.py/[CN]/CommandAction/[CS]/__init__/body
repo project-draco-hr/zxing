@@ -1,8 +1,0 @@
-def __init__(self, cmd, **kw):
-    if __debug__:
-        logInstanceCreation(self, 'Action.CommandAction')
-    _ActionAction.__init__(self, **kw)
-    if is_List(cmd):
-        if list(filter(is_List, cmd)):
-            raise TypeError('CommandAction should be given only a single command')
-    self.cmd_list = cmd

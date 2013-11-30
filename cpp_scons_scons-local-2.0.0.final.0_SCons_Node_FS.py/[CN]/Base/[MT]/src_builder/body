@@ -1,8 +1,0 @@
-def src_builder(self):
-    "Fetch the source code builder for this node.\n\n        If there isn't one, we cache the source code builder specified\n        for the directory (which in turn will cache the value from its\n        parent directory, and so on up to the file system root).\n        "
-    try:
-        scb = self.sbuilder
-    except AttributeError:
-        scb = self.dir.src_builder()
-        self.sbuilder = scb
-    return scb

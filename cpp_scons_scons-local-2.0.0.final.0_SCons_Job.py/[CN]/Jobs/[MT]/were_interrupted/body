@@ -1,3 +1,0 @@
-def were_interrupted(self):
-    'Returns whether the jobs were interrupted by a signal.'
-    return self.job.interrupted()

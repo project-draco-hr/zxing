@@ -1,5 +1,0 @@
-def __get__(self, obj, cls):
-    if isinstance(obj, cls):
-        return getattr(obj._subject, self.attribute)
-    else:
-        return self

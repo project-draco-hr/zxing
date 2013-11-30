@@ -1,3 +1,0 @@
-def __delitem__(self, item):
-    UserDict.__delitem__(self, item)
-    delattr(self.env, item)

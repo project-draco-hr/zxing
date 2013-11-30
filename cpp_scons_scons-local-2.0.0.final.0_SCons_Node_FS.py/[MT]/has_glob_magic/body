@@ -1,2 +1,0 @@
-def has_glob_magic(s):
-    return (glob_magic_check.search(s) is not None)

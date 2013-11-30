@@ -1,5 +1,0 @@
-def InstallAsBuilderWrapper(env, target=None, source=None, **kw):
-    result = []
-    for (src, tgt) in map((lambda x, y: (x, y)), source, target):
-        result.extend(BaseInstallBuilder(env, tgt, src, **kw))
-    return result

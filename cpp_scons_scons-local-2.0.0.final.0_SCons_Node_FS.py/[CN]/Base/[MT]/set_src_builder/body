@@ -1,5 +1,0 @@
-def set_src_builder(self, builder):
-    'Set the source code builder for this node.'
-    self.sbuilder = builder
-    if (not self.has_builder()):
-        self.builder_set(builder)

@@ -1,6 +1,0 @@
-def get_all_prerequisites(self):
-    'Returns all unique (order-only) prerequisites for all batches\n        of this Executor.\n        '
-    result = SCons.Util.UniqueList([])
-    for target in self.get_all_targets():
-        result.extend(target.prerequisites)
-    return result

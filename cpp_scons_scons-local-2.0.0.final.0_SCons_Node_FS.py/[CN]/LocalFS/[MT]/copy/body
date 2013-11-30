@@ -1,2 +1,0 @@
-def copy(self, src, dst):
-    return shutil.copy(src, dst)

@@ -1,2 +1,0 @@
-def clear_memoized_values(self):
-    self._memo = {}

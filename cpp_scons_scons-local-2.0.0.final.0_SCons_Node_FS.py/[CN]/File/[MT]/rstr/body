@@ -1,2 +1,0 @@
-def rstr(self):
-    return str(self.rfile())

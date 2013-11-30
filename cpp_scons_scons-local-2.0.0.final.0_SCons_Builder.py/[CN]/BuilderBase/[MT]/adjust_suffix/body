@@ -1,4 +1,0 @@
-def adjust_suffix(self, suff):
-    if (suff and (not (suff[0] in ['.', '_', '$']))):
-        return ('.' + suff)
-    return suff

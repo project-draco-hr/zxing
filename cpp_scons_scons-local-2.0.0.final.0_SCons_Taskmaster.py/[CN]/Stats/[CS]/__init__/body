@@ -1,9 +1,0 @@
-def __init__(self):
-    '\n        Instantiates a Taskmaster.Stats object, initializing all\n        appropriate counters to zero.\n        '
-    self.considered = 0
-    self.already_handled = 0
-    self.problem = 0
-    self.child_failed = 0
-    self.not_built = 0
-    self.side_effects = 0
-    self.build = 0

@@ -1,8 +1,0 @@
-def get_build_scanner_path(self, scanner):
-    "Fetch the scanner path for this executor's targets and sources.\n        "
-    env = self.get_build_env()
-    try:
-        cwd = self.batches[0].targets[0].cwd
-    except (IndexError, AttributeError):
-        cwd = None
-    return scanner.path(env, cwd, self.get_all_targets(), self.get_all_sources())

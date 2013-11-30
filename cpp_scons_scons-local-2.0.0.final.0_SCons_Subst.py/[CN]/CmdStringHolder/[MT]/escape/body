@@ -1,8 +1,0 @@
-def escape(self, escape_func, quote_func=quote_spaces):
-    'Escape the string with the supplied function.  The\n        function is expected to take an arbitrary string, then\n        return it with all special characters escaped and ready\n        for passing to the command interpreter.\n\n        After calling this function, the next call to str() will\n        return the escaped string.\n        '
-    if self.is_literal():
-        return escape_func(self.data)
-    elif ((' ' in self.data) or ('\t' in self.data)):
-        return quote_func(self.data)
-    else:
-        return self.data

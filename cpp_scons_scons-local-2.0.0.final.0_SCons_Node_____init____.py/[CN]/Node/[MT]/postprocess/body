@@ -1,4 +1,0 @@
-def postprocess(self):
-    "Clean up anything we don't need to hang onto after we've\n        been built."
-    self.executor_cleanup()
-    self.waiting_parents = set()

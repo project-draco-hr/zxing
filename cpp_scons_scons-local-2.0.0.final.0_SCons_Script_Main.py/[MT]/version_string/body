@@ -1,9 +1,0 @@
-def version_string(label, module):
-    version = module.__version__
-    build = module.__build__
-    if build:
-        if (build[0] != '.'):
-            build = ('.' + build)
-        version = (version + build)
-    fmt = '\t%s: v%s, %s, by %s on %s\n'
-    return (fmt % (label, version, module.__date__, module.__developer__, module.__buildsys__))

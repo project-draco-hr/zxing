@@ -1,2 +1,0 @@
-def __get_dir(self):
-    return EntryProxy(self.get().dir)

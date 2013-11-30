@@ -1,2 +1,0 @@
-def __setstate__(self, data):
-    (self._data,) = data

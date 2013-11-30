@@ -1,8 +1,0 @@
-"SCons.Tool.aixlink\n\nTool-specific initialization for the IBM Visual Age linker.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n"
-__revision__ = 'src/engine/SCons/Tool/aixlink.py 5023 2010/06/14 22:05:46 scons'
-import os
-import os.path
-import SCons.Util
-import aixcc
-import link
-cplusplus = __import__('c++', globals(), locals(), [])

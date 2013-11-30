@@ -1,6 +1,0 @@
-def copyto_emitter(target, source, env):
-    ' changes the path of the source to be under the target (which\n    are assumed to be directories.\n    '
-    n_target = []
-    for t in target:
-        n_target = (n_target + [t.File(str(s)) for s in source])
-    return (n_target, source)

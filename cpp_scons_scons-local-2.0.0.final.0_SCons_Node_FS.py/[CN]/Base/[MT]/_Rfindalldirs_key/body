@@ -1,2 +1,0 @@
-def _Rfindalldirs_key(self, pathlist):
-    return pathlist

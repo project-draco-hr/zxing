@@ -1,2 +1,0 @@
-def get_subst_proxy(self):
-    return self.disambiguate().get_subst_proxy()

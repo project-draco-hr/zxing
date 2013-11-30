@@ -1,2 +1,0 @@
-def gvars(self):
-    return self._dict

@@ -1,6 +1,0 @@
-def Repository(self, *dirs):
-    'Specify Repository directories to search.'
-    for d in dirs:
-        if (not isinstance(d, SCons.Node.Node)):
-            d = self.Dir(d)
-        self.Top.addRepository(d)

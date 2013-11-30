@@ -1,3 +1,0 @@
-def __get_filebase(self):
-    name = self.get().name
-    return SCons.Subst.SpecialAttrWrapper(SCons.Util.splitext(name)[0], (name + '_filebase'))

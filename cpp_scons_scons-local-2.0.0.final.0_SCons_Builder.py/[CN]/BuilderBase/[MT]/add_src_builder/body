@@ -1,4 +1,0 @@
-def add_src_builder(self, builder):
-    '\n        Add a new Builder to the list of src_builders.\n\n        This requires wiping out cached values so that the computed\n        lists of source suffixes get re-calculated.\n        '
-    self._memo = {}
-    self.src_builder.append(builder)

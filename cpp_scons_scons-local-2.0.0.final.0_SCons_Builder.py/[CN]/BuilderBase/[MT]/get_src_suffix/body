@@ -1,6 +1,0 @@
-def get_src_suffix(self, env):
-    'Get the first src_suffix in the list of src_suffixes.'
-    ret = self.src_suffixes(env)
-    if (not ret):
-        return ''
-    return ret[0]

@@ -1,5 +1,0 @@
-def copy(self):
-    'Return a shallow copy of a set.'
-    result = self.__class__()
-    result._data.update(self._data)
-    return result

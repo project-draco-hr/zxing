@@ -1,6 +1,0 @@
-def restore(self):
-    '\n        Pops the previous dispatch table off the stack and makes it the\n        current one.\n        '
-    try:
-        self.dispatch_table = self.stack.pop()
-    except IndexError:
-        pass

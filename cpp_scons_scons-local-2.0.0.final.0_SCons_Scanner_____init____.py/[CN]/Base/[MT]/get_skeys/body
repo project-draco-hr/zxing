@@ -1,4 +1,0 @@
-def get_skeys(self, env=None):
-    if (env and SCons.Util.is_String(self.skeys)):
-        return env.subst_list(self.skeys)[0]
-    return self.skeys

@@ -1,5 +1,0 @@
-'SCons.Conftest\n\nAutoconf-like configuration support; low level implementation of tests.\n'
-import re
-from types import IntType
-LogInputFiles = 1
-LogErrorMessages = 1

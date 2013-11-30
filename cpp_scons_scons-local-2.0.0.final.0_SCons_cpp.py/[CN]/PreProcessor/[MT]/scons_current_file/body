@@ -1,2 +1,0 @@
-def scons_current_file(self, t):
-    self.current_file = t[1]

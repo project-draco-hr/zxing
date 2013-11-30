@@ -1,3 +1,0 @@
-def clone(self, new_object):
-    '\n        Returns an object that re-binds the underlying "method" to\n        the specified new object.\n        '
-    return self.__class__(new_object, self.method, self.name)

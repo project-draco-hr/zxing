@@ -1,6 +1,0 @@
-def get_supported_arch(self):
-    try:
-        return self._cache['supported_arch']
-    except KeyError:
-        self._cache['supported_arch'] = self.supported_arch
-        return self.supported_arch

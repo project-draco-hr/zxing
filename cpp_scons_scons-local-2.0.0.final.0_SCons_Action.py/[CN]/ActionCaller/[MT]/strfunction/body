@@ -1,4 +1,0 @@
-def strfunction(self, target, source, env):
-    args = self.subst_args(target, source, env)
-    kw = self.subst_kw(target, source, env)
-    return self.parent.strfunc(*args, **kw)

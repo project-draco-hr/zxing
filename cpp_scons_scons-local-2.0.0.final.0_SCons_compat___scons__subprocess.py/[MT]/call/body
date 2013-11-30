@@ -1,3 +1,0 @@
-def call(*popenargs, **kwargs):
-    'Run command with arguments.  Wait for command to complete, then\n    return the returncode attribute.\n\n    The arguments are the same as for the Popen constructor.  Example:\n\n    retcode = call(["ls", "-l"])\n    '
-    return apply(Popen, popenargs, kwargs).wait()

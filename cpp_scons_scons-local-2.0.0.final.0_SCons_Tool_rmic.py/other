@@ -1,9 +1,0 @@
-"SCons.Tool.rmic\n\nTool-specific initialization for rmic.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
-__revision__ = 'src/engine/SCons/Tool/rmic.py 5023 2010/06/14 22:05:46 scons'
-import os.path
-import SCons.Action
-import SCons.Builder
-import SCons.Node.FS
-import SCons.Util
-RMICAction = SCons.Action.Action('$RMICCOM', '$RMICCOMSTR')
-RMICBuilder = SCons.Builder.Builder(action=RMICAction, emitter=emit_rmic_classes, src_suffix='$JAVACLASSSUFFIX', target_factory=SCons.Node.FS.Dir, source_factory=SCons.Node.FS.File)

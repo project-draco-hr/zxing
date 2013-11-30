@@ -1,6 +1,0 @@
-def _convert_list(target, source, env):
-    if (len(target) != 1):
-        raise SCons.Errors.UserError('Only one target file allowed')
-    newlist = []
-    _convert_list_R(newlist, source)
-    return (target, newlist)

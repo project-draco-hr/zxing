@@ -1,3 +1,0 @@
-def keys(self):
-    '\n        Returns the keywords for the options\n        '
-    return [o.key for o in self.options]

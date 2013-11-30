@@ -1,3 +1,0 @@
-def __get_suffix(self):
-    name = self.get().name
-    return SCons.Subst.SpecialAttrWrapper(SCons.Util.splitext(name)[1], (name + '_suffix'))

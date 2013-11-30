@@ -1,2 +1,0 @@
-def __init__(self):
-    _version_id = self.current_version_id

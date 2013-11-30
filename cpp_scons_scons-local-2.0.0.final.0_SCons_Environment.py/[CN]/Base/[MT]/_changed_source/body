@@ -1,7 +1,0 @@
-def _changed_source(self, dependency, target, prev_ni):
-    target_env = dependency.get_build_env()
-    type = target_env.get_tgt_sig_type()
-    if (type == 'source'):
-        return target_env.decide_source(dependency, target, prev_ni)
-    else:
-        return target_env.decide_target(dependency, target, prev_ni)

@@ -1,6 +1,0 @@
-def _scons_user_warning(e):
-    'Handle user warnings. Print out a message and a description of\n    the warning, along with the line number and routine where it occured.\n    The file and line number will be the deepest stack frame that is\n    not part of SCons itself.\n    '
-    (etype, value, tb) = sys.exc_info()
-    (filename, lineno, routine, dummy) = find_deepest_user_frame(traceback.extract_tb(tb))
-    sys.stderr.write(('\nscons: warning: %s\n' % e))
-    sys.stderr.write(('File "%s", line %d, in %s\n' % (filename, lineno, routine)))

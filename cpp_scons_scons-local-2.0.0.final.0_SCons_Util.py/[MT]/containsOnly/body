@@ -1,6 +1,0 @@
-def containsOnly(str, set):
-    'Check whether sequence str contains ONLY items in set.'
-    for c in str:
-        if (c not in set):
-            return 0
-    return 1

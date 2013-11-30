@@ -1,2 +1,0 @@
-def trace_message(self, message):
-    return ('Taskmaster: %s\n' % message)

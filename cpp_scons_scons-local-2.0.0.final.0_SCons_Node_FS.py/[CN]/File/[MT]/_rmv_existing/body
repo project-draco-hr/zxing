@@ -1,5 +1,0 @@
-def _rmv_existing(self):
-    self.clear_memoized_values()
-    e = Unlink(self, [], None)
-    if isinstance(e, SCons.Errors.BuildError):
-        raise e

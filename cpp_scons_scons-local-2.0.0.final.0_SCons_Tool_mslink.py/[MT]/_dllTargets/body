@@ -1,9 +1,0 @@
-def _dllTargets(target, source, env, for_signature, paramtp):
-    listCmd = []
-    dll = env.FindIxes(target, ('%sPREFIX' % paramtp), ('%sSUFFIX' % paramtp))
-    if dll:
-        listCmd.append(('/out:%s' % dll.get_string(for_signature)))
-    implib = env.FindIxes(target, 'LIBPREFIX', 'LIBSUFFIX')
-    if implib:
-        listCmd.append(('/implib:%s' % implib.get_string(for_signature)))
-    return listCmd

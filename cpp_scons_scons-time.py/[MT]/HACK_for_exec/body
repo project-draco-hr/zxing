@@ -1,8 +1,0 @@
-def HACK_for_exec(cmd, *args):
-    "\n    For some reason, Python won't allow an exec() within a function\n    that also declares an internal function (including lambda functions).\n    This function is a hack that calls exec() in a function with no\n    internal functions.\n    "
-    if (not args):
-        exec cmd
-    elif (len(args) == 1):
-        exec cmd in args[0]
-    else:
-        exec cmd in args[0], args[1]

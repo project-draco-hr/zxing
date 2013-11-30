@@ -1,3 +1,0 @@
-def _del_SCANNERS(env, key):
-    del env._dict[key]
-    env.scanner_map_delete()

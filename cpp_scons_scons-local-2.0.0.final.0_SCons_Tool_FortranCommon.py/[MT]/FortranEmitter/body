@@ -1,3 +1,0 @@
-def FortranEmitter(target, source, env):
-    (target, source) = _fortranEmitter(target, source, env)
-    return SCons.Defaults.StaticObjectEmitter(target, source, env)

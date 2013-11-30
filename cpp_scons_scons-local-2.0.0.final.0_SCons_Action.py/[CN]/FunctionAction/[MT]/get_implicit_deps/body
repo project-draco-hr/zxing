@@ -1,2 +1,0 @@
-def get_implicit_deps(self, target, source, env):
-    return []

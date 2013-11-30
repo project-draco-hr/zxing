@@ -1,4 +1,0 @@
-def _createSource(target, source, env):
-    fd = open(str(target[0]), 'w')
-    fd.write(source[0].get_contents())
-    fd.close()

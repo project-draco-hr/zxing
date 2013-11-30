@@ -1,6 +1,0 @@
-def cached_get_installed_vcs():
-    global __INSTALLED_VCS_RUN
-    if (__INSTALLED_VCS_RUN is None):
-        ret = get_installed_vcs()
-        __INSTALLED_VCS_RUN = ret
-    return __INSTALLED_VCS_RUN

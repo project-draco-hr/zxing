@@ -1,2 +1,0 @@
-def get_unignored_sources(self, *args, **kw):
-    return tuple(())

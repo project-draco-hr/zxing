@@ -1,4 +1,0 @@
-def VariantDir(self, variant_dir, src_dir, duplicate=1):
-    variant_dir = self.arg2nodes(variant_dir, self.fs.Dir)[0]
-    src_dir = self.arg2nodes(src_dir, self.fs.Dir)[0]
-    self.fs.VariantDir(variant_dir, src_dir, duplicate)

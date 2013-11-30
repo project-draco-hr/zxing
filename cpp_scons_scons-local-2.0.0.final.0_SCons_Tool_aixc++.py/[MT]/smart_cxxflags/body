@@ -1,5 +1,0 @@
-def smart_cxxflags(source, target, env, for_signature):
-    build_dir = env.GetBuildPath()
-    if build_dir:
-        return ('-qtempinc=' + os.path.join(build_dir, 'tempinc'))
-    return ''

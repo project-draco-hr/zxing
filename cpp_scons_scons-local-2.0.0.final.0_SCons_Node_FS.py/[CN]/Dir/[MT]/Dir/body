@@ -1,3 +1,0 @@
-def Dir(self, name, create=True):
-    "\n        Looks up or creates a directory node named 'name' relative to\n        this directory.\n        "
-    return self.fs.Dir(name, self, create)

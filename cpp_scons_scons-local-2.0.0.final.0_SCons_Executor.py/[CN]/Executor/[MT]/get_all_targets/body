@@ -1,6 +1,0 @@
-def get_all_targets(self):
-    'Returns all targets for all batches of this Executor.'
-    result = []
-    for batch in self.batches:
-        result.extend(batch.targets)
-    return result

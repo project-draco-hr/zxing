@@ -1,3 +1,0 @@
-def sconsign(self):
-    'An Alias is not recorded in .sconsign files'
-    pass

@@ -1,8 +1,0 @@
-def _text2bool(val):
-    "\n    Converts strings to True/False depending on the 'truth' expressed by\n    the string. If the string can't be converted, the original value\n    will be returned.\n\n    See '__true_strings' and '__false_strings' for values considered\n    'true' or 'false respectivly.\n\n    This is usable as 'converter' for SCons' Variables.\n    "
-    lval = val.lower()
-    if (lval in __true_strings):
-        return True
-    if (lval in __false_strings):
-        return False
-    raise ValueError(('Invalid value for boolean option: %s' % val))

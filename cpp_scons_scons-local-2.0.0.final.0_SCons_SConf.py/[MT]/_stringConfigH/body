@@ -1,2 +1,0 @@
-def _stringConfigH(target, source, env):
-    return ('scons: Configure: creating ' + str(target[0]))

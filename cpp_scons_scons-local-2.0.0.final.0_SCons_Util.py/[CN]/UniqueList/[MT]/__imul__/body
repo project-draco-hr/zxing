@@ -1,4 +1,0 @@
-def __imul__(self, other):
-    result = UserList.__imul__(self, other)
-    result.unique = False
-    return result

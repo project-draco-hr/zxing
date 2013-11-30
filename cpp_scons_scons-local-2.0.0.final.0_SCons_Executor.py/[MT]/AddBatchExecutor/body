@@ -1,3 +1,0 @@
-def AddBatchExecutor(key, executor):
-    assert (key not in _batch_executors)
-    _batch_executors[key] = executor

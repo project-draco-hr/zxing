@@ -1,6 +1,0 @@
-"SCons.Tool.filesystem\n\nTool-specific initialization for the filesystem tools.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n"
-__revision__ = 'src/engine/SCons/Tool/filesystem.py 5023 2010/06/14 22:05:46 scons'
-import SCons
-from SCons.Tool.install import copyFunc
-(copyToBuilder, copyAsBuilder) = (None, None)
-copy_action = SCons.Action.Action(copy_action_func, copy_action_str)

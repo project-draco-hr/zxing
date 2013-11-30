@@ -1,5 +1,0 @@
-def union(self, other):
-    'Return the union of two sets as a new set.\n\n        (I.e. all elements that are in either set.)\n        '
-    result = self.__class__(self)
-    result._update(other)
-    return result

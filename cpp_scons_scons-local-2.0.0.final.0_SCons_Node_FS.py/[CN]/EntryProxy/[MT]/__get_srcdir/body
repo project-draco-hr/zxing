@@ -1,3 +1,0 @@
-def __get_srcdir(self):
-    'Returns the directory containing the source node linked to this\n        node via VariantDir(), or the directory of this node if not linked.'
-    return EntryProxy(self.get().srcnode().dir)

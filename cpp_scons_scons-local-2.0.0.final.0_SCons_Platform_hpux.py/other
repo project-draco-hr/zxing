@@ -1,3 +1,0 @@
-"engine.SCons.Platform.hpux\n\nPlatform-specific initialization for HP-UX systems.\n\nThere normally shouldn't be any need to import this module directly.  It\nwill usually be imported through the generic SCons.Platform.Platform()\nselection method.\n"
-__revision__ = 'src/engine/SCons/Platform/hpux.py 5023 2010/06/14 22:05:46 scons'
-import posix

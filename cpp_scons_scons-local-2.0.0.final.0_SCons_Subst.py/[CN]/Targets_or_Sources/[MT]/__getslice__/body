@@ -1,5 +1,0 @@
-def __getslice__(self, i, j):
-    nl = self.nl._create_nodelist()
-    i = max(i, 0)
-    j = max(j, 0)
-    return nl[i:j]

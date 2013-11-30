@@ -1,3 +1,0 @@
-def _children_reset(self):
-    self.clear_memoized_values()
-    self.executor_cleanup()

@@ -1,3 +1,0 @@
-def __delitem__(self, key):
-    UserDict.__delitem__(self, key)
-    self._keys.remove(key)

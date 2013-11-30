@@ -1,3 +1,0 @@
-def File(self, name):
-    "\n        Looks up or creates a file node named 'name' relative to\n        this directory.\n        "
-    return self.fs.File(name, self)

@@ -1,5 +1,0 @@
-def __eq__(self, other):
-    if isinstance(other, BaseSet):
-        return (self._data == other._data)
-    else:
-        return False

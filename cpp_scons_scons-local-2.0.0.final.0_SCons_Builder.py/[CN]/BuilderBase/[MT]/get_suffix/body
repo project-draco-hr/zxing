@@ -1,5 +1,0 @@
-def get_suffix(self, env, sources=[]):
-    suffix = self.suffix
-    if callable(suffix):
-        suffix = suffix(env, sources)
-    return env.subst(suffix)

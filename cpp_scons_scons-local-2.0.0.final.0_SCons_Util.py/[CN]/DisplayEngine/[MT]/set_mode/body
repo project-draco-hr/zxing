@@ -1,2 +1,0 @@
-def set_mode(self, mode):
-    self.print_it = mode

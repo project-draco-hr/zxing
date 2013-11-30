@@ -1,9 +1,0 @@
-def select(self, node):
-    if SCons.Util.is_Dict(self.function):
-        key = node.scanner_key()
-        try:
-            return self.function[key]
-        except KeyError:
-            return None
-    else:
-        return self

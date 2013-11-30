@@ -1,3 +1,0 @@
-def _check_writable(self):
-    if (self._flag == 'r'):
-        raise IOError(('Read-only database: %s' % self._file_name))

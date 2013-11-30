@@ -1,4 +1,0 @@
-def dictify(keys, values, result={}):
-    for (k, v) in zip(keys, values):
-        result[k] = v
-    return result

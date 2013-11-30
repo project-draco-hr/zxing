@@ -1,5 +1,0 @@
-def __cmp__(self, other):
-    try:
-        return cmp(self.name, other.name)
-    except AttributeError:
-        return 0

@@ -1,5 +1,0 @@
-def _scons_internal_error():
-    'Handle all errors but user errors. Print out a message telling\n    the user what to do in this case and print a normal trace.\n    '
-    print 'internal error'
-    traceback.print_exc()
-    sys.exit(2)

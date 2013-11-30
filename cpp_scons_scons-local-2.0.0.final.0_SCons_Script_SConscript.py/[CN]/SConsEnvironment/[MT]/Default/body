@@ -1,2 +1,0 @@
-def Default(self, *targets):
-    SCons.Script._Set_Default_Targets(self, targets)

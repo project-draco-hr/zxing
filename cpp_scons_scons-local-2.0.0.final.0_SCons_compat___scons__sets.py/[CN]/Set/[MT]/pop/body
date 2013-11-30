@@ -1,3 +1,0 @@
-def pop(self):
-    'Remove and return an arbitrary set element.'
-    return self._data.popitem()[0]

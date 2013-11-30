@@ -1,3 +1,0 @@
-def Entry(self, name):
-    "\n        Looks up or creates an entry node named 'name' relative to\n        this directory.\n        "
-    return self.fs.Entry(name, self)

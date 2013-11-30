@@ -1,8 +1,0 @@
-def get_paths_str(dest):
-    if SCons.Util.is_List(dest):
-        elem_strs = []
-        for element in dest:
-            elem_strs.append((('"' + str(element)) + '"'))
-        return (('[' + ', '.join(elem_strs)) + ']')
-    else:
-        return (('"' + str(dest)) + '"')

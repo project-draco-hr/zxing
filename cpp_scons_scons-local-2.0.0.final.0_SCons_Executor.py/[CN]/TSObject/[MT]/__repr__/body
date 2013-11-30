@@ -1,5 +1,0 @@
-def __repr__(self):
-    n = self.func()
-    if n:
-        return repr(n)
-    return ''

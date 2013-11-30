@@ -1,2 +1,0 @@
-def __call__(self, target, **kw):
-    return self.do_execute(target, kw)

@@ -1,2 +1,0 @@
-def __radd__(self, other):
-    return UserList.__radd__(self, CLVar(other))

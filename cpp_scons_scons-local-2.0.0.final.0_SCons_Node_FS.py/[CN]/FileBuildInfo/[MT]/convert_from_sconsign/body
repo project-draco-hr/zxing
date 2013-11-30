@@ -1,3 +1,0 @@
-def convert_from_sconsign(self, dir, name):
-    "\n        Converts a newly-read FileBuildInfo object for in-SCons use\n\n        For normal up-to-date checking, we don't have any conversion to\n        perform--but we're leaving this method here to make that clear.\n        "
-    pass

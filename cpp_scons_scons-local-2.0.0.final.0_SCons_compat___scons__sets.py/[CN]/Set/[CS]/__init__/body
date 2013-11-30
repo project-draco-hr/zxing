@@ -1,5 +1,0 @@
-def __init__(self, iterable=None):
-    'Construct a set from an optional iterable.'
-    self._data = {}
-    if (iterable is not None):
-        self._update(iterable)

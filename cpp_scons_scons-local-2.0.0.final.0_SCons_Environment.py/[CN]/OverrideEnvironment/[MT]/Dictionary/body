@@ -1,5 +1,0 @@
-def Dictionary(self):
-    'Emulates the items() method of dictionaries.'
-    d = self.__dict__['__subject'].Dictionary().copy()
-    d.update(self.__dict__['overrides'])
-    return d

@@ -1,3 +1,0 @@
-def scanner_key(self):
-    'A directory does not get scanned.'
-    return None

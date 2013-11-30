@@ -1,5 +1,0 @@
-def __repr__(self):
-    nl = self.nl._create_nodelist()
-    if nl:
-        return repr(nl[0])
-    return ''

@@ -1,3 +1,0 @@
-def do_if(self, t):
-    '\n        Default handling of a #if line.\n        '
-    self._do_if_else_condition(self.eval_expression(t))

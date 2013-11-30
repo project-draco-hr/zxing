@@ -1,3 +1,0 @@
-def __init__(self, env, dir):
-    self.env = env
-    self.dir = env.arg2nodes(dir, env.fs.Dir)[0]

@@ -1,2 +1,0 @@
-def __nonzero__(self):
-    raise InternalError('Do not test for the Node.builder attribute directly; use Node.has_builder() instead')

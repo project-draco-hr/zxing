@@ -1,8 +1,0 @@
-def args_to_files(self, args, tail=None):
-    '\n        Takes a list of arguments, expands any glob patterns, and\n        returns the last "tail" files from the list.\n        '
-    files = []
-    for a in args:
-        files.extend(sorted(glob.glob(a)))
-    if tail:
-        files = files[(- tail):]
-    return files

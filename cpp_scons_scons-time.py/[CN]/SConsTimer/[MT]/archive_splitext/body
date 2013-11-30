@@ -1,6 +1,0 @@
-def archive_splitext(self, path):
-    "\n        Splits an archive name into a filename base and extension.\n\n        This is like os.path.splitext() (which it calls) except that it\n        also looks for '.tar.gz' and treats it as an atomic extensions.\n        "
-    if path.endswith('.tar.gz'):
-        return (path[:(-7)], path[(-7):])
-    else:
-        return os.path.splitext(path)

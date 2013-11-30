@@ -1,8 +1,0 @@
-def get_contents(self, target, source, env):
-    result = [self.get_presig(target, source, env)]
-    vl = self.get_varlist(target, source, env)
-    if is_String(vl):
-        vl = (vl,)
-    for v in vl:
-        result.append(env.subst((('${' + v) + '}')))
-    return ''.join(result)

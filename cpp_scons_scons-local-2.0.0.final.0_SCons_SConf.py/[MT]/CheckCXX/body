@@ -1,4 +1,0 @@
-def CheckCXX(context):
-    res = SCons.Conftest.CheckCXX(context)
-    context.did_show_result = 1
-    return (not res)

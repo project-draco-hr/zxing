@@ -1,2 +1,0 @@
-def get_varlist(self, target, source, env, executor=None):
-    return self.varlist

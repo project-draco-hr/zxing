@@ -1,2 +1,0 @@
-def _get_unignored_sources_key(self, node, ignore=()):
-    return ((node,) + tuple(ignore))

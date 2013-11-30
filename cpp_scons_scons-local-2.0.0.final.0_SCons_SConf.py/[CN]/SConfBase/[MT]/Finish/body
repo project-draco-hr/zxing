@@ -1,4 +1,0 @@
-def Finish(self):
-    'Call this method after finished with your tests:\n                env = sconf.Finish()\n        '
-    self._shutdown()
-    return self.env

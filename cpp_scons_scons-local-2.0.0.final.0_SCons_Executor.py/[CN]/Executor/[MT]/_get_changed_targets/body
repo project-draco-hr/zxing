@@ -1,6 +1,0 @@
-def _get_changed_targets(self, *args, **kw):
-    try:
-        return self._changed_targets_list
-    except AttributeError:
-        self._get_changes()
-        return self._changed_targets_list

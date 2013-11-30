@@ -1,5 +1,0 @@
-def _repr(self, sort_them=False):
-    elements = list(self._data.keys())
-    if sort_them:
-        elements.sort()
-    return ('%s(%r)' % (self.__class__.__name__, elements))

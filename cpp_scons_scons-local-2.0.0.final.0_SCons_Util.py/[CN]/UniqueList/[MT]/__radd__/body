@@ -1,4 +1,0 @@
-def __radd__(self, other):
-    result = UserList.__radd__(self, other)
-    result.unique = False
-    return result

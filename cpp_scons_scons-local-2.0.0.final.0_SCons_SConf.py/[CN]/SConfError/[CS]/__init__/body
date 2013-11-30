@@ -1,2 +1,0 @@
-def __init__(self, msg):
-    SCons.Errors.UserError.__init__(self, msg)

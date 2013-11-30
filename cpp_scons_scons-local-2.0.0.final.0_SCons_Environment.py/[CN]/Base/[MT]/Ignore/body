@@ -1,7 +1,0 @@
-def Ignore(self, target, dependency):
-    'Ignore a dependency.'
-    tlist = self.arg2nodes(target, self.fs.Entry)
-    dlist = self.arg2nodes(dependency, self.fs.Entry)
-    for t in tlist:
-        t.add_ignore(dlist)
-    return tlist

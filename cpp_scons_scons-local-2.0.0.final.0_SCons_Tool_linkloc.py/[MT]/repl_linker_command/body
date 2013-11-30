@@ -1,6 +1,0 @@
-def repl_linker_command(m):
-    try:
-        f = open(m.group(2), 'r')
-        return (m.group(1) + f.read())
-    except IOError:
-        return ((m.group(1) + '#') + m.group(2))

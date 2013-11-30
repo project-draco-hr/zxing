@@ -1,8 +1,0 @@
-def _validator(key, val, env, searchfunc):
-    '\n    '
-    import os
-    if (env[key] is True):
-        if searchfunc:
-            env[key] = searchfunc(key, val)
-    elif (env[key] and (not os.path.exists(val))):
-        raise SCons.Errors.UserError(('Path does not exist for option %s: %s' % (key, val)))

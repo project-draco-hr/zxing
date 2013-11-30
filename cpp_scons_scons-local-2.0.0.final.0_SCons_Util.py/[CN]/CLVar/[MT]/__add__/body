@@ -1,2 +1,0 @@
-def __add__(self, other):
-    return UserList.__add__(self, CLVar(other))

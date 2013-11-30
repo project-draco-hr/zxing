@@ -1,2 +1,0 @@
-def str_for_display(self):
-    return repr(self.value)

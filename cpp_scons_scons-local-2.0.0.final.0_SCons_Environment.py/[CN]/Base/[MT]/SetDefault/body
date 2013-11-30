@@ -1,5 +1,0 @@
-def SetDefault(self, **kw):
-    for k in kw.keys():
-        if (k in self._dict):
-            del kw[k]
-    self.Replace(**kw)

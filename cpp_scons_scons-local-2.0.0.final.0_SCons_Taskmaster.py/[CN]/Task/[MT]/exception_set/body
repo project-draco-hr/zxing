@@ -1,6 +1,0 @@
-def exception_set(self, exception=None):
-    '\n        Records an exception to be raised at the appropriate time.\n\n        This also changes the "exception_raise" attribute to point\n        to the method that will, in fact\n        '
-    if (not exception):
-        exception = sys.exc_info()
-    self.exception = exception
-    self.exception_raise = self._exception_raise

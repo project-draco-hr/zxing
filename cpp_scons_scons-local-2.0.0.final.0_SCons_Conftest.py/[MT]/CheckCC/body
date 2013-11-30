@@ -1,7 +1,0 @@
-def CheckCC(context):
-    '\n    Configure check for a working C compiler.\n\n    This checks whether the C compiler, as defined in the $CC construction\n    variable, can compile a C source file. It uses the current $CCCOM value\n    too, so that it can test against non working flags.\n\n    '
-    context.Display('Checking whether the C compiler works')
-    text = '\nint main()\n{\n    return 0;\n}\n'
-    ret = _check_empty_program(context, 'CC', text, 'C')
-    _YesNoResult(context, ret, None, text)
-    return ret

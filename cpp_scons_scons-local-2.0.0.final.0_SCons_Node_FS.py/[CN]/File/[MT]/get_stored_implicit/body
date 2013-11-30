@@ -1,7 +1,0 @@
-def get_stored_implicit(self):
-    binfo = self.get_stored_info().binfo
-    binfo.prepare_dependencies()
-    try:
-        return binfo.bimplicit
-    except AttributeError:
-        return None

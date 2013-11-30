@@ -1,6 +1,0 @@
-def untar(fname):
-    import tarfile
-    tar = tarfile.open(name=fname, mode='r')
-    for tarinfo in tar:
-        tar.extract(tarinfo)
-    tar.close()

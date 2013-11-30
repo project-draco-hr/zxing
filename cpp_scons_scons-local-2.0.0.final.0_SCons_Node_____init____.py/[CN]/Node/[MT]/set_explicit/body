@@ -1,2 +1,0 @@
-def set_explicit(self, is_explicit):
-    self.is_explicit = is_explicit

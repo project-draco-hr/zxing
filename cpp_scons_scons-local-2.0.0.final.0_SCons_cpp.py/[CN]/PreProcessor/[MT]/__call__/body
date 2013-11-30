@@ -1,4 +1,0 @@
-def __call__(self, file):
-    '\n        Pre-processes a file.\n\n        This is the main public entry point.\n        '
-    self.current_file = file
-    return self.process_contents(self.read_file(file), file)

@@ -1,2 +1,0 @@
-def values(self):
-    return list(map(self.get, self._keys))

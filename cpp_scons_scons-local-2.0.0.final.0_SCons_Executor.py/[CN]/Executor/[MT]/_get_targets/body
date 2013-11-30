@@ -1,2 +1,0 @@
-def _get_targets(self, *args, **kw):
-    return SCons.Util.NodeList([n.get_subst_proxy() for n in self.get_all_targets()])

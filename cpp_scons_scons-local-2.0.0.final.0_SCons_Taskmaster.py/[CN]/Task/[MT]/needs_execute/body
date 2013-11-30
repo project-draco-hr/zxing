@@ -1,4 +1,0 @@
-def needs_execute(self):
-    msg = 'Taskmaster.Task is an abstract base class; instead of\n\tusing it directly, derive from it and override the abstract methods.'
-    SCons.Warnings.warn(SCons.Warnings.TaskmasterNeedsExecuteWarning, msg)
-    return True

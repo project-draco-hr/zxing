@@ -1,2 +1,0 @@
-def exists(*args, **kw):
-    return SCons.Tool.intelc.exists(*args, **kw)

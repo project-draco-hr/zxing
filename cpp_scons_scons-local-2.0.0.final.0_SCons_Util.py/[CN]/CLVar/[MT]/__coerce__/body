@@ -1,2 +1,0 @@
-def __coerce__(self, other):
-    return (self, CLVar(other))

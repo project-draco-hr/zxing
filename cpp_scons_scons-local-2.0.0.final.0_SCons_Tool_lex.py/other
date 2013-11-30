@@ -1,7 +1,0 @@
-"SCons.Tool.lex\n\nTool-specific initialization for lex.\n\nThere normally shouldn't be any need to import this module directly.\nIt will usually be imported through the generic SCons.Tool.Tool()\nselection method.\n\n"
-__revision__ = 'src/engine/SCons/Tool/lex.py 5023 2010/06/14 22:05:46 scons'
-import os.path
-import SCons.Action
-import SCons.Tool
-import SCons.Util
-LexAction = SCons.Action.Action('$LEXCOM', '$LEXCOMSTR')
