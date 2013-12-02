@@ -1,0 +1,14 @@
+{
+  try {
+    connection.connect();
+  }
+ catch (  NullPointerException|IllegalArgumentException|IndexOutOfBoundsException|SecurityException e) {
+    throw new IOException(e);
+  }
+  try {
+    return connection.getResponseCode();
+  }
+ catch (  NullPointerException|StringIndexOutOfBoundsException|IllegalArgumentException e) {
+    throw new IOException(e);
+  }
+}

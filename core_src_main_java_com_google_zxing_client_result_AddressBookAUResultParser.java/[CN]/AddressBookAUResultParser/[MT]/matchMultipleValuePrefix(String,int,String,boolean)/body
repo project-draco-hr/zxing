@@ -6,7 +6,7 @@
       break;
     }
     if (values == null) {
-      values=new ArrayList<String>(max);
+      values=new ArrayList<>(max);
     }
     values.add(value);
   }

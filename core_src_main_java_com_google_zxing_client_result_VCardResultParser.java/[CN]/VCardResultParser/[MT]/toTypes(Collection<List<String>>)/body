@@ -2,7 +2,7 @@
   if (lists == null || lists.isEmpty()) {
     return null;
   }
-  List<String> result=new ArrayList<String>(lists.size());
+  List<String> result=new ArrayList<>(lists.size());
   for (  List<String> list : lists) {
     String type=null;
     for (int i=1; i < list.size(); i++) {

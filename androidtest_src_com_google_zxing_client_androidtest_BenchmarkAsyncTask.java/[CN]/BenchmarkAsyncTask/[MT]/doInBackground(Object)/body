@@ -2,7 +2,7 @@
   MultiFormatReader reader=new MultiFormatReader();
   reader.setHints(null);
   System.gc();
-  List<BenchmarkItem> items=new ArrayList<BenchmarkItem>();
+  List<BenchmarkItem> items=new ArrayList<>();
   walkTree(reader,path,items);
   int count=0;
   int time=0;

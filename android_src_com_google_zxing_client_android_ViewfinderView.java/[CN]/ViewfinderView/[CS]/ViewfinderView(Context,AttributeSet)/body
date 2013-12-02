@@ -7,6 +7,6 @@
   laserColor=resources.getColor(R.color.viewfinder_laser);
   resultPointColor=resources.getColor(R.color.possible_result_points);
   scannerAlpha=0;
-  possibleResultPoints=new ArrayList<ResultPoint>(5);
+  possibleResultPoints=new ArrayList<>(5);
   lastPossibleResultPoints=null;
 }

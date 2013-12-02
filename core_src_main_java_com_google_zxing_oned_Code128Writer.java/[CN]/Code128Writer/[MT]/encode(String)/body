@@ -17,7 +17,7 @@ default :
   }
 }
 }
-Collection<int[]> patterns=new ArrayList<int[]>();
+Collection<int[]> patterns=new ArrayList<>();
 int checkSum=0;
 int checkWeight=1;
 int codeSet=0;

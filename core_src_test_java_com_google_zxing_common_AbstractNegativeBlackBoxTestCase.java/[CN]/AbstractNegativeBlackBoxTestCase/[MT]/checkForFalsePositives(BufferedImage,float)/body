@@ -10,7 +10,7 @@
   }
  catch (  ReaderException re) {
   }
-  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+  Map<DecodeHintType,Object> hints=new EnumMap<>(DecodeHintType.class);
   hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
   try {
     result=getReader().decode(bitmap,hints);

@@ -1,5 +1,5 @@
 {
-  List<Result> results=new ArrayList<Result>();
+  List<Result> results=new ArrayList<>();
   DetectorResult[] detectorResults=new MultiDetector(image.getBlackMatrix()).detectMulti(hints);
   for (  DetectorResult detectorResult : detectorResults) {
     try {

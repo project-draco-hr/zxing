@@ -4,7 +4,7 @@
     return null;
   }
   Map<String,String> parameters=splitQuery(query);
-  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+  Map<DecodeHintType,Object> hints=new EnumMap<>(DecodeHintType.class);
   for (  DecodeHintType hintType : DecodeHintType.values()) {
     if (hintType == DecodeHintType.CHARACTER_SET || hintType == DecodeHintType.NEED_RESULT_POINT_CALLBACK || hintType == DecodeHintType.POSSIBLE_FORMATS) {
       continue;

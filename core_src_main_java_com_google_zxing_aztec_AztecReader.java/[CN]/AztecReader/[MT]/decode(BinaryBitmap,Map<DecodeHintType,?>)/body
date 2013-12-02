@@ -21,16 +21,7 @@ catch (  FormatException e) {
       points=detectorResult.getPoints();
       decoderResult=new Decoder().decode(detectorResult);
     }
- catch (    NotFoundException e) {
-      if (notFoundException != null) {
-        throw notFoundException;
-      }
-      if (formatException != null) {
-        throw formatException;
-      }
-      throw e;
-    }
-catch (    FormatException e) {
+ catch (    NotFoundException|FormatException e) {
       if (notFoundException != null) {
         throw notFoundException;
       }

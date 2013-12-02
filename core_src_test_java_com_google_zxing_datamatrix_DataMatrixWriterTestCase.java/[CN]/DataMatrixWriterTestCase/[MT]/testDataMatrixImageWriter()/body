@@ -1,5 +1,5 @@
 {
-  Map<EncodeHintType,Object> hints=new EnumMap<EncodeHintType,Object>(EncodeHintType.class);
+  Map<EncodeHintType,Object> hints=new EnumMap<>(EncodeHintType.class);
   hints.put(EncodeHintType.DATA_MATRIX_SHAPE,SymbolShapeHint.FORCE_SQUARE);
   int bigEnough=64;
   DataMatrixWriter writer=new DataMatrixWriter();

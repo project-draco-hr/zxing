@@ -1,5 +1,5 @@
 {
-  Collection<State> result=new LinkedList<State>();
+  Collection<State> result=new LinkedList<>();
   for (  State state : states) {
     updateStateForChar(state,index,result);
   }

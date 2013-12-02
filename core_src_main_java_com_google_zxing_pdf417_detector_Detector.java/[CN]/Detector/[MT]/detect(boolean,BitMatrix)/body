@@ -1,5 +1,5 @@
 {
-  List<ResultPoint[]> barcodeCoordinates=new ArrayList<ResultPoint[]>();
+  List<ResultPoint[]> barcodeCoordinates=new ArrayList<>();
   int row=0;
   int column=0;
   boolean foundBarcodeInRow=false;

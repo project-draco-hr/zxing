@@ -4,7 +4,7 @@
   ResultPoint pointB=cornerPoints[1];
   ResultPoint pointC=cornerPoints[2];
   ResultPoint pointD=cornerPoints[3];
-  List<ResultPointsAndTransitions> transitions=new ArrayList<ResultPointsAndTransitions>(4);
+  List<ResultPointsAndTransitions> transitions=new ArrayList<>(4);
   transitions.add(transitionsBetween(pointA,pointB));
   transitions.add(transitionsBetween(pointA,pointC));
   transitions.add(transitionsBetween(pointB,pointD));
@@ -12,7 +12,7 @@
   Collections.sort(transitions,new ResultPointsAndTransitionsComparator());
   ResultPointsAndTransitions lSideOne=transitions.get(0);
   ResultPointsAndTransitions lSideTwo=transitions.get(1);
-  Map<ResultPoint,Integer> pointCount=new HashMap<ResultPoint,Integer>();
+  Map<ResultPoint,Integer> pointCount=new HashMap<>();
   increment(pointCount,lSideOne.getFrom());
   increment(pointCount,lSideOne.getTo());
   increment(pointCount,lSideTwo.getFrom());

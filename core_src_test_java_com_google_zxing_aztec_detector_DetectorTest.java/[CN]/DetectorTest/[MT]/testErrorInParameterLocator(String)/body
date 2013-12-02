@@ -23,7 +23,7 @@
       }
       for (int i=0; i < 5; i++) {
         BitMatrix copy=clone(matrix);
-        Collection<Integer> errors=new TreeSet<Integer>();
+        Collection<Integer> errors=new TreeSet<>();
         while (errors.size() < 3) {
           errors.add(random.nextInt(orientationPoints.size()));
         }

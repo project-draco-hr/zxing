@@ -1,5 +1,5 @@
 {
-  Deque<Token> symbols=new LinkedList<Token>();
+  Deque<Token> symbols=new LinkedList<>();
   for (Token token=endBinaryShift(text.length).token; token != null; token=token.getPrevious()) {
     symbols.addFirst(token);
   }

@@ -21,7 +21,7 @@
       }
  else {
         if (matches == null) {
-          matches=new ArrayList<String>(3);
+          matches=new ArrayList<>(3);
         }
         String element=unescapeBackslash(rawText.substring(start,i));
         if (trim) {

@@ -1,6 +1,6 @@
 {
   int maxConfidence=-1;
-  Collection<Integer> result=new ArrayList<Integer>();
+  Collection<Integer> result=new ArrayList<>();
   for (  Entry<Integer,Integer> entry : values.entrySet()) {
     if (entry.getValue() > maxConfidence) {
       maxConfidence=entry.getValue();

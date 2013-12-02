@@ -56,7 +56,7 @@
     }
   }
   FinderPattern[][] patternInfo=selectMutipleBestPatterns();
-  List<FinderPatternInfo> result=new ArrayList<FinderPatternInfo>();
+  List<FinderPatternInfo> result=new ArrayList<>();
   for (  FinderPattern[] pattern : patternInfo) {
     ResultPoint.orderBestPatterns(pattern);
     result.add(new FinderPatternInfo(pattern));

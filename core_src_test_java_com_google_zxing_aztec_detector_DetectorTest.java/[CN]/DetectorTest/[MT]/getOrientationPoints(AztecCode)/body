@@ -1,7 +1,7 @@
 {
   int center=code.getMatrix().getWidth() / 2;
   int offset=code.isCompact() ? 5 : 7;
-  List<Point> result=new ArrayList<Point>();
+  List<Point> result=new ArrayList<>();
   for (int xSign=-1; xSign <= 1; xSign+=2) {
     for (int ySign=-1; ySign <= 1; ySign+=2) {
       result.add(new Point(center + xSign * offset,center + ySign * offset));

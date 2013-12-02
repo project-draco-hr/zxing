@@ -34,7 +34,7 @@
       lastPossibleResultPoints=null;
     }
  else {
-      possibleResultPoints=new ArrayList<ResultPoint>(5);
+      possibleResultPoints=new ArrayList<>(5);
       lastPossibleResultPoints=currentPossible;
       paint.setAlpha(CURRENT_POINT_OPACITY);
       paint.setColor(resultPointColor);

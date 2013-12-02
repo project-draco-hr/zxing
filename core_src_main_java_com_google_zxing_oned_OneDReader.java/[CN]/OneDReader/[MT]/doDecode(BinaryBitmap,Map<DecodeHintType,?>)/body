@@ -29,7 +29,7 @@
       if (attempt == 1) {
         row.reverse();
         if (hints != null && hints.containsKey(DecodeHintType.NEED_RESULT_POINT_CALLBACK)) {
-          Map<DecodeHintType,Object> newHints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+          Map<DecodeHintType,Object> newHints=new EnumMap<>(DecodeHintType.class);
           newHints.putAll(hints);
           newHints.remove(DecodeHintType.NEED_RESULT_POINT_CALLBACK);
           hints=newHints;

@@ -20,7 +20,7 @@
       expectedText=readFileAsString(expectedTextFile,ISO88591);
     }
     for (int x=0; x < testCount; x++) {
-      List<Result> results=new ArrayList<Result>();
+      List<Result> results=new ArrayList<>();
       for (      File imageFile : testImageGroup.getValue()) {
         BufferedImage image=ImageIO.read(imageFile);
         float rotation=testResults.get(x).getRotation();

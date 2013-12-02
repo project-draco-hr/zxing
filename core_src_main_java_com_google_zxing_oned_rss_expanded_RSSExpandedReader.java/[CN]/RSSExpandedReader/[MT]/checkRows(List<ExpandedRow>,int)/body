@@ -13,7 +13,7 @@
     if (checkChecksum()) {
       return this.pairs;
     }
-    List<ExpandedRow> rs=new ArrayList<ExpandedRow>();
+    List<ExpandedRow> rs=new ArrayList<>();
     rs.addAll(collectedRows);
     rs.add(row);
     try {

@@ -1,6 +1,6 @@
 {
   String suffix=String.format(" (%srotation: %d)",tryHarder ? "try harder, " : "",(int)rotation);
-  Map<DecodeHintType,Object> hints=new EnumMap<DecodeHintType,Object>(DecodeHintType.class);
+  Map<DecodeHintType,Object> hints=new EnumMap<>(DecodeHintType.class);
   if (tryHarder) {
     hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
   }

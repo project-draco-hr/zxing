@@ -5,7 +5,7 @@
   int dataBytesOffset=0;
   int maxNumDataBytes=0;
   int maxNumEcBytes=0;
-  Collection<BlockPair> blocks=new ArrayList<BlockPair>(numRSBlocks);
+  Collection<BlockPair> blocks=new ArrayList<>(numRSBlocks);
   for (int i=0; i < numRSBlocks; ++i) {
     int[] numDataBytesInBlock=new int[1];
     int[] numEcBytesInBlock=new int[1];

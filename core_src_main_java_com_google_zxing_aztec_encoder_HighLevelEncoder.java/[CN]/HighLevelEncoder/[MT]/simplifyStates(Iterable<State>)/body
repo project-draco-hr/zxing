@@ -1,5 +1,5 @@
 {
-  List<State> result=new LinkedList<State>();
+  List<State> result=new LinkedList<>();
   for (  State newState : states) {
     boolean add=true;
     for (Iterator<State> iterator=result.iterator(); iterator.hasNext(); ) {

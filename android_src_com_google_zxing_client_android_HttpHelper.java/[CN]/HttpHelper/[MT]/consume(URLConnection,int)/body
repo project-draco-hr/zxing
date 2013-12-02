@@ -15,9 +15,7 @@
       try {
         in.close();
       }
- catch (      IOException ioe) {
-      }
-catch (      NullPointerException npe) {
+ catch (      IOException|NullPointerException ioe) {
       }
     }
   }

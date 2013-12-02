@@ -21,16 +21,7 @@ catch (  ChecksumException e) {
     result.setOther(new QRCodeDecoderMetaData(true));
     return result;
   }
- catch (  FormatException e) {
-    if (fe != null) {
-      throw fe;
-    }
-    if (ce != null) {
-      throw ce;
-    }
-    throw e;
-  }
-catch (  ChecksumException e) {
+ catch (  FormatException|ChecksumException e) {
     if (fe != null) {
       throw fe;
     }

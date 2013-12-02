@@ -3,11 +3,8 @@
     try {
       getManager(context).setPrimaryClip(ClipData.newPlainText(null,text));
     }
- catch (    NullPointerException npe) {
-      Log.w(TAG,"Clipboard bug",npe);
-    }
-catch (    IllegalStateException ise) {
-      Log.w(TAG,"Clipboard bug",ise);
+ catch (    NullPointerException|IllegalStateException e) {
+      Log.w(TAG,"Clipboard bug",e);
     }
   }
 }

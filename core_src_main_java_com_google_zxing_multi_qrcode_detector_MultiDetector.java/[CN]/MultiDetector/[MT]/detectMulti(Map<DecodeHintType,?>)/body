@@ -6,7 +6,7 @@
   if (infos.length == 0) {
     throw NotFoundException.getNotFoundInstance();
   }
-  List<DetectorResult> result=new ArrayList<DetectorResult>();
+  List<DetectorResult> result=new ArrayList<>();
   for (  FinderPatternInfo info : infos) {
     try {
       result.add(processFinderPatternInfo(info));
