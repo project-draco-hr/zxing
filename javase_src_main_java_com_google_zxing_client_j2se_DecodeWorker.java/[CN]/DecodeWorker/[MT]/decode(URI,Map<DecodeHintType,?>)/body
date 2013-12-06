@@ -15,11 +15,11 @@
     }
     Result result=new MultiFormatReader().decode(bitmap,hints);
     if (config.isBrief()) {
-      System.out.println(uri.toString() + ": Success");
+      System.out.println(uri + ": Success");
     }
  else {
       ParsedResult parsedResult=ResultParser.parseResult(result);
-      System.out.println(uri.toString() + " (format: " + result.getBarcodeFormat()+ ", type: "+ parsedResult.getType()+ "):\nRaw result:\n"+ result.getText()+ "\nParsed result:\n"+ parsedResult.getDisplayResult());
+      System.out.println(uri + " (format: " + result.getBarcodeFormat()+ ", type: "+ parsedResult.getType()+ "):\nRaw result:\n"+ result.getText()+ "\nParsed result:\n"+ parsedResult.getDisplayResult());
       System.out.println("Found " + result.getResultPoints().length + " result points.");
       for (int i=0; i < result.getResultPoints().length; i++) {
         ResultPoint rp=result.getResultPoints()[i];
@@ -31,7 +31,7 @@
     return result;
   }
  catch (  NotFoundException ignored) {
-    System.out.println(uri.toString() + ": No barcode found");
+    System.out.println(uri + ": No barcode found");
     return null;
   }
 }

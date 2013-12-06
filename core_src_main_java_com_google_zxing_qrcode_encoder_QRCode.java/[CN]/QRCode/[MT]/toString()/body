@@ -14,7 +14,7 @@
   }
  else {
     result.append("\n matrix:\n");
-    result.append(matrix.toString());
+    result.append(matrix);
   }
   result.append(">>\n");
   return result.toString();
