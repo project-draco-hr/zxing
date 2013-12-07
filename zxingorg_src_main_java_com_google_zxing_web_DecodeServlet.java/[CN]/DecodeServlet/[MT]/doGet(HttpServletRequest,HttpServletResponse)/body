@@ -45,6 +45,12 @@
     response.sendRedirect("badurl.jspx");
     return;
   }
+  String protocol=imageURL.getProtocol();
+  if (!"http".equalsIgnoreCase(protocol) && !"https".equalsIgnoreCase(protocol)) {
+    log.info("URI was not valid: " + imageURIString);
+    response.sendRedirect("badurl.jspx");
+    return;
+  }
   HttpURLConnection connection;
   try {
     connection=(HttpURLConnection)imageURL.openConnection();
