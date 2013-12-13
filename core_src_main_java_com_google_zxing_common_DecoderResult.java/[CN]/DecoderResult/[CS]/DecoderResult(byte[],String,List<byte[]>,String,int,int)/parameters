@@ -1,0 +1,6 @@
+byte[] rawBytes
+String text
+List<byte[]> byteSegments
+String ecLevel
+int saSequence
+int saParity

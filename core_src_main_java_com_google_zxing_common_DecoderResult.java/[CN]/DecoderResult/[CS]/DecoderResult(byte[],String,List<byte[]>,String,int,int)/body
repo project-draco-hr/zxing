@@ -1,0 +1,8 @@
+{
+  this.rawBytes=rawBytes;
+  this.text=text;
+  this.byteSegments=byteSegments;
+  this.ecLevel=ecLevel;
+  this.structuredAppendParity=saParity;
+  this.structuredAppendSequenceNumber=saSequence;
+}

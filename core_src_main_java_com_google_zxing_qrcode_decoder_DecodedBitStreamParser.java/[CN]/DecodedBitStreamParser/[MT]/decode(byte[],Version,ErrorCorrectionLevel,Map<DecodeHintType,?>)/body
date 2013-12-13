@@ -2,6 +2,8 @@
   BitSource bits=new BitSource(bytes);
   StringBuilder result=new StringBuilder(50);
   List<byte[]> byteSegments=new ArrayList<>(1);
+  int symbolSequence=-1;
+  int parityData=-1;
   try {
     CharacterSetECI currentCharacterSetECI=null;
     boolean fc1InEffect=false;
@@ -21,7 +23,8 @@
           if (bits.available() < 16) {
             throw FormatException.getFormatInstance();
           }
-          bits.readBits(16);
+          symbolSequence=bits.readBits(8);
+          parityData=bits.readBits(8);
         }
  else         if (mode == Mode.ECI) {
           int value=parseECIValue(bits);
@@ -64,5 +67,5 @@
  catch (  IllegalArgumentException iae) {
     throw FormatException.getFormatInstance();
   }
-  return new DecoderResult(bytes,result.toString(),byteSegments.isEmpty() ? null : byteSegments,ecLevel == null ? null : ecLevel.toString());
+  return new DecoderResult(bytes,result.toString(),byteSegments.isEmpty() ? null : byteSegments,ecLevel == null ? null : ecLevel.toString(),symbolSequence,parityData);
 }

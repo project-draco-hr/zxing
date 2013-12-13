@@ -17,6 +17,10 @@
       if (ecLevel != null) {
         result.putMetadata(ResultMetadataType.ERROR_CORRECTION_LEVEL,ecLevel);
       }
+      if (decoderResult.hasStructuredAppend()) {
+        result.putMetadata(ResultMetadataType.STRUCTURED_APPEND_SEQUENCE,decoderResult.getStructuredAppendSequenceNumber());
+        result.putMetadata(ResultMetadataType.STRUCTURED_APPEND_PARITY,decoderResult.getStructuredAppendParity());
+      }
       results.add(result);
     }
  catch (    ReaderException re) {
@@ -26,6 +30,7 @@
     return EMPTY_RESULT_ARRAY;
   }
  else {
+    results=processStructuredAppend(results);
     return results.toArray(new Result[results.size()]);
   }
 }

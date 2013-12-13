@@ -1,0 +1,3 @@
+{
+  return structuredAppendParity >= 0 && structuredAppendSequenceNumber >= 0;
+}
