@@ -1,0 +1,3 @@
+{
+  return new CodaBarWriter().encode(input,BarcodeFormat.CODABAR,0,0);
+}
