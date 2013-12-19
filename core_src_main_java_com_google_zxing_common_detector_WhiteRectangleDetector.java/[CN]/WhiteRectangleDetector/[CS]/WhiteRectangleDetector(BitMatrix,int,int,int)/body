@@ -2,7 +2,7 @@
   this.image=image;
   height=image.getHeight();
   width=image.getWidth();
-  int halfsize=initSize >> 1;
+  int halfsize=initSize / 2;
   leftInit=x - halfsize;
   rightInit=x + halfsize;
   upInit=y - halfsize;

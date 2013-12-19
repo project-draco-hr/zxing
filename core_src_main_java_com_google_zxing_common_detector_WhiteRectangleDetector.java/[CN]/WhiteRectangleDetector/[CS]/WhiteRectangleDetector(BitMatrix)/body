@@ -1,12 +1,3 @@
 {
-  this.image=image;
-  height=image.getHeight();
-  width=image.getWidth();
-  leftInit=(width - INIT_SIZE) >> 1;
-  rightInit=(width + INIT_SIZE) >> 1;
-  upInit=(height - INIT_SIZE) >> 1;
-  downInit=(height + INIT_SIZE) >> 1;
-  if (upInit < 0 || leftInit < 0 || downInit >= height || rightInit >= width) {
-    throw NotFoundException.getNotFoundInstance();
-  }
+  this(image,INIT_SIZE,image.getWidth() / 2,image.getHeight() / 2);
 }
