@@ -1,0 +1,7 @@
+{
+  if (!(o instanceof BitArray)) {
+    return false;
+  }
+  BitArray other=(BitArray)o;
+  return size == other.size && Arrays.equals(bits,other.bits);
+}

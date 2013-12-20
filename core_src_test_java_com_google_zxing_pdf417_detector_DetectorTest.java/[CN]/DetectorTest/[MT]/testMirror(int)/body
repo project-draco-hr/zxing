@@ -1,5 +1,0 @@
-{
-  BitArray result=new BitArray(size);
-  Detector.mirror(getInput(size),result);
-  assertEquals(getExpected(size).toString(),result.toString());
-}

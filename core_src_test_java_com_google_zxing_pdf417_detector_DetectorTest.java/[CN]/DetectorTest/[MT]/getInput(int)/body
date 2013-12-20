@@ -1,7 +1,0 @@
-{
-  BitArray input=new BitArray(size);
-  for (  int index : BIT_SET_INDEX) {
-    input.set(index);
-  }
-  return input;
-}

@@ -1,7 +1,0 @@
-{
-  BitArray expected=new BitArray(size);
-  for (  int index : BIT_SET_INDEX) {
-    expected.set(size - 1 - index);
-  }
-  return expected;
-}

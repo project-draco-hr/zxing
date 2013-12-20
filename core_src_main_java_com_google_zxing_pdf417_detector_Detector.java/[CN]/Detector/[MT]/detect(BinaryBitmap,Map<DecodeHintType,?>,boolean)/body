@@ -2,7 +2,8 @@
   BitMatrix bitMatrix=image.getBlackMatrix();
   List<ResultPoint[]> barcodeCoordinates=detect(multiple,bitMatrix);
   if (barcodeCoordinates.isEmpty()) {
-    rotate180(bitMatrix);
+    bitMatrix=bitMatrix.clone();
+    bitMatrix.rotate180();
     barcodeCoordinates=detect(multiple,bitMatrix);
   }
   return new PDF417DetectorResult(bitMatrix,barcodeCoordinates);
