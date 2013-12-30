@@ -1,6 +1,6 @@
 {
   if (scanFormats != null) {
-    Collection<BarcodeFormat> formats=EnumSet.noneOf(BarcodeFormat.class);
+    Set<BarcodeFormat> formats=EnumSet.noneOf(BarcodeFormat.class);
     try {
       for (      String format : scanFormats) {
         formats.add(BarcodeFormat.valueOf(format));
@@ -11,18 +11,7 @@
     }
   }
   if (decodeMode != null) {
-    if (Intents.Scan.PRODUCT_MODE.equals(decodeMode)) {
-      return PRODUCT_FORMATS;
-    }
-    if (Intents.Scan.QR_CODE_MODE.equals(decodeMode)) {
-      return QR_CODE_FORMATS;
-    }
-    if (Intents.Scan.DATA_MATRIX_MODE.equals(decodeMode)) {
-      return DATA_MATRIX_FORMATS;
-    }
-    if (Intents.Scan.ONE_D_MODE.equals(decodeMode)) {
-      return ONE_D_FORMATS;
-    }
+    return FORMATS_FOR_MODE.get(decodeMode);
   }
   return null;
 }
