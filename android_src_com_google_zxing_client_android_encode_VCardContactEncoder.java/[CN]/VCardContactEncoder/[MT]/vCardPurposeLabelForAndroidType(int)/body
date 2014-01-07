@@ -1,0 +1,17 @@
+{
+switch (androidType) {
+case ContactsContract.CommonDataKinds.Phone.TYPE_FAX_HOME:
+case ContactsContract.CommonDataKinds.Phone.TYPE_FAX_WORK:
+case ContactsContract.CommonDataKinds.Phone.TYPE_OTHER_FAX:
+    return "fax";
+case ContactsContract.CommonDataKinds.Phone.TYPE_PAGER:
+case ContactsContract.CommonDataKinds.Phone.TYPE_WORK_PAGER:
+  return "pager";
+case ContactsContract.CommonDataKinds.Phone.TYPE_TTY_TDD:
+return "textphone";
+case ContactsContract.CommonDataKinds.Phone.TYPE_MMS:
+return "text";
+default :
+return null;
+}
+}

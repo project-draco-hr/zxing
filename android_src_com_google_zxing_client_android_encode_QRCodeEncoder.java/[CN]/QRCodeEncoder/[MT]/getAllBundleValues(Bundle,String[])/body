@@ -1,0 +1,8 @@
+{
+  List<String> values=new ArrayList<>(keys.length);
+  for (  String key : keys) {
+    Object value=bundle.get(key);
+    values.add(value == null ? null : value.toString());
+  }
+  return values;
+}

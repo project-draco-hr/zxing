@@ -1,3 +1,0 @@
-{
-  doAppend(newContents,newDisplayContents,prefix,value,VCARD_FIELD_FORMATTER,TERMINATOR);
-}

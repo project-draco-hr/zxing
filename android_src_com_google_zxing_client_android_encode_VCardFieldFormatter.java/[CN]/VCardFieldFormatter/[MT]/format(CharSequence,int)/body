@@ -1,0 +1,7 @@
+{
+  value=RESERVED_VCARD_CHARS.matcher(value).replaceAll("\\\\$1");
+  value=NEWLINE.matcher(value).replaceAll("");
+  Map<String,Set<String>> metadata=metadataForIndex == null || metadataForIndex.size() <= index ? null : metadataForIndex.get(index);
+  value=formatMetadata(value,metadata);
+  return value;
+}

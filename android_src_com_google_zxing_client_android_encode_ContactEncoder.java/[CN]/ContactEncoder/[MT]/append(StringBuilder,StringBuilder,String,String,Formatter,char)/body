@@ -1,0 +1,7 @@
+{
+  String trimmed=trim(value);
+  if (trimmed != null) {
+    newContents.append(prefix).append(fieldFormatter.format(trimmed,0)).append(terminator);
+    newDisplayContents.append(trimmed).append('\n');
+  }
+}

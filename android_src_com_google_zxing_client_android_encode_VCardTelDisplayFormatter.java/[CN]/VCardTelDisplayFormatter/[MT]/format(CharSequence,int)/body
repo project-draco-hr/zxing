@@ -1,0 +1,6 @@
+{
+  value=PhoneNumberUtils.formatNumber(value.toString());
+  Map<String,Set<String>> metadata=metadataForIndex == null || metadataForIndex.size() <= index ? null : metadataForIndex.get(index);
+  value=formatMetadata(value,metadata);
+  return value;
+}

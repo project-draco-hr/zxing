@@ -1,0 +1,17 @@
+{
+switch (androidType) {
+case ContactsContract.CommonDataKinds.Phone.TYPE_HOME:
+case ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE:
+case ContactsContract.CommonDataKinds.Phone.TYPE_FAX_HOME:
+case ContactsContract.CommonDataKinds.Phone.TYPE_PAGER:
+    return "home";
+case ContactsContract.CommonDataKinds.Phone.TYPE_COMPANY_MAIN:
+case ContactsContract.CommonDataKinds.Phone.TYPE_WORK:
+case ContactsContract.CommonDataKinds.Phone.TYPE_WORK_MOBILE:
+case ContactsContract.CommonDataKinds.Phone.TYPE_FAX_WORK:
+case ContactsContract.CommonDataKinds.Phone.TYPE_WORK_PAGER:
+  return "work";
+default :
+return null;
+}
+}

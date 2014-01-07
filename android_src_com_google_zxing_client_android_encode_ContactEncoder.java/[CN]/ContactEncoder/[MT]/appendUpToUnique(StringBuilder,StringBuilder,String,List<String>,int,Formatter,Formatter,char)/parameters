@@ -1,0 +1,8 @@
+StringBuilder newContents
+StringBuilder newDisplayContents
+String prefix
+List<String> values
+int max
+Formatter displayFormatter
+Formatter fieldFormatter
+char terminator

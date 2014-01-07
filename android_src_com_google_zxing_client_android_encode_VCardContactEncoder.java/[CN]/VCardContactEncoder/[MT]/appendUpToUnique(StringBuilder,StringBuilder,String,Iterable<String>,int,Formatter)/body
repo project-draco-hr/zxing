@@ -1,3 +1,0 @@
-{
-  doAppendUpToUnique(newContents,newDisplayContents,prefix,values,max,formatter,VCARD_FIELD_FORMATTER,TERMINATOR);
-}
