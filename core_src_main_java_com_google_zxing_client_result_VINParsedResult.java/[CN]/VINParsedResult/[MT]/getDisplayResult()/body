@@ -1,0 +1,13 @@
+{
+  StringBuilder result=new StringBuilder(50);
+  result.append(worldManufacturerID).append(' ');
+  result.append(vehicleDescriptorSection).append(' ');
+  result.append(vehicleIdentifierSection).append('\n');
+  if (countryCode != null) {
+    result.append(countryCode).append(' ');
+  }
+  result.append(modelYear).append(' ');
+  result.append(plantCode).append(' ');
+  result.append(sequentialNumber).append('\n');
+  return result.toString();
+}

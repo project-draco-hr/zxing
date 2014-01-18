@@ -1,0 +1,12 @@
+{
+  super(ParsedResultType.VIN);
+  this.vin=vin;
+  this.worldManufacturerID=worldManufacturerID;
+  this.vehicleDescriptorSection=vehicleDescriptorSection;
+  this.vehicleIdentifierSection=vehicleIdentifierSection;
+  this.countryCode=countryCode;
+  this.vehicleAttributes=vehicleAttributes;
+  this.modelYear=modelYear;
+  this.plantCode=plantCode;
+  this.sequentialNumber=sequentialNumber;
+}

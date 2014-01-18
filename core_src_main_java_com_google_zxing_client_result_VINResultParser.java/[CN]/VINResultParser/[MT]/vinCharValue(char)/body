@@ -1,0 +1,15 @@
+{
+  if (c >= 'A' && c <= 'I') {
+    return (c - 'A') + 1;
+  }
+  if (c >= 'J' && c <= 'R') {
+    return (c - 'J') + 1;
+  }
+  if (c >= 'S' && c <= 'Z') {
+    return (c - 'S') + 2;
+  }
+  if (c >= '0' && c <= '9') {
+    return c - '0';
+  }
+  throw new IllegalArgumentException();
+}

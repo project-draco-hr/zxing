@@ -1,0 +1,14 @@
+{
+  Result fakeResult=new Result(contents,null,null,BarcodeFormat.CODE_39);
+  ParsedResult result=ResultParser.parseResult(fakeResult);
+  assertSame(ParsedResultType.VIN,result.getType());
+  VINParsedResult vinResult=(VINParsedResult)result;
+  assertEquals(wmi,vinResult.getWorldManufacturerID());
+  assertEquals(vds,vinResult.getVehicleDescriptorSection());
+  assertEquals(vis,vinResult.getVehicleIdentifierSection());
+  assertEquals(country,vinResult.getCountryCode());
+  assertEquals(attributes,vinResult.getVehicleAttributes());
+  assertEquals(year,vinResult.getModelYear());
+  assertEquals(plant,vinResult.getPlantCode());
+  assertEquals(sequential,vinResult.getSequentialNumber());
+}

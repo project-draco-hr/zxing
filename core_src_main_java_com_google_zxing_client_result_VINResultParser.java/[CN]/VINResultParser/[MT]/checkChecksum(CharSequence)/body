@@ -1,0 +1,9 @@
+{
+  int sum=0;
+  for (int i=0; i < vin.length(); i++) {
+    sum+=vinPositionWeight(i + 1) * vinCharValue(vin.charAt(i));
+  }
+  char checkChar=vin.charAt(8);
+  char expectedCheckChar=checkChar(sum % 11);
+  return checkChar == expectedCheckChar;
+}

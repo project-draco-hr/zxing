@@ -1,0 +1,9 @@
+{
+  if (remainder < 10) {
+    return (char)('0' + remainder);
+  }
+  if (remainder == 10) {
+    return 'X';
+  }
+  throw new IllegalArgumentException();
+}

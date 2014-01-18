@@ -1,0 +1,9 @@
+String vin
+String worldManufacturerID
+String vehicleDescriptorSection
+String vehicleIdentifierSection
+String countryCode
+String vehicleAttributes
+int modelYear
+char plantCode
+String sequentialNumber
