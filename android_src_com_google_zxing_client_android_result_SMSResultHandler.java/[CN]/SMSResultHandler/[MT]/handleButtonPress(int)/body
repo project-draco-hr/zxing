@@ -1,11 +1,12 @@
 {
   SMSParsedResult smsResult=(SMSParsedResult)getResult();
+  String number=smsResult.getNumbers()[0];
 switch (index) {
 case 0:
-    sendSMS(smsResult.getNumbers()[0],smsResult.getBody());
+    sendSMS(number,smsResult.getBody());
   break;
 case 1:
-sendMMS(smsResult.getNumbers()[0],smsResult.getSubject(),smsResult.getBody());
+sendMMS(number,smsResult.getSubject(),smsResult.getBody());
 break;
 }
 }
