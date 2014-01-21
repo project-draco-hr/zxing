@@ -1,5 +1,0 @@
-{
-  if (xpp.next() != XmlPullParser.TEXT) {
-    throw new IOException();
-  }
-}
