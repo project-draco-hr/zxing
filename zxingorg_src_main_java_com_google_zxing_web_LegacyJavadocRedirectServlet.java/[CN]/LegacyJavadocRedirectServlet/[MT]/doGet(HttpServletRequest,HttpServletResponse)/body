@@ -1,0 +1,7 @@
+{
+  String requestURI=request.getRequestURI();
+  Preconditions.checkArgument(requestURI.startsWith(PREFIX));
+  String redirectURI="http://zxing.github.io/zxing/apidocs/" + requestURI.substring(PREFIX.length());
+  response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+  response.setHeader(HttpHeaders.LOCATION,redirectURI);
+}
