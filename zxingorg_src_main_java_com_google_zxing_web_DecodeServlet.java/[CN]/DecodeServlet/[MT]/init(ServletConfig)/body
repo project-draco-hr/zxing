@@ -6,11 +6,17 @@
   FileCleaningTracker fileCleaningTracker=FileCleanerCleanup.getFileCleaningTracker(context);
   diskFileItemFactory=new DiskFileItemFactory(1 << 16,repository);
   diskFileItemFactory.setFileCleaningTracker(fileCleaningTracker);
-  try {
-    blockedURLSubstrings=Resources.readLines(Resources.getResource("/private/uri-block-substrings.txt"),StandardCharsets.UTF_8);
+  URL blockURL=context.getClassLoader().getResource("/private/uri-block-substrings.txt");
+  if (blockURL == null) {
+    blockedURLSubstrings=Collections.emptyList();
   }
- catch (  IOException ioe) {
-    throw new ServletException(ioe);
+ else {
+    try {
+      blockedURLSubstrings=Resources.readLines(blockURL,StandardCharsets.UTF_8);
+    }
+ catch (    IOException ioe) {
+      throw new ServletException(ioe);
+    }
+    log.info("Blocking URIs containing: " + blockedURLSubstrings);
   }
-  log.info("Blocking URIs containing: " + blockedURLSubstrings);
 }
