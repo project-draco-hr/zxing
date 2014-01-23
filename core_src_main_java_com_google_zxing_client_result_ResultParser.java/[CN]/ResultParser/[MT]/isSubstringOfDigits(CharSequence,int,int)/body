@@ -1,5 +1,5 @@
 {
-  if (value == null) {
+  if (value == null || length <= 0) {
     return false;
   }
   int max=offset + length;
