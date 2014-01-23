@@ -8,7 +8,7 @@
     return null;
   }
   String normalizedProductID;
-  if (format == BarcodeFormat.UPC_E) {
+  if (format == BarcodeFormat.UPC_E && rawText.length() == 8) {
     normalizedProductID=UPCEReader.convertUPCEtoUPCA(rawText);
   }
  else {
