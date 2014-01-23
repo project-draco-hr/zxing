@@ -1,5 +1,6 @@
 {
   boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
+  boolean pureBarcode=hints != null && hints.containsKey(DecodeHintType.PURE_BARCODE);
   BitMatrix image=getImage();
   int maxI=image.getHeight();
   int maxJ=image.getWidth();
@@ -25,7 +26,7 @@
  else {
         if ((currentState & 1) == 0) {
           if (currentState == 4) {
-            if (foundPatternCross(stateCount) && handlePossibleCenter(stateCount,i,j)) {
+            if (foundPatternCross(stateCount) && handlePossibleCenter(stateCount,i,j,pureBarcode)) {
               currentState=0;
               stateCount[0]=0;
               stateCount[1]=0;
@@ -52,7 +53,7 @@
       }
     }
     if (foundPatternCross(stateCount)) {
-      handlePossibleCenter(stateCount,i,maxJ);
+      handlePossibleCenter(stateCount,i,maxJ,pureBarcode);
     }
   }
   FinderPattern[][] patternInfo=selectMutipleBestPatterns();

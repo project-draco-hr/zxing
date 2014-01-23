@@ -1,5 +1,6 @@
 {
   boolean tryHarder=hints != null && hints.containsKey(DecodeHintType.TRY_HARDER);
+  boolean pureBarcode=hints != null && hints.containsKey(DecodeHintType.PURE_BARCODE);
   int maxI=image.getHeight();
   int maxJ=image.getWidth();
   int iSkip=(3 * maxI) / (4 * MAX_MODULES);
@@ -26,7 +27,7 @@
         if ((currentState & 1) == 0) {
           if (currentState == 4) {
             if (foundPatternCross(stateCount)) {
-              boolean confirmed=handlePossibleCenter(stateCount,i,j);
+              boolean confirmed=handlePossibleCenter(stateCount,i,j,pureBarcode);
               if (confirmed) {
                 iSkip=2;
                 if (hasSkipped) {
@@ -75,7 +76,7 @@
       }
     }
     if (foundPatternCross(stateCount)) {
-      boolean confirmed=handlePossibleCenter(stateCount,i,maxJ);
+      boolean confirmed=handlePossibleCenter(stateCount,i,maxJ,pureBarcode);
       if (confirmed) {
         iSkip=stateCount[0];
         if (hasSkipped) {

@@ -4,7 +4,7 @@
   float centerI=crossCheckVertical(i,(int)centerJ,stateCount[2],stateCountTotal);
   if (!Float.isNaN(centerI)) {
     centerJ=crossCheckHorizontal((int)centerJ,(int)centerI,stateCount[2],stateCountTotal);
-    if (!Float.isNaN(centerJ)) {
+    if (!Float.isNaN(centerJ) && (!pureBarcode || crossCheckDiagonal((int)centerI,(int)centerJ,stateCount[2],stateCountTotal))) {
       float estimatedModuleSize=(float)stateCountTotal / 7.0f;
       boolean found=false;
       for (int index=0; index < possibleCenters.size(); index++) {
