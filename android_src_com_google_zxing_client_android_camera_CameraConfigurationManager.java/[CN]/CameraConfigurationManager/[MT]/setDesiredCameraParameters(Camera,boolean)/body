@@ -10,15 +10,7 @@
   }
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
   initializeTorch(parameters,prefs,safeMode);
-  List<int[]> supportedPreviewFpsRanges=parameters.getSupportedPreviewFpsRange();
-  if (supportedPreviewFpsRanges != null && !supportedPreviewFpsRanges.isEmpty()) {
-    int[] currentFpsRange=new int[2];
-    parameters.getPreviewFpsRange(currentFpsRange);
-    int[] minimumPreviewFpsRange=supportedPreviewFpsRanges.get(0);
-    if (!Arrays.equals(currentFpsRange,minimumPreviewFpsRange)) {
-      parameters.setPreviewFpsRange(minimumPreviewFpsRange[0],minimumPreviewFpsRange[1]);
-    }
-  }
+  setBestPreviewFPS(parameters);
   String focusMode=null;
   if (prefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS,true)) {
     if (safeMode || prefs.getBoolean(PreferencesActivity.KEY_DISABLE_CONTINUOUS_FOCUS,false)) {
