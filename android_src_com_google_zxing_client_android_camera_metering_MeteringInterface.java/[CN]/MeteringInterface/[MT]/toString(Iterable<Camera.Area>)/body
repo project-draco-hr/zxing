@@ -1,0 +1,10 @@
+{
+  if (areas == null) {
+    return null;
+  }
+  StringBuilder result=new StringBuilder();
+  for (  Camera.Area area : areas) {
+    result.append(area.rect).append(':').append(area.weight).append(' ');
+  }
+  return result.toString();
+}
