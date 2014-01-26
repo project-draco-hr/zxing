@@ -11,7 +11,7 @@
         formatter.format("%4d(%2d)",barcodeValue.getValue()[0],barcodeValue.getConfidence(barcodeValue.getValue()[0]));
       }
     }
-    formatter.format("\n");
+    formatter.format("%n");
   }
   String result=formatter.toString();
   formatter.close();
