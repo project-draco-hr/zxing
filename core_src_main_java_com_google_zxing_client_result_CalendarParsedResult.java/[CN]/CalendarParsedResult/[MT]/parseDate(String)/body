@@ -3,12 +3,12 @@
     throw new ParseException(when,0);
   }
   if (when.length() == 8) {
-    return DATE_FORMAT.parse(when);
+    return buildDateFormat().parse(when);
   }
  else {
     Date date;
     if (when.length() == 16 && when.charAt(15) == 'Z') {
-      date=DATE_TIME_FORMAT.parse(when.substring(0,15));
+      date=buildDateTimeFormat().parse(when.substring(0,15));
       Calendar calendar=new GregorianCalendar();
       long milliseconds=date.getTime();
       milliseconds+=calendar.get(Calendar.ZONE_OFFSET);
@@ -17,7 +17,7 @@
       date=new Date(milliseconds);
     }
  else {
-      date=DATE_TIME_FORMAT.parse(when);
+      date=buildDateTimeFormat().parse(when);
     }
     return date;
   }

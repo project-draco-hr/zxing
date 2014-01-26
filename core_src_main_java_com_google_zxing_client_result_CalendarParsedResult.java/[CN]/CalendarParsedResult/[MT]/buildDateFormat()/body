@@ -1,0 +1,5 @@
+{
+  DateFormat format=new SimpleDateFormat("yyyyMMdd",Locale.ENGLISH);
+  format.setTimeZone(TimeZone.getTimeZone("GMT"));
+  return format;
+}
