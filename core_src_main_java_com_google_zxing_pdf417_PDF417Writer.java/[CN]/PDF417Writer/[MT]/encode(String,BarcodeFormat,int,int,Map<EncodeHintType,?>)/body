@@ -18,6 +18,10 @@
     if (hints.containsKey(EncodeHintType.MARGIN)) {
       margin=((Number)hints.get(EncodeHintType.MARGIN)).intValue();
     }
+    if (hints.containsKey(EncodeHintType.CHARACTER_SET)) {
+      String encoding=(String)hints.get(EncodeHintType.CHARACTER_SET);
+      encoder.setEncoding(Charset.forName(encoding));
+    }
   }
   return bitMatrixFromEncoder(encoder,contents,width,height,margin);
 }

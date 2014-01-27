@@ -1,0 +1,18 @@
+{
+  if (eci >= 0 && eci < 900) {
+    sb.append((char)ECI_CHARSET);
+    sb.append((char)eci);
+  }
+ else   if (eci < 810900) {
+    sb.append((char)ECI_GENERAL_PURPOSE);
+    sb.append((char)(eci / 900 - 1));
+    sb.append((char)(eci % 900));
+  }
+ else   if (eci < 811800) {
+    sb.append((char)ECI_USER_DEFINED);
+    sb.append((char)(810900 - eci));
+  }
+ else {
+    throw new WriterException("ECI number not in valid range from 0..811799, but was " + eci);
+  }
+}

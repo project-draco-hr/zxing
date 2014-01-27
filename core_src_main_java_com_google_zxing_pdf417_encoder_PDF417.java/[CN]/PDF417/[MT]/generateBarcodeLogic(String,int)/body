@@ -1,6 +1,6 @@
 {
   int errorCorrectionCodeWords=PDF417ErrorCorrection.getErrorCorrectionCodewordCount(errorCorrectionLevel);
-  String highLevel=PDF417HighLevelEncoder.encodeHighLevel(msg,compaction);
+  String highLevel=PDF417HighLevelEncoder.encodeHighLevel(msg,compaction,encoding);
   int sourceCodeWords=highLevel.length();
   int[] dimension=determineDimensions(sourceCodeWords,errorCorrectionCodeWords);
   int cols=dimension[0];

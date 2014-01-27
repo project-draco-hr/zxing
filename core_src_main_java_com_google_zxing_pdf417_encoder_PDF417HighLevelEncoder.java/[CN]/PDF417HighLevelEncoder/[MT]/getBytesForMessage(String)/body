@@ -1,3 +1,0 @@
-{
-  return msg.getBytes(DEFAULT_ENCODING);
-}
