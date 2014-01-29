@@ -13,7 +13,7 @@
   File resultTempFile=File.createTempFile(parentName,".xml");
   resultTempFile.deleteOnExit();
   boolean anyChange=false;
-  try (Writer out=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(resultTempFile),UTF8))){
+  try (Writer out=Files.newBufferedWriter(resultTempFile.toPath(),StandardCharsets.UTF_8)){
     out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
     out.write(APACHE_2_LICENSE);
     out.write("<resources>\n");

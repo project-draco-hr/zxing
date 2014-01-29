@@ -2,7 +2,7 @@
   URLConnection connection=translateURL.openConnection();
   connection.connect();
   StringBuilder translateResult=new StringBuilder(200);
-  try (Reader in=new BufferedReader(new InputStreamReader(connection.getInputStream(),UTF8))){
+  try (Reader in=new BufferedReader(new InputStreamReader(connection.getInputStream(),StandardCharsets.UTF_8))){
     char[] buffer=new char[1024];
     int charsRead;
     while ((charsRead=in.read(buffer)) > 0) {

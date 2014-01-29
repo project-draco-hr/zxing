@@ -3,7 +3,8 @@
   if ("all".equals(languageArg)) {
     FileFilter fileFilter=new FileFilter(){
       @Override public boolean accept(      File file){
-        return file.isDirectory() && file.getName().startsWith("html-") && !"html-en".equals(file.getName());
+        Path path=file.toPath();
+        return Files.isDirectory(path) && !Files.isSymbolicLink(path) && file.getName().startsWith("html-")&& !"html-en".equals(file.getName());
       }
     }
 ;
