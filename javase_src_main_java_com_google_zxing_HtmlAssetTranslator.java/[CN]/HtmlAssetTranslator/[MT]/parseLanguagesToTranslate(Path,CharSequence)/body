@@ -3,7 +3,8 @@
     Collection<String> languages=new ArrayList<>();
     DirectoryStream.Filter<Path> fileFilter=new DirectoryStream.Filter<Path>(){
       @Override public boolean accept(      Path entry){
-        return Files.isDirectory(entry) && !Files.isSymbolicLink(entry) && entry.getFileName().startsWith("html-")&& !"html-en".equals(entry.getFileName().toString());
+        String fileName=entry.getFileName().toString();
+        return Files.isDirectory(entry) && !Files.isSymbolicLink(entry) && fileName.startsWith("html-")&& !"html-en".equals(fileName);
       }
     }
 ;

@@ -8,7 +8,7 @@
   }
   System.out.println("  Need translation for " + english);
   URI translateURI=URI.create("https://www.googleapis.com/language/translate/v2?key=" + API_KEY + "&q="+ URLEncoder.encode(english,"UTF-8")+ "&source=en&target="+ language);
-  CharSequence translateResult=new String(Files.readAllBytes(Paths.get(translateURI)),StandardCharsets.UTF_8);
+  CharSequence translateResult=fetch(translateURI);
   Matcher m=TRANSLATE_RESPONSE_PATTERN.matcher(translateResult);
   if (!m.find()) {
     System.err.println("No translate result");
