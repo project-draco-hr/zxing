@@ -1,5 +1,3 @@
 {
-  String expected=" ..X..XX. XXXX..XX X.XX.XX. .X....XX XXX..XX. X..X.... .XX.XX.X .XX.";
-  String path="src/test/resources/blackbox/rssexpanded-1/12.png";
-  assertCorrectImage2binary(path,expected);
+  assertCorrectImage2binary("12.png"," ..X..XX. XXXX..XX X.XX.XX. .X....XX XXX..XX. X..X.... .XX.XX.X .XX.");
 }

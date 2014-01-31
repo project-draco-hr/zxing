@@ -1,9 +1,0 @@
-{
-  String newline=System.getProperty("line.separator");
-  try (Writer out=new OutputStreamWriter(new FileOutputStream(file),UTF8)){
-    for (    Result result : results) {
-      out.write(result.getText());
-      out.write(newline);
-    }
-  }
- }

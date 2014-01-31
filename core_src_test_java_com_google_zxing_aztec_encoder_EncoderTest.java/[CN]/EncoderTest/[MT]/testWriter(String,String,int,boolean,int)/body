@@ -1,5 +1,5 @@
 {
-  String expectedData=new String(data.getBytes(Charset.forName(charset)),LATIN_1);
+  String expectedData=new String(data.getBytes(Charset.forName(charset)),StandardCharsets.ISO_8859_1);
   Map<EncodeHintType,Object> hints=new EnumMap<>(EncodeHintType.class);
   hints.put(EncodeHintType.CHARACTER_SET,charset);
   hints.put(EncodeHintType.ERROR_CORRECTION,eccPercent);

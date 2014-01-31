@@ -14,7 +14,7 @@
       dumpBlackPoint(uri,image,bitmap);
     }
     MultiFormatReader multiFormatReader=new MultiFormatReader();
-    GenericMultipleBarcodeReader reader=new GenericMultipleBarcodeReader(multiFormatReader);
+    MultipleBarcodeReader reader=new GenericMultipleBarcodeReader(multiFormatReader);
     Result[] results=reader.decodeMultiple(bitmap,hints);
     if (config.isBrief()) {
       System.out.println(uri + ": Success");

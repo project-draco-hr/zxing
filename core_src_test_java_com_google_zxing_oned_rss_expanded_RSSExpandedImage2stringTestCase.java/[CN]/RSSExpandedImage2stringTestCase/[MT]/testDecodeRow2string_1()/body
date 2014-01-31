@@ -1,5 +1,3 @@
 {
-  String path="src/test/resources/blackbox/rssexpanded-1/1.png";
-  String expected="(11)100224(17)110224(3102)000100";
-  assertCorrectImage2string(path,expected);
+  assertCorrectImage2string("1.png","(11)100224(17)110224(3102)000100");
 }

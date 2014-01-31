@@ -1,8 +1,8 @@
 {
-  File file=new File(BASE_IMAGE_PATH + fileName);
-  if (!file.exists()) {
-    file=new File("core/" + BASE_IMAGE_PATH + fileName);
+  Path file=BASE_IMAGE_PATH.resolve(fileName);
+  if (!Files.exists(file)) {
+    file=Paths.get("core/").resolve(BASE_IMAGE_PATH).resolve(fileName);
   }
-  assertTrue("Please download and install test images, and run from the 'core' directory",file.exists());
-  return ImageIO.read(file);
+  assertTrue("Please download and install test images, and run from the 'core' directory",Files.exists(file));
+  return ImageIO.read(file.toFile());
 }

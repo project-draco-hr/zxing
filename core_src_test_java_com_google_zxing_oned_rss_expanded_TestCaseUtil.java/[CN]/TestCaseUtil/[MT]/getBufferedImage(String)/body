@@ -1,7 +1,7 @@
 {
-  File file=new File(path);
-  if (!file.exists()) {
-    file=new File("core",path);
+  Path file=Paths.get(path);
+  if (!Files.exists(file)) {
+    file=Paths.get("core").resolve(file);
   }
-  return ImageIO.read(file);
+  return ImageIO.read(file.toFile());
 }

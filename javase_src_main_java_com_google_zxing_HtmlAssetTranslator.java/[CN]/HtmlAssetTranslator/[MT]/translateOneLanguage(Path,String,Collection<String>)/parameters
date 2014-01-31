@@ -1,0 +1,3 @@
+Path assetsDir
+String language
+Collection<String> filesToTranslate

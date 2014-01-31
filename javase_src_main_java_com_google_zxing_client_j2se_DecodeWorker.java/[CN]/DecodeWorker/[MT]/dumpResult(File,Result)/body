@@ -1,9 +1,0 @@
-{
-  String name=input.getCanonicalPath();
-  int pos=name.lastIndexOf('.');
-  if (pos > 0) {
-    name=name.substring(0,pos);
-  }
-  File dump=new File(name + ".txt");
-  writeStringToFile(result.getText(),dump);
-}

@@ -1,5 +1,5 @@
 {
-  BitArray bits=new HighLevelEncoder(s.getBytes(LATIN_1)).encode();
+  BitArray bits=new HighLevelEncoder(s.getBytes(StandardCharsets.ISO_8859_1)).encode();
   int receivedBitCount=bits.toString().replace(" ","").length();
   assertEquals("highLevelEncode() failed for input string: " + s,expectedReceivedBits,receivedBitCount);
   assertEquals(s,Decoder.highLevelDecode(toBooleanArray(bits)));

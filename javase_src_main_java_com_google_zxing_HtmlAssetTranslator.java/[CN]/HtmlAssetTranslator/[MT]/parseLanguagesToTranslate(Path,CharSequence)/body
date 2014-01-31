@@ -1,0 +1,20 @@
+{
+  if ("all".equals(languageArg)) {
+    Collection<String> languages=new ArrayList<>();
+    DirectoryStream.Filter<Path> fileFilter=new DirectoryStream.Filter<Path>(){
+      @Override public boolean accept(      Path entry){
+        return Files.isDirectory(entry) && !Files.isSymbolicLink(entry) && entry.getFileName().startsWith("html-")&& !"html-en".equals(entry.getFileName().toString());
+      }
+    }
+;
+    try (DirectoryStream<Path> dirs=Files.newDirectoryStream(assetsDir,fileFilter)){
+      for (      Path languageDir : dirs) {
+        languages.add(languageDir.getFileName().toString().substring(5));
+      }
+    }
+     return languages;
+  }
+ else {
+    return Arrays.asList(COMMA.split(languageArg));
+  }
+}

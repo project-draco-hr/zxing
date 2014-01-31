@@ -1,0 +1,4 @@
+String language
+Path targetHtmlDir
+Path sourceFile
+String translationTextTranslated

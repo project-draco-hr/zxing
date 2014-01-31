@@ -74,33 +74,30 @@
       response.sendRedirect("badurl.jspx");
       return;
     }
-    InputStream is=null;
-    try {
-      is=connection.getInputStream();
-      if (connection.getResponseCode() != HttpServletResponse.SC_OK) {
-        log.info("Unsuccessful return code: " + connection.getResponseCode());
+    try (InputStream is=connection.getInputStream()){
+      try {
+        if (connection.getResponseCode() != HttpServletResponse.SC_OK) {
+          log.info("Unsuccessful return code: " + connection.getResponseCode());
+          response.sendRedirect("badurl.jspx");
+          return;
+        }
+        if (connection.getHeaderFieldInt(HttpHeaders.CONTENT_LENGTH,0) > MAX_IMAGE_SIZE) {
+          log.info("Too large");
+          response.sendRedirect("badimage.jspx");
+          return;
+        }
+        log.info("Decoding " + imageURL);
+        processStream(is,request,response);
+      }
+ catch (      IOException ioe) {
+        log.info(ioe.toString());
         response.sendRedirect("badurl.jspx");
-        return;
       }
-      if (connection.getHeaderFieldInt(HttpHeaders.CONTENT_LENGTH,0) > MAX_IMAGE_SIZE) {
-        log.info("Too large");
-        response.sendRedirect("badimage.jspx");
-        return;
-      }
-      log.info("Decoding " + imageURL);
-      processStream(is,request,response);
-    }
- catch (    IOException ioe) {
-      log.info(ioe.toString());
-      response.sendRedirect("badurl.jspx");
-    }
  finally {
-      if (is != null) {
         consumeRemainder(is);
-        is.close();
       }
     }
-  }
+   }
   finally {
     connection.disconnect();
   }

@@ -1,7 +1,7 @@
 {
-  File testBase=new File(testBasePathSuffix);
-  if (!testBase.exists()) {
-    testBase=new File("core/" + testBasePathSuffix);
+  Path testBase=Paths.get(testBasePathSuffix);
+  if (!Files.exists(testBase)) {
+    testBase=Paths.get("core").resolve(testBasePathSuffix);
   }
   this.testBase=testBase;
   this.barcodeReader=barcodeReader;

@@ -1,0 +1,2 @@
+Path assetsDir
+List<String> restOfArgs

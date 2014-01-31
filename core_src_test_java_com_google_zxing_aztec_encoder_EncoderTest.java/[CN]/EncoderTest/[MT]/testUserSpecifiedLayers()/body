@@ -1,5 +1,5 @@
 {
-  byte[] alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ".getBytes(LATIN_1);
+  byte[] alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ".getBytes(StandardCharsets.ISO_8859_1);
   AztecCode aztec=Encoder.encode(alphabet,25,-2);
   assertEquals(2,aztec.getLayers());
   assertTrue(aztec.isCompact());

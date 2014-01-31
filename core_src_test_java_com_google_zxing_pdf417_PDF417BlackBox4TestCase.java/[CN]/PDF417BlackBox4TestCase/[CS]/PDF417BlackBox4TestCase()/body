@@ -1,8 +1,4 @@
 {
-  super(TEST_BASE_PATH_SUFFIX,null,BarcodeFormat.PDF_417);
-  testBase=new File(TEST_BASE_PATH_SUFFIX);
-  if (!testBase.exists()) {
-    testBase=new File("core/" + TEST_BASE_PATH_SUFFIX);
-  }
+  super("src/test/resources/blackbox/pdf417-4",null,BarcodeFormat.PDF_417);
   testResults.add(new TestResult(2,2,0,0,0.0f));
 }

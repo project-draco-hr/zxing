@@ -1,5 +1,5 @@
 {
-  AztecCode aztec=Encoder.encode(data.getBytes(LATIN_1),33,Encoder.DEFAULT_AZTEC_LAYERS);
+  AztecCode aztec=Encoder.encode(data.getBytes(StandardCharsets.ISO_8859_1),33,Encoder.DEFAULT_AZTEC_LAYERS);
   assertEquals("Unexpected symbol format (compact)",compact,aztec.isCompact());
   assertEquals("Unexpected nr. of layers",layers,aztec.getLayers());
   BitMatrix matrix=aztec.getMatrix();

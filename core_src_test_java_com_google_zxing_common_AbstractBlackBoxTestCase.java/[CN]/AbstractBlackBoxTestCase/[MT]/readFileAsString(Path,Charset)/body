@@ -1,0 +1,7 @@
+{
+  String stringContents=new String(Files.readAllBytes(file),charset);
+  if (stringContents.endsWith("\n")) {
+    log.info("String contents of file " + file + " end with a newline. "+ "This may not be intended and cause a test failure");
+  }
+  return stringContents;
+}

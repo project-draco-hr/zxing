@@ -1,6 +1,6 @@
 {
   int bigEnough=256;
-  QRCodeWriter writer=new QRCodeWriter();
+  Writer writer=new QRCodeWriter();
   BitMatrix matrix=writer.encode("http://www.google.com/",BarcodeFormat.QR_CODE,bigEnough,bigEnough,null);
   assertNotNull(matrix);
   assertEquals(bigEnough,matrix.getWidth());

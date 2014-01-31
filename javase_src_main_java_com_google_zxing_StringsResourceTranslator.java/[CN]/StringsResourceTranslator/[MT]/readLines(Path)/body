@@ -1,0 +1,15 @@
+{
+  if (Files.exists(file)) {
+    Map<String,String> entries=new TreeMap<>();
+    for (    String line : Files.readAllLines(file,StandardCharsets.UTF_8)) {
+      Matcher m=ENTRY_PATTERN.matcher(line);
+      if (m.find()) {
+        entries.put(m.group(1),m.group(2));
+      }
+    }
+    return entries;
+  }
+ else {
+    return Collections.emptyMap();
+  }
+}

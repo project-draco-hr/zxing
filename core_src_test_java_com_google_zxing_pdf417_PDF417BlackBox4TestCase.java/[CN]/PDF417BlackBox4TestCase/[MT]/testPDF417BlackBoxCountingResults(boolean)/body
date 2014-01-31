@@ -1,28 +1,29 @@
 {
   assertFalse(testResults.isEmpty());
-  Map<String,List<File>> imageFiles=getImageFileLists();
+  Map<String,List<Path>> imageFiles=getImageFileLists();
   int testCount=testResults.size();
   int[] passedCounts=new int[testCount];
   int[] misreadCounts=new int[testCount];
   int[] tryHarderCounts=new int[testCount];
   int[] tryHaderMisreadCounts=new int[testCount];
-  for (  Entry<String,List<File>> testImageGroup : imageFiles.entrySet()) {
+  Path testBase=getTestBase();
+  for (  Entry<String,List<Path>> testImageGroup : imageFiles.entrySet()) {
     log.fine(String.format("Starting Image Group %s",testImageGroup.getKey()));
     String fileBaseName=testImageGroup.getKey();
     String expectedText;
-    File expectedTextFile=new File(testBase,fileBaseName + ".txt");
-    if (expectedTextFile.exists()) {
-      expectedText=readFileAsString(expectedTextFile,UTF8);
+    Path expectedTextFile=testBase.resolve(fileBaseName + ".txt");
+    if (Files.exists(expectedTextFile)) {
+      expectedText=readFileAsString(expectedTextFile,StandardCharsets.UTF_8);
     }
  else {
-      expectedTextFile=new File(testBase,fileBaseName + ".bin");
-      assertTrue(expectedTextFile.exists());
-      expectedText=readFileAsString(expectedTextFile,ISO88591);
+      expectedTextFile=testBase.resolve(fileBaseName + ".bin");
+      assertTrue(Files.exists(expectedTextFile));
+      expectedText=readFileAsString(expectedTextFile,StandardCharsets.ISO_8859_1);
     }
     for (int x=0; x < testCount; x++) {
       List<Result> results=new ArrayList<>();
-      for (      File imageFile : testImageGroup.getValue()) {
-        BufferedImage image=ImageIO.read(imageFile);
+      for (      Path imageFile : testImageGroup.getValue()) {
+        BufferedImage image=ImageIO.read(imageFile.toFile());
         float rotation=testResults.get(x).getRotation();
         BufferedImage rotatedImage=rotateImage(image,rotation);
         LuminanceSource source=new BufferedImageLuminanceSource(rotatedImage);

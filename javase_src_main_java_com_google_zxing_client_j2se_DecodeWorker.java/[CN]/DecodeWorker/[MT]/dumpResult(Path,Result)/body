@@ -1,0 +1,9 @@
+{
+  String name=input.getFileName().toString();
+  int pos=name.lastIndexOf('.');
+  if (pos > 0) {
+    name=name.substring(0,pos) + ".txt";
+  }
+  Path dumpFile=input.getParent().resolve(name);
+  Files.write(dumpFile,Collections.singleton(result.getText()),StandardCharsets.UTF_8);
+}

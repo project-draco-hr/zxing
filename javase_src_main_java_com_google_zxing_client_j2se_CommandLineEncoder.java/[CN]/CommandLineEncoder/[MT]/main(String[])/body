@@ -44,7 +44,6 @@ return;
 if (DEFAULT_OUTPUT_FILE.equals(outFileString)) {
 outFileString+='.' + imageFormat.toLowerCase(Locale.ENGLISH);
 }
-MultiFormatWriter barcodeWriter=new MultiFormatWriter();
-BitMatrix matrix=barcodeWriter.encode(contents,barcodeFormat,width,height);
-MatrixToImageWriter.writeToFile(matrix,imageFormat,new File(outFileString));
+BitMatrix matrix=new MultiFormatWriter().encode(contents,barcodeFormat,width,height);
+MatrixToImageWriter.writeToPath(matrix,imageFormat,Paths.get(outFileString));
 }

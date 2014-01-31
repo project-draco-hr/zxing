@@ -1,0 +1,47 @@
+{
+  Map<String,String> english=readLines(englishFile);
+  Map<String,String> translated=readLines(translatedFile);
+  String parentName=translatedFile.getParent().getFileName().toString();
+  Matcher stringsFileNameMatcher=STRINGS_FILE_NAME_PATTERN.matcher(parentName);
+  stringsFileNameMatcher.find();
+  String language=stringsFileNameMatcher.group(1);
+  String massagedLanguage=LANGUAGE_CODE_MASSAGINGS.get(language);
+  if (massagedLanguage != null) {
+    language=massagedLanguage;
+  }
+  System.out.println("Translating " + language);
+  Path resultTempFile=Files.createTempFile(null,null);
+  boolean anyChange=false;
+  try (Writer out=Files.newBufferedWriter(resultTempFile,StandardCharsets.UTF_8)){
+    out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+    out.write(APACHE_2_LICENSE);
+    out.write("<resources>\n");
+    for (    Map.Entry<String,String> englishEntry : english.entrySet()) {
+      String key=englishEntry.getKey();
+      String value=englishEntry.getValue();
+      out.write("  <string name=\"");
+      out.write(key);
+      out.write('"');
+      if (value.contains("%s") || value.contains("%f")) {
+        out.write(" formatted=\"false\"");
+      }
+      out.write('>');
+      String translatedString=translated.get(key);
+      if (translatedString == null || forceRetranslation.contains(key)) {
+        anyChange=true;
+        translatedString=translateString(value,language);
+      }
+      out.write(translatedString);
+      out.write("</string>\n");
+    }
+    out.write("</resources>\n");
+    out.flush();
+  }
+   if (anyChange) {
+    System.out.println("  Writing translations");
+    Files.move(resultTempFile,translatedFile,StandardCopyOption.REPLACE_EXISTING);
+  }
+ else {
+    Files.delete(resultTempFile);
+  }
+}

@@ -1,10 +1,5 @@
 {
-  String path="src/test/resources/blackbox/rssexpanded-1/2.png";
-  File file=new File(path);
-  if (!file.exists()) {
-    file=new File("core",path);
-  }
-  BufferedImage image=ImageIO.read(file);
+  BufferedImage image=readImage("2.png");
   BinaryBitmap binaryMap=new BinaryBitmap(new GlobalHistogramBinarizer(new BufferedImageLuminanceSource(image)));
   int rowNumber=binaryMap.getHeight() / 2;
   BitArray row=binaryMap.getBlackRow(rowNumber,null);

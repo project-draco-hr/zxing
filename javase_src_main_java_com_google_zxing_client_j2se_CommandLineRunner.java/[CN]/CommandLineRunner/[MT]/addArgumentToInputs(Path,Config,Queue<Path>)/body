@@ -1,0 +1,25 @@
+{
+  if (Files.isDirectory(inputFile)) {
+    try (DirectoryStream<Path> paths=Files.newDirectoryStream(inputFile)){
+      for (      Path singleFile : paths) {
+        String filename=singleFile.getFileName().toString().toLowerCase(Locale.ENGLISH);
+        if (filename.startsWith(".")) {
+          continue;
+        }
+        if (Files.isDirectory(singleFile)) {
+          if (config.isRecursive()) {
+            addArgumentToInputs(singleFile,config,inputs);
+          }
+          continue;
+        }
+        if (filename.endsWith(".txt") || filename.contains(".mono.png")) {
+          continue;
+        }
+        inputs.add(singleFile);
+      }
+    }
+   }
+ else {
+    inputs.add(inputFile);
+  }
+}

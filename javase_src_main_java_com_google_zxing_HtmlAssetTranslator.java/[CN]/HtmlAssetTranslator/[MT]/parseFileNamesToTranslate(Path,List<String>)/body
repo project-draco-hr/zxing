@@ -1,0 +1,15 @@
+{
+  if ("all".equals(restOfArgs.get(0))) {
+    Collection<String> fileNamesToTranslate=new ArrayList<>();
+    Path htmlEnAssetDir=assetsDir.resolve("html-en");
+    try (DirectoryStream<Path> files=Files.newDirectoryStream(htmlEnAssetDir,"*.html")){
+      for (      Path file : files) {
+        fileNamesToTranslate.add(file.getFileName().toString());
+      }
+    }
+     return fileNamesToTranslate;
+  }
+ else {
+    return restOfArgs;
+  }
+}

@@ -1,8 +1,8 @@
 {
   JFileChooser fileChooser=new JFileChooser();
   fileChooser.showOpenDialog(this);
-  File file=fileChooser.getSelectedFile();
-  Icon imageIcon=new ImageIcon(file.toURI().toURL());
+  Path file=fileChooser.getSelectedFile().toPath();
+  Icon imageIcon=new ImageIcon(file.toUri().toURL());
   setSize(imageIcon.getIconWidth(),imageIcon.getIconHeight() + 100);
   imageLabel.setIcon(imageIcon);
   String decodeText=getDecodeText(file);

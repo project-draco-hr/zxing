@@ -1,6 +1,5 @@
 {
-  String inputName=uri.getPath();
-  if (inputName.contains(".mono.png")) {
+  if (uri.getPath().contains(".mono.png")) {
     return;
   }
   int width=bitmap.getWidth();
@@ -19,19 +18,12 @@
     }
  catch (    NotFoundException nfe) {
       int offset=y * stride + width;
-      for (int x=0; x < width; x++) {
-        pixels[offset + x]=0xffff0000;
-      }
+      Arrays.fill(pixels,offset,offset + width,RED);
       continue;
     }
     int offset=y * stride + width;
     for (int x=0; x < width; x++) {
-      if (row.get(x)) {
-        pixels[offset + x]=0xff000000;
-      }
- else {
-        pixels[offset + x]=0xffffffff;
-      }
+      pixels[offset + x]=row.get(x) ? BLACK : WHITE;
     }
   }
   try {
@@ -39,16 +31,11 @@
       BitMatrix matrix=bitmap.getBlackMatrix();
       int offset=y * stride + width * 2;
       for (int x=0; x < width; x++) {
-        if (matrix.get(x,y)) {
-          pixels[offset + x]=0xff000000;
-        }
- else {
-          pixels[offset + x]=0xffffffff;
-        }
+        pixels[offset + x]=matrix.get(x,y) ? BLACK : WHITE;
       }
     }
   }
  catch (  NotFoundException ignored) {
   }
-  writeResultImage(stride,height,pixels,uri,inputName,".mono.png");
+  writeResultImage(stride,height,pixels,uri,".mono.png");
 }

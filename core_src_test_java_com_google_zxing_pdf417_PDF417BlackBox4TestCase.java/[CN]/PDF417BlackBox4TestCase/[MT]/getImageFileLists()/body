@@ -1,9 +1,9 @@
 {
-  Map<String,List<File>> result=new HashMap<>();
-  for (  File file : getImageFiles()) {
-    String testImageFileName=file.getName();
+  Map<String,List<Path>> result=new HashMap<>();
+  for (  Path file : getImageFiles()) {
+    String testImageFileName=file.getFileName().toString();
     String fileBaseName=testImageFileName.substring(0,testImageFileName.indexOf('-'));
-    List<File> files=result.get(fileBaseName);
+    List<Path> files=result.get(fileBaseName);
     if (files == null) {
       files=new ArrayList<>();
       result.put(fileBaseName,files);

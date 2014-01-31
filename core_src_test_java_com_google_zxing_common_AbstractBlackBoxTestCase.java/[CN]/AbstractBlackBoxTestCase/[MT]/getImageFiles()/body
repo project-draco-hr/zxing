@@ -1,4 +1,10 @@
 {
-  assertTrue("Please download and install test images, and run from the 'core' directory",testBase.exists());
-  return testBase.listFiles(IMAGE_NAME_FILTER);
+  assertTrue("Please download and install test images, and run from the 'core' directory",Files.exists(testBase));
+  List<Path> paths=new ArrayList<>();
+  try (DirectoryStream<Path> pathIt=Files.newDirectoryStream(testBase,"*.{jpg,jpeg,gif,png,JPG,JPEG,GIF,PNG}")){
+    for (    Path path : pathIt) {
+      paths.add(path);
+    }
+  }
+   return paths;
 }
