@@ -10,7 +10,7 @@
     parameters.setFlashMode(flashMode);
   }
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
-  if (!prefs.getBoolean(PreferencesActivity.KEY_DISABLE_EXPOSURE,false)) {
+  if (!prefs.getBoolean(PreferencesActivity.KEY_DISABLE_EXPOSURE,true)) {
     if (!safeMode) {
       int minExposure=parameters.getMinExposureCompensation();
       int maxExposure=parameters.getMaxExposureCompensation();

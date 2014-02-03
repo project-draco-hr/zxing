@@ -13,7 +13,7 @@
   setBestPreviewFPS(parameters);
   String focusMode=null;
   if (prefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS,true)) {
-    if (safeMode || prefs.getBoolean(PreferencesActivity.KEY_DISABLE_CONTINUOUS_FOCUS,false)) {
+    if (safeMode || prefs.getBoolean(PreferencesActivity.KEY_DISABLE_CONTINUOUS_FOCUS,true)) {
       focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_AUTO);
     }
  else {
@@ -33,13 +33,13 @@
         parameters.setColorEffect(colorMode);
       }
     }
-    if (!prefs.getBoolean(PreferencesActivity.KEY_DISABLE_BARCODE_SCENE_MODE,false)) {
+    if (!prefs.getBoolean(PreferencesActivity.KEY_DISABLE_BARCODE_SCENE_MODE,true)) {
       String sceneMode=findSettableValue(parameters.getSupportedSceneModes(),Camera.Parameters.SCENE_MODE_BARCODE);
       if (sceneMode != null) {
         parameters.setSceneMode(sceneMode);
       }
     }
-    if (!prefs.getBoolean(PreferencesActivity.KEY_DISABLE_METERING,false)) {
+    if (!prefs.getBoolean(PreferencesActivity.KEY_DISABLE_METERING,true)) {
       if (parameters.isVideoStabilizationSupported()) {
         Log.i(TAG,"Enabling video stabilization...");
         parameters.setVideoStabilization(true);
