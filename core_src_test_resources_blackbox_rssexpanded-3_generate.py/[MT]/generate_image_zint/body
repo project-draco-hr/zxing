@@ -1,3 +1,0 @@
-def generate_image_zint(image_filename, barcode):
-    braces_barcode = barcode.replace('(', '[').replace(')', ']')
-    os.system(('%s -o %s -b %s -d "%s"' % (ZINT_BINARY, image_filename, ZINT_RSS_EXPANDED_CODE, braces_barcode.replace('"', '\\"'))))
