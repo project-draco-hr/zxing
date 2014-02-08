@@ -66,39 +66,37 @@
   connection.setRequestProperty(HttpHeaders.USER_AGENT,"zxing.org");
   connection.setRequestProperty(HttpHeaders.CONNECTION,"close");
   try {
+    connection.connect();
+  }
+ catch (  IOException ioe) {
+    log.info(ioe.toString());
+    response.sendRedirect("badurl.jspx");
+    return;
+  }
+  try (InputStream is=connection.getInputStream()){
     try {
-      connection.connect();
-    }
- catch (    IOException ioe) {
-      log.info(ioe.toString());
-      response.sendRedirect("badurl.jspx");
-      return;
-    }
-    try (InputStream is=connection.getInputStream()){
-      try {
-        if (connection.getResponseCode() != HttpServletResponse.SC_OK) {
-          log.info("Unsuccessful return code: " + connection.getResponseCode());
-          response.sendRedirect("badurl.jspx");
-          return;
-        }
-        if (connection.getHeaderFieldInt(HttpHeaders.CONTENT_LENGTH,0) > MAX_IMAGE_SIZE) {
-          log.info("Too large");
-          response.sendRedirect("badimage.jspx");
-          return;
-        }
-        log.info("Decoding " + imageURL);
-        processStream(is,request,response);
-      }
- catch (      IOException ioe) {
-        log.info(ioe.toString());
+      if (connection.getResponseCode() != HttpServletResponse.SC_OK) {
+        log.info("Unsuccessful return code: " + connection.getResponseCode());
         response.sendRedirect("badurl.jspx");
+        return;
       }
- finally {
-        consumeRemainder(is);
+      if (connection.getHeaderFieldInt(HttpHeaders.CONTENT_LENGTH,0) > MAX_IMAGE_SIZE) {
+        log.info("Too large");
+        response.sendRedirect("badimage.jspx");
+        return;
       }
+      log.info("Decoding " + imageURL);
+      processStream(is,request,response);
     }
-   }
   finally {
+      consumeRemainder(is);
+    }
+  }
+ catch (  IOException ioe) {
+    log.info(ioe.toString());
+    response.sendRedirect("badurl.jspx");
+  }
+ finally {
     connection.disconnect();
   }
 }
