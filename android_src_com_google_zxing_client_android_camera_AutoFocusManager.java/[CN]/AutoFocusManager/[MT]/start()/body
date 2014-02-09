@@ -1,11 +1,15 @@
 {
   if (useAutoFocus) {
-    active=true;
-    try {
-      camera.autoFocus(this);
-    }
- catch (    RuntimeException re) {
-      Log.w(TAG,"Unexpected exception while focusing",re);
+    cancelOutstandingTask();
+    if (!stopped && !focusing) {
+      try {
+        camera.autoFocus(this);
+        focusing=true;
+      }
+ catch (      RuntimeException re) {
+        Log.w(TAG,"Unexpected exception while focusing",re);
+        autoFocusAgainLater();
+      }
     }
   }
 }

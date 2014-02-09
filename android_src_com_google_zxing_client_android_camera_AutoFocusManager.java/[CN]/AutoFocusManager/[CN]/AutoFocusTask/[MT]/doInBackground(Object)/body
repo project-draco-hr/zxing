@@ -4,10 +4,6 @@
   }
  catch (  InterruptedException e) {
   }
-synchronized (AutoFocusManager.this) {
-    if (active) {
-      start();
-    }
-  }
+  start();
   return null;
 }

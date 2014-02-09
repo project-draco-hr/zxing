@@ -1,5 +1,7 @@
 {
+  stopped=true;
   if (useAutoFocus) {
+    cancelOutstandingTask();
     try {
       camera.cancelAutoFocus();
     }
@@ -7,9 +9,4 @@
       Log.w(TAG,"Unexpected exception while cancelling focusing",re);
     }
   }
-  if (outstandingTask != null) {
-    outstandingTask.cancel(true);
-    outstandingTask=null;
-  }
-  active=false;
 }

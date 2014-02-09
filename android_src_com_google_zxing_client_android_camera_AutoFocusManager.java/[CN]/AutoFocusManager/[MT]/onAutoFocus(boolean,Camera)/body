@@ -1,6 +1,4 @@
 {
-  if (active) {
-    outstandingTask=new AutoFocusTask();
-    outstandingTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-  }
+  focusing=false;
+  autoFocusAgainLater();
 }
