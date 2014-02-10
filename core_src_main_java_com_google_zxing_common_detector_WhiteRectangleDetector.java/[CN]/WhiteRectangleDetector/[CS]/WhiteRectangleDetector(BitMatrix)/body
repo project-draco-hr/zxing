@@ -1,3 +1,2 @@
 {
-  this(image,INIT_SIZE,image.getWidth() / 2,image.getHeight() / 2);
 }
