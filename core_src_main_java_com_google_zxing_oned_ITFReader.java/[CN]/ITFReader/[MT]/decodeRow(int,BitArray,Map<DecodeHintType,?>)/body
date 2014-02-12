@@ -13,11 +13,18 @@
   }
   int length=resultString.length();
   boolean lengthOK=false;
+  int maxAllowedLength=0;
   for (  int allowedLength : allowedLengths) {
     if (length == allowedLength) {
       lengthOK=true;
       break;
     }
+    if (allowedLength > maxAllowedLength) {
+      maxAllowedLength=allowedLength;
+    }
+  }
+  if (!lengthOK && length > maxAllowedLength) {
+    lengthOK=true;
   }
   if (!lengthOK) {
     throw FormatException.getFormatInstance();
