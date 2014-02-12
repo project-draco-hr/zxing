@@ -6,14 +6,22 @@
   boolean sizeExceeded=false;
   boolean aBlackPointFoundOnBorder=true;
   boolean atLeastOneBlackPointFoundOnBorder=false;
+  boolean atLeastOneBlackPointFoundOnRight=false;
+  boolean atLeastOneBlackPointFoundOnBottom=false;
+  boolean atLeastOneBlackPointFoundOnLeft=false;
+  boolean atLeastOneBlackPointFoundOnTop=false;
   while (aBlackPointFoundOnBorder) {
     aBlackPointFoundOnBorder=false;
     boolean rightBorderNotWhite=true;
-    while (rightBorderNotWhite && right < width) {
+    while ((rightBorderNotWhite || !atLeastOneBlackPointFoundOnRight) && right < width) {
       rightBorderNotWhite=containsBlackPoint(up,down,right,false);
       if (rightBorderNotWhite) {
         right++;
         aBlackPointFoundOnBorder=true;
+        atLeastOneBlackPointFoundOnRight=true;
+      }
+ else       if (!atLeastOneBlackPointFoundOnRight) {
+        right++;
       }
     }
     if (right >= width) {
@@ -21,11 +29,15 @@
       break;
     }
     boolean bottomBorderNotWhite=true;
-    while (bottomBorderNotWhite && down < height) {
+    while ((bottomBorderNotWhite || !atLeastOneBlackPointFoundOnBottom) && down < height) {
       bottomBorderNotWhite=containsBlackPoint(left,right,down,true);
       if (bottomBorderNotWhite) {
         down++;
         aBlackPointFoundOnBorder=true;
+        atLeastOneBlackPointFoundOnBottom=true;
+      }
+ else       if (!atLeastOneBlackPointFoundOnBottom) {
+        down++;
       }
     }
     if (down >= height) {
@@ -33,11 +45,15 @@
       break;
     }
     boolean leftBorderNotWhite=true;
-    while (leftBorderNotWhite && left >= 0) {
+    while ((leftBorderNotWhite || !atLeastOneBlackPointFoundOnLeft) && left >= 0) {
       leftBorderNotWhite=containsBlackPoint(up,down,left,false);
       if (leftBorderNotWhite) {
         left--;
         aBlackPointFoundOnBorder=true;
+        atLeastOneBlackPointFoundOnLeft=true;
+      }
+ else       if (!atLeastOneBlackPointFoundOnLeft) {
+        left--;
       }
     }
     if (left < 0) {
@@ -45,11 +61,15 @@
       break;
     }
     boolean topBorderNotWhite=true;
-    while (topBorderNotWhite && up >= 0) {
+    while ((topBorderNotWhite || !atLeastOneBlackPointFoundOnTop) && up >= 0) {
       topBorderNotWhite=containsBlackPoint(left,right,up,true);
       if (topBorderNotWhite) {
         up--;
         aBlackPointFoundOnBorder=true;
+        atLeastOneBlackPointFoundOnTop=true;
+      }
+ else       if (!atLeastOneBlackPointFoundOnTop) {
+        up--;
       }
     }
     if (up < 0) {
