@@ -1,0 +1,16 @@
+{
+  if (arrays == null || arrays.isEmpty()) {
+    return "[]";
+  }
+  StringBuilder buffer=new StringBuilder();
+  buffer.append('[');
+  Iterator<int[]> it=arrays.iterator();
+  while (it.hasNext()) {
+    buffer.append(Arrays.toString(it.next()));
+    if (it.hasNext()) {
+      buffer.append(", ");
+    }
+  }
+  buffer.append(']');
+  return buffer.toString();
+}

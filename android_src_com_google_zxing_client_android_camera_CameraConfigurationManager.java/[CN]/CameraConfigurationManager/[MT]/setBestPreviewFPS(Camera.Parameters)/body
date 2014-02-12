@@ -1,6 +1,6 @@
 {
   List<int[]> supportedPreviewFpsRanges=parameters.getSupportedPreviewFpsRange();
-  Log.i(TAG,"Supported FPS ranges: " + supportedPreviewFpsRanges);
+  Log.i(TAG,"Supported FPS ranges: " + toString(supportedPreviewFpsRanges));
   if (supportedPreviewFpsRanges != null && !supportedPreviewFpsRanges.isEmpty()) {
     int[] minimumSuitableFpsRange=null;
     for (    int[] fpsRange : supportedPreviewFpsRanges) {
