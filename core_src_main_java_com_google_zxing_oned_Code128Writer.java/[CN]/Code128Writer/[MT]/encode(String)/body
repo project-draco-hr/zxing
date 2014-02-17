@@ -33,53 +33,29 @@ if (isDigits(contents,position,requiredDigitCount)) {
 }
 int patternIndex;
 if (newCodeSet == codeSet) {
-  if (codeSet == CODE_CODE_B) {
 switch (contents.charAt(position)) {
 case ESCAPE_FNC_1:
-      patternIndex=CODE_FNC_1;
-    position++;
+    patternIndex=CODE_FNC_1;
   break;
 case ESCAPE_FNC_2:
 patternIndex=CODE_FNC_2;
-position++;
 break;
 case ESCAPE_FNC_3:
 patternIndex=CODE_FNC_3;
-position++;
 break;
 case ESCAPE_FNC_4:
 patternIndex=CODE_FNC_4_B;
-position++;
 break;
 default :
+if (codeSet == CODE_CODE_B) {
 patternIndex=contents.charAt(position) - ' ';
-position++;
-}
 }
  else {
-switch (contents.charAt(position)) {
-case ESCAPE_FNC_1:
-patternIndex=CODE_FNC_1;
-position++;
-break;
-case ESCAPE_FNC_2:
-patternIndex=CODE_FNC_2;
-position++;
-break;
-case ESCAPE_FNC_3:
-patternIndex=CODE_FNC_3;
-position++;
-break;
-case ESCAPE_FNC_4:
-patternIndex=CODE_FNC_4_B;
-position++;
-break;
-default :
 patternIndex=Integer.parseInt(contents.substring(position,position + 2));
-position+=2;
-break;
+position++;
 }
 }
+position++;
 }
  else {
 if (codeSet == 0) {
