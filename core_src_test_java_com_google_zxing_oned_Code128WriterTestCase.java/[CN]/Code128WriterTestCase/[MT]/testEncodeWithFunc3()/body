@@ -1,11 +1,7 @@
 {
   String toEncode="\u00f3" + "123";
   String expected=QUIET_SPACE + START_CODE_B + FNC3+ "10011100110"+ "11001110010"+ "11001011100"+ "11101000110"+ STOP+ QUIET_SPACE;
-  Writer writer=new Code128Writer();
   BitMatrix result=writer.encode(toEncode,BarcodeFormat.CODE_128,0,0);
-  StringBuilder actual=new StringBuilder(result.getWidth());
-  for (int i=0; i < result.getWidth(); i++) {
-    actual.append(result.get(i,0) ? '1' : '0');
-  }
-  assertEquals(expected,actual.toString());
+  String actual=matrixToString(result);
+  assertEquals(expected,actual);
 }
