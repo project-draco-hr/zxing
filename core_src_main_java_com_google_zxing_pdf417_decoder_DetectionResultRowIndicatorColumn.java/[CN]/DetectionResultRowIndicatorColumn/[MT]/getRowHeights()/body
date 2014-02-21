@@ -7,7 +7,11 @@
   int[] result=new int[barcodeMetadata.getRowCount()];
   for (  Codeword codeword : getCodewords()) {
     if (codeword != null) {
-      result[codeword.getRowNumber()]++;
+      int rowNumber=codeword.getRowNumber();
+      if (rowNumber >= result.length) {
+        throw FormatException.getFormatInstance();
+      }
+      result[rowNumber]++;
     }
   }
   return result;
