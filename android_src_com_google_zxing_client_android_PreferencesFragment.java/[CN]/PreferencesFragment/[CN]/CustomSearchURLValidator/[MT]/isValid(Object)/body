@@ -1,0 +1,16 @@
+{
+  if (newValue == null) {
+    return true;
+  }
+  String valueString=newValue.toString();
+  if (valueString.isEmpty()) {
+    return true;
+  }
+  try {
+    URI uri=new URI(valueString);
+    return uri.getScheme() != null;
+  }
+ catch (  URISyntaxException use) {
+    return false;
+  }
+}
