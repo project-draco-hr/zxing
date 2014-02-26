@@ -27,6 +27,6 @@
     pos+=appendPattern(result,pos,narrowWhite,false);
   }
   toIntArray(Code39Reader.CHARACTER_ENCODINGS[39],widths);
-  pos+=appendPattern(result,pos,widths,true);
+  appendPattern(result,pos,widths,true);
   return result;
 }
