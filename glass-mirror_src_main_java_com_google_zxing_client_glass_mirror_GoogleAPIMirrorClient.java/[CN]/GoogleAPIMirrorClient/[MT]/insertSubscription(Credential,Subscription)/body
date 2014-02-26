@@ -1,3 +1,0 @@
-{
-  getMirror(credential).subscriptions().insert(subscription).execute();
-}

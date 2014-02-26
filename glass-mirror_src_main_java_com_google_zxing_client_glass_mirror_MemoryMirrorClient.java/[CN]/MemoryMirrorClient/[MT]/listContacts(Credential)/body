@@ -1,4 +1,0 @@
-{
-  log.info("Contacts: {}",contacts);
-  return contacts;
-}

@@ -1,3 +1,0 @@
-{
-  return Collections.singleton(StoredCredential.DEFAULT_DATA_STORE_ID);
-}

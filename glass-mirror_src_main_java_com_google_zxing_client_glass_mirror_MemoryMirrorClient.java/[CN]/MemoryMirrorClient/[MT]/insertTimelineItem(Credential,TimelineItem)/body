@@ -1,3 +1,0 @@
-{
-  log.info("Insert Timeline: {}",item);
-}

@@ -1,3 +1,0 @@
-{
-  getMirror(credential).timeline().insert(item).execute();
-}

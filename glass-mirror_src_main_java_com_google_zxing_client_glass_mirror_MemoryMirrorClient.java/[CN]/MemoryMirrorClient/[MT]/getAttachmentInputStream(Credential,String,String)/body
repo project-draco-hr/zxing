@@ -1,7 +1,0 @@
-{
-  log.info("Get Attachment {} {}",timelineItemId,attachmentId);
-  if (!FAKE_ATTACHMENT_ID.equals(attachmentId)) {
-    return null;
-  }
-  return MemoryMirrorClient.class.getResourceAsStream("/test.jpg");
-}

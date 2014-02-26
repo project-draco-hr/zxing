@@ -1,5 +1,0 @@
-{
-  if (parsedResult instanceof URIParsedResult) {
-    addURIResultDetailToTimelineItem((URIParsedResult)parsedResult,item);
-  }
-}

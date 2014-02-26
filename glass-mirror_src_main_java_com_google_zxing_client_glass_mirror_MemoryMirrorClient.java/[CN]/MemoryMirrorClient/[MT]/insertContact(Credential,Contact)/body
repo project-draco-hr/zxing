@@ -1,4 +1,0 @@
-{
-  log.info("Insert Contact: {}",contact);
-  contacts.add(contact);
-}

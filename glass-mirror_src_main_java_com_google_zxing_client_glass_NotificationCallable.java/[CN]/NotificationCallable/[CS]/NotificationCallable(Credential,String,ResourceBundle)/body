@@ -1,5 +1,0 @@
-{
-  this.credential=credential;
-  this.timelineItemID=timelineItemID;
-  this.resources=resources;
-}
