@@ -6,6 +6,7 @@
   if (valueString.isEmpty()) {
     return true;
   }
+  valueString=valueString.replaceAll("%[sdf]","");
   try {
     URI uri=new URI(valueString);
     return uri.getScheme() != null;
