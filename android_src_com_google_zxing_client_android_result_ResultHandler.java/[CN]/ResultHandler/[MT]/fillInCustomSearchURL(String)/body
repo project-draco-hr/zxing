@@ -7,13 +7,14 @@
   }
  catch (  UnsupportedEncodingException e) {
   }
-  String url=customProductSearch.replace("%s",text);
+  String url=text;
   if (rawResult != null) {
-    url=url.replace("%f",rawResult.getBarcodeFormat().toString());
+    url=url.replace("%f(?![0-9a-f])",rawResult.getBarcodeFormat().toString());
     if (url.contains("%t")) {
       ParsedResult parsedResultAgain=ResultParser.parseResult(rawResult);
       url=url.replace("%t",parsedResultAgain.getType().toString());
     }
   }
+  url=customProductSearch.replace("%s",url);
   return url;
 }
