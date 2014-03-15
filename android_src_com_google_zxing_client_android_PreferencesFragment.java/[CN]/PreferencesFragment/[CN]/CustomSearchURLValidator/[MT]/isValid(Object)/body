@@ -6,7 +6,7 @@
   if (valueString.isEmpty()) {
     return true;
   }
-  valueString=valueString.replaceAll("%[sd]","");
+  valueString=valueString.replaceAll("%[st]","");
   valueString=valueString.replaceAll("%f(?![0-9a-f])","");
   try {
     URI uri=new URI(valueString);
