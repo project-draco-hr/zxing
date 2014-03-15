@@ -7,6 +7,13 @@
   statusView=(TextView)findViewById(R.id.status_view);
   handler=null;
   lastResult=null;
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
+  if (prefs.getBoolean(PreferencesActivity.KEY_DISABLE_AUTO_ORIENTATION,true)) {
+    setRequestedOrientation(getCurrentOrientation());
+  }
+ else {
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+  }
   resetStatusView();
   SurfaceView surfaceView=(SurfaceView)findViewById(R.id.preview_view);
   SurfaceHolder surfaceHolder=surfaceView.getHolder();
@@ -20,7 +27,6 @@
   ambientLightManager.start(cameraManager);
   inactivityTimer.onResume();
   Intent intent=getIntent();
-  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
   copyToClipboard=prefs.getBoolean(PreferencesActivity.KEY_COPY_TO_CLIPBOARD,true) && (intent == null || intent.getBooleanExtra(Intents.Scan.SAVE_HISTORY,true));
   source=IntentSource.NONE;
   decodeFormats=null;
