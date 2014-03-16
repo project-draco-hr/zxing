@@ -1,4 +1,13 @@
 {
+  CharSequence displayContents=resultHandler.getDisplayContents();
+  if (copyToClipboard && !resultHandler.areContentsSecure()) {
+    ClipboardInterface.setText(displayContents,this);
+  }
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
+  if (resultHandler.getDefaultButtonID() != null && prefs.getBoolean(PreferencesActivity.KEY_AUTO_OPEN_WEB,false)) {
+    resultHandler.handleButtonPress(resultHandler.getDefaultButtonID());
+    return;
+  }
   statusView.setVisibility(View.GONE);
   viewfinderView.setVisibility(View.GONE);
   resultView.setVisibility(View.VISIBLE);
@@ -36,7 +45,6 @@
     }
   }
   TextView contentsTextView=(TextView)findViewById(R.id.contents_text_view);
-  CharSequence displayContents=resultHandler.getDisplayContents();
   contentsTextView.setText(displayContents);
   int scaledSize=Math.max(22,32 - displayContents.length() / 4);
   contentsTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,scaledSize);
@@ -59,8 +67,5 @@
  else {
       button.setVisibility(View.GONE);
     }
-  }
-  if (copyToClipboard && !resultHandler.areContentsSecure()) {
-    ClipboardInterface.setText(displayContents,this);
   }
 }
