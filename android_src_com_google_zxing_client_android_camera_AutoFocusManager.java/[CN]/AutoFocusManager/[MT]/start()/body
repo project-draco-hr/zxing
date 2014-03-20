@@ -1,6 +1,6 @@
 {
   if (useAutoFocus) {
-    cancelOutstandingTask();
+    outstandingTask=null;
     if (!stopped && !focusing) {
       try {
         camera.autoFocus(this);
