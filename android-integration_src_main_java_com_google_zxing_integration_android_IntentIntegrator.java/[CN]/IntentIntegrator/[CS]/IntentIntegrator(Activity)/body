@@ -1,9 +1,5 @@
 {
   this.activity=activity;
-  title=DEFAULT_TITLE;
-  message=DEFAULT_MESSAGE;
-  buttonYes=DEFAULT_YES;
-  buttonNo=DEFAULT_NO;
-  targetApplications=TARGET_ALL_KNOWN;
-  moreExtras=new HashMap<String,Object>(3);
+  this.fragment=null;
+  initializeConfiguration();
 }
