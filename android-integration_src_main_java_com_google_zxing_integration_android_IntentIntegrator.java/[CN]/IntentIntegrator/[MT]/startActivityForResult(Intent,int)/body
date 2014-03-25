@@ -1,3 +1,8 @@
 {
-  activity.startActivityForResult(intent,code);
+  if (fragment == null) {
+    activity.startActivityForResult(intent,code);
+  }
+ else {
+    fragment.startActivityForResult(intent,code);
+  }
 }
