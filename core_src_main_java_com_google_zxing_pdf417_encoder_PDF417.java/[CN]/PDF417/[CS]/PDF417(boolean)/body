@@ -1,7 +1,7 @@
 {
   this.compact=compact;
   compaction=Compaction.AUTO;
-  encoding=PDF417HighLevelEncoder.DEFAULT_ENCODING;
+  encoding=null;
   minCols=2;
   maxCols=30;
   maxRows=30;

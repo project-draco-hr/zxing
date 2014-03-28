@@ -1,0 +1,15 @@
+{
+  if (encoding == null) {
+    for (    String encodingName : DEFAULT_ENCODING_NAMES) {
+      try {
+        encoding=Charset.forName(encodingName);
+      }
+ catch (      UnsupportedCharsetException uce) {
+      }
+    }
+    if (encoding == null) {
+      throw new WriterException("No support for any encoding: " + DEFAULT_ENCODING_NAMES);
+    }
+  }
+  return msg.getBytes(encoding);
+}
