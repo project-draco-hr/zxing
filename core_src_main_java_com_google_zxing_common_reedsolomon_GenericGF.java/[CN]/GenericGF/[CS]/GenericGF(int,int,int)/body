@@ -2,7 +2,20 @@
   this.primitive=primitive;
   this.size=size;
   this.generatorBase=b;
-  if (size <= INITIALIZATION_THRESHOLD) {
-    initialize();
+  expTable=new int[size];
+  logTable=new int[size];
+  int x=1;
+  for (int i=0; i < size; i++) {
+    expTable[i]=x;
+    x<<=1;
+    if (x >= size) {
+      x^=primitive;
+      x&=size - 1;
+    }
   }
+  for (int i=0; i < size - 1; i++) {
+    logTable[expTable[i]]=i;
+  }
+  zero=new GenericGFPoly(this,new int[]{0});
+  one=new GenericGFPoly(this,new int[]{1});
 }

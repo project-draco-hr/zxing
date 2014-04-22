@@ -1,4 +1,3 @@
 {
-  checkInit();
   return expTable[a];
 }

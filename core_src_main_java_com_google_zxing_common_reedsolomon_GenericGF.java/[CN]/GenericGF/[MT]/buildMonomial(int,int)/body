@@ -1,5 +1,4 @@
 {
-  checkInit();
   if (degree < 0) {
     throw new IllegalArgumentException();
   }
