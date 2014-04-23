@@ -13,10 +13,12 @@
     return 0;
   }
   ModulusPoly knownErrors=field.getOne();
-  for (  int erasure : erasures) {
-    int b=field.exp(received.length - 1 - erasure);
-    ModulusPoly term=new ModulusPoly(field,new int[]{field.subtract(0,b),1});
-    knownErrors=knownErrors.multiply(term);
+  if (erasures != null) {
+    for (    int erasure : erasures) {
+      int b=field.exp(received.length - 1 - erasure);
+      ModulusPoly term=new ModulusPoly(field,new int[]{field.subtract(0,b),1});
+      knownErrors=knownErrors.multiply(term);
+    }
   }
   ModulusPoly syndrome=new ModulusPoly(field,S);
   ModulusPoly[] sigmaOmega=runEuclideanAlgorithm(field.buildMonomial(numECCodewords,1),syndrome,numECCodewords);
