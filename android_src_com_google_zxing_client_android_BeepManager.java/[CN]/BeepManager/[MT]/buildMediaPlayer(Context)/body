@@ -3,16 +3,21 @@
   mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
   mediaPlayer.setOnCompletionListener(this);
   mediaPlayer.setOnErrorListener(this);
-  AssetFileDescriptor file=activity.getResources().openRawResourceFd(R.raw.beep);
   try {
-    mediaPlayer.setDataSource(file.getFileDescriptor(),file.getStartOffset(),file.getLength());
-    file.close();
+    AssetFileDescriptor file=activity.getResources().openRawResourceFd(R.raw.beep);
+    try {
+      mediaPlayer.setDataSource(file.getFileDescriptor(),file.getStartOffset(),file.getLength());
+    }
+  finally {
+      file.close();
+    }
     mediaPlayer.setVolume(BEEP_VOLUME,BEEP_VOLUME);
     mediaPlayer.prepare();
+    return mediaPlayer;
   }
  catch (  IOException ioe) {
     Log.w(TAG,ioe);
-    mediaPlayer=null;
+    mediaPlayer.release();
+    return null;
   }
-  return mediaPlayer;
 }

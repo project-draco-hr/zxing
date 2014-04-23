@@ -1,0 +1,6 @@
+{
+  if (mediaPlayer != null) {
+    mediaPlayer.release();
+    mediaPlayer=null;
+  }
+}

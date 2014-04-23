@@ -5,6 +5,7 @@
   }
   inactivityTimer.onPause();
   ambientLightManager.stop();
+  beepManager.close();
   cameraManager.closeDriver();
   if (!hasSurface) {
     SurfaceView surfaceView=(SurfaceView)findViewById(R.id.preview_view);
