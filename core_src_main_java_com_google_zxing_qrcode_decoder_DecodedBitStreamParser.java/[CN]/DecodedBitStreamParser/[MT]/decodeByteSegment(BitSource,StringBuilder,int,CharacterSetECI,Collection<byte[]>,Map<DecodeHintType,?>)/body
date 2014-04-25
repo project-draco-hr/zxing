@@ -1,5 +1,5 @@
 {
-  if (count << 3 > bits.available()) {
+  if (8 * count > bits.available()) {
     throw FormatException.getFormatInstance();
   }
   byte[] readBytes=new byte[count];

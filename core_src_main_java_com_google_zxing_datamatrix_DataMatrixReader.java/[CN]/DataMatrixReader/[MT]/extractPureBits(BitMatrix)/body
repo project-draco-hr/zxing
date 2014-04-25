@@ -14,7 +14,7 @@
   if (matrixWidth <= 0 || matrixHeight <= 0) {
     throw NotFoundException.getNotFoundInstance();
   }
-  int nudge=moduleSize >> 1;
+  int nudge=moduleSize / 2;
   top+=nudge;
   left+=nudge;
   BitMatrix bits=new BitMatrix(matrixWidth,matrixHeight);

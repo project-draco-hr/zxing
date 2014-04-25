@@ -5,7 +5,7 @@
   while (payloadStart < payloadEnd) {
     recordPattern(row,payloadStart,counterDigitPair);
     for (int k=0; k < 5; k++) {
-      int twoK=k << 1;
+      int twoK=2 * k;
       counterBlack[k]=counterDigitPair[twoK];
       counterWhite[k]=counterDigitPair[twoK + 1];
     }

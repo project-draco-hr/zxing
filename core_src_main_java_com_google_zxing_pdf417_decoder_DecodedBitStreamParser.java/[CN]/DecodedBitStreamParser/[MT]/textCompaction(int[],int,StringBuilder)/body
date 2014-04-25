@@ -1,6 +1,6 @@
 {
-  int[] textCompactionData=new int[(codewords[0] - codeIndex) << 1];
-  int[] byteCompactionData=new int[(codewords[0] - codeIndex) << 1];
+  int[] textCompactionData=new int[(codewords[0] - codeIndex) * 2];
+  int[] byteCompactionData=new int[(codewords[0] - codeIndex) * 2];
   int index=0;
   boolean end=false;
   while ((codeIndex < codewords[0]) && !end) {

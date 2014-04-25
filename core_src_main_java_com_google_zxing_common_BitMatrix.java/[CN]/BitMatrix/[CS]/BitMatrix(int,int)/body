@@ -4,6 +4,6 @@
   }
   this.width=width;
   this.height=height;
-  this.rowSize=(width + 31) >> 5;
+  this.rowSize=(width + 31) / 32;
   bits=new int[rowSize * height];
 }

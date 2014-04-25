@@ -26,7 +26,7 @@
         int counter=counters[i];
         if (counter > maxNarrowCounter) {
           wideCounters--;
-          if ((counter << 1) >= totalWideCountersWidth) {
+          if ((counter * 2) >= totalWideCountersWidth) {
             return -1;
           }
         }

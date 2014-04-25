@@ -7,7 +7,7 @@
     return null;
   }
   int y=bitsOffset / rowSize;
-  int x=(bitsOffset % rowSize) << 5;
+  int x=(bitsOffset % rowSize) * 32;
   int theBits=bits[bitsOffset];
   int bit=0;
   while ((theBits << (31 - bit)) == 0) {

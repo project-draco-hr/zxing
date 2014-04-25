@@ -1,7 +1,7 @@
 {
   int endStart=skipWhiteSpace(row);
   int[] startPattern=findGuardPattern(row,endStart,START_PATTERN);
-  this.narrowLineWidth=(startPattern[1] - startPattern[0]) >> 2;
+  this.narrowLineWidth=(startPattern[1] - startPattern[0]) / 4;
   validateQuietZone(row,startPattern[0]);
   return startPattern;
 }

@@ -19,7 +19,7 @@
   int center=localLuminances[1] & 0xff;
   for (int x=1; x < width - 1; x++) {
     int right=localLuminances[x + 1] & 0xff;
-    int luminance=((center << 2) - left - right) >> 1;
+    int luminance=((center * 4) - left - right) / 2;
     if (luminance < blackPoint) {
       row.set(x);
     }

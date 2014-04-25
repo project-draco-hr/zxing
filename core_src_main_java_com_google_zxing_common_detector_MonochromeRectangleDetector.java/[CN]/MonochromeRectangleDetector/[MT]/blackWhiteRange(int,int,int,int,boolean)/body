@@ -1,5 +1,5 @@
 {
-  int center=(minDim + maxDim) >> 1;
+  int center=(minDim + maxDim) / 2;
   int start=center;
   while (start >= minDim) {
     if (horizontal ? image.get(start,fixedDimension) : image.get(fixedDimension,start)) {

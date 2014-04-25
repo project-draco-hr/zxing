@@ -16,7 +16,7 @@
         luminances[offset + x]=(byte)r;
       }
  else {
-        luminances[offset + x]=(byte)((r + g + g+ b) >> 2);
+        luminances[offset + x]=(byte)((r + 2 * g + b) / 4);
       }
     }
   }
