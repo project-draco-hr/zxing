@@ -16,11 +16,11 @@
     }
     pos+=8;
   }
-  int[] maxes=new int[4];
-  int[] mins=new int[4];
+  float[] maxes=new float[4];
+  float[] mins=new float[4];
   for (int i=0; i < 2; i++) {
-    mins[i]=0;
-    mins[i + 2]=((sizes[i] << INTEGER_MATH_SHIFT) / counts[i] + (sizes[i + 2] << INTEGER_MATH_SHIFT) / counts[i + 2]) >> 1;
+    mins[i]=0.0f;
+    mins[i + 2]=((float)sizes[i] / counts[i] + (float)sizes[i + 2] / counts[i + 2]) / 2.0f;
     maxes[i]=mins[i + 2];
     maxes[i + 2]=(sizes[i + 2] * MAX_ACCEPTABLE + PADDING) / counts[i + 2];
   }
@@ -29,7 +29,7 @@
     int pattern=CHARACTER_ENCODINGS[decodeRowResult.charAt(i)];
     for (int j=6; j >= 0; j--) {
       int category=(j & 1) + (pattern & 1) * 2;
-      int size=counters[pos + j] << INTEGER_MATH_SHIFT;
+      int size=counters[pos + j];
       if (size < mins[category] || size > maxes[category]) {
         throw NotFoundException.getNotFoundInstance();
       }

@@ -1,10 +1,10 @@
 {
-  int bestVariance=MAX_AVG_VARIANCE;
+  float bestVariance=MAX_AVG_VARIANCE;
   int bestMatch=-1;
   int max=PATTERNS.length;
   for (int i=0; i < max; i++) {
     int[] pattern=PATTERNS[i];
-    int variance=patternMatchVariance(counters,pattern,MAX_INDIVIDUAL_VARIANCE);
+    float variance=patternMatchVariance(counters,pattern,MAX_INDIVIDUAL_VARIANCE);
     if (variance < bestVariance) {
       bestVariance=variance;
       bestMatch=i;

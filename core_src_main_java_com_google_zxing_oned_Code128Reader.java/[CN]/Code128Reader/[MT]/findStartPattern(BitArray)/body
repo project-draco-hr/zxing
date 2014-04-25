@@ -12,10 +12,10 @@
     }
  else {
       if (counterPosition == patternLength - 1) {
-        int bestVariance=MAX_AVG_VARIANCE;
+        float bestVariance=MAX_AVG_VARIANCE;
         int bestMatch=-1;
         for (int startCode=CODE_START_A; startCode <= CODE_START_C; startCode++) {
-          int variance=patternMatchVariance(counters,CODE_PATTERNS[startCode],MAX_INDIVIDUAL_VARIANCE);
+          float variance=patternMatchVariance(counters,CODE_PATTERNS[startCode],MAX_INDIVIDUAL_VARIANCE);
           if (variance < bestVariance) {
             bestVariance=variance;
             bestMatch=startCode;
