@@ -1,0 +1,10 @@
+{
+  this.activity=activity;
+  this.camera=camera;
+  Camera.Parameters parameters=camera.getParameters();
+  Camera.Size previewSize=parameters.getPreviewSize();
+  height=previewSize.height;
+  width=previewSize.width;
+  running=true;
+  handlerInitLatch=new CountDownLatch(1);
+}

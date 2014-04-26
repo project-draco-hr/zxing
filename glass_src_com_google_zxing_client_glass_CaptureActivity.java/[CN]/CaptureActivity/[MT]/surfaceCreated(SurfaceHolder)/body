@@ -1,0 +1,8 @@
+{
+  Log.i(TAG,"Surface created");
+  holderWithCallback=null;
+  if (!hasSurface) {
+    hasSurface=true;
+    initCamera(holder);
+  }
+}

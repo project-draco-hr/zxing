@@ -1,0 +1,26 @@
+{
+  if (!running) {
+    return;
+  }
+switch (message.what) {
+case R.id.decode:
+    decode((byte[])message.obj);
+  break;
+case R.id.decode_succeeded:
+final Result result=(Result)message.obj;
+activity.runOnUiThread(new Runnable(){
+@Override public void run(){
+  activity.setResult(result);
+}
+}
+);
+break;
+case R.id.decode_failed:
+camera.setOneShotPreviewCallback(DecodeRunnable.this);
+break;
+case R.id.quit:
+running=false;
+Looper.myLooper().quit();
+break;
+}
+}

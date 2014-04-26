@@ -1,0 +1,5 @@
+{
+  Camera.Parameters parameters=camera.getParameters();
+  parameters.setPreviewSize(512,288);
+  camera.setParameters(parameters);
+}

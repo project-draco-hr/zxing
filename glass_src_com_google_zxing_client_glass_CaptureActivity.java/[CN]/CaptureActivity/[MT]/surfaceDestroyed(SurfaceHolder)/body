@@ -1,0 +1,5 @@
+{
+  Log.i(TAG,"Surface destroyed");
+  holderWithCallback=null;
+  hasSurface=false;
+}

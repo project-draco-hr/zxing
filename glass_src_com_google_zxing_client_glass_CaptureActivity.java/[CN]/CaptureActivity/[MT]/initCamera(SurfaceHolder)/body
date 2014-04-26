@@ -1,0 +1,20 @@
+{
+  if (camera != null) {
+    throw new IllegalStateException("Camera not null on initialization");
+  }
+  camera=Camera.open();
+  if (camera == null) {
+    throw new IllegalStateException("Camera is null");
+  }
+  CameraConfigurationManager.configure(camera);
+  try {
+    camera.setPreviewDisplay(holder);
+    camera.startPreview();
+  }
+ catch (  IOException e) {
+    Log.e(TAG,"Cannot start prevew",e);
+  }
+  decodeRunnable=new DecodeRunnable(this,camera);
+  new Thread(decodeRunnable).start();
+  reset();
+}

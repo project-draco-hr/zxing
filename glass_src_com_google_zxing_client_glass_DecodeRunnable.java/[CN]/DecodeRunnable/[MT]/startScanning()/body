@@ -1,0 +1,3 @@
+{
+  getHandler().obtainMessage(R.id.decode_failed).sendToTarget();
+}

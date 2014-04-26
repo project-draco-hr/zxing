@@ -1,0 +1,4 @@
+{
+  hints=new EnumMap<>(DecodeHintType.class);
+  hints.put(DecodeHintType.POSSIBLE_FORMATS,Arrays.asList(BarcodeFormat.AZTEC,BarcodeFormat.QR_CODE,BarcodeFormat.DATA_MATRIX));
+}

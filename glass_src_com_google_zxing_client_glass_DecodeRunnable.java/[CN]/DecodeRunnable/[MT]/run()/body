@@ -1,0 +1,6 @@
+{
+  Looper.prepare();
+  handler=new DecodeHandler();
+  handlerInitLatch.countDown();
+  Looper.loop();
+}

@@ -1,0 +1,13 @@
+{
+  if (result != null) {
+switch (keyCode) {
+case KeyEvent.KEYCODE_DPAD_CENTER:
+      handleResult(result);
+    return true;
+case KeyEvent.KEYCODE_BACK:
+  reset();
+return true;
+}
+}
+return super.onKeyDown(keyCode,event);
+}

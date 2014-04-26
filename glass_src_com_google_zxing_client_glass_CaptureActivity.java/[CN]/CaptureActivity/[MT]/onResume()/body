@@ -1,0 +1,15 @@
+{
+  super.onResume();
+  SurfaceView surfaceView=(SurfaceView)findViewById(R.id.preview_view);
+  SurfaceHolder surfaceHolder=surfaceView.getHolder();
+  if (surfaceHolder == null) {
+    throw new IllegalStateException("No SurfaceHolder?");
+  }
+  if (hasSurface) {
+    initCamera(surfaceHolder);
+  }
+ else {
+    surfaceHolder.addCallback(this);
+    holderWithCallback=surfaceHolder;
+  }
+}

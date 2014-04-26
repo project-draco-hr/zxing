@@ -1,0 +1,20 @@
+{
+  Result rawResult=null;
+  PlanarYUVLuminanceSource source=new PlanarYUVLuminanceSource(data,width,height,0,0,width,height,false);
+  BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
+  try {
+    rawResult=new MultiFormatReader().decode(bitmap,hints);
+  }
+ catch (  ReaderException re) {
+  }
+  Handler handler=getHandler();
+  Message message;
+  if (rawResult == null) {
+    message=handler.obtainMessage(R.id.decode_failed);
+  }
+ else {
+    Log.i(TAG,"Decode succeeded: " + rawResult.getText());
+    message=handler.obtainMessage(R.id.decode_succeeded,rawResult);
+  }
+  message.sendToTarget();
+}

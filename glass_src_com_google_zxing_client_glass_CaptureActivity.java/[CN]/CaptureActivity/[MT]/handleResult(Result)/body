@@ -1,0 +1,12 @@
+{
+  ParsedResult parsed=ResultParser.parseResult(result);
+  Intent intent;
+  if (parsed.getType() == ParsedResultType.URI) {
+    intent=new Intent(Intent.ACTION_VIEW,Uri.parse(((URIParsedResult)parsed).getURI()));
+  }
+ else {
+    intent=new Intent(Intent.ACTION_WEB_SEARCH);
+    intent.putExtra("query",((TextParsedResult)parsed).getText());
+  }
+  startActivity(intent);
+}

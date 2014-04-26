@@ -1,0 +1,17 @@
+{
+  result=null;
+  if (decodeRunnable != null) {
+    decodeRunnable.stop();
+    decodeRunnable=null;
+  }
+  if (camera != null) {
+    camera.stopPreview();
+    camera.release();
+    camera=null;
+  }
+  if (holderWithCallback != null) {
+    holderWithCallback.removeCallback(this);
+    holderWithCallback=null;
+  }
+  super.onPause();
+}

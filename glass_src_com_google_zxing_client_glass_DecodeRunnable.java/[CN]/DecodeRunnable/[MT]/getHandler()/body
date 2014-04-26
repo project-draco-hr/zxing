@@ -1,0 +1,8 @@
+{
+  try {
+    handlerInitLatch.await();
+  }
+ catch (  InterruptedException ie) {
+  }
+  return handler;
+}

@@ -1,0 +1,6 @@
+{
+  TextView statusView=(TextView)findViewById(R.id.status_view);
+  statusView.setVisibility(View.GONE);
+  result=null;
+  decodeRunnable.startScanning();
+}

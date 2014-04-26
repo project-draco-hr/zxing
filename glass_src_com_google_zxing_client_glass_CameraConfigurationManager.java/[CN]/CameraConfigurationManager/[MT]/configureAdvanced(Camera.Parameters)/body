@@ -1,0 +1,32 @@
+{
+  setBestPreviewFPS(parameters);
+  String sceneMode=findSettableValue(parameters.getSupportedSceneModes(),Camera.Parameters.SCENE_MODE_BARCODE);
+  if (sceneMode != null) {
+    parameters.setSceneMode(sceneMode);
+  }
+ else {
+    Log.i(TAG,"Scene mode is not supported");
+  }
+  if (parameters.isVideoStabilizationSupported()) {
+    Log.i(TAG,"Enabling video stabilization...");
+    parameters.setVideoStabilization(true);
+  }
+ else {
+    Log.i(TAG,"This device does not support video stabilization");
+  }
+  if (parameters.getMaxNumMeteringAreas() > 0) {
+    Log.i(TAG,"Old metering areas: " + parameters.getMeteringAreas());
+    List<Camera.Area> middleArea=Collections.singletonList(new Camera.Area(new Rect(-AREA_PER_1000,-AREA_PER_1000,AREA_PER_1000,AREA_PER_1000),1));
+    parameters.setMeteringAreas(middleArea);
+  }
+ else {
+    Log.i(TAG,"Device does not support metering areas");
+  }
+  if (parameters.isZoomSupported()) {
+    Log.i(TAG,"Setting to max zoom");
+    parameters.setZoom(parameters.getMaxZoom());
+  }
+ else {
+    Log.i(TAG,"Zoom is not supported");
+  }
+}

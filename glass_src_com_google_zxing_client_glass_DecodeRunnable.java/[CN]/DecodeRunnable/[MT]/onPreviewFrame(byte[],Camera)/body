@@ -1,0 +1,5 @@
+{
+  if (running) {
+    getHandler().obtainMessage(R.id.decode,data).sendToTarget();
+  }
+}
