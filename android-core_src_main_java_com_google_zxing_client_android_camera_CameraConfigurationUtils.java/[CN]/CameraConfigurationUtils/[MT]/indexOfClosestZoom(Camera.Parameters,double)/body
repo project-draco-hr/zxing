@@ -1,0 +1,21 @@
+{
+  List<Integer> ratios=parameters.getZoomRatios();
+  Log.i(TAG,"Zoom ratios: " + ratios);
+  int maxZoom=parameters.getMaxZoom();
+  if (ratios == null || ratios.isEmpty() || ratios.size() != maxZoom + 1) {
+    Log.w(TAG,"Invalid zoom ratios!");
+    return null;
+  }
+  double target100=100.0 * targetZoomRatio;
+  double smallestDiff=Double.POSITIVE_INFINITY;
+  int closestIndex=0;
+  for (int i=0; i < ratios.size(); i++) {
+    double diff=Math.abs(ratios.get(i) - target100);
+    if (diff < smallestDiff) {
+      smallestDiff=diff;
+      closestIndex=i;
+    }
+  }
+  Log.i(TAG,"Chose zoom ratio of " + (ratios.get(closestIndex) / 100.0));
+  return closestIndex;
+}

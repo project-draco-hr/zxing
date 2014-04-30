@@ -1,5 +1,9 @@
 {
   if (parameters.isZoomSupported()) {
+    Integer zoom=indexOfClosestZoom(parameters,targetZoomRatio);
+    if (zoom == null) {
+      return;
+    }
     if (parameters.getZoom() == zoom) {
       Log.i(TAG,"Zoom is already set to " + zoom);
     }

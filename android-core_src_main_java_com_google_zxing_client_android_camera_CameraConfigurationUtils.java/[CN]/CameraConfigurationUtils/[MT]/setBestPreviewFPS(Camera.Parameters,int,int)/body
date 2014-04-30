@@ -1,0 +1,29 @@
+{
+  List<int[]> supportedPreviewFpsRanges=parameters.getSupportedPreviewFpsRange();
+  Log.i(TAG,"Supported FPS ranges: " + toString(supportedPreviewFpsRanges));
+  if (supportedPreviewFpsRanges != null && !supportedPreviewFpsRanges.isEmpty()) {
+    int[] suitableFPSRange=null;
+    for (    int[] fpsRange : supportedPreviewFpsRanges) {
+      int thisMin=fpsRange[Camera.Parameters.PREVIEW_FPS_MIN_INDEX];
+      int thisMax=fpsRange[Camera.Parameters.PREVIEW_FPS_MAX_INDEX];
+      if (thisMin >= minFPS * 1000 && thisMax <= maxFPS * 1000) {
+        suitableFPSRange=fpsRange;
+        break;
+      }
+    }
+    if (suitableFPSRange == null) {
+      Log.i(TAG,"No suitable FPS range?");
+    }
+ else {
+      int[] currentFpsRange=new int[2];
+      parameters.getPreviewFpsRange(currentFpsRange);
+      if (Arrays.equals(currentFpsRange,suitableFPSRange)) {
+        Log.i(TAG,"FPS range already set to " + Arrays.toString(suitableFPSRange));
+      }
+ else {
+        Log.i(TAG,"Setting FPS range to " + Arrays.toString(suitableFPSRange));
+        parameters.setPreviewFpsRange(suitableFPSRange[Camera.Parameters.PREVIEW_FPS_MIN_INDEX],suitableFPSRange[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
+      }
+    }
+  }
+}

@@ -1,2 +1,2 @@
 Camera.Parameters parameters
-int zoom
+double targetZoomRatio

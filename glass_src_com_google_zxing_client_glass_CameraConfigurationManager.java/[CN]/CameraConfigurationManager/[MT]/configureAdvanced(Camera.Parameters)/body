@@ -3,5 +3,5 @@
   CameraConfigurationUtils.setBarcodeSceneMode(parameters);
   CameraConfigurationUtils.setVideoStabilization(parameters);
   CameraConfigurationUtils.setMetering(parameters);
-  CameraConfigurationUtils.setMaxZoom(parameters);
+  CameraConfigurationUtils.setZoom(parameters,2.0);
 }

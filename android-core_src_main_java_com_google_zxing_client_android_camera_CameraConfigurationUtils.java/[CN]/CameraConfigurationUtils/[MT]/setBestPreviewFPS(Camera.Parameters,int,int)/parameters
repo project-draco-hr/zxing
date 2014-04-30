@@ -1,1 +1,3 @@
 Camera.Parameters parameters
+int minFPS
+int maxFPS
