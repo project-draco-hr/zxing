@@ -1,0 +1,7 @@
+{
+  if (Log.isLoggable(TAG,Log.INFO)) {
+    for (    String line : CameraConfigurationUtils.collectStats(parameters).split("\n")) {
+      Log.i(TAG,line);
+    }
+  }
+}
