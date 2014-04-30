@@ -12,7 +12,7 @@
     camera.startPreview();
   }
  catch (  IOException e) {
-    Log.e(TAG,"Cannot start prevew",e);
+    Log.e(TAG,"Cannot start preview",e);
   }
   decodeRunnable=new DecodeRunnable(this,camera);
   new Thread(decodeRunnable).start();

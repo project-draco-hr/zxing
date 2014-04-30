@@ -5,6 +5,7 @@
   Camera.Size previewSize=parameters.getPreviewSize();
   height=previewSize.height;
   width=previewSize.width;
+  previewBuffer=new byte[(height * width * 3) / 2];
   running=true;
   handlerInitLatch=new CountDownLatch(1);
 }

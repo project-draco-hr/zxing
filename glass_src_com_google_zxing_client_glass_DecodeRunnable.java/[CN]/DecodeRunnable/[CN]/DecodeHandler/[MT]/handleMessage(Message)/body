@@ -3,20 +3,24 @@
     return;
   }
 switch (message.what) {
+case R.id.decode_start:
+    camera.setPreviewCallbackWithBuffer(DecodeRunnable.this);
+  camera.addCallbackBuffer(previewBuffer);
+break;
 case R.id.decode:
-    decode((byte[])message.obj);
-  break;
+decode((byte[])message.obj);
+break;
 case R.id.decode_succeeded:
 final Result result=(Result)message.obj;
 activity.runOnUiThread(new Runnable(){
 @Override public void run(){
-  activity.setResult(result);
+activity.setResult(result);
 }
 }
 );
 break;
 case R.id.decode_failed:
-camera.setOneShotPreviewCallback(DecodeRunnable.this);
+camera.addCallbackBuffer(previewBuffer);
 break;
 case R.id.quit:
 running=false;
