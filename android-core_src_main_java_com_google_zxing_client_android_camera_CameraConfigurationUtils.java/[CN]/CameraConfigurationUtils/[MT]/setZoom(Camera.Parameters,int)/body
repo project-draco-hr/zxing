@@ -1,0 +1,14 @@
+{
+  if (parameters.isZoomSupported()) {
+    if (parameters.getZoom() == zoom) {
+      Log.i(TAG,"Zoom is already set to " + zoom);
+    }
+ else {
+      Log.i(TAG,"Setting zoom to " + zoom);
+      parameters.setZoom(zoom);
+    }
+  }
+ else {
+    Log.i(TAG,"Zoom is not supported");
+  }
+}

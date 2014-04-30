@@ -10,45 +10,19 @@
   }
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
   initializeTorch(parameters,prefs,safeMode);
-  setBestPreviewFPS(parameters);
-  String focusMode=null;
-  if (prefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS,true)) {
-    if (safeMode || prefs.getBoolean(PreferencesActivity.KEY_DISABLE_CONTINUOUS_FOCUS,true)) {
-      focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_AUTO);
-    }
- else {
-      focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE,Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO,Camera.Parameters.FOCUS_MODE_AUTO);
-    }
-  }
-  if (!safeMode && focusMode == null) {
-    focusMode=findSettableValue(parameters.getSupportedFocusModes(),Camera.Parameters.FOCUS_MODE_MACRO,Camera.Parameters.FOCUS_MODE_EDOF);
-  }
-  if (focusMode != null) {
-    parameters.setFocusMode(focusMode);
-  }
+  CameraConfigurationUtils.setBestPreviewFPS(parameters);
+  CameraConfigurationUtils.setFocus(parameters,prefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS,true),prefs.getBoolean(PreferencesActivity.KEY_DISABLE_CONTINUOUS_FOCUS,true),safeMode);
   if (!safeMode) {
     if (prefs.getBoolean(PreferencesActivity.KEY_INVERT_SCAN,false)) {
-      String colorMode=findSettableValue(parameters.getSupportedColorEffects(),Camera.Parameters.EFFECT_NEGATIVE);
-      if (colorMode != null) {
-        parameters.setColorEffect(colorMode);
-      }
+      CameraConfigurationUtils.setInvertColor(parameters);
     }
     if (!prefs.getBoolean(PreferencesActivity.KEY_DISABLE_BARCODE_SCENE_MODE,true)) {
-      String sceneMode=findSettableValue(parameters.getSupportedSceneModes(),Camera.Parameters.SCENE_MODE_BARCODE);
-      if (sceneMode != null) {
-        parameters.setSceneMode(sceneMode);
-      }
+      CameraConfigurationUtils.setBarcodeSceneMode(parameters);
     }
     if (!prefs.getBoolean(PreferencesActivity.KEY_DISABLE_METERING,true)) {
-      if (parameters.isVideoStabilizationSupported()) {
-        Log.i(TAG,"Enabling video stabilization...");
-        parameters.setVideoStabilization(true);
-      }
- else {
-        Log.i(TAG,"This device does not support video stabilization");
-      }
-      MeteringInterface.setFocusArea(parameters);
-      MeteringInterface.setMetering(parameters);
+      CameraConfigurationUtils.setVideoStabilization(parameters);
+      CameraConfigurationUtils.setFocusArea(parameters);
+      CameraConfigurationUtils.setMetering(parameters);
     }
   }
   parameters.setPreviewSize(cameraResolution.x,cameraResolution.y);

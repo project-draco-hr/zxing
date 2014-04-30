@@ -1,0 +1,5 @@
+{
+  int maxZoom=parameters.getMaxZoom();
+  Log.i(TAG,"Setting zoom to max of " + maxZoom);
+  setZoom(parameters,maxZoom);
+}

@@ -6,6 +6,6 @@
   display.getSize(theScreenResolution);
   screenResolution=theScreenResolution;
   Log.i(TAG,"Screen resolution: " + screenResolution);
-  cameraResolution=findBestPreviewSizeValue(parameters,screenResolution);
+  cameraResolution=CameraConfigurationUtils.findBestPreviewSizeValue(parameters,screenResolution);
   Log.i(TAG,"Camera resolution: " + cameraResolution);
 }

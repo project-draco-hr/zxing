@@ -1,3 +1,0 @@
-{
-  return Collections.singletonList(new Camera.Area(new Rect(-AREA_PER_1000,-AREA_PER_1000,AREA_PER_1000,AREA_PER_1000),1));
-}

@@ -1,0 +1,11 @@
+{
+  if (parameters.getMaxNumMeteringAreas() > 0) {
+    Log.i(TAG,"Old metering areas: " + parameters.getMeteringAreas());
+    List<Camera.Area> middleArea=buildMiddleArea(AREA_PER_1000);
+    Log.i(TAG,"Setting metering area to : " + toString(middleArea));
+    parameters.setMeteringAreas(middleArea);
+  }
+ else {
+    Log.i(TAG,"Device does not support metering areas");
+  }
+}

@@ -1,0 +1,14 @@
+{
+  Log.i(TAG,"Requesting " + name + " value from among: "+ Arrays.toString(desiredValues));
+  Log.i(TAG,"Supported " + name + " values: "+ supportedValues);
+  if (supportedValues != null) {
+    for (    String desiredValue : desiredValues) {
+      if (supportedValues.contains(desiredValue)) {
+        Log.i(TAG,"Can set " + name + " to: "+ desiredValue);
+        return desiredValue;
+      }
+    }
+  }
+  Log.i(TAG,"No supported values match");
+  return null;
+}
