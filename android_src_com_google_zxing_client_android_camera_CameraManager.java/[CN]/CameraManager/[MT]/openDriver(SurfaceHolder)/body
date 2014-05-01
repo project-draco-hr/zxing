@@ -1,7 +1,12 @@
 {
   Camera theCamera=camera;
   if (theCamera == null) {
-    theCamera=OpenCameraInterface.open();
+    if (requestedCameraId >= 0) {
+      theCamera=OpenCameraInterface.open(requestedCameraId);
+    }
+ else {
+      theCamera=OpenCameraInterface.open();
+    }
     if (theCamera == null) {
       throw new IOException();
     }

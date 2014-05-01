@@ -1,0 +1,8 @@
+{
+  if (initialized) {
+    throw new IllegalStateException();
+  }
+ else {
+    requestedCameraId=cameraId;
+  }
+}
