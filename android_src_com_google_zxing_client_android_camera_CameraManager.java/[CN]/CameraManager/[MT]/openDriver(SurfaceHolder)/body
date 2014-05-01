@@ -1,7 +1,7 @@
 {
   Camera theCamera=camera;
   if (theCamera == null) {
-    if (requestedCameraId > -1) {
+    if (requestedCameraId >= 0) {
       theCamera=OpenCameraInterface.open(requestedCameraId);
     }
  else {
