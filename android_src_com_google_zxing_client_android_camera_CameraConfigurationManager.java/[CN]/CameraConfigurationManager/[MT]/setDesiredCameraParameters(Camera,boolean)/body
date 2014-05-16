@@ -10,7 +10,6 @@
   }
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
   initializeTorch(parameters,prefs,safeMode);
-  CameraConfigurationUtils.setBestPreviewFPS(parameters);
   CameraConfigurationUtils.setFocus(parameters,prefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS,true),prefs.getBoolean(PreferencesActivity.KEY_DISABLE_CONTINUOUS_FOCUS,true),safeMode);
   if (!safeMode) {
     if (prefs.getBoolean(PreferencesActivity.KEY_INVERT_SCAN,false)) {
