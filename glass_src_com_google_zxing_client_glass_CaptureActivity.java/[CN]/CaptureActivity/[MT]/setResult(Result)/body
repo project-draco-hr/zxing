@@ -1,8 +1,16 @@
 {
-  TextView statusView=(TextView)findViewById(R.id.status_view);
-  String text=result.getText();
-  statusView.setText(text);
-  statusView.setTextSize(TypedValue.COMPLEX_UNIT_SP,Math.max(14,72 - text.length() / 2));
-  statusView.setVisibility(View.VISIBLE);
-  this.result=result;
+  if (returnResult) {
+    Intent scanResult=new Intent();
+    scanResult.putExtra("SCAN_RESULT",result.getText());
+    setResult(RESULT_OK,scanResult);
+    finish();
+  }
+ else {
+    TextView statusView=(TextView)findViewById(R.id.status_view);
+    String text=result.getText();
+    statusView.setText(text);
+    statusView.setTextSize(TypedValue.COMPLEX_UNIT_SP,Math.max(14,72 - text.length() / 2));
+    statusView.setVisibility(View.VISIBLE);
+    this.result=result;
+  }
 }
