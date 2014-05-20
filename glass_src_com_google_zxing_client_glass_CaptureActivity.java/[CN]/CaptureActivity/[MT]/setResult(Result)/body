@@ -1,6 +1,6 @@
 {
   if (returnResult) {
-    Intent scanResult=new Intent();
+    Intent scanResult=new Intent("com.google.zxing.client.android.SCAN");
     scanResult.putExtra("SCAN_RESULT",result.getText());
     setResult(RESULT_OK,scanResult);
     finish();
