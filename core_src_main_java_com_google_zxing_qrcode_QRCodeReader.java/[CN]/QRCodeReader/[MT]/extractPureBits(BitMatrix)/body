@@ -26,14 +26,14 @@
   int nudge=(int)(moduleSize / 2.0f);
   top+=nudge;
   left+=nudge;
-  int nudgedTooFarRight=left + (int)((matrixWidth - 1) * moduleSize) - (right - 1);
+  int nudgedTooFarRight=left + (int)((matrixWidth - 1) * moduleSize) - right;
   if (nudgedTooFarRight > 0) {
     if (nudgedTooFarRight > nudge) {
       throw NotFoundException.getNotFoundInstance();
     }
     left-=nudgedTooFarRight;
   }
-  int nudgedTooFarDown=top + (int)((matrixHeight - 1) * moduleSize) - (bottom - 1);
+  int nudgedTooFarDown=top + (int)((matrixHeight - 1) * moduleSize) - bottom;
   if (nudgedTooFarDown > 0) {
     if (nudgedTooFarDown > nudge) {
       throw NotFoundException.getNotFoundInstance();
