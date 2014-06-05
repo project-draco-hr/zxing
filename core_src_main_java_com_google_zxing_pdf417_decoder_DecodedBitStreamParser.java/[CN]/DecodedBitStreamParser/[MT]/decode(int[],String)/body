@@ -16,6 +16,16 @@ break;
 case NUMERIC_COMPACTION_MODE_LATCH:
 codeIndex=numericCompaction(codewords,codeIndex,result);
 break;
+case ECI_CHARSET:
+CharacterSetECI charsetECI=CharacterSetECI.getCharacterSetECIByValue(codewords[codeIndex++]);
+Charset charset=Charset.forName(charsetECI.name());
+break;
+case ECI_GENERAL_PURPOSE:
+codeIndex+=2;
+break;
+case ECI_USER_DEFINED:
+codeIndex++;
+break;
 case BEGIN_MACRO_PDF417_CONTROL_BLOCK:
 codeIndex=decodeMacroBlock(codewords,codeIndex,resultMetadata);
 break;
