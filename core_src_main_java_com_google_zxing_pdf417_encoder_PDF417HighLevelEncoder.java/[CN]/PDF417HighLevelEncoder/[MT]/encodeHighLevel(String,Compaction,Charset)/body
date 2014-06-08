@@ -1,6 +1,9 @@
 {
   StringBuilder sb=new StringBuilder(msg.length());
-  if (encoding != null && !DEFAULT_ENCODING_NAMES.contains(encoding.name())) {
+  if (encoding == null) {
+    encoding=DEFAULT_ENCODING;
+  }
+ else   if (!DEFAULT_ENCODING.equals(encoding)) {
     CharacterSetECI eci=CharacterSetECI.getCharacterSetECIByName(encoding.name());
     if (eci != null) {
       encodingECI(eci.getValue(),sb);
@@ -14,7 +17,7 @@
     encodeText(msg,p,len,sb,textSubMode);
   }
  else   if (compaction == Compaction.BYTE) {
-    bytes=toBytes(msg,encoding);
+    bytes=msg.getBytes(encoding);
     encodeBinary(bytes,p,bytes.length,BYTE_COMPACTION,sb);
   }
  else   if (compaction == Compaction.NUMERIC) {
@@ -45,7 +48,7 @@
         }
  else {
           if (bytes == null) {
-            bytes=toBytes(msg,encoding);
+            bytes=msg.getBytes(encoding);
           }
           int b=determineConsecutiveBinaryCount(msg,bytes,p);
           if (b == 0) {
