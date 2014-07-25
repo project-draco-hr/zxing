@@ -1,4 +1,6 @@
 String contents
-String to
+String[] tos
+String[] ccs
+String[] bccs
 String subject
 String body

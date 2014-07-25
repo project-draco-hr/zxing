@@ -1,7 +1,8 @@
 {
   super(ParsedResultType.EMAIL_ADDRESS);
-  this.emailAddress=emailAddress;
+  this.tos=tos;
+  this.ccs=ccs;
+  this.bccs=bccs;
   this.subject=subject;
   this.body=body;
-  this.mailtoURI=mailtoURI;
 }
