@@ -1,3 +1,0 @@
-{
-  sendEmailFromUri("mailto:" + address,address,subject,body);
-}

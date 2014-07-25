@@ -1,0 +1,11 @@
+{
+  Result fakeResult=new Result(contents,null,null,BarcodeFormat.QR_CODE);
+  ParsedResult result=ResultParser.parseResult(fakeResult);
+  assertSame(ParsedResultType.EMAIL_ADDRESS,result.getType());
+  EmailAddressParsedResult emailResult=(EmailAddressParsedResult)result;
+  assertArrayEquals(tos,emailResult.getTos());
+  assertArrayEquals(ccs,emailResult.getCCs());
+  assertArrayEquals(bccs,emailResult.getBCCs());
+  assertEquals(subject,emailResult.getSubject());
+  assertEquals(body,emailResult.getBody());
+}
