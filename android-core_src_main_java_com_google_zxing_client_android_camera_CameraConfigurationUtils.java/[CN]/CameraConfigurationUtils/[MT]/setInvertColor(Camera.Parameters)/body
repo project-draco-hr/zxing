@@ -3,7 +3,7 @@
     Log.i(TAG,"Negative effect already set");
     return;
   }
-  String colorMode=CameraConfigurationUtils.findSettableValue("color effect",parameters.getSupportedColorEffects(),Camera.Parameters.EFFECT_NEGATIVE);
+  String colorMode=findSettableValue("color effect",parameters.getSupportedColorEffects(),Camera.Parameters.EFFECT_NEGATIVE);
   if (colorMode != null) {
     parameters.setColorEffect(colorMode);
   }
