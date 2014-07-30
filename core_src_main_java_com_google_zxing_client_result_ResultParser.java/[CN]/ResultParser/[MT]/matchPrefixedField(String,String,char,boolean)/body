@@ -11,12 +11,12 @@
     int start=i;
     boolean more=true;
     while (more) {
-      i=rawText.indexOf((int)endChar,i);
+      i=rawText.indexOf(endChar,i);
       if (i < 0) {
         i=rawText.length();
         more=false;
       }
- else       if (rawText.charAt(i - 1) == '\\') {
+ else       if (countPrecedingBackslashes(rawText,i) % 2 != 0) {
         i++;
       }
  else {
