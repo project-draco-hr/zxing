@@ -2,10 +2,6 @@
   Logger logger=Logger.getLogger("com.google.zxing");
   ServletContext context=servletConfig.getServletContext();
   logger.addHandler(new ServletContextLogHandler(context));
-  File repository=(File)context.getAttribute("javax.servlet.context.tempdir");
-  FileCleaningTracker fileCleaningTracker=FileCleanerCleanup.getFileCleaningTracker(context);
-  diskFileItemFactory=new DiskFileItemFactory(1 << 16,repository);
-  diskFileItemFactory.setFileCleaningTracker(fileCleaningTracker);
   URL blockURL=context.getClassLoader().getResource("/private/uri-block-substrings.txt");
   if (blockURL == null) {
     blockedURLSubstrings=Collections.emptyList();
