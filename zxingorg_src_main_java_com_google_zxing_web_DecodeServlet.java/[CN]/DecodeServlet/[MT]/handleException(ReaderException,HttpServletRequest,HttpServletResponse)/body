@@ -1,18 +1,18 @@
 {
   if (re instanceof NotFoundException) {
     log.info("Not found: " + re);
-    response.sendRedirect("notfound.jspx");
+    errorResponse(request,response,"notfound");
   }
  else   if (re instanceof FormatException) {
     log.info("Format problem: " + re);
-    response.sendRedirect("format.jspx");
+    errorResponse(request,response,"format");
   }
  else   if (re instanceof ChecksumException) {
     log.info("Checksum problem: " + re);
-    response.sendRedirect("format.jspx");
+    errorResponse(request,response,"format");
   }
  else {
     log.info("Unknown problem: " + re);
-    response.sendRedirect("notfound.jspx");
+    errorResponse(request,response,"notfound");
   }
 }

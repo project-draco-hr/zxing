@@ -5,16 +5,16 @@
   }
  catch (  IOException|CMMException|IllegalArgumentException ioe) {
     log.info(ioe.toString());
-    response.sendRedirect("badimage.jspx");
+    errorResponse(request,response,"badimage");
     return;
   }
   if (image == null) {
-    response.sendRedirect("badimage.jspx");
+    errorResponse(request,response,"badimage");
     return;
   }
   if (image.getHeight() <= 1 || image.getWidth() <= 1 || image.getHeight() * image.getWidth() > MAX_PIXELS) {
     log.info("Dimensions out of bounds: " + image.getWidth() + 'x'+ image.getHeight());
-    response.sendRedirect("badimage.jspx");
+    errorResponse(request,response,"badimage");
     return;
   }
   processImage(image,request,response);

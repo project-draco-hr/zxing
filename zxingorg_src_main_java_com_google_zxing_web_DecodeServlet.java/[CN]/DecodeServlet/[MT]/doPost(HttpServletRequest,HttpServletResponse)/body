@@ -1,8 +1,16 @@
 {
-  Collection<Part> parts=request.getParts();
+  Collection<Part> parts;
+  try {
+    parts=request.getParts();
+  }
+ catch (  IllegalStateException ise) {
+    log.info("File upload was too large or invalid");
+    errorResponse(request,response,"badimage");
+    return;
+  }
   if (parts.isEmpty()) {
     log.info("File upload was not multipart");
-    response.sendRedirect("badimage.jspx");
+    errorResponse(request,response,"badimage");
     return;
   }
   for (  Part part : parts) {
