@@ -8,14 +8,20 @@
     errorResponse(request,response,"badimage");
     return;
   }
-  if (parts.isEmpty()) {
+  Part fileUploadPart=null;
+  for (  Part part : parts) {
+    if (part.getHeader(HttpHeaders.CONTENT_DISPOSITION) != null) {
+      fileUploadPart=part;
+      break;
+    }
+  }
+  if (fileUploadPart == null) {
     log.info("File upload was not multipart");
     errorResponse(request,response,"badimage");
-    return;
   }
-  for (  Part part : parts) {
+ else {
     log.info("Decoding uploaded file");
-    try (InputStream is=part.getInputStream()){
+    try (InputStream is=fileUploadPart.getInputStream()){
       processStream(is,request,response);
     }
    }
