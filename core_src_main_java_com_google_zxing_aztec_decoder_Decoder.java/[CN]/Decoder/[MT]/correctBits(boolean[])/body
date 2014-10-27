@@ -32,8 +32,8 @@
     ReedSolomonDecoder rsDecoder=new ReedSolomonDecoder(gf);
     rsDecoder.decode(dataWords,numECCodewords);
   }
- catch (  ReedSolomonException ignored) {
-    throw FormatException.getFormatInstance();
+ catch (  ReedSolomonException ex) {
+    throw FormatException.getFormatInstance(ex);
   }
   int mask=(1 << codewordSize) - 1;
   int stuffedBits=0;
