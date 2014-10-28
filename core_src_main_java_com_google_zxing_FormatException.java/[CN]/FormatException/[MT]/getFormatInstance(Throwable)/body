@@ -1,6 +1,6 @@
 {
   if (isStackTrace) {
-    return new ChecksumException();
+    return new FormatException(cause);
   }
  else {
     return instance;
