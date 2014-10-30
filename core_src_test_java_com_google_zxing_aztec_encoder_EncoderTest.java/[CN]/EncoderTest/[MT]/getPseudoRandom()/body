@@ -1,3 +1,3 @@
 {
-  return random;
+  return new Random(0xDEADBEEF);
 }

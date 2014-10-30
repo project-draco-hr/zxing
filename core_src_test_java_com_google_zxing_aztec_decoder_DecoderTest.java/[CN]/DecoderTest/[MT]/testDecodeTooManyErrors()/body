@@ -1,10 +1,5 @@
 {
   BitMatrix matrix=BitMatrix.parse("" + "X X . X . . . X X . . . X . . X X X . X . X X X X X . \n" + "X X . . X X . . . . . X X . . . X X . . . X . X . . X \n"+ "X . . . X X . . X X X . X X . X X X X . X X . . X . . \n"+ ". . . . X . X X . . X X . X X . X . X X X X . X . . X \n"+ "X X X . . X X X X X . . . . . X X . . . X . X . X . X \n"+ "X X . . . . . . . . X . . . X . X X X . X . . X . . . \n"+ "X X . . X . . . . . X X . . . . . X . . . . X . . X X \n"+ ". . . X . X . X . . . . . X X X X X X . . . . . . X X \n"+ "X . . . X . X X X X X X . . X X X . X . X X X X X X . \n"+ "X . . X X X . X X X X X X X X X X X X X . . . X . X X \n"+ ". . . . X X . . . X . . . . . . . X X . . . X X . X . \n"+ ". . . X X X . . X X . X X X X X . X . . X . . . . . . \n"+ "X . . . . X . X . X . X . . . X . X . X X . X X . X X \n"+ "X . X . . X . X . X . X . X . X . X . . . . . X . X X \n"+ "X . X X X . . X . X . X . . . X . X . X X X . . . X X \n"+ "X X X X X X X X . X . X X X X X . X . X . X . X X X . \n"+ ". . . . . . . X . X . . . . . . . X X X X . . . X X X \n"+ "X X . . X . . X . X X X X X X X X X X X X X . . X . X \n"+ "X X X . X X X X . . X X X X . . X . . . . X . . X X X \n"+ ". . . . X . X X X . . . . X X X X . . X X X X . . . . \n"+ ". . X . . X . X . . . X . X X . X X . X . . . X . X . \n"+ "X X . . X . . X X X X X X X . . X . X X X X X X X . . \n"+ "X . X X . . X X . . . . . X . . . . . . X X . X X X . \n"+ "X . . X X . . X X . X . X . . . . X . X . . X . . X . \n"+ "X . X . X . . X . X X X X X X X X . X X X X . . X X . \n"+ "X X X X . . . X . . X X X . X X . . X . . . . X X X . \n"+ "X X . X . X . . . X . X . . . . X X . X . . X X . . . \n","X ",". ");
   AztecDetectorResult r=new AztecDetectorResult(matrix,NO_POINTS,true,16,4);
-  try {
-    DecoderResult res=new Decoder().decode(r);
-    fail();
-  }
- catch (  FormatException ex) {
-  }
+  new Decoder().decode(r);
 }

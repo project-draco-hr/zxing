@@ -1,5 +1,4 @@
 {
-  int pos=0;
   if (stringRepresentation == null) {
     throw new IllegalArgumentException();
   }
@@ -8,8 +7,9 @@
   int rowStartPos=0;
   int rowLength=-1;
   int nRows=0;
+  int pos=0;
   while (pos < stringRepresentation.length()) {
-    if (stringRepresentation.substring(pos,pos + 1).equals("\n") || stringRepresentation.substring(pos,pos + 1).equals("\r")) {
+    if (stringRepresentation.charAt(pos) == '\n' || stringRepresentation.charAt(pos) == '\r') {
       if (bitsPos > rowStartPos) {
         if (rowLength == -1) {
           rowLength=bitsPos - rowStartPos;
