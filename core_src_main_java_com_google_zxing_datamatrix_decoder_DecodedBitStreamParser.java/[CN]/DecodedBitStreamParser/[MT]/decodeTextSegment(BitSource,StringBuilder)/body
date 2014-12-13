@@ -43,14 +43,14 @@ case 1:
   shift=0;
 break;
 case 2:
-if (cValue < C40_SHIFT2_SET_CHARS.length) {
-char c40char=C40_SHIFT2_SET_CHARS[cValue];
+if (cValue < TEXT_SHIFT2_SET_CHARS.length) {
+char textChar=TEXT_SHIFT2_SET_CHARS[cValue];
 if (upperShift) {
-  result.append((char)(c40char + 128));
+  result.append((char)(textChar + 128));
   upperShift=false;
 }
  else {
-  result.append(c40char);
+  result.append(textChar);
 }
 }
  else if (cValue == 27) {
