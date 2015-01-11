@@ -16,11 +16,11 @@
     if (requestedShape != null) {
       shape=requestedShape;
     }
-    @SuppressWarnings("deprecated") Dimension requestedMinSize=(Dimension)hints.get(EncodeHintType.MIN_SIZE);
+    @SuppressWarnings("deprecation") Dimension requestedMinSize=(Dimension)hints.get(EncodeHintType.MIN_SIZE);
     if (requestedMinSize != null) {
       minSize=requestedMinSize;
     }
-    @SuppressWarnings("deprecated") Dimension requestedMaxSize=(Dimension)hints.get(EncodeHintType.MAX_SIZE);
+    @SuppressWarnings("deprecation") Dimension requestedMaxSize=(Dimension)hints.get(EncodeHintType.MAX_SIZE);
     if (requestedMaxSize != null) {
       maxSize=requestedMaxSize;
     }
