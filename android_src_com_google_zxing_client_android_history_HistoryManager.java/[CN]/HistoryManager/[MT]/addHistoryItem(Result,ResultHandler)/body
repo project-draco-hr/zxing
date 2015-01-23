@@ -1,5 +1,5 @@
 {
-  if (!activity.getIntent().getBooleanExtra(Intents.Scan.SAVE_HISTORY,true) || handler.areContentsSecure()) {
+  if (!activity.getIntent().getBooleanExtra(Intents.Scan.SAVE_HISTORY,true) || handler.areContentsSecure() || !enableHistory) {
     return;
   }
   SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);

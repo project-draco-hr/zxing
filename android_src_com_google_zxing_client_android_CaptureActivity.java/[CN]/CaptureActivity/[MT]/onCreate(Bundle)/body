@@ -4,8 +4,6 @@
   window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
   setContentView(R.layout.capture);
   hasSurface=false;
-  historyManager=new HistoryManager(this);
-  historyManager.trimHistory();
   inactivityTimer=new InactivityTimer(this);
   beepManager=new BeepManager(this);
   ambientLightManager=new AmbientLightManager(this);
