@@ -4,7 +4,9 @@
   ResultHandler resultHandler=ResultHandlerFactory.makeResultHandler(this,rawResult);
   boolean fromLiveScan=barcode != null;
   if (fromLiveScan) {
-    historyManager.addHistoryItem(rawResult,resultHandler);
+    SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
+    boolean shouldSaveScan=prefs.getBoolean(PreferencesActivity.KEY_ENABLE_HISTORY,true);
+    if (shouldSaveScan)     historyManager.addHistoryItem(rawResult,resultHandler);
     beepManager.playBeepSoundAndVibrate();
     drawResultPoints(barcode,scaleFactor,rawResult);
   }
