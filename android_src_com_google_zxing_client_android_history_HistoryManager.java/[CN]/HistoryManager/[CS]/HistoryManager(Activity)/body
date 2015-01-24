@@ -1,3 +1,5 @@
 {
   this.activity=activity;
+  SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(activity);
+  enableHistory=prefs.getBoolean(PreferencesActivity.KEY_ENABLE_HISTORY,true);
 }

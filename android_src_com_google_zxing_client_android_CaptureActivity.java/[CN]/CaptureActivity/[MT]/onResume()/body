@@ -1,5 +1,7 @@
 {
   super.onResume();
+  historyManager=new HistoryManager(this);
+  historyManager.trimHistory();
   cameraManager=new CameraManager(getApplication());
   viewfinderView=(ViewfinderView)findViewById(R.id.viewfinder_view);
   viewfinderView.setCameraManager(cameraManager);
