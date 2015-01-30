@@ -61,6 +61,7 @@
  else   if (source == IntentSource.ZXING_LINK) {
     if (scanFromWebPageManager != null && scanFromWebPageManager.isScanFromWebPage()) {
       String replyURL=scanFromWebPageManager.buildReplyURL(rawResult,resultHandler);
+      scanFromWebPageManager=null;
       sendReplyMessage(R.id.launch_product_query,replyURL,resultDurationMS);
     }
   }
