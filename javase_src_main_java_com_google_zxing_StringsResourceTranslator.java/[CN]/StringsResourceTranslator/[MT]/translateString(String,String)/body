@@ -16,10 +16,8 @@
     return english;
   }
   String translation=m.group(1);
-  translation=translation.replaceAll("&quot;","\"");
-  translation=translation.replaceAll("&#39;","'");
-  translation=translation.replaceAll("&amp;quot;","\"");
-  translation=translation.replaceAll("&amp;#39;","'");
+  translation=translation.replaceAll("&(amp;)?quot;","\"");
+  translation=translation.replaceAll("&(amp;)?#39;","'");
   System.out.println("  Got translation " + translation);
   return translation;
 }
