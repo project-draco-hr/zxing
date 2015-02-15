@@ -7,7 +7,6 @@
   ambientLightManager.stop();
   beepManager.close();
   cameraManager.closeDriver();
-  historyManager=null;
   if (!hasSurface) {
     SurfaceView surfaceView=(SurfaceView)findViewById(R.id.preview_view);
     SurfaceHolder surfaceHolder=surfaceView.getHolder();
