@@ -1,5 +1,5 @@
 {
-  int backslash=escaped.indexOf((int)'\\');
+  int backslash=escaped.indexOf('\\');
   if (backslash < 0) {
     return escaped;
   }

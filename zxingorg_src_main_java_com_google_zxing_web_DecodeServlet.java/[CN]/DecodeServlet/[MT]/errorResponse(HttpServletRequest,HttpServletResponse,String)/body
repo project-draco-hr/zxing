@@ -1,0 +1,12 @@
+{
+  Locale locale=request.getLocale();
+  if (locale == null) {
+    locale=Locale.ENGLISH;
+  }
+  ResourceBundle bundle=ResourceBundle.getBundle("Strings",locale);
+  String title=bundle.getString("response.error." + key + ".title");
+  String text=bundle.getString("response.error." + key + ".text");
+  request.setAttribute("title",title);
+  request.setAttribute("text",text);
+  request.getRequestDispatcher("response.jspx").forward(request,response);
+}

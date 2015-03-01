@@ -1,0 +1,5 @@
+{
+  BitMatrix matrix=dataMatrix.clone();
+  matrix.xor(flipMatrix);
+  assertEquals(expectedMatrix,matrix);
+}

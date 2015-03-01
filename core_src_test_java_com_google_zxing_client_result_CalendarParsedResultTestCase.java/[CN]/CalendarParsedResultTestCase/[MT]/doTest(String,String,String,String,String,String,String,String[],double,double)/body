@@ -6,8 +6,9 @@
   assertEquals(description,calResult.getDescription());
   assertEquals(summary,calResult.getSummary());
   assertEquals(location,calResult.getLocation());
-  assertEquals(startString,DATE_TIME_FORMAT.format(calResult.getStart()));
-  assertEquals(endString,calResult.getEnd() == null ? null : DATE_TIME_FORMAT.format(calResult.getEnd()));
+  DateFormat dateFormat=makeGMTFormat();
+  assertEquals(startString,dateFormat.format(calResult.getStart()));
+  assertEquals(endString,calResult.getEnd() == null ? null : dateFormat.format(calResult.getEnd()));
   assertEquals(organizer,calResult.getOrganizer());
   assertArrayEquals(attendees,calResult.getAttendees());
   assertEqualOrNaN(latitude,calResult.getLatitude());

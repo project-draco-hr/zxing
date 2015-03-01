@@ -1,5 +1,7 @@
 {
   super.onCreate(icicle);
+  Intent intent=getIntent();
+  returnResult=intent != null && SCAN_ACTION.equals(intent.getAction());
   Window window=getWindow();
   window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
   setContentView(R.layout.capture);

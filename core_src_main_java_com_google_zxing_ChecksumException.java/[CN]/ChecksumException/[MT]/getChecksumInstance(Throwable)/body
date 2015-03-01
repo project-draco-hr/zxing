@@ -1,0 +1,8 @@
+{
+  if (isStackTrace) {
+    return new ChecksumException(cause);
+  }
+ else {
+    return instance;
+  }
+}

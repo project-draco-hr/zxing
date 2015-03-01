@@ -1,0 +1,5 @@
+int mode
+int[] codewords
+Charset encoding
+int codeIndex
+StringBuilder result

@@ -2,10 +2,10 @@
   List<String> supportedFlashModes=parameters.getSupportedFlashModes();
   String flashMode;
   if (on) {
-    flashMode=CameraConfigurationUtils.findSettableValue("flash mode",supportedFlashModes,Camera.Parameters.FLASH_MODE_TORCH,Camera.Parameters.FLASH_MODE_ON);
+    flashMode=findSettableValue("flash mode",supportedFlashModes,Camera.Parameters.FLASH_MODE_TORCH,Camera.Parameters.FLASH_MODE_ON);
   }
  else {
-    flashMode=CameraConfigurationUtils.findSettableValue("flash mode",supportedFlashModes,Camera.Parameters.FLASH_MODE_OFF);
+    flashMode=findSettableValue("flash mode",supportedFlashModes,Camera.Parameters.FLASH_MODE_OFF);
   }
   if (flashMode != null) {
     if (flashMode.equals(parameters.getFlashMode())) {

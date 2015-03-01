@@ -1,0 +1,4 @@
+{
+  String encoded=PDF417HighLevelEncoder.encodeHighLevel("ABCD",Compaction.TEXT,StandardCharsets.UTF_8);
+  assertEquals("??\u001A\u0001?",encoded);
+}

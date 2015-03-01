@@ -1,6 +1,8 @@
 {
   StringBuilder result=new StringBuilder(30);
-  maybeAppend(emailAddress,result);
+  maybeAppend(tos,result);
+  maybeAppend(ccs,result);
+  maybeAppend(bccs,result);
   maybeAppend(subject,result);
   maybeAppend(body,result);
   return result.toString();

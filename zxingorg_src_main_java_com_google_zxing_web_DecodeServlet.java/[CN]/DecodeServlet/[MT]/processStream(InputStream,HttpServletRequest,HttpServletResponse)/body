@@ -1,0 +1,21 @@
+{
+  BufferedImage image;
+  try {
+    image=ImageIO.read(is);
+  }
+ catch (  IOException|CMMException|IllegalArgumentException ioe) {
+    log.info(ioe.toString());
+    errorResponse(request,response,"badimage");
+    return;
+  }
+  if (image == null) {
+    errorResponse(request,response,"badimage");
+    return;
+  }
+  if (image.getHeight() <= 1 || image.getWidth() <= 1 || image.getHeight() * image.getWidth() > MAX_PIXELS) {
+    log.info("Dimensions out of bounds: " + image.getWidth() + 'x'+ image.getHeight());
+    errorResponse(request,response,"badimage");
+    return;
+  }
+  processImage(image,request,response);
+}

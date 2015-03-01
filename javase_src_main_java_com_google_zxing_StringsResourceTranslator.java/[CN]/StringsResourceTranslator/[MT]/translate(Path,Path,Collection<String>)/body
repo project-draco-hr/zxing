@@ -3,7 +3,9 @@
   Map<String,String> translated=readLines(translatedFile);
   String parentName=translatedFile.getParent().getFileName().toString();
   Matcher stringsFileNameMatcher=STRINGS_FILE_NAME_PATTERN.matcher(parentName);
-  stringsFileNameMatcher.find();
+  if (!stringsFileNameMatcher.find()) {
+    throw new IllegalArgumentException("Invalid parent dir: " + parentName);
+  }
   String language=stringsFileNameMatcher.group(1);
   String massagedLanguage=LANGUAGE_CODE_MASSAGINGS.get(language);
   if (massagedLanguage != null) {
@@ -30,6 +32,7 @@
       if (translatedString == null || forceRetranslation.contains(key)) {
         anyChange=true;
         translatedString=translateString(value,language);
+        translatedString=translatedString.replaceAll("'","\\\\'");
       }
       out.write(translatedString);
       out.write("</string>\n");

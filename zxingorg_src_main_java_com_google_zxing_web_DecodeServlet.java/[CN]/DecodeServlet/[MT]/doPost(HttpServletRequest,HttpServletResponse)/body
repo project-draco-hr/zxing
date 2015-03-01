@@ -1,30 +1,28 @@
 {
-  if (!ServletFileUpload.isMultipartContent(request)) {
-    log.info("File upload was not multipart");
-    response.sendRedirect("badimage.jspx");
+  Collection<Part> parts;
+  try {
+    parts=request.getParts();
+  }
+ catch (  IllegalStateException ise) {
+    log.info("File upload was too large or invalid");
+    errorResponse(request,response,"badimage");
     return;
   }
-  ServletFileUpload upload=new ServletFileUpload(diskFileItemFactory);
-  upload.setFileSizeMax(MAX_IMAGE_SIZE);
-  try {
-    for (    FileItem item : upload.parseRequest(request)) {
-      if (!item.isFormField()) {
-        if (item.getSize() <= MAX_IMAGE_SIZE) {
-          log.info("Decoding uploaded file");
-          try (InputStream is=item.getInputStream()){
-            processStream(is,request,response);
-          }
-         }
- else {
-          log.info("Too large");
-          response.sendRedirect("badimage.jspx");
-        }
-        break;
-      }
+  Part fileUploadPart=null;
+  for (  Part part : parts) {
+    if (part.getHeader(HttpHeaders.CONTENT_DISPOSITION) != null) {
+      fileUploadPart=part;
+      break;
     }
   }
- catch (  FileUploadException fue) {
-    log.info(fue.toString());
-    response.sendRedirect("badimage.jspx");
+  if (fileUploadPart == null) {
+    log.info("File upload was not multipart");
+    errorResponse(request,response,"badimage");
   }
+ else {
+    log.info("Decoding uploaded file");
+    try (InputStream is=fileUploadPart.getInputStream()){
+      processStream(is,request,response);
+    }
+   }
 }

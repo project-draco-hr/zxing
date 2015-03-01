@@ -1,0 +1,5 @@
+{
+  HttpServletResponse response=(HttpServletResponse)servletResponse;
+  response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+  response.setHeader(HttpHeaders.LOCATION,location);
+}
