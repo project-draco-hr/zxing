@@ -1,6 +1,7 @@
 {
   if (cursor != null) {
     cursor.close();
+    cursor=null;
   }
-  super.onDestroy();
+  super.onPause();
 }
