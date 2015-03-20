@@ -17,14 +17,6 @@
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
   }
   resetStatusView();
-  SurfaceView surfaceView=(SurfaceView)findViewById(R.id.preview_view);
-  SurfaceHolder surfaceHolder=surfaceView.getHolder();
-  if (hasSurface) {
-    initCamera(surfaceHolder);
-  }
- else {
-    surfaceHolder.addCallback(this);
-  }
   beepManager.updatePrefs();
   ambientLightManager.start(cameraManager);
   inactivityTimer.onResume();
@@ -74,5 +66,13 @@
       decodeHints=DecodeHintManager.parseDecodeHints(inputUri);
     }
     characterSet=intent.getStringExtra(Intents.Scan.CHARACTER_SET);
+  }
+  SurfaceView surfaceView=(SurfaceView)findViewById(R.id.preview_view);
+  SurfaceHolder surfaceHolder=surfaceView.getHolder();
+  if (hasSurface) {
+    initCamera(surfaceHolder);
+  }
+ else {
+    surfaceHolder.addCallback(this);
   }
 }
