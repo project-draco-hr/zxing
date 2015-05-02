@@ -4,7 +4,7 @@
     return;
   }
   Config config=new Config();
-  Queue<Path> inputs=new ConcurrentLinkedQueue<>();
+  Queue<URI> inputs=new ConcurrentLinkedQueue<>();
   for (  String arg : args) {
     String[] argValue=arg.split("=");
 switch (argValue[0]) {
@@ -49,12 +49,22 @@ System.err.println("Unknown command line option " + arg);
 printUsage();
 return;
 }
-addArgumentToInputs(Paths.get(arg),config,inputs);
+URI argURI=URI.create(arg);
+if (argURI.getScheme() == null) {
+argURI=new URI("file",argURI.getSchemeSpecificPart(),argURI.getFragment());
+}
+addArgumentToInputs(argURI,config,inputs);
 break;
 }
 }
+int numInputs=inputs.size();
+if (numInputs == 0) {
+System.err.println("No inputs specified");
+printUsage();
+return;
+}
 config.setHints(buildHints(config));
-int numThreads=Math.min(inputs.size(),Runtime.getRuntime().availableProcessors());
+int numThreads=Math.min(numInputs,Runtime.getRuntime().availableProcessors());
 int successful=0;
 if (numThreads > 1) {
 ExecutorService executor=Executors.newFixedThreadPool(numThreads);
@@ -70,8 +80,7 @@ successful+=future.get();
  else {
 successful+=new DecodeWorker(config,inputs).call();
 }
-int total=inputs.size();
-if (total > 1) {
-System.out.println("\nDecoded " + successful + " files out of "+ total+ " successfully ("+ (successful * 100 / total)+ "%)\n");
+if (numInputs > 1) {
+System.out.println("\nDecoded " + successful + " files out of "+ numInputs+ " successfully ("+ (successful * 100 / numInputs)+ "%)\n");
 }
 }

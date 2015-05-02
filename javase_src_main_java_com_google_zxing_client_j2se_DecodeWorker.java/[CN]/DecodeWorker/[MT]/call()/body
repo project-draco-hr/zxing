@@ -1,30 +1,11 @@
 {
   int successful=0;
-  Path input;
-  while ((input=inputs.poll()) != null) {
-    if (Files.exists(input)) {
-      if (config.isMulti()) {
-        Result[] results=decodeMulti(input.toUri(),config.getHints());
-        if (results != null) {
-          successful++;
-          if (config.isDumpResults()) {
-            dumpResultMulti(input,results);
-          }
-        }
-      }
- else {
-        Result result=decode(input.toUri(),config.getHints());
-        if (result != null) {
-          successful++;
-          if (config.isDumpResults()) {
-            dumpResult(input,result);
-          }
-        }
-      }
-    }
- else {
-      if (decode(input.toUri(),config.getHints()) != null) {
-        successful++;
+  for (URI input; (input=inputs.poll()) != null; ) {
+    Result[] results=decode(input,config.getHints());
+    if (results != null) {
+      successful++;
+      if (config.isDumpResults()) {
+        dumpResult(input,results);
       }
     }
   }

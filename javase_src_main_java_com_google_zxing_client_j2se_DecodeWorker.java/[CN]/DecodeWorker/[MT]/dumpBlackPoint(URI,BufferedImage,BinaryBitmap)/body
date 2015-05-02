@@ -1,7 +1,4 @@
 {
-  if (uri.getPath().contains(".mono.png")) {
-    return;
-  }
   int width=bitmap.getWidth();
   int height=bitmap.getHeight();
   int stride=width * 3;

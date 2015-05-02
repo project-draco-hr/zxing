@@ -1,3 +1,0 @@
-Path inputFile
-Config config
-Queue<Path> inputs

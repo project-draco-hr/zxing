@@ -1,0 +1,7 @@
+{
+  Collection<String> resultTexts=new ArrayList<>();
+  for (  Result result : results) {
+    resultTexts.add(result.getText());
+  }
+  Files.write(buildOutputPath(input,".txt"),resultTexts,StandardCharsets.UTF_8);
+}

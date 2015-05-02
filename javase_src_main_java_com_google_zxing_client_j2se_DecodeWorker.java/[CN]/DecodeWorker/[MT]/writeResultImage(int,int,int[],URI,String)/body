@@ -1,24 +1,13 @@
 {
   BufferedImage result=new BufferedImage(stride,height,BufferedImage.TYPE_INT_ARGB);
   result.setRGB(0,0,stride,height,pixels,0,stride);
-  String resultName=uri.getPath();
-  if ("http".equals(uri.getScheme())) {
-    int pos=resultName.lastIndexOf('/');
-    if (pos > 0) {
-      resultName='.' + resultName.substring(pos);
-    }
-  }
-  int pos=resultName.lastIndexOf('.');
-  if (pos > 0) {
-    resultName=resultName.substring(0,pos);
-  }
-  resultName+=suffix;
+  Path imagePath=buildOutputPath(input,suffix);
   try {
-    if (!ImageIO.write(result,"png",Paths.get(resultName).toFile())) {
-      System.err.println("Could not encode an image to " + resultName);
+    if (!ImageIO.write(result,"png",imagePath.toFile())) {
+      System.err.println("Could not encode an image to " + imagePath);
     }
   }
  catch (  IOException ignored) {
-    System.err.println("Could not write to " + resultName);
+    System.err.println("Could not write to " + imagePath);
   }
 }

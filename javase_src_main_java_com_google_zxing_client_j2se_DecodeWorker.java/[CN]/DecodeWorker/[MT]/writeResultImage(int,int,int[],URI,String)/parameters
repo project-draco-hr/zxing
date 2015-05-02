@@ -1,5 +1,5 @@
 int stride
 int height
 int[] pixels
-URI uri
+URI input
 String suffix
