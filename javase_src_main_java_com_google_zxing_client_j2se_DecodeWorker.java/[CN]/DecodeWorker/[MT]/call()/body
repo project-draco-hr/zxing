@@ -1,10 +1,10 @@
 {
   int successful=0;
   for (URI input; (input=inputs.poll()) != null; ) {
-    Result[] results=decode(input,config.getHints());
+    Result[] results=decode(input,hints);
     if (results != null) {
       successful++;
-      if (config.isDumpResults()) {
+      if (config.dumpResults) {
         dumpResult(input,results);
       }
     }

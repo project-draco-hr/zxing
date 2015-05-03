@@ -1,21 +1,21 @@
 {
   BufferedImage image=ImageReader.readImage(uri);
   LuminanceSource source;
-  if (config.getCrop() == null) {
+  if (config.crop == null) {
     source=new BufferedImageLuminanceSource(image);
   }
  else {
-    int[] crop=config.getCrop();
-    source=new BufferedImageLuminanceSource(image,crop[0],crop[1],crop[2],crop[3]);
+    List<Integer> crop=config.crop;
+    source=new BufferedImageLuminanceSource(image,crop.get(0),crop.get(1),crop.get(2),crop.get(3));
   }
   BinaryBitmap bitmap=new BinaryBitmap(new HybridBinarizer(source));
-  if (config.isDumpBlackPoint()) {
+  if (config.dumpBlackPoint) {
     dumpBlackPoint(uri,image,bitmap);
   }
   MultiFormatReader multiFormatReader=new MultiFormatReader();
   Result[] results;
   try {
-    if (config.isMulti()) {
+    if (config.multi) {
       MultipleBarcodeReader reader=new GenericMultipleBarcodeReader(multiFormatReader);
       results=reader.decodeMultiple(bitmap,hints);
     }
@@ -27,7 +27,7 @@
     System.out.println(uri + ": No barcode found");
     return null;
   }
-  if (config.isBrief()) {
+  if (config.brief) {
     System.out.println(uri + ": Success");
   }
  else {

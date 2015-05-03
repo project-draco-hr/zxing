@@ -1,0 +1,5 @@
+{
+  this.config=config;
+  this.inputs=inputs;
+  hints=config.buildHints();
+}

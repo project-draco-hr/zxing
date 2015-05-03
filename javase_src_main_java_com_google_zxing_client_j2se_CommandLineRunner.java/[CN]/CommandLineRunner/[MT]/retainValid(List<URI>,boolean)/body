@@ -1,0 +1,17 @@
+{
+  List<URI> retained=new ArrayList<>();
+  for (  URI input : inputs) {
+    boolean retain;
+    if (isFileOrDir(input)) {
+      Path inputPath=Paths.get(input);
+      retain=!inputPath.getFileName().toString().startsWith(".") && (recursive || !Files.isDirectory(inputPath));
+    }
+ else {
+      retain=true;
+    }
+    if (retain) {
+      retained.add(input);
+    }
+  }
+  return retained;
+}

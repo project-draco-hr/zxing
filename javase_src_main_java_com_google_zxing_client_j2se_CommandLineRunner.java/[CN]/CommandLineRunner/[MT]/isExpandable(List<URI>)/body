@@ -1,0 +1,8 @@
+{
+  for (  URI input : inputs) {
+    if (isFileOrDir(input) && Files.isDirectory(Paths.get(input))) {
+      return true;
+    }
+  }
+  return false;
+}
