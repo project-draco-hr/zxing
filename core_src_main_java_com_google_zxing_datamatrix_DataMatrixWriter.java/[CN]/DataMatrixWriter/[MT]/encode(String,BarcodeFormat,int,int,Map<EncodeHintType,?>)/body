@@ -9,7 +9,7 @@
     throw new IllegalArgumentException("Requested dimensions are too small: " + width + 'x'+ height);
   }
   SymbolShapeHint shape=SymbolShapeHint.FORCE_NONE;
-  Dimension minSize=new Dimension(width,height);
+  Dimension minSize=null;
   Dimension maxSize=null;
   if (hints != null) {
     SymbolShapeHint requestedShape=(SymbolShapeHint)hints.get(EncodeHintType.DATA_MATRIX_SHAPE);
