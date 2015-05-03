@@ -1,9 +1,0 @@
-{
-  System.err.println("Encodes barcode images using the ZXing library\n");
-  System.err.println("usage: CommandLineEncoder [ options ] content_to_encode");
-  System.err.println("  --barcode_format=format: Format to encode, from BarcodeFormat class. " + "Not all formats are supported. Defaults to QR_CODE.");
-  System.err.println("  --image_format=format: image output format, such as PNG, JPG, GIF. Defaults to PNG");
-  System.err.println("  --output=filename: File to write to. Defaults to out.png");
-  System.err.println("  --width=pixels: Image width. Defaults to 300");
-  System.err.println("  --height=pixels: Image height. Defaults to 300");
-}
