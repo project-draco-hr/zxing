@@ -8,6 +8,11 @@
     errorResponse(request,response,"badimage");
     return;
   }
+catch (  IOException ioe) {
+    log.info(ioe.toString());
+    errorResponse(request,response,"badurl");
+    return;
+  }
   Part fileUploadPart=null;
   for (  Part part : parts) {
     if (part.getHeader(HttpHeaders.CONTENT_DISPOSITION) != null) {
