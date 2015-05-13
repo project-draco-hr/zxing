@@ -1,0 +1,12 @@
+{
+synchronized (numRecentAccesses) {
+    AtomicInteger count=numRecentAccesses.get(remoteIPAddress);
+    if (count == null) {
+      numRecentAccesses.put(remoteIPAddress,new AtomicInteger(1));
+      return 1;
+    }
+ else {
+      return count.incrementAndGet();
+    }
+  }
+}

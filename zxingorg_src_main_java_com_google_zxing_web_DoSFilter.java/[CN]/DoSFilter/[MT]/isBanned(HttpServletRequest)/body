@@ -1,0 +1,15 @@
+{
+  String remoteIPAddress=request.getHeader("x-forwarded-for");
+  if (remoteIPAddress == null) {
+    remoteIPAddress=request.getRemoteAddr();
+  }
+  if (remoteIPAddress == null || bannedIPAddresses.contains(remoteIPAddress)) {
+    return true;
+  }
+  if (getCount(remoteIPAddress) > MAX_ACCESSES_PER_IP_PER_TIME) {
+    log.warning("Possible DoS attack from " + remoteIPAddress);
+    bannedIPAddresses.add(remoteIPAddress);
+    return true;
+  }
+  return false;
+}
