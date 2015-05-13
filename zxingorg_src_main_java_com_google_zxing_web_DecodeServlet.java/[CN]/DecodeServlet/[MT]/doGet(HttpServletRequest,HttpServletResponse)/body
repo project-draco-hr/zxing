@@ -68,8 +68,8 @@
   try {
     connection.connect();
   }
- catch (  IOException ioe) {
-    log.info(ioe.toString());
+ catch (  IOException|IllegalArgumentException e) {
+    log.info(e.toString());
     errorResponse(request,response,"badurl");
     return;
   }
