@@ -14,9 +14,6 @@
         expected++;
       }
       int actual=array.getNextSet(query);
-      if (actual != expected) {
-        array.getNextSet(query);
-      }
       assertEquals(expected,actual);
     }
   }

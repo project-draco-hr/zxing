@@ -1,9 +1,11 @@
 {
   Iterable<WifiConfiguration> existingConfigs=wifiManager.getConfiguredNetworks();
-  for (  WifiConfiguration existingConfig : existingConfigs) {
-    String existingSSID=existingConfig.SSID;
-    if (existingSSID != null && existingSSID.equals(ssid)) {
-      return existingConfig.networkId;
+  if (existingConfigs != null) {
+    for (    WifiConfiguration existingConfig : existingConfigs) {
+      String existingSSID=existingConfig.SSID;
+      if (existingSSID != null && existingSSID.equals(ssid)) {
+        return existingConfig.networkId;
+      }
     }
   }
   return null;
