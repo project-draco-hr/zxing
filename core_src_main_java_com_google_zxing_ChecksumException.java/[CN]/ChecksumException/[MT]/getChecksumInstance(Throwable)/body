@@ -1,3 +1,3 @@
 {
-  return IS_STACK_TRACE ? new ChecksumException(cause) : INSTANCE;
+  return isStackTrace ? new ChecksumException(cause) : INSTANCE;
 }

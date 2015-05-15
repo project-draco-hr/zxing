@@ -1,3 +1,3 @@
 {
-  return IS_STACK_TRACE ? new FormatException(cause) : INSTANCE;
+  return isStackTrace ? new FormatException(cause) : INSTANCE;
 }

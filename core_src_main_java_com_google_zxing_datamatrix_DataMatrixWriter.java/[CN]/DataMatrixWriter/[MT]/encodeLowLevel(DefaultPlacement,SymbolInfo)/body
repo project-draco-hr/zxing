@@ -5,7 +5,7 @@
   int matrixY=0;
   for (int y=0; y < symbolHeight; y++) {
     int matrixX;
-    if ((y % symbolInfo.getMatrixHeight()) == 0) {
+    if ((y % symbolInfo.matrixHeight) == 0) {
       matrixX=0;
       for (int x=0; x < symbolInfo.getSymbolWidth(); x++) {
         matrix.set(matrixX,matrixY,(x % 2) == 0);
@@ -15,19 +15,19 @@
     }
     matrixX=0;
     for (int x=0; x < symbolWidth; x++) {
-      if ((x % symbolInfo.getMatrixWidth()) == 0) {
+      if ((x % symbolInfo.matrixWidth) == 0) {
         matrix.set(matrixX,matrixY,true);
         matrixX++;
       }
       matrix.set(matrixX,matrixY,placement.getBit(x,y));
       matrixX++;
-      if ((x % symbolInfo.getMatrixWidth()) == symbolInfo.getMatrixWidth() - 1) {
+      if ((x % symbolInfo.matrixWidth) == symbolInfo.matrixWidth - 1) {
         matrix.set(matrixX,matrixY,(y % 2) == 0);
         matrixX++;
       }
     }
     matrixY++;
-    if ((y % symbolInfo.getMatrixHeight()) == symbolInfo.getMatrixHeight() - 1) {
+    if ((y % symbolInfo.matrixHeight) == symbolInfo.matrixHeight - 1) {
       matrixX=0;
       for (int x=0; x < symbolInfo.getSymbolWidth(); x++) {
         matrix.set(matrixX,matrixY,true);
