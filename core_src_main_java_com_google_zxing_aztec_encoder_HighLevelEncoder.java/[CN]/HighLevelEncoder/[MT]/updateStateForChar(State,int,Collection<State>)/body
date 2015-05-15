@@ -9,12 +9,12 @@
         stateNoBinary=state.endBinaryShift(index);
       }
       if (!charInCurrentTable || mode == state.getMode() || mode == MODE_DIGIT) {
-        State latch_state=stateNoBinary.latchAndAppend(mode,charInMode);
-        result.add(latch_state);
+        State latchState=stateNoBinary.latchAndAppend(mode,charInMode);
+        result.add(latchState);
       }
       if (!charInCurrentTable && SHIFT_TABLE[state.getMode()][mode] >= 0) {
-        State shift_state=stateNoBinary.shiftAndAppend(mode,charInMode);
-        result.add(shift_state);
+        State shiftState=stateNoBinary.shiftAndAppend(mode,charInMode);
+        result.add(shiftState);
       }
     }
   }

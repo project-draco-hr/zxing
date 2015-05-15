@@ -1,6 +1,6 @@
 {
-  GMTRelative=relative;
-  this.abreviation=abreviation;
+  gmtRelative=relative;
+  this.abbreviation=abbreviation;
   this.gmtDiff=gmtDiff;
   this.longName=longName;
 }

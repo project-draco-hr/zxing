@@ -5,8 +5,8 @@
     result.add(stateNoBinary.shiftAndAppend(MODE_PUNCT,pairCode));
   }
   if (pairCode == 3 || pairCode == 4) {
-    State digit_state=stateNoBinary.latchAndAppend(MODE_DIGIT,16 - pairCode).latchAndAppend(MODE_DIGIT,1);
-    result.add(digit_state);
+    State digitState=stateNoBinary.latchAndAppend(MODE_DIGIT,16 - pairCode).latchAndAppend(MODE_DIGIT,1);
+    result.add(digitState);
   }
   if (state.getBinaryShiftByteCount() > 0) {
     State binaryState=state.addBinaryShiftChar(index).addBinaryShiftChar(index + 1);
