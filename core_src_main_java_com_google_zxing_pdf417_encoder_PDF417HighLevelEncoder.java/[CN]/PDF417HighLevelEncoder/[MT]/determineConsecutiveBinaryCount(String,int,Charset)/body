@@ -1,4 +1,5 @@
 {
+  final CharsetEncoder encoder=encoding.newEncoder();
   int len=msg.length();
   int idx=startpos;
   while (idx < len) {
@@ -16,7 +17,7 @@
       return idx - startpos;
     }
     ch=msg.charAt(idx);
-    if (bytes[idx] == 63 && ch != '?') {
+    if (!encoder.canEncode(ch)) {
       throw new WriterException("Non-encodable character detected: " + ch + " (Unicode: "+ (int)ch+ ')');
     }
     idx++;

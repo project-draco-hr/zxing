@@ -12,12 +12,11 @@
   int len=msg.length();
   int p=0;
   int textSubMode=SUBMODE_ALPHA;
-  byte[] bytes=null;
   if (compaction == Compaction.TEXT) {
     encodeText(msg,p,len,sb,textSubMode);
   }
  else   if (compaction == Compaction.BYTE) {
-    bytes=msg.getBytes(encoding);
+    byte[] bytes=msg.getBytes(encoding);
     encodeBinary(bytes,p,bytes.length,BYTE_COMPACTION,sb);
   }
  else   if (compaction == Compaction.NUMERIC) {
@@ -47,18 +46,16 @@
           p+=t;
         }
  else {
-          if (bytes == null) {
-            bytes=msg.getBytes(encoding);
-          }
-          int b=determineConsecutiveBinaryCount(msg,bytes,p);
+          int b=determineConsecutiveBinaryCount(msg,p,encoding);
           if (b == 0) {
             b=1;
           }
-          if (b == 1 && encodingMode == TEXT_COMPACTION) {
-            encodeBinary(bytes,p,1,TEXT_COMPACTION,sb);
+          byte[] bytes=msg.substring(p,b).getBytes(encoding);
+          if (bytes.length == 1 && encodingMode == TEXT_COMPACTION) {
+            encodeBinary(bytes,0,1,TEXT_COMPACTION,sb);
           }
  else {
-            encodeBinary(bytes,p,b,encodingMode,sb);
+            encodeBinary(bytes,0,bytes.length,encodingMode,sb);
             encodingMode=BYTE_COMPACTION;
             textSubMode=SUBMODE_ALPHA;
           }
