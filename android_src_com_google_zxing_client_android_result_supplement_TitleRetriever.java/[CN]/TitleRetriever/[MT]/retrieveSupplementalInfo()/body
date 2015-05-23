@@ -11,6 +11,7 @@
     if (m.find()) {
       String title=m.group(1);
       if (title != null && !title.isEmpty()) {
+        title=Html.fromHtml(title).toString();
         if (title.length() > MAX_TITLE_LEN) {
           title=title.substring(0,MAX_TITLE_LEN) + "...";
         }
