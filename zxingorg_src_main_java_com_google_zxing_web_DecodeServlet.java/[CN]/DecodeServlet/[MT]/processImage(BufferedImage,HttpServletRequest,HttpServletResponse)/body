@@ -1,7 +1,7 @@
 {
   LuminanceSource source=new BufferedImageLuminanceSource(image);
   BinaryBitmap bitmap=new BinaryBitmap(new GlobalHistogramBinarizer(source));
-  Collection<Result> results=Lists.newArrayListWithCapacity(1);
+  Collection<Result> results=new ArrayList<>(1);
   try {
     Reader reader=new MultiFormatReader();
     ReaderException savedException=null;
@@ -50,7 +50,17 @@
       }
     }
     if (results.isEmpty()) {
-      handleException(savedException,request,response);
+      try {
+        throw savedException == null ? NotFoundException.getNotFoundInstance() : savedException;
+      }
+ catch (      FormatException|ChecksumException e) {
+        log.info(e.getMessage());
+        errorResponse(request,response,"format");
+      }
+catch (      ReaderException e) {
+        log.info(e.getMessage());
+        errorResponse(request,response,"notfound");
+      }
       return;
     }
   }

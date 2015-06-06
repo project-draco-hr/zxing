@@ -1,10 +1,7 @@
 {
   uri=uri.trim();
   int protocolEnd=uri.indexOf(':');
-  if (protocolEnd < 0) {
-    uri="http://" + uri;
-  }
- else   if (isColonFollowedByPortNumber(uri,protocolEnd)) {
+  if (protocolEnd < 0 || isColonFollowedByPortNumber(uri,protocolEnd)) {
     uri="http://" + uri;
   }
   return uri;
