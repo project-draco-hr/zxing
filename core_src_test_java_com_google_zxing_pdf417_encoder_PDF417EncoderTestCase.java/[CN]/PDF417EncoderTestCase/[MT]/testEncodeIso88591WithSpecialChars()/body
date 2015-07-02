@@ -1,0 +1,3 @@
+{
+  PDF417HighLevelEncoder.encodeHighLevel("asdfg??asd",Compaction.AUTO,StandardCharsets.ISO_8859_1);
+}
