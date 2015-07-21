@@ -30,8 +30,17 @@ case 'b':
 if (next >= 'A' && next <= 'E') {
   decodedChar=(char)(next - 38);
 }
- else if (next >= 'F' && next <= 'W') {
+ else if (next >= 'F' && next <= 'J') {
   decodedChar=(char)(next - 11);
+}
+ else if (next >= 'K' && next <= 'O') {
+  decodedChar=(char)(next + 16);
+}
+ else if (next >= 'P' && next <= 'S') {
+  decodedChar=(char)(next + 43);
+}
+ else if (next >= 'T' && next <= 'Z') {
+  decodedChar=127;
 }
  else {
   throw FormatException.getFormatInstance();
