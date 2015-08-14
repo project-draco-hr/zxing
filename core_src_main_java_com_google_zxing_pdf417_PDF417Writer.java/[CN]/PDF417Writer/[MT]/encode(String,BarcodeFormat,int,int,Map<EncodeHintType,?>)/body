@@ -4,6 +4,7 @@
   }
   PDF417 encoder=new PDF417();
   int margin=WHITE_SPACE;
+  int errorCorrectionLevel=DEFAULT_ERROR_CORRECTION_LEVEL;
   if (hints != null) {
     if (hints.containsKey(EncodeHintType.PDF417_COMPACT)) {
       encoder.setCompact((Boolean)hints.get(EncodeHintType.PDF417_COMPACT));
@@ -18,10 +19,13 @@
     if (hints.containsKey(EncodeHintType.MARGIN)) {
       margin=((Number)hints.get(EncodeHintType.MARGIN)).intValue();
     }
+    if (hints.containsKey(EncodeHintType.ERROR_CORRECTION)) {
+      errorCorrectionLevel=((Number)hints.get(EncodeHintType.ERROR_CORRECTION)).intValue();
+    }
     if (hints.containsKey(EncodeHintType.CHARACTER_SET)) {
       String encoding=(String)hints.get(EncodeHintType.CHARACTER_SET);
       encoder.setEncoding(Charset.forName(encoding));
     }
   }
-  return bitMatrixFromEncoder(encoder,contents,width,height,margin);
+  return bitMatrixFromEncoder(encoder,contents,errorCorrectionLevel,width,height,margin);
 }

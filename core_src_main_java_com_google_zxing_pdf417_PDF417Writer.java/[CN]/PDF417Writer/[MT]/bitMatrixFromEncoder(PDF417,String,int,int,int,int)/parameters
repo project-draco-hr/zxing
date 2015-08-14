@@ -1,5 +1,6 @@
 PDF417 encoder
 String contents
+int errorCorrectionLevel
 int width
 int height
 int margin
