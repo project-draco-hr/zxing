@@ -13,7 +13,7 @@
           int rowNumber=codeword.getRowNumber();
           if (rowNumber >= 0) {
             if (rowNumber >= barcodeMatrix.length) {
-              throw FormatException.getFormatInstance();
+              continue;
             }
             barcodeMatrix[rowNumber][column].setValue(codeword.getValue());
           }
