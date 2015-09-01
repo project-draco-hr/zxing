@@ -9,7 +9,7 @@
     if (codeword != null) {
       int rowNumber=codeword.getRowNumber();
       if (rowNumber >= result.length) {
-        throw FormatException.getFormatInstance();
+        continue;
       }
       result[rowNumber]++;
     }
