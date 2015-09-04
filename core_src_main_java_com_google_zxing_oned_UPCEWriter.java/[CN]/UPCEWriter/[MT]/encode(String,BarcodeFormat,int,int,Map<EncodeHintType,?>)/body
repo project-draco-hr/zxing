@@ -1,0 +1,6 @@
+{
+  if (format != BarcodeFormat.UPC_E) {
+    throw new IllegalArgumentException("Can only encode UPC_E, but got " + format);
+  }
+  return super.encode(contents,format,width,height,hints);
+}
