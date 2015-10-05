@@ -1,9 +1,6 @@
 {
-  if (hints != null) {
-    String characterSet=(String)hints.get(DecodeHintType.CHARACTER_SET);
-    if (characterSet != null) {
-      return characterSet;
-    }
+  if (hints != null && hints.containsKey(DecodeHintType.CHARACTER_SET)) {
+    return hints.get(DecodeHintType.CHARACTER_SET).toString();
   }
   int length=bytes.length;
   boolean canBeISO88591=true;

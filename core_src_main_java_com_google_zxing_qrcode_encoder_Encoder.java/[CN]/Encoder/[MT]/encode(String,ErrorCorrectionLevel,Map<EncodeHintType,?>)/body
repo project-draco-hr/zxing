@@ -1,7 +1,7 @@
 {
-  String encoding=hints == null ? null : (String)hints.get(EncodeHintType.CHARACTER_SET);
-  if (encoding == null) {
-    encoding=DEFAULT_BYTE_MODE_ENCODING;
+  String encoding=DEFAULT_BYTE_MODE_ENCODING;
+  if (hints != null && hints.containsKey(EncodeHintType.CHARACTER_SET)) {
+    encoding=hints.get(EncodeHintType.CHARACTER_SET).toString();
   }
   Mode mode=chooseMode(content,encoding);
   BitArray headerBits=new BitArray();
