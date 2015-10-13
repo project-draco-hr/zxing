@@ -10,6 +10,10 @@
   if (EncoderConfig.DEFAULT_OUTPUT_FILE_BASE.equals(outFileString)) {
     outFileString+='.' + config.imageFormat.toLowerCase(Locale.ENGLISH);
   }
-  BitMatrix matrix=new MultiFormatWriter().encode(config.contents.get(0),config.barcodeFormat,config.width,config.height);
+  Map<EncodeHintType,Object> hints=new HashMap<>();
+  if (config.errorCorrectionLevel != null) {
+    hints.put(EncodeHintType.ERROR_CORRECTION,config.errorCorrectionLevel);
+  }
+  BitMatrix matrix=new MultiFormatWriter().encode(config.contents.get(0),config.barcodeFormat,config.width,config.height,hints);
   MatrixToImageWriter.writeToPath(matrix,config.imageFormat,Paths.get(outFileString));
 }
