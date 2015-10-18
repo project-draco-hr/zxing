@@ -19,6 +19,9 @@ break;
 case CODE_39:
 writer=new Code39Writer();
 break;
+case CODE_93:
+writer=new Code93Writer();
+break;
 case CODE_128:
 writer=new Code128Writer();
 break;
