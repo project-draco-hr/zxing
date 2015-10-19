@@ -1,0 +1,6 @@
+{
+  for (  int bit : pattern) {
+    target[pos++]=bit != 0;
+  }
+  return 9;
+}
