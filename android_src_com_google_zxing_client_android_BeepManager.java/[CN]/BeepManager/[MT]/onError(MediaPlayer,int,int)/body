@@ -3,8 +3,7 @@
     activity.finish();
   }
  else {
-    mp.release();
-    mediaPlayer=null;
+    close();
     updatePrefs();
   }
   return true;

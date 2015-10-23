@@ -1,8 +1,5 @@
 {
   MediaPlayer mediaPlayer=new MediaPlayer();
-  mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-  mediaPlayer.setOnCompletionListener(this);
-  mediaPlayer.setOnErrorListener(this);
   try {
     AssetFileDescriptor file=activity.getResources().openRawResourceFd(R.raw.beep);
     try {
@@ -11,6 +8,9 @@
   finally {
       file.close();
     }
+    mediaPlayer.setOnErrorListener(this);
+    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+    mediaPlayer.setLooping(false);
     mediaPlayer.setVolume(BEEP_VOLUME,BEEP_VOLUME);
     mediaPlayer.prepare();
     return mediaPlayer;
