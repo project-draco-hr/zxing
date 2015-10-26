@@ -1,0 +1,6 @@
+{
+  this.index=index;
+  this.camera=camera;
+  this.facing=facing;
+  this.orientation=orientation;
+}

@@ -1,10 +1,11 @@
 {
-  if (newSetting != configManager.getTorchState(camera)) {
-    if (camera != null) {
+  OpenCamera theCamera=camera;
+  if (theCamera != null) {
+    if (newSetting != configManager.getTorchState(theCamera.getCamera())) {
       if (autoFocusManager != null) {
         autoFocusManager.stop();
       }
-      configManager.setTorch(camera,newSetting);
+      configManager.setTorch(theCamera.getCamera(),newSetting);
       if (autoFocusManager != null) {
         autoFocusManager.start();
       }

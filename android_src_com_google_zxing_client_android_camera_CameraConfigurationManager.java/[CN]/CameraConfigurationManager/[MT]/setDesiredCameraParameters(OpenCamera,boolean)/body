@@ -1,5 +1,6 @@
 {
-  Camera.Parameters parameters=camera.getParameters();
+  Camera theCamera=camera.getCamera();
+  Camera.Parameters parameters=theCamera.getParameters();
   if (parameters == null) {
     Log.w(TAG,"Device error: no camera parameters are available. Proceeding without configuration.");
     return;
@@ -24,14 +25,14 @@
       CameraConfigurationUtils.setMetering(parameters);
     }
   }
-  parameters.setPreviewSize(cameraResolution.x,cameraResolution.y);
-  Log.i(TAG,"Final camera parameters: " + parameters.flatten());
-  camera.setParameters(parameters);
-  Camera.Parameters afterParameters=camera.getParameters();
+  parameters.setPreviewSize(bestPreviewSize.x,bestPreviewSize.y);
+  theCamera.setParameters(parameters);
+  theCamera.setDisplayOrientation(cwRotationFromDisplayToCamera);
+  Camera.Parameters afterParameters=theCamera.getParameters();
   Camera.Size afterSize=afterParameters.getPreviewSize();
-  if (afterSize != null && (cameraResolution.x != afterSize.width || cameraResolution.y != afterSize.height)) {
-    Log.w(TAG,"Camera said it supported preview size " + cameraResolution.x + 'x'+ cameraResolution.y+ ", but after setting it, preview size is "+ afterSize.width+ 'x'+ afterSize.height);
-    cameraResolution.x=afterSize.width;
-    cameraResolution.y=afterSize.height;
+  if (afterSize != null && (bestPreviewSize.x != afterSize.width || bestPreviewSize.y != afterSize.height)) {
+    Log.w(TAG,"Camera said it supported preview size " + bestPreviewSize.x + 'x'+ bestPreviewSize.y+ ", but after setting it, preview size is "+ afterSize.width+ 'x'+ afterSize.height);
+    bestPreviewSize.x=afterSize.width;
+    bestPreviewSize.y=afterSize.height;
   }
 }

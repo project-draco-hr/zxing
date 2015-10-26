@@ -1,6 +1,6 @@
 {
   if (camera != null) {
-    camera.release();
+    camera.getCamera().release();
     camera=null;
     framingRect=null;
     framingRectInPreview=null;

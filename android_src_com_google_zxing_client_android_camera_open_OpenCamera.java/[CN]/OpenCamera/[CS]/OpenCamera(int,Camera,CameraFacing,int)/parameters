@@ -1,0 +1,4 @@
+int index
+Camera camera
+CameraFacing facing
+int orientation

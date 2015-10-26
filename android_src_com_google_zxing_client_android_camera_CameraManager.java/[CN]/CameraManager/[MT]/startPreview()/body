@@ -1,8 +1,8 @@
 {
-  Camera theCamera=camera;
+  OpenCamera theCamera=camera;
   if (theCamera != null && !previewing) {
-    theCamera.startPreview();
+    theCamera.getCamera().startPreview();
     previewing=true;
-    autoFocusManager=new AutoFocusManager(context,camera);
+    autoFocusManager=new AutoFocusManager(context,theCamera.getCamera());
   }
 }
