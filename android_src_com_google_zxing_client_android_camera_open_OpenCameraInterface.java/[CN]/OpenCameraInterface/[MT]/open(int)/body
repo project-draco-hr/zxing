@@ -6,9 +6,15 @@
   }
   boolean explicitRequest=cameraId >= 0;
   Camera.CameraInfo selectedCameraInfo=null;
-  int index=0;
-  while (index < numCameras) {
-    if (cameraId == NO_REQUESTED_CAMERA || index == cameraId) {
+  int index;
+  if (explicitRequest) {
+    index=cameraId;
+    selectedCameraInfo=new Camera.CameraInfo();
+    Camera.getCameraInfo(index,selectedCameraInfo);
+  }
+ else {
+    index=0;
+    while (index < numCameras) {
       Camera.CameraInfo cameraInfo=new Camera.CameraInfo();
       Camera.getCameraInfo(index,cameraInfo);
       CameraFacing reportedFacing=CameraFacing.values()[cameraInfo.facing];
@@ -16,8 +22,8 @@
         selectedCameraInfo=cameraInfo;
         break;
       }
+      index++;
     }
-    index++;
   }
   Camera camera;
   if (index < numCameras) {
