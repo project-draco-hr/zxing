@@ -1,6 +1,6 @@
 {
-  if ("Shift_JIS".equals(encoding)) {
-    return isOnlyDoubleByteKanji(content) ? Mode.KANJI : Mode.BYTE;
+  if ("Shift_JIS".equals(encoding) && isOnlyDoubleByteKanji(content)) {
+    return Mode.KANJI;
   }
   boolean hasNumeric=false;
   boolean hasAlphanumeric=false;
