@@ -17,7 +17,7 @@
     while (j < maxJ) {
       if (image.get(j,i)) {
         if (currentState == 1) {
-          stateCount[currentState]++;
+          stateCount[1]++;
         }
  else {
           if (currentState == 2) {

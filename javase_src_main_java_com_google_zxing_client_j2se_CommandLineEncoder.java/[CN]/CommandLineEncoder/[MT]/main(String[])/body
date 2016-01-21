@@ -10,7 +10,7 @@
   if (EncoderConfig.DEFAULT_OUTPUT_FILE_BASE.equals(outFileString)) {
     outFileString+='.' + config.imageFormat.toLowerCase(Locale.ENGLISH);
   }
-  Map<EncodeHintType,Object> hints=new HashMap<>();
+  Map<EncodeHintType,Object> hints=new EnumMap<>(EncodeHintType.class);
   if (config.errorCorrectionLevel != null) {
     hints.put(EncodeHintType.ERROR_CORRECTION,config.errorCorrectionLevel);
   }

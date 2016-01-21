@@ -35,7 +35,7 @@ shift=3;
 break;
 case NS:
 int nsval=(bytes[++i] << 24) + (bytes[++i] << 18) + (bytes[++i] << 12)+ (bytes[++i] << 6)+ bytes[++i];
-sb.append(NINE_DIGITS.format(nsval));
+sb.append(new DecimalFormat("000000000").format(nsval));
 break;
 case LOCK:
 shift=-1;

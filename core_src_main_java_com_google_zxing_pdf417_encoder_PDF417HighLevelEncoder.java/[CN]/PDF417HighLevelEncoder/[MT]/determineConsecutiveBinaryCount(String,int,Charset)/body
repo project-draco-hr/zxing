@@ -1,5 +1,5 @@
 {
-  final CharsetEncoder encoder=encoding.newEncoder();
+  CharsetEncoder encoder=encoding.newEncoder();
   int len=msg.length();
   int idx=startpos;
   while (idx < len) {

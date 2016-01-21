@@ -3,8 +3,7 @@
     sb.append((char)SHIFT_TO_BYTE);
   }
  else {
-    boolean sixpack=((count % 6) == 0);
-    if (sixpack) {
+    if ((count % 6) == 0) {
       sb.append((char)LATCH_TO_BYTE);
     }
  else {

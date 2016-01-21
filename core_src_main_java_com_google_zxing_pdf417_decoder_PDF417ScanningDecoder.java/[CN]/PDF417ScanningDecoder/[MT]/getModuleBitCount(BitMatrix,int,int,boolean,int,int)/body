@@ -4,7 +4,7 @@
   int moduleNumber=0;
   int increment=leftToRight ? 1 : -1;
   boolean previousPixelValue=leftToRight;
-  while (((leftToRight && imageColumn < maxColumn) || (!leftToRight && imageColumn >= minColumn)) && moduleNumber < moduleBitCount.length) {
+  while ((leftToRight ? imageColumn < maxColumn : imageColumn >= minColumn) && moduleNumber < moduleBitCount.length) {
     if (image.get(imageColumn,imageRow) == previousPixelValue) {
       moduleBitCount[moduleNumber]++;
       imageColumn+=increment;
@@ -14,7 +14,7 @@
       previousPixelValue=!previousPixelValue;
     }
   }
-  if (moduleNumber == moduleBitCount.length || (((leftToRight && imageColumn == maxColumn) || (!leftToRight && imageColumn == minColumn)) && moduleNumber == moduleBitCount.length - 1)) {
+  if (moduleNumber == moduleBitCount.length || ((imageColumn == (leftToRight ? maxColumn : minColumn)) && moduleNumber == moduleBitCount.length - 1)) {
     return moduleBitCount;
   }
   return null;

@@ -1,6 +1,8 @@
 {
+  from=Math.max(from,0);
+  to=Math.min(to,array.length);
   for (int i=from; i < to; i++) {
-    if (i >= 0 && i < array.length && array[i][col] == 1) {
+    if (array[i][col] == 1) {
       return false;
     }
   }

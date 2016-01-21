@@ -32,7 +32,7 @@
   ParsedResult.maybeAppend(result.getNote(),contents);
   if (namesLength > 0) {
     Spannable styled=new SpannableString(contents.toString());
-    styled.setSpan(new StyleSpan(android.graphics.Typeface.BOLD),0,namesLength,0);
+    styled.setSpan(new StyleSpan(Typeface.BOLD),0,namesLength,0);
     return styled;
   }
  else {

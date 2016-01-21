@@ -12,8 +12,9 @@ case 3:
  else {
     postcode=getPostCode3(bytes);
   }
-String country=THREE_DIGITS.format(getCountry(bytes));
-String service=THREE_DIGITS.format(getServiceClass(bytes));
+NumberFormat threeDigits=new DecimalFormat("000");
+String country=threeDigits.format(getCountry(bytes));
+String service=threeDigits.format(getServiceClass(bytes));
 result.append(getMessage(bytes,10,84));
 if (result.toString().startsWith("[)>" + RS + "01"+ GS)) {
 result.insert(9,postcode + GS + country+ GS+ service+ GS);
