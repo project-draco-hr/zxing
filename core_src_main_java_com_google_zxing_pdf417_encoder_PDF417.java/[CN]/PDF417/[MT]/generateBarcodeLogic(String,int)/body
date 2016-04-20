@@ -7,7 +7,7 @@
   int rows=dimension[1];
   int pad=getNumberOfPadCodewords(sourceCodeWords,errorCorrectionCodeWords,cols,rows);
   if (sourceCodeWords + errorCorrectionCodeWords + 1 > 929) {
-    throw new WriterException("Encoded message contains to many code words, message to big (" + msg.length() + " bytes)");
+    throw new WriterException("Encoded message contains too many code words, message too big (" + msg.length() + " bytes)");
   }
   int n=sourceCodeWords + pad + 1;
   StringBuilder sb=new StringBuilder(n);
