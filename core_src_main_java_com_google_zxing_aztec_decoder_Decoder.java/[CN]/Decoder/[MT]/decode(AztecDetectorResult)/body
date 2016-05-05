@@ -3,6 +3,7 @@
   BitMatrix matrix=detectorResult.getBits();
   boolean[] rawbits=extractBits(matrix);
   boolean[] correctedBits=correctBits(rawbits);
+  byte[] rawBytes=convertBoolArrayToByteArray(correctedBits);
   String result=getEncodedData(correctedBits);
-  return new DecoderResult(null,result,null,null);
+  return new DecoderResult(rawBytes,result,null,null);
 }
