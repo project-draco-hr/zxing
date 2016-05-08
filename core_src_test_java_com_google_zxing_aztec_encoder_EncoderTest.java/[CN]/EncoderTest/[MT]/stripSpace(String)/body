@@ -1,0 +1,3 @@
+{
+  return SPACES.matcher(s).replaceAll("");
+}

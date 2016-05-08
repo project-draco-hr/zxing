@@ -1,8 +1,0 @@
-{
-  byte[] bits=getBits();
-  StringBuilder sb=new StringBuilder(bits.length);
-  for (  byte bit : bits) {
-    sb.append(bit == 1 ? '1' : '0');
-  }
-  return sb.toString();
-}

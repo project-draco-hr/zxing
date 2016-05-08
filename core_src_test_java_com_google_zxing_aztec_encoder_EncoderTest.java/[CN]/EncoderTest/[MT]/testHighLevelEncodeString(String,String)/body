@@ -1,6 +1,6 @@
 {
   BitArray bits=new HighLevelEncoder(s.getBytes(StandardCharsets.ISO_8859_1)).encode();
-  String receivedBits=bits.toString().replace(" ","");
-  assertEquals("highLevelEncode() failed for input string: " + s,expectedBits.replace(" ",""),receivedBits);
+  String receivedBits=stripSpace(bits.toString());
+  assertEquals("highLevelEncode() failed for input string: " + s,stripSpace(expectedBits),receivedBits);
   assertEquals(s,Decoder.highLevelDecode(toBooleanArray(bits)));
 }

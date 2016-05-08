@@ -1,4 +1,4 @@
 {
   BitArray in=Encoder.generateModeMessage(compact,layers,words);
-  assertEquals("generateModeMessage() failed",expected.replace(" ",""),in.toString().replace(" ",""));
+  assertEquals("generateModeMessage() failed",stripSpace(expected),stripSpace(in.toString()));
 }
