@@ -1,3 +1,4 @@
 {
   writer=new Code128Writer();
+  reader=new Code128Reader();
 }

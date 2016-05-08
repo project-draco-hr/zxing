@@ -23,14 +23,7 @@ int checkWeight=1;
 int codeSet=0;
 int position=0;
 while (position < length) {
-int requiredDigitCount=codeSet == CODE_CODE_C ? 2 : 4;
-int newCodeSet;
-if (isDigits(contents,position,requiredDigitCount)) {
-  newCodeSet=CODE_CODE_C;
-}
- else {
-  newCodeSet=CODE_CODE_B;
-}
+int newCodeSet=chooseCode(contents,position,codeSet);
 int patternIndex;
 if (newCodeSet == codeSet) {
 switch (contents.charAt(position)) {
