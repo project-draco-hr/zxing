@@ -25,7 +25,7 @@ catch (  IOException ioe) {
     errorResponse(request,response,"badimage");
   }
  else {
-    log.info("Decoding uploaded file");
+    log.info("Decoding uploaded file " + fileUploadPart);
     try (InputStream is=fileUploadPart.getInputStream()){
       processStream(is,request,response);
     }

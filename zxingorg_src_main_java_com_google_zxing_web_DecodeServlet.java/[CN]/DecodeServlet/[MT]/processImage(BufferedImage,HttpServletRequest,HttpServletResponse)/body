@@ -54,11 +54,11 @@
         throw savedException == null ? NotFoundException.getNotFoundInstance() : savedException;
       }
  catch (      FormatException|ChecksumException e) {
-        log.info(e.getMessage());
+        log.info(e.toString());
         errorResponse(request,response,"format");
       }
 catch (      ReaderException e) {
-        log.info(e.getMessage());
+        log.info(e.toString());
         errorResponse(request,response,"notfound");
       }
       return;

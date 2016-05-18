@@ -1,8 +1,6 @@
 {
   try {
-    int available;
-    while ((available=is.available()) > 0) {
-      is.read(REMAINDER_BUFFER,0,available);
+    while (is.read(REMAINDER_BUFFER) > 0) {
     }
   }
  catch (  IOException|IndexOutOfBoundsException ioe) {
