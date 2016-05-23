@@ -1,0 +1,6 @@
+{
+  Calendar cal=Calendar.getInstance();
+  cal.clear();
+  cal.set(year,month - 1,day,hour,min,sec);
+  return DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM,Locale.US).format(cal.getTime());
+}
