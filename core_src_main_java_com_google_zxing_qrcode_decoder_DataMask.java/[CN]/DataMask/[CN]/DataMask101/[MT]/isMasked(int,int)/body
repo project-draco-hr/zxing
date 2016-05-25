@@ -1,4 +1,0 @@
-{
-  int temp=i * j;
-  return (temp & 0x01) + (temp % 3) == 0;
-}

@@ -2,7 +2,7 @@
   if (parsedFormatInfo == null) {
     return;
   }
-  DataMask dataMask=DataMask.forReference(parsedFormatInfo.getDataMask());
+  DataMask dataMask=DataMask.values()[parsedFormatInfo.getDataMask()];
   int dimension=bitMatrix.getHeight();
   dataMask.unmaskBitMatrix(bitMatrix,dimension);
 }

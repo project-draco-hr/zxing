@@ -1,6 +1,0 @@
-{
-  if (reference < 0 || reference > 7) {
-    throw new IllegalArgumentException();
-  }
-  return DATA_MASKS[reference];
-}
