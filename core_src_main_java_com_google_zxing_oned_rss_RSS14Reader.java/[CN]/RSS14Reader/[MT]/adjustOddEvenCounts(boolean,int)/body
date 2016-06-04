@@ -1,6 +1,6 @@
 {
-  int oddSum=count(getOddCounts());
-  int evenSum=count(getEvenCounts());
+  int oddSum=MathUtils.sum(getOddCounts());
+  int evenSum=MathUtils.sum(getEvenCounts());
   int mismatch=oddSum + evenSum - numModules;
   boolean oddParityBad=(oddSum & 0x01) == (outsideChar ? 1 : 0);
   boolean evenParityBad=(evenSum & 0x01) == 1;

@@ -20,7 +20,7 @@
     }
   }
   int numModules=outsideChar ? 16 : 15;
-  float elementWidth=(float)count(counters) / (float)numModules;
+  float elementWidth=(float)MathUtils.sum(counters) / (float)numModules;
   int[] oddCounts=this.getOddCounts();
   int[] evenCounts=this.getEvenCounts();
   float[] oddRoundingErrors=this.getOddRoundingErrors();

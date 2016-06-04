@@ -1,5 +1,5 @@
 {
-  float bitCountSum=PDF417Common.getBitCountSum(moduleBitCount);
+  float bitCountSum=MathUtils.sum(moduleBitCount);
   int[] result=new int[PDF417Common.BARS_IN_MODULE];
   int bitCountIndex=0;
   int sumPreviousBits=0;

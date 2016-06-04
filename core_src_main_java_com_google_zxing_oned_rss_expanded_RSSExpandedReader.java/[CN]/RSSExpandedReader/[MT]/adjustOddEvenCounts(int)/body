@@ -1,6 +1,6 @@
 {
-  int oddSum=count(this.getOddCounts());
-  int evenSum=count(this.getEvenCounts());
+  int oddSum=MathUtils.sum(this.getOddCounts());
+  int evenSum=MathUtils.sum(this.getEvenCounts());
   int mismatch=oddSum + evenSum - numModules;
   boolean oddParityBad=(oddSum & 0x01) == 1;
   boolean evenParityBad=(evenSum & 0x01) == 0;

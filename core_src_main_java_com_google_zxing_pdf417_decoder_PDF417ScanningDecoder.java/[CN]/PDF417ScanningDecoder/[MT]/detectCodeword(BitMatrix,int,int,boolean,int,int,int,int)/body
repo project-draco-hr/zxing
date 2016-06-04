@@ -5,7 +5,7 @@
     return null;
   }
   int endColumn;
-  int codewordBitCount=PDF417Common.getBitCountSum(moduleBitCount);
+  int codewordBitCount=MathUtils.sum(moduleBitCount);
   if (leftToRight) {
     endColumn=startColumn + codewordBitCount;
   }

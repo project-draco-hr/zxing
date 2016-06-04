@@ -1,7 +1,7 @@
 {
   HttpServletRequest request=(HttpServletRequest)servletRequest;
   String requestURI=request.getRequestURI();
-  if ("/".equals(requestURI) || "/index.jspx".equals(requestURI) || "/w/".equals(requestURI)|| "/w/index.jspx".equals(requestURI)) {
+  if (REDIRECT_WELCOME_PATHS.contains(requestURI)) {
     redirect(servletResponse,"/w/decode.jspx");
   }
  else   if (requestURI.startsWith(OLD_JAVADOC_PREFIX)) {
