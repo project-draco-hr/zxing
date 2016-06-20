@@ -14,6 +14,9 @@
   }
   if (bottom - top != right - left) {
     right=left + (bottom - top);
+    if (right >= image.getWidth()) {
+      throw NotFoundException.getNotFoundInstance();
+    }
   }
   int matrixWidth=Math.round((right - left + 1) / moduleSize);
   int matrixHeight=Math.round((bottom - top + 1) / moduleSize);
