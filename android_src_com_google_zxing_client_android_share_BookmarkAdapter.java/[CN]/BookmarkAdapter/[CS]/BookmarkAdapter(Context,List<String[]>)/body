@@ -1,4 +1,4 @@
 {
   this.context=context;
-  this.cursor=cursor;
+  this.titleURLs=titleURLs;
 }

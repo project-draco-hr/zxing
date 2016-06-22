@@ -7,12 +7,8 @@
     LayoutInflater factory=LayoutInflater.from(context);
     layout=factory.inflate(R.layout.bookmark_picker_list_item,viewGroup,false);
   }
-  if (!cursor.isClosed()) {
-    cursor.moveToPosition(index);
-    CharSequence title=cursor.getString(BookmarkPickerActivity.TITLE_COLUMN);
-    ((TextView)layout.findViewById(R.id.bookmark_title)).setText(title);
-    CharSequence url=cursor.getString(BookmarkPickerActivity.URL_COLUMN);
-    ((TextView)layout.findViewById(R.id.bookmark_url)).setText(url);
-  }
+  String[] titleURL=titleURLs.get(index);
+  ((TextView)layout.findViewById(R.id.bookmark_title)).setText(titleURL[0]);
+  ((TextView)layout.findViewById(R.id.bookmark_url)).setText(titleURL[1]);
   return layout;
 }

@@ -1,7 +1,0 @@
-{
-  if (cursor != null) {
-    cursor.close();
-    cursor=null;
-  }
-  super.onPause();
-}
