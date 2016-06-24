@@ -35,7 +35,7 @@
       }
     }
     int matchStart=i;
-    while ((i=rawText.indexOf((int)'\n',i)) >= 0) {
+    while ((i=rawText.indexOf('\n',i)) >= 0) {
       if (i < rawText.length() - 1 && (rawText.charAt(i + 1) == ' ' || rawText.charAt(i + 1) == '\t')) {
         i+=2;
       }
