@@ -1,9 +1,6 @@
 {
   int oddSum=MathUtils.sum(getOddCounts());
   int evenSum=MathUtils.sum(getEvenCounts());
-  int mismatch=oddSum + evenSum - numModules;
-  boolean oddParityBad=(oddSum & 0x01) == (outsideChar ? 1 : 0);
-  boolean evenParityBad=(evenSum & 0x01) == 1;
   boolean incrementOdd=false;
   boolean decrementOdd=false;
   boolean incrementEven=false;
@@ -36,6 +33,9 @@
       incrementEven=true;
     }
   }
+  int mismatch=oddSum + evenSum - numModules;
+  boolean oddParityBad=(oddSum & 0x01) == (outsideChar ? 1 : 0);
+  boolean evenParityBad=(evenSum & 0x01) == 1;
   if (mismatch == 1) {
     if (oddParityBad) {
       if (evenParityBad) {

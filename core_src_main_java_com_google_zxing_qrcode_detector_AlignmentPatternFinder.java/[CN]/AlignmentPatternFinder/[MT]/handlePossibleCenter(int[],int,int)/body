@@ -3,7 +3,7 @@
   float centerJ=centerFromEnd(stateCount,j);
   float centerI=crossCheckVertical(i,(int)centerJ,2 * stateCount[1],stateCountTotal);
   if (!Float.isNaN(centerI)) {
-    float estimatedModuleSize=(float)(stateCount[0] + stateCount[1] + stateCount[2]) / 3.0f;
+    float estimatedModuleSize=(stateCount[0] + stateCount[1] + stateCount[2]) / 3.0f;
     for (    AlignmentPattern center : possibleCenters) {
       if (center.aboutEquals(estimatedModuleSize,centerI,centerJ)) {
         return center.combineEstimate(centerI,centerJ,estimatedModuleSize);

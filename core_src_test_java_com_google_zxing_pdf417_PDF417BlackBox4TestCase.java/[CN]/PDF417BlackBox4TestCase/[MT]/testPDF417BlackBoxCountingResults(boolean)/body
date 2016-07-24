@@ -83,5 +83,4 @@
       assertTrue("Try harder, " + label,tryHarderCounts[x] >= testResult.getTryHarderCount());
     }
   }
-  return new SummaryResults(totalFound,totalMustPass,totalTests);
 }

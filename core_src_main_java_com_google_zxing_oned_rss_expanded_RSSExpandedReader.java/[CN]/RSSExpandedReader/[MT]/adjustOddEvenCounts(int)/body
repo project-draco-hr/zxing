@@ -1,9 +1,6 @@
 {
   int oddSum=MathUtils.sum(this.getOddCounts());
   int evenSum=MathUtils.sum(this.getEvenCounts());
-  int mismatch=oddSum + evenSum - numModules;
-  boolean oddParityBad=(oddSum & 0x01) == 1;
-  boolean evenParityBad=(evenSum & 0x01) == 0;
   boolean incrementOdd=false;
   boolean decrementOdd=false;
   if (oddSum > 13) {
@@ -20,6 +17,9 @@
  else   if (evenSum < 4) {
     incrementEven=true;
   }
+  int mismatch=oddSum + evenSum - numModules;
+  boolean oddParityBad=(oddSum & 0x01) == 1;
+  boolean evenParityBad=(evenSum & 0x01) == 0;
   if (mismatch == 1) {
     if (oddParityBad) {
       if (evenParityBad) {

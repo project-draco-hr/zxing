@@ -11,7 +11,7 @@
   if (confirmedCount < 3) {
     return false;
   }
-  float average=totalModuleSize / (float)max;
+  float average=totalModuleSize / max;
   float totalDeviation=0.0f;
   for (  FinderPattern pattern : possibleCenters) {
     totalDeviation+=Math.abs(pattern.getEstimatedModuleSize() - average);

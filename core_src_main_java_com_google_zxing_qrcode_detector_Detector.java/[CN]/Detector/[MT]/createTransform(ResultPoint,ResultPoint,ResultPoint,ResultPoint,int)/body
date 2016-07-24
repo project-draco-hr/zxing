@@ -1,5 +1,5 @@
 {
-  float dimMinusThree=(float)dimension - 3.5f;
+  float dimMinusThree=dimension - 3.5f;
   float bottomRightX;
   float bottomRightY;
   float sourceBottomRightX;

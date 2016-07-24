@@ -11,7 +11,7 @@
       totalModuleSize+=size;
       square+=size * size;
     }
-    float average=totalModuleSize / (float)startSize;
+    float average=totalModuleSize / startSize;
     float stdDev=(float)Math.sqrt(square / startSize - average * average);
     Collections.sort(possibleCenters,new FurthestFromAverageComparator(average));
     float limit=Math.max(0.2f * average,stdDev);
@@ -28,7 +28,7 @@
     for (    FinderPattern possibleCenter : possibleCenters) {
       totalModuleSize+=possibleCenter.getEstimatedModuleSize();
     }
-    float average=totalModuleSize / (float)possibleCenters.size();
+    float average=totalModuleSize / possibleCenters.size();
     Collections.sort(possibleCenters,new CenterComparator(average));
     possibleCenters.subList(3,possibleCenters.size()).clear();
   }

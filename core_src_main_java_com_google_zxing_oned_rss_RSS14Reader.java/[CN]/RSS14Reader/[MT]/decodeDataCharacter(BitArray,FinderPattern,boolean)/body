@@ -20,13 +20,13 @@
     }
   }
   int numModules=outsideChar ? 16 : 15;
-  float elementWidth=(float)MathUtils.sum(counters) / (float)numModules;
+  float elementWidth=MathUtils.sum(counters) / (float)numModules;
   int[] oddCounts=this.getOddCounts();
   int[] evenCounts=this.getEvenCounts();
   float[] oddRoundingErrors=this.getOddRoundingErrors();
   float[] evenRoundingErrors=this.getEvenRoundingErrors();
   for (int i=0; i < counters.length; i++) {
-    float value=(float)counters[i] / elementWidth;
+    float value=counters[i] / elementWidth;
     int count=(int)(value + 0.5f);
     if (count < 1) {
       count=1;

@@ -1,11 +1,11 @@
 {
-  int elements=widths.length;
   int n=0;
   for (  int width : widths) {
     n+=width;
   }
   int val=0;
   int narrowMask=0;
+  int elements=widths.length;
   for (int bar=0; bar < elements - 1; bar++) {
     int elmWidth;
     for (elmWidth=1, narrowMask|=1 << bar; elmWidth < widths[bar]; elmWidth++, narrowMask&=~(1 << bar)) {

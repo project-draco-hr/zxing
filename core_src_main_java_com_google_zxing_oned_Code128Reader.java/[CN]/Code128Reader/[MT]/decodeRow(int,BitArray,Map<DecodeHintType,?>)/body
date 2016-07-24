@@ -238,12 +238,12 @@ result.delete(resultLength - 2,resultLength);
 result.delete(resultLength - 1,resultLength);
 }
 }
-float left=(float)(startPatternInfo[1] + startPatternInfo[0]) / 2.0f;
+float left=(startPatternInfo[1] + startPatternInfo[0]) / 2.0f;
 float right=lastStart + lastPatternSize / 2.0f;
 int rawCodesSize=rawCodes.size();
 byte[] rawBytes=new byte[rawCodesSize];
 for (int i=0; i < rawCodesSize; i++) {
 rawBytes[i]=rawCodes.get(i);
 }
-return new Result(result.toString(),rawBytes,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODE_128);
+return new Result(result.toString(),rawBytes,new ResultPoint[]{new ResultPoint(left,rowNumber),new ResultPoint(right,rowNumber)},BarcodeFormat.CODE_128);
 }

@@ -14,8 +14,7 @@
     return this.pairs;
   }
   boolean tryStackedDecode=!this.rows.isEmpty();
-  boolean wasReversed=false;
-  storeRow(rowNumber,wasReversed);
+  storeRow(rowNumber,false);
   if (tryStackedDecode) {
     List<ExpandedPair> ps=checkRows(false);
     if (ps != null) {

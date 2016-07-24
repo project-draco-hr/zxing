@@ -1,9 +1,0 @@
-{
-  long start=System.currentTimeMillis();
-  SummaryResults results=new SummaryResults();
-  for (  AbstractBlackBoxTestCase test : TESTS) {
-    results.add(test.testBlackBoxCountingResults(false));
-  }
-  log.info(results.toString());
-  log.info(String.format("Total time: %d ms",System.currentTimeMillis() - start));
-}

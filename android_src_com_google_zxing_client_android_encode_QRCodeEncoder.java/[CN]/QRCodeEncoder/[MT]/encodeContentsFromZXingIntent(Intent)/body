@@ -10,11 +10,10 @@
   }
   if (format == null || format == BarcodeFormat.QR_CODE) {
     String type=intent.getStringExtra(Intents.Encode.TYPE);
-    if (type == null || type.isEmpty()) {
-      return false;
+    if (type != null && !type.isEmpty()) {
+      this.format=BarcodeFormat.QR_CODE;
+      encodeQRCodeContents(intent,type);
     }
-    this.format=BarcodeFormat.QR_CODE;
-    encodeQRCodeContents(intent,type);
   }
  else {
     String data=intent.getStringExtra(Intents.Encode.DATA);
@@ -24,5 +23,4 @@
       title=activity.getString(R.string.contents_text);
     }
   }
-  return contents != null && !contents.isEmpty();
 }

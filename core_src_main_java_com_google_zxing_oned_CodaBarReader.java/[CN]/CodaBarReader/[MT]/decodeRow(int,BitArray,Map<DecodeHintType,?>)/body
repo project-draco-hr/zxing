@@ -47,10 +47,10 @@
   for (int i=0; i < startOffset; i++) {
     runningCount+=counters[i];
   }
-  float left=(float)runningCount;
+  float left=runningCount;
   for (int i=startOffset; i < nextStart - 1; i++) {
     runningCount+=counters[i];
   }
-  float right=(float)runningCount;
-  return new Result(decodeRowResult.toString(),null,new ResultPoint[]{new ResultPoint(left,(float)rowNumber),new ResultPoint(right,(float)rowNumber)},BarcodeFormat.CODABAR);
+  float right=runningCount;
+  return new Result(decodeRowResult.toString(),null,new ResultPoint[]{new ResultPoint(left,rowNumber),new ResultPoint(right,rowNumber)},BarcodeFormat.CODABAR);
 }

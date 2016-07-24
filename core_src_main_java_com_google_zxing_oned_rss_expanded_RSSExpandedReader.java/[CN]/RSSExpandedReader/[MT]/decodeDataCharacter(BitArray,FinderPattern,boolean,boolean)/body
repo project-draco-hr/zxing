@@ -20,7 +20,7 @@
     }
   }
   int numModules=17;
-  float elementWidth=(float)MathUtils.sum(counters) / (float)numModules;
+  float elementWidth=MathUtils.sum(counters) / (float)numModules;
   float expectedElementWidth=(pattern.getStartEnd()[1] - pattern.getStartEnd()[0]) / 15.0f;
   if (Math.abs(elementWidth - expectedElementWidth) / expectedElementWidth > 0.3f) {
     throw NotFoundException.getNotFoundInstance();

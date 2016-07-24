@@ -100,5 +100,4 @@
       assertTrue("Try harder, " + label,tryHaderMisreadCounts[x] <= testResult.getMaxTryHarderMisreads());
     }
   }
-  return new SummaryResults(totalFound,totalMustPass,totalTests);
 }

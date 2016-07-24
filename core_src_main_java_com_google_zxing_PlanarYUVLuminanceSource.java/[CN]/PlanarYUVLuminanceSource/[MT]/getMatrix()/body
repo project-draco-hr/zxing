@@ -11,10 +11,9 @@
     System.arraycopy(yuvData,inputOffset,matrix,0,area);
     return matrix;
   }
-  byte[] yuv=yuvData;
   for (int y=0; y < height; y++) {
     int outputOffset=y * width;
-    System.arraycopy(yuv,inputOffset,matrix,outputOffset,width);
+    System.arraycopy(yuvData,inputOffset,matrix,outputOffset,width);
     inputOffset+=dataWidth;
   }
   return matrix;

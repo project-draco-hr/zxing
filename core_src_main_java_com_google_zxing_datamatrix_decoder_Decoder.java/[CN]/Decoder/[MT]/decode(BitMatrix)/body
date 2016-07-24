@@ -3,12 +3,12 @@
   Version version=parser.getVersion();
   byte[] codewords=parser.readCodewords();
   DataBlock[] dataBlocks=DataBlock.getDataBlocks(codewords,version);
-  int dataBlocksCount=dataBlocks.length;
   int totalBytes=0;
   for (  DataBlock db : dataBlocks) {
     totalBytes+=db.getNumDataCodewords();
   }
   byte[] resultBytes=new byte[totalBytes];
+  int dataBlocksCount=dataBlocks.length;
   for (int j=0; j < dataBlocksCount; j++) {
     DataBlock dataBlock=dataBlocks[j];
     byte[] codewordBytes=dataBlock.getCodewords();

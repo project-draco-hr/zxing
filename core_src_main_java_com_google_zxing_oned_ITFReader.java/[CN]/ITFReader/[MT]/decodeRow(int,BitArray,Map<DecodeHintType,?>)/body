@@ -29,5 +29,5 @@
   if (!lengthOK) {
     throw FormatException.getFormatInstance();
   }
-  return new Result(resultString,null,new ResultPoint[]{new ResultPoint(startRange[1],(float)rowNumber),new ResultPoint(endRange[0],(float)rowNumber)},BarcodeFormat.ITF);
+  return new Result(resultString,null,new ResultPoint[]{new ResultPoint(startRange[1],rowNumber),new ResultPoint(endRange[0],rowNumber)},BarcodeFormat.ITF);
 }

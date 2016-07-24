@@ -9,12 +9,5 @@
   }
   Date date2PlusDay=new Date(date2.getTime() + 24 * 60 * 60* 1000);
   DateTimeFormat isoFormatter=DateTimeFormat.getFormat("yyyyMMdd");
-  StringBuilder output=new StringBuilder();
-  output.append("DTSTART;VALUE=DATE:");
-  output.append(isoFormatter.format(date1));
-  output.append("\r\n");
-  output.append("DTEND;VALUE=DATE:");
-  output.append(isoFormatter.format(date2PlusDay));
-  output.append("\r\n");
-  return output.toString();
+  return "DTSTART;VALUE=DATE:" + isoFormatter.format(date1) + "\r\n"+ "DTEND;VALUE=DATE:"+ isoFormatter.format(date2PlusDay)+ "\r\n";
 }

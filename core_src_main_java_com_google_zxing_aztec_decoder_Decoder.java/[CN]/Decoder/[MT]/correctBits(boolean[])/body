@@ -23,14 +23,13 @@
     throw FormatException.getFormatInstance();
   }
   int offset=rawbits.length % codewordSize;
-  int numECCodewords=numCodewords - numDataCodewords;
   int[] dataWords=new int[numCodewords];
   for (int i=0; i < numCodewords; i++, offset+=codewordSize) {
     dataWords[i]=readCode(rawbits,offset,codewordSize);
   }
   try {
     ReedSolomonDecoder rsDecoder=new ReedSolomonDecoder(gf);
-    rsDecoder.decode(dataWords,numECCodewords);
+    rsDecoder.decode(dataWords,numCodewords - numDataCodewords);
   }
  catch (  ReedSolomonException ex) {
     throw FormatException.getFormatInstance(ex);

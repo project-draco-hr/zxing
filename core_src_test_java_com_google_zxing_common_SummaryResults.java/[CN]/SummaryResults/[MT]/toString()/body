@@ -1,3 +1,0 @@
-{
-  return "\nSUMMARY RESULTS:\n  Decoded " + totalFound + " images out of "+ totalTests+ " ("+ (totalFound * 100 / totalTests)+ "%, "+ totalMustPass+ " required)";
-}

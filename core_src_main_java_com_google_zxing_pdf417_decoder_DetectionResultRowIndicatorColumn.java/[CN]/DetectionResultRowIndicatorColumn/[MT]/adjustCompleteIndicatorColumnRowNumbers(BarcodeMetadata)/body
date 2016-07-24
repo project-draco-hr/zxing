@@ -49,5 +49,4 @@
       }
     }
   }
-  return (int)(averageRowHeight + 0.5);
 }

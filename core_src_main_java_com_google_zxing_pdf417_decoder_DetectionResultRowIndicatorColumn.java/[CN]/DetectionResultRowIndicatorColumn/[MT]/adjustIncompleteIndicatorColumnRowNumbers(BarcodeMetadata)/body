@@ -32,5 +32,4 @@
       currentRowHeight=1;
     }
   }
-  return (int)(averageRowHeight + 0.5);
 }

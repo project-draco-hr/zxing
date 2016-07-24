@@ -1,0 +1,9 @@
+{
+  numRecentAccesses=Collections.synchronizedMap(new LinkedHashMap<String,AtomicInteger>(){
+    @Override protected boolean removeEldestEntry(    Map.Entry<String,AtomicInteger> eldest){
+      return size() > MAX_RECENT_ACCESS_MAP_SIZE;
+    }
+  }
+);
+  bannedIPAddresses=Collections.synchronizedSet(new HashSet<String>());
+}

@@ -28,6 +28,5 @@
  catch (  NotFoundException ignored) {
     rightChar=null;
   }
-  boolean mayBeLast=true;
-  return new ExpandedPair(leftChar,rightChar,pattern,mayBeLast);
+  return new ExpandedPair(leftChar,rightChar,pattern,true);
 }

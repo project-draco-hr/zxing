@@ -1,5 +1,0 @@
-{
-  totalFound+=other.totalFound;
-  totalMustPass+=other.totalMustPass;
-  totalTests+=other.totalTests;
-}

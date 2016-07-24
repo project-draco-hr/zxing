@@ -18,7 +18,6 @@
   }
   String dataCodewords=sb.toString();
   String ec=PDF417ErrorCorrection.generateErrorCorrection(dataCodewords,errorCorrectionLevel);
-  String fullCodewords=dataCodewords + ec;
   barcodeMatrix=new BarcodeMatrix(rows,cols);
-  encodeLowLevel(fullCodewords,cols,rows,errorCorrectionLevel,barcodeMatrix);
+  encodeLowLevel(dataCodewords + ec,cols,rows,errorCorrectionLevel,barcodeMatrix);
 }

@@ -13,12 +13,12 @@
   if (provisionalVersion.getAlignmentPatternCenters().length > 0) {
     float bottomRightX=topRight.getX() - topLeft.getX() + bottomLeft.getX();
     float bottomRightY=topRight.getY() - topLeft.getY() + bottomLeft.getY();
-    float correctionToTopLeft=1.0f - 3.0f / (float)modulesBetweenFPCenters;
+    float correctionToTopLeft=1.0f - 3.0f / modulesBetweenFPCenters;
     int estAlignmentX=(int)(topLeft.getX() + correctionToTopLeft * (bottomRightX - topLeft.getX()));
     int estAlignmentY=(int)(topLeft.getY() + correctionToTopLeft * (bottomRightY - topLeft.getY()));
     for (int i=4; i <= 16; i<<=1) {
       try {
-        alignmentPattern=findAlignmentInRegion(moduleSize,estAlignmentX,estAlignmentY,(float)i);
+        alignmentPattern=findAlignmentInRegion(moduleSize,estAlignmentX,estAlignmentY,i);
         break;
       }
  catch (      NotFoundException re) {

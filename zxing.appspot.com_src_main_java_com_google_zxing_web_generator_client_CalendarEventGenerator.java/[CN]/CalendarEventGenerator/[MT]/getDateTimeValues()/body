@@ -17,12 +17,5 @@
     throw new GeneratorException("Ending date/time cannot be before starting date/time.");
   }
   DateTimeFormat isoFormatter=DateTimeFormat.getFormat("yyyyMMdd'T'HHmmss'Z'");
-  StringBuilder output=new StringBuilder();
-  output.append("DTSTART:");
-  output.append(isoFormatter.format(dateTime1));
-  output.append("\r\n");
-  output.append("DTEND:");
-  output.append(isoFormatter.format(dateTime2));
-  output.append("\r\n");
-  return output.toString();
+  return "DTSTART:" + isoFormatter.format(dateTime1) + "\r\n"+ "DTEND:"+ isoFormatter.format(dateTime2)+ "\r\n";
 }
