@@ -38,6 +38,7 @@
       index+=size;
       String str=getCharacter(shiftTable,code);
       if (str.startsWith("CTRL_")) {
+        latchTable=shiftTable;
         shiftTable=getTable(str.charAt(5));
         if (str.charAt(6) == 'L') {
           latchTable=shiftTable;
