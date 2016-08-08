@@ -1,0 +1,4 @@
+ErrorCorrectionLevel ecLevel
+Mode mode
+BitArray headerBits
+BitArray dataBits

@@ -1,0 +1,4 @@
+Mode mode
+BitArray headerBits
+BitArray dataBits
+Version version

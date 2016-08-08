@@ -1,0 +1,8 @@
+{
+  int numBytes=version.getTotalCodewords();
+  Version.ECBlocks ecBlocks=version.getECBlocksForLevel(ecLevel);
+  int numEcBytes=ecBlocks.getTotalECCodewords();
+  int numDataBytes=numBytes - numEcBytes;
+  int totalInputBytes=(numInputBits + 7) / 8;
+  return numDataBytes >= totalInputBytes;
+}

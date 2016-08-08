@@ -1,0 +1,6 @@
+{
+  Map<EncodeHintType,Object> hints=new HashMap<>();
+  hints.put(EncodeHintType.QR_VERSION,7);
+  QRCode qrCode=Encoder.encode("ABCDEF",ErrorCorrectionLevel.H,hints);
+  assertTrue(qrCode.toString().contains(" version: 7\n"));
+}

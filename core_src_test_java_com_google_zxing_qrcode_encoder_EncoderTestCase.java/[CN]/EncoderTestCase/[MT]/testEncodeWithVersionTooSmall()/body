@@ -1,0 +1,11 @@
+{
+  Map<EncodeHintType,Object> hints=new HashMap<>();
+  hints.put(EncodeHintType.QR_VERSION,3);
+  try {
+    Encoder.encode("THISMESSAGEISTOOLONGFORAQRCODEVERSION3",ErrorCorrectionLevel.H,hints);
+    fail();
+  }
+ catch (  WriterException e) {
+    assertEquals("Data too big for requested version",e.getMessage());
+  }
+}

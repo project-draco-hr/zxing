@@ -14,10 +14,20 @@
   appendModeInfo(mode,headerBits);
   BitArray dataBits=new BitArray();
   appendBytes(content,mode,dataBits,encoding);
-  int provisionalBitsNeeded=headerBits.getSize() + mode.getCharacterCountBits(Version.getVersionForNumber(1)) + dataBits.getSize();
-  Version provisionalVersion=chooseVersion(provisionalBitsNeeded,ecLevel);
-  int bitsNeeded=headerBits.getSize() + mode.getCharacterCountBits(provisionalVersion) + dataBits.getSize();
-  Version version=chooseVersion(bitsNeeded,ecLevel);
+  Version version=null;
+  if (hints != null && hints.containsKey(EncodeHintType.QR_VERSION)) {
+    Version requestedVersion=Version.getVersionForNumber((Integer)hints.get(EncodeHintType.QR_VERSION));
+    int bitsNeeded=calculateBitsNeeded(mode,headerBits,dataBits,requestedVersion);
+    if (willFit(bitsNeeded,requestedVersion,ecLevel)) {
+      version=requestedVersion;
+    }
+ else {
+      throw new WriterException("Data too big for requested version");
+    }
+  }
+ else {
+    version=recommendVersion(ecLevel,mode,headerBits,dataBits);
+  }
   BitArray headerAndDataBits=new BitArray();
   headerAndDataBits.appendBitArray(headerBits);
   int numLetters=mode == Mode.BYTE ? dataBits.getSizeInBytes() : content.length();
