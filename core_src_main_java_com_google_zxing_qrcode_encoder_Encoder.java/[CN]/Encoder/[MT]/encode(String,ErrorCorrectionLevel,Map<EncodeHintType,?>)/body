@@ -14,14 +14,12 @@
   appendModeInfo(mode,headerBits);
   BitArray dataBits=new BitArray();
   appendBytes(content,mode,dataBits,encoding);
-  Version version=null;
+  Version version;
   if (hints != null && hints.containsKey(EncodeHintType.QR_VERSION)) {
-    Version requestedVersion=Version.getVersionForNumber((Integer)hints.get(EncodeHintType.QR_VERSION));
-    int bitsNeeded=calculateBitsNeeded(mode,headerBits,dataBits,requestedVersion);
-    if (willFit(bitsNeeded,requestedVersion,ecLevel)) {
-      version=requestedVersion;
-    }
- else {
+    int versionNumber=Integer.parseInt(hints.get(EncodeHintType.QR_VERSION).toString());
+    version=Version.getVersionForNumber(versionNumber);
+    int bitsNeeded=calculateBitsNeeded(mode,headerBits,dataBits,version);
+    if (!willFit(bitsNeeded,version,ecLevel)) {
       throw new WriterException("Data too big for requested version");
     }
   }

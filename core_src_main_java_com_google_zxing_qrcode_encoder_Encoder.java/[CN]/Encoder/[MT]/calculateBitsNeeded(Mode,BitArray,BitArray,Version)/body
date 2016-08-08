@@ -1,4 +1,3 @@
 {
-  int bitsNeeded=headerBits.getSize() + mode.getCharacterCountBits(version) + dataBits.getSize();
-  return bitsNeeded;
+  return headerBits.getSize() + mode.getCharacterCountBits(version) + dataBits.getSize();
 }
