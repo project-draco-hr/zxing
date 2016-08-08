@@ -4,7 +4,6 @@
   ResultPoint bottom=isLeft ? boundingBox.getBottomLeft() : boundingBox.getBottomRight();
   int firstRow=imageRowToCodewordIndex((int)top.getY());
   int lastRow=imageRowToCodewordIndex((int)bottom.getY());
-  float averageRowHeight=(lastRow - firstRow) / (float)barcodeMetadata.getRowCount();
   Codeword[] codewords=getCodewords();
   int barcodeRow=-1;
   int maxRowHeight=1;
