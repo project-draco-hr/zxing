@@ -1,5 +1,6 @@
 String contents
-String[] numbers
+String number
 String subject
 String body
-String[] vias
+String via
+String parsedURI

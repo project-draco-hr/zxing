@@ -3,8 +3,9 @@
   ParsedResult result=ResultParser.parseResult(fakeResult);
   assertSame(ParsedResultType.SMS,result.getType());
   SMSParsedResult smsResult=(SMSParsedResult)result;
-  assertArrayEquals(numbers,smsResult.getNumbers());
+  assertArrayEquals(new String[]{number},smsResult.getNumbers());
   assertEquals(subject,smsResult.getSubject());
   assertEquals(body,smsResult.getBody());
-  assertArrayEquals(vias,smsResult.getVias());
+  assertArrayEquals(new String[]{via},smsResult.getVias());
+  assertEquals(parsedURI,smsResult.getSMSURI());
 }

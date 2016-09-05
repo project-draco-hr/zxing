@@ -4,7 +4,17 @@
   if (tryHarder) {
     hints.put(DecodeHintType.TRY_HARDER,Boolean.TRUE);
   }
-  Result result=barcodeReader.decode(source,hints);
+  Result result=null;
+  try {
+    Map<DecodeHintType,Object> pureHints=new EnumMap<>(hints);
+    pureHints.put(DecodeHintType.PURE_BARCODE,Boolean.TRUE);
+    result=barcodeReader.decode(source,pureHints);
+  }
+ catch (  ReaderException re) {
+  }
+  if (result == null) {
+    result=barcodeReader.decode(source,hints);
+  }
   if (expectedFormat != result.getBarcodeFormat()) {
     log.info(String.format("Format mismatch: expected '%s' but got '%s'%s",expectedFormat,result.getBarcodeFormat(),suffix));
     return false;

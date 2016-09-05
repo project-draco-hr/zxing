@@ -7,4 +7,5 @@
   assertEquals(longitude,geoResult.getLongitude(),EPSILON);
   assertEquals(altitude,geoResult.getAltitude(),EPSILON);
   assertEquals(query,geoResult.getQuery());
+  assertEquals(uri == null ? contents.toLowerCase(Locale.ENGLISH) : uri,geoResult.getGeoURI());
 }
