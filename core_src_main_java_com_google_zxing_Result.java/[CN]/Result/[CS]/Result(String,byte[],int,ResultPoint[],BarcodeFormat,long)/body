@@ -1,0 +1,9 @@
+{
+  this.text=text;
+  this.rawBytes=rawBytes;
+  this.numBits=numBits;
+  this.resultPoints=resultPoints;
+  this.format=format;
+  this.resultMetadata=null;
+  this.timestamp=timestamp;
+}
