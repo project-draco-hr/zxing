@@ -1,7 +1,4 @@
 {
-  Path path=Paths.get("src/test/resources/blackbox/rssexpanded-1/").resolve(fileName);
-  if (!Files.exists(path)) {
-    path=Paths.get("core").resolve(path);
-  }
+  Path path=AbstractBlackBoxTestCase.buildTestBase("src/test/resources/blackbox/rssexpanded-1/").resolve(fileName);
   return ImageIO.read(path.toFile());
 }

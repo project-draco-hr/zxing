@@ -1,8 +1,5 @@
 {
-  Path path=Paths.get("src/test/resources/blackbox/rssexpanded-1/").resolve(fileName);
-  if (!Files.exists(path)) {
-    path=Paths.get("core").resolve(path);
-  }
+  Path path=AbstractBlackBoxTestCase.buildTestBase("src/test/resources/blackbox/rssexpanded-1/").resolve(fileName);
   BufferedImage image=ImageIO.read(path.toFile());
   BinaryBitmap binaryMap=new BinaryBitmap(new GlobalHistogramBinarizer(new BufferedImageLuminanceSource(image)));
   int rowNumber=binaryMap.getHeight() / 2;

@@ -1,0 +1,4 @@
+{
+  BitMatrix result=new Code39Writer().encode(input,BarcodeFormat.CODE_39,0,0);
+  assertEquals(expected,BitMatrixTestCase.matrixToString(result));
+}

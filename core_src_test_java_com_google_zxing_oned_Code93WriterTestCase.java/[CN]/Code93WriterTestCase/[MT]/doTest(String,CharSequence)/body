@@ -1,0 +1,4 @@
+{
+  BitMatrix result=new Code93Writer().encode(input,BarcodeFormat.CODE_93,0,0);
+  assertEquals(expected,BitMatrixTestCase.matrixToString(result));
+}

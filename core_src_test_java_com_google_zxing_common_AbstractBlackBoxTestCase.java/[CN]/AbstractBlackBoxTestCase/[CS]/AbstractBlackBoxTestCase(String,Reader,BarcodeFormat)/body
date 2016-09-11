@@ -1,9 +1,5 @@
 {
-  Path testBase=Paths.get(testBasePathSuffix);
-  if (!Files.exists(testBase)) {
-    testBase=Paths.get("core").resolve(testBasePathSuffix);
-  }
-  this.testBase=testBase;
+  this.testBase=buildTestBase(testBasePathSuffix);
   this.barcodeReader=barcodeReader;
   this.expectedFormat=expectedFormat;
   testResults=new ArrayList<>();

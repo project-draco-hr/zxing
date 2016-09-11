@@ -1,7 +1,4 @@
 {
-  Path file=Paths.get(path);
-  if (!Files.exists(file)) {
-    file=Paths.get("core").resolve(file);
-  }
+  Path file=AbstractBlackBoxTestCase.buildTestBase(path);
   return ImageIO.read(file.toFile());
 }

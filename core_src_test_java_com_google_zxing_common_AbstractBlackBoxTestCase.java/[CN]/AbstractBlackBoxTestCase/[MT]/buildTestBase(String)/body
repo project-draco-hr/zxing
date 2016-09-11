@@ -1,0 +1,7 @@
+{
+  Path testBase=Paths.get(testBasePathSuffix);
+  if (!Files.exists(testBase)) {
+    testBase=Paths.get("core").resolve(testBasePathSuffix);
+  }
+  return testBase;
+}

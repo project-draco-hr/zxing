@@ -1,8 +1,5 @@
 {
-  Path testBase=Paths.get("src/test/resources/blackbox/multi-qrcode-1");
-  if (!Files.exists(testBase)) {
-    testBase=Paths.get("core").resolve(testBase);
-  }
+  Path testBase=AbstractBlackBoxTestCase.buildTestBase("src/test/resources/blackbox/multi-qrcode-1");
   Path testImage=testBase.resolve("1.png");
   BufferedImage image=ImageIO.read(testImage.toFile());
   LuminanceSource source=new BufferedImageLuminanceSource(image);
